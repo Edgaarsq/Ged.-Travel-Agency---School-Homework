@@ -1,0 +1,1 @@
+window.GED_DAY_PLANNER={build:(city)=>[{time:'09:00',title:'Breakfast',place:city},{time:'10:30',title:'Signature experience',place:city},{time:'13:00',title:'Lunch',place:'Local favourite'},{time:'15:00',title:'Neighbourhood walk',place:'City centre'},{time:'19:30',title:'Evening event',place:'GED Event Radar'}]};

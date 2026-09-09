@@ -1,0 +1,1 @@
+window.GED_NEIGHBORHOODS={'Toronto':['Downtown','Yorkville','Scarborough','North York','Etobicoke'],'Ottawa':['ByWard Market','Centretown','Glebe'],'Vancouver':['Downtown','Gastown','Kitsilano','Yaletown'],'Montréal':['Old Montréal','Plateau','Mile End'],'Banff':['Town Centre','Tunnel Mountain']};

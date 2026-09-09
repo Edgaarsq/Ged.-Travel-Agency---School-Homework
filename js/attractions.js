@@ -1,0 +1,1 @@
+window.GED_ATTRACTIONS=[['CN Tower','Toronto','Landmark'],['Niagara Falls','Ontario','Nature'],['Royal Ontario Museum','Toronto','Culture'],['Stanley Park','Vancouver','Nature'],['Old Montréal','Montréal','Culture'],['Banff National Park','Banff','Nature']];

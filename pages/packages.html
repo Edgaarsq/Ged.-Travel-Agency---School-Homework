@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GED Travel Agency — Build a custom Canadian trip by province, city, neighborhood, hotel and experience.">
+  <title>Packages — GED Travel Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/liquid-glass.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/packages.css">
+</head>
+<body class="packages-page">
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="../index.html" aria-label="GED Travel Agency home"><span>GED</span><small>TRAVEL AGENCY</small></a>
+    <div class="nav-links">
+      <a href="destinations.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a class="active" href="packages.html">Packages</a><a href="help.html">Help</a><a href="about.html">About</a>
+    </div>
+    <div class="nav-actions"><button class="icon-btn" type="button" data-search-open aria-label="Open search">⌕</button><button class="menu-btn" type="button" data-menu-toggle aria-label="Open menu">☰</button></div>
+  </nav>
+</header>
+
+<main>
+  <section class="package-hero" id="top">
+    <div class="package-hero-media"></div>
+    <div class="package-hero-overlay"></div>
+    <div class="container package-hero-content">
+      <p class="eyebrow">GED / PACKAGES</p>
+      <h1>Build Canada<br><span>your way.</span></h1>
+      <p>Choose a province, city, neighborhood, hotel and experiences. Turn the pieces into one personalized trip.</p>
+      <a class="button button-primary" href="#trip-builder">Build my trip <span>↘</span></a>
+    </div>
+  </section>
+
+  <section class="section package-catalog" id="packages">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">CURATED STARTS</p><h2>Start with an idea.</h2></div><p>Four ready-made directions. Customize everything later.</p></div>
+      <div class="package-grid">
+        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Ontario · Toronto</span><h3>The City Experience</h3><p>Downtown, Yorkville, skyline views and a flexible city stay.</p><div><strong>CA$899</strong><a href="#trip-builder" data-preset="toronto">Customize ↗</a></div></div></article>
+        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Alberta · Rockies</span><h3>Wild by Design</h3><p>Mountain landscapes, outdoor experiences and premium stays.</p><div><strong>CA$1,290</strong><a href="#trip-builder" data-preset="rockies">Customize ↗</a></div></div></article>
+        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Québec · Québec City</span><h3>Old Soul</h3><p>Historic streets, architecture, food and a slower itinerary.</p><div><strong>CA$1,095</strong><a href="#trip-builder" data-preset="quebec">Customize ↗</a></div></div></article>
+        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>British Columbia · Vancouver</span><h3>Pacific Edge</h3><p>Ocean, mountains, neighborhoods and modern West Coast energy.</p><div><strong>CA$1,390</strong><a href="#trip-builder" data-preset="vancouver">Customize ↗</a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="package-break"><div class="package-break-media" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2200&q=85')"></div><div class="package-break-copy"><p class="eyebrow">NOT A TEMPLATE</p><h2>Your trip is a system of choices.</h2><p>Pick where you want to go, then decide how you want to experience it. GED keeps the journey organized while you shape the details.</p></div></section>
+
+  <section class="section builder-section" id="trip-builder">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">TRIP BUILDER</p><h2>Build it from zero.</h2></div><p>All prices are illustrative for this school project. No commercial transactions.</p></div>
+      <div class="builder-pro"><div class="builder-main">
+        <div class="builder-step"><span>01</span><div><h3>Province</h3><p>Where does the trip begin?</p></div></div>
+        <div class="choice-grid" data-choice-group="province">
+          <button class="choice selected" type="button" data-value="Ontario"><strong>Ontario</strong><small>Toronto · Ottawa · Niagara</small></button>
+          <button class="choice" type="button" data-value="British Columbia"><strong>British Columbia</strong><small>Vancouver · Victoria · Whistler</small></button>
+          <button class="choice" type="button" data-value="Alberta"><strong>Alberta</strong><small>Calgary · Banff · Jasper</small></button>
+          <button class="choice" type="button" data-value="Québec"><strong>Québec</strong><small>Montréal · Québec City · Laval</small></button>
+          <button class="choice" type="button" data-value="Nova Scotia"><strong>Nova Scotia</strong><small>Halifax · Cape Breton</small></button>
+          <button class="choice" type="button" data-value="Manitoba"><strong>Manitoba</strong><small>Winnipeg · Churchill</small></button>
+        </div>
+
+        <div class="builder-step"><span>02</span><div><h3>City</h3><p>Choose your main destination.</p></div></div>
+        <div class="choice-grid" data-choice-group="city">
+          <button class="choice selected" type="button" data-value="Toronto"><strong>Toronto</strong><small>Ontario</small></button>
+          <button class="choice" type="button" data-value="Ottawa"><strong>Ottawa</strong><small>Ontario</small></button>
+          <button class="choice" type="button" data-value="Vancouver"><strong>Vancouver</strong><small>British Columbia</small></button>
+          <button class="choice" type="button" data-value="Calgary"><strong>Calgary</strong><small>Alberta</small></button>
+          <button class="choice" type="button" data-value="Montréal"><strong>Montréal</strong><small>Québec</small></button>
+          <button class="choice" type="button" data-value="Québec City"><strong>Québec City</strong><small>Québec</small></button>
+        </div>
+
+        <div class="builder-step"><span>03</span><div><h3>Neighborhood</h3><p>Make the city feel more specific.</p></div></div>
+        <div class="choice-grid" data-choice-group="neighborhood">
+          <button class="choice selected" type="button" data-value="Downtown"><strong>Downtown</strong><small>Central · urban</small></button>
+          <button class="choice" type="button" data-value="Yorkville"><strong>Yorkville</strong><small>Elegant · premium</small></button>
+          <button class="choice" type="button" data-value="Scarborough"><strong>Scarborough</strong><small>Multicultural · local</small></button>
+          <button class="choice" type="button" data-value="North York"><strong>North York</strong><small>Modern · residential</small></button>
+          <button class="choice" type="button" data-value="Etobicoke"><strong>Etobicoke</strong><small>Green · waterfront</small></button>
+          <button class="choice" type="button" data-value="ByWard Market"><strong>ByWard Market</strong><small>Ottawa · historic</small></button>
+        </div>
+
+        <div class="builder-step"><span>04</span><div><h3>Stay</h3><p>Select your hotel level.</p></div></div>
+        <div class="option-grid" data-option-group="hotel">
+          <button class="option selected" type="button" data-price="420" data-group="hotel"><strong>Northline House</strong><span>Comfort stay</span><b>CA$420</b></button>
+          <button class="option" type="button" data-price="620" data-group="hotel"><strong>Luxury Suite</strong><span>Premium stay</span><b>CA$620</b></button>
+          <button class="option" type="button" data-price="780" data-group="hotel"><strong>Signature Hotel</strong><span>5-star concept</span><b>CA$780</b></button>
+        </div>
+
+        <div class="builder-step"><span>05</span><div><h3>Experiences</h3><p>Add what you actually want to do.</p></div></div>
+        <div class="option-grid" data-option-group="experience">
+          <button class="option selected" type="button" data-price="0" data-group="experience"><strong>Free exploration</strong><span>Self-guided</span><b>CA$0</b></button>
+          <button class="option" type="button" data-price="80" data-group="experience"><strong>CN Tower</strong><span>Toronto skyline</span><b>CA$80</b></button>
+          <button class="option" type="button" data-price="120" data-group="experience"><strong>Niagara Falls</strong><span>Day experience</span><b>CA$120</b></button>
+          <button class="option" type="button" data-price="180" data-group="experience"><strong>Rockies adventure</strong><span>Mountain day</span><b>CA$180</b></button>
+        </div>
+
+        <div class="builder-step"><span>06</span><div><h3>Dining</h3><p>Choose how much food planning you want.</p></div></div>
+        <div class="option-grid" data-option-group="meal">
+          <button class="option selected" type="button" data-price="0" data-group="meal"><strong>Flexible</strong><span>Eat as you go</span><b>CA$0</b></button>
+          <button class="option" type="button" data-price="160" data-group="meal"><strong>Breakfast + dinner</strong><span>Daily plan</span><b>CA$160</b></button>
+          <button class="option" type="button" data-price="250" data-group="meal"><strong>Full dining plan</strong><span>Maximum convenience</span><b>CA$250</b></button>
+        </div>
+      </div>
+      <aside class="builder-side"><div class="builder-side-sticky"><p class="eyebrow">YOUR ITINERARY</p><h3>Canada, customized.</h3><dl><div><dt>Province</dt><dd data-builder-province>Ontario</dd></div><div><dt>City</dt><dd data-builder-city>Toronto</dd></div><div><dt>Neighborhood</dt><dd data-builder-neighborhood>Downtown</dd></div><div><dt>Flights</dt><dd>CA$680</dd></div><div><dt>Hotel</dt><dd data-builder-hotel>CA$420</dd></div><div><dt>Experiences</dt><dd data-builder-experience>CA$0</dd></div><div><dt>Meals</dt><dd data-builder-meal>CA$0</dd></div></dl><div class="builder-total"><span>Estimated total</span><strong data-total>CA$1,100</strong></div><button class="button button-primary full" type="button" data-build>Build demo itinerary</button><small>Educational demo only. Prices are fictional.</small></div></aside></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div><a class="brand" href="../index.html"><span>GED</span><small>TRAVEL AGENCY</small></a><p>Explore Canada with a trip designed around you.</p></div><div><strong>Project</strong><p>Geovana · Edgar · Aline</p><p>School Project · 1°D</p></div><div><strong>Notice</strong><p>Educational project · No commercial transactions.</p></div></div></footer>
+
+<div class="search-overlay" data-search-overlay hidden><div class="search-panel"><button type="button" data-search-close aria-label="Close search">×</button><input type="search" data-search-input placeholder="Search Canada..."></div></div>
+<script src="../js/canada-data.js" defer></script><script src="../js/provinces.js" defer></script><script src="../js/app.js" defer></script><script src="../js/navigation.js" defer></script><script src="../js/search.js" defer></script><script src="../js/trip-builder.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.builder-pro');if(!b)return;const map={Ontario:['Toronto','Ottawa'], 'British Columbia':['Vancouver','Victoria'], Alberta:['Calgary','Banff'], Québec:['Montréal','Québec City'], 'Nova Scotia':['Halifax'], Manitoba:['Winnipeg']};const province=b.querySelector('[data-choice-group="province"]');const city=b.querySelector('[data-choice-group="city"]');const set=(group,value)=>{group?.querySelectorAll('.choice').forEach(x=>x.classList.toggle('selected',x.dataset.value===value));};province?.addEventListener('click',e=>{const c=e.target.closest('.choice');if(!c)return;set(province,c.dataset.value);const cities=map[c.dataset.value]||[];city?.querySelectorAll('.choice').forEach(x=>x.hidden=!cities.includes(x.dataset.value));const first=city?.querySelector('.choice:not([hidden])');if(first){set(city,first.dataset.value);city.dispatchEvent(new CustomEvent('choicechange',{detail:first.dataset.value,bubbles:true}));}});b.querySelectorAll('[data-choice-group]').forEach(group=>{group.addEventListener('click',e=>{const c=e.target.closest('.choice');if(!c)return;set(group,c.dataset.value);const key=group.dataset.choiceGroup;const out=b.querySelector('[data-builder-'+key+']');if(out)out.textContent=c.dataset.value;});});document.querySelectorAll('[data-preset]').forEach(a=>a.addEventListener('click',()=>{const presets={toronto:['Ontario','Toronto','Downtown'],rockies:['Alberta','Banff','Downtown'],quebec:['Québec','Québec City','Old Québec'],vancouver:['British Columbia','Vancouver','Downtown']};const v=presets[a.dataset.preset];if(!v)return;set(province,v[0]);city?.querySelectorAll('.choice').forEach(x=>x.hidden=!((map[v[0]]||[]).includes(x.dataset.value)));set(city,v[1]);const ng=b.querySelector('[data-choice-group="neighborhood"]');set(ng,v[2]);['province','city','neighborhood'].forEach((k,i)=>{const o=b.querySelector('[data-builder-'+k+']');if(o)o.textContent=v[i];});});});</script>
+</body>
+</html>

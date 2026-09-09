@@ -1,0 +1,1 @@
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelector('[data-search-overlay]')?.classList.remove('open');document.querySelector('[data-mobile-menu]')?.classList.remove('open')}});

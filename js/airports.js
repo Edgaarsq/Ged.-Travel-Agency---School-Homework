@@ -1,0 +1,1 @@
+window.GED_AIRPORTS=[['YYZ','Toronto Pearson','Toronto'],['YVR','Vancouver International','Vancouver'],['YUL','Montréal–Trudeau','Montréal'],['YYC','Calgary International','Calgary'],['YOW','Ottawa International','Ottawa']];

@@ -1,0 +1,1 @@
+window.GED_FAVORITES={toggle:function(id){let x=JSON.parse(localStorage.getItem('ged-favorites')||'[]');x=x.includes(id)?x.filter(v=>v!==id):[...x,id];localStorage.setItem('ged-favorites',JSON.stringify(x));return x}};
