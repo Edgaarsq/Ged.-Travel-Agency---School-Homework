@@ -1,121 +1,3956 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GED Travel Agency — Build a custom Canadian trip by province, city, neighborhood, hotel and experience.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description"
+    content="GED Travel Agency — Build a personalized Canadian journey with destinations, stays and experiences.">
+  <meta name="theme-color" content="#08090c">
+
   <title>Packages — GED Travel Agency</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/liquid-glass.css">
   <link rel="stylesheet" href="../css/animations.css">
   <link rel="stylesheet" href="../css/responsive.css">
-  <link rel="stylesheet" href="../css/packages.css">
+
+  <style>
+    /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
+    :root {
+      --ios-blue: #007aff;
+      --ios-blue-light: #4aa3ff;
+      --ios-green: #34c759;
+      --ios-orange: #ff9500;
+      --ios-purple: #af52de;
+      --ios-red: #ff3b30;
+      --ios-yellow: #ffc400;
+      --ios-teal: #5ac8fa;
+
+      --ios-gray-1: #8e8e93;
+      --ios-gray-2: #aeaeb2;
+      --ios-gray-3: #c7c7cc;
+      --ios-gray-5: #e5e5ea;
+      --ios-gray-6: #f2f2f7;
+
+      --ios-bg: #f2f2f7;
+      --ios-card: #ffffff;
+      --ios-border: rgba(60, 60, 67, 0.10);
+      --ios-border-strong: rgba(60, 60, 67, 0.18);
+
+      --ios-text: #1c1c1e;
+      --ios-text-2: #3a3a3c;
+      --ios-text-3: #8e8e93;
+
+      --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+      --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .packages-page {
+      background: var(--ios-bg);
+      color: var(--ios-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    .packages-page * {
+      box-sizing: border-box;
+    }
+
+    /* ============================================================
+           HEADER
+           ============================================================ */
+    .packages-page .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding-top: 18px;
+      background: transparent;
+      transition: background 0.3s var(--ease-ios);
+    }
+
+    .packages-page .site-header.scrolled .nav {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(60, 60, 67, 0.10);
+    }
+
+    .packages-page .site-header.scrolled .nav-links a,
+    .packages-page .site-header.scrolled .nav-about {
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .packages-page .site-header.scrolled .nav-links a:hover,
+    .packages-page .site-header.scrolled .nav-links a.active,
+    .packages-page .site-header.scrolled .nav-about:hover {
+      color: #000;
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .packages-page .site-header.scrolled .icon-btn,
+    .packages-page .site-header.scrolled .menu-btn {
+      background: rgba(0, 0, 0, 0.05);
+      color: #111;
+    }
+
+    /* ============================================================
+           HERO
+           ============================================================ */
+    .packages-page .package-hero {
+      position: relative;
+      min-height: 800px;
+      padding: 170px 0 130px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      background: #0a0a0a;
+    }
+
+    .packages-page .package-hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        url("https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from {
+        transform: scale(1.06);
+      }
+
+      to {
+        transform: scale(1.14);
+      }
+    }
+
+    .packages-page .package-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(180deg,
+          rgba(0, 0, 0, 0.55) 0%,
+          rgba(0, 0, 0, 0.35) 40%,
+          rgba(0, 0, 0, 0.55) 75%,
+          rgba(242, 242, 247, 1) 100%),
+        radial-gradient(ellipse at 25% 40%,
+          rgba(255, 210, 26, 0.14),
+          transparent 60%);
+    }
+
+    .packages-page .package-hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 1200px;
+    }
+
+    .packages-page .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 0.5px solid rgba(255, 255, 255, 0.28);
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      animation: fadeUp 0.8s var(--ease-ios) both;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .packages-page .eyebrow-pill .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ios-yellow);
+      box-shadow: 0 0 0 4px rgba(255, 196, 0, 0.22);
+      animation: statusPulse 2.4s ease-in-out infinite;
+    }
+
+    .packages-page .package-hero h1 {
+      margin: 26px 0 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(62px, 9vw, 145px);
+      line-height: 0.86;
+      letter-spacing: -0.075em;
+      font-weight: 700;
+      max-width: 950px;
+      color: #fff;
+      animation: fadeUp 1s 0.1s var(--ease-ios) both;
+    }
+
+    .packages-page .package-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ffd21a 0%, #ffb400 50%, #ffe680 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .packages-page .package-hero-content>p:not(.eyebrow-pill) {
+      max-width: 560px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.86);
+      margin: 0;
+      animation: fadeUp 1s 0.2s var(--ease-ios) both;
+    }
+
+    .packages-page .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      animation: fadeUp 1s 0.3s var(--ease-ios) both;
+    }
+
+    .packages-page .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios), background 0.25s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .packages-page .button-primary {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
+      box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .packages-page .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .packages-page .button-dark {
+      background: #0b0b0b;
+      color: #fff;
+    }
+
+    .packages-page .button-dark:hover {
+      background: #1a1a1c;
+      transform: translateY(-2px);
+    }
+
+    .packages-page .hero-secondary {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border: 0.5px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+    }
+
+    .packages-page .hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.24);
+      transform: translateY(-3px);
+    }
+
+    /* Hero stats */
+    .packages-page .hero-stats-row {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 54px;
+      animation: fadeUp 1s 0.4s var(--ease-ios) both;
+    }
+
+    .packages-page .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .packages-page .hero-stat strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #fff;
+    }
+
+    .packages-page .hero-stat span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ============================================================
+           SECTION HEADER
+           ============================================================ */
+    .packages-page .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    @media (max-width: 900px) {
+      .packages-page .section-header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .packages-page .section-header h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(42px, 5.5vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      margin: 12px 0 0;
+      color: var(--ios-text);
+    }
+
+    .packages-page .section-header h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #007aff, #af52de);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .packages-page .section-header>p {
+      margin: 0;
+      color: var(--ios-text-3);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .packages-page .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ios-text-3);
+      margin: 0 0 8px;
+    }
+
+    /* ============================================================
+           CATALOG
+           ============================================================ */
+    .packages-page .package-catalog {
+      position: relative;
+      z-index: 3;
+      padding: 0 0 100px;
+      margin-top: -60px;
+    }
+
+    /* Controls */
+    .packages-page .package-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin: 0 0 28px;
+      flex-wrap: wrap;
+      padding: 18px 22px;
+      background: #fff;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .packages-page .package-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .package-filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(120, 120, 128, 0.06);
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ios-text-2);
+      cursor: pointer;
+      transition: all 0.24s var(--ease-spring);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .packages-page .package-filter:hover {
+      background: rgba(0, 122, 255, 0.08);
+      border-color: rgba(0, 122, 255, 0.3);
+      color: var(--ios-blue);
+      transform: translateY(-1.5px);
+    }
+
+    .packages-page .package-filter.active {
+      background: linear-gradient(135deg, #0a84ff, #007aff);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.30);
+    }
+
+    .packages-page .package-search-sort {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .package-search {
+      width: 220px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      background: rgba(120, 120, 128, 0.04);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--ios-text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .packages-page .package-search:focus {
+      border-color: rgba(0, 122, 255, 0.5);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.10);
+    }
+
+    .packages-page .package-sort {
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      background: rgba(120, 120, 128, 0.04);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--ios-text);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .packages-page .package-sort:focus {
+      border-color: rgba(0, 122, 255, 0.5);
+      background: #fff;
+    }
+
+    /* Currency selector */
+    .packages-page .currency-picker {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(120, 120, 128, 0.06);
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      gap: 2px;
+    }
+
+    .packages-page .currency-btn {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ios-text-3);
+      transition: all 0.22s var(--ease-ios);
+      white-space: nowrap;
+    }
+
+    .packages-page .currency-btn:hover {
+      color: var(--ios-text);
+    }
+
+    .packages-page .currency-btn.active {
+      background: #fff;
+      color: var(--ios-text);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ============================================================
+           PACKAGE GRID
+           ============================================================ */
+    .packages-page .package-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .packages-page .package-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .package-card {
+      position: relative;
+      min-height: 580px;
+      border-radius: 28px;
+      overflow: hidden;
+      color: #fff;
+      background: #111;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+      transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-ios);
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+    }
+
+    .packages-page .package-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.18);
+    }
+
+    .packages-page .package-card.hidden {
+      display: none;
+    }
+
+    .packages-page .package-card.compare-selected {
+      outline: 3px solid var(--ios-blue);
+      outline-offset: 4px;
+    }
+
+    .packages-page .package-card-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: -1;
+    }
+
+    .packages-page .package-card:hover .package-card-image {
+      transform: scale(1.08);
+    }
+
+    .packages-page .package-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,
+          rgba(0, 0, 0, 0.90) 0%,
+          rgba(0, 0, 0, 0.55) 40%,
+          rgba(0, 0, 0, 0.10) 75%,
+          transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Card top row */
+    .packages-page .package-card-top {
+      position: relative;
+      z-index: 2;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .packages-page .package-card-top-left {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .packages-page .package-favorite,
+    .packages-page .package-compare-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      background: rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      cursor: pointer;
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      transition: all 0.24s var(--ease-spring);
+      padding: 0;
+    }
+
+    .packages-page .package-favorite:hover,
+    .packages-page .package-compare-btn:hover {
+      transform: scale(1.08);
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .packages-page .package-favorite.active {
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      border-color: transparent;
+      color: #0a0a0a;
+      box-shadow: 0 6px 20px rgba(255, 149, 0, 0.4);
+    }
+
+    .packages-page .package-compare-btn.active {
+      background: linear-gradient(135deg, #0a84ff, #007aff);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+    }
+
+    .packages-page .package-ged-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ios-text);
+      white-space: nowrap;
+    }
+
+    .packages-page .package-ged-badge .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      box-shadow: 0 0 0 3px rgba(255, 210, 26, 0.22);
+      flex: 0 0 8px;
+    }
+
+    .packages-page .package-ged-badge .badge-label {
+      color: var(--ios-text-3);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Card body */
+    .packages-page .package-card-body {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      padding: 0 30px 30px;
+    }
+
+    .packages-page .package-card-body>span {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      opacity: 0.78;
+      margin-bottom: 8px;
+    }
+
+    .packages-page .package-card-body h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(30px, 3.4vw, 40px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      margin: 0 0 10px;
+      color: #fff;
+    }
+
+    .packages-page .package-card-body p {
+      max-width: 480px;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.55;
+      font-size: 14px;
+      margin: 0 0 18px;
+    }
+
+    .packages-page .package-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .packages-page .package-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 0.5px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .packages-page .package-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      padding-top: 18px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .packages-page .package-price small {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2px;
+    }
+
+    .packages-page .package-price strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .packages-page .package-price strong em {
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0;
+    }
+
+    .packages-page .package-customize {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #fff;
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.24s var(--ease-spring);
+      white-space: nowrap;
+    }
+
+    .packages-page .package-customize:hover {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 210, 26, 0.35);
+    }
+
+    /* ============================================================
+           STATS STRIP
+           ============================================================ */
+    .packages-page .package-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 70px 0 0;
+      border-top: 0.5px solid rgba(60, 60, 67, 0.14);
+      border-bottom: 0.5px solid rgba(60, 60, 67, 0.14);
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (max-width: 720px) {
+      .packages-page .package-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .packages-page .package-stat {
+      padding: 34px 26px;
+      border-right: 0.5px solid rgba(60, 60, 67, 0.10);
+      transition: background 0.3s var(--ease-ios);
+    }
+
+    .packages-page .package-stat:last-child {
+      border-right: 0;
+    }
+
+    .packages-page .package-stat:hover {
+      background: rgba(0, 122, 255, 0.03);
+    }
+
+    .packages-page .package-stat strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: var(--ios-text);
+    }
+
+    .packages-page .package-stat span {
+      color: var(--ios-text-3);
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-top: 6px;
+      display: block;
+      letter-spacing: 0.01em;
+    }
+
+    /* ============================================================
+           VISUAL BREAK
+           ============================================================ */
+    .packages-page .package-break {
+      position: relative;
+      min-height: 640px;
+      margin: 120px 0;
+      border-radius: 40px;
+      overflow: hidden;
+      display: grid;
+      align-items: center;
+      isolation: isolate;
+    }
+
+    @media (max-width: 1000px) {
+      .packages-page .package-break {
+        border-radius: 28px;
+        margin: 90px 0;
+      }
+    }
+
+    .packages-page .package-break-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform 12s ease-out;
+    }
+
+    .packages-page .package-break:hover .package-break-media {
+      transform: scale(1.10);
+    }
+
+    .packages-page .package-break::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(120deg,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.45) 45%,
+          rgba(0, 0, 0, 0.10) 100%);
+    }
+
+    .packages-page .package-break-copy {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 80px max(6vw, calc((100vw - 1200px) / 2));
+      max-width: 900px;
+    }
+
+    .packages-page .package-break-copy .eyebrow {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .packages-page .package-break-copy h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.92;
+      letter-spacing: -0.065em;
+      margin: 15px 0 25px;
+      color: #fff;
+    }
+
+    .packages-page .package-break-copy h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .packages-page .package-break-copy p {
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 580px;
+      margin: 0 0 28px;
+    }
+
+    .packages-page .package-break-copy .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: #fff;
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.24s var(--ease-spring);
+    }
+
+    .packages-page .package-break-copy .btn:hover {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35);
+    }
+
+    /* ============================================================
+           BUILDER — STEP PROGRESS
+           ============================================================ */
+    .packages-page .builder-stepper {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .packages-page .builder-stepper {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .packages-page .builder-stepper {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .packages-page .builder-stepper .step-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff;
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      cursor: pointer;
+      transition: all 0.24s var(--ease-spring);
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .packages-page .builder-stepper .step-pill:hover {
+      border-color: rgba(0, 122, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.08);
+    }
+
+    .packages-page .builder-stepper .step-pill.completed {
+      background: linear-gradient(180deg, #fffdf4, #fffbf0);
+      border-color: rgba(255, 196, 0, 0.5);
+    }
+
+    .packages-page .builder-stepper .step-pill .step-index {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ios-text-3);
+    }
+
+    .packages-page .builder-stepper .step-pill .step-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--ios-text);
+      letter-spacing: -0.01em;
+    }
+
+    .packages-page .builder-stepper .step-pill .step-value {
+      font-size: 11px;
+      color: var(--ios-text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .packages-page .builder-stepper .step-pill.completed .step-index {
+      color: #b47800;
+    }
+
+    .packages-page .builder-stepper .step-pill.completed .step-name::after {
+      content: " ✓";
+      color: #b47800;
+    }
+
+    /* ============================================================
+           BUILDER MAIN
+           ============================================================ */
+    .packages-page .builder-section {
+      padding: 0 0 120px;
+    }
+
+    .packages-page .builder-pro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(340px, 0.72fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (max-width: 1000px) {
+      .packages-page .builder-pro {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .builder-main {
+      background: #fff;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      border-radius: 32px;
+      padding: clamp(28px, 4vw, 48px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    }
+
+    .packages-page .builder-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin: 36px 0 18px;
+    }
+
+    .packages-page .builder-step:first-child {
+      margin-top: 0;
+    }
+
+    .packages-page .builder-step>span {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0a84ff, #007aff 60%, #0060d0);
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.24);
+    }
+
+    .packages-page .builder-step:nth-of-type(2)>span {
+      background: linear-gradient(135deg, #ff9500, #ffcc00);
+      box-shadow: 0 8px 20px rgba(255, 149, 0, 0.24);
+    }
+
+    .packages-page .builder-step:nth-of-type(3)>span {
+      background: linear-gradient(135deg, #af52de, #c77dff);
+      box-shadow: 0 8px 20px rgba(175, 82, 222, 0.24);
+    }
+
+    .packages-page .builder-step:nth-of-type(4)>span {
+      background: linear-gradient(135deg, #34c759, #5fd97e);
+      box-shadow: 0 8px 20px rgba(52, 199, 89, 0.24);
+    }
+
+    .packages-page .builder-step h3 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      color: var(--ios-text);
+      font-weight: 700;
+    }
+
+    .packages-page .builder-step p {
+      margin: 3px 0 0;
+      color: var(--ios-text-3);
+      font-size: 13.5px;
+    }
+
+    .packages-page .choice-grid,
+    .packages-page .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+
+      .packages-page .choice-grid,
+      .packages-page .option-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .choice,
+    .packages-page .option {
+      position: relative;
+      text-align: left;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px 18px;
+      cursor: pointer;
+      font: inherit;
+      transition: all 0.24s var(--ease-spring);
+      color: var(--ios-text);
+    }
+
+    .packages-page .choice:hover,
+    .packages-page .option:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 122, 255, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .packages-page .choice.selected,
+    .packages-page .option.selected {
+      border-color: rgba(255, 196, 0, 0.8);
+      background: linear-gradient(180deg, #fffdf4, #fffbf0);
+      box-shadow: inset 0 0 0 1.5px rgba(255, 196, 0, 0.55), 0 8px 24px rgba(255, 196, 0, 0.10);
+    }
+
+    .packages-page .choice.selected::after,
+    .packages-page .option.selected::after {
+      content: "✓";
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(255, 180, 0, 0.35);
+    }
+
+    .packages-page .choice strong,
+    .packages-page .option strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+
+    .packages-page .choice small,
+    .packages-page .option span {
+      display: block;
+      margin-top: 4px;
+      color: var(--ios-text-3);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .packages-page .option b {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(0, 122, 255, 0.08);
+      color: var(--ios-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .packages-page .choice.selected b,
+    .packages-page .option.selected b {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
+    }
+
+    .packages-page .experience-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .packages-page .experience-option input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      border-radius: 7px;
+      border: 1.5px solid rgba(60, 60, 67, 0.25);
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s var(--ease-ios);
+    }
+
+    .packages-page .experience-option input[type="checkbox"]:checked {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(255, 180, 0, 0.35);
+    }
+
+    .packages-page .experience-option input[type="checkbox"]:checked::after {
+      content: "✓";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #0a0a0a;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .packages-page .builder-extra {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .packages-page .builder-extra {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .builder-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .packages-page .builder-field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ios-text-3);
+    }
+
+    .packages-page .builder-field input,
+    .packages-page .builder-field select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 0.5px solid rgba(60, 60, 67, 0.18);
+      border-radius: 14px;
+      background: rgba(120, 120, 128, 0.04);
+      font: inherit;
+      font-size: 15px;
+      color: var(--ios-text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .packages-page .builder-field input:focus,
+    .packages-page .builder-field select:focus {
+      border-color: rgba(0, 122, 255, 0.5);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.10);
+    }
+
+    /* ============================================================
+           SIDEBAR SUMMARY
+           ============================================================ */
+    .packages-page .builder-side {
+      position: sticky;
+      top: 100px;
+    }
+
+    @media (max-width: 1000px) {
+      .packages-page .builder-side {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    .packages-page .builder-side-sticky {
+      background: linear-gradient(160deg, #0a0a0a, #1a1a1c);
+      color: #fff;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .packages-page .builder-side-sticky::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 210, 26, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .packages-page .builder-side-sticky .eyebrow {
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .builder-side-sticky h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin: 10px 0 30px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .builder-side-sticky h3 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .packages-page .progress-wrapper {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .packages-page .progress-bar {
+      height: 6px;
+      border-radius: 99px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .packages-page .progress-bar span {
+      display: block;
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(90deg, #ffd21a, #ffb400);
+      border-radius: 99px;
+      transition: width 0.5s var(--ease-spring);
+      box-shadow: 0 0 12px rgba(255, 210, 26, 0.5);
+    }
+
+    .packages-page .builder-side dl {
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .builder-side dl>div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .packages-page .builder-side dt {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .packages-page .builder-side dd {
+      margin: 0;
+      text-align: right;
+      font-weight: 600;
+      font-size: 13px;
+      color: #fff;
+      letter-spacing: -0.005em;
+    }
+
+    .packages-page .builder-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .builder-total span {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .packages-page .builder-total strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 38px;
+      color: #ffd21a;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(255, 210, 26, 0.35);
+      transition: color 0.3s var(--ease-ios);
+    }
+
+    .packages-page .builder-total strong.flash {
+      color: #fff;
+    }
+
+    .packages-page .builder-buttons {
+      display: grid;
+      gap: 9px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .builder-buttons .button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .packages-page .builder-side-sticky>small {
+      display: block;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.55;
+      font-size: 11px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+           MODAL
+           ============================================================ */
+    .packages-page .itinerary-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(10, 11, 13, 0.55);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+    }
+
+    .packages-page .itinerary-modal.open {
+      display: grid;
+      animation: modalIn 0.25s ease both;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .packages-page .itinerary-panel {
+      width: min(760px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      background: linear-gradient(180deg, #fbfbfd, #f2f2f7);
+      border-radius: 32px;
+      padding: 38px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border: 0.5px solid rgba(255, 255, 255, 0.9);
+      animation: panelUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes panelUp {
+      from {
+        transform: translateY(30px) scale(0.96);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .packages-page .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .packages-page .modal-close {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(120, 120, 128, 0.12);
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--ios-text-2);
+      display: grid;
+      place-items: center;
+      transition: all 0.2s var(--ease-ios);
+      flex: 0 0 42px;
+    }
+
+    .packages-page .modal-close:hover {
+      background: rgba(120, 120, 128, 0.20);
+      transform: rotate(90deg);
+    }
+
+    .packages-page .itinerary-panel h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin: 8px 0 12px;
+      color: var(--ios-text);
+    }
+
+    .packages-page .itinerary-panel .yellow {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .packages-page .itinerary-panel p#modalIntro {
+      font-size: 14px;
+      color: var(--ios-text-3);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .packages-page .generated-route {
+      margin-top: 28px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .packages-page .route-day {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 0.5px solid rgba(60, 60, 67, 0.12);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s var(--ease-ios);
+      animation: fadeUp 0.4s var(--ease-ios) both;
+    }
+
+    .packages-page .route-day:hover {
+      transform: translateX(4px);
+      border-color: rgba(0, 122, 255, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.08);
+    }
+
+    .packages-page .route-day-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      display: grid;
+      place-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      color: #0a0a0a;
+      box-shadow: 0 6px 20px rgba(255, 180, 0, 0.28);
+    }
+
+    .packages-page .route-day strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .packages-page .route-day p {
+      margin: 0;
+      color: var(--ios-text-3);
+      line-height: 1.55;
+      font-size: 13.5px;
+    }
+
+    .packages-page .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 0.5px solid rgba(60, 60, 67, 0.10);
+    }
+
+    .packages-page .modal-actions .button {
+      padding: 12px 20px;
+      font-size: 13px;
+    }
+
+    /* ============================================================
+           COMPARE DRAWER
+           ============================================================ */
+    .packages-page .compare-drawer {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(200%);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(28, 28, 30, 0.94);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      color: #fff;
+      border-radius: 999px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+      border: 0.5px solid rgba(255, 255, 255, 0.10);
+      transition: transform 0.4s var(--ease-spring), opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .packages-page .compare-drawer.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .packages-page .compare-drawer .compare-count {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .packages-page .compare-drawer .compare-names {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .compare-drawer .compare-names span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .packages-page .compare-drawer .compare-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .packages-page .compare-drawer button {
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 0;
+      font-family: inherit;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .packages-page .compare-drawer .btn-compare {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
+    }
+
+    .packages-page .compare-drawer .btn-compare:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 180, 0, 0.4);
+    }
+
+    .packages-page .compare-drawer .btn-compare:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .packages-page .compare-drawer .btn-clear {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .packages-page .compare-drawer .btn-clear:hover {
+      background: rgba(255, 255, 255, 0.20);
+    }
+
+    /* Compare modal */
+    .packages-page .compare-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(10, 11, 13, 0.55);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .packages-page .compare-modal.open {
+      display: grid;
+      animation: modalIn 0.25s ease both;
+    }
+
+    .packages-page .compare-panel {
+      width: min(900px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.3);
+      animation: panelUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .packages-page .compare-panel h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 32px;
+      letter-spacing: -0.05em;
+      margin: 0 0 8px;
+      color: var(--ios-text);
+    }
+
+    .packages-page .compare-panel>p {
+      margin: 0 0 26px;
+      color: var(--ios-text-3);
+      font-size: 14px;
+    }
+
+    .packages-page .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .packages-page .compare-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .compare-col {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      background: #fbfbfd;
+    }
+
+    .packages-page .compare-col .compare-col-img {
+      height: 140px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .packages-page .compare-col .compare-col-body {
+      padding: 20px;
+    }
+
+    .packages-page .compare-col h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      margin: 0 0 6px;
+      color: var(--ios-text);
+    }
+
+    .packages-page .compare-col small {
+      color: var(--ios-text-3);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .packages-page .compare-col .compare-rows {
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .packages-page .compare-col .compare-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 0.5px solid rgba(60, 60, 67, 0.08);
+      font-size: 13px;
+    }
+
+    .packages-page .compare-col .compare-row span:first-child {
+      color: var(--ios-text-3);
+    }
+
+    .packages-page .compare-col .compare-row span:last-child {
+      font-weight: 700;
+      color: var(--ios-text);
+      text-align: right;
+    }
+
+    .packages-page .compare-col .compare-winner {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #34c759, #5fd97e);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+           TOASTS
+           ============================================================ */
+    .packages-page .toast-stack {
+      position: fixed;
+      top: 90px;
+      right: 24px;
+      z-index: 9997;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .packages-page .ged-toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(28, 28, 30, 0.94);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 0.5px solid rgba(255, 255, 255, 0.10);
+      pointer-events: auto;
+      max-width: 340px;
+      animation: toastIn 0.4s var(--ease-spring) both;
+    }
+
+    .packages-page .ged-toast.out {
+      animation: toastOut 0.3s var(--ease-ios) forwards;
+    }
+
+    .packages-page .ged-toast .toast-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex: 0 0 24px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      background: linear-gradient(135deg, #0a84ff, #007aff);
+      color: #fff;
+    }
+
+    .packages-page .ged-toast.success .toast-icon {
+      background: linear-gradient(135deg, #34c759, #5fd97e);
+    }
+
+    .packages-page .ged-toast.warn .toast-icon {
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      color: #0a0a0a;
+    }
+
+    .packages-page .ged-toast.error .toast-icon {
+      background: linear-gradient(135deg, #ff453a, #d70015);
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes toastOut {
+      to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.96);
+      }
+    }
+
+    /* ============================================================
+           CONFETTI
+           ============================================================ */
+    .packages-page .confetti-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 9996;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+           FOOTER
+           ============================================================ */
+    .packages-page .site-footer {
+      background: #070707;
+      color: #fff;
+      padding: 80px 0 28px;
+    }
+
+    .packages-page .site-footer .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 720px) {
+      .packages-page .site-footer .container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    .packages-page .site-footer .brand {
+      color: #fff;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .packages-page .site-footer .brand small {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 700;
+    }
+
+    .packages-page .site-footer p {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      margin: 4px 0 0;
+    }
+
+    .packages-page .site-footer strong {
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+
+    /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes statusPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(0.85);
+        opacity: 0.7;
+      }
+    }
+
+    .packages-page .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease-ios), transform 0.8s var(--ease-ios);
+    }
+
+    .packages-page .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .packages-page *,
+      .packages-page *::before,
+      .packages-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .packages-page :focus-visible {
+      outline: 3px solid rgba(0, 122, 255, 0.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    /* ============================================================
+           PRINT-FRIENDLY
+           ============================================================ */
+    @media print {
+
+      .packages-page .site-header,
+      .packages-page .site-footer,
+      .packages-page .search-overlay,
+      .packages-page .toast-stack,
+      .packages-page .confetti-canvas,
+      .packages-page .compare-drawer,
+      .packages-page .modal-actions,
+      .packages-page .modal-close {
+        display: none !important;
+      }
+
+      .packages-page,
+      .packages-page .itinerary-panel {
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      .packages-page .itinerary-modal {
+        position: static;
+        display: block !important;
+        background: none;
+        padding: 0;
+        backdrop-filter: none;
+      }
+
+      .packages-page .itinerary-panel {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        max-height: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      .packages-page .itinerary-panel h2 {
+        color: #000 !important;
+        font-size: 28px !important;
+      }
+
+      .packages-page .itinerary-panel p#modalIntro {
+        color: #333 !important;
+      }
+
+      .packages-page .route-day {
+        border-color: #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        background: #fafafa !important;
+      }
+
+      .packages-page .route-day-number {
+        background: #ffd21a !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+
+      .packages-page .itinerary-panel h2 .yellow {
+        color: #b47800 !important;
+        -webkit-text-fill-color: #b47800 !important;
+      }
+
+      .packages-page .eyebrow {
+        color: #666 !important;
+      }
+
+      @page {
+        margin: 1.5cm;
+      }
+    }
+  </style>
 </head>
+
 <body class="packages-page">
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="../index.html" aria-label="GED Travel Agency home"><span>GED</span><small>TRAVEL AGENCY</small></a>
-    <div class="nav-links">
-      <a href="destinations.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a class="active" href="packages.html">Packages</a><a href="help.html">Help</a><a href="about.html">About</a>
-    </div>
-    <div class="nav-actions"><button class="icon-btn" type="button" data-search-open aria-label="Open search">⌕</button><button class="menu-btn" type="button" data-menu-toggle aria-label="Open menu">☰</button></div>
-  </nav>
-</header>
 
-<main>
-  <section class="package-hero" id="top">
-    <div class="package-hero-media"></div>
-    <div class="package-hero-overlay"></div>
-    <div class="container package-hero-content">
-      <p class="eyebrow">GED / PACKAGES</p>
-      <h1>Build Canada<br><span>your way.</span></h1>
-      <p>Choose a province, city, neighborhood, hotel and experiences. Turn the pieces into one personalized trip.</p>
-      <a class="button button-primary" href="#trip-builder">Build my trip <span>↘</span></a>
+  <!-- ============================================================
+         HEADER
+         ============================================================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav glass" aria-label="Main navigation">
+      <a class="brand" href="../index.html" aria-label="GED Home">
+        <b>G</b><span>GED</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Explore</a>
+        <a href="events.html">Events</a>
+        <a href="flights.html">Flights</a>
+        <a href="hotels.html">Hotels</a>
+        <a class="active" href="packages.html" aria-current="page">Packages</a>
+        <a href="help.html">Help</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" data-search aria-label="Search" title="Search">⌕</button>
+        <a class="nav-about" href="about.html">About</a>
+        <button class="menu-btn" type="button" data-menu aria-label="Open menu">
+          <i></i><i></i>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu glass" data-mobile-menu aria-hidden="true">
+      <a href="../index.html">Explore</a>
+      <a href="events.html">Events</a>
+      <a href="flights.html">Flights</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="packages.html" aria-current="page">Packages</a>
+      <a href="help.html">Help</a>
+      <a href="about.html">About</a>
     </div>
-  </section>
+  </header>
 
-  <section class="section package-catalog" id="packages">
+  <main>
+
+    <!-- ============================================================
+             HERO
+             ============================================================ -->
+    <section class="package-hero" id="top">
+      <div class="package-hero-media"></div>
+      <div class="package-hero-overlay"></div>
+
+      <div class="container package-hero-content">
+
+        <div class="eyebrow-pill">
+          <span class="pill-dot" aria-hidden="true"></span>
+          GED / Packages
+        </div>
+
+        <h1>
+          Build Canada<br>
+          <em>your way.</em>
+        </h1>
+
+        <p>
+          Don't choose a generic package. Build a journey around
+          the places, people, experiences and pace that fit you.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#trip-builder">
+            Build my trip
+            <span aria-hidden="true">↘</span>
+          </a>
+          <a class="button hero-secondary" href="#packages">
+            Explore packages
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat">
+            <strong data-counter="13">0</strong>
+            <span>Canadian regions</span>
+          </div>
+          <div class="hero-stat">
+            <strong data-counter="20" data-suffix="+">0</strong>
+            <span>Destinations</span>
+          </div>
+          <div class="hero-stat">
+            <strong>∞</strong>
+            <span>Combinations</span>
+          </div>
+          <div class="hero-stat">
+            <strong data-counter="1" data-pad="2">00</strong>
+            <span>Trip for you</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+             CURATED PACKAGES
+             ============================================================ -->
+    <section class="package-catalog" id="packages">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div>
+            <p class="eyebrow">Curated starts</p>
+            <h2>Start with <em>an idea.</em></h2>
+          </div>
+          <p>
+            Four different ways to experience Canada. Start here,
+            then make every detail yours. Use the compare button to
+            see any two side by side.
+          </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="package-controls reveal">
+
+          <div class="package-filters">
+            <button class="package-filter active" data-filter="all">All</button>
+            <button class="package-filter" data-filter="city">City</button>
+            <button class="package-filter" data-filter="nature">Nature</button>
+            <button class="package-filter" data-filter="culture">Culture</button>
+            <button class="package-filter" data-filter="coast">Coast</button>
+          </div>
+
+          <div class="package-search-sort">
+            <input class="package-search" type="search" id="packageSearch" placeholder="Search packages…"
+              aria-label="Search packages">
+            <select class="package-sort" id="packageSort" aria-label="Sort packages">
+              <option value="default">Sort</option>
+              <option value="low">Price: low → high</option>
+              <option value="high">Price: high → low</option>
+            </select>
+
+            <div class="currency-picker" role="tablist" aria-label="Currency">
+              <button class="currency-btn active" data-currency="CAD" role="tab">CAD</button>
+              <button class="currency-btn" data-currency="USD" role="tab">USD</button>
+              <button class="currency-btn" data-currency="EUR" role="tab">EUR</button>
+              <button class="currency-btn" data-currency="BRL" role="tab">BRL</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Grid -->
+        <div class="package-grid" id="packageGrid">
+
+          <!-- TORONTO -->
+          <article class="package-card reveal" data-type="city" data-price="899" data-name="The City Experience Toronto"
+            data-id="toronto" data-duration="4 nights" data-hotel="Downtown" data-experiences="CN Tower, Breakfast"
+            data-image="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=90">
+            <div class="package-card-image"
+              style="background-image:url('https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=90')">
+            </div>
+
+            <div class="package-card-top">
+              <div class="package-card-top-left">
+                <button class="package-favorite" data-favorite="toronto"
+                  aria-label="Favorite Toronto package">♡</button>
+                <button class="package-compare-btn" data-compare="toronto" aria-label="Add to compare">⚖</button>
+              </div>
+              <div class="package-ged-badge">
+                <span class="badge-dot"></span>
+                <span>GED 9.4</span>
+                <span class="badge-label">Value</span>
+              </div>
+            </div>
+
+            <div class="package-card-body">
+              <span>Ontario · Toronto</span>
+              <h3>The City Experience</h3>
+              <p>Downtown energy, Yorkville, skyline views, waterfront walks and Canada's biggest-city atmosphere.</p>
+              <div class="package-tags">
+                <span class="package-tag">4 nights</span>
+                <span class="package-tag">Breakfast</span>
+                <span class="package-tag">CN Tower</span>
+              </div>
+              <div class="package-card-bottom">
+                <div class="package-price">
+                  <small>From</small>
+                  <strong data-price="899">CA$899 <em>/ person</em></strong>
+                </div>
+                <a class="package-customize" href="#trip-builder" data-preset="toronto">
+                  Customize <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ROCKIES -->
+          <article class="package-card reveal" data-type="nature" data-price="1290" data-name="Wild by Design Rockies"
+            data-id="rockies" data-duration="6 nights" data-hotel="Banff · Town Centre"
+            data-experiences="Rockies adventure, Breakfast"
+            data-image="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=90">
+            <div class="package-card-image"
+              style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=90')">
+            </div>
+
+            <div class="package-card-top">
+              <div class="package-card-top-left">
+                <button class="package-favorite" data-favorite="rockies"
+                  aria-label="Favorite Rockies package">♡</button>
+                <button class="package-compare-btn" data-compare="rockies" aria-label="Add to compare">⚖</button>
+              </div>
+              <div class="package-ged-badge">
+                <span class="badge-dot"></span>
+                <span>GED 9.6</span>
+                <span class="badge-label">Value</span>
+              </div>
+            </div>
+
+            <div class="package-card-body">
+              <span>Alberta · Rockies</span>
+              <h3>Wild by Design</h3>
+              <p>Mountain landscapes, Banff, outdoor adventures and premium alpine stays.</p>
+              <div class="package-tags">
+                <span class="package-tag">6 nights</span>
+                <span class="package-tag">Banff</span>
+                <span class="package-tag">Mountain</span>
+              </div>
+              <div class="package-card-bottom">
+                <div class="package-price">
+                  <small>From</small>
+                  <strong data-price="1290">CA$1,290 <em>/ person</em></strong>
+                </div>
+                <a class="package-customize" href="#trip-builder" data-preset="rockies">
+                  Customize <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- QUEBEC -->
+          <article class="package-card reveal" data-type="culture" data-price="1095" data-name="Old Soul Quebec"
+            data-id="quebec" data-duration="5 nights" data-hotel="Old Québec"
+            data-experiences="Food experience, Breakfast"
+            data-image="https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=90">
+            <div class="package-card-image"
+              style="background-image:url('https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=90')">
+            </div>
+
+            <div class="package-card-top">
+              <div class="package-card-top-left">
+                <button class="package-favorite" data-favorite="quebec" aria-label="Favorite Quebec package">♡</button>
+                <button class="package-compare-btn" data-compare="quebec" aria-label="Add to compare">⚖</button>
+              </div>
+              <div class="package-ged-badge">
+                <span class="badge-dot"></span>
+                <span>GED 9.1</span>
+                <span class="badge-label">Value</span>
+              </div>
+            </div>
+
+            <div class="package-card-body">
+              <span>Québec · Québec City</span>
+              <h3>Old Soul</h3>
+              <p>Historic streets, architecture, local food and a slower European-inspired rhythm.</p>
+              <div class="package-tags">
+                <span class="package-tag">5 nights</span>
+                <span class="package-tag">Culture</span>
+                <span class="package-tag">Food</span>
+              </div>
+              <div class="package-card-bottom">
+                <div class="package-price">
+                  <small>From</small>
+                  <strong data-price="1095">CA$1,095 <em>/ person</em></strong>
+                </div>
+                <a class="package-customize" href="#trip-builder" data-preset="quebec">
+                  Customize <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- VANCOUVER -->
+          <article class="package-card reveal" data-type="coast" data-price="1390" data-name="Pacific Edge Vancouver"
+            data-id="vancouver" data-duration="7 nights" data-hotel="Downtown Vancouver"
+            data-experiences="Ferry, Breakfast"
+            data-image="https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=90">
+            <div class="package-card-image"
+              style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=90')">
+            </div>
+
+            <div class="package-card-top">
+              <div class="package-card-top-left">
+                <button class="package-favorite" data-favorite="vancouver"
+                  aria-label="Favorite Vancouver package">♡</button>
+                <button class="package-compare-btn" data-compare="vancouver" aria-label="Add to compare">⚖</button>
+              </div>
+              <div class="package-ged-badge">
+                <span class="badge-dot"></span>
+                <span>GED 9.3</span>
+                <span class="badge-label">Value</span>
+              </div>
+            </div>
+
+            <div class="package-card-body">
+              <span>British Columbia · Vancouver</span>
+              <h3>Pacific Edge</h3>
+              <p>Ocean, mountains, modern neighborhoods and West Coast energy in one trip.</p>
+              <div class="package-tags">
+                <span class="package-tag">7 nights</span>
+                <span class="package-tag">Ferry</span>
+                <span class="package-tag">Coast</span>
+              </div>
+              <div class="package-card-bottom">
+                <div class="package-price">
+                  <small>From</small>
+                  <strong data-price="1390">CA$1,390 <em>/ person</em></strong>
+                </div>
+                <a class="package-customize" href="#trip-builder" data-preset="vancouver">
+                  Customize <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="package-stats reveal">
+          <div class="package-stat">
+            <strong data-counter="13">0</strong>
+            <span>Canadian regions</span>
+          </div>
+          <div class="package-stat">
+            <strong data-counter="20" data-suffix="+">0</strong>
+            <span>Destinations</span>
+          </div>
+          <div class="package-stat">
+            <strong>∞</strong>
+            <span>Possible combinations</span>
+          </div>
+          <div class="package-stat">
+            <strong data-counter="1" data-pad="2">00</strong>
+            <span>Trip designed for you</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+             VISUAL BREAK
+             ============================================================ -->
+    <section class="container">
+      <div class="package-break reveal">
+        <div class="package-break-media"
+          style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2200&q=90')">
+        </div>
+
+        <div class="package-break-copy">
+          <p class="eyebrow">Not a template</p>
+          <h2>Your trip is a <em>system of choices.</em></h2>
+          <p>
+            Start with a destination. Add the places you care about.
+            Choose how you move, where you stay, what you experience
+            and how long you stay.
+          </p>
+          <a class="btn" href="#trip-builder">
+            Open the builder
+            <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+             TRIP BUILDER
+             ============================================================ -->
+    <section class="builder-section" id="trip-builder">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div>
+            <p class="eyebrow">Trip builder</p>
+            <h2>Build it <em>from zero.</em></h2>
+          </div>
+          <p>
+            Every selection changes your estimated itinerary.
+            This is an educational demonstration for the GED project.
+          </p>
+        </div>
+
+        <!-- Step progress -->
+        <div class="builder-stepper" id="builderStepper" aria-label="Builder progress"></div>
+
+        <div class="builder-pro">
+
+          <!-- MAIN -->
+          <div class="builder-main">
+
+            <!-- STEP 01 -->
+            <div class="builder-step" data-step-anchor="province">
+              <span>01</span>
+              <div>
+                <h3>Province</h3>
+                <p>Where do you want to go?</p>
+              </div>
+            </div>
+
+            <div class="choice-grid" data-choice-group="province">
+              <button class="choice selected" data-value="Ontario" type="button">
+                <strong>Ontario</strong>
+                <small>Toronto · Ottawa</small>
+              </button>
+              <button class="choice" data-value="British Columbia" type="button">
+                <strong>British Columbia</strong>
+                <small>Vancouver · Victoria</small>
+              </button>
+              <button class="choice" data-value="Alberta" type="button">
+                <strong>Alberta</strong>
+                <small>Calgary · Banff</small>
+              </button>
+              <button class="choice" data-value="Québec" type="button">
+                <strong>Québec</strong>
+                <small>Montréal · Québec City</small>
+              </button>
+              <button class="choice" data-value="Nova Scotia" type="button">
+                <strong>Nova Scotia</strong>
+                <small>Halifax</small>
+              </button>
+              <button class="choice" data-value="Manitoba" type="button">
+                <strong>Manitoba</strong>
+                <small>Winnipeg</small>
+              </button>
+            </div>
+
+            <!-- STEP 02 -->
+            <div class="builder-step" data-step-anchor="city">
+              <span>02</span>
+              <div>
+                <h3>City</h3>
+                <p>Choose your main destination.</p>
+              </div>
+            </div>
+
+            <div class="choice-grid" data-choice-group="city">
+              <button class="choice selected" data-value="Toronto" data-province="Ontario" type="button">
+                <strong>Toronto</strong><small>Ontario</small>
+              </button>
+              <button class="choice" data-value="Ottawa" data-province="Ontario" type="button">
+                <strong>Ottawa</strong><small>Ontario</small>
+              </button>
+              <button class="choice" data-value="Vancouver" data-province="British Columbia" type="button">
+                <strong>Vancouver</strong><small>British Columbia</small>
+              </button>
+              <button class="choice" data-value="Victoria" data-province="British Columbia" type="button">
+                <strong>Victoria</strong><small>British Columbia</small>
+              </button>
+              <button class="choice" data-value="Calgary" data-province="Alberta" type="button">
+                <strong>Calgary</strong><small>Alberta</small>
+              </button>
+              <button class="choice" data-value="Banff" data-province="Alberta" type="button">
+                <strong>Banff</strong><small>Alberta</small>
+              </button>
+              <button class="choice" data-value="Montréal" data-province="Québec" type="button">
+                <strong>Montréal</strong><small>Québec</small>
+              </button>
+              <button class="choice" data-value="Québec City" data-province="Québec" type="button">
+                <strong>Québec City</strong><small>Québec</small>
+              </button>
+              <button class="choice" data-value="Halifax" data-province="Nova Scotia" type="button">
+                <strong>Halifax</strong><small>Nova Scotia</small>
+              </button>
+              <button class="choice" data-value="Winnipeg" data-province="Manitoba" type="button">
+                <strong>Winnipeg</strong><small>Manitoba</small>
+              </button>
+            </div>
+
+            <!-- STEP 03 -->
+            <div class="builder-step" data-step-anchor="neighborhood">
+              <span>03</span>
+              <div>
+                <h3>Neighborhood</h3>
+                <p>Make the destination more specific.</p>
+              </div>
+            </div>
+
+            <div class="choice-grid" data-choice-group="neighborhood">
+              <button class="choice selected" data-value="Downtown" type="button">
+                <strong>Downtown</strong><small>Central · urban</small>
+              </button>
+              <button class="choice" data-value="Yorkville" type="button">
+                <strong>Yorkville</strong><small>Elegant · premium</small>
+              </button>
+              <button class="choice" data-value="Scarborough" type="button">
+                <strong>Scarborough</strong><small>Multicultural · local</small>
+              </button>
+              <button class="choice" data-value="North York" type="button">
+                <strong>North York</strong><small>Modern · residential</small>
+              </button>
+              <button class="choice" data-value="Old Québec" type="button">
+                <strong>Old Québec</strong><small>Historic · cultural</small>
+              </button>
+              <button class="choice" data-value="Downtown Vancouver" type="button">
+                <strong>Downtown Vancouver</strong><small>Urban · Pacific</small>
+              </button>
+            </div>
+
+            <!-- STEP 04 -->
+            <div class="builder-step" data-step-anchor="hotel">
+              <span>04</span>
+              <div>
+                <h3>Stay</h3>
+                <p>Select your hotel level.</p>
+              </div>
+            </div>
+
+            <div class="option-grid" data-option-group="hotel">
+              <button class="option selected" data-price="420" type="button">
+                <strong>Comfort stay</strong>
+                <span>Smart and practical</span>
+                <b>CA$420</b>
+              </button>
+              <button class="option" data-price="620" type="button">
+                <strong>Premium stay</strong>
+                <span>More space and comfort</span>
+                <b>CA$620</b>
+              </button>
+              <button class="option" data-price="780" type="button">
+                <strong>Signature hotel</strong>
+                <span>5-star concept</span>
+                <b>CA$780</b>
+              </button>
+            </div>
+
+            <!-- STEP 05 -->
+            <div class="builder-step" data-step-anchor="transport">
+              <span>05</span>
+              <div>
+                <h3>Transport</h3>
+                <p>How do you want to move?</p>
+              </div>
+            </div>
+
+            <div class="option-grid" data-option-group="transport">
+              <button class="option selected" data-price="680" type="button">
+                <strong>Standard flight</strong>
+                <span>Economy concept</span>
+                <b>CA$680</b>
+              </button>
+              <button class="option" data-price="950" type="button">
+                <strong>Flexible flight</strong>
+                <span>More flexibility</span>
+                <b>CA$950</b>
+              </button>
+              <button class="option" data-price="280" type="button">
+                <strong>Rail + local</strong>
+                <span>For regional trips</span>
+                <b>CA$280</b>
+              </button>
+            </div>
+
+            <!-- STEP 06 -->
+            <div class="builder-step" data-step-anchor="experience">
+              <span>06</span>
+              <div>
+                <h3>Experiences</h3>
+                <p>Add the things you actually want to do.</p>
+              </div>
+            </div>
+
+            <div class="option-grid">
+              <label class="option experience-option">
+                <div>
+                  <strong>CN Tower</strong>
+                  <span>Toronto skyline</span>
+                  <b>CA$80</b>
+                </div>
+                <input type="checkbox" class="experience" data-name="CN Tower" data-price="80">
+              </label>
+
+              <label class="option experience-option">
+                <div>
+                  <strong>Niagara Falls</strong>
+                  <span>Day experience</span>
+                  <b>CA$120</b>
+                </div>
+                <input type="checkbox" class="experience" data-name="Niagara Falls" data-price="120">
+              </label>
+
+              <label class="option experience-option">
+                <div>
+                  <strong>Rockies adventure</strong>
+                  <span>Mountain day</span>
+                  <b>CA$180</b>
+                </div>
+                <input type="checkbox" class="experience" data-name="Rockies adventure" data-price="180">
+              </label>
+
+              <label class="option experience-option">
+                <div>
+                  <strong>Food experience</strong>
+                  <span>Local dining</span>
+                  <b>CA$95</b>
+                </div>
+                <input type="checkbox" class="experience" data-name="Food experience" data-price="95">
+              </label>
+            </div>
+
+            <!-- STEP 07 -->
+            <div class="builder-step" data-step-anchor="meal">
+              <span>07</span>
+              <div>
+                <h3>Dining</h3>
+                <p>Choose your level of meal planning.</p>
+              </div>
+            </div>
+
+            <div class="option-grid" data-option-group="meal">
+              <button class="option selected" data-price="0" type="button">
+                <strong>Flexible</strong>
+                <span>Eat as you go</span>
+                <b>CA$0</b>
+              </button>
+              <button class="option" data-price="160" type="button">
+                <strong>Breakfast + dinner</strong>
+                <span>Daily plan</span>
+                <b>CA$160</b>
+              </button>
+              <button class="option" data-price="250" type="button">
+                <strong>Full dining plan</strong>
+                <span>Maximum convenience</span>
+                <b>CA$250</b>
+              </button>
+            </div>
+
+            <!-- Extras -->
+            <div class="builder-extra">
+              <div class="builder-field">
+                <label for="travelers">Travelers</label>
+                <input id="travelers" type="number" min="1" max="12" value="1">
+              </div>
+              <div class="builder-field">
+                <label for="duration">Duration</label>
+                <select id="duration">
+                  <option value="1">1 day</option>
+                  <option value="3" selected>3 days</option>
+                  <option value="5">5 days</option>
+                  <option value="7">7 days</option>
+                  <option value="10">10 days</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside class="builder-side">
+            <div class="builder-side-sticky">
+
+              <p class="eyebrow">Your itinerary</p>
+              <h3>Canada,<br><em>customized.</em></h3>
+
+              <div class="progress-wrapper">
+                <div class="progress-top">
+                  <span>Build progress</span>
+                  <span id="progressText">20%</span>
+                </div>
+                <div class="progress-bar">
+                  <span id="progressBar"></span>
+                </div>
+              </div>
+
+              <dl>
+                <div>
+                  <dt>Province</dt>
+                  <dd data-builder-province>Ontario</dd>
+                </div>
+                <div>
+                  <dt>City</dt>
+                  <dd data-builder-city>Toronto</dd>
+                </div>
+                <div>
+                  <dt>Neighborhood</dt>
+                  <dd data-builder-neighborhood>Downtown</dd>
+                </div>
+                <div>
+                  <dt>Travelers</dt>
+                  <dd id="summaryTravelers">1</dd>
+                </div>
+                <div>
+                  <dt>Duration</dt>
+                  <dd id="summaryDuration">3 days</dd>
+                </div>
+                <div>
+                  <dt>Flights</dt>
+                  <dd id="summaryTransport">CA$680</dd>
+                </div>
+                <div>
+                  <dt>Hotel</dt>
+                  <dd id="summaryHotel">CA$420</dd>
+                </div>
+                <div>
+                  <dt>Experiences</dt>
+                  <dd id="summaryExperience">CA$0</dd>
+                </div>
+                <div>
+                  <dt>Meals</dt>
+                  <dd id="summaryMeal">CA$0</dd>
+                </div>
+              </dl>
+
+              <div class="builder-total">
+                <span>Estimated total</span>
+                <strong id="builderTotal">CA$1,100</strong>
+              </div>
+
+              <div class="builder-buttons">
+                <button class="button button-primary" id="buildItinerary" type="button">
+                  Generate itinerary ↗
+                </button>
+                <button class="button button-dark" id="saveTrip" type="button">
+                  Save my trip
+                </button>
+                <button class="button button-dark" id="shareTrip" type="button">
+                  Share trip link
+                </button>
+                <button class="button button-dark" id="myTripsBtn" type="button">
+                  My saved trips
+                </button>
+                <button class="button button-dark" id="resetTrip" type="button">
+                  Reset builder
+                </button>
+              </div>
+
+              <small>
+                Educational demo only. All prices are fictional
+                and no commercial transactions are available.
+              </small>
+
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+  <footer class="site-footer">
     <div class="container">
-      <div class="section-head"><div><p class="eyebrow">CURATED STARTS</p><h2>Start with an idea.</h2></div><p>Four ready-made directions. Customize everything later.</p></div>
-      <div class="package-grid">
-        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Ontario · Toronto</span><h3>The City Experience</h3><p>Downtown, Yorkville, skyline views and a flexible city stay.</p><div><strong>CA$899</strong><a href="#trip-builder" data-preset="toronto">Customize ↗</a></div></div></article>
-        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Alberta · Rockies</span><h3>Wild by Design</h3><p>Mountain landscapes, outdoor experiences and premium stays.</p><div><strong>CA$1,290</strong><a href="#trip-builder" data-preset="rockies">Customize ↗</a></div></div></article>
-        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>Québec · Québec City</span><h3>Old Soul</h3><p>Historic streets, architecture, food and a slower itinerary.</p><div><strong>CA$1,095</strong><a href="#trip-builder" data-preset="quebec">Customize ↗</a></div></div></article>
-        <article class="package-card"><div class="package-card-image" style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=85')"></div><div class="package-card-body"><span>British Columbia · Vancouver</span><h3>Pacific Edge</h3><p>Ocean, mountains, neighborhoods and modern West Coast energy.</p><div><strong>CA$1,390</strong><a href="#trip-builder" data-preset="vancouver">Customize ↗</a></div></div></article>
+      <div>
+        <a class="brand" href="../index.html">
+          <span>GED</span>
+          <small>TRAVEL AGENCY</small>
+        </a>
+        <p>Explore Canada with a trip designed around you.</p>
+      </div>
+      <div>
+        <strong>Project</strong>
+        <p>Geovana · Edgar · Aline</p>
+        <p>School Project · 1°D</p>
+      </div>
+      <div>
+        <strong>Notice</strong>
+        <p>Educational project · No commercial transactions.</p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="package-break"><div class="package-break-media" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2200&q=85')"></div><div class="package-break-copy"><p class="eyebrow">NOT A TEMPLATE</p><h2>Your trip is a system of choices.</h2><p>Pick where you want to go, then decide how you want to experience it. GED keeps the journey organized while you shape the details.</p></div></section>
-
-  <section class="section builder-section" id="trip-builder">
-    <div class="container">
-      <div class="section-head"><div><p class="eyebrow">TRIP BUILDER</p><h2>Build it from zero.</h2></div><p>All prices are illustrative for this school project. No commercial transactions.</p></div>
-      <div class="builder-pro"><div class="builder-main">
-        <div class="builder-step"><span>01</span><div><h3>Province</h3><p>Where does the trip begin?</p></div></div>
-        <div class="choice-grid" data-choice-group="province">
-          <button class="choice selected" type="button" data-value="Ontario"><strong>Ontario</strong><small>Toronto · Ottawa · Niagara</small></button>
-          <button class="choice" type="button" data-value="British Columbia"><strong>British Columbia</strong><small>Vancouver · Victoria · Whistler</small></button>
-          <button class="choice" type="button" data-value="Alberta"><strong>Alberta</strong><small>Calgary · Banff · Jasper</small></button>
-          <button class="choice" type="button" data-value="Québec"><strong>Québec</strong><small>Montréal · Québec City · Laval</small></button>
-          <button class="choice" type="button" data-value="Nova Scotia"><strong>Nova Scotia</strong><small>Halifax · Cape Breton</small></button>
-          <button class="choice" type="button" data-value="Manitoba"><strong>Manitoba</strong><small>Winnipeg · Churchill</small></button>
-        </div>
-
-        <div class="builder-step"><span>02</span><div><h3>City</h3><p>Choose your main destination.</p></div></div>
-        <div class="choice-grid" data-choice-group="city">
-          <button class="choice selected" type="button" data-value="Toronto"><strong>Toronto</strong><small>Ontario</small></button>
-          <button class="choice" type="button" data-value="Ottawa"><strong>Ottawa</strong><small>Ontario</small></button>
-          <button class="choice" type="button" data-value="Vancouver"><strong>Vancouver</strong><small>British Columbia</small></button>
-          <button class="choice" type="button" data-value="Calgary"><strong>Calgary</strong><small>Alberta</small></button>
-          <button class="choice" type="button" data-value="Montréal"><strong>Montréal</strong><small>Québec</small></button>
-          <button class="choice" type="button" data-value="Québec City"><strong>Québec City</strong><small>Québec</small></button>
-        </div>
-
-        <div class="builder-step"><span>03</span><div><h3>Neighborhood</h3><p>Make the city feel more specific.</p></div></div>
-        <div class="choice-grid" data-choice-group="neighborhood">
-          <button class="choice selected" type="button" data-value="Downtown"><strong>Downtown</strong><small>Central · urban</small></button>
-          <button class="choice" type="button" data-value="Yorkville"><strong>Yorkville</strong><small>Elegant · premium</small></button>
-          <button class="choice" type="button" data-value="Scarborough"><strong>Scarborough</strong><small>Multicultural · local</small></button>
-          <button class="choice" type="button" data-value="North York"><strong>North York</strong><small>Modern · residential</small></button>
-          <button class="choice" type="button" data-value="Etobicoke"><strong>Etobicoke</strong><small>Green · waterfront</small></button>
-          <button class="choice" type="button" data-value="ByWard Market"><strong>ByWard Market</strong><small>Ottawa · historic</small></button>
-        </div>
-
-        <div class="builder-step"><span>04</span><div><h3>Stay</h3><p>Select your hotel level.</p></div></div>
-        <div class="option-grid" data-option-group="hotel">
-          <button class="option selected" type="button" data-price="420" data-group="hotel"><strong>Northline House</strong><span>Comfort stay</span><b>CA$420</b></button>
-          <button class="option" type="button" data-price="620" data-group="hotel"><strong>Luxury Suite</strong><span>Premium stay</span><b>CA$620</b></button>
-          <button class="option" type="button" data-price="780" data-group="hotel"><strong>Signature Hotel</strong><span>5-star concept</span><b>CA$780</b></button>
-        </div>
-
-        <div class="builder-step"><span>05</span><div><h3>Experiences</h3><p>Add what you actually want to do.</p></div></div>
-        <div class="option-grid" data-option-group="experience">
-          <button class="option selected" type="button" data-price="0" data-group="experience"><strong>Free exploration</strong><span>Self-guided</span><b>CA$0</b></button>
-          <button class="option" type="button" data-price="80" data-group="experience"><strong>CN Tower</strong><span>Toronto skyline</span><b>CA$80</b></button>
-          <button class="option" type="button" data-price="120" data-group="experience"><strong>Niagara Falls</strong><span>Day experience</span><b>CA$120</b></button>
-          <button class="option" type="button" data-price="180" data-group="experience"><strong>Rockies adventure</strong><span>Mountain day</span><b>CA$180</b></button>
-        </div>
-
-        <div class="builder-step"><span>06</span><div><h3>Dining</h3><p>Choose how much food planning you want.</p></div></div>
-        <div class="option-grid" data-option-group="meal">
-          <button class="option selected" type="button" data-price="0" data-group="meal"><strong>Flexible</strong><span>Eat as you go</span><b>CA$0</b></button>
-          <button class="option" type="button" data-price="160" data-group="meal"><strong>Breakfast + dinner</strong><span>Daily plan</span><b>CA$160</b></button>
-          <button class="option" type="button" data-price="250" data-group="meal"><strong>Full dining plan</strong><span>Maximum convenience</span><b>CA$250</b></button>
-        </div>
-      </div>
-      <aside class="builder-side"><div class="builder-side-sticky"><p class="eyebrow">YOUR ITINERARY</p><h3>Canada, customized.</h3><dl><div><dt>Province</dt><dd data-builder-province>Ontario</dd></div><div><dt>City</dt><dd data-builder-city>Toronto</dd></div><div><dt>Neighborhood</dt><dd data-builder-neighborhood>Downtown</dd></div><div><dt>Flights</dt><dd>CA$680</dd></div><div><dt>Hotel</dt><dd data-builder-hotel>CA$420</dd></div><div><dt>Experiences</dt><dd data-builder-experience>CA$0</dd></div><div><dt>Meals</dt><dd data-builder-meal>CA$0</dd></div></dl><div class="builder-total"><span>Estimated total</span><strong data-total>CA$1,100</strong></div><button class="button button-primary full" type="button" data-build>Build demo itinerary</button><small>Educational demo only. Prices are fictional.</small></div></aside></div>
+  <!-- Search overlay -->
+  <div class="search-overlay" data-search-overlay hidden>
+    <div class="search-panel">
+      <button type="button" data-search-close aria-label="Close search">×</button>
+      <input type="search" data-search-input placeholder="Search Canada...">
     </div>
-  </section>
-</main>
+  </div>
 
-<footer class="site-footer"><div class="container"><div><a class="brand" href="../index.html"><span>GED</span><small>TRAVEL AGENCY</small></a><p>Explore Canada with a trip designed around you.</p></div><div><strong>Project</strong><p>Geovana · Edgar · Aline</p><p>School Project · 1°D</p></div><div><strong>Notice</strong><p>Educational project · No commercial transactions.</p></div></div></footer>
+  <!-- Itinerary modal -->
+  <div class="itinerary-modal" id="itineraryModal">
+    <div class="itinerary-panel">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">GED / Generated itinerary</p>
+          <h2>Your <span class="yellow">Canada</span> trip.</h2>
+          <p id="modalIntro">Your personalized journey is ready.</p>
+        </div>
+        <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      </div>
 
-<div class="search-overlay" data-search-overlay hidden><div class="search-panel"><button type="button" data-search-close aria-label="Close search">×</button><input type="search" data-search-input placeholder="Search Canada..."></div></div>
-<script src="../js/canada-data.js" defer></script><script src="../js/provinces.js" defer></script><script src="../js/app.js" defer></script><script src="../js/navigation.js" defer></script><script src="../js/search.js" defer></script><script src="../js/trip-builder.js" defer></script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.builder-pro');if(!b)return;const map={Ontario:['Toronto','Ottawa'], 'British Columbia':['Vancouver','Victoria'], Alberta:['Calgary','Banff'], Québec:['Montréal','Québec City'], 'Nova Scotia':['Halifax'], Manitoba:['Winnipeg']};const province=b.querySelector('[data-choice-group="province"]');const city=b.querySelector('[data-choice-group="city"]');const set=(group,value)=>{group?.querySelectorAll('.choice').forEach(x=>x.classList.toggle('selected',x.dataset.value===value));};province?.addEventListener('click',e=>{const c=e.target.closest('.choice');if(!c)return;set(province,c.dataset.value);const cities=map[c.dataset.value]||[];city?.querySelectorAll('.choice').forEach(x=>x.hidden=!cities.includes(x.dataset.value));const first=city?.querySelector('.choice:not([hidden])');if(first){set(city,first.dataset.value);city.dispatchEvent(new CustomEvent('choicechange',{detail:first.dataset.value,bubbles:true}));}});b.querySelectorAll('[data-choice-group]').forEach(group=>{group.addEventListener('click',e=>{const c=e.target.closest('.choice');if(!c)return;set(group,c.dataset.value);const key=group.dataset.choiceGroup;const out=b.querySelector('[data-builder-'+key+']');if(out)out.textContent=c.dataset.value;});});document.querySelectorAll('[data-preset]').forEach(a=>a.addEventListener('click',()=>{const presets={toronto:['Ontario','Toronto','Downtown'],rockies:['Alberta','Banff','Downtown'],quebec:['Québec','Québec City','Old Québec'],vancouver:['British Columbia','Vancouver','Downtown']};const v=presets[a.dataset.preset];if(!v)return;set(province,v[0]);city?.querySelectorAll('.choice').forEach(x=>x.hidden=!((map[v[0]]||[]).includes(x.dataset.value)));set(city,v[1]);const ng=b.querySelector('[data-choice-group="neighborhood"]');set(ng,v[2]);['province','city','neighborhood'].forEach((k,i)=>{const o=b.querySelector('[data-builder-'+k+']');if(o)o.textContent=v[i];});});});</script>
+      <div class="generated-route" id="generatedRoute"></div>
+
+      <div class="modal-actions">
+        <button class="button button-primary" id="printItinerary">Print itinerary</button>
+        <button class="button button-dark" id="modalSave">Save trip</button>
+        <button class="button" id="modalCloseSecondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare drawer -->
+  <div class="compare-drawer" id="compareDrawer" role="region" aria-label="Compare packages">
+    <div class="compare-count" id="compareCount">0 packages selected</div>
+    <div class="compare-names" id="compareNames"></div>
+    <div class="compare-actions">
+      <button class="btn-compare" id="compareBtn" disabled>Compare</button>
+      <button class="btn-clear" id="clearCompare">Clear</button>
+    </div>
+  </div>
+
+  <!-- Compare modal -->
+  <div class="compare-modal" id="compareModal">
+    <div class="compare-panel">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">GED / Comparison</p>
+          <h2>Side by side.</h2>
+          <p>Two packages, at a glance.</p>
+        </div>
+        <button class="modal-close" id="closeCompare" aria-label="Close">×</button>
+      </div>
+      <div class="compare-grid" id="compareGrid"></div>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- Confetti -->
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+         SCRIPTS
+         ============================================================ -->
+  <script src="../js/canada-data.js" defer></script>
+  <script src="../js/provinces.js" defer></script>
+  <script src="../js/app.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /* =====================================================
+         TOAST SYSTEM
+         ===================================================== */
+      const toastStack = document.getElementById("toastStack");
+
+      function toast(message, type = "info", duration = 3200) {
+        const el = document.createElement("div");
+        el.className = "ged-toast " + type;
+
+        const iconMap = { info: "i", success: "✓", warn: "!", error: "×" };
+        el.innerHTML = `
+                    <span class="toast-icon">${iconMap[type] || "i"}</span>
+                    <span>${message}</span>
+                `;
+        toastStack.appendChild(el);
+
+        setTimeout(() => {
+          el.classList.add("out");
+          setTimeout(() => el.remove(), 320);
+        }, duration);
+      }
+
+      /* =====================================================
+         HEADER SCROLLED STATE
+         ===================================================== */
+      const header = document.getElementById("site-header");
+      if (header) {
+        const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      }
+
+      /* =====================================================
+         ANIMATED COUNTERS (hero + stats)
+         ===================================================== */
+      const counters = document.querySelectorAll("[data-counter]");
+
+      function animateCounter(el) {
+        const target = Number(el.dataset.counter);
+        const pad = Number(el.dataset.pad || 0);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1400;
+        const start = performance.now();
+
+        function tick(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const value = Math.round(eased * target);
+          el.textContent = (pad ? String(value).padStart(pad, "0") : value) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if ("IntersectionObserver" in window) {
+        const counterObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.4 });
+        counters.forEach(c => counterObserver.observe(c));
+      } else {
+        counters.forEach(animateCounter);
+      }
+
+      /* =====================================================
+         CURRENCY
+         ===================================================== */
+      const CURRENCIES = {
+        CAD: { symbol: "CA$", rate: 1, decimals: 0 },
+        USD: { symbol: "US$", rate: 0.73, decimals: 0 },
+        EUR: { symbol: "€", rate: 0.68, decimals: 0 },
+        BRL: { symbol: "R$", rate: 3.95, decimals: 0 }
+      };
+
+      let activeCurrency = "CAD";
+
+      function formatPrice(cadValue) {
+        const c = CURRENCIES[activeCurrency];
+        const converted = cadValue * c.rate;
+        const rounded = Math.round(converted);
+        return c.symbol + rounded.toLocaleString("en-US");
+      }
+
+      function refreshCurrencyUI() {
+        document.querySelectorAll("[data-price]").forEach(el => {
+          const cad = Number(el.dataset.price);
+          const em = el.querySelector("em");
+          const suffix = em ? em.outerHTML : "";
+          el.innerHTML = formatPrice(cad) + " " + suffix;
+        });
+      }
+
+      document.querySelectorAll(".currency-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".currency-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeCurrency = btn.dataset.currency;
+          refreshCurrencyUI();
+          toast(`Currency switched to ${activeCurrency}`, "info", 1800);
+        });
+      });
+
+      /* =====================================================
+         PACKAGE FILTER + SORT
+         ===================================================== */
+      const filters = document.querySelectorAll(".package-filter");
+      const cards = [...document.querySelectorAll(".package-card")];
+      const search = document.getElementById("packageSearch");
+      const sort = document.getElementById("packageSort");
+      let currentFilter = "all";
+
+      function updatePackages() {
+        const query = search.value.trim().toLowerCase();
+
+        cards.forEach(card => {
+          const type = card.dataset.type;
+          const name = card.dataset.name.toLowerCase();
+          const filterMatch = currentFilter === "all" || type === currentFilter;
+          const searchMatch = !query || name.includes(query);
+          card.classList.toggle("hidden", !(filterMatch && searchMatch));
+        });
+
+        sortCards();
+      }
+
+      filters.forEach(button => {
+        button.addEventListener("click", () => {
+          filters.forEach(item => item.classList.remove("active"));
+          button.classList.add("active");
+          currentFilter = button.dataset.filter;
+          updatePackages();
+        });
+      });
+
+      search.addEventListener("input", updatePackages);
+
+      function sortCards() {
+        const grid = document.getElementById("packageGrid");
+        const visible = cards.filter(card => !card.classList.contains("hidden"));
+
+        if (sort.value === "low") {
+          visible.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
+        }
+        if (sort.value === "high") {
+          visible.sort((a, b) => Number(b.dataset.price) - Number(a.dataset.price));
+        }
+        visible.forEach(card => grid.appendChild(card));
+      }
+
+      sort.addEventListener("change", updatePackages);
+
+      /* =====================================================
+         FAVORITES
+         ===================================================== */
+      document.querySelectorAll("[data-favorite]").forEach(button => {
+        const key = "ged-favorite-" + button.dataset.favorite;
+
+        if (localStorage.getItem(key) === "true") {
+          button.classList.add("active");
+          button.textContent = "♥";
+        }
+
+        button.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const active = button.classList.toggle("active");
+          button.textContent = active ? "♥" : "♡";
+          localStorage.setItem(key, active);
+
+          toast(active ? "Package saved to favorites" : "Removed from favorites",
+            active ? "success" : "info", 1800);
+        });
+      });
+
+      /* =====================================================
+         COMPARE MODE
+         ===================================================== */
+      const compareDrawer = document.getElementById("compareDrawer");
+      const compareCount = document.getElementById("compareCount");
+      const compareNames = document.getElementById("compareNames");
+      const compareBtn = document.getElementById("compareBtn");
+      const clearCompareBtn = document.getElementById("clearCompare");
+      const compareModal = document.getElementById("compareModal");
+      const compareGrid = document.getElementById("compareGrid");
+      const closeCompare = document.getElementById("closeCompare");
+
+      let compareSelection = [];
+
+      function updateCompareDrawer() {
+        if (compareSelection.length === 0) {
+          compareDrawer.classList.remove("visible");
+        } else {
+          compareDrawer.classList.add("visible");
+        }
+
+        compareCount.textContent = compareSelection.length +
+          (compareSelection.length === 1 ? " package selected" : " packages selected");
+
+        compareNames.innerHTML = compareSelection.map(id => {
+          const card = document.querySelector(`[data-id="${id}"]`);
+          return card ? `<span>${card.dataset.name.split(" ").slice(0, 3).join(" ")}</span>` : "";
+        }).join("");
+
+        compareBtn.disabled = compareSelection.length !== 2;
+      }
+
+      document.querySelectorAll(".package-compare-btn").forEach(btn => {
+        btn.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const id = btn.dataset.compare;
+
+          if (compareSelection.includes(id)) {
+            compareSelection = compareSelection.filter(x => x !== id);
+            btn.classList.remove("active");
+            toast("Removed from compare", "info", 1600);
+          } else {
+            if (compareSelection.length >= 2) {
+              toast("You can compare at most 2 packages", "warn", 2400);
+              return;
+            }
+            compareSelection.push(id);
+            btn.classList.add("active");
+            toast("Added to compare", "success", 1600);
+          }
+
+          cards.forEach(card => {
+            card.classList.toggle("compare-selected",
+              compareSelection.includes(card.dataset.id));
+          });
+
+          updateCompareDrawer();
+        });
+      });
+
+      clearCompareBtn.addEventListener("click", () => {
+        compareSelection = [];
+        document.querySelectorAll(".package-compare-btn").forEach(b => b.classList.remove("active"));
+        cards.forEach(card => card.classList.remove("compare-selected"));
+        updateCompareDrawer();
+      });
+
+      compareBtn.addEventListener("click", () => {
+        if (compareSelection.length !== 2) return;
+
+        const [a, b] = compareSelection.map(id =>
+          document.querySelector(`[data-id="${id}"]`)
+        );
+
+        compareGrid.innerHTML = [a, b].map(card => `
+                    <div class="compare-col">
+                        <div class="compare-col-img" style="background-image:url('${card.dataset.image}')"></div>
+                        <div class="compare-col-body">
+                            <small>${card.querySelector(".package-card-body > span").textContent}</small>
+                            <h3>${card.querySelector(".package-card-body h3").textContent}</h3>
+                            <div class="compare-rows">
+                                <div class="compare-row">
+                                    <span>Duration</span>
+                                    <span>${card.dataset.duration}</span>
+                                </div>
+                                <div class="compare-row">
+                                    <span>Hotel</span>
+                                    <span>${card.dataset.hotel}</span>
+                                </div>
+                                <div class="compare-row">
+                                    <span>Experiences</span>
+                                    <span>${card.dataset.experiences}</span>
+                                </div>
+                                <div class="compare-row">
+                                    <span>GED Score</span>
+                                    <span>${card.querySelector(".package-ged-badge span").textContent}</span>
+                                </div>
+                                <div class="compare-row">
+                                    <span>From</span>
+                                    <span>${formatPrice(Number(card.dataset.price))}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join("");
+
+        compareModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+
+      closeCompare.addEventListener("click", () => {
+        compareModal.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+
+      compareModal.addEventListener("click", e => {
+        if (e.target === compareModal) {
+          compareModal.classList.remove("open");
+          document.body.style.overflow = "";
+        }
+      });
+
+      /* =====================================================
+         BUILDER — STEPPER
+         ===================================================== */
+      const builderStepper = document.getElementById("builderStepper");
+
+      const STEP_LABELS = [
+        { key: "province", name: "Province" },
+        { key: "city", name: "City" },
+        { key: "neighborhood", name: "Neighborhood" },
+        { key: "hotel", name: "Stay" },
+        { key: "transport", name: "Transport" },
+        { key: "experience", name: "Experiences" },
+        { key: "meal", name: "Dining" }
+      ];
+
+      function renderStepper() {
+        builderStepper.innerHTML = STEP_LABELS.map((step, i) => {
+          let value = "—";
+          let completed = false;
+
+          if (step.key === "province" && state.province) {
+            value = state.province;
+            completed = true;
+          }
+          if (step.key === "city" && state.city) {
+            value = state.city;
+            completed = true;
+          }
+          if (step.key === "neighborhood" && state.neighborhood) {
+            value = state.neighborhood;
+            completed = true;
+          }
+          if (step.key === "hotel" && state.hotel) {
+            value = "From " + formatPrice(state.hotel);
+            completed = true;
+          }
+          if (step.key === "transport" && state.transport) {
+            value = "From " + formatPrice(state.transport);
+            completed = true;
+          }
+          if (step.key === "experience") {
+            const count = document.querySelectorAll(".experience:checked").length;
+            value = count ? count + " selected" : "None";
+            completed = count > 0;
+          }
+          if (step.key === "meal") {
+            value = state.meal === 0 ? "Flexible" :
+              state.meal === 160 ? "Breakfast + dinner" :
+                state.meal === 250 ? "Full plan" : "—";
+            completed = true;
+          }
+
+          return `
+                        <button type="button" class="step-pill ${completed ? "completed" : ""}"
+                                data-step-scroll="${step.key}">
+                            <span class="step-index">${String(i + 1).padStart(2, "0")}</span>
+                            <span class="step-name">${step.name}</span>
+                            <span class="step-value">${value}</span>
+                        </button>
+                    `;
+        }).join("");
+
+        builderStepper.querySelectorAll("[data-step-scroll]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const anchor = document.querySelector(`[data-step-anchor="${btn.dataset.stepScroll}"]`);
+            if (anchor) {
+              const y = anchor.getBoundingClientRect().top + window.scrollY - 120;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          });
+        });
+      }
+
+      /* =====================================================
+         BUILDER — STATE
+         ===================================================== */
+      const provinceMap = {
+        "Ontario": ["Toronto", "Ottawa"],
+        "British Columbia": ["Vancouver", "Victoria"],
+        "Alberta": ["Calgary", "Banff"],
+        "Québec": ["Montréal", "Québec City"],
+        "Nova Scotia": ["Halifax"],
+        "Manitoba": ["Winnipeg"]
+      };
+
+      const neighborhoods = {
+        Toronto: ["Downtown", "Yorkville", "Scarborough", "North York", "Etobicoke"],
+        Ottawa: ["ByWard Market", "Centretown", "Glebe"],
+        Vancouver: ["Downtown Vancouver", "Gastown", "Yaletown"],
+        Victoria: ["Inner Harbour", "James Bay"],
+        Calgary: ["Downtown", "Beltline"],
+        Banff: ["Town Centre"],
+        Montréal: ["Old Montréal", "Downtown", "Plateau"],
+        "Québec City": ["Old Québec", "Saint-Roch"],
+        Halifax: ["Downtown", "Waterfront"],
+        Winnipeg: ["The Forks", "Exchange District"]
+      };
+
+      let state = {
+        province: "Ontario",
+        city: "Toronto",
+        neighborhood: "Downtown",
+        hotel: 420,
+        transport: 680,
+        meal: 0,
+        travelers: 1,
+        duration: 3
+      };
+
+      const provinceGroup = document.querySelector('[data-choice-group="province"]');
+      const cityGroup = document.querySelector('[data-choice-group="city"]');
+      const neighborhoodGroup = document.querySelector('[data-choice-group="neighborhood"]');
+
+      function selectButton(group, value) {
+        if (!group) return;
+        group.querySelectorAll(".choice").forEach(button => {
+          button.classList.toggle("selected", button.dataset.value === value);
+        });
+      }
+
+      function updateCities() {
+        const cities = provinceMap[state.province] || [];
+        cityGroup.querySelectorAll(".choice").forEach(button => {
+          const allowed = cities.includes(button.dataset.value);
+          button.hidden = !allowed;
+        });
+
+        if (!cities.includes(state.city)) state.city = cities[0];
+        selectButton(cityGroup, state.city);
+        updateNeighborhoods();
+      }
+
+      function updateNeighborhoods() {
+        const list = neighborhoods[state.city] || ["Downtown"];
+
+        neighborhoodGroup.innerHTML = list.map((name, index) => `
+                    <button class="choice ${index === 0 ? "selected" : ""}" data-value="${name}" type="button">
+                        <strong>${name}</strong>
+                        <small>Explore ${state.city}</small>
+                    </button>
+                `).join("");
+
+        state.neighborhood = list.includes(state.neighborhood) ? state.neighborhood : list[0];
+        selectButton(neighborhoodGroup, state.neighborhood);
+      }
+
+      provinceGroup.addEventListener("click", event => {
+        const button = event.target.closest(".choice");
+        if (!button) return;
+        state.province = button.dataset.value;
+        selectButton(provinceGroup, state.province);
+        updateCities();
+        updateSummary();
+      });
+
+      cityGroup.addEventListener("click", event => {
+        const button = event.target.closest(".choice");
+        if (!button || button.hidden) return;
+        state.city = button.dataset.value;
+        selectButton(cityGroup, state.city);
+        updateNeighborhoods();
+        updateSummary();
+      });
+
+      neighborhoodGroup.addEventListener("click", event => {
+        const button = event.target.closest(".choice");
+        if (!button) return;
+        state.neighborhood = button.dataset.value;
+        selectButton(neighborhoodGroup, state.neighborhood);
+        updateSummary();
+      });
+
+      /* OPTIONS */
+      document.querySelectorAll('[data-option-group]').forEach(group => {
+        group.addEventListener("click", event => {
+          const button = event.target.closest(".option");
+          if (!button) return;
+          group.querySelectorAll(".option").forEach(item => item.classList.remove("selected"));
+          button.classList.add("selected");
+
+          const groupName = group.dataset.optionGroup;
+          const price = Number(button.dataset.price || 0);
+          if (groupName === "hotel") state.hotel = price;
+          if (groupName === "transport") state.transport = price;
+          if (groupName === "meal") state.meal = price;
+
+          updateSummary();
+        });
+      });
+
+      /* EXPERIENCES */
+      document.querySelectorAll(".experience-option").forEach(label => {
+        const checkbox = label.querySelector("input");
+        checkbox.addEventListener("change", () => {
+          label.classList.toggle("selected", checkbox.checked);
+          updateSummary();
+        });
+      });
+
+      /* TRAVELERS + DURATION */
+      const travelers = document.getElementById("travelers");
+      const duration = document.getElementById("duration");
+
+      travelers.addEventListener("input", () => {
+        let value = Number(travelers.value) || 1;
+        value = Math.max(1, Math.min(12, value));
+        travelers.value = value;
+        state.travelers = value;
+        updateSummary();
+      });
+
+      duration.addEventListener("change", () => {
+        state.duration = Number(duration.value);
+        updateSummary();
+      });
+
+      /* CALC */
+      function experienceTotal() {
+        return [...document.querySelectorAll(".experience:checked")]
+          .reduce((sum, checkbox) => sum + Number(checkbox.dataset.price), 0);
+      }
+
+      function calculateTotal() {
+        const experience = experienceTotal();
+        const hotel = state.hotel * Math.max(1, state.duration / 3);
+        const meals = state.meal * Math.max(1, state.duration / 3);
+        const experiences = experience * Math.max(1, state.travelers);
+        const transport = state.transport * Math.max(1, state.travelers);
+        return Math.round(transport + hotel + meals + experiences);
+      }
+
+      const builderTotal = document.getElementById("builderTotal");
+
+      function updateSummary() {
+        const experience = experienceTotal();
+        const hotel = state.hotel * Math.max(1, state.duration / 3);
+        const meals = state.meal * Math.max(1, state.duration / 3);
+
+        document.querySelector("[data-builder-province]").textContent = state.province;
+        document.querySelector("[data-builder-city]").textContent = state.city;
+        document.querySelector("[data-builder-neighborhood]").textContent = state.neighborhood;
+        document.getElementById("summaryTravelers").textContent = state.travelers;
+        document.getElementById("summaryDuration").textContent =
+          state.duration === 1 ? "1 day" : state.duration + " days";
+        document.getElementById("summaryTransport").textContent = formatPrice(state.transport * state.travelers);
+        document.getElementById("summaryHotel").textContent = formatPrice(hotel);
+        document.getElementById("summaryExperience").textContent = formatPrice(experience * state.travelers);
+        document.getElementById("summaryMeal").textContent = formatPrice(meals);
+
+        // flash total
+        builderTotal.classList.add("flash");
+        setTimeout(() => builderTotal.classList.remove("flash"), 200);
+        builderTotal.textContent = formatPrice(calculateTotal());
+
+        updateProgress();
+        renderStepper();
+      }
+
+      function updateProgress() {
+        let progress = 20;
+        if (state.province) progress += 12;
+        if (state.city) progress += 12;
+        if (state.neighborhood) progress += 10;
+        if (state.hotel) progress += 10;
+        if (state.transport) progress += 10;
+        if (document.querySelector(".experience:checked")) progress += 10;
+        if (state.meal !== undefined) progress += 6;
+        if (state.duration) progress += 5;
+        progress = Math.min(100, progress);
+
+        document.getElementById("progressBar").style.width = progress + "%";
+        document.getElementById("progressText").textContent = progress + "%";
+      }
+
+      /* PRESETS */
+      const presets = {
+        toronto: { province: "Ontario", city: "Toronto", neighborhood: "Downtown" },
+        rockies: { province: "Alberta", city: "Banff", neighborhood: "Town Centre" },
+        quebec: { province: "Québec", city: "Québec City", neighborhood: "Old Québec" },
+        vancouver: { province: "British Columbia", city: "Vancouver", neighborhood: "Downtown Vancouver" }
+      };
+
+      document.querySelectorAll("[data-preset]").forEach(link => {
+        link.addEventListener("click", () => {
+          const preset = presets[link.dataset.preset];
+          if (!preset) return;
+
+          state.province = preset.province;
+          state.city = preset.city;
+          state.neighborhood = preset.neighborhood;
+
+          selectButton(provinceGroup, state.province);
+          updateCities();
+          selectButton(cityGroup, state.city);
+          updateNeighborhoods();
+          selectButton(neighborhoodGroup, state.neighborhood);
+          updateSummary();
+
+          toast("Package loaded into the builder", "success", 2200);
+        });
+      });
+
+      /* =====================================================
+         CONFETTI
+         ===================================================== */
+      const confettiCanvas = document.getElementById("confettiCanvas");
+      const ctx = confettiCanvas.getContext("2d");
+      let confettiParticles = [];
+      let confettiAnimating = false;
+
+      function resizeCanvas() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      function launchConfetti() {
+        const colors = ["#ffd21a", "#007aff", "#af52de", "#34c759", "#ff9500"];
+        const count = 140;
+
+        for (let i = 0; i < count; i++) {
+          confettiParticles.push({
+            x: Math.random() * confettiCanvas.width,
+            y: -20 - Math.random() * 200,
+            vx: (Math.random() - 0.5) * 4,
+            vy: 2 + Math.random() * 4,
+            size: 4 + Math.random() * 6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * Math.PI * 2,
+            vr: (Math.random() - 0.5) * 0.3,
+            life: 0,
+            maxLife: 220 + Math.random() * 80
+          });
+        }
+
+        if (!confettiAnimating) {
+          confettiAnimating = true;
+          animateConfetti();
+        }
+      }
+
+      function animateConfetti() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+        confettiParticles = confettiParticles.filter(p => p.life < p.maxLife && p.y < confettiCanvas.height + 40);
+
+        confettiParticles.forEach(p => {
+          p.vy += 0.08;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.vr;
+          p.life++;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.5);
+          ctx.restore();
+        });
+
+        if (confettiParticles.length > 0) {
+          requestAnimationFrame(animateConfetti);
+        } else {
+          confettiAnimating = false;
+          ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        }
+      }
+
+      /* =====================================================
+         GENERATE ITINERARY
+         ===================================================== */
+      const modal = document.getElementById("itineraryModal");
+      const route = document.getElementById("generatedRoute");
+
+      function generateItinerary() {
+        const experiences = [...document.querySelectorAll(".experience:checked")]
+          .map(item => item.dataset.name);
+
+        const days = Number(state.duration);
+        const selectedExperiences = experiences.length ? experiences :
+          ["Explore the local area", "Discover a neighborhood", "Free exploration"];
+
+        const itinerary = [];
+        for (let day = 1; day <= days; day++) {
+          let activity;
+          if (day === 1) {
+            activity = `Arrival in ${state.city}, settle into ${state.neighborhood} and start exploring the city.`;
+          } else {
+            const index = (day - 2) % selectedExperiences.length;
+            activity = selectedExperiences[index] + ` — ${state.city}.`;
+          }
+          if (day === days) {
+            activity += " Final free time and departure preparation.";
+          }
+          itinerary.push({ day, activity });
+        }
+
+        document.getElementById("modalIntro").textContent =
+          `${state.duration} ${state.duration === 1 ? "day" : "days"} in ${state.city}, ${state.province} · ${state.travelers} ${state.travelers === 1 ? "traveler" : "travelers"}. Estimated total: ${formatPrice(calculateTotal())}.`;
+
+        route.innerHTML = itinerary.map(item => `
+                    <div class="route-day">
+                        <div class="route-day-number">${String(item.day).padStart(2, "0")}</div>
+                        <div>
+                            <strong>Day ${item.day}</strong>
+                            <p>${item.activity}</p>
+                        </div>
+                    </div>
+                `).join("");
+
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+
+        launchConfetti();
+        toast("Itinerary generated", "success", 2400);
+      }
+
+      document.getElementById("buildItinerary").addEventListener("click", generateItinerary);
+
+      /* MODAL */
+      function closeModal() {
+        modal.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      document.getElementById("closeModal").addEventListener("click", closeModal);
+      document.getElementById("modalCloseSecondary").addEventListener("click", closeModal);
+
+      modal.addEventListener("click", event => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          if (modal.classList.contains("open")) closeModal();
+          if (compareModal.classList.contains("open")) {
+            compareModal.classList.remove("open");
+            document.body.style.overflow = "";
+          }
+        }
+      });
+
+      /* =====================================================
+         SAVE / LOAD / SHARE
+         ===================================================== */
+      const STORAGE_KEY = "ged-trip-builder";
+      const SAVED_TRIPS_KEY = "ged-saved-trips";
+
+      function collectState() {
+        return {
+          state,
+          experiences: [...document.querySelectorAll(".experience:checked")].map(item => item.dataset.name)
+        };
+      }
+
+      function applyState(data) {
+        if (!data || !data.state) return;
+        state = { ...state, ...data.state };
+
+        travelers.value = state.travelers;
+        duration.value = state.duration;
+        selectButton(provinceGroup, state.province);
+        updateCities();
+        selectButton(cityGroup, state.city);
+        updateNeighborhoods();
+        selectButton(neighborhoodGroup, state.neighborhood);
+
+        document.querySelectorAll(".experience").forEach(item => { item.checked = false; });
+        document.querySelectorAll(".experience-option").forEach(item => item.classList.remove("selected"));
+
+        (data.experiences || []).forEach(name => {
+          const cb = [...document.querySelectorAll(".experience")]
+            .find(el => el.dataset.name === name);
+          if (cb) {
+            cb.checked = true;
+            cb.closest(".experience-option")?.classList.add("selected");
+          }
+        });
+
+        updateSummary();
+      }
+
+      function saveTrip() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+        toast("Trip saved locally", "success", 2000);
+
+        // Also keep a history of saved trips
+        try {
+          const history = JSON.parse(localStorage.getItem(SAVED_TRIPS_KEY) || "[]");
+          history.unshift({ ...collectState(), savedAt: Date.now() });
+          localStorage.setItem(SAVED_TRIPS_KEY, JSON.stringify(history.slice(0, 10)));
+        } catch (_) { }
+      }
+
+      function loadTrip() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        try {
+          applyState(JSON.parse(raw));
+        } catch (e) {
+          console.warn("Could not restore GED trip.", e);
+        }
+      }
+
+      function shareTrip() {
+        const data = collectState();
+        const encoded = encodeURIComponent(JSON.stringify(data));
+        const url = new URL(window.location.href);
+        url.hash = "";
+        url.searchParams.set("trip", encoded);
+
+        navigator.clipboard.writeText(url.toString()).then(() => {
+          toast("Trip link copied to clipboard", "success", 2600);
+        }).catch(() => {
+          prompt("Copy this link to share your trip:", url.toString());
+        });
+      }
+
+      function loadTripFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const raw = params.get("trip");
+        if (!raw) return;
+        try {
+          const data = JSON.parse(decodeURIComponent(raw));
+          applyState(data);
+          toast("Trip loaded from URL", "success", 2000);
+        } catch (e) {
+          console.warn("Could not parse trip from URL.", e);
+          toast("Could not load the shared trip.", "error", 2400);
+        }
+      }
+
+      function resetTrip() {
+        state = {
+          province: "Ontario",
+          city: "Toronto",
+          neighborhood: "Downtown",
+          hotel: 420,
+          transport: 680,
+          meal: 0,
+          travelers: 1,
+          duration: 3
+        };
+
+        travelers.value = 1;
+        duration.value = 3;
+
+        selectButton(provinceGroup, "Ontario");
+        updateCities();
+        selectButton(cityGroup, "Toronto");
+        updateNeighborhoods();
+        selectButton(neighborhoodGroup, "Downtown");
+
+        document.querySelectorAll(".experience").forEach(item => { item.checked = false; });
+        document.querySelectorAll(".experience-option").forEach(item => item.classList.remove("selected"));
+
+        document.querySelectorAll('[data-option-group="hotel"] .option').forEach((btn, i) => {
+          btn.classList.toggle("selected", i === 0);
+        });
+        document.querySelectorAll('[data-option-group="transport"] .option').forEach((btn, i) => {
+          btn.classList.toggle("selected", i === 0);
+        });
+        document.querySelectorAll('[data-option-group="meal"] .option').forEach((btn, i) => {
+          btn.classList.toggle("selected", i === 0);
+        });
+
+        localStorage.removeItem(STORAGE_KEY);
+        updateSummary();
+        toast("Builder reset", "info", 1800);
+      }
+
+      function showSavedTrips() {
+        let history = [];
+        try {
+          history = JSON.parse(localStorage.getItem(SAVED_TRIPS_KEY) || "[]");
+        } catch (_) { history = []; }
+
+        if (!history.length) {
+          toast("No saved trips yet. Save a trip first.", "warn", 2400);
+          return;
+        }
+
+        // Build a simple picker inside the itinerary modal shell
+        route.innerHTML = `
+                    <p style="margin:0 0 16px;font-size:14px;color:var(--ios-text-3);">
+                        Select a saved trip to restore it. Most recent first.
+                    </p>
+                ` + history.map((item, index) => {
+          const s = item.state || {};
+          const savedDate = item.savedAt ? new Date(item.savedAt).toLocaleString() : "Unknown date";
+          return `
+                        <button class="route-day" type="button"
+                                style="text-align:left;width:100%;cursor:pointer;border:0.5px solid rgba(60,60,67,0.12);"
+                                data-load-saved="${index}">
+                            <div class="route-day-number">${String(index + 1).padStart(2, "0")}</div>
+                            <div>
+                                <strong>${s.city || "—"}, ${s.province || "—"}</strong>
+                                <p>${s.duration || 3} days · ${s.travelers || 1} traveler(s) · saved ${savedDate}</p>
+                            </div>
+                        </button>
+                    `;
+        }).join("");
+
+        document.getElementById("modalIntro").textContent =
+          `${history.length} saved trip${history.length === 1 ? "" : "s"} found on this device.`;
+
+        const titleEl = document.querySelector(".itinerary-panel h2");
+        if (titleEl) titleEl.innerHTML = `My <span class="yellow">saved</span> trips.`;
+
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+
+        route.querySelectorAll("[data-load-saved]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const idx = Number(btn.dataset.loadSaved);
+            const data = history[idx];
+            if (!data) return;
+
+            applyState(data);
+            closeModal();
+            toast("Saved trip restored", "success", 2200);
+
+            // restore modal title for next itinerary generation
+            if (titleEl) titleEl.innerHTML = `Your <span class="yellow">Canada</span> trip.`;
+          });
+        });
+      }
+
+      /* Restore modal title helper before generating itinerary */
+      const itineraryTitleEl = document.querySelector(".itinerary-panel h2");
+
+      const originalGenerateItinerary = generateItinerary;
+      generateItinerary = function () {
+        if (itineraryTitleEl) {
+          itineraryTitleEl.innerHTML = `Your <span class="yellow">Canada</span> trip.`;
+        }
+        originalGenerateItinerary();
+      };
+
+      document.getElementById("saveTrip").addEventListener("click", saveTrip);
+      document.getElementById("shareTrip").addEventListener("click", shareTrip);
+      document.getElementById("resetTrip").addEventListener("click", resetTrip);
+      document.getElementById("myTripsBtn").addEventListener("click", showSavedTrips);
+      document.getElementById("modalSave").addEventListener("click", () => {
+        saveTrip();
+      });
+
+      document.getElementById("printItinerary").addEventListener("click", () => {
+        window.print();
+      });
+
+      /* =====================================================
+         REVEAL ON SCROLL
+         ===================================================== */
+      const revealEls = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+        revealEls.forEach(el => revealObserver.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add("visible"));
+      }
+
+      /* =====================================================
+         INIT
+         ===================================================== */
+      loadTripFromURL();
+      loadTrip();
+      updateSummary();
+
+      console.log("%cGED · Packages", "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 8px;border-radius:6px;");
+    });
+  </script>
 </body>
+
 </html>

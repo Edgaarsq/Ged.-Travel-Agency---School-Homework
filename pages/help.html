@@ -1,1 +1,2455 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Help · GED</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/main.css"><link rel="stylesheet" href="../css/liquid-glass.css"><link rel="stylesheet" href="../css/animations.css"><link rel="stylesheet" href="../css/responsive.css"></head><body><header class="site-header"><nav class="nav glass"><a class="brand" href="../index.html"><b>G</b><span>GED</span></a><div class="nav-links"><a href="../index.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a></div><div class="nav-actions"><button class="icon-btn" data-search>⌕</button><a class="nav-about" href="about.html">About</a><button class="menu-btn" data-menu><i></i><i></i></button></div></nav><div class="mobile-menu glass" data-mobile-menu><a href="../index.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a><a href="about.html">About</a></div></header><main><section class="page-hero"><div class="container"><div class="eyebrow">GED CONCIERGE</div><h1>Need help?<br><em>Ask GED.</em></h1><p>A lightweight travel assistant powered by the project's own demo knowledge base.</p></div></section><section class="section"><div class="container"><div class="assistant"><div><h2>Travel,<br><em>simplified.</em></h2><p>Ask about seasons, destinations, hotels, events or ways to build a route.</p><div class="toolbar"><button class="chip" data-q="best month Toronto">Best month for Toronto</button><button class="chip" data-q="free Montreal">Free in Montréal</button><button class="chip" data-q="family Vancouver">Family in Vancouver</button></div></div><div class="chat"><div id="chat"><div class="bubble">Hi. I’m GED Concierge. What are you planning?</div></div><div class="chat-input"><input id="question" placeholder="Ask anything about Canada..."><button class="btn btn-dark" id="ask">Ask</button></div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-hero"><div class="eyebrow">GED TRAVEL AGENCY</div><h2>Canada is big.<br><em>Your dreams should be too.</em></h2><a class="btn btn-yellow" href="packages.html#trip-builder">Build your trip ↗</a></div><div class="footer-grid"><div><a class="brand light-brand" href="../index.html"><b>G</b><span>GED</span></a><p>Canada, made accessible.</p></div><div><small>EXPLORE</small><a href="destinations.html">Destinations</a><a href="events.html">Events</a><a href="flights.html">Flights</a></div><div><small>PLAN</small><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a></div><div><small>GED</small><a href="about.html">About</a><a href="about.html#team">Team</a><a href="about.html#technology">Technology</a></div></div><div class="footer-bottom"><span>GED Travel Agency · School Project · 1°D</span><span>Geovana · Edgar · Aline</span><span>Educational project · No commercial transactions</span></div></div></footer><div class="search-overlay" data-search-overlay><div class="search-box glass"><button class="close" data-close-search>×</button><div class="eyebrow dark">GED SEARCH</div><h2>Where are you going?</h2><input data-global-search placeholder="Toronto, events, hotels..."><div class="search-results" data-search-results></div></div></div><script src="../js/canada-data.js"></script><script src="../js/provinces.js"></script><script src="../js/app.js"></script><script src="../js/navigation.js"></script><script src="../js/search.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{const chat=document.querySelector('#chat'),input=document.querySelector('#question');function ask(q){if(!q)return;chat.insertAdjacentHTML('beforeend',`<div class="bubble user">${q.replace(/</g,'&lt;')}</div>`);let a='For the GED demo, Toronto is a strong all-round choice: city culture, neighbourhoods, events and easy trip-building.';if(/free|montr/i.test(q))a='Try Old Montréal, parks, public spaces and selected local events. GED marks free events when the demo data identifies them.';if(/family|vancouver/i.test(q))a='Vancouver combines parks, waterfront experiences and family-friendly city exploration. Compare stays by GED Value Score.';chat.insertAdjacentHTML('beforeend',`<div class="bubble">${a}</div>`);input.value='';}document.querySelector('#ask').onclick=()=>ask(input.value);input.onkeydown=e=>e.key==='Enter'&&ask(input.value);document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>ask(b.dataset.q))})</script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="GED Concierge — your intelligent travel assistant for exploring Canada.">
+    <meta name="theme-color" content="#08090c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Help · GED Concierge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/liquid-glass.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+        /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
+        :root {
+            --ios-blue: #007aff;
+            --ios-green: #34c759;
+            --ios-red: #ff3b30;
+            --ios-orange: #ff9500;
+            --ios-purple: #af52de;
+            --ios-gray-1: #8e8e93;
+            --ios-gray-2: #aeaeb2;
+            --ios-gray-3: #c7c7cc;
+            --ios-gray-4: #d1d1d6;
+            --ios-gray-5: #e5e5ea;
+            --ios-bg: #f2f2f7;
+            --ios-text: #1c1c1e;
+            --ios-text-2: #3a3a3c;
+            --ios-text-3: #8e8e93;
+            --imsg-blue-gradient: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%);
+            --imsg-gray: #e9e9eb;
+            --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+            --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .help-page {
+            background: var(--ios-bg);
+            color: var(--ios-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .help-page * {
+            box-sizing: border-box;
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        .help-page .site-header {
+            transition: background 0.3s var(--ease-ios);
+        }
+
+        .help-page .site-header.scrolled .nav {
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .help-page .site-header.scrolled .nav-links a,
+        .help-page .site-header.scrolled .nav-about {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        .help-page .site-header.scrolled .nav-links a:hover,
+        .help-page .site-header.scrolled .nav-links a.active,
+        .help-page .site-header.scrolled .nav-about:hover {
+            color: #000;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .help-page .site-header.scrolled .icon-btn,
+        .help-page .site-header.scrolled .menu-btn {
+            background: rgba(0, 0, 0, 0.05);
+            color: #111;
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .help-page .help-hero {
+            position: relative;
+            min-height: 620px;
+            padding: 160px 0 100px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            isolation: isolate;
+            background: #0a0a0a;
+        }
+
+        .help-page .help-hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: -3;
+            background: url("https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat;
+            transform: scale(1.06);
+            animation: heroZoom 24s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.06);
+            }
+
+            to {
+                transform: scale(1.14);
+            }
+        }
+
+        .help-page .help-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.28) 30%, rgba(0, 0, 0, 0.40) 70%, rgba(242, 242, 247, 1) 100%),
+                radial-gradient(ellipse at 25% 40%, rgba(0, 122, 255, 0.12), transparent 60%);
+        }
+
+        .help-page .help-hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 1200px;
+        }
+
+        .help-page .help-eyebrow-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 18px 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.96);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            animation: fadeUp 0.8s var(--ease-ios) both;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .help-page .help-eyebrow-pill .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ios-green);
+            box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.22);
+            animation: statusPulse 2.4s ease-in-out infinite;
+        }
+
+        .help-page .help-hero h1 {
+            margin: 24px 0 20px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(54px, 7.5vw, 112px);
+            line-height: 0.88;
+            letter-spacing: -0.075em;
+            font-weight: 700;
+            max-width: 850px;
+            color: #fff;
+            animation: fadeUp 1s 0.1s var(--ease-ios) both;
+        }
+
+        .help-page .help-hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a 0%, #ffb400 50%, #ffe680 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .help-page .help-hero>.container>p {
+            max-width: 540px;
+            font-size: 17px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.86);
+            margin: 0;
+            animation: fadeUp 1s 0.2s var(--ease-ios) both;
+        }
+
+        .help-page .help-hero-ctas {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeUp 1s 0.3s var(--ease-ios) both;
+        }
+
+        .help-page .help-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios);
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .help-page .help-cta.primary {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .help-page .help-cta.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45);
+        }
+
+        .help-page .help-cta.secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .help-page .help-cta.secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+           CHAT LAYOUT
+           ============================================================ */
+        .help-page .help-chat-section {
+            padding: 0 0 100px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .help-page .help-chat-layout {
+            display: grid;
+            grid-template-columns: minmax(300px, 0.32fr) minmax(0, 0.68fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        /* ============================================================
+           SIDEBAR
+           ============================================================ */
+        .help-page .help-sidebar {
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            border-radius: 28px;
+            padding: 26px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            min-height: 680px;
+        }
+
+        .help-page .help-sidebar .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .help-page .help-sidebar .brand-avatar {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            flex: 0 0 56px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffd21a, #ff9500, #ff2d55, #af52de);
+        }
+
+        .help-page .help-sidebar .brand-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid #fff;
+            display: block;
+        }
+
+        .help-page .help-sidebar .brand-avatar::after {
+            content: "";
+            position: absolute;
+            right: 2px;
+            bottom: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--ios-green);
+            border: 2.5px solid #fff;
+            animation: statusPulse 2.4s ease-in-out infinite;
+        }
+
+        .help-page .help-sidebar .sidebar-brand h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 21px;
+            letter-spacing: -0.04em;
+            margin: 0;
+            color: var(--ios-text);
+            font-weight: 700;
+        }
+
+        .help-page .help-sidebar .sidebar-brand small {
+            display: block;
+            color: var(--ios-text-3);
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .help-page .help-sidebar .sidebar-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--ios-text-2);
+            margin: 4px 0 20px;
+        }
+
+        .help-page .warning-card {
+            display: flex;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            border: 0.5px solid;
+            align-items: flex-start;
+        }
+
+        .help-page .warning-card.warn {
+            background: linear-gradient(135deg, rgba(255, 210, 26, 0.10), rgba(255, 149, 0, 0.06));
+            border-color: rgba(255, 149, 0, 0.22);
+        }
+
+        .help-page .warning-card.safe {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.08), rgba(90, 200, 250, 0.06));
+            border-color: rgba(52, 199, 89, 0.22);
+        }
+
+        .help-page .warning-card.info {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(175, 82, 222, 0.06));
+            border-color: rgba(0, 122, 255, 0.18);
+        }
+
+        .help-page .warning-card .warning-icon {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .help-page .warning-card.warn .warning-icon {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            color: #0a0a0a;
+        }
+
+        .help-page .warning-card.safe .warning-icon {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+            color: #fff;
+        }
+
+        .help-page .warning-card.info .warning-icon {
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            color: #fff;
+        }
+
+        .help-page .warning-card .warning-body strong {
+            display: block;
+            font-size: 12.5px;
+            color: var(--ios-text);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .help-page .warning-card .warning-body p {
+            margin: 0;
+            font-size: 11.5px;
+            color: var(--ios-text-3);
+            line-height: 1.5;
+        }
+
+        .help-page .help-sidebar .sidebar-capabilities {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            margin-top: 8px;
+            padding-top: 14px;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.10);
+        }
+
+        .help-page .help-sidebar .cap-item {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            gap: 12px;
+            padding: 10px 0;
+            align-items: flex-start;
+        }
+
+        .help-page .help-sidebar .cap-item .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            color: #fff;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.22);
+        }
+
+        .help-page .help-sidebar .cap-item:nth-child(2) .num {
+            background: linear-gradient(135deg, #ff9500, #ffcc00);
+        }
+
+        .help-page .help-sidebar .cap-item:nth-child(3) .num {
+            background: linear-gradient(135deg, #af52de, #c77dff);
+        }
+
+        .help-page .help-sidebar .cap-item:nth-child(4) .num {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+        }
+
+        .help-page .help-sidebar .cap-item strong {
+            display: block;
+            font-size: 13.5px;
+            color: var(--ios-text);
+            font-weight: 600;
+        }
+
+        .help-page .help-sidebar .cap-item small {
+            display: block;
+            color: var(--ios-text-3);
+            font-size: 12px;
+            line-height: 1.45;
+            margin-top: 2px;
+        }
+
+        .help-page .help-sidebar .sidebar-actions {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .help-page .help-sidebar .btn-outline {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--ios-text-2);
+            font-weight: 600;
+            font-size: 13px;
+            border: 0;
+            cursor: pointer;
+            transition: all 0.22s var(--ease-ios);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .help-page .help-sidebar .btn-outline:hover {
+            background: rgba(0, 0, 0, 0.07);
+            transform: translateY(-1px);
+        }
+
+        .help-page .help-sidebar .btn-outline.danger {
+            background: rgba(255, 59, 48, 0.08);
+            color: var(--ios-red);
+        }
+
+        .help-page .help-sidebar .btn-outline.danger:hover {
+            background: rgba(255, 59, 48, 0.15);
+        }
+
+        /* ============================================================
+           CHAT PANEL
+           ============================================================ */
+        .help-page .help-chat-panel {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            border-radius: 28px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            min-height: 680px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .help-page .help-chat-header {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-bottom: 0.5px solid rgba(60, 60, 67, 0.10);
+            min-height: 66px;
+        }
+
+        .help-page .help-chat-agent {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .help-page .help-chat-agent .agent-avatar {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex: 0 0 44px;
+            padding: 2.5px;
+            background: linear-gradient(135deg, #ffd21a, #ff9500, #ff2d55, #af52de);
+            box-shadow: 0 6px 18px rgba(175, 82, 222, 0.24);
+        }
+
+        .help-page .help-chat-agent .agent-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid #fff;
+            display: block;
+        }
+
+        .help-page .help-chat-agent .agent-avatar::after {
+            content: "";
+            position: absolute;
+            right: -1px;
+            bottom: -1px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--ios-green);
+            border: 2.5px solid #fff;
+            animation: statusPulse 2.4s ease-in-out infinite;
+        }
+
+        .help-page .help-chat-agent .info strong {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--ios-text);
+            letter-spacing: -0.01em;
+        }
+
+        .help-page .help-chat-agent .info strong .verified {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            display: inline-grid;
+            place-items: center;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
+        }
+
+        .help-page .help-chat-agent .info small {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11.5px;
+            color: var(--ios-green);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .help-page .help-chat-agent .info small::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+            display: inline-block;
+        }
+
+        .help-page .help-chat-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .help-page .help-chat-toolbar .model-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(175, 82, 222, 0.06));
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--ios-blue);
+            border: 0.5px solid rgba(0, 122, 255, 0.18);
+            white-space: nowrap;
+        }
+
+        .help-page .help-chat-toolbar .model-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--ios-green);
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.16);
+            animation: statusPulse 2.4s ease-in-out infinite;
+        }
+
+        .help-page .help-chat-toolbar .btn-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.045);
+            border: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--ios-text-2);
+            transition: all 0.24s var(--ease-spring);
+            display: grid;
+            place-items: center;
+            font-family: inherit;
+            font-weight: 700;
+        }
+
+        .help-page .help-chat-toolbar .btn-icon:hover {
+            background: rgba(0, 0, 0, 0.09);
+            transform: translateY(-1.5px);
+        }
+
+        .help-page .help-chat-toolbar .btn-icon.active-think {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            color: #0a0a0a;
+            box-shadow: 0 4px 14px rgba(255, 149, 0, 0.35);
+        }
+
+        .help-page .help-chat-toolbar .btn-icon.active-search {
+            background: linear-gradient(135deg, #34c759, #30d158);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(52, 199, 89, 0.35);
+        }
+
+        /* ============================================================
+           MESSAGES — MAXIMUM SPECIFICITY (uses #chat ID)
+           ============================================================ */
+        #chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 28px 22px 16px;
+            min-height: 420px;
+            max-height: 560px;
+            scroll-behavior: smooth;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(0, 122, 255, 0.025), transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(175, 82, 222, 0.025), transparent 40%),
+                #fbfbfd;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(60, 60, 67, 0.20) transparent;
+            position: relative;
+            grid-template-columns: none !important;
+            grid-template-rows: none !important;
+        }
+
+        #chat::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat::-webkit-scrollbar-thumb {
+            background: rgba(60, 60, 67, 0.18);
+            border-radius: 999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        /* --- CHAT MESSAGE RESET — kills main.css .assistant --- */
+        #chat .chat-message,
+        #chat .chat-message.assistant,
+        #chat .chat-message.user,
+        .help-page #chat .chat-message,
+        .help-page #chat .chat-message.assistant,
+        .help-page #chat .chat-message.user {
+            display: flex !important;
+            flex-direction: row !important;
+            grid-template-columns: none !important;
+            grid-template-rows: none !important;
+            align-items: flex-end !important;
+            gap: 10px !important;
+            max-width: 82% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            box-sizing: border-box !important;
+            font-family: "DM Sans", -apple-system, sans-serif !important;
+            animation: messageIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+            position: relative !important;
+        }
+
+        #chat .chat-message.assistant,
+        .help-page #chat .chat-message.assistant {
+            align-self: flex-start !important;
+            flex-direction: row !important;
+        }
+
+        #chat .chat-message.user,
+        .help-page #chat .chat-message.user {
+            align-self: flex-end !important;
+            flex-direction: row-reverse !important;
+        }
+
+        /* --- AVATAR --- */
+        #chat .message-avatar {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 50% !important;
+            flex: 0 0 32px !important;
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            place-items: center !important;
+            background: #0a0a0a !important;
+            color: #ffd21a !important;
+            font-family: "Space Grotesk", sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        #chat .chat-message.user .message-avatar {
+            display: none !important;
+        }
+
+        /* --- BODY --- */
+        #chat .message-body {
+            min-width: 0 !important;
+            max-width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* --- META (Thought for X) --- */
+        #chat .message-meta {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            font-size: 10.5px !important;
+            font-weight: 600 !important;
+            color: var(--ios-text-3) !important;
+            letter-spacing: 0.02em !important;
+            text-transform: uppercase !important;
+            padding: 0 4px !important;
+            margin: 0 !important;
+            animation: fadeIn 0.5s var(--ease-ios) both !important;
+        }
+
+        #chat .message-meta .meta-icon {
+            color: var(--ios-purple) !important;
+            font-size: 10px !important;
+            animation: sparkle 2s ease-in-out infinite !important;
+        }
+
+        #chat .chat-message.user .message-meta {
+            justify-content: flex-end !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        /* --- BUBBLE (message-content) --- */
+        #chat .message-content,
+        .help-page #chat .message-content {
+            padding: 12px 18px !important;
+            font-size: 15px !important;
+            line-height: 1.55 !important;
+            word-break: break-word !important;
+            letter-spacing: -0.011em !important;
+            background: #fff !important;
+            color: #1c1c1e !important;
+            border-radius: 22px 22px 22px 6px !important;
+            border: 0.5px solid rgba(0, 0, 0, 0.05) !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+            position: relative !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            font-family: "DM Sans", -apple-system, sans-serif !important;
+        }
+
+        #chat .chat-message.user .message-content,
+        .help-page #chat .chat-message.user .message-content {
+            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%) !important;
+            color: #fff !important;
+            border-radius: 22px 22px 6px 22px !important;
+            border: 0 !important;
+            box-shadow: 0 2px 12px rgba(0, 122, 255, 0.28), 0 1px 2px rgba(0, 122, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        }
+
+        #chat .message-content p {
+            margin: 0 !important;
+        }
+
+        #chat .message-content p+p {
+            margin-top: 8px !important;
+        }
+
+        #chat .message-content strong {
+            font-weight: 700 !important;
+        }
+
+        #chat .message-content em {
+            font-style: italic !important;
+            opacity: 0.85 !important;
+        }
+
+        /* --- FOOTER (Sources / AI disclaimer) --- */
+        #chat .message-footer {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 11px !important;
+            color: var(--ios-text-3) !important;
+            line-height: 1.5 !important;
+            padding: 0 4px !important;
+            margin: 0 !important;
+            letter-spacing: -0.005em !important;
+            flex-wrap: wrap !important;
+            animation: fadeIn 0.5s 0.15s var(--ease-ios) both !important;
+        }
+
+        #chat .message-footer .footer-icon {
+            color: var(--ios-orange) !important;
+            font-size: 11px !important;
+            display: inline-flex !important;
+        }
+
+        #chat .message-footer .footer-label {
+            font-weight: 700 !important;
+            color: var(--ios-text-2) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.04em !important;
+            font-size: 10px !important;
+        }
+
+        #chat .message-footer .source-chip {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            padding: 3px 10px !important;
+            border-radius: 999px !important;
+            background: rgba(0, 122, 255, 0.08) !important;
+            color: var(--ios-blue) !important;
+            font-weight: 600 !important;
+            font-size: 10.5px !important;
+            text-decoration: none !important;
+            transition: all 0.22s var(--ease-ios) !important;
+            border: 0.5px solid rgba(0, 122, 255, 0.12) !important;
+        }
+
+        #chat .message-footer .source-chip:hover {
+            background: rgba(0, 122, 255, 0.16) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* --- IMAGE --- */
+        #chat .message-image {
+            margin-top: 6px !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
+            border: 0.5px solid rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10) !important;
+            max-width: 320px !important;
+            width: 100% !important;
+            background: #fff !important;
+        }
+
+        #chat .message-image img {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            aspect-ratio: 16/10 !important;
+            object-fit: cover !important;
+        }
+
+        #chat .message-image .image-caption {
+            padding: 9px 13px !important;
+            font-size: 11px !important;
+            color: var(--ios-text-3) !important;
+            background: #fff !important;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.10) !important;
+            font-weight: 500 !important;
+        }
+
+        /* --- WELCOME SUGGESTIONS --- */
+        #chat .welcome-suggestions {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-top: 14px !important;
+            padding-top: 12px !important;
+            border-top: 0.5px dashed rgba(0, 0, 0, 0.08) !important;
+        }
+
+        #chat .welcome-suggestions button {
+            padding: 9px 16px !important;
+            border-radius: 999px !important;
+            background: rgba(0, 122, 255, 0.08) !important;
+            border: 0.5px solid rgba(0, 122, 255, 0.20) !important;
+            font-size: 12.5px !important;
+            font-weight: 600 !important;
+            color: var(--ios-blue) !important;
+            cursor: pointer !important;
+            transition: all 0.24s var(--ease-spring) !important;
+            font-family: inherit !important;
+        }
+
+        #chat .welcome-suggestions button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.18) !important;
+        }
+
+        /* ============================================================
+           TYPING / QUICK PROMPTS / INPUT
+           ============================================================ */
+        .help-page .help-chat-panel .typing-indicator {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            padding: 0 22px 14px;
+            animation: messageIn 0.35s var(--ease-spring) both;
+        }
+
+        .help-page .help-chat-panel .typing-indicator[hidden] {
+            display: none !important;
+        }
+
+        .help-page .help-chat-panel .typing-indicator .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex: 0 0 32px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .help-page .help-chat-panel .typing-indicator .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .help-page .help-chat-panel .typing-bubble {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 22px 22px 22px 6px;
+            background: #fff;
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+            min-height: 46px;
+        }
+
+        .help-page .help-chat-panel .typing-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .help-page .help-chat-panel .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #8e8e93;
+            animation: typingDot 1.4s ease-in-out infinite;
+        }
+
+        .help-page .help-chat-panel .typing-dots span:nth-child(2) {
+            animation-delay: 0.16s;
+        }
+
+        .help-page .help-chat-panel .typing-dots span:nth-child(3) {
+            animation-delay: 0.32s;
+        }
+
+        .help-page .help-chat-panel .typing-bubble small {
+            font-size: 12.5px;
+            color: var(--ios-text-3);
+            font-weight: 500;
+        }
+
+        .help-page .help-chat-panel .quick-prompts {
+            display: flex;
+            gap: 8px;
+            padding: 0 22px 14px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .help-page .help-chat-panel .quick-prompts::-webkit-scrollbar {
+            display: none;
+        }
+
+        .help-page .help-chat-panel .quick-prompts .chip {
+            flex: 0 0 auto !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 7px !important;
+            padding: 9px 15px !important;
+            border-radius: 999px !important;
+            background: #fff !important;
+            border: 0.5px solid rgba(60, 60, 67, 0.18) !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            color: var(--ios-text-2) !important;
+            cursor: pointer !important;
+            transition: all 0.24s var(--ease-spring) !important;
+            white-space: nowrap !important;
+            font-family: inherit !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        .help-page .help-chat-panel .quick-prompts .chip .chip-icon {
+            width: 18px !important;
+            height: 18px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            flex: 0 0 18px !important;
+        }
+
+        .help-page .help-chat-panel .quick-prompts .chip:hover {
+            background: #fff !important;
+            border-color: rgba(0, 122, 255, 0.4) !important;
+            color: var(--ios-blue) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.12) !important;
+        }
+
+        /* INPUT */
+        .help-page .help-chat-panel .chat-input-wrap {
+            padding: 0 22px 16px;
+            background: linear-gradient(180deg, rgba(251, 251, 253, 0) 0%, rgba(251, 251, 253, 0.9) 100%);
+            position: relative;
+        }
+
+        .help-page .help-chat-panel .chat-input {
+            display: flex !important;
+            align-items: flex-end !important;
+            gap: 10px !important;
+            padding: 8px 8px 8px 20px !important;
+            border-radius: 26px !important;
+            background: #fff !important;
+            border: 0.5px solid rgba(60, 60, 67, 0.18) !important;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+            transition: border-color 0.24s var(--ease-ios), box-shadow 0.24s var(--ease-ios);
+            min-height: 52px !important;
+            margin-top: 0 !important;
+            grid-template-columns: none !important;
+        }
+
+        .help-page .help-chat-panel .chat-input:focus-within {
+            border-color: rgba(0, 122, 255, 0.5) !important;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.12), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 4px rgba(0, 122, 255, 0.08) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input textarea#question {
+            flex: 1 !important;
+            border: 0 !important;
+            outline: 0 !important;
+            resize: none !important;
+            padding: 10px 0 !important;
+            background: transparent !important;
+            font-size: 15.5px !important;
+            line-height: 1.45 !important;
+            min-height: 34px !important;
+            max-height: 130px !important;
+            color: var(--ios-text) !important;
+            font-family: inherit !important;
+            letter-spacing: -0.011em !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .help-page .help-chat-panel .chat-input textarea#question::placeholder {
+            color: var(--ios-gray-2) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .actions {
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            flex: 0 0 auto !important;
+            position: relative !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 50% !important;
+            background: var(--imsg-blue-gradient) !important;
+            color: #fff !important;
+            border: 0 !important;
+            cursor: pointer !important;
+            font-size: 18px !important;
+            display: grid !important;
+            place-items: center !important;
+            box-shadow: 0 4px 14px rgba(0, 122, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            transition: all 0.3s var(--ease-spring) !important;
+            font-family: inherit !important;
+            position: relative !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send span {
+            display: block !important;
+            transform: translateY(-1px) !important;
+            transition: transform 0.3s var(--ease-spring) !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send:hover {
+            transform: translateY(-2px) scale(1.06) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send:active {
+            transform: translateY(0) scale(0.92) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send:disabled {
+            background: var(--ios-gray-4) !important;
+            color: var(--ios-gray-2) !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send.state-pause {
+            background: linear-gradient(180deg, #ff5f57, #ff3b30 55%, #d70015) !important;
+            box-shadow: 0 4px 14px rgba(255, 59, 48, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send.state-pause span {
+            animation: pulseSquare 1.4s ease-in-out infinite !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send.state-resume {
+            background: linear-gradient(180deg, #34c759, #30d158 55%, #248a3d) !important;
+            box-shadow: 0 4px 14px rgba(52, 199, 89, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .send.state-delete {
+            background: linear-gradient(180deg, #ff453a, #d70015 55%, #a50011) !important;
+            box-shadow: 0 4px 18px rgba(255, 59, 48, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+            animation: deletePulse 1.6s ease-in-out infinite !important;
+        }
+
+        @keyframes pulseSquare {
+
+            0%,
+            100% {
+                transform: translateY(-1px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-1px) scale(0.85);
+            }
+        }
+
+        @keyframes deletePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .help-page .help-chat-panel .chat-input .actions .tooltip {
+            position: absolute !important;
+            bottom: calc(100% + 12px) !important;
+            right: 0 !important;
+            padding: 8px 12px !important;
+            background: rgba(28, 28, 30, 0.95) !important;
+            color: #fff !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            border-radius: 10px !important;
+            white-space: nowrap !important;
+            opacity: 0 !important;
+            transform: translateY(8px) !important;
+            pointer-events: none !important;
+            transition: opacity 0.28s var(--ease-ios), transform 0.28s var(--ease-ios) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .actions .tooltip::after {
+            content: "" !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 14px !important;
+            width: 0 !important;
+            height: 0 !important;
+            border-left: 6px solid transparent !important;
+            border-right: 6px solid transparent !important;
+            border-top: 6px solid rgba(28, 28, 30, 0.95) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .actions.delete-mode .tooltip {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .help-page .help-chat-panel .chat-input .stop {
+            display: none !important;
+        }
+
+        .help-page .help-chat-panel .input-meta {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 9px 8px 0 !important;
+            font-size: 10.5px !important;
+            font-weight: 600 !important;
+            color: var(--ios-text-3) !important;
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--ios-green);
+            flex: 0 0 5px;
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.16);
+        }
+
+        .help-page .help-chat-panel .scroll-bottom {
+            position: absolute;
+            right: 22px;
+            bottom: 140px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--ios-text-2);
+            opacity: 0;
+            transform: translateY(10px) scale(0.9);
+            pointer-events: none;
+            transition: all 0.28s var(--ease-spring);
+            z-index: 4;
+        }
+
+        .help-page .help-chat-panel .scroll-bottom.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .help-page .help-chat-panel .scroll-bottom:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* ============================================================
+           FEATURES / HOW / DISCLAIMER
+           ============================================================ */
+        .help-page .help-features {
+            padding: 100px 0 80px;
+        }
+
+        .help-page .help-features-head,
+        .help-page .help-how-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 48px;
+        }
+
+        .help-page .help-features h2,
+        .help-page .help-how h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.065em;
+            margin: 12px 0 0;
+            color: var(--ios-text);
+        }
+
+        .help-page .help-features h2 em,
+        .help-page .help-how h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #007aff, #af52de);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .help-page .help-features-head>p,
+        .help-page .help-how-head>p {
+            margin: 0;
+            color: var(--ios-text-3);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .help-page .help-features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .help-page .help-feature-card {
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            border-radius: 24px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios);
+            overflow: hidden;
+            animation: none !important;
+        }
+
+        .help-page .help-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.10);
+        }
+
+        .help-page .help-feature-card .feature-number {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--ios-text-3);
+            letter-spacing: 0.08em;
+        }
+
+        .help-page .help-feature-card .f-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-top: 50px;
+            border: 2.5px solid #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .help-page .help-feature-card h3 {
+            margin: 18px 0 8px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 17px;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+            font-weight: 700;
+        }
+
+        .help-page .help-feature-card p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ios-text-3);
+            flex: 1;
+        }
+
+        .help-page .help-feature-card .arrow {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            display: grid;
+            place-items: center;
+            font-size: 15px;
+            color: var(--ios-text-2);
+            transition: all 0.3s var(--ease-ios);
+        }
+
+        .help-page .help-feature-card:hover .arrow {
+            background: var(--ios-blue);
+            color: #fff;
+            transform: rotate(-45deg);
+        }
+
+        .help-page .help-how {
+            padding: 0 0 100px;
+        }
+
+        .help-page .help-how-head {
+            margin-bottom: 40px;
+        }
+
+        .help-page .help-how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .help-page .help-how-card {
+            position: relative;
+            padding: 26px 24px 30px;
+            min-height: 240px;
+            border-radius: 24px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-ios);
+            animation: none !important;
+        }
+
+        .help-page .help-how-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .help-page .help-how-card .step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0a84ff, #007aff 60%, #0066d6 100%);
+            color: #fff;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.22);
+        }
+
+        .help-page .help-how-card:nth-child(2) .step {
+            background: linear-gradient(135deg, #ff9500, #ffcc00);
+        }
+
+        .help-page .help-how-card:nth-child(3) .step {
+            background: linear-gradient(135deg, #af52de, #c77dff);
+        }
+
+        .help-page .help-how-card:nth-child(4) .step {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+        }
+
+        .help-page .help-how-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 20px;
+            letter-spacing: -0.035em;
+            margin: 16px 0 8px;
+            color: var(--ios-text);
+            font-weight: 700;
+        }
+
+        .help-page .help-how-card p {
+            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--ios-text-3);
+            max-width: 260px;
+        }
+
+        .help-page .help-disclaimer {
+            padding: 0 0 120px;
+        }
+
+        .help-page .help-disclaimer .disclaimer-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+            padding: 32px 34px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, rgba(255, 210, 26, 0.08), rgba(255, 149, 0, 0.06));
+            border: 0.5px solid rgba(255, 149, 0, 0.20);
+            box-shadow: 0 12px 40px rgba(255, 149, 0, 0.06);
+        }
+
+        .help-page .help-disclaimer .disclaimer-icon {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            color: #0a0a0a;
+            font-weight: 800;
+        }
+
+        .help-page .help-disclaimer h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            letter-spacing: -0.04em;
+            margin: 4px 0 10px;
+            color: var(--ios-text);
+            font-weight: 700;
+        }
+
+        .help-page .help-disclaimer p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: var(--ios-text-2);
+            max-width: 800px;
+            margin: 0;
+        }
+
+        /* ============================================================
+           KEYFRAMES
+           ============================================================ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes statusPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(0.85);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes typingDot {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+
+            30% {
+                transform: translateY(-6px) scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        .help-page .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--ease-ios), transform 0.8s var(--ease-ios);
+        }
+
+        .help-page .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1200px) {
+            .help-page .help-chat-layout {
+                grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+            }
+
+            .help-page .help-features-grid,
+            .help-page .help-how-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .help-page .help-chat-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .help-page .help-sidebar {
+                min-height: auto;
+            }
+
+            .help-page .help-features-head,
+            .help-page .help-how-head {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .help-page .help-hero {
+                min-height: 500px;
+                padding: 130px 0 80px;
+            }
+
+            .help-page .help-hero h1 {
+                font-size: clamp(42px, 12vw, 72px);
+            }
+
+            .help-page .help-chat-section {
+                margin-top: -50px;
+            }
+
+            .help-page .help-chat-panel {
+                min-height: 540px;
+                border-radius: 24px;
+            }
+
+            .help-page .help-sidebar {
+                border-radius: 24px;
+                padding: 22px 20px;
+            }
+
+            .help-page .help-chat-header {
+                padding: 12px 14px;
+            }
+
+            #chat {
+                padding: 20px 14px 12px;
+                max-height: 400px;
+                gap: 16px !important;
+            }
+
+            .help-page .help-chat-panel .chat-input-wrap {
+                padding: 0 14px 14px;
+            }
+
+            .help-page .help-chat-panel .quick-prompts {
+                padding: 0 14px 12px;
+            }
+
+            .help-page .help-chat-panel .typing-indicator {
+                padding: 0 14px 12px;
+            }
+
+            .help-page .help-chat-toolbar .model-badge span:not(.dot) {
+                display: none;
+            }
+
+            #chat .chat-message {
+                max-width: 92% !important;
+            }
+
+            .help-page .help-features-grid,
+            .help-page .help-how-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .help-page .help-disclaimer .disclaimer-card {
+                flex-direction: column;
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .help-page .help-hero h1 {
+                font-size: clamp(36px, 11vw, 58px);
+            }
+
+            #chat .message-content {
+                font-size: 14.5px !important;
+                padding: 10px 15px !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .help-page *,
+            .help-page *::before,
+            .help-page *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .help-page :focus-visible {
+            outline: 3px solid rgba(0, 122, 255, 0.55);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body class="help-page">
+
+    <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+    <header class="site-header" id="site-header">
+        <nav class="nav glass" aria-label="Main navigation">
+            <a class="brand" href="../index.html" aria-label="GED Home">
+                <b>G</b><span>GED</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">Explore</a>
+                <a href="events.html">Events</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="packages.html">Packages</a>
+                <a class="active" href="help.html" aria-current="page">Help</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search aria-label="Search GED" title="Search">⌕</button>
+                <a class="nav-about" href="about.html">About</a>
+                <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false"
+                    aria-controls="mobile-menu">
+                    <i></i><i></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu glass" data-mobile-menu aria-hidden="true">
+            <a href="../index.html">Explore</a>
+            <a href="events.html">Events</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="packages.html">Packages</a>
+            <a href="help.html" aria-current="page">Help</a>
+            <a href="about.html">About</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="help-hero" id="top">
+            <div class="help-hero-media"></div>
+            <div class="help-hero-overlay"></div>
+            <div class="container help-hero-content">
+                <div class="help-eyebrow-pill">
+                    <span class="pill-dot" aria-hidden="true"></span>
+                    GED Concierge · AI Travel Assistant
+                </div>
+                <h1>Your trip.<br><em>Understood.</em></h1>
+                <p>Ask GED Concierge about Canadian destinations, neighborhoods, hotels, events, packages,
+                    transportation and itinerary ideas.</p>
+                <div class="help-hero-ctas">
+                    <a class="help-cta primary" href="#chat">Start a conversation <span aria-hidden="true">↓</span></a>
+                    <a class="help-cta secondary" href="packages.html#trip-builder">Build a trip <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-chat-section" id="chat-section" aria-labelledby="concierge-title">
+            <div class="container">
+                <div class="help-chat-layout">
+
+                    <aside class="help-sidebar">
+                        <div class="sidebar-brand">
+                            <div class="brand-avatar" aria-hidden="true">
+                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
+                                    alt="GED">
+                            </div>
+                            <div>
+                                <h2 id="concierge-title">Concierge</h2>
+                                <small>GED Intelligence · Online</small>
+                            </div>
+                        </div>
+                        <p class="sidebar-desc">A smart travel assistant designed around the GED Canada experience.</p>
+
+                        <div class="warning-card warn">
+                            <span class="warning-icon" aria-hidden="true">!</span>
+                            <div class="warning-body">
+                                <strong>AI can make mistakes</strong>
+                                <p>Verify important details (prices, schedules, availability) before booking.</p>
+                            </div>
+                        </div>
+                        <div class="warning-card safe">
+                            <span class="warning-icon" aria-hidden="true">✓</span>
+                            <div class="warning-body">
+                                <strong>Secure conversation</strong>
+                                <p>Your messages travel through GED's encrypted backend. No personal data is stored.</p>
+                            </div>
+                        </div>
+                        <div class="warning-card info">
+                            <span class="warning-icon" aria-hidden="true">i</span>
+                            <div class="warning-body">
+                                <strong>Session-based chat</strong>
+                                <p>Your chat history is saved locally in your browser. Reset anytime below.</p>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-capabilities">
+                            <div class="cap-item"><span class="num">01</span>
+                                <div><strong>Discover</strong><small>Find destinations, cities, provinces and
+                                        neighborhoods.</small></div>
+                            </div>
+                            <div class="cap-item"><span class="num">02</span>
+                                <div><strong>Compare</strong><small>Compare hotels, packages, experiences and
+                                        value.</small></div>
+                            </div>
+                            <div class="cap-item"><span class="num">03</span>
+                                <div><strong>Plan</strong><small>Build smarter Canadian itineraries.</small></div>
+                            </div>
+                            <div class="cap-item"><span class="num">04</span>
+                                <div><strong>Optimize</strong><small>Find better combinations of time, location and
+                                        value.</small></div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-actions">
+                            <button type="button" id="clear-chat" class="btn-outline">
+                                <span aria-hidden="true">↻</span> New conversation
+                            </button>
+                            <button type="button" id="reset-all" class="btn-outline danger">
+                                <span aria-hidden="true">🗑</span> Reset all chats
+                            </button>
+                        </div>
+                    </aside>
+
+                    <div class="help-chat-panel">
+                        <div class="help-chat-header">
+                            <div class="help-chat-agent">
+                                <div class="agent-avatar" aria-hidden="true">
+                                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
+                                        alt="GED Concierge">
+                                </div>
+                                <div class="info">
+                                    <strong>GED Concierge <span class="verified" aria-hidden="true">✓</span></strong>
+                                    <small id="agent-subtitle">Active now</small>
+                                </div>
+                            </div>
+                            <div class="help-chat-toolbar">
+                                <div class="model-badge" aria-label="Current intelligence mode">
+                                    <span class="dot" aria-hidden="true"></span>
+                                    <span id="model-label">GED Smart</span>
+                                </div>
+                                <button type="button" id="toggle-think" class="btn-icon"
+                                    aria-label="Toggle Profound Think" title="Profound Think (T)">T</button>
+                                <button type="button" id="toggle-search" class="btn-icon"
+                                    aria-label="Toggle Profound Search" title="Profound Search (S)">S</button>
+                                <button type="button" id="copy-last" class="btn-icon" aria-label="Copy last response"
+                                    title="Copy last response">⧉</button>
+                            </div>
+                        </div>
+
+                        <div id="chat" class="chat-messages" role="log" aria-live="polite"
+                            aria-relevant="additions text" aria-label="GED Concierge conversation"></div>
+
+                        <button type="button" class="scroll-bottom" id="scroll-bottom" aria-label="Scroll to bottom"
+                            title="Scroll to bottom">↓</button>
+
+                        <div id="typing-indicator" class="typing-indicator" hidden aria-live="polite"
+                            aria-label="GED Concierge is thinking">
+                            <div class="avatar" aria-hidden="true">
+                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
+                                    alt="GED">
+                            </div>
+                            <div class="typing-bubble">
+                                <div class="typing-dots" aria-hidden="true">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <small id="typing-label">Thinking…</small>
+                            </div>
+                        </div>
+
+                        <div class="quick-prompts" aria-label="Suggested questions">
+                            <button class="chip" type="button" data-q="What is the best time to visit Toronto?">
+                                <img class="chip-icon"
+                                    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80"
+                                    alt="">
+                                Best time for Toronto
+                            </button>
+                            <button class="chip" type="button"
+                                data-q="What are some family-friendly things to do in Vancouver?">
+                                <img class="chip-icon"
+                                    src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=100&q=80"
+                                    alt="">
+                                Family in Vancouver
+                            </button>
+                            <button class="chip" type="button" data-q="Help me build a 5-day trip to Canada.">
+                                <img class="chip-icon"
+                                    src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=100&q=80"
+                                    alt="">
+                                Build a 5-day trip
+                            </button>
+                            <button class="chip" type="button" data-q="What are the best value destinations in Canada?">
+                                <img class="chip-icon"
+                                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=100&q=80"
+                                    alt="">
+                                Best value destinations
+                            </button>
+                            <button class="chip" type="button"
+                                data-q="What Canadian destination would you recommend for someone who loves football, cities and technology?">
+                                <img class="chip-icon"
+                                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=100&q=80"
+                                    alt="">
+                                Sports + cities
+                            </button>
+                        </div>
+
+                        <div class="chat-input-wrap">
+                            <div class="chat-input">
+                                <textarea id="question" rows="1" maxlength="2000" autocomplete="off" spellcheck="true"
+                                    aria-label="Ask GED Concierge" placeholder="Message GED Concierge…"></textarea>
+                                <div class="actions" id="actions-wrap">
+                                    <span class="tooltip" id="action-tooltip">Click to delete all chats</span>
+                                    <button id="stop-generation" class="stop" type="button" hidden
+                                        aria-label="Stop response" title="Stop response">■</button>
+                                    <button id="ask" class="send state-send" type="button" aria-label="Send message"
+                                        title="Send message">
+                                        <span aria-hidden="true">↑</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-meta">
+                                <span id="connection-status" aria-live="polite">GED Intelligence · Secure</span>
+                                <span id="character-count">0 / 2000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="help-features" aria-labelledby="features-title">
+            <div class="container">
+                <div class="help-features-head reveal">
+                    <div>
+                        <p class="eyebrow dark">Built into GED</p>
+                        <h2 id="features-title">More than<br><em>just a chatbot.</em></h2>
+                    </div>
+                    <p>Concierge connects conversational intelligence with GED's travel data, value scoring and
+                        trip-planning systems.</p>
+                </div>
+                <div class="help-features-grid">
+                    <article class="help-feature-card reveal">
+                        <span class="feature-number">01</span>
+                        <img class="f-icon"
+                            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
+                            alt="Destination intelligence">
+                        <h3>Destination intelligence</h3>
+                        <p>Explore Canadian cities, provinces, neighborhoods and attractions through conversational
+                            recommendations.</p>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </article>
+                    <article class="help-feature-card reveal">
+                        <span class="feature-number">02</span>
+                        <img class="f-icon"
+                            src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=200&q=80"
+                            alt="GED Value Score">
+                        <h3>GED Value Score</h3>
+                        <p>Find experiences that balance price, quality, location and overall trip value.</p>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </article>
+                    <article class="help-feature-card reveal">
+                        <span class="feature-number">03</span>
+                        <img class="f-icon"
+                            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=200&q=80"
+                            alt="Smart offers">
+                        <h3>Smart offers</h3>
+                        <p>Eligible GED packages can receive dynamic discounts, with a maximum discount of 25%.</p>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </article>
+                    <article class="help-feature-card reveal">
+                        <span class="feature-number">04</span>
+                        <img class="f-icon"
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=80"
+                            alt="Trip intelligence">
+                        <h3>Trip intelligence</h3>
+                        <p>Combine destinations, hotels, events and activities into a more coherent travel plan.</p>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-how" aria-labelledby="how-title">
+            <div class="container">
+                <div class="help-how-head reveal">
+                    <div>
+                        <p class="eyebrow dark">How it works</p>
+                        <h2 id="how-title">From question<br><em>to itinerary.</em></h2>
+                    </div>
+                    <p>GED Concierge is a layer between the traveler and GED's travel intelligence.</p>
+                </div>
+                <div class="help-how-grid">
+                    <article class="help-how-card reveal">
+                        <span class="step">01</span>
+                        <h3>You ask</h3>
+                        <p>Tell GED what you want, where you want to go or what you are trying to compare.</p>
+                    </article>
+                    <article class="help-how-card reveal">
+                        <span class="step">02</span>
+                        <h3>GED understands</h3>
+                        <p>The system identifies destinations, preferences and relevant GED information.</p>
+                    </article>
+                    <article class="help-how-card reveal">
+                        <span class="step">03</span>
+                        <h3>Intelligence responds</h3>
+                        <p>AI generates a useful answer while GED's own rules remain authoritative.</p>
+                    </article>
+                    <article class="help-how-card reveal">
+                        <span class="step">04</span>
+                        <h3>You decide</h3>
+                        <p>Explore the recommendation and continue to destinations, hotels, events or packages.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-disclaimer" aria-labelledby="disclaimer-title">
+            <div class="container">
+                <div class="disclaimer-card reveal">
+                    <span class="disclaimer-icon" aria-hidden="true">✦</span>
+                    <div>
+                        <p class="eyebrow dark">Educational project</p>
+                        <h3 id="disclaimer-title">Intelligence with transparency.</h3>
+                        <p>GED Concierge is an AI-powered feature created for the GED Travel Agency school project.
+                            AI-generated recommendations may contain errors and should be verified before making
+                            real-world travel decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-hero">
+                <div class="eyebrow">GED TRAVEL AGENCY</div>
+                <h2>Canada is big.<br><em>Your dreams should be too.</em></h2>
+                <a class="btn btn-yellow" href="packages.html#trip-builder">Build your trip ↗</a>
+            </div>
+            <div class="footer-grid">
+                <div>
+                    <a class="brand light-brand" href="../index.html" aria-label="GED Home">
+                        <b>G</b><span>GED</span>
+                    </a>
+                    <p>Canada, made accessible.</p>
+                </div>
+                <div>
+                    <small>EXPLORE</small>
+                    <a href="destinations.html">Destinations</a>
+                    <a href="events.html">Events</a>
+                    <a href="flights.html">Flights</a>
+                </div>
+                <div>
+                    <small>PLAN</small>
+                    <a href="hotels.html">Hotels</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="help.html">Help</a>
+                </div>
+                <div>
+                    <small>GED</small>
+                    <a href="about.html">About</a>
+                    <a href="about.html#team">Team</a>
+                    <a href="about.html#technology">Technology</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>GED Travel Agency · School Project · 1°D</span>
+                <span>Geovana · Edgar · Aline</span>
+                <span>Educational project · No commercial transactions</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+        <div class="search-box glass" role="dialog" aria-modal="true" aria-labelledby="search-title">
+            <button class="close" type="button" data-close-search aria-label="Close search">×</button>
+            <div class="eyebrow dark">GED SEARCH</div>
+            <h2 id="search-title">Where are you going?</h2>
+            <input type="search" data-global-search autocomplete="off" spellcheck="false" aria-label="Search GED"
+                placeholder="Toronto, events, hotels...">
+            <div class="search-results" data-search-results aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SCRIPTS
+         ============================================================ -->
+    <script src="../js/canada-data.js"></script>
+    <script src="../js/provinces.js"></script>
+    <script src="../js/data-loader.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/search.js"></script>
+
+    <script src="../js/help.js"></script>
+
+    <!-- ============================================================
+         ENHANCEMENT — roda DEPOIS do help.js
+         ============================================================ -->
+    <script>
+        (function () {
+            "use strict";
+
+            /* Header scrolled */
+            var header = document.getElementById("site-header");
+            if (header) {
+                var onScroll = function () {
+                    header.classList.toggle("scrolled", window.scrollY > 40);
+                };
+                window.addEventListener("scroll", onScroll, { passive: true });
+                onScroll();
+            }
+
+            /* Reveal */
+            var revealEls = document.querySelectorAll(".reveal");
+            if ("IntersectionObserver" in window && revealEls.length) {
+                var obs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                revealEls.forEach(function (el) { obs.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add("visible"); });
+            }
+
+            /* Chat elements */
+            var askBtn = document.getElementById("ask");
+            var stopBtn = document.getElementById("stop-generation");
+            var actionsWrap = document.getElementById("actions-wrap");
+            var tooltip = document.getElementById("action-tooltip");
+            var chatContainer = document.getElementById("chat");
+            var typingIndicator = document.getElementById("typing-indicator");
+            var clearChatBtn = document.getElementById("clear-chat");
+            var resetAllBtn = document.getElementById("reset-all");
+            var scrollBottomBtn = document.getElementById("scroll-bottom");
+
+            if (!askBtn || !chatContainer) return;
+
+            var state = {
+                generating: false,
+                paused: false,
+                deleteMode: false,
+                generationStart: 0
+            };
+
+            /* Track generation via typing indicator */
+            if (typingIndicator) {
+                var typingObserver = new MutationObserver(function () {
+                    var nowGenerating = !typingIndicator.hidden;
+                    if (nowGenerating && !state.generating) {
+                        state.generating = true;
+                        state.paused = false;
+                        state.generationStart = Date.now();
+                        updateActionButton();
+                    } else if (!nowGenerating && state.generating && !state.paused) {
+                        state.generating = false;
+                        updateActionButton();
+                    }
+                });
+                typingObserver.observe(typingIndicator, { attributes: true, attributeFilter: ["hidden"] });
+            }
+
+            function updateActionButton() {
+                askBtn.classList.remove("state-send", "state-pause", "state-resume", "state-delete");
+
+                if (state.deleteMode) {
+                    askBtn.classList.add("state-delete");
+                    askBtn.innerHTML = '<span aria-hidden="true">🗑</span>';
+                    askBtn.setAttribute("aria-label", "Delete all conversations");
+                    askBtn.title = "Delete all conversations";
+                    if (actionsWrap) actionsWrap.classList.add("delete-mode");
+                    if (tooltip) tooltip.textContent = "Click to delete all chats";
+                    return;
+                }
+                if (actionsWrap) actionsWrap.classList.remove("delete-mode");
+
+                if (state.paused) {
+                    askBtn.classList.add("state-resume");
+                    askBtn.innerHTML = '<span aria-hidden="true">▶</span>';
+                    askBtn.setAttribute("aria-label", "Resume");
+                    askBtn.title = "Resume";
+                    return;
+                }
+                if (state.generating) {
+                    askBtn.classList.add("state-pause");
+                    askBtn.innerHTML = '<span aria-hidden="true">■</span>';
+                    askBtn.setAttribute("aria-label", "Pause generation");
+                    askBtn.title = "Pause generation";
+                    return;
+                }
+                askBtn.classList.add("state-send");
+                askBtn.innerHTML = '<span aria-hidden="true">↑</span>';
+                askBtn.setAttribute("aria-label", "Send message");
+                askBtn.title = "Send message";
+            }
+
+            askBtn.addEventListener("click", function (e) {
+                if (state.deleteMode) {
+                    e.preventDefault(); e.stopImmediatePropagation();
+                    if (window.confirm("Delete the entire conversation history?")) {
+                        try { localStorage.removeItem("ged-concierge-history"); } catch (err) { }
+                        chatContainer.innerHTML = "";
+                        if (clearChatBtn) clearChatBtn.click();
+                    }
+                    state.deleteMode = false; updateActionButton(); return;
+                }
+                if (state.paused) {
+                    e.preventDefault(); e.stopImmediatePropagation();
+                    state.paused = false; updateActionButton(); return;
+                }
+                if (state.generating) {
+                    e.preventDefault(); e.stopImmediatePropagation();
+                    state.paused = true; state.generating = false;
+                    if (stopBtn) stopBtn.click();
+                    updateActionButton(); return;
+                }
+                state.generationStart = Date.now();
+            }, true);
+
+            askBtn.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+                state.deleteMode = !state.deleteMode;
+                updateActionButton();
+            });
+
+            var pressTimer = null;
+            askBtn.addEventListener("touchstart", function () {
+                pressTimer = setTimeout(function () {
+                    state.deleteMode = !state.deleteMode;
+                    updateActionButton();
+                }, 700);
+            }, { passive: true });
+            askBtn.addEventListener("touchend", function () { if (pressTimer) clearTimeout(pressTimer); });
+            askBtn.addEventListener("touchcancel", function () { if (pressTimer) clearTimeout(pressTimer); });
+
+            if (resetAllBtn) {
+                resetAllBtn.addEventListener("click", function () {
+                    if (window.confirm("This will delete every saved GED Concierge conversation. Continue?")) {
+                        try { localStorage.removeItem("ged-concierge-history"); } catch (err) { }
+                        chatContainer.innerHTML = "";
+                        if (clearChatBtn) clearChatBtn.click();
+                        state.paused = false; state.generating = false; state.deleteMode = false;
+                        updateActionButton();
+                    }
+                });
+            }
+
+            function extractSources(text) {
+                var urlRegex = /(https?:\/\/[^\s)]+)/g;
+                var matches = text.match(urlRegex) || [];
+                var labelRegex = /(?:fontes?|sources?)\s*:\s*([^\n]+)/i;
+                var labelMatch = text.match(labelRegex);
+                if (labelMatch && labelMatch[1]) {
+                    var tokens = labelMatch[1].split(/[,;|]/).map(function (s) { return s.trim(); }).filter(Boolean);
+                    tokens.forEach(function (t) { if (matches.indexOf(t) === -1) matches.push(t); });
+                }
+                return matches.slice(0, 3);
+            }
+
+            function enhanceMessage(node) {
+                if (!node.classList || !node.classList.contains("chat-message")) return;
+                var body = node.querySelector(".message-body");
+                if (!body) return;
+
+                if (node.classList.contains("assistant") && !body.querySelector(".message-meta")) {
+                    var meta = document.createElement("div");
+                    meta.className = "message-meta";
+                    var elapsed = 0;
+                    if (state.generationStart) {
+                        elapsed = ((Date.now() - state.generationStart) / 1000).toFixed(1);
+                    }
+                    var metaText = elapsed > 0.3 ? "Thought for " + elapsed + "s" : "Ready";
+                    meta.innerHTML = '<span class="meta-icon" aria-hidden="true">✦</span>' + metaText;
+                    body.insertBefore(meta, body.firstChild);
+                }
+
+                if (node.classList.contains("assistant") && !body.querySelector(".message-footer")) {
+                    var footer = document.createElement("div");
+                    footer.className = "message-footer";
+                    var contentEl = node.querySelector(".message-content");
+                    var text = contentEl ? contentEl.textContent : "";
+                    var sources = extractSources(text);
+
+                    if (sources.length) {
+                        var html = '<span class="footer-label">Fonts</span>';
+                        sources.forEach(function (src) {
+                            var label = src.length > 40 ? src.slice(0, 38) + "…" : src;
+                            if (/^https?:\/\//.test(src)) {
+                                html += '<a class="source-chip" href="' + src + '" target="_blank" rel="noopener">' + label + '</a>';
+                            } else {
+                                html += '<span class="source-chip">' + label + '</span>';
+                            }
+                        });
+                        footer.innerHTML = html;
+                    } else {
+                        footer.innerHTML = '<span class="footer-icon" aria-hidden="true">✦</span>' +
+                            'AI can make mistakes — verify important info';
+                    }
+                    body.appendChild(footer);
+                }
+            }
+
+            function enhanceAll() {
+                chatContainer.querySelectorAll(".chat-message").forEach(enhanceMessage);
+            }
+
+            var chatObserver = new MutationObserver(function (mutations) {
+                var shouldUpdateScroll = false;
+                mutations.forEach(function (mutation) {
+                    if (mutation.addedNodes.length) shouldUpdateScroll = true;
+                    mutation.addedNodes.forEach(function (node) {
+                        if (node.nodeType === 1 && node.classList && node.classList.contains("chat-message")) {
+                            if (node.classList.contains("assistant")) {
+                                setTimeout(function () { enhanceMessage(node); }, 60);
+                            } else {
+                                enhanceMessage(node);
+                            }
+                        }
+                    });
+                });
+                if (shouldUpdateScroll) updateScrollButton();
+            });
+
+            chatObserver.observe(chatContainer, { childList: true, subtree: true });
+
+            updateActionButton();
+
+            requestAnimationFrame(function () {
+                enhanceAll();
+                setTimeout(enhanceAll, 250);
+                setTimeout(enhanceAll, 800);
+            });
+
+            var ta = document.getElementById("question");
+            if (ta) {
+                ta.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                        state.generationStart = Date.now();
+                    }
+                }, true);
+            }
+
+            function updateScrollButton() {
+                if (!scrollBottomBtn) return;
+                var distanceFromBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
+                scrollBottomBtn.classList.toggle("visible", distanceFromBottom > 120);
+            }
+
+            if (scrollBottomBtn) {
+                chatContainer.addEventListener("scroll", updateScrollButton, { passive: true });
+                scrollBottomBtn.addEventListener("click", function () {
+                    chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
+                });
+                updateScrollButton();
+            }
+
+        })();
+    </script>
+
+</body>
+
+</html>

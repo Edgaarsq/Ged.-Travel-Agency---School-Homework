@@ -1,1 +1,1 @@
-window.GED_HOTELS=GED_DATA.hotels;
+window.GED_HOTELS = GED_DATA.hotels;

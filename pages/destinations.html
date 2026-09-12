@@ -1,1 +1,2187 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Explore Canada · GED</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/main.css"><link rel="stylesheet" href="../css/liquid-glass.css"><link rel="stylesheet" href="../css/animations.css"><link rel="stylesheet" href="../css/responsive.css"></head><body><header class="site-header"><nav class="nav glass"><a class="brand" href="../index.html"><b>G</b><span>GED</span></a><div class="nav-links"><a href="../index.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a></div><div class="nav-actions"><button class="icon-btn" data-search>⌕</button><a class="nav-about" href="about.html">About</a><button class="menu-btn" data-menu><i></i><i></i></button></div></nav><div class="mobile-menu glass" data-mobile-menu><a href="../index.html">Explore</a><a href="events.html">Events</a><a href="flights.html">Flights</a><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a><a href="about.html">About</a></div></header><main><section class="page-hero"><div class="container"><div class="eyebrow">CANADA · 13 REGIONS</div><h1>Explore<br><em>Canada.</em></h1><p>Major cities, neighbourhoods and wild places — all in one destination explorer.</p></div></section><section class="section"><div class="container"><div class="toolbar"><button class="chip active" data-filter="all">All</button><button class="chip" data-filter="Ontario">Ontario</button><button class="chip" data-filter="Quebec">Quebec</button><button class="chip" data-filter="British Columbia">British Columbia</button><button class="chip" data-filter="Alberta">Alberta</button><button class="chip" data-filter="North">North</button></div><div class="catalog-grid" id="city-grid"></div></div></section></main><footer class="footer"><div class="container"><div class="footer-hero"><div class="eyebrow">GED TRAVEL AGENCY</div><h2>Canada is big.<br><em>Your dreams should be too.</em></h2><a class="btn btn-yellow" href="packages.html#trip-builder">Build your trip ↗</a></div><div class="footer-grid"><div><a class="brand light-brand" href="../index.html"><b>G</b><span>GED</span></a><p>Canada, made accessible.</p></div><div><small>EXPLORE</small><a href="destinations.html">Destinations</a><a href="events.html">Events</a><a href="flights.html">Flights</a></div><div><small>PLAN</small><a href="hotels.html">Hotels</a><a href="packages.html">Packages</a><a href="help.html">Help</a></div><div><small>GED</small><a href="about.html">About</a><a href="about.html#team">Team</a><a href="about.html#technology">Technology</a></div></div><div class="footer-bottom"><span>GED Travel Agency · School Project · 1°D</span><span>Geovana · Edgar · Aline</span><span>Educational project · No commercial transactions</span></div></div></footer><div class="search-overlay" data-search-overlay><div class="search-box glass"><button class="close" data-close-search>×</button><div class="eyebrow dark">GED SEARCH</div><h2>Where are you going?</h2><input data-global-search placeholder="Toronto, events, hotels..."><div class="search-results" data-search-results></div></div></div><script src="../js/canada-data.js"></script><script src="../js/provinces.js"></script><script src="../js/app.js"></script><script src="../js/navigation.js"></script><script src="../js/search.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{const grid=document.querySelector('#city-grid');const imgs=['https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=80'];function draw(filter='all'){grid.innerHTML=GED_DATA.cities.filter(x=>filter==='all'||x[1]===filter||(filter==='North'&&['Yukon','Northwest Territories','Nunavut'].includes(x[1]))).map((x,i)=>`<a class="catalog-card" href="?city=${encodeURIComponent(x[0].toLowerCase())}"><div class="catalog-img" style="background-image:url('${imgs[i%imgs.length]}')"></div><div class="catalog-body"><small>${x[1]}</small><h3>${x[0]}</h3><p>${x[2]} · Explore neighbourhoods, stays and experiences.</p><div class="meta-row"><span>Explore city</span><span>↗</span></div></div></a>`).join('')}draw();document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');draw(b.dataset.filter)})})</script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Explore Canada · GED Travel Agency</title>
+    <meta name="description"
+        content="Explore Canada with GED Travel Agency — major cities, neighbourhoods and iconic places.">
+    <meta name="theme-color" content="#08090c">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/liquid-glass.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+        /* ============================================================
+           DESIGN TOKENS — same as packages.html
+           ============================================================ */
+        :root {
+            --ios-blue: #007aff;
+            --ios-green: #34c759;
+            --ios-orange: #ff9500;
+            --ios-purple: #af52de;
+            --ios-red: #ff3b30;
+            --ios-yellow: #ffc400;
+            --ios-pink: #ff2d55;
+            --ios-teal: #5ac8fa;
+
+            --ios-bg: #f2f2f7;
+            --ios-card: #ffffff;
+            --ios-border: rgba(60, 60, 67, 0.10);
+            --ios-border-strong: rgba(60, 60, 67, 0.18);
+
+            --ios-text: #1c1c1e;
+            --ios-text-2: #3a3a3c;
+            --ios-text-3: #8e8e93;
+
+            --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+            --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .destinations-page {
+            background: var(--ios-bg);
+            color: var(--ios-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .destinations-page * {
+            box-sizing: border-box;
+        }
+
+        /* ============================================================
+           HEADER — identical structure to packages.html
+           ============================================================ */
+        .destinations-page .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding-top: 18px;
+            background: transparent;
+            transition: background 0.3s var(--ease-ios);
+        }
+
+        .destinations-page .site-header.scrolled .nav {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(60, 60, 67, 0.10);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .destinations-page .site-header.scrolled .nav-links a,
+        .destinations-page .site-header.scrolled .nav-about {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        .destinations-page .site-header.scrolled .nav-links a:hover,
+        .destinations-page .site-header.scrolled .nav-links a.active,
+        .destinations-page .site-header.scrolled .nav-about:hover {
+            color: #000;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .destinations-page .site-header.scrolled .icon-btn,
+        .destinations-page .site-header.scrolled .menu-btn {
+            background: rgba(0, 0, 0, 0.05);
+            color: #111;
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .destinations-page .explore-hero {
+            position: relative;
+            min-height: 760px;
+            padding: 170px 0 130px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            isolation: isolate;
+            background: #0a0a0a;
+        }
+
+        .destinations-page .explore-hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: -3;
+            background: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
+            transform: scale(1.06);
+            animation: heroZoom 26s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.06);
+            }
+
+            to {
+                transform: scale(1.14);
+            }
+        }
+
+        .destinations-page .explore-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.58) 0%,
+                    rgba(0, 0, 0, 0.32) 40%,
+                    rgba(0, 0, 0, 0.55) 75%,
+                    rgba(242, 242, 247, 1) 100%),
+                radial-gradient(ellipse at 25% 40%, rgba(255, 210, 26, 0.16), transparent 60%);
+        }
+
+        .destinations-page .explore-hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 1200px;
+        }
+
+        .destinations-page .eyebrow-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 18px 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.96);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            animation: fadeUp 0.8s var(--ease-ios) both;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .destinations-page .eyebrow-pill .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ios-yellow);
+            box-shadow: 0 0 0 4px rgba(255, 196, 0, 0.22);
+            animation: statusPulse 2.4s ease-in-out infinite;
+        }
+
+        .destinations-page .explore-hero h1 {
+            margin: 26px 0 22px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(62px, 9vw, 145px);
+            line-height: 0.86;
+            letter-spacing: -0.075em;
+            font-weight: 700;
+            max-width: 950px;
+            color: #fff;
+            animation: fadeUp 1s 0.1s var(--ease-ios) both;
+        }
+
+        .destinations-page .explore-hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a 0%, #ffb400 50%, #ffe680 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .destinations-page .explore-hero-content>p:not(.eyebrow-pill) {
+            max-width: 580px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.86);
+            margin: 0;
+            animation: fadeUp 1s 0.2s var(--ease-ios) both;
+        }
+
+        .destinations-page .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+            animation: fadeUp 1s 0.3s var(--ease-ios) both;
+        }
+
+        .destinations-page .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+            transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios), background 0.25s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .destinations-page .button-primary {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .destinations-page .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .destinations-page .button-dark {
+            background: #0b0b0b;
+            color: #fff;
+        }
+
+        .destinations-page .button-dark:hover {
+            background: #1a1a1c;
+            transform: translateY(-2px);
+        }
+
+        .destinations-page .hero-secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .destinations-page .hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-3px);
+        }
+
+        .destinations-page .hero-stats-row {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 54px;
+            animation: fadeUp 1s 0.4s var(--ease-ios) both;
+        }
+
+        .destinations-page .hero-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .destinations-page .hero-stat strong {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #fff;
+        }
+
+        .destinations-page .hero-stat span {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* ============================================================
+           SECTION HEADER — identical to packages.html
+           ============================================================ */
+        .destinations-page .section-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 44px;
+        }
+
+        @media (max-width: 900px) {
+            .destinations-page .section-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .destinations-page .section-header h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(42px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.065em;
+            margin: 12px 0 0;
+            color: var(--ios-text);
+        }
+
+        .destinations-page .section-header h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffb400, #ff2d55);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .destinations-page .section-header>p {
+            margin: 0;
+            color: var(--ios-text-3);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .destinations-page .eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin: 0 0 8px;
+        }
+
+        /* ============================================================
+           CATALOG SECTION
+           ============================================================ */
+        .destinations-page .catalog-section {
+            position: relative;
+            z-index: 3;
+            padding: 0 0 100px;
+            margin-top: -60px;
+        }
+
+        /* Filter chips — same as .package-filter */
+        .destinations-page .dest-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+            padding: 18px 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            border-radius: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .destinations-page .dest-filter {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(120, 120, 128, 0.06);
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ios-text-2);
+            cursor: pointer;
+            transition: all 0.24s var(--ease-spring);
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .destinations-page .dest-filter:hover {
+            background: rgba(255, 180, 0, 0.08);
+            border-color: rgba(255, 180, 0, 0.30);
+            color: #b47800;
+            transform: translateY(-1.5px);
+        }
+
+        .destinations-page .dest-filter.active {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            color: #0a0a0a;
+            box-shadow: 0 6px 20px rgba(255, 180, 0, 0.30);
+        }
+
+        /* Catalog grid */
+        .destinations-page .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        @media (max-width: 1000px) {
+            .destinations-page .catalog-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .destinations-page .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .destinations-page .catalog-card {
+            position: relative;
+            display: block;
+            min-height: 460px;
+            overflow: hidden;
+            border-radius: 28px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            isolation: isolate;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+            opacity: 0;
+            transform: translateY(28px) scale(0.985);
+            animation: cardIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+        }
+
+        .destinations-page .catalog-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 32px 90px rgba(0, 0, 0, 0.20);
+        }
+
+        .destinations-page .catalog-img {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: -1;
+        }
+
+        .destinations-page .catalog-card:hover .catalog-img {
+            transform: scale(1.08);
+        }
+
+        .destinations-page .catalog-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.92) 0%,
+                    rgba(0, 0, 0, 0.55) 40%,
+                    rgba(0, 0, 0, 0.10) 75%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .destinations-page .catalog-number {
+            position: absolute;
+            z-index: 2;
+            top: 22px;
+            right: 22px;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .destinations-page .catalog-body {
+            position: absolute;
+            z-index: 2;
+            left: 30px;
+            right: 30px;
+            bottom: 28px;
+        }
+
+        .destinations-page .catalog-body small {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .destinations-page .catalog-body h3 {
+            margin: 0 0 10px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(30px, 3.4vw, 40px);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .destinations-page .catalog-body p {
+            max-width: 400px;
+            margin: 0 0 18px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .destinations-page .meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .destinations-page .meta-row span:last-child {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fff;
+            color: #0a0a0a;
+            font-size: 17px;
+            font-weight: 800;
+            transition: all 0.25s var(--ease-spring);
+        }
+
+        .destinations-page .catalog-card:hover .meta-row span:last-child {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            transform: rotate(45deg) scale(1.08);
+            box-shadow: 0 10px 26px rgba(255, 180, 0, 0.35);
+        }
+
+        .destinations-page .catalog-empty {
+            grid-column: 1 / -1;
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--ios-text-3);
+            font-size: 15px;
+        }
+
+        /* ============================================================
+           CITY DETAIL HERO
+           ============================================================ */
+        .destinations-page .detail-page {
+            padding: 20px 0 110px;
+        }
+
+        .destinations-page .destination-hero {
+            position: relative;
+            width: min(1400px, calc(100% - 40px));
+            min-height: 660px;
+            margin: 100px auto 0;
+            overflow: hidden;
+            border-radius: 40px;
+            background: #111;
+            color: #fff;
+            isolation: isolate;
+        }
+
+        @media (max-width: 700px) {
+            .destinations-page .destination-hero {
+                width: calc(100% - 20px);
+                min-height: 560px;
+                border-radius: 28px;
+                margin-top: 90px;
+            }
+        }
+
+        .destinations-page .destination-hero-media {
+            position: absolute;
+            inset: -3%;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.04);
+            z-index: -2;
+            animation: heroImageIn 1.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .destinations-page .destination-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.86) 0%,
+                    rgba(0, 0, 0, 0.62) 30%,
+                    rgba(0, 0, 0, 0.20) 65%,
+                    rgba(0, 0, 0, 0.08) 100%),
+                linear-gradient(to top,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    transparent 55%);
+        }
+
+        .destinations-page .destination-hero-content {
+            position: relative;
+            z-index: 2;
+            width: calc(100% - 100px);
+            max-width: 1200px;
+            min-height: 660px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 100px 0 60px;
+        }
+
+        @media (max-width: 700px) {
+            .destinations-page .destination-hero-content {
+                width: calc(100% - 44px);
+                min-height: 560px;
+                padding: 80px 0 40px;
+            }
+        }
+
+        .destinations-page .destination-back {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, 0.22);
+            background: rgba(0, 0, 0, 0.28);
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.25s var(--ease-spring);
+        }
+
+        .destinations-page .destination-back:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .destinations-page .destination-kicker {
+            margin-bottom: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.20em;
+            text-transform: uppercase;
+            animation: fadeUp 0.7s 0.05s var(--ease-ios) both;
+        }
+
+        .destinations-page .destination-title {
+            margin: 0;
+            max-width: 1000px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(72px, 11vw, 165px);
+            line-height: 0.78;
+            letter-spacing: -0.09em;
+            font-weight: 700;
+            color: #fff;
+            animation: fadeUp 0.8s 0.10s var(--ease-ios) both;
+        }
+
+        .destinations-page .destination-tagline {
+            max-width: 650px;
+            margin: 24px 0 0;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.45;
+            animation: fadeUp 0.8s 0.18s var(--ease-ios) both;
+        }
+
+        .destinations-page .destination-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+            animation: fadeUp 0.8s 0.25s var(--ease-ios) both;
+        }
+
+        .destinations-page .destination-meta span {
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, 0.22);
+            background: rgba(0, 0, 0, 0.28);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 11.5px;
+            font-weight: 600;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* ============================================================
+           CITY BODY
+           ============================================================ */
+        .destinations-page .destination-shell {
+            width: min(1240px, calc(100% - 64px));
+            margin: 0 auto;
+            padding: 80px 0 100px;
+        }
+
+        @media (max-width: 700px) {
+            .destinations-page .destination-shell {
+                width: calc(100% - 32px);
+                padding: 60px 0 70px;
+            }
+        }
+
+        .destinations-page .destination-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+            gap: 70px;
+            margin-bottom: 90px;
+        }
+
+        @media (max-width: 1000px) {
+            .destinations-page .destination-intro {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                margin-bottom: 70px;
+            }
+        }
+
+        .destinations-page .destination-intro h2 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(50px, 6vw, 82px);
+            line-height: 0.88;
+            letter-spacing: -0.075em;
+            color: var(--ios-text);
+        }
+
+        .destinations-page .destination-intro h2 em {
+            display: block;
+            font-style: normal;
+            background: linear-gradient(135deg, #ffb400, #ff2d55);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .destinations-page .destination-description {
+            margin: 0 0 28px;
+            color: var(--ios-text-2);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .destinations-page .destination-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .destinations-page .detail-section {
+            margin-bottom: 90px;
+        }
+
+        .destinations-page .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlights */
+        .destinations-page .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (max-width: 1000px) {
+            .destinations-page .highlights-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .destinations-page .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .destinations-page .highlight-card {
+            min-height: 210px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            border-radius: 22px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            transform: translateY(25px);
+            animation: fadeUp 0.7s var(--ease-ios) forwards;
+            transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-ios);
+        }
+
+        .destinations-page .highlight-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.10);
+        }
+
+        .destinations-page .highlight-number {
+            color: var(--ios-text-3);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .destinations-page .highlight-card h3 {
+            margin: 18px 0 8px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            font-weight: 700;
+            color: var(--ios-text);
+        }
+
+        .destinations-page .highlight-card p {
+            margin: 0;
+            color: var(--ios-text-3);
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        /* Neighborhoods */
+        .destinations-page .neighborhood-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .destinations-page .neighborhood-card {
+            position: relative;
+            min-height: 400px;
+            grid-column: span 4;
+            overflow: hidden;
+            border-radius: 28px;
+            background: #111;
+            color: #fff;
+            isolation: isolate;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.75s var(--ease-ios) forwards;
+            transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-ios);
+        }
+
+        .destinations-page .neighborhood-card:nth-child(1),
+        .destinations-page .neighborhood-card:nth-child(4) {
+            grid-column: span 6;
+        }
+
+        .destinations-page .neighborhood-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 65px rgba(0, 0, 0, 0.16);
+        }
+
+        @media (max-width: 1000px) {
+
+            .destinations-page .neighborhood-card,
+            .destinations-page .neighborhood-card:nth-child(1),
+            .destinations-page .neighborhood-card:nth-child(4) {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .destinations-page .neighborhood-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destinations-page .neighborhood-card,
+            .destinations-page .neighborhood-card:nth-child(1),
+            .destinations-page .neighborhood-card:nth-child(4) {
+                grid-column: span 1;
+                min-height: 340px;
+            }
+        }
+
+        .destinations-page .neighborhood-image {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .destinations-page .neighborhood-card:hover .neighborhood-image {
+            transform: scale(1.08);
+        }
+
+        .destinations-page .neighborhood-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.88) 0%,
+                    rgba(0, 0, 0, 0.45) 40%,
+                    rgba(0, 0, 0, 0.05) 75%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .destinations-page .neighborhood-index {
+            position: absolute;
+            z-index: 2;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            border: 0.5px solid rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .destinations-page .neighborhood-content {
+            position: absolute;
+            z-index: 2;
+            left: 26px;
+            right: 26px;
+            bottom: 24px;
+        }
+
+        .destinations-page .neighborhood-content small {
+            display: block;
+            color: rgba(255, 255, 255, 0.60);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .destinations-page .neighborhood-content h3 {
+            margin: 0 0 8px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 28px;
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .destinations-page .neighborhood-content p {
+            max-width: 500px;
+            margin: 0 0 14px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .destinations-page .neighborhood-content a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffd21a;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 700;
+            transition: gap 0.25s var(--ease-ios);
+        }
+
+        .destinations-page .neighborhood-content a:hover {
+            gap: 12px;
+        }
+
+        /* Final CTA */
+        .destinations-page .destination-final {
+            position: relative;
+            padding: 55px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            border-radius: 32px;
+            background: #090909;
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        @media (max-width: 800px) {
+            .destinations-page .destination-final {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 40px 32px;
+                gap: 24px;
+            }
+        }
+
+        .destinations-page .destination-final::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            right: -150px;
+            top: -200px;
+            border-radius: 50%;
+            background: rgba(255, 210, 26, 0.14);
+            filter: blur(30px);
+            z-index: -1;
+        }
+
+        .destinations-page .destination-final .eyebrow {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .destinations-page .destination-final h2 {
+            margin: 10px 0 0;
+            max-width: 700px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(42px, 5vw, 72px);
+            line-height: 0.9;
+            letter-spacing: -0.07em;
+            color: #fff;
+        }
+
+        .destinations-page .destination-final h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .destinations-page .destination-final p {
+            max-width: 600px;
+            margin: 18px 0 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           FOOTER — identical to packages.html
+           ============================================================ */
+        .destinations-page .site-footer {
+            background: #070707;
+            color: #fff;
+            padding: 80px 0 28px;
+        }
+
+        .destinations-page .site-footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 720px) {
+            .destinations-page .site-footer .container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        .destinations-page .site-footer .brand {
+            color: #fff;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .destinations-page .site-footer .brand small {
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+        }
+
+        .destinations-page .site-footer p {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 13px;
+            margin: 4px 0 0;
+        }
+
+        .destinations-page .site-footer strong {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 12px;
+        }
+
+        /* ============================================================
+           KEYFRAMES
+           ============================================================ */
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(28px) scale(0.985);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroImageIn {
+            from {
+                opacity: 0;
+                transform: scale(1.12);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+
+        @keyframes statusPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(0.85);
+                opacity: 0.7;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .destinations-page *,
+            .destinations-page *::before,
+            .destinations-page *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .destinations-page :focus-visible {
+            outline: 3px solid rgba(255, 196, 0, 0.55);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+    </style>
+
+</head>
+
+
+<body class="destinations-page">
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+    <header class="site-header" id="site-header">
+        <nav class="nav glass" aria-label="Main navigation">
+            <a class="brand" href="../index.html" aria-label="GED Home">
+                <b>G</b><span>GED</span>
+            </a>
+            <div class="nav-links">
+                <a class="active" href="destinations.html" aria-current="page">Explore</a>
+                <a href="events.html">Events</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="packages.html">Packages</a>
+                <a href="help.html">Help</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search aria-label="Search" title="Search">⌕</button>
+                <a class="nav-about" href="about.html">About</a>
+                <button class="menu-btn" type="button" data-menu aria-label="Open menu">
+                    <i></i><i></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu glass" data-mobile-menu aria-hidden="true">
+            <a href="destinations.html" aria-current="page">Explore</a>
+            <a href="events.html">Events</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="packages.html">Packages</a>
+            <a href="help.html">Help</a>
+            <a href="about.html">About</a>
+        </div>
+    </header>
+
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+    <main>
+
+        <!-- =====================================================
+             CATALOG VIEW
+             ====================================================== -->
+        <div id="catalog-view">
+
+            <!-- ============================================================
+                 HERO
+                 ============================================================ -->
+            <section class="explore-hero">
+                <div class="explore-hero-media"></div>
+                <div class="explore-hero-overlay"></div>
+
+                <div class="container explore-hero-content">
+
+                    <div class="eyebrow-pill">
+                        <span class="pill-dot" aria-hidden="true"></span>
+                        GED / Explore Canada
+                    </div>
+
+                    <h1>
+                        Explore<br>
+                        <em>Canada.</em>
+                    </h1>
+
+                    <p>
+                        Major cities, distinctive neighbourhoods, iconic places and
+                        unforgettable experiences — all in one destination explorer.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#catalog">
+                            Browse destinations
+                            <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="button hero-secondary" href="packages.html#trip-builder">
+                            Build a trip
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats-row">
+                        <div class="hero-stat">
+                            <strong data-counter="13">0</strong>
+                            <span>Regions</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="14">0</strong>
+                            <span>Cities</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="60" data-suffix="+">0</strong>
+                            <span>Neighbourhoods</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong>∞</strong>
+                            <span>Ways to explore</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ============================================================
+                 CATALOG
+                 ============================================================ -->
+            <section class="catalog-section" id="catalog">
+                <div class="container">
+
+                    <div class="section-header reveal">
+                        <div>
+                            <p class="eyebrow">GED destinations</p>
+                            <h2>Where will <em>you go?</em></h2>
+                        </div>
+                        <p>
+                            Explore Canada's most interesting cities, from metropolitan
+                            centres to northern landscapes. Pick a city and start
+                            building your own trip.
+                        </p>
+                    </div>
+
+                    <!-- Filters (built dynamically from data) -->
+                    <div class="dest-filters reveal" id="destFilters" role="tablist" aria-label="Filter destinations">
+                        <button class="dest-filter active" data-filter="all" type="button" role="tab">
+                            All destinations
+                        </button>
+                    </div>
+
+                    <!-- City grid -->
+                    <div class="catalog-grid" id="city-grid" aria-live="polite"></div>
+
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- =====================================================
+             CITY DETAIL VIEW
+             ====================================================== -->
+        <div id="city-view" class="detail-page" style="display:none"></div>
+
+    </main>
+
+
+    <!-- ============================================================
+         FOOTER — identical to packages.html
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div>
+                <a class="brand" href="../index.html">
+                    <span>GED</span>
+                    <small>TRAVEL AGENCY</small>
+                </a>
+                <p>Explore Canada with a trip designed around you.</p>
+            </div>
+            <div>
+                <strong>Project</strong>
+                <p>Geovana · Edgar · Aline</p>
+                <p>School Project · 1°D</p>
+            </div>
+            <div>
+                <strong>Notice</strong>
+                <p>Educational project · No commercial transactions.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================
+         SEARCH OVERLAY
+         ============================================================ -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+        <div class="search-box glass" role="dialog" aria-modal="true" aria-labelledby="search-title">
+            <button class="close" type="button" data-close-search aria-label="Close search">×</button>
+            <div class="eyebrow dark">GED SEARCH</div>
+            <h2 id="search-title">Where are you going?</h2>
+            <input type="search" data-global-search placeholder="Toronto, events, hotels..." autocomplete="off">
+            <div class="search-results" data-search-results aria-live="polite"></div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         SCRIPTS
+         ============================================================ -->
+    <script src="../js/canada-data.js"></script>
+    <script src="../js/provinces.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/search.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+
+            /* =====================================================
+               HEADER SCROLLED STATE
+               ===================================================== */
+            const header = document.getElementById("site-header");
+            if (header) {
+                const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+                window.addEventListener("scroll", onScroll, { passive: true });
+                onScroll();
+            }
+
+
+            /* =====================================================
+               ELEMENTS
+               ===================================================== */
+            const catalog = document.querySelector("#catalog-view");
+            const cityView = document.querySelector("#city-view");
+            const grid = document.querySelector("#city-grid");
+            const filtersBar = document.querySelector("#destFilters");
+
+            if (!grid || !catalog || !cityView) return;
+
+
+            /* =====================================================
+               CITY DETAILS — rich metadata (imagens, descrições)
+               ===================================================== */
+            const CITY_DETAILS = {
+
+                Toronto: {
+                    province: "Ontario",
+                    image: "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Canada's largest city.",
+                    description: "Toronto combines modern architecture, multicultural neighbourhoods, waterfront views and some of Canada's most iconic attractions.",
+                    highlights: ["CN Tower", "Distillery District", "Royal Ontario Museum", "Toronto Waterfront"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=90", description: "The energetic heart of Toronto, surrounded by skyscrapers, restaurants, shopping and major attractions." },
+                        "Yorkville": { image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=90", description: "An elegant neighbourhood known for luxury shopping, galleries, restaurants and sophisticated streets." },
+                        "Scarborough": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A diverse area with parks, cultural experiences and access to the famous Scarborough Bluffs." },
+                        "North York": { image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90", description: "A modern urban district with shopping, parks, restaurants and a quieter atmosphere." },
+                        "Etobicoke": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A greener part of Toronto with waterfront parks, trails and residential neighbourhoods." }
+                    }
+                },
+
+                Ottawa: {
+                    province: "Ontario",
+                    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Canada's capital.",
+                    description: "Ottawa blends Canadian history, government architecture, museums, green spaces and the character of the Ottawa River.",
+                    highlights: ["Parliament Hill", "Rideau Canal", "ByWard Market", "Canadian Museum of History"],
+                    neighborhoods: {
+                        "ByWard Market": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A lively historic district filled with restaurants, cafés, shops and nightlife." },
+                        "Glebe": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "A walkable neighbourhood with local shops, restaurants and access to parks." },
+                        "Centretown": { image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90", description: "A central urban area close to museums, restaurants and Ottawa's main attractions." },
+                        "Westboro": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A relaxed neighbourhood known for independent businesses, cafés and outdoor activities." },
+                        "Sandy Hill": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A historic neighbourhood near the University of Ottawa and Rideau River." }
+                    }
+                },
+
+                "Montréal": {
+                    province: "Quebec",
+                    image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Where European character meets North America.",
+                    description: "Montréal is a city of architecture, food, art, festivals and neighbourhoods with distinct personalities.",
+                    highlights: ["Old Montréal", "Mount Royal", "Notre-Dame Basilica", "Montréal Old Port"],
+                    neighborhoods: {
+                        "Le Plateau-Mont-Royal": { image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90", description: "Colourful streets, cafés, restaurants, murals and classic Montréal architecture." },
+                        "Old Montréal": { image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90", description: "Historic streets, stone buildings, galleries, restaurants and the Old Port." },
+                        "Mile End": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A creative neighbourhood famous for cafés, music, food and independent culture." },
+                        "Downtown": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "Montréal's commercial centre with shopping, museums, offices and nightlife." },
+                        "Griffintown": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A rapidly evolving district with modern architecture, restaurants and waterfront access." }
+                    }
+                },
+
+                "Québec City": {
+                    province: "Quebec",
+                    image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "History at every corner.",
+                    description: "Québec City offers historic architecture, European-inspired streets, winter experiences and a unique French-Canadian identity.",
+                    highlights: ["Vieux-Québec", "Château Frontenac", "Petit-Champlain", "Plains of Abraham"],
+                    neighborhoods: {
+                        "Vieux-Québec": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "The historic heart of Québec City, surrounded by fortified walls and centuries of history." },
+                        "Sainte-Foy": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A modern district with shopping, universities and convenient access to the city." },
+                        "Saint-Roch": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A creative and urban neighbourhood filled with restaurants, shops and nightlife." },
+                        "Montcalm": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "A cultural neighbourhood near museums, galleries and the Plains of Abraham." },
+                        "Limoilou": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A local residential district with parks, cafés and a strong community atmosphere." }
+                    }
+                },
+
+                Vancouver: {
+                    province: "British Columbia",
+                    image: "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Mountains. Ocean. City.",
+                    description: "Vancouver places a modern Pacific city between mountains, forests and the ocean.",
+                    highlights: ["Stanley Park", "Granville Island", "Grouse Mountain", "Vancouver Waterfront"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1200&q=90", description: "The urban centre of Vancouver surrounded by skyscrapers, parks and the waterfront." },
+                        "Gastown": { image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90", description: "Historic streets, restaurants, design stores and the famous steam clock." },
+                        "Yaletown": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "A modern waterfront neighbourhood filled with restaurants, cafés and converted warehouses." },
+                        "Kitsilano": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "Relaxed beaches, outdoor activities and views toward the mountains." },
+                        "West End": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A green and walkable neighbourhood beside Stanley Park and English Bay." }
+                    }
+                },
+
+                Victoria: {
+                    province: "British Columbia",
+                    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Pacific elegance.",
+                    description: "Victoria combines coastal scenery, gardens, historic architecture and a relaxed West Coast atmosphere.",
+                    highlights: ["Inner Harbour", "Butchart Gardens", "Royal BC Museum", "Beacon Hill Park"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "The centre of Victoria with historic buildings, restaurants and the Inner Harbour." },
+                        "James Bay": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A peaceful waterfront neighbourhood near parks and major attractions." },
+                        "Fernwood": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A creative residential neighbourhood known for local cafés and community culture." },
+                        "Fairfield": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A leafy area close to beaches, parks and scenic walking routes." },
+                        "Cook Street Village": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A compact village-like area with cafés, restaurants and a local atmosphere." }
+                    }
+                },
+
+                Calgary: {
+                    province: "Alberta",
+                    image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "City energy. Mountain access.",
+                    description: "Calgary is a modern Alberta city and a gateway to the Canadian Rockies.",
+                    highlights: ["Calgary Tower", "Canadian Rockies", "Calgary Stampede", "Bow River"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "Calgary's business and cultural centre surrounded by the Bow River." },
+                        "Beltline": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "A lively central district with restaurants, nightlife and modern city life." },
+                        "Kensington": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "A walkable neighbourhood filled with cafés, shops and independent businesses." },
+                        "Inglewood": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A historic and creative district known for local businesses and culture." },
+                        "Mission": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A vibrant inner-city area with restaurants, river pathways and nightlife." }
+                    }
+                },
+
+                Banff: {
+                    province: "Alberta",
+                    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "The Rockies at your doorstep.",
+                    description: "Banff is surrounded by dramatic mountain landscapes, turquoise lakes, wildlife and spectacular outdoor experiences.",
+                    highlights: ["Banff National Park", "Lake Louise", "Banff Avenue", "Sulphur Mountain"],
+                    neighborhoods: {
+                        "Town Centre": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "The lively heart of Banff with restaurants, shops, galleries and mountain views." },
+                        "Tunnel Mountain": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A peaceful area surrounded by forests, trails and spectacular mountain scenery." },
+                        "Sundance": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A scenic area close to trails, rivers and the wilderness of Banff National Park." }
+                    }
+                },
+
+                Edmonton: {
+                    province: "Alberta",
+                    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Big skies. Bigger possibilities.",
+                    description: "Edmonton combines festivals, river valleys, modern attractions and Alberta's northern landscape.",
+                    highlights: ["West Edmonton Mall", "River Valley", "Muttart Conservatory", "Old Strathcona"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "The urban centre with restaurants, attractions and access to the river valley." },
+                        "Old Strathcona": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A lively district famous for festivals, restaurants, nightlife and local culture." },
+                        "Oliver": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A central residential area close to parks, restaurants and downtown." },
+                        "Glenora": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A peaceful neighbourhood surrounded by trees and river valley scenery." },
+                        "Garneau": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A university-area neighbourhood with cafés, shops and cultural venues." }
+                    }
+                },
+
+                Winnipeg: {
+                    province: "Manitoba",
+                    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Culture at the crossroads.",
+                    description: "Winnipeg brings together Indigenous culture, museums, historic districts and prairie-city energy.",
+                    highlights: ["The Forks", "Canadian Museum for Human Rights", "Exchange District", "Assiniboine Park"],
+                    neighborhoods: {
+                        "The Forks": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A major meeting place where Winnipeg's rivers, food and culture come together." },
+                        "Exchange District": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "Historic architecture, restaurants, galleries and creative spaces." },
+                        "Osborne Village": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "A lively neighbourhood with local businesses, restaurants and nightlife." },
+                        "Corydon": { image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90", description: "A popular dining and entertainment district with a strong local identity." },
+                        "St. Boniface": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "Winnipeg's historic Francophone district with cultural landmarks and cafés." }
+                    }
+                },
+
+                Halifax: {
+                    province: "Nova Scotia",
+                    image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Atlantic energy.",
+                    description: "Halifax combines ocean views, maritime history, colourful waterfronts and a vibrant cultural scene.",
+                    highlights: ["Halifax Waterfront", "Citadel National Historic Site", "Peggy's Cove", "Maritime Museum"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "The centre of Halifax with the waterfront, restaurants and historic attractions." },
+                        "North End": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A creative district with cafés, breweries, restaurants and local culture." },
+                        "South End": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A leafy area near universities, parks and the waterfront." },
+                        "West End": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A residential district with shopping, parks and easy access to central Halifax." },
+                        "Dartmouth": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "Across the harbour, offering waterfront views and a growing food scene." }
+                    }
+                },
+
+                Whitehorse: {
+                    province: "Yukon",
+                    image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Gateway to the North.",
+                    description: "Whitehorse is a northern city surrounded by wilderness, rivers and spectacular skies.",
+                    highlights: ["Yukon River", "Miles Canyon", "Northern Lights", "Kwanlin Dün Cultural Centre"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90", description: "The compact centre of Whitehorse with restaurants, museums and local culture." },
+                        "Riverdale": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A residential area beside the Yukon River." },
+                        "Porter Creek": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A peaceful neighbourhood surrounded by northern nature." },
+                        "Copper Ridge": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "A newer residential area with expansive northern views." }
+                    }
+                },
+
+                Yellowknife: {
+                    province: "Northwest Territories",
+                    image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Under the northern lights.",
+                    description: "Yellowknife is one of Canada's most distinctive northern destinations, famous for Arctic landscapes and aurora viewing.",
+                    highlights: ["Aurora viewing", "Great Slave Lake", "Old Town", "Northern culture"],
+                    neighborhoods: {
+                        "Downtown": { image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90", description: "The compact centre with restaurants, services and northern culture." },
+                        "Old Town": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "Yellowknife's historic lakeside district with colourful buildings and incredible views." },
+                        "Frame Lake": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A central area surrounding Frame Lake and urban amenities." },
+                        "Range Lake": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "A residential neighbourhood close to parks and lakes." },
+                        "Niven Lake": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A modern neighbourhood surrounded by northern scenery." }
+                    }
+                },
+
+                Iqaluit: {
+                    province: "Nunavut",
+                    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+                    tagline: "Canada's Arctic frontier.",
+                    description: "Iqaluit offers an introduction to Nunavut's Arctic environment, Inuit culture and dramatic northern landscapes.",
+                    highlights: ["Sylvia Grinnell Territorial Park", "Inuit culture", "Frobisher Bay", "Arctic landscapes"],
+                    neighborhoods: {
+                        "Apex": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "A historic community beside Frobisher Bay." },
+                        "Lower Base": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A central area close to the water and local services." },
+                        "Upper Base": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A northern residential district with wide Arctic views." },
+                        "Happy Valley": { image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90", description: "A residential area surrounded by Arctic terrain." },
+                        "Tundra Valley": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A quieter area surrounded by open northern landscapes." }
+                    }
+                }
+            };
+
+
+            /* =====================================================
+               DATA LOADING — cities.json + neighborhoods.json + provinces.json
+               Cada fetch tem fallback automático.
+               ===================================================== */
+
+            const FALLBACK_CITIES = Object.keys(CITY_DETAILS).map(name => ({
+                name,
+                province: CITY_DETAILS[name].province,
+                neighborhood: Object.keys(CITY_DETAILS[name].neighborhoods)[0] || "Downtown"
+            }));
+
+            async function safeFetchJSON(path) {
+                try {
+                    const res = await fetch(path);
+                    if (!res.ok) throw new Error(res.status);
+                    return await res.json();
+                } catch (err) {
+                    console.warn("[destinations] Could not load " + path, err);
+                    return null;
+                }
+            }
+
+            const [citiesRaw, neighborhoodsRaw, provincesRaw] = await Promise.all([
+                safeFetchJSON("../data/cities.json"),
+                safeFetchJSON("../data/neighborhoods.json"),
+                safeFetchJSON("../data/provinces.json")
+            ]);
+
+            const citiesData = (citiesRaw && Array.isArray(citiesRaw.cities) && citiesRaw.cities.length)
+                ? citiesRaw.cities
+                : FALLBACK_CITIES;
+
+            const neighborhoodsData = (neighborhoodsRaw && typeof neighborhoodsRaw === "object")
+                ? neighborhoodsRaw
+                : {};
+
+            const provincesData = (provincesRaw && Array.isArray(provincesRaw.regions))
+                ? provincesRaw.regions
+                : [];
+
+
+            /* =====================================================
+               MERGE — combina cities + neighborhoods + details
+               ===================================================== */
+            const CITIES = citiesData
+                .filter(c => c && c.name)
+                .map(c => {
+                    const details = CITY_DETAILS[c.name] || {};
+                    const baseNeighborhoods = neighborhoodsData[c.name];
+                    const detailsNeighborhoods = details.neighborhoods || {};
+
+                    // Mescla: lista de neighborhoods do JSON + detalhes hardcoded
+                    const mergedNeighborhoods = {};
+                    const listToUse = Array.isArray(baseNeighborhoods) && baseNeighborhoods.length
+                        ? baseNeighborhoods
+                        : Object.keys(detailsNeighborhoods);
+
+                    listToUse.forEach(nName => {
+                        const nDetail = detailsNeighborhoods[nName];
+                        mergedNeighborhoods[nName] = nDetail
+                            ? { ...nDetail }
+                            : {
+                                image: details.image || "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                                description: "Explore this neighbourhood in " + c.name + "."
+                            };
+                    });
+
+                    // Fallback caso nenhum bairro exista
+                    if (!Object.keys(mergedNeighborhoods).length) {
+                        const fallbackName = c.neighborhood || "Downtown";
+                        mergedNeighborhoods[fallbackName] = {
+                            image: details.image || "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                            description: "Explore " + fallbackName + " in " + c.name + "."
+                        };
+                    }
+
+                    return {
+                        name: c.name,
+                        province: c.province || details.province || "Canada",
+                        neighborhood: c.neighborhood || Object.keys(mergedNeighborhoods)[0] || "",
+                        image: details.image || "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+                        tagline: details.tagline || ("Discover " + c.name + "."),
+                        description: details.description || ("Explore " + c.name + ", " + (c.province || "Canada") + "."),
+                        highlights: Array.isArray(details.highlights) && details.highlights.length
+                            ? details.highlights
+                            : ["Explore the city", "Local culture", "Signature places", "Hidden gems"],
+                        neighborhoods: mergedNeighborhoods
+                    };
+                });
+
+            const CITY_INDEX = {};
+            CITIES.forEach(c => { CITY_INDEX[c.name] = c; });
+
+
+            /* =====================================================
+               HELPERS
+               ===================================================== */
+            function slugify(value) {
+                return String(value)
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/^-+|-+$/g, "");
+            }
+
+            function cityNameFromSlug(slug) {
+                const found = CITIES.find(c => slugify(c.name) === slug);
+                return found ? found.name : null;
+            }
+
+            function escapeHTML(value) {
+                return String(value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+
+            /* =====================================================
+               COUNTERS (hero stats)
+               ===================================================== */
+            const counters = document.querySelectorAll("[data-counter]");
+
+            function animateCounter(el) {
+                const target = Number(el.dataset.counter);
+                const suffix = el.dataset.suffix || "";
+                const duration = 1400;
+                const start = performance.now();
+
+                function tick(now) {
+                    const t = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    el.textContent = Math.round(eased * target) + suffix;
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+
+            if ("IntersectionObserver" in window) {
+                const counterObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.4 });
+                counters.forEach(c => counterObserver.observe(c));
+            } else {
+                counters.forEach(animateCounter);
+            }
+
+
+            /* =====================================================
+               DYNAMIC FILTERS
+               ===================================================== */
+            const NORTH_REGIONS = ["Yukon", "Northwest Territories", "Nunavut"];
+
+            function buildFilters() {
+                if (!filtersBar) return;
+
+                const seen = new Set();
+                const provinces = [];
+                CITIES.forEach(c => {
+                    if (!seen.has(c.province)) {
+                        seen.add(c.province);
+                        provinces.push(c.province);
+                    }
+                });
+
+                const hasNorth = provinces.some(p => NORTH_REGIONS.includes(p));
+
+                const chips = [
+                    `<button class="dest-filter active" data-filter="all" type="button" role="tab">All destinations</button>`
+                ];
+
+                provinces
+                    .filter(p => !NORTH_REGIONS.includes(p))
+                    .forEach(p => {
+                        chips.push(`<button class="dest-filter" data-filter="${escapeHTML(p)}" type="button" role="tab">${escapeHTML(p)}</button>`);
+                    });
+
+                if (hasNorth) {
+                    chips.push(`<button class="dest-filter" data-filter="North" type="button" role="tab">North</button>`);
+                }
+
+                filtersBar.innerHTML = chips.join("");
+
+                filtersBar.querySelectorAll("[data-filter]").forEach(button => {
+                    button.addEventListener("click", () => {
+                        filtersBar.querySelectorAll("[data-filter]").forEach(item => item.classList.remove("active"));
+                        button.classList.add("active");
+                        renderCatalog(button.dataset.filter);
+
+                        const gridTop = grid.getBoundingClientRect().top + window.scrollY - 25;
+                        window.scrollTo({ top: gridTop, behavior: "smooth" });
+                    });
+                });
+            }
+
+
+            /* =====================================================
+               CATALOG RENDER
+               ===================================================== */
+            function renderCatalog(filter = "all") {
+
+                const cities = CITIES.filter(city => {
+                    if (filter === "all") return true;
+                    if (filter === "North") return NORTH_REGIONS.includes(city.province);
+                    return city.province === filter;
+                });
+
+                if (!cities.length) {
+                    grid.innerHTML = `<div class="catalog-empty">No destinations found.</div>`;
+                    return;
+                }
+
+                grid.innerHTML = cities.map((city, index) => {
+                    const firstHood = Object.keys(city.neighborhoods)[0] || city.neighborhood;
+
+                    return `
+                        <a class="catalog-card"
+                           href="destinations.html?city=${encodeURIComponent(slugify(city.name))}"
+                           style="animation-delay:${index * 65}ms">
+
+                            <div class="catalog-img" style="background-image:url('${city.image}')"></div>
+
+                            <span class="catalog-number">
+                                ${String(index + 1).padStart(2, "0")}
+                            </span>
+
+                            <div class="catalog-body">
+                                <small>${escapeHTML(city.province)} · Canada</small>
+
+                                <h3>${escapeHTML(city.name)}</h3>
+
+                                <p>
+                                    ${escapeHTML(firstHood)}
+                                    · Explore neighbourhoods, stays and experiences.
+                                </p>
+
+                                <div class="meta-row">
+                                    <span>Explore city</span>
+                                    <span aria-hidden="true">↗</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join("");
+            }
+
+
+            /* =====================================================
+               CITY DETAIL RENDER
+               ===================================================== */
+            function renderCity(cityName) {
+
+                const city = CITY_INDEX[cityName];
+                if (!city) { showCatalog(); return; }
+
+                catalog.style.display = "none";
+                cityView.style.display = "block";
+
+                document.title = `${cityName} · GED Travel Agency`;
+
+                const neighborhoods = Object.entries(city.neighborhoods);
+
+                cityView.innerHTML = `
+                    <section class="destination-hero">
+                        <div class="destination-hero-media"
+                             style="background-image:url('${city.image}')"></div>
+
+                        <div class="destination-hero-content">
+                            <a href="destinations.html" class="destination-back">
+                                ← All destinations
+                            </a>
+
+                            <div class="destination-kicker">
+                                ${escapeHTML(city.province)} · CANADA
+                            </div>
+
+                            <h1 class="destination-title">
+                                ${escapeHTML(cityName)}.
+                            </h1>
+
+                            <p class="destination-tagline">
+                                ${escapeHTML(city.tagline)}
+                            </p>
+
+                            <div class="destination-meta">
+                                <span>${escapeHTML(city.province)}</span>
+                                <span>${neighborhoods.length} neighbourhoods</span>
+                                <span>Canada</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="destination-shell">
+
+                        <!-- INTRO -->
+                        <section class="destination-intro">
+                            <div>
+                                <p class="eyebrow">${escapeHTML(city.province.toUpperCase())}</p>
+                                <h2>Discover <em>${escapeHTML(cityName)}</em></h2>
+                            </div>
+
+                            <div>
+                                <p class="destination-description">
+                                    ${escapeHTML(city.description)}
+                                </p>
+
+                                <div class="destination-actions">
+                                    <a class="button button-primary"
+                                       href="packages.html?city=${encodeURIComponent(slugify(cityName))}#trip-builder">
+                                        Build a ${escapeHTML(cityName)} trip ↗
+                                    </a>
+
+                                    <a class="button button-dark"
+                                       href="events.html?city=${encodeURIComponent(slugify(cityName))}">
+                                        Explore events
+                                    </a>
+
+                                    <a class="button button-dark"
+                                       href="hotels.html?city=${encodeURIComponent(slugify(cityName))}">
+                                        Find hotels
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- HIGHLIGHTS -->
+                        <section class="detail-section">
+                            <div class="section-header">
+                                <div>
+                                    <p class="eyebrow">${escapeHTML(cityName.toUpperCase())}</p>
+                                    <h2>Places worth <em>remembering.</em></h2>
+                                </div>
+                                <p>
+                                    The places and experiences that give
+                                    ${escapeHTML(cityName)} its character.
+                                </p>
+                            </div>
+
+                            <div class="highlights-grid">
+                                ${city.highlights.map((item, index) => `
+                                    <article class="highlight-card"
+                                             style="animation-delay:${index * 90}ms">
+                                        <span class="highlight-number">
+                                            ${String(index + 1).padStart(2, "0")}
+                                        </span>
+                                        <div>
+                                            <h3>${escapeHTML(item)}</h3>
+                                            <p>${escapeHTML(cityName)} · Canada</p>
+                                        </div>
+                                    </article>
+                                `).join("")}
+                            </div>
+                        </section>
+
+                        <!-- NEIGHBOURHOODS -->
+                        <section class="detail-section">
+                            <div class="section-header">
+                                <div>
+                                    <p class="eyebrow">Explore locally</p>
+                                    <h2>Choose your <em>neighbourhood.</em></h2>
+                                </div>
+                                <p>
+                                    Every area has a different atmosphere.
+                                    Explore ${escapeHTML(cityName)} your way.
+                                </p>
+                            </div>
+
+                            <div class="neighborhood-grid">
+                                ${neighborhoods.map(([name, data], index) => `
+                                    <article class="neighborhood-card"
+                                             style="animation-delay:${index * 80}ms">
+                                        <div class="neighborhood-image"
+                                             style="background-image:url('${data.image}')"></div>
+
+                                        <span class="neighborhood-index">
+                                            ${String(index + 1).padStart(2, "0")}
+                                        </span>
+
+                                        <div class="neighborhood-content">
+                                            <small>${escapeHTML(cityName)}</small>
+                                            <h3>${escapeHTML(name)}</h3>
+                                            <p>${escapeHTML(data.description)}</p>
+
+                                            <a href="packages.html?city=${encodeURIComponent(slugify(cityName))}&neighborhood=${encodeURIComponent(slugify(name))}#trip-builder">
+                                                Build around ${escapeHTML(name)} →
+                                            </a>
+                                        </div>
+                                    </article>
+                                `).join("")}
+                            </div>
+                        </section>
+
+                        <!-- FINAL CTA -->
+                        <section>
+                            <div class="destination-final">
+                                <div>
+                                    <p class="eyebrow">GED Travel Agency</p>
+                                    <h2>${escapeHTML(cityName)} <em>your way.</em></h2>
+                                    <p>
+                                        Choose your neighbourhood, stay, experiences and
+                                        events. GED connects the pieces.
+                                    </p>
+                                </div>
+
+                                <a class="button button-primary"
+                                   href="packages.html?city=${encodeURIComponent(slugify(cityName))}#trip-builder">
+                                    Build your trip ↗
+                                </a>
+                            </div>
+                        </section>
+
+                    </div>
+                `;
+
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                activateParallax();
+            }
+
+
+            /* =====================================================
+               PARALLAX
+               ===================================================== */
+            function activateParallax() {
+                const hero = document.querySelector(".destination-hero");
+                const media = document.querySelector(".destination-hero-media");
+                if (!hero || !media) return;
+
+                // evita duplicar listener
+                if (hero._parallaxBound) return;
+                hero._parallaxBound = true;
+
+                let ticking = false;
+
+                function update() {
+                    const rect = hero.getBoundingClientRect();
+                    const offset = Math.max(-30, Math.min(30, rect.top * -0.035));
+                    media.style.transform = `scale(1.04) translateY(${offset}px)`;
+                    ticking = false;
+                }
+
+                window.addEventListener("scroll", () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(update);
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
+
+
+            /* =====================================================
+               SHOW CATALOG
+               ===================================================== */
+            function showCatalog() {
+                cityView.style.display = "none";
+                catalog.style.display = "block";
+
+                document.title = "Explore Canada · GED Travel Agency";
+
+                renderCatalog();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+
+            /* =====================================================
+               URL ROUTING
+               ===================================================== */
+            function routeFromURL() {
+                const params = new URLSearchParams(window.location.search);
+                const citySlug = params.get("city");
+
+                if (citySlug) {
+                    const cityName = cityNameFromSlug(citySlug);
+                    if (cityName) { renderCity(cityName); return; }
+                }
+
+                renderCatalog();
+            }
+
+
+            /* =====================================================
+               REVEAL ON SCROLL
+               ===================================================== */
+            const revealEls = document.querySelectorAll(".reveal");
+
+            if ("IntersectionObserver" in window) {
+                const revealObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+                revealEls.forEach(el => revealObserver.observe(el));
+            } else {
+                revealEls.forEach(el => el.classList.add("visible"));
+            }
+
+
+            /* =====================================================
+               BOOT
+               ===================================================== */
+            buildFilters();
+            routeFromURL();
+
+
+            /* =====================================================
+               BROWSER BACK / FORWARD
+               ===================================================== */
+            window.addEventListener("popstate", () => {
+                const currentParams = new URLSearchParams(window.location.search);
+                const currentSlug = currentParams.get("city");
+
+                if (currentSlug) {
+                    const currentCity = cityNameFromSlug(currentSlug);
+                    if (currentCity) { renderCity(currentCity); return; }
+                }
+
+                showCatalog();
+            });
+
+
+            console.log(
+                "%cGED · Destinations",
+                "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 8px;border-radius:6px;"
+            );
+            console.log(
+                `Loaded ${CITIES.length} cities · ${Object.keys(neighborhoodsData).length} neighborhoods entries · ${provincesData.length} provinces`
+            );
+
+        });
+    </script>
+
+</body>
+
+</html>

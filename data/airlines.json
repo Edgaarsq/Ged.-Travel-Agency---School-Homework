@@ -1,1 +1,146 @@
-{"airlines":["Air Canada","WestJet","Porter Airlines","Air Transat","LATAM","Azul"]}
+{
+    "airlines": [
+        {
+            "name": "Air Canada",
+            "code": "AC",
+            "alliance": "Star Alliance",
+            "country": "Canada",
+            "type": "full-service",
+            "hub": "YYZ",
+            "fleet": [
+                "Boeing 787-9 Dreamliner",
+                "Airbus A330-300",
+                "Boeing 777-300ER"
+            ]
+        },
+        {
+            "name": "WestJet",
+            "code": "WS",
+            "alliance": null,
+            "country": "Canada",
+            "type": "full-service",
+            "hub": "YYC",
+            "fleet": [
+                "Boeing 787-9 Dreamliner",
+                "Boeing 737-800"
+            ]
+        },
+        {
+            "name": "Porter Airlines",
+            "code": "PD",
+            "alliance": null,
+            "country": "Canada",
+            "type": "regional",
+            "hub": "YTZ",
+            "fleet": [
+                "Embraer E195-E2",
+                "De Havilland Dash 8-400"
+            ]
+        },
+        {
+            "name": "Air Transat",
+            "code": "TS",
+            "alliance": null,
+            "country": "Canada",
+            "type": "leisure",
+            "hub": "YUL",
+            "fleet": [
+                "Airbus A330-300",
+                "Airbus A321neo"
+            ]
+        },
+        {
+            "name": "LATAM Airlines",
+            "code": "LA",
+            "alliance": null,
+            "country": "Brasil",
+            "type": "full-service",
+            "hub": "GRU",
+            "fleet": [
+                "Boeing 787-9 Dreamliner",
+                "Airbus A320neo"
+            ]
+        },
+        {
+            "name": "Azul Linhas Aéreas",
+            "code": "AD",
+            "alliance": null,
+            "country": "Brasil",
+            "type": "full-service",
+            "hub": "VCP",
+            "fleet": [
+                "Airbus A330-900neo",
+                "Embraer E195-E2"
+            ]
+        },
+        {
+            "name": "Copa Airlines",
+            "code": "CM",
+            "alliance": "Star Alliance",
+            "country": "Panamá",
+            "type": "full-service",
+            "hub": "PTY",
+            "fleet": [
+                "Boeing 737 MAX 9"
+            ]
+        },
+        {
+            "name": "Avianca",
+            "code": "AV",
+            "alliance": "Star Alliance",
+            "country": "Colômbia",
+            "type": "full-service",
+            "hub": "BOG",
+            "fleet": [
+                "Airbus A320neo",
+                "Boeing 787-8 Dreamliner"
+            ]
+        },
+        {
+            "name": "United Airlines",
+            "code": "UA",
+            "alliance": "Star Alliance",
+            "country": "Estados Unidos",
+            "type": "full-service",
+            "hub": "ORD",
+            "fleet": [
+                "Boeing 787-9 Dreamliner",
+                "Boeing 777-200ER"
+            ]
+        },
+        {
+            "name": "Delta Air Lines",
+            "code": "DL",
+            "alliance": "SkyTeam",
+            "country": "Estados Unidos",
+            "type": "full-service",
+            "hub": "ATL",
+            "fleet": [
+                "Airbus A350-900",
+                "Boeing 767-400ER"
+            ]
+        },
+        {
+            "name": "American Airlines",
+            "code": "AA",
+            "alliance": "Oneworld",
+            "country": "Estados Unidos",
+            "type": "full-service",
+            "hub": "DFW",
+            "fleet": [
+                "Boeing 787-8 Dreamliner"
+            ]
+        },
+        {
+            "name": "TAP Air Portugal",
+            "code": "TP",
+            "alliance": "Star Alliance",
+            "country": "Portugal",
+            "type": "full-service",
+            "hub": "LIS",
+            "fleet": [
+                "Airbus A330-900neo"
+            ]
+        }
+    ]
+}

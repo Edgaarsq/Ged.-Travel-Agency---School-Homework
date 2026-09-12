@@ -1,1 +1,202 @@
-{"attractions":[{"name":"CN Tower","city":"Toronto","type":"Landmark"},{"name":"Niagara Falls","city":"Ontario","type":"Nature"},{"name":"Royal Ontario Museum","city":"Toronto","type":"Culture"},{"name":"Stanley Park","city":"Vancouver","type":"Nature"},{"name":"Old Montréal","city":"Montréal","type":"Culture"},{"name":"Banff National Park","city":"Banff","type":"Nature"}]}
+{
+    "attractions": [
+        {
+            "name": "CN Tower",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Landmark",
+            "score": 9.6,
+            "price": "CA$43",
+            "duration": "2h",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Iconic 553m tower with EdgeWalk, glass floor and panoramic city views."
+        },
+        {
+            "name": "Niagara Falls",
+            "city": "Niagara Falls",
+            "province": "Ontario",
+            "type": "Nature",
+            "score": 9.8,
+            "price": "Free",
+            "duration": "Full day",
+            "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=80",
+            "description": "Three waterfalls on the Canada–US border, best seen from the Canadian side."
+        },
+        {
+            "name": "Royal Ontario Museum",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Culture",
+            "score": 9.1,
+            "price": "CA$26",
+            "duration": "3h",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "World-class museum of art, culture and natural history."
+        },
+        {
+            "name": "Stanley Park",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "type": "Nature",
+            "score": 9.5,
+            "price": "Free",
+            "duration": "Half day",
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
+            "description": "1,001-acre urban park with seawall, totem poles and ocean views."
+        },
+        {
+            "name": "Old Montréal",
+            "city": "Montréal",
+            "province": "Québec",
+            "type": "Culture",
+            "score": 9.4,
+            "price": "Free",
+            "duration": "Half day",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "description": "Cobblestone streets, Notre-Dame Basilica and 17th-century architecture."
+        },
+        {
+            "name": "Banff National Park",
+            "city": "Banff",
+            "province": "Alberta",
+            "type": "Nature",
+            "score": 9.9,
+            "price": "CA$11",
+            "duration": "Multi-day",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "Canada's first national park — turquoise lakes, glaciers and wildlife."
+        },
+        {
+            "name": "Lake Louise",
+            "city": "Banff",
+            "province": "Alberta",
+            "type": "Nature",
+            "score": 9.8,
+            "price": "Free",
+            "duration": "Half day",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "Emerald glacier-fed lake surrounded by Victoria Glacier and peaks."
+        },
+        {
+            "name": "Notre-Dame Basilica",
+            "city": "Montréal",
+            "province": "Québec",
+            "type": "Culture",
+            "score": 9.3,
+            "price": "CA$16",
+            "duration": "1h",
+            "image": "https://images.unsplash.com/photo-1519992966098-5e8e6e9e6e6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Gothic Revival basilica with a breathtaking blue-and-gold interior."
+        },
+        {
+            "name": "Parliament Hill",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "type": "Landmark",
+            "score": 9.2,
+            "price": "Free",
+            "duration": "2h",
+            "image": "https://images.unsplash.com/photo-1591130901929-3f0a5f0e0d0e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Gothic Revival seat of Canada's federal government above the Ottawa River."
+        },
+        {
+            "name": "Capilano Suspension Bridge",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "type": "Adventure",
+            "score": 9.0,
+            "price": "CA$66",
+            "duration": "3h",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "137m suspension bridge over a rainforest canyon with treetop walkways."
+        },
+        {
+            "name": "Château Frontenac",
+            "city": "Québec City",
+            "province": "Québec",
+            "type": "Landmark",
+            "score": 9.5,
+            "price": "Free",
+            "duration": "1h",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "description": "Iconic castle-like hotel overlooking the St. Lawrence River."
+        },
+        {
+            "name": "Peggy's Cove",
+            "city": "Halifax",
+            "province": "Nova Scotia",
+            "type": "Nature",
+            "score": 9.4,
+            "price": "Free",
+            "duration": "Half day",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Picturesque fishing village with the famous red-and-white lighthouse."
+        },
+        {
+            "name": "Bay of Fundy",
+            "city": "Moncton",
+            "province": "New Brunswick",
+            "type": "Nature",
+            "score": 9.6,
+            "price": "CA$15",
+            "duration": "Full day",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Home to the highest tides in the world — up to 16 meters."
+        },
+        {
+            "name": "Gros Morne National Park",
+            "city": "Rocky Harbour",
+            "province": "Newfoundland and Labrador",
+            "type": "Nature",
+            "score": 9.7,
+            "price": "CA$12",
+            "duration": "Multi-day",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "UNESCO site with fjords, cliffs and ancient geological formations."
+        },
+        {
+            "name": "Kensington Market",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Food",
+            "score": 9.2,
+            "price": "Free",
+            "duration": "2h",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Bohemian neighborhood full of street food, vintage shops and murals."
+        },
+        {
+            "name": "Distillery District",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Culture",
+            "score": 9.3,
+            "price": "Free",
+            "duration": "2h",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Victorian industrial district turned pedestrian arts and dining hub."
+        },
+        {
+            "name": "Whistler Village",
+            "city": "Whistler",
+            "province": "British Columbia",
+            "type": "Adventure",
+            "score": 9.5,
+            "price": "Free",
+            "duration": "Multi-day",
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Year-round mountain resort — skiing, hiking and alpine dining."
+        },
+        {
+            "name": "Moraine Lake",
+            "city": "Banff",
+            "province": "Alberta",
+            "type": "Nature",
+            "score": 9.9,
+            "price": "Free",
+            "duration": "Half day",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "The most photographed lake in Canada — vivid turquoise in the Valley of the Ten Peaks."
+        }
+    ]
+}
