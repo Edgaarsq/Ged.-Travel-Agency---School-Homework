@@ -1,0 +1,18 @@
+{
+    "name": "ged-api",
+    "version": "1.0.0",
+    "description": "Automated event fetcher + API helpers for GED Travel Agency",
+    "type": "module",
+    "main": "run.js",
+    "scripts": {
+        "update-events": "node run.js",
+        "update-events:verbose": "node run.js --verbose",
+        "dry-run": "node run.js --dry-run"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5"
+    }
+}
