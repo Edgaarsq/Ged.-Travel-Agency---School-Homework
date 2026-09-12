@@ -7,10 +7,20 @@
     <meta name="description" content="GED Event Explorer — Music, sports, culture, food and free events across Canada.">
     <meta name="theme-color" content="#08090c">
 
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Events — GED Travel Agency">
+    <meta property="og:description"
+        content="Music, sports, culture, food and free events across Canada. Curated moments, mapped and scored.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>Events — GED Travel Agency</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -21,6 +31,9 @@
     <link rel="stylesheet" href="../css/responsive.css">
 
     <style>
+        /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
         :root {
             --ios-blue: #007aff;
             --ios-green: #34c759;
@@ -38,10 +51,28 @@
             --ios-text-3: #8e8e93;
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+            /* Category palette (reused across the site) */
+            --cat-music-1: #af52de;
+            --cat-music-2: #ff2d55;
+            --cat-sports-1: #34c759;
+            --cat-sports-2: #5ac8fa;
+            --cat-culture-1: #007aff;
+            --cat-culture-2: #af52de;
+            --cat-food-1: #ff9500;
+            --cat-food-2: #ffc400;
+            --cat-nature-1: #34c759;
+            --cat-nature-2: #a8e063;
+            --cat-design-1: #ff2d55;
+            --cat-design-2: #af52de;
+            --cat-free-1: #ffc400;
+            --cat-free-2: #ff9500;
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+            -webkit-text-size-adjust: 100%;
         }
 
         .events-page {
@@ -57,8 +88,50 @@
         }
 
         /* ============================================================
-       HEADER
-       ============================================================ */
+           GLOBAL POLISH
+           ============================================================ */
+        :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+            outline: 2px solid rgba(255, 45, 85, 0.65);
+            outline-offset: 3px;
+            border-radius: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 10000;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transform: translateY(-180%);
+            transition: transform .3s var(--ease-ios);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
         .events-page .site-header {
             position: fixed;
             top: 0;
@@ -93,11 +166,11 @@
         }
 
         /* ============================================================
-       HERO
-       ============================================================ */
+           HERO
+           ============================================================ */
         .events-page .event-hero {
             position: relative;
-            min-height: 800px;
+            min-height: 780px;
             padding: 170px 0 130px;
             display: flex;
             align-items: center;
@@ -135,7 +208,7 @@
                     rgba(0, 0, 0, 0.30) 40%,
                     rgba(0, 0, 0, 0.55) 75%,
                     rgba(242, 242, 247, 1) 100%),
-                radial-gradient(ellipse at 30% 45%, rgba(255, 45, 85, 0.14), transparent 60%);
+                radial-gradient(ellipse at 30% 45%, rgba(255, 45, 85, 0.16), transparent 60%);
         }
 
         .events-page .event-hero-content {
@@ -143,6 +216,17 @@
             z-index: 2;
             color: #fff;
             max-width: 1200px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 48px;
+            align-items: end;
+        }
+
+        @media (max-width: 980px) {
+            .events-page .event-hero-content {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
         }
 
         .events-page .eyebrow-pill {
@@ -176,7 +260,7 @@
         .events-page .event-hero h1 {
             margin: 26px 0 22px;
             font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(62px, 9vw, 145px);
+            font-size: clamp(58px, 8.4vw, 132px);
             line-height: 0.86;
             letter-spacing: -0.075em;
             font-weight: 700;
@@ -194,9 +278,9 @@
             color: transparent;
         }
 
-        .events-page .event-hero-content>p:not(.eyebrow-pill) {
+        .events-page .event-hero-lead {
             max-width: 580px;
-            font-size: 18px;
+            font-size: 17.5px;
             line-height: 1.65;
             color: rgba(255, 255, 255, 0.86);
             margin: 0;
@@ -207,7 +291,7 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            margin-top: 32px;
+            margin-top: 30px;
             animation: fadeUp 1s 0.3s var(--ease-ios) both;
         }
 
@@ -264,9 +348,9 @@
 
         .events-page .hero-stats-row {
             display: flex;
-            gap: 40px;
+            gap: 34px;
             flex-wrap: wrap;
-            margin-top: 54px;
+            margin-top: 48px;
             animation: fadeUp 1s 0.4s var(--ease-ios) both;
         }
 
@@ -278,29 +362,137 @@
 
         .events-page .hero-stat strong {
             font-family: "Space Grotesk", sans-serif;
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 700;
             letter-spacing: -0.04em;
             color: #fff;
+            font-variant-numeric: tabular-nums;
         }
 
         .events-page .hero-stat span {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.55);
         }
 
+        /* ---------- HERO — FEATURED PICK CARD ---------- */
+        .events-page .hero-pick {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            padding: 26px 26px 24px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 0.5px solid rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            color: #fff;
+            animation: fadeUp 1s 0.5s var(--ease-ios) both;
+        }
+
+        .events-page .hero-pick::before {
+            content: "";
+            position: absolute;
+            inset: -50% -20% auto auto;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 45, 85, 0.28), transparent 70%);
+            pointer-events: none;
+        }
+
+        .events-page .hero-pick-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 12px;
+            position: relative;
+        }
+
+        .events-page .hero-pick-eyebrow .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 45, 85, 0.28);
+        }
+
+        .events-page .hero-pick h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(22px, 2.4vw, 28px);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.08;
+            margin: 0 0 8px;
+            position: relative;
+        }
+
+        .events-page .hero-pick-location {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.68);
+            margin: 0 0 18px;
+            position: relative;
+        }
+
+        .events-page .hero-pick-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .events-page .hero-pick-meta span {
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 0.5px solid rgba(255, 255, 255, 0.22);
+            color: rgba(255, 255, 255, 0.94);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .events-page .hero-pick-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            background: #fff;
+            color: #0a0a0a;
+            font-size: 12.5px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform .24s var(--ease-spring), box-shadow .24s;
+            position: relative;
+        }
+
+        .events-page .hero-pick-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 255, 255, 0.24);
+        }
+
         /* ============================================================
-       SECTION HEADER
-       ============================================================ */
+           SECTION HEADER
+           ============================================================ */
         .events-page .section-header {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
             gap: 60px;
             align-items: end;
-            margin-bottom: 44px;
+            margin-bottom: 40px;
         }
 
         @media (max-width: 900px) {
@@ -344,8 +536,8 @@
         }
 
         /* ============================================================
-       CATALOG
-       ============================================================ */
+           CATALOG
+           ============================================================ */
         .events-page .event-catalog {
             position: relative;
             z-index: 3;
@@ -353,17 +545,148 @@
             margin-top: -60px;
         }
 
-        /* Controls */
+        /* ---------- FEATURED SPOTLIGHT ---------- */
+        .events-page .event-featured {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+            gap: 0;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 900px) {
+            .events-page .event-featured {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .events-page .event-featured-media {
+            position: relative;
+            min-height: 340px;
+            background-size: cover;
+            background-position: center;
+            transition: transform .9s var(--ease-ios);
+        }
+
+        .events-page .event-featured:hover .event-featured-media {
+            transform: scale(1.04);
+        }
+
+        .events-page .event-featured-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), transparent 60%);
+        }
+
+        .events-page .event-featured-body {
+            padding: 34px 36px 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 700px) {
+            .events-page .event-featured-body {
+                padding: 26px 22px;
+            }
+        }
+
+        .events-page .event-featured-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ios-pink);
+            margin-bottom: 12px;
+        }
+
+        .events-page .event-featured-eyebrow .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 45, 85, 0.20);
+        }
+
+        .events-page .event-featured h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.045em;
+            line-height: 1.04;
+            margin: 0 0 12px;
+            color: var(--ios-text);
+        }
+
+        .events-page .event-featured-location {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+            margin: 0 0 14px;
+        }
+
+        .events-page .event-featured p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--ios-text-2);
+            margin: 0 0 22px;
+            max-width: 460px;
+        }
+
+        .events-page .event-featured-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .events-page .event-featured-meta span {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(120, 120, 128, 0.08);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+            color: var(--ios-text-2);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .events-page .event-featured-meta span.score {
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .events-page .event-featured-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .events-page .event-featured-actions .button {
+            padding: 12px 22px;
+            font-size: 13px;
+        }
+
+        /* ---------- CONTROLS ---------- */
         .events-page .event-controls {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            padding: 22px 24px;
+            padding: 20px 22px;
             background: #fff;
-            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
             border-radius: 26px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .events-page .event-controls-row {
@@ -411,12 +734,48 @@
             box-shadow: 0 6px 20px rgba(255, 45, 85, 0.30);
         }
 
+        .events-page .event-filter[data-filter="Music"].active {
+            background: linear-gradient(135deg, var(--cat-music-1), var(--cat-music-2));
+            box-shadow: 0 6px 20px rgba(175, 82, 222, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Sports"].active {
+            background: linear-gradient(135deg, var(--cat-sports-1), var(--cat-sports-2));
+            box-shadow: 0 6px 20px rgba(52, 199, 89, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Culture"].active {
+            background: linear-gradient(135deg, var(--cat-culture-1), var(--cat-culture-2));
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Food"].active {
+            background: linear-gradient(135deg, var(--cat-food-1), var(--cat-food-2));
+            box-shadow: 0 6px 20px rgba(255, 149, 0, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Nature"].active {
+            background: linear-gradient(135deg, var(--cat-nature-1), var(--cat-nature-2));
+            box-shadow: 0 6px 20px rgba(52, 199, 89, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Design"].active {
+            background: linear-gradient(135deg, var(--cat-design-1), var(--cat-design-2));
+            box-shadow: 0 6px 20px rgba(255, 45, 85, 0.32);
+        }
+
+        .events-page .event-filter[data-filter="Free"].active {
+            background: linear-gradient(135deg, var(--cat-free-1), var(--cat-free-2));
+            box-shadow: 0 6px 20px rgba(255, 196, 0, 0.32);
+        }
+
         .events-page .event-filter .filter-count {
             padding: 1px 7px;
             border-radius: 999px;
             background: rgba(0, 0, 0, 0.08);
             font-size: 10.5px;
             font-weight: 800;
+            font-variant-numeric: tabular-nums;
         }
 
         .events-page .event-filter.active .filter-count {
@@ -466,13 +825,67 @@
             background: #fff;
         }
 
+        /* View toggle */
+        .events-page .event-view-toggle {
+            display: inline-flex;
+            gap: 2px;
+            padding: 3px;
+            border-radius: 999px;
+            background: rgba(120, 120, 128, 0.08);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+        }
+
+        .events-page .event-view-toggle button {
+            width: 36px;
+            height: 32px;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--ios-text-3);
+            font-family: inherit;
+            display: grid;
+            place-items: center;
+            transition: all .22s var(--ease-spring);
+        }
+
+        .events-page .event-view-toggle button:hover {
+            color: var(--ios-text);
+        }
+
+        .events-page .event-view-toggle button.active {
+            background: #fff;
+            color: var(--ios-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+
+        /* Result count */
+        .events-page .event-result-count {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+            padding-left: 4px;
+            margin-bottom: 6px;
+        }
+
+        .events-page .event-result-count strong {
+            color: var(--ios-text);
+            font-weight: 800;
+        }
+
         /* ============================================================
-       EVENT GRID
-       ============================================================ */
+           EVENT GRID
+           ============================================================ */
         .events-page .event-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 22px;
+        }
+
+        .events-page .event-grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 14px;
         }
 
         @media (max-width: 1100px) {
@@ -496,8 +909,9 @@
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.14);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-ios);
+            transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-ios), border-color .4s;
             isolation: isolate;
+            cursor: pointer;
         }
 
         .events-page .event-card:hover {
@@ -505,8 +919,28 @@
             box-shadow: 0 26px 60px rgba(0, 0, 0, 0.14);
         }
 
-        .events-page .event-card.hidden {
-            display: none;
+        .events-page .event-card[data-category="Music"]:hover {
+            border-color: rgba(175, 82, 222, 0.35);
+        }
+
+        .events-page .event-card[data-category="Sports"]:hover {
+            border-color: rgba(52, 199, 89, 0.35);
+        }
+
+        .events-page .event-card[data-category="Culture"]:hover {
+            border-color: rgba(0, 122, 255, 0.35);
+        }
+
+        .events-page .event-card[data-category="Food"]:hover {
+            border-color: rgba(255, 149, 0, 0.35);
+        }
+
+        .events-page .event-card[data-category="Nature"]:hover {
+            border-color: rgba(52, 199, 89, 0.35);
+        }
+
+        .events-page .event-card[data-category="Design"]:hover {
+            border-color: rgba(255, 45, 85, 0.35);
         }
 
         .events-page .event-card-image {
@@ -566,31 +1000,31 @@
         }
 
         .events-page .event-cat.music::before {
-            background: linear-gradient(135deg, #af52de, #ff2d55);
+            background: linear-gradient(135deg, var(--cat-music-1), var(--cat-music-2));
         }
 
         .events-page .event-cat.sports::before {
-            background: linear-gradient(135deg, #34c759, #5ac8fa);
+            background: linear-gradient(135deg, var(--cat-sports-1), var(--cat-sports-2));
         }
 
         .events-page .event-cat.culture::before {
-            background: linear-gradient(135deg, #007aff, #af52de);
+            background: linear-gradient(135deg, var(--cat-culture-1), var(--cat-culture-2));
         }
 
         .events-page .event-cat.food::before {
-            background: linear-gradient(135deg, #ff9500, #ffc400);
+            background: linear-gradient(135deg, var(--cat-food-1), var(--cat-food-2));
         }
 
         .events-page .event-cat.nature::before {
-            background: linear-gradient(135deg, #34c759, #a8e063);
+            background: linear-gradient(135deg, var(--cat-nature-1), var(--cat-nature-2));
         }
 
         .events-page .event-cat.free::before {
-            background: linear-gradient(135deg, #ffc400, #ff9500);
+            background: linear-gradient(135deg, var(--cat-free-1), var(--cat-free-2));
         }
 
         .events-page .event-cat.design::before {
-            background: linear-gradient(135deg, #ff2d55, #af52de);
+            background: linear-gradient(135deg, var(--cat-design-1), var(--cat-design-2));
         }
 
         .events-page .event-score {
@@ -804,23 +1238,87 @@
             transform: translateY(-2px);
         }
 
+        /* ---------- LIST VIEW ---------- */
+        .events-page .event-grid.list-view .event-card {
+            flex-direction: row;
+            align-items: stretch;
+            min-height: 190px;
+        }
+
+        .events-page .event-grid.list-view .event-card-image {
+            width: 300px;
+            flex: 0 0 300px;
+            height: auto;
+            min-height: 190px;
+        }
+
+        .events-page .event-grid.list-view .event-card-body {
+            padding: 26px 28px;
+        }
+
+        .events-page .event-grid.list-view .event-card-body h3 {
+            font-size: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .events-page .event-grid.list-view .event-card {
+                flex-direction: column;
+            }
+
+            .events-page .event-grid.list-view .event-card-image {
+                width: 100%;
+                flex: none;
+                height: 200px;
+                min-height: 200px;
+            }
+        }
+
+        /* ---------- EMPTY STATE ---------- */
         .events-page .empty-state {
             grid-column: 1 / -1;
-            padding: 60px 20px;
+            padding: 70px 24px;
             text-align: center;
             color: var(--ios-text-3);
+            background: #fff;
+            border-radius: 26px;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
         }
 
         .events-page .empty-state strong {
             display: block;
-            font-size: 18px;
-            color: var(--ios-text-2);
-            margin-bottom: 6px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+            margin-bottom: 8px;
+        }
+
+        .events-page .empty-state p {
+            margin: 0 0 18px;
+            font-size: 14px;
+        }
+
+        .events-page .empty-state button {
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .24s var(--ease-spring);
+        }
+
+        .events-page .empty-state button:hover {
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            transform: translateY(-2px);
         }
 
         /* ============================================================
-       STATS STRIP
-       ============================================================ */
+           STATS STRIP
+           ============================================================ */
         .events-page .event-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -859,6 +1357,7 @@
             font-weight: 700;
             letter-spacing: -0.05em;
             color: var(--ios-text);
+            font-variant-numeric: tabular-nums;
         }
 
         .events-page .event-stat span {
@@ -870,8 +1369,8 @@
         }
 
         /* ============================================================
-       VISUAL BREAK
-       ============================================================ */
+           VISUAL BREAK
+           ============================================================ */
         .events-page .event-break {
             position: relative;
             min-height: 560px;
@@ -971,8 +1470,8 @@
         }
 
         /* ============================================================
-       MODAL
-       ============================================================ */
+           MODAL
+           ============================================================ */
         .events-page .event-modal {
             position: fixed;
             inset: 0;
@@ -1001,15 +1500,22 @@
         }
 
         .events-page .event-panel {
-            width: min(720px, 100%);
+            width: min(760px, 100%);
             max-height: 88vh;
             overflow: auto;
             background: linear-gradient(180deg, #fbfbfd, #f2f2f7);
             border-radius: 32px;
-            padding: 38px;
+            padding: 36px;
             box-shadow: 0 40px 120px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.9);
             border: 0.5px solid rgba(255, 255, 255, 0.9);
             animation: panelUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        @media (max-width: 560px) {
+            .events-page .event-panel {
+                padding: 24px;
+                border-radius: 26px;
+            }
         }
 
         @keyframes panelUp {
@@ -1069,12 +1575,13 @@
         }
 
         .events-page .event-panel .event-modal-hero {
-            height: 200px;
+            height: 220px;
             border-radius: 22px;
             overflow: hidden;
             background-size: cover;
             background-position: center;
-            margin: 18px 0 20px;
+            margin: 18px 0 22px;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
         }
 
         .events-page .event-panel .modal-meta {
@@ -1110,7 +1617,7 @@
         }
 
         .events-page .event-panel>p {
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.65;
             color: var(--ios-text-2);
             margin: 0 0 20px;
@@ -1130,9 +1637,20 @@
             font-size: 13px;
         }
 
+        .events-page .modal-actions .button-ghost {
+            background: rgba(120, 120, 128, 0.10);
+            color: var(--ios-text);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+        }
+
+        .events-page .modal-actions .button-ghost:hover {
+            background: rgba(120, 120, 128, 0.16);
+            transform: translateY(-2px);
+        }
+
         /* ============================================================
-       TOASTS
-       ============================================================ */
+           TOASTS
+           ============================================================ */
         .events-page .toast-stack {
             position: fixed;
             top: 90px;
@@ -1211,77 +1729,453 @@
             }
         }
 
-        /* ============================================================
-       FOOTER
-       ============================================================ */
-        .events-page .site-footer {
-            background: #070707;
-            color: #fff;
-            padding: 80px 0 28px;
-        }
+        @media (max-width: 560px) {
+            .events-page .toast-stack {
+                top: auto;
+                bottom: 20px;
+                right: 14px;
+                left: 14px;
+            }
 
-        .events-page .site-footer .container {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 720px) {
-            .events-page .site-footer .container {
-                grid-template-columns: 1fr;
-                gap: 28px;
+            .events-page .ged-toast {
+                max-width: none;
             }
         }
 
-        .events-page .site-footer .brand {
-            color: #fff;
-            display: inline-flex;
+        /* ============================================================
+           FOOTER — v2
+           ============================================================ */
+        .events-page .site-footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            margin-top: clamp(30px, 5vw, 70px);
+            padding: 0;
+            color: rgba(255, 255, 255, .70);
+            background:
+                radial-gradient(900px 420px at 12% -20%, rgba(255, 45, 85, .12), transparent 62%),
+                radial-gradient(700px 380px at 92% 0%, rgba(255, 210, 26, .07), transparent 60%),
+                linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+            border-top: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .events-page .site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 45, 85, .55), transparent);
+            opacity: .75;
+            pointer-events: none;
+        }
+
+        .events-page .site-footer .footer-inner {
+            width: min(1200px, 100% - 48px);
+            margin-inline: auto;
+            padding: clamp(52px, 7vw, 88px) 0 30px;
+            display: block;
+        }
+
+        .events-page .footer-top {
+            display: grid;
+            grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+            gap: clamp(28px, 4vw, 44px);
+            padding-bottom: clamp(34px, 5vw, 54px);
+            border-bottom: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .events-page .footer-brand {
+            display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            gap: 18px;
+            max-width: 340px;
         }
 
-        .events-page .site-footer .brand small {
-            font-size: 10px;
-            letter-spacing: 0.18em;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 700;
-        }
-
-        .events-page .site-footer p {
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 13px;
-            margin: 4px 0 0;
-        }
-
-        .events-page .site-footer strong {
-            display: block;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            margin-bottom: 12px;
-        }
-
-        .events-page .site-footer a {
-            display: block;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 13px;
-            margin-bottom: 8px;
+        .events-page .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+            color: #fff;
+            width: fit-content;
         }
 
-        .events-page .site-footer a:hover {
+        .events-page .footer-logo-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            box-shadow: 0 10px 26px rgba(255, 180, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+            transition: transform .3s var(--ease-spring);
+        }
+
+        .events-page .footer-logo:hover .footer-logo-mark {
+            transform: rotate(-6deg) scale(1.05);
+        }
+
+        .events-page .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -.03em;
+        }
+
+        .events-page .footer-logo-text small {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin-top: 5px;
+        }
+
+        .events-page .footer-tagline {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, .58);
+            margin: 0;
+            max-width: 330px;
+        }
+
+        .events-page .footer-socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .events-page .footer-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .75);
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            text-decoration: none;
+            transition: transform .28s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+        }
+
+        .events-page .footer-social svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .events-page .footer-social:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(255, 180, 0, .30);
+        }
+
+        .events-page .footer-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .62);
+        }
+
+        .events-page .footer-chip .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 210, 26, .20);
+        }
+
+        .events-page .footer-col h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin: 0 0 18px;
+        }
+
+        .events-page .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .events-page .footer-col a {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .72);
+            text-decoration: none;
+            transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+        }
+
+        .events-page .footer-col a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1.5px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ffd21a, #ffb400);
+            transition: width .28s var(--ease-ios);
+        }
+
+        .events-page .footer-col a:hover {
             color: #fff;
+            transform: translateX(3px);
+        }
+
+        .events-page .footer-col a:hover::after {
+            width: 100%;
+        }
+
+        .events-page .footer-band {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: clamp(32px, 4vw, 48px) 0;
+            padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+            border: 0.5px solid rgba(255, 255, 255, .10);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+        }
+
+        .events-page .footer-band::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 45, 85, .18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .events-page .footer-band-eyebrow {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 45, 85, .9);
+            margin: 0 0 8px;
+        }
+
+        .events-page .footer-band h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(21px, 2.6vw, 30px);
+            font-weight: 700;
+            letter-spacing: -.04em;
+            color: #fff;
+            margin: 0;
+            line-height: 1.12;
+        }
+
+        .events-page .footer-band h3 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .events-page .footer-band-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .events-page .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            white-space: nowrap;
+            transition: transform .26s var(--ease-spring), box-shadow .26s, background .26s, color .26s;
+        }
+
+        .events-page .footer-btn-primary {
+            background: linear-gradient(135deg, #ff2d55, #ff9500);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(255, 45, 85, .28);
+        }
+
+        .events-page .footer-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(255, 45, 85, .38);
+        }
+
+        .events-page .footer-btn-ghost {
+            background: rgba(255, 255, 255, .07);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, .18);
+        }
+
+        .events-page .footer-btn-ghost:hover {
+            background: rgba(255, 255, 255, .13);
+            transform: translateY(-3px);
+        }
+
+        .events-page .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 26px;
+            border-top: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .events-page .footer-bottom>p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .42);
+            max-width: 660px;
+        }
+
+        .events-page .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .events-page .footer-credits {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .events-page .footer-credits li {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .55);
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .events-page .footer-top-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, .14);
+            transition: all .25s var(--ease-ios);
+        }
+
+        .events-page .footer-top-link:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 180, 0, .28);
+        }
+
+        @media (max-width: 1080px) {
+            .events-page .footer-top {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .events-page .footer-brand {
+                grid-column: 1 / -1;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .events-page .site-footer .footer-inner {
+                width: min(1200px, 100% - 36px);
+            }
+
+            .events-page .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 20px;
+            }
+
+            .events-page .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .events-page .footer-band {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .events-page .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .events-page .footer-bottom-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .events-page .footer-top {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ============================================================
-       ANIMATIONS
-       ============================================================ */
+           ANIMATIONS
+           ============================================================ */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -1319,6 +2213,9 @@
             transform: translateY(0);
         }
 
+        /* ============================================================
+           REDUCED MOTION
+           ============================================================ */
         @media (prefers-reduced-motion: reduce) {
 
             .events-page *,
@@ -1329,17 +2226,21 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-        }
 
-        .events-page :focus-visible {
-            outline: 3px solid rgba(255, 45, 85, 0.55);
-            outline-offset: 3px;
-            border-radius: 8px;
+            .events-page .event-hero-media,
+            .events-page .event-card-image,
+            .events-page .event-break-media,
+            .events-page .event-featured-media {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 
 <body class="events-page">
+
+    <!-- SKIP LINK -->
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- HEADER -->
     <header class="site-header" id="site-header">
@@ -1356,7 +2257,9 @@
             <div class="nav-actions">
                 <button class="icon-btn" type="button" data-search aria-label="Search">⌕</button>
                 <a class="nav-about" href="about.html">About</a>
-                <button class="menu-btn" type="button" data-menu aria-label="Open menu"><i></i><i></i></button>
+                <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false">
+                    <i></i><i></i>
+                </button>
             </div>
         </nav>
         <div class="mobile-menu glass" data-mobile-menu aria-hidden="true">
@@ -1370,69 +2273,86 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- HERO -->
         <section class="event-hero" id="top">
-            <div class="event-hero-media"></div>
-            <div class="event-hero-overlay"></div>
+            <div class="event-hero-media" aria-hidden="true"></div>
+            <div class="event-hero-overlay" aria-hidden="true"></div>
 
             <div class="container event-hero-content">
-                <div class="eyebrow-pill">
-                    <span class="pill-dot" aria-hidden="true"></span>
-                    GED / Event Explorer
+                <div>
+                    <div class="eyebrow-pill">
+                        <span class="pill-dot" aria-hidden="true"></span>
+                        GED / Event Explorer
+                    </div>
+
+                    <h1>
+                        Find your<br>
+                        <em>moment.</em>
+                    </h1>
+
+                    <p class="event-hero-lead">
+                        Music, sports, culture, food and free events across Canada.
+                        Curated moments — filtered, sorted and ready to plan.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#events">
+                            Explore events
+                            <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="button hero-secondary" href="packages.html#trip-builder">
+                            Build a trip
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats-row">
+                        <div class="hero-stat">
+                            <strong data-counter="13">0</strong>
+                            <span>Provinces & territories</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="22">0</strong>
+                            <span>Curated events</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="18">0</strong>
+                            <span>Cities</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="12">0</strong>
+                            <span>Categories</span>
+                        </div>
+                    </div>
                 </div>
 
-                <h1>
-                    Find your<br>
-                    <em>moment.</em>
-                </h1>
-
-                <p>
-                    Music, sports, culture, food and free events across Canada.
-                    Twenty-two curated moments — filtered, sorted and ready to plan.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="button button-primary" href="#events">
-                        Explore events
-                        <span aria-hidden="true">↓</span>
-                    </a>
-                    <a class="button hero-secondary" href="packages.html#trip-builder">
-                        Build a trip
+                <!-- Featured pick card (populated by JS) -->
+                <aside class="hero-pick" id="heroPick" aria-label="Featured event">
+                    <p class="hero-pick-eyebrow">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        Featured this season
+                    </p>
+                    <h3 id="heroPickTitle">Loading…</h3>
+                    <p class="hero-pick-location" id="heroPickLocation">—</p>
+                    <div class="hero-pick-meta" id="heroPickMeta"></div>
+                    <button type="button" class="hero-pick-cta" id="heroPickCta">
+                        See event details
                         <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-
-                <div class="hero-stats-row">
-                    <div class="hero-stat">
-                        <strong data-counter="13">0</strong>
-                        <span>Provinces & territories</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong data-counter="22">0</strong>
-                        <span>Curated events</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong data-counter="18">0</strong>
-                        <span>Cities</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong data-counter="12">0</strong>
-                        <span>Categories</span>
-                    </div>
-                </div>
+                    </button>
+                </aside>
             </div>
         </section>
 
         <!-- CATALOG -->
-        <section class="event-catalog" id="events">
+        <section class="event-catalog" id="events" aria-labelledby="events-title">
             <div class="container">
 
                 <div class="section-header reveal">
                     <div>
                         <p class="eyebrow">Curated calendar</p>
-                        <h2>Every season, <em>a reason.</em></h2>
+                        <h2 id="events-title">Every season, <em>a reason.</em></h2>
                     </div>
                     <p>
                         From aurora nights in Yellowknife to jazz in Montréal, each event
@@ -1440,32 +2360,86 @@
                     </p>
                 </div>
 
+                <!-- Featured spotlight (populated by JS) -->
+                <article class="event-featured reveal" id="eventFeatured" hidden>
+                    <div class="event-featured-media" id="featuredMedia" role="img" aria-label="Featured event image">
+                    </div>
+                    <div class="event-featured-body">
+                        <p class="event-featured-eyebrow">
+                            <span class="badge-dot" aria-hidden="true"></span>
+                            Editor's pick
+                        </p>
+                        <h3 id="featuredTitle">—</h3>
+                        <p class="event-featured-location" id="featuredLocation">—</p>
+                        <p id="featuredDescription">—</p>
+                        <div class="event-featured-meta" id="featuredMeta"></div>
+                        <div class="event-featured-actions">
+                            <button type="button" class="button button-primary" id="featuredCta">
+                                View full event <span aria-hidden="true">↗</span>
+                            </button>
+                            <button type="button" class="button button-dark" id="featuredPlan">
+                                Plan around this
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
                 <!-- Controls -->
                 <div class="event-controls reveal">
                     <div class="event-controls-row">
-                        <div class="event-filters" id="eventFilters">
-                            <button class="event-filter active" data-filter="all">All events</button>
-                            <button class="event-filter" data-filter="Music">Music</button>
-                            <button class="event-filter" data-filter="Sports">Sports</button>
-                            <button class="event-filter" data-filter="Culture">Culture</button>
-                            <button class="event-filter" data-filter="Food">Food</button>
-                            <button class="event-filter" data-filter="Nature">Nature</button>
-                            <button class="event-filter" data-filter="Design">Design</button>
-                            <button class="event-filter" data-filter="Free">Free</button>
+                        <div class="event-filters" id="eventFilters" role="group"
+                            aria-label="Filter events by category">
+                            <button class="event-filter active" data-filter="all" aria-pressed="true">
+                                All events <span class="filter-count" data-count="all">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Music" aria-pressed="false">
+                                Music <span class="filter-count" data-count="Music">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Sports" aria-pressed="false">
+                                Sports <span class="filter-count" data-count="Sports">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Culture" aria-pressed="false">
+                                Culture <span class="filter-count" data-count="Culture">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Food" aria-pressed="false">
+                                Food <span class="filter-count" data-count="Food">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Nature" aria-pressed="false">
+                                Nature <span class="filter-count" data-count="Nature">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Design" aria-pressed="false">
+                                Design <span class="filter-count" data-count="Design">0</span>
+                            </button>
+                            <button class="event-filter" data-filter="Free" aria-pressed="false">
+                                Free <span class="filter-count" data-count="Free">0</span>
+                            </button>
                         </div>
 
                         <div class="event-search-sort">
+                            <label class="sr-only" for="eventSearch">Search events</label>
                             <input class="event-search" type="search" id="eventSearch" placeholder="Search events…"
-                                aria-label="Search events">
-                            <select class="event-sort" id="eventSort" aria-label="Sort events">
+                                autocomplete="off">
+                            <label class="sr-only" for="eventSort">Sort events</label>
+                            <select class="event-sort" id="eventSort">
                                 <option value="date">Sort: date</option>
                                 <option value="score">Sort: GED Score</option>
                                 <option value="name">Sort: name</option>
                                 <option value="free">Sort: free first</option>
                             </select>
+
+                            <div class="event-view-toggle" role="group" aria-label="View mode">
+                                <button type="button" data-view-mode="grid" class="active" aria-label="Grid view"
+                                    aria-pressed="true">▦</button>
+                                <button type="button" data-view-mode="list" aria-label="List view"
+                                    aria-pressed="false">☰</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <p class="event-result-count" id="eventResultCount" aria-live="polite">
+                    Showing <strong>0</strong> events
+                </p>
 
                 <!-- Grid -->
                 <div class="event-grid" id="eventGrid"></div>
@@ -1496,7 +2470,7 @@
         <!-- VISUAL BREAK -->
         <section class="container">
             <div class="event-break reveal">
-                <div class="event-break-media"
+                <div class="event-break-media" role="img" aria-label="Festival crowd during a live event"
                     style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=2200&q=90')">
                 </div>
 
@@ -1518,61 +2492,176 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="container">
-            <div>
-                <a class="brand" href="../index.html">
-                    <span>GED</span>
-                    <small>TRAVEL AGENCY</small>
-                </a>
-                <p>Explore Canada with a trip designed around you.</p>
+    <!-- ============================================================
+         FOOTER — v2
+         ============================================================ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+                        <span class="footer-logo-mark" aria-hidden="true">G</span>
+                        <span class="footer-logo-text">
+                            GED
+                            <small>Travel Agency</small>
+                        </span>
+                    </a>
+
+                    <p class="footer-tagline">
+                        Canada, made accessible. Destinations, flights, hotels,
+                        events and packages — one system, one trip, designed
+                        around you.
+                    </p>
+
+                    <div class="footer-socials" aria-label="GED on social media">
+                        <a class="footer-social" href="#" aria-label="GED on Instagram" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="#" aria-label="GED on X" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="#" aria-label="GED on YouTube" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="help.html" aria-label="Contact GED by email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                <path d="m3.5 7.5 8.5 6 8.5-6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <span class="footer-chip">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        School project · 1°D
+                    </span>
+                </div>
+
+                <nav class="footer-col" aria-labelledby="footer-explore">
+                    <h3 id="footer-explore">Explore</h3>
+                    <ul>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-plan">
+                    <h3 id="footer-plan">Plan</h3>
+                    <ul>
+                        <li><a href="packages.html#trip-builder">Trip builder</a></li>
+                        <li><a href="packages.html#packages">Package catalogue</a></li>
+                        <li><a href="hotels.html">GED Value Score</a></li>
+                        <li><a href="flights.html">Route comparison</a></li>
+                        <li><a href="destinations.html">Canada Explorer</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-company">
+                    <h3 id="footer-company">Company</h3>
+                    <ul>
+                        <li><a href="about.html">About GED</a></li>
+                        <li><a href="about.html#team">The team</a></li>
+                        <li><a href="help.html">Help centre</a></li>
+                        <li><a href="help.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-support">
+                    <h3 id="footer-support">Support</h3>
+                    <ul>
+                        <li><a href="help.html#faq">FAQ</a></li>
+                        <li><a href="help.html#privacy">Privacy</a></li>
+                        <li><a href="help.html#terms">Terms of use</a></li>
+                        <li><a href="help.html#accessibility">Accessibility</a></li>
+                        <li><a href="help.html#credits">Credits</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div>
-                <strong>Explore</strong>
-                <a href="destinations.html">Destinations</a>
-                <a href="events.html">Events</a>
-                <a href="flights.html">Flights</a>
+
+            <div class="footer-band">
+                <div>
+                    <p class="footer-band-eyebrow">Ready when you are</p>
+                    <h3>Let's build the Canada trip <em>you actually want.</em></h3>
+                </div>
+                <div class="footer-band-actions">
+                    <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+                        Open the builder <span aria-hidden="true">↘</span>
+                    </a>
+                    <a class="footer-btn footer-btn-ghost" href="destinations.html">
+                        Browse destinations <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <strong>Plan</strong>
-                <a href="hotels.html">Hotels</a>
-                <a href="packages.html">Packages</a>
-                <a href="help.html">Help</a>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="footerYear">2026</span> GED Travel Agency — educational
+                    project. Prices, availability and events shown throughout the site
+                    are illustrative and not bookable. No commercial transactions are
+                    processed.
+                </p>
+
+                <div class="footer-bottom-right">
+                    <ul class="footer-credits" aria-label="Project credits">
+                        <li>Geovana</li>
+                        <li>Edgar</li>
+                        <li>Aline</li>
+                        <li>1°D</li>
+                    </ul>
+
+                    <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+                        Back to top <span aria-hidden="true">↑</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <strong>Project</strong>
-                <p>Geovana · Edgar · Aline</p>
-                <p>School Project · 1°D</p>
-            </div>
+
         </div>
     </footer>
 
     <!-- MODAL -->
-    <div class="event-modal" id="eventModal" role="dialog" aria-modal="true">
-        <div class="event-panel">
+    <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="event-panel" role="document">
             <div class="modal-head">
                 <div>
                     <p class="eyebrow" id="modalEyebrow">GED / Event</p>
                     <h2 id="modalTitle">Event <em>details.</em></h2>
                 </div>
-                <button class="modal-close" id="closeEventModal" aria-label="Close">×</button>
+                <button class="modal-close" id="closeEventModal" aria-label="Close dialog">×</button>
             </div>
 
-            <div class="event-modal-hero" id="modalHero"></div>
+            <div class="event-modal-hero" id="modalHero" role="img" aria-label="Event image"></div>
 
             <div class="modal-meta" id="modalMeta"></div>
 
             <p id="modalDescription"></p>
 
             <div class="modal-actions">
-                <button class="button button-primary" id="modalPlan">
+                <button class="button button-primary" id="modalPlan" type="button">
                     Plan around this event ↗
                 </button>
-                <button class="button button-dark" id="modalSaveBtn">
+                <button class="button button-dark" id="modalSaveBtn" type="button">
                     Save event
                 </button>
-                <button class="button" id="modalCloseSecondary">
+                <button class="button button-ghost" id="modalShareBtn" type="button">
+                    Share
+                </button>
+                <button class="button button-ghost" id="modalCloseSecondary" type="button">
                     Close
                 </button>
             </div>
@@ -1591,6 +2680,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            "use strict";
+
+            const $ = (sel, root = document) => root.querySelector(sel);
+            const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+            /* =====================================================
+               FOOTER YEAR
+               ===================================================== */
+            const yearEl = document.getElementById("footerYear");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
 
             /* =====================================================
                LOAD EVENTS DATA
@@ -1599,13 +2698,21 @@
 
             try {
                 const res = await fetch("../data/events.json");
-                EVENTS = (await res.json()).events || [];
+                if (res.ok) {
+                    const data = await res.json();
+                    EVENTS = data.events || [];
+                } else {
+                    throw new Error("No events.json");
+                }
             } catch (err) {
                 console.warn("Could not load events.json, using fallback.", err);
                 EVENTS = [
                     { name: "Toronto Design Week", city: "Toronto", province: "Ontario", category: "Design", date: "2026-10-14", endDate: "2026-10-20", price: "Free", score: 9.3, image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80", description: "Ten days of installations, open studios and design talks across the city." },
                     { name: "Maple & Sound", city: "Montréal", province: "Québec", category: "Music", date: "2026-10-18", endDate: "2026-10-19", price: "CA$45", score: 9.1, image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80", description: "Autumn music and food festival pairing local chefs with indie bands." },
-                    { name: "Northern Lights Nights", city: "Yellowknife", province: "Northwest Territories", category: "Nature", date: "2026-11-05", endDate: "2026-11-12", price: "CA$25", score: 9.7, image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80", description: "Guided aurora viewing under some of the clearest skies on Earth." }
+                    { name: "Northern Lights Nights", city: "Yellowknife", province: "Northwest Territories", category: "Nature", date: "2026-11-05", endDate: "2026-11-12", price: "CA$25", score: 9.7, image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80", description: "Guided aurora viewing under some of the clearest skies on Earth." },
+                    { name: "Calgary Stampede", city: "Calgary", province: "Alberta", category: "Culture", date: "2027-07-02", endDate: "2027-07-11", price: "CA$89", score: 9.5, image: "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80", description: "The Greatest Outdoor Show on Earth — rodeo, music, food and fireworks." },
+                    { name: "Vancouver Jazz Festival", city: "Vancouver", province: "British Columbia", category: "Music", date: "2027-06-23", endDate: "2027-07-02", price: "CA$65", score: 9.2, image: "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80", description: "International jazz artists across waterfront venues and intimate clubs." },
+                    { name: "Winterlude", city: "Ottawa", province: "Ontario", category: "Free", date: "2027-02-05", endDate: "2027-02-21", price: "Free", score: 9.0, image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80", description: "Skating on the Rideau Canal, ice sculptures and winter food." }
                 ];
             }
 
@@ -1613,12 +2720,26 @@
                TOASTS
                ===================================================== */
             const toastStack = document.getElementById("toastStack");
+            const TOAST_ICONS = { info: "i", success: "✓", warn: "!", error: "×" };
+
             function toast(message, type = "info", duration = 3000) {
+                if (!toastStack) return;
+
                 const el = document.createElement("div");
                 el.className = "ged-toast " + type;
-                const iconMap = { info: "i", success: "✓", warn: "!", error: "×" };
-                el.innerHTML = `<span class="toast-icon">${iconMap[type] || "i"}</span><span>${message}</span>`;
+                el.setAttribute("role", type === "error" || type === "warn" ? "alert" : "status");
+
+                const icon = document.createElement("span");
+                icon.className = "toast-icon";
+                icon.setAttribute("aria-hidden", "true");
+                icon.textContent = TOAST_ICONS[type] || "i";
+
+                const text = document.createElement("span");
+                text.textContent = message;
+
+                el.append(icon, text);
                 toastStack.appendChild(el);
+
                 setTimeout(() => {
                     el.classList.add("out");
                     setTimeout(() => el.remove(), 320);
@@ -1638,12 +2759,16 @@
             /* =====================================================
                COUNTERS
                ===================================================== */
-            const counters = document.querySelectorAll("[data-counter]");
+            const counters = $$("[data-counter]");
             function animateCounter(el) {
-                const target = Number(el.dataset.counter);
+                if (el.dataset.counted === "true") return;
+                el.dataset.counted = "true";
+
+                const target = Number(el.dataset.counter) || 0;
                 const suffix = el.dataset.suffix || "";
                 const duration = 1400;
                 const start = performance.now();
+
                 function tick(now) {
                     const t = Math.min((now - start) / duration, 1);
                     const eased = 1 - Math.pow(1 - t, 3);
@@ -1652,11 +2777,17 @@
                 }
                 requestAnimationFrame(tick);
             }
+
             if ("IntersectionObserver" in window) {
-                const obs = new IntersectionObserver(entries => {
-                    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); } });
+                const counterObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
                 }, { threshold: 0.4 });
-                counters.forEach(c => obs.observe(c));
+                counters.forEach((c) => counterObserver.observe(c));
             } else {
                 counters.forEach(animateCounter);
             }
@@ -1667,9 +2798,8 @@
             const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
             function parseDate(str) {
-                // YYYY-MM-DD → local Date
-                const [y, m, d] = str.split("-").map(Number);
-                return new Date(y, m - 1, d);
+                const [y, m, d] = String(str).split("-").map(Number);
+                return new Date(y, (m || 1) - 1, d || 1);
             }
 
             function formatDateRange(start, end) {
@@ -1685,25 +2815,12 @@
                 return `${a.getDate()} ${MONTHS[a.getMonth()]} – ${b.getDate()} ${MONTHS[b.getMonth()]} ${b.getFullYear()}`;
             }
 
-            function monthOf(str) {
-                const d = parseDate(str);
-                return MONTHS[d.getMonth()];
-            }
-
-            function dayOf(str) {
-                const d = parseDate(str);
-                return d.getDate();
-            }
+            function monthOf(str) { return MONTHS[parseDate(str).getMonth()]; }
+            function dayOf(str) { return parseDate(str).getDate(); }
 
             function catClass(cat) {
-                const c = cat.toLowerCase();
-                if (c === "music") return "music";
-                if (c === "sports") return "sports";
-                if (c === "culture") return "culture";
-                if (c === "food") return "food";
-                if (c === "nature") return "nature";
-                if (c === "free") return "free";
-                if (c === "design") return "design";
+                const c = String(cat).toLowerCase();
+                if (["music", "sports", "culture", "food", "nature", "free", "design"].includes(c)) return c;
                 return "";
             }
 
@@ -1711,10 +2828,79 @@
                 return String(price).toLowerCase() === "free";
             }
 
-            function isUpcoming(event) {
-                const d = parseDate(event.date);
+            function escapeHtml(str) {
+                return String(str ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            /* =====================================================
+               HERO PICK + FEATURED SPOTLIGHT
+               ===================================================== */
+            function getUpcoming() {
                 const now = new Date();
-                return d >= new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                return [...EVENTS]
+                    .filter(e => parseDate(e.date) >= today)
+                    .sort((a, b) => parseDate(a.date) - parseDate(b.date));
+            }
+
+            function getFeatured() {
+                const upcoming = getUpcoming();
+                if (upcoming.length === 0) return null;
+                // Choose highest score among the next upcoming
+                return upcoming.slice(0, 5).sort((a, b) => (b.score || 0) - (a.score || 0))[0];
+            }
+
+            function initHeroPick() {
+                const pick = getFeatured();
+                if (!pick) return;
+
+                const titleEl = document.getElementById("heroPickTitle");
+                const locEl = document.getElementById("heroPickLocation");
+                const metaEl = document.getElementById("heroPickMeta");
+                const ctaEl = document.getElementById("heroPickCta");
+
+                titleEl.textContent = pick.name;
+                locEl.textContent = `${pick.city} · ${pick.province}`;
+                metaEl.innerHTML = `
+                    <span>${formatDateRange(pick.date, pick.endDate)}</span>
+                    <span>${pick.category}</span>
+                    <span>GED ${(Number(pick.score) || 0).toFixed(1)}</span>
+                `;
+
+                ctaEl.addEventListener("click", () => openEventModal(pick.name));
+            }
+
+            function initFeaturedSpotlight() {
+                const feat = getFeatured();
+                if (!feat) return;
+
+                const card = document.getElementById("eventFeatured");
+                document.getElementById("featuredMedia").style.backgroundImage = `url('${feat.image}')`;
+                document.getElementById("featuredMedia").setAttribute("aria-label", `Image for ${feat.name}`);
+                document.getElementById("featuredTitle").textContent = feat.name;
+                document.getElementById("featuredLocation").textContent = `${feat.city} · ${feat.province}`;
+                document.getElementById("featuredDescription").textContent = feat.description;
+                document.getElementById("featuredMeta").innerHTML = `
+                    <span>${formatDateRange(feat.date, feat.endDate)}</span>
+                    <span>${feat.category}</span>
+                    <span>${isFree(feat.price) ? "Free entry" : feat.price}</span>
+                    <span class="score">GED ${(Number(feat.score) || 0).toFixed(1)}</span>
+                `;
+
+                document.getElementById("featuredCta").addEventListener("click", () => {
+                    openEventModal(feat.name);
+                });
+
+                document.getElementById("featuredPlan").addEventListener("click", () => {
+                    window.location.href = "packages.html#trip-builder";
+                });
+
+                card.hidden = false;
             }
 
             /* =====================================================
@@ -1726,124 +2912,119 @@
                 const saved = localStorage.getItem("ged-event-saved-" + event.name) === "true";
 
                 return `
-          <article class="event-card reveal"
-                   data-category="${event.category}"
-                   data-city="${event.city}"
-                   data-province="${event.province}"
-                   data-score="${event.score}"
-                   data-date="${event.date}"
-                   data-name="${event.name}"
-                   data-free="${free}">
-            <div class="event-card-image" style="background-image:url('${event.image}')">
-              <div class="event-card-badges">
-                <span class="event-cat ${cat}">${event.category}</span>
-                <span class="event-score"><span class="dot"></span> GED ${event.score.toFixed(1)}</span>
-              </div>
+                <article class="event-card reveal"
+                        data-category="${escapeHtml(event.category)}"
+                        data-city="${escapeHtml(event.city)}"
+                        data-province="${escapeHtml(event.province)}"
+                        data-score="${Number(event.score) || 0}"
+                        data-date="${escapeHtml(event.date)}"
+                        data-name="${escapeHtml(event.name)}"
+                        data-free="${free}">
+                    <div class="event-card-image" style="background-image:url('${escapeHtml(event.image)}')">
+                        <div class="event-card-badges">
+                            <span class="event-cat ${cat}">${escapeHtml(event.category)}</span>
+                            <span class="event-score"><span class="dot" aria-hidden="true"></span> GED ${(Number(event.score) || 0).toFixed(1)}</span>
+                        </div>
 
-              <div class="event-date-chip">
-                <div class="cal">${dayOf(event.date)}<small>${monthOf(event.date)}</small></div>
-                <div class="date-txt">
-                  <strong>${formatDateRange(event.date, event.endDate)}</strong>
-                  <small>${event.city}</small>
-                </div>
-              </div>
-            </div>
+                        <div class="event-date-chip">
+                            <div class="cal" aria-hidden="true">${dayOf(event.date)}<small>${monthOf(event.date)}</small></div>
+                            <div class="date-txt">
+                                <strong>${formatDateRange(event.date, event.endDate)}</strong>
+                                <small>${escapeHtml(event.city)}</small>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="event-card-body">
-              <span class="event-location">${event.city} · ${event.province}</span>
-              <h3>${event.name}</h3>
-              <p>${event.description}</p>
+                    <div class="event-card-body">
+                        <span class="event-location">${escapeHtml(event.city)} · ${escapeHtml(event.province)}</span>
+                        <h3>${escapeHtml(event.name)}</h3>
+                        <p>${escapeHtml(event.description)}</p>
 
-              <div class="event-card-bottom">
-                <div class="event-price">
-                  <small>Entry</small>
-                  <strong class="${free ? "free" : ""}">${event.price}</strong>
-                </div>
-                <div class="event-actions">
-                  <button class="btn-save ${saved ? "active" : ""}"
-                          data-save="${event.name}"
-                          aria-label="Save event">${saved ? "♥" : "♡"}</button>
-                  <button class="btn-view" data-view="${event.name}">View details</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        `;
+                        <div class="event-card-bottom">
+                            <div class="event-price">
+                                <small>Entry</small>
+                                <strong class="${free ? "free" : ""}">${escapeHtml(event.price)}</strong>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn-save ${saved ? "active" : ""}"
+                                        data-save="${escapeHtml(event.name)}"
+                                        aria-label="${saved ? "Remove event from saved" : "Save event"}"
+                                        aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>
+                                <button class="btn-view" data-view="${escapeHtml(event.name)}">View details</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                `;
             }
 
             /* =====================================================
                FILTER + SORT + RENDER
                ===================================================== */
             const grid = document.getElementById("eventGrid");
-            const filterBtns = document.querySelectorAll(".event-filter");
+            const filterBtns = $$(".event-filter");
             const searchInput = document.getElementById("eventSearch");
             const sortSelect = document.getElementById("eventSort");
+            const resultCount = document.getElementById("eventResultCount");
+            const viewToggleBtns = $$("[data-view-mode]");
 
             let currentFilter = "all";
             let currentQuery = "";
             let currentSort = "date";
+            let currentView = "grid";
 
             function getFiltered() {
                 let list = [...EVENTS];
 
-                // Filter
                 if (currentFilter === "Free") {
                     list = list.filter(e => isFree(e.price));
                 } else if (currentFilter !== "all") {
                     list = list.filter(e => e.category === currentFilter);
                 }
 
-                // Search
                 if (currentQuery) {
                     const q = currentQuery.toLowerCase();
                     list = list.filter(e =>
-                        e.name.toLowerCase().includes(q) ||
-                        e.city.toLowerCase().includes(q) ||
-                        e.province.toLowerCase().includes(q) ||
-                        e.category.toLowerCase().includes(q) ||
-                        (e.description || "").toLowerCase().includes(q)
+                        String(e.name || "").toLowerCase().includes(q) ||
+                        String(e.city || "").toLowerCase().includes(q) ||
+                        String(e.province || "").toLowerCase().includes(q) ||
+                        String(e.category || "").toLowerCase().includes(q) ||
+                        String(e.description || "").toLowerCase().includes(q)
                     );
                 }
 
-                // Sort
                 if (currentSort === "date") list.sort((a, b) => parseDate(a.date) - parseDate(b.date));
-                else if (currentSort === "score") list.sort((a, b) => b.score - a.score);
-                else if (currentSort === "name") list.sort((a, b) => a.name.localeCompare(b.name));
-                else if (currentSort === "free") list.sort((a, b) => (isFree(b.price) - isFree(a.price)) || (b.score - a.score));
+                else if (currentSort === "score") list.sort((a, b) => (b.score || 0) - (a.score || 0));
+                else if (currentSort === "name") list.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+                else if (currentSort === "free") list.sort((a, b) => (isFree(b.price) - isFree(a.price)) || ((b.score || 0) - (a.score || 0)));
 
                 return list;
             }
 
-            function render() {
-                const list = getFiltered();
-
-                if (list.length === 0) {
-                    grid.innerHTML = `
-            <div class="empty-state">
-              <strong>No events found</strong>
-              <p>Try another filter or clear the search.</p>
-            </div>
-          `;
-                    return;
-                }
-
-                grid.innerHTML = list.map(renderEventCard).join("");
-
-                // Reveal animation
-                requestAnimationFrame(() => {
-                    grid.querySelectorAll(".reveal").forEach((el, i) => {
-                        setTimeout(() => el.classList.add("visible"), i * 30);
-                    });
+            function updateFilterCounts() {
+                const counts = { all: EVENTS.length, Music: 0, Sports: 0, Culture: 0, Food: 0, Nature: 0, Design: 0, Free: 0 };
+                EVENTS.forEach(e => {
+                    if (counts[e.category] !== undefined) counts[e.category]++;
+                    if (isFree(e.price)) counts.Free++;
                 });
 
+                $$(".filter-count").forEach(el => {
+                    const key = el.dataset.count;
+                    if (counts[key] !== undefined) el.textContent = counts[key];
+                });
+            }
+
+            function bindCardEvents() {
                 // Save buttons
                 grid.querySelectorAll("[data-save]").forEach(btn => {
-                    btn.addEventListener("click", event => {
+                    btn.addEventListener("click", (event) => {
                         event.stopPropagation();
                         const name = btn.dataset.save;
                         const key = "ged-event-saved-" + name;
                         const active = btn.classList.toggle("active");
                         btn.textContent = active ? "♥" : "♡";
+                        btn.setAttribute("aria-pressed", String(active));
+                        btn.setAttribute("aria-label", active ? "Remove event from saved" : "Save event");
                         localStorage.setItem(key, active);
                         toast(active ? "Event saved" : "Event removed", active ? "success" : "info", 1600);
                     });
@@ -1851,22 +3032,92 @@
 
                 // View buttons
                 grid.querySelectorAll("[data-view]").forEach(btn => {
-                    btn.addEventListener("click", () => openEventModal(btn.dataset.view));
+                    btn.addEventListener("click", (event) => {
+                        event.stopPropagation();
+                        openEventModal(btn.dataset.view);
+                    });
                 });
 
-                // Also open modal on card click
+                // Card click → modal
                 grid.querySelectorAll(".event-card").forEach(card => {
-                    card.addEventListener("click", e => {
+                    card.addEventListener("click", (e) => {
                         if (e.target.closest("button")) return;
                         openEventModal(card.dataset.name);
+                    });
+
+                    card.setAttribute("tabindex", "0");
+                    card.addEventListener("keydown", (e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                            if (e.target.closest("button")) return;
+                            e.preventDefault();
+                            openEventModal(card.dataset.name);
+                        }
                     });
                 });
             }
 
+            function applyViewMode() {
+                grid.classList.toggle("list-view", currentView === "list");
+                viewToggleBtns.forEach(b => {
+                    const active = b.dataset.viewMode === currentView;
+                    b.classList.toggle("active", active);
+                    b.setAttribute("aria-pressed", String(active));
+                });
+            }
+
+            function render() {
+                const list = getFiltered();
+
+                if (list.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <strong>No events found</strong>
+                            <p>Try another filter or clear the search to see all events.</p>
+                            <button type="button" id="clearFilters">Clear filters</button>
+                        </div>
+                    `;
+                    const clearBtn = document.getElementById("clearFilters");
+                    if (clearBtn) {
+                        clearBtn.addEventListener("click", () => {
+                            currentFilter = "all";
+                            currentQuery = "";
+                            currentSort = "date";
+                            searchInput.value = "";
+                            sortSelect.value = "date";
+                            filterBtns.forEach(b => {
+                                const isAll = b.dataset.filter === "all";
+                                b.classList.toggle("active", isAll);
+                                b.setAttribute("aria-pressed", String(isAll));
+                            });
+                            render();
+                        });
+                    }
+                } else {
+                    grid.innerHTML = list.map(renderEventCard).join("");
+                    bindCardEvents();
+
+                    requestAnimationFrame(() => {
+                        grid.querySelectorAll(".reveal").forEach((el, i) => {
+                            setTimeout(() => el.classList.add("visible"), Math.min(i * 30, 600));
+                        });
+                    });
+                }
+
+                if (resultCount) {
+                    resultCount.innerHTML = `Showing <strong>${list.length}</strong> ${list.length === 1 ? "event" : "events"}`;
+                }
+
+                applyViewMode();
+            }
+
             filterBtns.forEach(btn => {
                 btn.addEventListener("click", () => {
-                    filterBtns.forEach(b => b.classList.remove("active"));
+                    filterBtns.forEach(b => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-pressed", "false");
+                    });
                     btn.classList.add("active");
+                    btn.setAttribute("aria-pressed", "true");
                     currentFilter = btn.dataset.filter;
                     render();
                 });
@@ -1882,6 +3133,13 @@
                 render();
             });
 
+            viewToggleBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    currentView = btn.dataset.viewMode;
+                    applyViewMode();
+                });
+            });
+
             /* =====================================================
                MODAL
                ===================================================== */
@@ -1891,52 +3149,94 @@
             const modalMeta = document.getElementById("modalMeta");
             const modalDescription = document.getElementById("modalDescription");
             const modalEyebrow = document.getElementById("modalEyebrow");
+            const modalSaveBtn = document.getElementById("modalSaveBtn");
+            const modalShareBtn = document.getElementById("modalShareBtn");
+
+            let currentModalEvent = null;
+            let lastFocused = null;
 
             function openEventModal(name) {
                 const event = EVENTS.find(e => e.name === name);
                 if (!event) return;
 
+                currentModalEvent = event;
+                lastFocused = document.activeElement;
+
                 modalEyebrow.textContent = `GED / ${event.category}`;
-                modalTitle.innerHTML = `${event.name} <em>·</em> ${event.city}`;
-                modalHero.style.backgroundImage = `url('${event.image}')`;
+                modalTitle.innerHTML = `${escapeHtml(event.name)} <em>·</em> ${escapeHtml(event.city)}`;
+                modalHero.style.backgroundImage = `url('${escapeHtml(event.image)}')`;
+                modalHero.setAttribute("aria-label", `Image for ${event.name}`);
                 modalDescription.textContent = event.description;
 
-                modalMeta.innerHTML = `
-          <div class="modal-meta-item">
-            <small>Location</small>
-            <strong>${event.city}, ${event.province}</strong>
-          </div>
-          <div class="modal-meta-item">
-            <small>Date</small>
-            <strong>${formatDateRange(event.date, event.endDate)}</strong>
-          </div>
-          <div class="modal-meta-item">
-            <small>Category</small>
-            <strong>${event.category}</strong>
-          </div>
-          <div class="modal-meta-item">
-            <small>Entry</small>
-            <strong style="color:${isFree(event.price) ? "var(--ios-green)" : "var(--ios-text)"};">${event.price}</strong>
-          </div>
-          <div class="modal-meta-item" style="grid-column: span 2;">
-            <small>GED Score</small>
-            <strong>${event.score.toFixed(1)} / 10</strong>
-          </div>
-        `;
+                const saved = localStorage.getItem("ged-event-saved-" + event.name) === "true";
+                modalSaveBtn.textContent = saved ? "Saved ✓" : "Save event";
 
+                modalMeta.innerHTML = `
+                    <div class="modal-meta-item">
+                        <small>Location</small>
+                        <strong>${escapeHtml(event.city)}, ${escapeHtml(event.province)}</strong>
+                    </div>
+                    <div class="modal-meta-item">
+                        <small>Date</small>
+                        <strong>${formatDateRange(event.date, event.endDate)}</strong>
+                    </div>
+                    <div class="modal-meta-item">
+                        <small>Category</small>
+                        <strong>${escapeHtml(event.category)}</strong>
+                    </div>
+                    <div class="modal-meta-item">
+                        <small>Entry</small>
+                        <strong style="color:${isFree(event.price) ? "var(--ios-green)" : "var(--ios-text)"};">${escapeHtml(event.price)}</strong>
+                    </div>
+                    <div class="modal-meta-item" style="grid-column: span 2;">
+                        <small>GED Score</small>
+                        <strong>${(Number(event.score) || 0).toFixed(1)} / 10</strong>
+                    </div>
+                `;
+
+                modal.hidden = false;
                 modal.classList.add("open");
                 document.body.style.overflow = "hidden";
+
+                setTimeout(() => {
+                    const closeBtn = document.getElementById("closeEventModal");
+                    if (closeBtn) closeBtn.focus();
+                }, 50);
             }
 
             function closeEventModal() {
                 modal.classList.remove("open");
+                modal.hidden = true;
                 document.body.style.overflow = "";
+                currentModalEvent = null;
+
+                if (lastFocused && typeof lastFocused.focus === "function") {
+                    lastFocused.focus();
+                }
             }
+
+            modal.addEventListener("keydown", (e) => {
+                if (e.key !== "Tab") return;
+
+                const focusables = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusables.length === 0) return;
+
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            });
 
             document.getElementById("closeEventModal").addEventListener("click", closeEventModal);
             document.getElementById("modalCloseSecondary").addEventListener("click", closeEventModal);
-            modal.addEventListener("click", e => { if (e.target === modal) closeEventModal(); });
-            document.addEventListener("keydown", e => {
+            modal.addEventListener("click", (e) => { if (e.target === modal) closeEventModal(); });
+            document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && modal.classList.contains("open")) closeEventModal();
             });
 
@@ -1944,25 +3244,67 @@
                 window.location.href = "packages.html#trip-builder";
             });
 
-            document.getElementById("modalSaveBtn").addEventListener("click", () => {
-                const name = modalTitle.textContent.split("·")[0].trim();
-                const event = EVENTS.find(e => e.name === name);
-                if (!event) return;
-                const key = "ged-event-saved-" + event.name;
+            modalSaveBtn.addEventListener("click", () => {
+                if (!currentModalEvent) return;
+                const name = currentModalEvent.name;
+                const key = "ged-event-saved-" + name;
                 const active = localStorage.getItem(key) !== "true";
                 localStorage.setItem(key, active);
+                modalSaveBtn.textContent = active ? "Saved ✓" : "Save event";
                 toast(active ? "Event saved" : "Event removed", active ? "success" : "info", 1600);
                 render();
             });
 
+            modalShareBtn.addEventListener("click", async () => {
+                if (!currentModalEvent) return;
+                const ev = currentModalEvent;
+                const shareData = {
+                    title: `GED · ${ev.name}`,
+                    text: `${ev.name} — ${ev.city}, ${ev.province}. ${formatDateRange(ev.date, ev.endDate)}.`,
+                    url: window.location.href.split("#")[0] + `?event=${encodeURIComponent(ev.name)}`
+                };
+
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else if (navigator.clipboard) {
+                        await navigator.clipboard.writeText(`${shareData.title} — ${shareData.url}`);
+                        toast("Link copied to clipboard", "success", 2200);
+                    } else {
+                        toast("Sharing not supported on this device", "warn", 2400);
+                    }
+                } catch (err) {
+                    if (err && err.name !== "AbortError") {
+                        toast("Could not share", "error", 2400);
+                    }
+                }
+            });
+
             /* =====================================================
-               REVEAL ON SCROLL
+               DEEP LINK (open modal from ?event=Name)
                ===================================================== */
-            const revealEls = document.querySelectorAll(".reveal");
+            function handleDeepLink() {
+                const params = new URLSearchParams(window.location.search);
+                const eventName = params.get("event");
+                if (!eventName) return;
+
+                const found = EVENTS.find(e => e.name.toLowerCase() === eventName.toLowerCase());
+                if (found) {
+                    setTimeout(() => openEventModal(found.name), 400);
+                }
+            }
+
+            /* =====================================================
+               REVEAL ON SCROLL (static .reveal)
+               ===================================================== */
+            const revealEls = $$(".reveal:not(.event-card)");
             if ("IntersectionObserver" in window) {
-                const obs = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) { entry.target.classList.add("visible"); obs.unobserve(entry.target); }
+                const obs = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
                     });
                 }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
                 revealEls.forEach(el => obs.observe(el));
@@ -1973,9 +3315,16 @@
             /* =====================================================
                INIT
                ===================================================== */
+            updateFilterCounts();
+            initHeroPick();
+            initFeaturedSpotlight();
             render();
+            handleDeepLink();
 
-            console.log("%cGED · Events", "font-weight:700;color:#ff2d55;background:#0a0a0a;padding:4px 8px;border-radius:6px;");
+            console.log(
+                "%cGED · Events v3",
+                "font-weight:700;color:#ff2d55;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;"
+            );
         });
     </script>
 

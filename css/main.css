@@ -2843,3 +2843,255 @@ h2 em {
         bottom: max(24px, env(safe-area-inset-bottom, 24px));
     }
 }
+
+/* ============================================================
+   41 — IOS SEGMENTED CONTROL
+   ============================================================
+   Uso:
+     <div class="segmented" data-segmented role="tablist">
+         <button data-value="cad" class="active" role="tab">CAD</button>
+         <button data-value="usd" role="tab">USD</button>
+         <button data-value="eur" role="tab">EUR</button>
+     </div>
+
+   Variantes (adicionar classes):
+     .segmented.dark   — fundo escuro, thumb escuro
+     .segmented.glass  — fundo translúcido com blur
+     .segmented.sm     — tamanho pequeno
+     .segmented.lg     — tamanho grande
+     .segmented.full   — ocupa 100% da largura
+   ============================================================ */
+
+.segmented,
+[data-segmented] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 11px;
+    background: rgba(118, 118, 128, 0.12);
+    isolation: isolate;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    max-width: 100%;
+}
+
+/* Sliding thumb (highlight) */
+.segmented-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: calc(100% - 6px);
+    width: 0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.10),
+        0 0 0 0.5px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition:
+        transform 0.35s var(--ease-ios),
+        width 0.35s var(--ease-ios);
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform, width;
+}
+
+/* Segment item */
+.segmented>button,
+.segmented>.segmented-item,
+[data-segmented]>button,
+[data-segmented]>.segmented-item {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 16px;
+    min-height: 32px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    opacity: 0.72;
+    transition:
+        opacity 0.25s var(--ease-ios),
+        color 0.25s var(--ease-ios),
+        transform 0.25s var(--ease-spring);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.segmented>button:hover,
+.segmented>.segmented-item:hover,
+[data-segmented]>button:hover,
+[data-segmented]>.segmented-item:hover {
+    opacity: 1;
+}
+
+.segmented>button.active,
+.segmented>.segmented-item.active,
+[data-segmented]>button.active,
+[data-segmented]>.segmented-item.active {
+    opacity: 1;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.segmented>button:active,
+[data-segmented]>button:active {
+    transform: scale(0.97);
+}
+
+.segmented>button:disabled,
+[data-segmented]>button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.segmented>button:focus-visible,
+[data-segmented]>button:focus-visible {
+    outline: 2px solid var(--ios-blue);
+    outline-offset: 2px;
+}
+
+/* ----------------------------------------
+   Variant: DARK
+   ---------------------------------------- */
+.segmented.dark,
+[data-segmented].dark {
+    background: rgba(120, 120, 128, 0.24);
+}
+
+.segmented.dark .segmented-thumb,
+[data-segmented].dark .segmented-thumb {
+    background: #1c1c1e;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.segmented.dark>button,
+.segmented.dark>.segmented-item,
+[data-segmented].dark>button,
+[data-segmented].dark>.segmented-item {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.segmented.dark>button.active,
+.segmented.dark>.segmented-item.active,
+[data-segmented].dark>button.active,
+[data-segmented].dark>.segmented-item.active {
+    color: #fff;
+}
+
+/* ----------------------------------------
+   Variant: GLASS
+   ---------------------------------------- */
+.segmented.glass,
+[data-segmented].glass {
+    background: rgba(255, 255, 255, 0.16);
+    border: 0.5px solid rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.segmented.glass .segmented-thumb,
+[data-segmented].glass .segmented-thumb {
+    background: rgba(255, 255, 255, 0.94);
+}
+
+/* ----------------------------------------
+   Variant: SMALL
+   ---------------------------------------- */
+.segmented.sm>button,
+[data-segmented].sm>button {
+    padding: 5px 12px;
+    min-height: 28px;
+    font-size: 12px;
+}
+
+/* ----------------------------------------
+   Variant: LARGE
+   ---------------------------------------- */
+.segmented.lg>button,
+[data-segmented].lg>button {
+    padding: 10px 20px;
+    min-height: 40px;
+    font-size: 14px;
+}
+
+/* ----------------------------------------
+   Variant: FULL WIDTH
+   ---------------------------------------- */
+.segmented.full,
+[data-segmented].full {
+    display: flex;
+    width: 100%;
+}
+
+.segmented.full>button,
+.segmented.full>.segmented-item,
+[data-segmented].full>button,
+[data-segmented].full>.segmented-item {
+    flex: 1;
+}
+
+/* ----------------------------------------
+   Integração com .currency-picker (packages)
+   ----------------------------------------
+   Se você marcar o wrapper como [data-segmented],
+   ele herda o visual iOS automaticamente.
+   ---------------------------------------- */
+.currency-picker[data-segmented] {
+    padding: 3px;
+    border-radius: 11px;
+}
+
+.currency-picker[data-segmented] .segmented-thumb {
+    border-radius: 8px;
+}
+
+.currency-picker[data-segmented] .currency-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    min-height: 32px;
+}
+
+.currency-picker[data-segmented] .currency-btn.active {
+    background: transparent;
+    color: var(--ink);
+    box-shadow: none;
+}
+
+/* ----------------------------------------
+   Reduced motion
+   ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .segmented-thumb,
+    [data-segmented] .segmented-thumb {
+        transition: none;
+    }
+}
+
+/* ----------------------------------------
+   Print
+   ---------------------------------------- */
+@media print {
+
+    .segmented-thumb,
+    [data-segmented] .segmented-thumb {
+        display: none !important;
+    }
+}
