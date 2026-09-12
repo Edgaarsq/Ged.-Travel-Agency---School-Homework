@@ -1,1 +1,69 @@
-{"regions":[{"name":"Ontario","code":"ON","capital":"Toronto"},{"name":"Quebec","code":"QC","capital":"Québec City"},{"name":"British Columbia","code":"BC","capital":"Victoria"},{"name":"Alberta","code":"AB","capital":"Edmonton"},{"name":"Manitoba","code":"MB","capital":"Winnipeg"},{"name":"Saskatchewan","code":"SK","capital":"Regina"},{"name":"Nova Scotia","code":"NS","capital":"Halifax"},{"name":"New Brunswick","code":"NB","capital":"Fredericton"},{"name":"Newfoundland & Labrador","code":"NL","capital":"St. John’s"},{"name":"Prince Edward Island","code":"PE","capital":"Charlottetown"},{"name":"Yukon","code":"YT","capital":"Whitehorse"},{"name":"Northwest Territories","code":"NT","capital":"Yellowknife"},{"name":"Nunavut","code":"NU","capital":"Iqaluit"}]}
+{
+    "regions": [
+        {
+            "name": "Ontario",
+            "code": "ON",
+            "capital": "Toronto"
+        },
+        {
+            "name": "Quebec",
+            "code": "QC",
+            "capital": "Québec City"
+        },
+        {
+            "name": "British Columbia",
+            "code": "BC",
+            "capital": "Victoria"
+        },
+        {
+            "name": "Alberta",
+            "code": "AB",
+            "capital": "Edmonton"
+        },
+        {
+            "name": "Manitoba",
+            "code": "MB",
+            "capital": "Winnipeg"
+        },
+        {
+            "name": "Saskatchewan",
+            "code": "SK",
+            "capital": "Regina"
+        },
+        {
+            "name": "Nova Scotia",
+            "code": "NS",
+            "capital": "Halifax"
+        },
+        {
+            "name": "New Brunswick",
+            "code": "NB",
+            "capital": "Fredericton"
+        },
+        {
+            "name": "Newfoundland & Labrador",
+            "code": "NL",
+            "capital": "St. John’s"
+        },
+        {
+            "name": "Prince Edward Island",
+            "code": "PE",
+            "capital": "Charlottetown"
+        },
+        {
+            "name": "Yukon",
+            "code": "YT",
+            "capital": "Whitehorse"
+        },
+        {
+            "name": "Northwest Territories",
+            "code": "NT",
+            "capital": "Yellowknife"
+        },
+        {
+            "name": "Nunavut",
+            "code": "NU",
+            "capital": "Iqaluit"
+        }
+    ]
+}

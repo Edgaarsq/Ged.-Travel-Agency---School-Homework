@@ -1,1 +1,431 @@
-{"hotels":[{"name":"Northline House","city":"Toronto","area":"Downtown","night":189,"score":9.4},{"name":"Harbour 27","city":"Vancouver","area":"Downtown","night":214,"score":9.2},{"name":"Old Port Atelier","city":"Montréal","area":"Old Montréal","night":168,"score":9.1},{"name":"Summit Lodge","city":"Banff","area":"Town Centre","night":242,"score":9.6}]}
+{
+    "hotels": [
+        {
+            "name": "Northline House",
+            "city": "Toronto",
+            "area": "Downtown",
+            "night": 189,
+            "score": 9.4
+        },
+        {
+            "name": "The Ivy on King",
+            "city": "Toronto",
+            "area": "King West",
+            "night": 245,
+            "score": 9.6
+        },
+        {
+            "name": "Queen's Quay Loft",
+            "city": "Toronto",
+            "area": "Harbourfront",
+            "night": 210,
+            "score": 9.3
+        },
+        {
+            "name": "Distillery Rooms",
+            "city": "Toronto",
+            "area": "Distillery District",
+            "night": 232,
+            "score": 9.5
+        },
+        {
+            "name": "ByWard Boutique",
+            "city": "Ottawa",
+            "area": "ByWard Market",
+            "night": 175,
+            "score": 9.2
+        },
+        {
+            "name": "Canal View Inn",
+            "city": "Ottawa",
+            "area": "The Glebe",
+            "night": 198,
+            "score": 9.4
+        },
+        {
+            "name": "Downtown Hamilton Stay",
+            "city": "Hamilton",
+            "area": "Downtown",
+            "night": 138,
+            "score": 8.8
+        },
+        {
+            "name": "Old East Rooms",
+            "city": "London",
+            "area": "Old East Village",
+            "night": 145,
+            "score": 8.9
+        },
+        {
+            "name": "Kingston Waterfront Suites",
+            "city": "Kingston",
+            "area": "Downtown",
+            "night": 168,
+            "score": 9.1
+        },
+        {
+            "name": "Fallsview Residence",
+            "city": "Niagara Falls",
+            "area": "Fallsview",
+            "night": 156,
+            "score": 9.0
+        },
+        {
+            "name": "Avon Theatre Loft",
+            "city": "Stratford",
+            "area": "Festival District",
+            "night": 182,
+            "score": 9.2
+        },
+        {
+            "name": "Old Port Atelier",
+            "city": "Montréal",
+            "area": "Old Montréal",
+            "night": 168,
+            "score": 9.1
+        },
+        {
+            "name": "Plateau Maison",
+            "city": "Montréal",
+            "area": "Plateau Mont-Royal",
+            "night": 152,
+            "score": 9.3
+        },
+        {
+            "name": "Mile End Studio",
+            "city": "Montréal",
+            "area": "Mile End",
+            "night": 145,
+            "score": 9.2
+        },
+        {
+            "name": "Griffintown Riverside",
+            "city": "Montréal",
+            "area": "Griffintown",
+            "night": 178,
+            "score": 9.4
+        },
+        {
+            "name": "Vieux-Québec Château",
+            "city": "Quebec City",
+            "area": "Old Québec",
+            "night": 210,
+            "score": 9.6
+        },
+        {
+            "name": "Saint-Roch Atelier",
+            "city": "Quebec City",
+            "area": "Saint-Roch",
+            "night": 165,
+            "score": 9.2
+        },
+        {
+            "name": "Petit-Champlain Inn",
+            "city": "Quebec City",
+            "area": "Petit-Champlain",
+            "night": 195,
+            "score": 9.5
+        },
+        {
+            "name": "Tremblant Alpine Lodge",
+            "city": "Mont-Tremblant",
+            "area": "Village",
+            "night": 268,
+            "score": 9.5
+        },
+        {
+            "name": "Harbour 27",
+            "city": "Vancouver",
+            "area": "Downtown",
+            "night": 214,
+            "score": 9.2
+        },
+        {
+            "name": "Yaletown Loft",
+            "city": "Vancouver",
+            "area": "Yaletown",
+            "night": 238,
+            "score": 9.4
+        },
+        {
+            "name": "Gastown Heritage",
+            "city": "Vancouver",
+            "area": "Gastown",
+            "night": 225,
+            "score": 9.3
+        },
+        {
+            "name": "Kitsilano Beach House",
+            "city": "Vancouver",
+            "area": "Kitsilano",
+            "night": 198,
+            "score": 9.1
+        },
+        {
+            "name": "Coal Harbour Suites",
+            "city": "Vancouver",
+            "area": "Coal Harbour",
+            "night": 285,
+            "score": 9.7
+        },
+        {
+            "name": "Inner Harbour Inn",
+            "city": "Victoria",
+            "area": "Inner Harbour",
+            "night": 205,
+            "score": 9.4
+        },
+        {
+            "name": "James Bay Cottage",
+            "city": "Victoria",
+            "area": "James Bay",
+            "night": 178,
+            "score": 9.1
+        },
+        {
+            "name": "Whistler Village Lodge",
+            "city": "Whistler",
+            "area": "Whistler Village",
+            "night": 320,
+            "score": 9.6
+        },
+        {
+            "name": "Creekside Chalet",
+            "city": "Whistler",
+            "area": "Creekside",
+            "night": 265,
+            "score": 9.3
+        },
+        {
+            "name": "Okanagan Lake View",
+            "city": "Kelowna",
+            "area": "South Pandosy",
+            "night": 178,
+            "score": 9.0
+        },
+        {
+            "name": "Summit Lodge",
+            "city": "Banff",
+            "area": "Town Centre",
+            "night": 242,
+            "score": 9.6
+        },
+        {
+            "name": "Bow River Retreat",
+            "city": "Banff",
+            "area": "Bow Falls",
+            "night": 295,
+            "score": 9.5
+        },
+        {
+            "name": "Tunnel Mountain Cabin",
+            "city": "Banff",
+            "area": "Tunnel Mountain",
+            "night": 210,
+            "score": 9.2
+        },
+        {
+            "name": "Jasper Townsite Inn",
+            "city": "Jasper",
+            "area": "Jasper Townsite",
+            "night": 225,
+            "score": 9.3
+        },
+        {
+            "name": "Calgary Beltline Suites",
+            "city": "Calgary",
+            "area": "Beltline",
+            "night": 168,
+            "score": 9.1
+        },
+        {
+            "name": "Kensington Calgary Loft",
+            "city": "Calgary",
+            "area": "Kensington",
+            "night": 155,
+            "score": 9.0
+        },
+        {
+            "name": "Ice District Residence",
+            "city": "Edmonton",
+            "area": "Ice District",
+            "night": 185,
+            "score": 9.2
+        },
+        {
+            "name": "Old Strathcona Rooms",
+            "city": "Edmonton",
+            "area": "Old Strathcona",
+            "night": 148,
+            "score": 9.1
+        },
+        {
+            "name": "Exchange District Loft",
+            "city": "Winnipeg",
+            "area": "Exchange District",
+            "night": 145,
+            "score": 9.2
+        },
+        {
+            "name": "The Forks Riverstay",
+            "city": "Winnipeg",
+            "area": "The Forks",
+            "night": 165,
+            "score": 9.0
+        },
+        {
+            "name": "Osborne Village Inn",
+            "city": "Winnipeg",
+            "area": "Osborne Village",
+            "night": 138,
+            "score": 9.1
+        },
+        {
+            "name": "Churchill Northern Lights Lodge",
+            "city": "Churchill",
+            "area": "Town Centre",
+            "night": 385,
+            "score": 9.6
+        },
+        {
+            "name": "Riversdale Boutique",
+            "city": "Saskatoon",
+            "area": "Riversdale",
+            "night": 132,
+            "score": 9.0
+        },
+        {
+            "name": "Cathedral Village Suites",
+            "city": "Regina",
+            "area": "Cathedral Village",
+            "night": 128,
+            "score": 8.9
+        },
+        {
+            "name": "Halifax Waterfront Inn",
+            "city": "Halifax",
+            "area": "Waterfront",
+            "night": 198,
+            "score": 9.3
+        },
+        {
+            "name": "Hydrostone Heritage",
+            "city": "Halifax",
+            "area": "Hydrostone",
+            "night": 172,
+            "score": 9.1
+        },
+        {
+            "name": "Cabot Trail Lodge",
+            "city": "Baddeck",
+            "area": "Village Centre",
+            "night": 215,
+            "score": 9.4
+        },
+        {
+            "name": "Moncton Downtown Stay",
+            "city": "Moncton",
+            "area": "Downtown",
+            "night": 145,
+            "score": 9.0
+        },
+        {
+            "name": "Uptown Saint John Inn",
+            "city": "Saint John",
+            "area": "Uptown",
+            "night": 152,
+            "score": 8.9
+        },
+        {
+            "name": "Fredericton Riverstay",
+            "city": "Fredericton",
+            "area": "Downtown",
+            "night": 142,
+            "score": 9.1
+        },
+        {
+            "name": "St. John's Harbour Rooms",
+            "city": "St. John's",
+            "area": "Water Street",
+            "night": 175,
+            "score": 9.3
+        },
+        {
+            "name": "George Street Suites",
+            "city": "St. John's",
+            "area": "George Street",
+            "night": 165,
+            "score": 9.2
+        },
+        {
+            "name": "Signal Hill Inn",
+            "city": "St. John's",
+            "area": "Signal Hill",
+            "night": 198,
+            "score": 9.4
+        },
+        {
+            "name": "Charlottetown Waterfront Inn",
+            "city": "Charlottetown",
+            "area": "Waterfront",
+            "night": 188,
+            "score": 9.3
+        },
+        {
+            "name": "Cavendish Beach Cottages",
+            "city": "Cavendish",
+            "area": "Cavendish",
+            "night": 165,
+            "score": 9.1
+        },
+        {
+            "name": "Whitehorse Aurora Lodge",
+            "city": "Whitehorse",
+            "area": "Downtown",
+            "night": 215,
+            "score": 9.4
+        },
+        {
+            "name": "Dawson City Gold Rush Inn",
+            "city": "Dawson City",
+            "area": "Downtown",
+            "night": 195,
+            "score": 9.3
+        },
+        {
+            "name": "Yellowknife Aurora Suites",
+            "city": "Yellowknife",
+            "area": "Old Town",
+            "night": 245,
+            "score": 9.6
+        },
+        {
+            "name": "Frame Lake Lodge",
+            "city": "Yellowknife",
+            "area": "Frame Lake",
+            "night": 220,
+            "score": 9.4
+        },
+        {
+            "name": "Inuvik Arctic Inn",
+            "city": "Inuvik",
+            "area": "Downtown",
+            "night": 235,
+            "score": 9.2
+        },
+        {
+            "name": "Iqaluit Frobisher Inn",
+            "city": "Iqaluit",
+            "area": "Downtown",
+            "night": 285,
+            "score": 9.1
+        },
+        {
+            "name": "Apex Bay Retreat",
+            "city": "Iqaluit",
+            "area": "Apex",
+            "night": 265,
+            "score": 9.0
+        }
+    ]
+}

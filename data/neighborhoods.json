@@ -1,1 +1,345 @@
-{"Toronto":["Downtown","Yorkville","Scarborough","North York","Etobicoke"],"Ottawa":["ByWard Market","Centretown","Glebe"],"Vancouver":["Downtown","Gastown","Kitsilano","Yaletown"],"Montréal":["Old Montréal","Plateau","Mile End"],"Banff":["Town Centre","Tunnel Mountain"]}
+{
+    "Toronto": [
+        "Downtown",
+        "Distillery District",
+        "Financial District",
+        "Yorkville",
+        "Kensington Market",
+        "Queen West",
+        "King West",
+        "Liberty Village",
+        "The Annex",
+        "Leslieville",
+        "Riverdale",
+        "Parkdale",
+        "Roncesvalles",
+        "High Park",
+        "The Beaches",
+        "Chinatown",
+        "Greektown (Danforth)",
+        "Scarborough",
+        "North York",
+        "Etobicoke"
+    ],
+    "Ottawa": [
+        "ByWard Market",
+        "Centretown",
+        "The Glebe",
+        "Westboro",
+        "Hintonburg",
+        "Sandy Hill",
+        "New Edinburgh",
+        "Little Italy",
+        "Chinatown",
+        "Kanata",
+        "Barrhaven",
+        "Orléans"
+    ],
+    "Hamilton": [
+        "Downtown",
+        "James North",
+        "Dundas",
+        "Westdale",
+        "Locke Street",
+        "Ancaster",
+        "Waterdown"
+    ],
+    "London": [
+        "Downtown",
+        "Richmond Row",
+        "Old East Village",
+        "Wortley Village",
+        "Byron",
+        "Masonville"
+    ],
+    "Kingston": [
+        "Downtown",
+        "Sydenham",
+        "Williamsville",
+        "Portsmouth",
+        "Cataraqui"
+    ],
+    "Windsor": [
+        "Downtown",
+        "Walkerville",
+        "Sandwich",
+        "Ford City",
+        "Riverside"
+    ],
+    "Stratford": [
+        "Downtown",
+        "Avon Ward",
+        "Shakespeare",
+        "Festival District"
+    ],
+    "Niagara Falls": [
+        "Clifton Hill",
+        "Fallsview",
+        "Downtown",
+        "Lundy's Lane",
+        "Queen Victoria Park"
+    ],
+    "Montréal": [
+        "Old Montréal (Vieux-Montréal)",
+        "Plateau Mont-Royal",
+        "Mile End",
+        "Outremont",
+        "Griffintown",
+        "Little Italy",
+        "Chinatown",
+        "Le Village",
+        "Rosemont",
+        "Verdun",
+        "Saint-Henri",
+        "Hochelaga-Maisonneuve",
+        "Downtown",
+        "Quartier des Spectacles",
+        "Westmount"
+    ],
+    "Quebec City": [
+        "Old Québec (Vieux-Québec)",
+        "Basse-Ville",
+        "Haute-Ville",
+        "Petit-Champlain",
+        "Saint-Roch",
+        "Saint-Jean-Baptiste",
+        "Montcalm",
+        "Limoilou",
+        "Sainte-Foy"
+    ],
+    "Laval": [
+        "Vieux-Laval",
+        "Sainte-Rose",
+        "Chomedey",
+        "Vimont",
+        "Laval-des-Rapides"
+    ],
+    "Gatineau": [
+        "Hull",
+        "Aylmer",
+        "Buckingham",
+        "Masson-Angers",
+        "Le Plateau"
+    ],
+    "Sherbrooke": [
+        "Vieux-Sherbrooke",
+        "Jacques-Cartier",
+        "Mont-Bellevue",
+        "Fleurimont"
+    ],
+    "Vancouver": [
+        "Downtown",
+        "Gastown",
+        "Yaletown",
+        "Kitsilano",
+        "Mount Pleasant",
+        "Commercial Drive",
+        "Chinatown",
+        "Davie Village",
+        "Coal Harbour",
+        "Fairview",
+        "Kerrisdale",
+        "Main Street",
+        "Olympic Village",
+        "West End"
+    ],
+    "Victoria": [
+        "Downtown",
+        "Inner Harbour",
+        "James Bay",
+        "Cook Street Village",
+        "Fernwood",
+        "Fairfield",
+        "Oak Bay",
+        "Esquimalt"
+    ],
+    "Whistler": [
+        "Whistler Village",
+        "Upper Village",
+        "Creekside",
+        "Blueberry Hill",
+        "Nicklaus North"
+    ],
+    "Kelowna": [
+        "Downtown",
+        "Cultural District",
+        "South Pandosy",
+        "Rutland",
+        "Glenmore",
+        "West Kelowna"
+    ],
+    "Surrey": [
+        "Whalley",
+        "Newton",
+        "Cloverdale",
+        "Guildford",
+        "South Surrey",
+        "Fleetwood"
+    ],
+    "Calgary": [
+        "Downtown",
+        "Beltline",
+        "Kensington",
+        "Inglewood",
+        "Mission",
+        "Bridgeland",
+        "East Village",
+        "Sunnyside",
+        "Bowness",
+        "University District"
+    ],
+    "Edmonton": [
+        "Downtown",
+        "Ice District",
+        "Old Strathcona",
+        "Whyte Avenue",
+        "Oliver",
+        "Garneau",
+        "Glenora",
+        "Ritchie",
+        "Alberta Avenue"
+    ],
+    "Banff": [
+        "Town Centre",
+        "Tunnel Mountain",
+        "Banff Springs",
+        "Bow Falls"
+    ],
+    "Jasper": [
+        "Jasper Townsite",
+        "Patricia Street",
+        "Connaught Drive",
+        "Cabin Creek"
+    ],
+    "Winnipeg": [
+        "Downtown",
+        "Exchange District",
+        "The Forks",
+        "Osborne Village",
+        "Corydon",
+        "Wolseley",
+        "Saint-Boniface",
+        "West Broadway",
+        "Fort Garry"
+    ],
+    "Brandon": [
+        "Downtown",
+        "Riverview",
+        "Riverheights",
+        "South End"
+    ],
+    "Churchill": [
+        "Town Centre",
+        "Hudson Bay Coast"
+    ],
+    "Saskatoon": [
+        "Downtown",
+        "Riversdale",
+        "Broadway",
+        "Nutana",
+        "City Park",
+        "Lakeview"
+    ],
+    "Regina": [
+        "Downtown",
+        "Cathedral Village",
+        "Warehouse District",
+        "Lakeview",
+        "Harbour Landing"
+    ],
+    "Halifax": [
+        "Downtown",
+        "Waterfront",
+        "North End",
+        "South End",
+        "Spring Garden",
+        "Hydrostone",
+        "Quinpool",
+        "Dartmouth Crossing"
+    ],
+    "Sydney": [
+        "Downtown",
+        "Whitney Pier",
+        "Ashby",
+        "Westmount"
+    ],
+    "Moncton": [
+        "Downtown",
+        "Dieppe",
+        "Riverview",
+        "Magnetic Hill"
+    ],
+    "Saint John": [
+        "Uptown",
+        "Trinity Royal",
+        "Market Square",
+        "North End"
+    ],
+    "Fredericton": [
+        "Downtown",
+        "Historic Garrison",
+        "Devon",
+        "Nashwaaksis"
+    ],
+    "St. John's": [
+        "Downtown",
+        "George Street",
+        "Water Street",
+        "Signal Hill",
+        "Quidi Vidi",
+        "The Battery"
+    ],
+    "Corner Brook": [
+        "Downtown",
+        "Curling",
+        "Sun Valley"
+    ],
+    "Charlottetown": [
+        "Downtown",
+        "Historic Charlottetown",
+        "Waterfront",
+        "Victoria Park"
+    ],
+    "Summerside": [
+        "Downtown",
+        "Spinnakers Landing",
+        "Wilmont"
+    ],
+    "Whitehorse": [
+        "Downtown",
+        "Whistle Bend",
+        "Riverdale",
+        "Marwell"
+    ],
+    "Dawson City": [
+        "Downtown",
+        "Klondike Valley",
+        "Bonanza Creek"
+    ],
+    "Yellowknife": [
+        "Old Town",
+        "New Town",
+        "Downtown",
+        "Frame Lake"
+    ],
+    "Hay River": [
+        "Downtown",
+        "Vale Island",
+        "Paradise Gardens"
+    ],
+    "Inuvik": [
+        "Downtown",
+        "Boot Lake",
+        "East Three"
+    ],
+    "Iqaluit": [
+        "Downtown",
+        "Apex",
+        "Tundra Valley",
+        "Niaqungu"
+    ],
+    "Rankin Inlet": [
+        "Downtown",
+        "Kangigliniq"
+    ]
+}

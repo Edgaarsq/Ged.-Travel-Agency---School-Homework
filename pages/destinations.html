@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Explore Canada · GED Travel Agency</title>
@@ -10,8 +9,16 @@
         content="Explore Canada with GED Travel Agency — major cities, neighbourhoods and iconic places.">
     <meta name="theme-color" content="#08090c">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Explore Canada · GED Travel Agency">
+    <meta property="og:description" content="Major cities, neighbourhoods and iconic places — the GED Canada Explorer.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -23,7 +30,7 @@
 
     <style>
         /* ============================================================
-           DESIGN TOKENS — same as packages.html
+           DESIGN TOKENS
            ============================================================ */
         :root {
             --ios-blue: #007aff;
@@ -32,6 +39,8 @@
             --ios-purple: #af52de;
             --ios-red: #ff3b30;
             --ios-yellow: #ffc400;
+            --ios-gold: #ffd21a;
+            --ios-gold-2: #ffb400;
             --ios-pink: #ff2d55;
             --ios-teal: #5ac8fa;
 
@@ -46,10 +55,13 @@
 
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+            -webkit-text-size-adjust: 100%;
         }
 
         .destinations-page {
@@ -65,7 +77,49 @@
         }
 
         /* ============================================================
-           HEADER — identical structure to packages.html
+           GLOBAL POLISH
+           ============================================================ */
+        :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+            outline: 2px solid rgba(255, 196, 0, 0.75);
+            outline-offset: 3px;
+            border-radius: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 10000;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transform: translateY(-180%);
+            transition: transform .3s var(--ease-ios);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           HEADER
            ============================================================ */
         .destinations-page .site-header {
             position: fixed;
@@ -81,8 +135,6 @@
         .destinations-page .site-header.scrolled .nav {
             background: rgba(255, 255, 255, 0.85);
             border-color: rgba(60, 60, 67, 0.10);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
 
         .destinations-page .site-header.scrolled .nav-links a,
@@ -91,8 +143,7 @@
         }
 
         .destinations-page .site-header.scrolled .nav-links a:hover,
-        .destinations-page .site-header.scrolled .nav-links a.active,
-        .destinations-page .site-header.scrolled .nav-about:hover {
+        .destinations-page .site-header.scrolled .nav-links a.active {
             color: #000;
             background: rgba(0, 0, 0, 0.05);
         }
@@ -108,7 +159,7 @@
            ============================================================ */
         .destinations-page .explore-hero {
             position: relative;
-            min-height: 760px;
+            min-height: 800px;
             padding: 170px 0 130px;
             display: flex;
             align-items: center;
@@ -124,6 +175,7 @@
             background: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
             transform: scale(1.06);
             animation: heroZoom 26s ease-in-out infinite alternate;
+            will-change: transform;
         }
 
         @keyframes heroZoom {
@@ -205,7 +257,7 @@
             color: transparent;
         }
 
-        .destinations-page .explore-hero-content>p:not(.eyebrow-pill) {
+        .destinations-page .explore-hero-content>p {
             max-width: 580px;
             font-size: 18px;
             line-height: 1.65;
@@ -234,9 +286,13 @@
             text-decoration: none;
             border: 0;
             cursor: pointer;
-            transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios), background 0.25s;
+            transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-ios), background 0.25s;
             font-family: inherit;
             white-space: nowrap;
+        }
+
+        .destinations-page .button:active {
+            transform: scale(0.96);
         }
 
         .destinations-page .button-primary {
@@ -247,7 +303,7 @@
 
         .destinations-page .button-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+            box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45);
         }
 
         .destinations-page .button-dark {
@@ -293,6 +349,7 @@
             font-weight: 700;
             letter-spacing: -0.04em;
             color: #fff;
+            font-variant-numeric: tabular-nums;
         }
 
         .destinations-page .hero-stat span {
@@ -304,14 +361,14 @@
         }
 
         /* ============================================================
-           SECTION HEADER — identical to packages.html
+           SECTION HEADER
            ============================================================ */
         .destinations-page .section-header {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
             gap: 60px;
             align-items: end;
-            margin-bottom: 44px;
+            margin-bottom: 40px;
         }
 
         @media (max-width: 900px) {
@@ -364,17 +421,118 @@
             margin-top: -60px;
         }
 
-        /* Filter chips — same as .package-filter */
+        /* ---------- CONTROLS ---------- */
+        .destinations-page .dest-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 20px 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            margin-bottom: 26px;
+        }
+
+        .destinations-page .dest-controls-top {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .destinations-page .dest-search-wrap {
+            position: relative;
+            flex: 1 1 240px;
+            display: flex;
+            align-items: center;
+        }
+
+        .destinations-page .dest-search-wrap .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: var(--ios-text-3);
+            pointer-events: none;
+        }
+
+        .destinations-page .dest-search {
+            width: 100%;
+            padding: 12px 40px 12px 42px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            background: rgba(120, 120, 128, 0.04);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--ios-text);
+            outline: none;
+            transition: border-color .25s var(--ease-ios), box-shadow .25s var(--ease-ios), background .25s;
+        }
+
+        .destinations-page .dest-search:focus {
+            border-color: rgba(255, 180, 0, 0.55);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.12);
+        }
+
+        .destinations-page .dest-search-clear {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(120, 120, 128, 0.12);
+            color: var(--ios-text-2);
+            font-size: 14px;
+            cursor: pointer;
+            display: none;
+            place-items: center;
+            font-family: inherit;
+            transition: background .2s var(--ease-ios), transform .2s var(--ease-spring);
+        }
+
+        .destinations-page .dest-search-wrap.has-value .dest-search-clear {
+            display: grid;
+        }
+
+        .destinations-page .dest-search-clear:hover {
+            background: rgba(120, 120, 128, 0.22);
+        }
+
+        .destinations-page .dest-search-clear:active {
+            transform: translateY(-50%) scale(0.9);
+        }
+
+        .destinations-page .dest-sort {
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            background: rgba(120, 120, 128, 0.04);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--ios-text);
+            cursor: pointer;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s, background .2s;
+        }
+
+        .destinations-page .dest-sort:focus {
+            border-color: rgba(255, 180, 0, 0.5);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.10);
+        }
+
         .destinations-page .dest-filters {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 28px;
-            padding: 18px 22px;
-            background: #fff;
-            border: 0.5px solid rgba(60, 60, 67, 0.18);
-            border-radius: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            padding-top: 14px;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.08);
         }
 
         .destinations-page .dest-filter {
@@ -389,7 +547,7 @@
             font-weight: 600;
             color: var(--ios-text-2);
             cursor: pointer;
-            transition: all 0.24s var(--ease-spring);
+            transition: all 0.3s var(--ease-spring);
             font-family: inherit;
             white-space: nowrap;
         }
@@ -401,6 +559,10 @@
             transform: translateY(-1.5px);
         }
 
+        .destinations-page .dest-filter:active {
+            transform: translateY(-1.5px) scale(0.96);
+        }
+
         .destinations-page .dest-filter.active {
             background: linear-gradient(135deg, #ffd21a, #ffb400);
             border-color: transparent;
@@ -408,7 +570,35 @@
             box-shadow: 0 6px 20px rgba(255, 180, 0, 0.30);
         }
 
-        /* Catalog grid */
+        .destinations-page .dest-filter .filter-count {
+            padding: 1px 7px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.08);
+            font-size: 10.5px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .destinations-page .dest-filter.active .filter-count {
+            background: rgba(255, 255, 255, 0.40);
+        }
+
+        .destinations-page .dest-count {
+            margin: 0;
+            padding-left: 4px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+        }
+
+        .destinations-page .dest-count strong {
+            color: var(--ios-text);
+            font-weight: 800;
+        }
+
+        /* ============================================================
+           CATALOG GRID
+           ============================================================ */
         .destinations-page .catalog-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -427,21 +617,30 @@
             }
         }
 
+        /* ---------- CATALOG CARD ---------- */
         .destinations-page .catalog-card {
             position: relative;
             display: block;
             min-height: 460px;
             overflow: hidden;
             border-radius: 28px;
-            background: #111;
+            /* Fallback color (overridden by province theme) */
+            background: linear-gradient(135deg, #1a1a1c, #2a2a2c);
             color: #fff;
             text-decoration: none;
             isolation: isolate;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
             opacity: 0;
             transform: translateY(28px) scale(0.985);
-            animation: cardIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+            animation: cardIn 0.75s var(--ease-apple) forwards;
+            transition:
+                transform 0.6s var(--ease-spring),
+                box-shadow 0.6s var(--ease-ios),
+                border-color 0.4s var(--ease-ios);
+        }
+
+        .destinations-page .catalog-card:active {
+            transform: translateY(-4px) scale(0.99);
         }
 
         .destinations-page .catalog-card:hover {
@@ -449,35 +648,68 @@
             box-shadow: 0 32px 90px rgba(0, 0, 0, 0.20);
         }
 
+        /* Image layer */
         .destinations-page .catalog-img {
             position: absolute;
             inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: -1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 1.1s var(--ease-apple);
+            background: #1a1a1c;
         }
 
         .destinations-page .catalog-card:hover .catalog-img {
             transform: scale(1.08);
         }
 
+        /* Soft gradient overlay (fixed — was too dark before) */
         .destinations-page .catalog-card::after {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 0;
+            z-index: 1;
             background: linear-gradient(to top,
-                    rgba(0, 0, 0, 0.92) 0%,
-                    rgba(0, 0, 0, 0.55) 40%,
-                    rgba(0, 0, 0, 0.10) 75%,
+                    rgba(0, 0, 0, 0.78) 0%,
+                    rgba(0, 0, 0, 0.52) 35%,
+                    rgba(0, 0, 0, 0.18) 62%,
+                    rgba(0, 0, 0, 0.02) 82%,
                     transparent 100%);
             pointer-events: none;
         }
 
+        /* Skeleton shimmer while loading */
+        .destinations-page .catalog-card.is-loading .catalog-img {
+            opacity: 0;
+        }
+
+        .destinations-page .catalog-card.is-loading::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(90deg,
+                    #1a1a1c 0%,
+                    #262628 50%,
+                    #1a1a1c 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            from {
+                background-position: 200% 0;
+            }
+
+            to {
+                background-position: -200% 0;
+            }
+        }
+
         .destinations-page .catalog-number {
             position: absolute;
-            z-index: 2;
+            z-index: 3;
             top: 22px;
             right: 22px;
             width: 44px;
@@ -487,8 +719,8 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.16);
             border: 0.5px solid rgba(255, 255, 255, 0.28);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
             font-family: "Space Grotesk", sans-serif;
             font-size: 12px;
             font-weight: 800;
@@ -497,7 +729,7 @@
 
         .destinations-page .catalog-body {
             position: absolute;
-            z-index: 2;
+            z-index: 3;
             left: 30px;
             right: 30px;
             bottom: 28px;
@@ -506,7 +738,7 @@
         .destinations-page .catalog-body small {
             display: block;
             margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.68);
+            color: rgba(255, 255, 255, 0.72);
             font-size: 10.5px;
             font-weight: 800;
             letter-spacing: 0.16em;
@@ -521,12 +753,13 @@
             letter-spacing: -0.045em;
             font-weight: 700;
             color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
         }
 
         .destinations-page .catalog-body p {
             max-width: 400px;
             margin: 0 0 18px;
-            color: rgba(255, 255, 255, 0.78);
+            color: rgba(255, 255, 255, 0.82);
             font-size: 13.5px;
             line-height: 1.55;
         }
@@ -536,8 +769,8 @@
             align-items: center;
             justify-content: space-between;
             padding-top: 16px;
-            border-top: 0.5px solid rgba(255, 255, 255, 0.18);
-            color: rgba(255, 255, 255, 0.82);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.22);
+            color: rgba(255, 255, 255, 0.88);
             font-size: 12.5px;
             font-weight: 600;
         }
@@ -552,21 +785,108 @@
             color: #0a0a0a;
             font-size: 17px;
             font-weight: 800;
-            transition: all 0.25s var(--ease-spring);
+            transition: all 0.35s var(--ease-spring);
         }
 
         .destinations-page .catalog-card:hover .meta-row span:last-child {
             background: linear-gradient(135deg, #ffd21a, #ffb400);
-            transform: rotate(45deg) scale(1.08);
-            box-shadow: 0 10px 26px rgba(255, 180, 0, 0.35);
+            transform: rotate(45deg) scale(1.1);
+            box-shadow: 0 10px 26px rgba(255, 180, 0, 0.45);
         }
 
+        /* Province-themed fallback colors */
+        .destinations-page .catalog-card[data-province="Ontario"] {
+            background: linear-gradient(135deg, #0d2547, #1a4076);
+        }
+
+        .destinations-page .catalog-card[data-province="Quebec"] {
+            background: linear-gradient(135deg, #2a1a3d, #4a2d6b);
+        }
+
+        .destinations-page .catalog-card[data-province="British Columbia"] {
+            background: linear-gradient(135deg, #1a3d2a, #2d6b4a);
+        }
+
+        .destinations-page .catalog-card[data-province="Alberta"] {
+            background: linear-gradient(135deg, #3d2a1a, #6b4a2d);
+        }
+
+        .destinations-page .catalog-card[data-province="Manitoba"] {
+            background: linear-gradient(135deg, #1a2a3d, #2d4a6b);
+        }
+
+        .destinations-page .catalog-card[data-province="Nova Scotia"] {
+            background: linear-gradient(135deg, #3d1a2a, #6b2d4a);
+        }
+
+        .destinations-page .catalog-card[data-province="Yukon"] {
+            background: linear-gradient(135deg, #1a2d3d, #2d556b);
+        }
+
+        .destinations-page .catalog-card[data-province="Northwest Territories"] {
+            background: linear-gradient(135deg, #1a3d3d, #2d6b6b);
+        }
+
+        .destinations-page .catalog-card[data-province="Nunavut"] {
+            background: linear-gradient(135deg, #2a2a3d, #4a4a6b);
+        }
+
+        /* Empty state */
         .destinations-page .catalog-empty {
             grid-column: 1 / -1;
-            padding: 80px 20px;
+            padding: 70px 24px;
             text-align: center;
+            background: #fff;
+            border-radius: 24px;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
             color: var(--ios-text-3);
-            font-size: 15px;
+        }
+
+        .destinations-page .catalog-empty .empty-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.14), rgba(255, 210, 26, 0.08));
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+        }
+
+        .destinations-page .catalog-empty h3 {
+            margin: 0 0 6px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+        }
+
+        .destinations-page .catalog-empty p {
+            margin: 0 0 18px;
+            font-size: 14px;
+        }
+
+        .destinations-page .catalog-empty button {
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .3s var(--ease-spring);
+        }
+
+        .destinations-page .catalog-empty button:hover {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        .destinations-page .catalog-empty button:active {
+            transform: translateY(0) scale(0.96);
         }
 
         /* ============================================================
@@ -583,7 +903,7 @@
             margin: 100px auto 0;
             overflow: hidden;
             border-radius: 40px;
-            background: #111;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1c);
             color: #fff;
             isolation: isolate;
         }
@@ -599,12 +919,13 @@
 
         .destinations-page .destination-hero-media {
             position: absolute;
-            inset: -3%;
-            background-size: cover;
-            background-position: center;
-            transform: scale(1.04);
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: -2;
-            animation: heroImageIn 1.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            animation: heroImageIn 1.4s var(--ease-apple);
+            will-change: transform;
         }
 
         .destinations-page .destination-hero::before {
@@ -615,11 +936,11 @@
             background:
                 linear-gradient(90deg,
                     rgba(0, 0, 0, 0.86) 0%,
-                    rgba(0, 0, 0, 0.62) 30%,
-                    rgba(0, 0, 0, 0.20) 65%,
-                    rgba(0, 0, 0, 0.08) 100%),
+                    rgba(0, 0, 0, 0.58) 30%,
+                    rgba(0, 0, 0, 0.22) 65%,
+                    rgba(0, 0, 0, 0.10) 100%),
                 linear-gradient(to top,
-                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.50) 0%,
                     transparent 55%);
         }
 
@@ -659,19 +980,87 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 700;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.25s var(--ease-spring);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            transition: all 0.3s var(--ease-spring);
         }
 
         .destinations-page .destination-back:hover {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .destinations-page .destination-back:active {
+            transform: translateY(-2px) scale(0.96);
+        }
+
+        .destinations-page .destination-hero-actions {
+            position: absolute;
+            top: 25px;
+            right: 0;
+            display: flex;
+            gap: 8px;
+            z-index: 3;
+        }
+
+        .destinations-page .destination-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 42px;
+            min-width: 42px;
+            padding: 0 16px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, 0.22);
+            background: rgba(0, 0, 0, 0.28);
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            transition: all 0.3s var(--ease-spring);
+            white-space: nowrap;
+        }
+
+        .destinations-page .destination-action-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .destinations-page .destination-action-btn:active {
+            transform: translateY(-2px) scale(0.94);
+        }
+
+        .destinations-page .destination-action-btn.active {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            border-color: transparent;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.40);
+        }
+
+        .destinations-page .destination-action-btn svg {
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+        }
+
+        @media (max-width: 700px) {
+            .destinations-page .destination-action-btn .label {
+                display: none;
+            }
+
+            .destinations-page .destination-action-btn {
+                padding: 0;
+                width: 42px;
+            }
         }
 
         .destinations-page .destination-kicker {
             margin-bottom: 14px;
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.70);
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.20em;
@@ -688,16 +1077,18 @@
             letter-spacing: -0.09em;
             font-weight: 700;
             color: #fff;
-            animation: fadeUp 0.8s 0.10s var(--ease-ios) both;
+            animation: fadeUp 0.85s 0.10s var(--ease-apple) both;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
         .destinations-page .destination-tagline {
             max-width: 650px;
             margin: 24px 0 0;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.88);
             font-size: clamp(18px, 2vw, 24px);
             line-height: 1.45;
-            animation: fadeUp 0.8s 0.18s var(--ease-ios) both;
+            animation: fadeUp 0.85s 0.18s var(--ease-apple) both;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
 
         .destinations-page .destination-meta {
@@ -705,7 +1096,7 @@
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 22px;
-            animation: fadeUp 0.8s 0.25s var(--ease-ios) both;
+            animation: fadeUp 0.85s 0.25s var(--ease-apple) both;
         }
 
         .destinations-page .destination-meta span {
@@ -713,11 +1104,11 @@
             border-radius: 999px;
             border: 0.5px solid rgba(255, 255, 255, 0.22);
             background: rgba(0, 0, 0, 0.28);
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.90);
             font-size: 11.5px;
             font-weight: 600;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
         }
 
         /* ============================================================
@@ -734,6 +1125,72 @@
                 width: calc(100% - 32px);
                 padding: 60px 0 70px;
             }
+        }
+
+        /* ---------- QUICK STATS ---------- */
+        .destinations-page .destination-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 0 0 60px;
+        }
+
+        @media (max-width: 700px) {
+            .destinations-page .destination-stats {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 44px;
+            }
+        }
+
+        .destinations-page .destination-stat {
+            padding: 20px 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios), border-color 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s var(--ease-apple) forwards;
+        }
+
+        .destinations-page .destination-stat:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .destinations-page .destination-stat:nth-child(2) {
+            animation-delay: 0.12s;
+        }
+
+        .destinations-page .destination-stat:nth-child(3) {
+            animation-delay: 0.19s;
+        }
+
+        .destinations-page .destination-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 180, 0, 0.30);
+        }
+
+        .destinations-page .destination-stat small {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin-bottom: 6px;
+        }
+
+        .destinations-page .destination-stat strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ios-text);
+            line-height: 1.3;
         }
 
         .destinations-page .destination-intro {
@@ -790,7 +1247,7 @@
             margin-bottom: 0;
         }
 
-        /* Highlights */
+        /* ---------- HIGHLIGHTS ---------- */
         .destinations-page .highlights-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -821,8 +1278,8 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
             opacity: 0;
             transform: translateY(25px);
-            animation: fadeUp 0.7s var(--ease-ios) forwards;
-            transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-ios);
+            animation: fadeUp 0.7s var(--ease-apple) forwards;
+            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios);
         }
 
         .destinations-page .highlight-card:hover {
@@ -855,7 +1312,7 @@
             font-weight: 600;
         }
 
-        /* Neighborhoods */
+        /* ---------- NEIGHBORHOODS ---------- */
         .destinations-page .neighborhood-grid {
             display: grid;
             grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -868,14 +1325,15 @@
             grid-column: span 4;
             overflow: hidden;
             border-radius: 28px;
-            background: #111;
+            background: linear-gradient(135deg, #1a1a1c, #2a2a2c);
             color: #fff;
             isolation: isolate;
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeUp 0.75s var(--ease-ios) forwards;
-            transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-ios);
+            animation: fadeUp 0.8s var(--ease-apple) forwards;
+            transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-ios);
+            scroll-margin-top: 120px;
         }
 
         .destinations-page .neighborhood-card:nth-child(1),
@@ -885,7 +1343,11 @@
 
         .destinations-page .neighborhood-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 30px 65px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 30px 65px rgba(0, 0, 0, 0.18);
+        }
+
+        .destinations-page .neighborhood-card:target {
+            box-shadow: 0 0 0 3px #ffd21a, 0 30px 65px rgba(0, 0, 0, 0.20);
         }
 
         @media (max-width: 1000px) {
@@ -913,10 +1375,11 @@
         .destinations-page .neighborhood-image {
             position: absolute;
             inset: 0;
-            z-index: -1;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 1s var(--ease-apple);
         }
 
         .destinations-page .neighborhood-card:hover .neighborhood-image {
@@ -927,11 +1390,11 @@
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 0;
+            z-index: 1;
             background: linear-gradient(to top,
-                    rgba(0, 0, 0, 0.88) 0%,
-                    rgba(0, 0, 0, 0.45) 40%,
-                    rgba(0, 0, 0, 0.05) 75%,
+                    rgba(0, 0, 0, 0.82) 0%,
+                    rgba(0, 0, 0, 0.48) 35%,
+                    rgba(0, 0, 0, 0.10) 68%,
                     transparent 100%);
             pointer-events: none;
         }
@@ -947,9 +1410,9 @@
             place-items: center;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.16);
-            border: 0.5px solid rgba(255, 255, 255, 0.24);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
             font-family: "Space Grotesk", sans-serif;
             font-size: 11px;
             font-weight: 800;
@@ -966,7 +1429,7 @@
 
         .destinations-page .neighborhood-content small {
             display: block;
-            color: rgba(255, 255, 255, 0.60);
+            color: rgba(255, 255, 255, 0.68);
             font-size: 10px;
             font-weight: 800;
             letter-spacing: 0.16em;
@@ -982,12 +1445,13 @@
             letter-spacing: -0.05em;
             font-weight: 700;
             color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
         }
 
         .destinations-page .neighborhood-content p {
             max-width: 500px;
             margin: 0 0 14px;
-            color: rgba(255, 255, 255, 0.78);
+            color: rgba(255, 255, 255, 0.82);
             font-size: 13px;
             line-height: 1.55;
         }
@@ -1000,14 +1464,110 @@
             text-decoration: none;
             font-size: 12.5px;
             font-weight: 700;
-            transition: gap 0.25s var(--ease-ios);
+            transition: gap 0.3s var(--ease-spring);
         }
 
         .destinations-page .neighborhood-content a:hover {
             gap: 12px;
         }
 
-        /* Final CTA */
+        /* ---------- RELATED CITIES ---------- */
+        .destinations-page .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .destinations-page .related-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .destinations-page .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .destinations-page .related-card {
+            position: relative;
+            display: block;
+            min-height: 260px;
+            overflow: hidden;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #1a1a1c, #2a2a2c);
+            color: #fff;
+            text-decoration: none;
+            isolation: isolate;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
+            transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-ios);
+        }
+
+        .destinations-page .related-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+        }
+
+        .destinations-page .related-card:active {
+            transform: translateY(-7px) scale(0.99);
+        }
+
+        .destinations-page .related-card .related-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 1s var(--ease-apple);
+        }
+
+        .destinations-page .related-card:hover .related-img {
+            transform: scale(1.08);
+        }
+
+        .destinations-page .related-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.42) 45%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .destinations-page .related-body {
+            position: absolute;
+            left: 22px;
+            right: 22px;
+            bottom: 20px;
+            z-index: 2;
+        }
+
+        .destinations-page .related-body small {
+            display: block;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .destinations-page .related-body h4 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        }
+
         .destinations-page .destination-final {
             position: relative;
             padding: 55px;
@@ -1016,7 +1576,7 @@
             justify-content: space-between;
             gap: 40px;
             border-radius: 32px;
-            background: #090909;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1c);
             color: #fff;
             overflow: hidden;
             isolation: isolate;
@@ -1045,7 +1605,7 @@
         }
 
         .destinations-page .destination-final .eyebrow {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.55);
         }
 
         .destinations-page .destination-final h2 {
@@ -1069,65 +1629,546 @@
         .destinations-page .destination-final p {
             max-width: 600px;
             margin: 18px 0 0;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.65);
             font-size: 14.5px;
             line-height: 1.6;
         }
 
         /* ============================================================
-           FOOTER — identical to packages.html
+           TOASTS
            ============================================================ */
-        .destinations-page .site-footer {
-            background: #070707;
+        .destinations-page .toast-stack {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 9997;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .destinations-page .ged-toast {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: rgba(28, 28, 30, 0.94);
             color: #fff;
-            padding: 80px 0 28px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 0.5px solid rgba(255, 255, 255, 0.10);
+            pointer-events: auto;
+            max-width: 340px;
+            animation: toastIn 0.4s var(--ease-spring) both;
         }
 
-        .destinations-page .site-footer .container {
+        .destinations-page .ged-toast.out {
+            animation: toastOut 0.3s var(--ease-ios) forwards;
+        }
+
+        .destinations-page .ged-toast .toast-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex: 0 0 24px;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            place-items: center;
+            font-size: 12px;
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            color: #fff;
         }
 
-        @media (max-width: 720px) {
-            .destinations-page .site-footer .container {
-                grid-template-columns: 1fr;
-                gap: 28px;
+        .destinations-page .ged-toast.success .toast-icon {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+        }
+
+        .destinations-page .ged-toast.warn .toast-icon {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            color: #0a0a0a;
+        }
+
+        .destinations-page .ged-toast.error .toast-icon {
+            background: linear-gradient(135deg, #ff453a, #d70015);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(-14px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
 
-        .destinations-page .site-footer .brand {
-            color: #fff;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        @keyframes toastOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.96);
+            }
         }
 
-        .destinations-page .site-footer .brand small {
-            font-size: 10px;
-            letter-spacing: 0.18em;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 700;
+        @media (max-width: 560px) {
+            .destinations-page .toast-stack {
+                top: auto;
+                bottom: 20px;
+                right: 14px;
+                left: 14px;
+            }
+
+            .destinations-page .ged-toast {
+                max-width: none;
+            }
         }
 
-        .destinations-page .site-footer p {
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 13px;
-            margin: 4px 0 0;
+        /* ============================================================
+           FOOTER — v2
+           ============================================================ */
+        .destinations-page .site-footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            margin-top: clamp(30px, 5vw, 70px);
+            padding: 0;
+            color: rgba(255, 255, 255, .70);
+            background:
+                radial-gradient(900px 420px at 12% -20%, rgba(255, 210, 26, .12), transparent 62%),
+                radial-gradient(700px 380px at 92% 0%, rgba(255, 45, 85, .07), transparent 60%),
+                linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+            border-top: 0.5px solid rgba(255, 255, 255, .10);
         }
 
-        .destinations-page .site-footer strong {
+        .destinations-page .site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 210, 26, .55), transparent);
+            opacity: .75;
+            pointer-events: none;
+        }
+
+        .destinations-page .site-footer .footer-inner {
+            width: min(1200px, 100% - 48px);
+            margin-inline: auto;
+            padding: clamp(52px, 7vw, 88px) 0 30px;
             display: block;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 10px;
+        }
+
+        .destinations-page .footer-top {
+            display: grid;
+            grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+            gap: clamp(28px, 4vw, 44px);
+            padding-bottom: clamp(34px, 5vw, 54px);
+            border-bottom: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .destinations-page .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-width: 340px;
+        }
+
+        .destinations-page .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            width: fit-content;
+        }
+
+        .destinations-page .footer-logo-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            box-shadow: 0 10px 26px rgba(255, 180, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+            transition: transform .4s var(--ease-spring);
+        }
+
+        .destinations-page .footer-logo:hover .footer-logo-mark {
+            transform: rotate(-6deg) scale(1.06);
+        }
+
+        .destinations-page .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -.03em;
+        }
+
+        .destinations-page .footer-logo-text small {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .22em;
             text-transform: uppercase;
-            letter-spacing: 0.14em;
-            margin-bottom: 12px;
+            color: rgba(255, 255, 255, .42);
+            margin-top: 5px;
+        }
+
+        .destinations-page .footer-tagline {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, .58);
+            margin: 0;
+            max-width: 330px;
+        }
+
+        .destinations-page .footer-socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .destinations-page .footer-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .75);
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            text-decoration: none;
+            transition: transform .35s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+        }
+
+        .destinations-page .footer-social svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .destinations-page .footer-social:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(255, 180, 0, .30);
+        }
+
+        .destinations-page .footer-social:active {
+            transform: translateY(-3px) scale(0.94);
+        }
+
+        .destinations-page .footer-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .62);
+        }
+
+        .destinations-page .footer-chip .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 210, 26, .20);
+        }
+
+        .destinations-page .footer-col h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin: 0 0 18px;
+        }
+
+        .destinations-page .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .destinations-page .footer-col a {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .72);
+            text-decoration: none;
+            transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+        }
+
+        .destinations-page .footer-col a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1.5px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ffd21a, #ffb400);
+            transition: width .3s var(--ease-ios);
+        }
+
+        .destinations-page .footer-col a:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .destinations-page .footer-col a:hover::after {
+            width: 100%;
+        }
+
+        .destinations-page .footer-band {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: clamp(32px, 4vw, 48px) 0;
+            padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+            border: 0.5px solid rgba(255, 255, 255, .10);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+        }
+
+        .destinations-page .footer-band::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 210, 26, .18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .destinations-page .footer-band-eyebrow {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 180, 0, .9);
+            margin: 0 0 8px;
+        }
+
+        .destinations-page .footer-band h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(21px, 2.6vw, 30px);
+            font-weight: 700;
+            letter-spacing: -.04em;
+            color: #fff;
+            margin: 0;
+            line-height: 1.12;
+        }
+
+        .destinations-page .footer-band h3 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .destinations-page .footer-band-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .destinations-page .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            white-space: nowrap;
+            transition: transform .3s var(--ease-spring), box-shadow .3s, background .25s, color .25s;
+        }
+
+        .destinations-page .footer-btn:active {
+            transform: translateY(-3px) scale(0.96);
+        }
+
+        .destinations-page .footer-btn-primary {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            box-shadow: 0 12px 30px rgba(255, 180, 0, .28);
+        }
+
+        .destinations-page .footer-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(255, 180, 0, .38);
+        }
+
+        .destinations-page .footer-btn-ghost {
+            background: rgba(255, 255, 255, .07);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, .18);
+        }
+
+        .destinations-page .footer-btn-ghost:hover {
+            background: rgba(255, 255, 255, .13);
+            transform: translateY(-3px);
+        }
+
+        .destinations-page .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 26px;
+            border-top: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .destinations-page .footer-bottom>p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .42);
+            max-width: 660px;
+        }
+
+        .destinations-page .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .destinations-page .footer-credits {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .destinations-page .footer-credits li {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .55);
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .destinations-page .footer-top-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, .14);
+            transition: all .3s var(--ease-ios);
+        }
+
+        .destinations-page .footer-top-link:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 180, 0, .28);
+        }
+
+        .destinations-page .footer-top-link:active {
+            transform: translateY(-2px) scale(0.96);
+        }
+
+        @media (max-width: 1080px) {
+            .destinations-page .footer-top {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .destinations-page .footer-brand {
+                grid-column: 1 / -1;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .destinations-page .site-footer .footer-inner {
+                width: min(1200px, 100% - 36px);
+            }
+
+            .destinations-page .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 20px;
+            }
+
+            .destinations-page .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .destinations-page .footer-band {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .destinations-page .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .destinations-page .footer-bottom-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .destinations-page .footer-top {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ============================================================
@@ -1160,12 +2201,12 @@
         @keyframes heroImageIn {
             from {
                 opacity: 0;
-                transform: scale(1.12);
+                transform: scale(1.08);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1.04);
+                transform: scale(1);
             }
         }
 
@@ -1183,6 +2224,30 @@
             }
         }
 
+        .destinations-page .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s var(--ease-apple), transform 0.9s var(--ease-apple);
+        }
+
+        .destinations-page .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           VIEW TRANSITIONS (SPA-like)
+           ============================================================ */
+        @view-transition {
+            navigation: auto;
+        }
+
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 0.35s;
+            animation-timing-function: var(--ease-apple);
+        }
+
         @media (prefers-reduced-motion: reduce) {
 
             .destinations-page *,
@@ -1193,12 +2258,11 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-        }
 
-        .destinations-page :focus-visible {
-            outline: 3px solid rgba(255, 196, 0, 0.55);
-            outline-offset: 3px;
-            border-radius: 8px;
+            .destinations-page .explore-hero-media,
+            .destinations-page .destination-hero-media {
+                transform: none !important;
+            }
         }
     </style>
 
@@ -1206,6 +2270,8 @@
 
 
 <body class="destinations-page">
+
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ============================================================
          HEADER
@@ -1246,19 +2312,15 @@
     <!-- ============================================================
          MAIN
          ============================================================ -->
-    <main>
+    <main id="main">
 
-        <!-- =====================================================
-             CATALOG VIEW
-             ====================================================== -->
+        <!-- CATALOG VIEW -->
         <div id="catalog-view">
 
-            <!-- ============================================================
-                 HERO
-                 ============================================================ -->
-            <section class="explore-hero">
-                <div class="explore-hero-media"></div>
-                <div class="explore-hero-overlay"></div>
+            <!-- HERO -->
+            <section class="explore-hero" id="top">
+                <div class="explore-hero-media" aria-hidden="true"></div>
+                <div class="explore-hero-overlay" aria-hidden="true"></div>
 
                 <div class="container explore-hero-content">
 
@@ -1311,9 +2373,7 @@
             </section>
 
 
-            <!-- ============================================================
-                 CATALOG
-                 ============================================================ -->
+            <!-- CATALOG -->
             <section class="catalog-section" id="catalog">
                 <div class="container">
 
@@ -1329,14 +2389,38 @@
                         </p>
                     </div>
 
-                    <!-- Filters (built dynamically from data) -->
-                    <div class="dest-filters reveal" id="destFilters" role="tablist" aria-label="Filter destinations">
-                        <button class="dest-filter active" data-filter="all" type="button" role="tab">
-                            All destinations
-                        </button>
+                    <!-- CONTROLS: search + sort + filters + count -->
+                    <div class="dest-controls reveal">
+                        <div class="dest-controls-top">
+                            <label class="dest-search-wrap" id="destSearchWrap">
+                                <span class="search-icon" aria-hidden="true">⌕</span>
+                                <span class="sr-only">Search destinations</span>
+                                <input id="destSearch" class="dest-search" type="search"
+                                    placeholder="Search cities, provinces, neighbourhoods…" autocomplete="off"
+                                    spellcheck="false">
+                                <button type="button" class="dest-search-clear" id="destSearchClear"
+                                    aria-label="Clear search">×</button>
+                            </label>
+
+                            <label class="sr-only" for="destSort">Sort destinations</label>
+                            <select class="dest-sort" id="destSort">
+                                <option value="featured">Sort: Featured</option>
+                                <option value="az">Sort: A → Z</option>
+                                <option value="za">Sort: Z → A</option>
+                                <option value="province">Sort: By province</option>
+                            </select>
+                        </div>
+
+                        <div class="dest-filters" id="destFilters" role="tablist" aria-label="Filter destinations">
+                            <button class="dest-filter active" data-filter="all" type="button" role="tab"
+                                aria-selected="true">All destinations</button>
+                        </div>
+
+                        <p class="dest-count" id="destCount" aria-live="polite">
+                            Showing <strong>0</strong> of <strong>0</strong> destinations
+                        </p>
                     </div>
 
-                    <!-- City grid -->
                     <div class="catalog-grid" id="city-grid" aria-live="polite"></div>
 
                 </div>
@@ -1345,35 +2429,154 @@
         </div>
 
 
-        <!-- =====================================================
-             CITY DETAIL VIEW
-             ====================================================== -->
+        <!-- CITY DETAIL VIEW -->
         <div id="city-view" class="detail-page" style="display:none"></div>
 
     </main>
 
 
     <!-- ============================================================
-         FOOTER — identical to packages.html
+         FOOTER — v2
          ============================================================ -->
-    <footer class="site-footer">
-        <div class="container">
-            <div>
-                <a class="brand" href="../index.html">
-                    <span>GED</span>
-                    <small>TRAVEL AGENCY</small>
-                </a>
-                <p>Explore Canada with a trip designed around you.</p>
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+                        <span class="footer-logo-mark" aria-hidden="true">G</span>
+                        <span class="footer-logo-text">
+                            GED
+                            <small>Travel Agency</small>
+                        </span>
+                    </a>
+
+                    <p class="footer-tagline">
+                        Canada, made accessible. Destinations, flights, hotels,
+                        events and packages — one system, one trip, designed
+                        around you.
+                    </p>
+
+                    <div class="footer-socials" aria-label="GED on social media">
+                        <a class="footer-social" href="https://www.instagram.com/edparducci/"
+                            aria-label="GED on Instagram" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://www.youtube.com/@edparducci" aria-label="GED on YouTube"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="mailto:edgarparducci@gmail.com"
+                            aria-label="Contact GED by email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                <path d="m3.5 7.5 8.5 6 8.5-6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <span class="footer-chip">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        School project · 1°D
+                    </span>
+                </div>
+
+                <nav class="footer-col" aria-labelledby="footer-explore">
+                    <h3 id="footer-explore">Explore</h3>
+                    <ul>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-plan">
+                    <h3 id="footer-plan">Plan</h3>
+                    <ul>
+                        <li><a href="packages.html#trip-builder">Trip builder</a></li>
+                        <li><a href="packages.html#packages">Package catalogue</a></li>
+                        <li><a href="hotels.html">GED Value Score</a></li>
+                        <li><a href="flights.html">Route comparison</a></li>
+                        <li><a href="destinations.html">Canada Explorer</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-company">
+                    <h3 id="footer-company">Company</h3>
+                    <ul>
+                        <li><a href="about.html">About GED</a></li>
+                        <li><a href="about.html#team">The team</a></li>
+                        <li><a href="help.html">Help centre</a></li>
+                        <li><a href="help.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-support">
+                    <h3 id="footer-support">Support</h3>
+                    <ul>
+                        <li><a href="help.html#faq">FAQ</a></li>
+                        <li><a href="help.html#privacy">Privacy</a></li>
+                        <li><a href="help.html#terms">Terms of use</a></li>
+                        <li><a href="help.html#accessibility">Accessibility</a></li>
+                        <li><a href="help.html#credits">Credits</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div>
-                <strong>Project</strong>
-                <p>Geovana · Edgar · Aline</p>
-                <p>School Project · 1°D</p>
+
+            <div class="footer-band">
+                <div>
+                    <p class="footer-band-eyebrow">Ready when you are</p>
+                    <h3>Let's build the Canada trip <em>you actually want.</em></h3>
+                </div>
+                <div class="footer-band-actions">
+                    <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+                        Open the builder <span aria-hidden="true">↘</span>
+                    </a>
+                    <a class="footer-btn footer-btn-ghost" href="destinations.html">
+                        Browse destinations <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <strong>Notice</strong>
-                <p>Educational project · No commercial transactions.</p>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="footerYear">2026</span> GED Travel Agency — educational
+                    project. Prices, availability and events shown throughout the site
+                    are illustrative and not bookable. No commercial transactions are
+                    processed.
+                </p>
+
+                <div class="footer-bottom-right">
+                    <ul class="footer-credits" aria-label="Project credits">
+                        <li>Geovana</li>
+                        <li>Edgar</li>
+                        <li>Aline</li>
+                        <li>1°D</li>
+                    </ul>
+
+                    <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+                        Back to top <span aria-hidden="true">↑</span>
+                    </a>
+                </div>
             </div>
+
         </div>
     </footer>
 
@@ -1393,6 +2596,12 @@
 
 
     <!-- ============================================================
+         TOASTS
+         ============================================================ -->
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+
+    <!-- ============================================================
          SCRIPTS
          ============================================================ -->
     <script src="../js/canada-data.js"></script>
@@ -1403,6 +2612,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            "use strict";
+
+            const $ = (sel, root = document) => root.querySelector(sel);
+            const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+            /* =====================================================
+               FOOTER YEAR
+               ===================================================== */
+            const yearEl = document.getElementById("footerYear");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
 
             /* =====================================================
                HEADER SCROLLED STATE
@@ -1414,7 +2633,6 @@
                 onScroll();
             }
 
-
             /* =====================================================
                ELEMENTS
                ===================================================== */
@@ -1422,21 +2640,110 @@
             const cityView = document.querySelector("#city-view");
             const grid = document.querySelector("#city-grid");
             const filtersBar = document.querySelector("#destFilters");
+            const searchInput = document.querySelector("#destSearch");
+            const searchWrap = document.querySelector("#destSearchWrap");
+            const searchClear = document.querySelector("#destSearchClear");
+            const sortSelect = document.querySelector("#destSort");
+            const countEl = document.querySelector("#destCount");
 
             if (!grid || !catalog || !cityView) return;
 
+            /* =====================================================
+               TOASTS
+               ===================================================== */
+            const toastStack = document.getElementById("toastStack");
+            const TOAST_ICONS = { info: "i", success: "✓", warn: "!", error: "×" };
+
+            function toast(message, type = "info", duration = 2600) {
+                if (!toastStack) return;
+                const el = document.createElement("div");
+                el.className = "ged-toast " + type;
+                el.setAttribute("role", type === "error" || type === "warn" ? "alert" : "status");
+
+                const icon = document.createElement("span");
+                icon.className = "toast-icon";
+                icon.setAttribute("aria-hidden", "true");
+                icon.textContent = TOAST_ICONS[type] || "i";
+
+                const text = document.createElement("span");
+                text.textContent = message;
+
+                el.append(icon, text);
+                toastStack.appendChild(el);
+
+                setTimeout(() => {
+                    el.classList.add("out");
+                    setTimeout(() => el.remove(), 320);
+                }, duration);
+            }
 
             /* =====================================================
-               CITY DETAILS — rich metadata (imagens, descrições)
+               IMAGE FALLBACK HELPERS
+               ===================================================== */
+            const FALLBACK_COLORS = {
+                "Ontario": ["#0d2547", "#1a4076"],
+                "Quebec": ["#2a1a3d", "#4a2d6b"],
+                "British Columbia": ["#1a3d2a", "#2d6b4a"],
+                "Alberta": ["#3d2a1a", "#6b4a2d"],
+                "Manitoba": ["#1a2a3d", "#2d4a6b"],
+                "Nova Scotia": ["#3d1a2a", "#6b2d4a"],
+                "Yukon": ["#1a2d3d", "#2d556b"],
+                "Northwest Territories": ["#1a3d3d", "#2d6b6b"],
+                "Nunavut": ["#2a2a3d", "#4a4a6b"]
+            };
+
+            function getFallbackGradient(province) {
+                const c = FALLBACK_COLORS[province] || ["#1a1a1c", "#2a2a2c"];
+                return `linear-gradient(135deg, ${c[0]}, ${c[1]})`;
+            }
+
+            /**
+             * Image loader with skeleton + fallback.
+             * Returns an <img> element ready to insert.
+             */
+            function createImage(src, alt, className, fallbackProvince) {
+                const img = document.createElement("img");
+                img.className = className;
+                img.alt = alt;
+                img.loading = "lazy";
+                img.decoding = "async";
+                img.referrerPolicy = "no-referrer";
+
+                // Fallback gradient applied to parent while loading
+                if (fallbackProvince && img.parentElement) {
+                    img.parentElement.style.background = getFallbackGradient(fallbackProvince);
+                }
+
+                img.addEventListener("load", () => {
+                    img.style.opacity = "1";
+                }, { once: true });
+
+                img.addEventListener("error", () => {
+                    img.style.display = "none";
+                    if (img.parentElement) {
+                        img.parentElement.style.background = getFallbackGradient(fallbackProvince);
+                    }
+                }, { once: true });
+
+                img.style.opacity = "0";
+                img.style.transition = "opacity 0.5s ease-out";
+                img.src = src;
+                return img;
+            }
+
+            /* =====================================================
+               CITY DETAILS — rich metadata
                ===================================================== */
             const CITY_DETAILS = {
-
                 Toronto: {
                     province: "Ontario",
                     image: "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Canada's largest city.",
                     description: "Toronto combines modern architecture, multicultural neighbourhoods, waterfront views and some of Canada's most iconic attractions.",
                     highlights: ["CN Tower", "Distillery District", "Royal Ontario Museum", "Toronto Waterfront"],
+                    bestTime: "May – October",
+                    climate: "Humid continental · -6°C to 27°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=90", description: "The energetic heart of Toronto, surrounded by skyscrapers, restaurants, shopping and major attractions." },
                         "Yorkville": { image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=90", description: "An elegant neighbourhood known for luxury shopping, galleries, restaurants and sophisticated streets." },
@@ -1445,13 +2752,15 @@
                         "Etobicoke": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A greener part of Toronto with waterfront parks, trails and residential neighbourhoods." }
                     }
                 },
-
                 Ottawa: {
                     province: "Ontario",
                     image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Canada's capital.",
                     description: "Ottawa blends Canadian history, government architecture, museums, green spaces and the character of the Ottawa River.",
                     highlights: ["Parliament Hill", "Rideau Canal", "ByWard Market", "Canadian Museum of History"],
+                    bestTime: "May – September",
+                    climate: "Humid continental · -10°C to 26°C",
+                    language: "English · French",
                     neighborhoods: {
                         "ByWard Market": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A lively historic district filled with restaurants, cafés, shops and nightlife." },
                         "Glebe": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "A walkable neighbourhood with local shops, restaurants and access to parks." },
@@ -1460,13 +2769,15 @@
                         "Sandy Hill": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A historic neighbourhood near the University of Ottawa and Rideau River." }
                     }
                 },
-
                 "Montréal": {
                     province: "Quebec",
                     image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Where European character meets North America.",
                     description: "Montréal is a city of architecture, food, art, festivals and neighbourhoods with distinct personalities.",
                     highlights: ["Old Montréal", "Mount Royal", "Notre-Dame Basilica", "Montréal Old Port"],
+                    bestTime: "June – October",
+                    climate: "Humid continental · -10°C to 26°C",
+                    language: "French · English",
                     neighborhoods: {
                         "Le Plateau-Mont-Royal": { image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90", description: "Colourful streets, cafés, restaurants, murals and classic Montréal architecture." },
                         "Old Montréal": { image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90", description: "Historic streets, stone buildings, galleries, restaurants and the Old Port." },
@@ -1475,13 +2786,15 @@
                         "Griffintown": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A rapidly evolving district with modern architecture, restaurants and waterfront access." }
                     }
                 },
-
                 "Québec City": {
                     province: "Quebec",
                     image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
                     tagline: "History at every corner.",
                     description: "Québec City offers historic architecture, European-inspired streets, winter experiences and a unique French-Canadian identity.",
                     highlights: ["Vieux-Québec", "Château Frontenac", "Petit-Champlain", "Plains of Abraham"],
+                    bestTime: "June – October",
+                    climate: "Humid continental · -12°C to 25°C",
+                    language: "French",
                     neighborhoods: {
                         "Vieux-Québec": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "The historic heart of Québec City, surrounded by fortified walls and centuries of history." },
                         "Sainte-Foy": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A modern district with shopping, universities and convenient access to the city." },
@@ -1490,13 +2803,15 @@
                         "Limoilou": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A local residential district with parks, cafés and a strong community atmosphere." }
                     }
                 },
-
                 Vancouver: {
                     province: "British Columbia",
                     image: "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Mountains. Ocean. City.",
                     description: "Vancouver places a modern Pacific city between mountains, forests and the ocean.",
                     highlights: ["Stanley Park", "Granville Island", "Grouse Mountain", "Vancouver Waterfront"],
+                    bestTime: "May – September",
+                    climate: "Oceanic · 3°C to 22°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1200&q=90", description: "The urban centre of Vancouver surrounded by skyscrapers, parks and the waterfront." },
                         "Gastown": { image: "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90", description: "Historic streets, restaurants, design stores and the famous steam clock." },
@@ -1505,13 +2820,15 @@
                         "West End": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A green and walkable neighbourhood beside Stanley Park and English Bay." }
                     }
                 },
-
                 Victoria: {
                     province: "British Columbia",
                     image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Pacific elegance.",
                     description: "Victoria combines coastal scenery, gardens, historic architecture and a relaxed West Coast atmosphere.",
                     highlights: ["Inner Harbour", "Butchart Gardens", "Royal BC Museum", "Beacon Hill Park"],
+                    bestTime: "May – September",
+                    climate: "Mediterranean · 5°C to 21°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90", description: "The centre of Victoria with historic buildings, restaurants and the Inner Harbour." },
                         "James Bay": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A peaceful waterfront neighbourhood near parks and major attractions." },
@@ -1520,13 +2837,15 @@
                         "Cook Street Village": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A compact village-like area with cafés, restaurants and a local atmosphere." }
                     }
                 },
-
                 Calgary: {
                     province: "Alberta",
                     image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
                     tagline: "City energy. Mountain access.",
                     description: "Calgary is a modern Alberta city and a gateway to the Canadian Rockies.",
                     highlights: ["Calgary Tower", "Canadian Rockies", "Calgary Stampede", "Bow River"],
+                    bestTime: "June – September",
+                    climate: "Continental · -9°C to 23°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "Calgary's business and cultural centre surrounded by the Bow River." },
                         "Beltline": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "A lively central district with restaurants, nightlife and modern city life." },
@@ -1535,26 +2854,30 @@
                         "Mission": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A vibrant inner-city area with restaurants, river pathways and nightlife." }
                     }
                 },
-
                 Banff: {
                     province: "Alberta",
                     image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
                     tagline: "The Rockies at your doorstep.",
                     description: "Banff is surrounded by dramatic mountain landscapes, turquoise lakes, wildlife and spectacular outdoor experiences.",
                     highlights: ["Banff National Park", "Lake Louise", "Banff Avenue", "Sulphur Mountain"],
+                    bestTime: "June – September · December – March",
+                    climate: "Subarctic · -12°C to 22°C",
+                    language: "English",
                     neighborhoods: {
                         "Town Centre": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "The lively heart of Banff with restaurants, shops, galleries and mountain views." },
                         "Tunnel Mountain": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A peaceful area surrounded by forests, trails and spectacular mountain scenery." },
                         "Sundance": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A scenic area close to trails, rivers and the wilderness of Banff National Park." }
                     }
                 },
-
                 Edmonton: {
                     province: "Alberta",
                     image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Big skies. Bigger possibilities.",
                     description: "Edmonton combines festivals, river valleys, modern attractions and Alberta's northern landscape.",
                     highlights: ["West Edmonton Mall", "River Valley", "Muttart Conservatory", "Old Strathcona"],
+                    bestTime: "June – September",
+                    climate: "Continental · -14°C to 23°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90", description: "The urban centre with restaurants, attractions and access to the river valley." },
                         "Old Strathcona": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A lively district famous for festivals, restaurants, nightlife and local culture." },
@@ -1563,13 +2886,15 @@
                         "Garneau": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A university-area neighbourhood with cafés, shops and cultural venues." }
                     }
                 },
-
                 Winnipeg: {
                     province: "Manitoba",
                     image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Culture at the crossroads.",
                     description: "Winnipeg brings together Indigenous culture, museums, historic districts and prairie-city energy.",
                     highlights: ["The Forks", "Canadian Museum for Human Rights", "Exchange District", "Assiniboine Park"],
+                    bestTime: "June – September",
+                    climate: "Continental · -18°C to 26°C",
+                    language: "English · French",
                     neighborhoods: {
                         "The Forks": { image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90", description: "A major meeting place where Winnipeg's rivers, food and culture come together." },
                         "Exchange District": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "Historic architecture, restaurants, galleries and creative spaces." },
@@ -1578,13 +2903,15 @@
                         "St. Boniface": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "Winnipeg's historic Francophone district with cultural landmarks and cafés." }
                     }
                 },
-
                 Halifax: {
                     province: "Nova Scotia",
                     image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Atlantic energy.",
                     description: "Halifax combines ocean views, maritime history, colourful waterfronts and a vibrant cultural scene.",
                     highlights: ["Halifax Waterfront", "Citadel National Historic Site", "Peggy's Cove", "Maritime Museum"],
+                    bestTime: "June – October",
+                    climate: "Oceanic · -4°C to 23°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "The centre of Halifax with the waterfront, restaurants and historic attractions." },
                         "North End": { image: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90", description: "A creative district with cafés, breweries, restaurants and local culture." },
@@ -1593,13 +2920,15 @@
                         "Dartmouth": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "Across the harbour, offering waterfront views and a growing food scene." }
                     }
                 },
-
                 Whitehorse: {
                     province: "Yukon",
                     image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Gateway to the North.",
                     description: "Whitehorse is a northern city surrounded by wilderness, rivers and spectacular skies.",
                     highlights: ["Yukon River", "Miles Canyon", "Northern Lights", "Kwanlin Dün Cultural Centre"],
+                    bestTime: "June – August · November – February",
+                    climate: "Subarctic · -20°C to 21°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90", description: "The compact centre of Whitehorse with restaurants, museums and local culture." },
                         "Riverdale": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A residential area beside the Yukon River." },
@@ -1607,13 +2936,15 @@
                         "Copper Ridge": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "A newer residential area with expansive northern views." }
                     }
                 },
-
                 Yellowknife: {
                     province: "Northwest Territories",
                     image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Under the northern lights.",
                     description: "Yellowknife is one of Canada's most distinctive northern destinations, famous for Arctic landscapes and aurora viewing.",
                     highlights: ["Aurora viewing", "Great Slave Lake", "Old Town", "Northern culture"],
+                    bestTime: "June – August · November – March",
+                    climate: "Subarctic · -27°C to 21°C",
+                    language: "English",
                     neighborhoods: {
                         "Downtown": { image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90", description: "The compact centre with restaurants, services and northern culture." },
                         "Old Town": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "Yellowknife's historic lakeside district with colourful buildings and incredible views." },
@@ -1622,13 +2953,15 @@
                         "Niven Lake": { image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90", description: "A modern neighbourhood surrounded by northern scenery." }
                     }
                 },
-
                 Iqaluit: {
                     province: "Nunavut",
                     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
                     tagline: "Canada's Arctic frontier.",
                     description: "Iqaluit offers an introduction to Nunavut's Arctic environment, Inuit culture and dramatic northern landscapes.",
                     highlights: ["Sylvia Grinnell Territorial Park", "Inuit culture", "Frobisher Bay", "Arctic landscapes"],
+                    bestTime: "July – August · October – March",
+                    climate: "Polar · -30°C to 12°C",
+                    language: "Inuktitut · English",
                     neighborhoods: {
                         "Apex": { image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90", description: "A historic community beside Frobisher Bay." },
                         "Lower Base": { image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90", description: "A central area close to the water and local services." },
@@ -1639,12 +2972,9 @@
                 }
             };
 
-
             /* =====================================================
-               DATA LOADING — cities.json + neighborhoods.json + provinces.json
-               Cada fetch tem fallback automático.
+               DATA LOADING
                ===================================================== */
-
             const FALLBACK_CITIES = Object.keys(CITY_DETAILS).map(name => ({
                 name,
                 province: CITY_DETAILS[name].province,
@@ -1680,9 +3010,8 @@
                 ? provincesRaw.regions
                 : [];
 
-
             /* =====================================================
-               MERGE — combina cities + neighborhoods + details
+               MERGE
                ===================================================== */
             const CITIES = citiesData
                 .filter(c => c && c.name)
@@ -1691,7 +3020,6 @@
                     const baseNeighborhoods = neighborhoodsData[c.name];
                     const detailsNeighborhoods = details.neighborhoods || {};
 
-                    // Mescla: lista de neighborhoods do JSON + detalhes hardcoded
                     const mergedNeighborhoods = {};
                     const listToUse = Array.isArray(baseNeighborhoods) && baseNeighborhoods.length
                         ? baseNeighborhoods
@@ -1707,7 +3035,6 @@
                             };
                     });
 
-                    // Fallback caso nenhum bairro exista
                     if (!Object.keys(mergedNeighborhoods).length) {
                         const fallbackName = c.neighborhood || "Downtown";
                         mergedNeighborhoods[fallbackName] = {
@@ -1726,13 +3053,15 @@
                         highlights: Array.isArray(details.highlights) && details.highlights.length
                             ? details.highlights
                             : ["Explore the city", "Local culture", "Signature places", "Hidden gems"],
+                        bestTime: details.bestTime || "Year-round",
+                        climate: details.climate || "Varied",
+                        language: details.language || "English",
                         neighborhoods: mergedNeighborhoods
                     };
                 });
 
             const CITY_INDEX = {};
             CITIES.forEach(c => { CITY_INDEX[c.name] = c; });
-
 
             /* =====================================================
                HELPERS
@@ -1760,16 +3089,53 @@
                     .replace(/'/g, "&#039;");
             }
 
+            /* =====================================================
+               FAVORITES (saved cities)
+               ===================================================== */
+            const FAV_KEY = "ged-saved-cities";
+
+            function loadFavorites() {
+                try {
+                    return JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+                } catch (_) { return []; }
+            }
+
+            function saveFavorites(list) {
+                try {
+                    localStorage.setItem(FAV_KEY, JSON.stringify(list));
+                } catch (_) { }
+            }
+
+            let favorites = loadFavorites();
+
+            function isFavorite(slug) {
+                return favorites.indexOf(slug) !== -1;
+            }
+
+            function toggleFavorite(slug) {
+                const idx = favorites.indexOf(slug);
+                if (idx === -1) {
+                    favorites.push(slug);
+                    saveFavorites(favorites);
+                    return true;
+                }
+                favorites.splice(idx, 1);
+                saveFavorites(favorites);
+                return false;
+            }
 
             /* =====================================================
-               COUNTERS (hero stats)
+               COUNTERS
                ===================================================== */
             const counters = document.querySelectorAll("[data-counter]");
 
             function animateCounter(el) {
-                const target = Number(el.dataset.counter);
+                if (el.dataset.counted === "true") return;
+                el.dataset.counted = "true";
+
+                const target = Number(el.dataset.counter) || 0;
                 const suffix = el.dataset.suffix || "";
-                const duration = 1400;
+                const duration = 1500;
                 const start = performance.now();
 
                 function tick(now) {
@@ -1795,12 +3161,18 @@
                 counters.forEach(animateCounter);
             }
 
-
             /* =====================================================
-               DYNAMIC FILTERS
+               STATE
                ===================================================== */
             const NORTH_REGIONS = ["Yukon", "Northwest Territories", "Nunavut"];
 
+            let currentFilter = "all";
+            let currentSearch = "";
+            let currentSort = "featured";
+
+            /* =====================================================
+               FILTERS
+               ===================================================== */
             function buildFilters() {
                 if (!filtersBar) return;
 
@@ -1815,48 +3187,120 @@
 
                 const hasNorth = provinces.some(p => NORTH_REGIONS.includes(p));
 
+                const counts = { all: CITIES.length };
+                CITIES.forEach(c => {
+                    counts[c.province] = (counts[c.province] || 0) + 1;
+                });
+
                 const chips = [
-                    `<button class="dest-filter active" data-filter="all" type="button" role="tab">All destinations</button>`
+                    `<button class="dest-filter active" data-filter="all" type="button" role="tab" aria-selected="true">
+                        All destinations <span class="filter-count">${counts.all}</span>
+                    </button>`
                 ];
 
                 provinces
                     .filter(p => !NORTH_REGIONS.includes(p))
                     .forEach(p => {
-                        chips.push(`<button class="dest-filter" data-filter="${escapeHTML(p)}" type="button" role="tab">${escapeHTML(p)}</button>`);
+                        chips.push(`<button class="dest-filter" data-filter="${escapeHTML(p)}" type="button" role="tab" aria-selected="false">
+                            ${escapeHTML(p)} <span class="filter-count">${counts[p] || 0}</span>
+                        </button>`);
                     });
 
                 if (hasNorth) {
-                    chips.push(`<button class="dest-filter" data-filter="North" type="button" role="tab">North</button>`);
+                    const northCount = CITIES.filter(c => NORTH_REGIONS.includes(c.province)).length;
+                    chips.push(`<button class="dest-filter" data-filter="North" type="button" role="tab" aria-selected="false">
+                        North <span class="filter-count">${northCount}</span>
+                    </button>`);
                 }
 
                 filtersBar.innerHTML = chips.join("");
 
                 filtersBar.querySelectorAll("[data-filter]").forEach(button => {
                     button.addEventListener("click", () => {
-                        filtersBar.querySelectorAll("[data-filter]").forEach(item => item.classList.remove("active"));
+                        filtersBar.querySelectorAll("[data-filter]").forEach(item => {
+                            item.classList.remove("active");
+                            item.setAttribute("aria-selected", "false");
+                        });
                         button.classList.add("active");
-                        renderCatalog(button.dataset.filter);
-
-                        const gridTop = grid.getBoundingClientRect().top + window.scrollY - 25;
-                        window.scrollTo({ top: gridTop, behavior: "smooth" });
+                        button.setAttribute("aria-selected", "true");
+                        currentFilter = button.dataset.filter;
+                        renderCatalog();
                     });
                 });
             }
 
+            /* =====================================================
+               FILTERING + SORTING
+               ===================================================== */
+            function getFilteredCities() {
+                let list = [...CITIES];
+
+                if (currentFilter === "North") {
+                    list = list.filter(c => NORTH_REGIONS.includes(c.province));
+                } else if (currentFilter !== "all") {
+                    list = list.filter(c => c.province === currentFilter);
+                }
+
+                if (currentSearch) {
+                    const q = currentSearch.toLowerCase();
+                    list = list.filter(c => {
+                        if (c.name.toLowerCase().includes(q)) return true;
+                        if (c.province.toLowerCase().includes(q)) return true;
+                        return Object.keys(c.neighborhoods).some(n => n.toLowerCase().includes(q));
+                    });
+                }
+
+                if (currentSort === "az") {
+                    list.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (currentSort === "za") {
+                    list.sort((a, b) => b.name.localeCompare(a.name));
+                } else if (currentSort === "province") {
+                    list.sort((a, b) =>
+                        a.province.localeCompare(b.province) || a.name.localeCompare(b.name)
+                    );
+                }
+
+                return list;
+            }
 
             /* =====================================================
                CATALOG RENDER
                ===================================================== */
-            function renderCatalog(filter = "all") {
+            function renderCatalog() {
 
-                const cities = CITIES.filter(city => {
-                    if (filter === "all") return true;
-                    if (filter === "North") return NORTH_REGIONS.includes(city.province);
-                    return city.province === filter;
-                });
+                const cities = getFilteredCities();
+                const total = CITIES.length;
+
+                if (countEl) {
+                    countEl.innerHTML = `Showing <strong>${cities.length}</strong> of <strong>${total}</strong> destinations`;
+                }
 
                 if (!cities.length) {
-                    grid.innerHTML = `<div class="catalog-empty">No destinations found.</div>`;
+                    grid.innerHTML = `
+                        <div class="catalog-empty">
+                            <div class="empty-icon" aria-hidden="true">🔍</div>
+                            <h3>No destinations found</h3>
+                            <p>Try another search term, filter or clear everything.</p>
+                            <button type="button" id="clearCatalogFilters">Clear filters</button>
+                        </div>
+                    `;
+                    const clearBtn = document.getElementById("clearCatalogFilters");
+                    if (clearBtn) {
+                        clearBtn.addEventListener("click", () => {
+                            currentFilter = "all";
+                            currentSearch = "";
+                            currentSort = "featured";
+                            if (searchInput) searchInput.value = "";
+                            if (searchWrap) searchWrap.classList.remove("has-value");
+                            if (sortSelect) sortSelect.value = "featured";
+                            filtersBar.querySelectorAll("[data-filter]").forEach(b => {
+                                const isAll = b.dataset.filter === "all";
+                                b.classList.toggle("active", isAll);
+                                b.setAttribute("aria-selected", String(isAll));
+                            });
+                            renderCatalog();
+                        });
+                    }
                     return;
                 }
 
@@ -1866,9 +3310,9 @@
                     return `
                         <a class="catalog-card"
                            href="destinations.html?city=${encodeURIComponent(slugify(city.name))}"
-                           style="animation-delay:${index * 65}ms">
-
-                            <div class="catalog-img" style="background-image:url('${city.image}')"></div>
+                           data-city-slug="${escapeHTML(slugify(city.name))}"
+                           data-province="${escapeHTML(city.province)}"
+                           style="animation-delay:${index * 60}ms">
 
                             <span class="catalog-number">
                                 ${String(index + 1).padStart(2, "0")}
@@ -1892,8 +3336,41 @@
                         </a>
                     `;
                 }).join("");
-            }
 
+                // Insert images via JS for proper lazy loading + error handling
+                grid.querySelectorAll(".catalog-card").forEach((card, i) => {
+                    const city = cities[i];
+                    if (!city) return;
+
+                    const img = createImage(
+                        city.image,
+                        `Image of ${city.name}`,
+                        "catalog-img",
+                        city.province
+                    );
+
+                    card.insertBefore(img, card.firstChild);
+
+                    // Set fallback background
+                    card.style.background = getFallbackGradient(city.province);
+                });
+
+                // SPA-style navigation
+                grid.querySelectorAll(".catalog-card").forEach(card => {
+                    card.addEventListener("click", (e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                        e.preventDefault();
+                        const slug = card.dataset.citySlug;
+                        if (!slug) return;
+
+                        const cityName = cityNameFromSlug(slug);
+                        if (!cityName) return;
+
+                        history.pushState({ city: slug }, "", `destinations.html?city=${slug}`);
+                        renderCity(cityName);
+                    });
+                });
+            }
 
             /* =====================================================
                CITY DETAIL RENDER
@@ -1903,22 +3380,57 @@
                 const city = CITY_INDEX[cityName];
                 if (!city) { showCatalog(); return; }
 
+                const slug = slugify(cityName);
+                const fav = isFavorite(slug);
+
                 catalog.style.display = "none";
                 cityView.style.display = "block";
 
                 document.title = `${cityName} · GED Travel Agency`;
 
                 const neighborhoods = Object.entries(city.neighborhoods);
+                const provinceName = city.province;
+
+                let related = CITIES.filter(c => c.province === provinceName && c.name !== cityName);
+                if (related.length < 3) {
+                    const others = CITIES.filter(c => c.name !== cityName && c.province !== provinceName);
+                    related = related.concat(others.slice(0, 3 - related.length));
+                }
+                related = related.slice(0, 3);
 
                 cityView.innerHTML = `
-                    <section class="destination-hero">
-                        <div class="destination-hero-media"
-                             style="background-image:url('${city.image}')"></div>
-
+                    <section class="destination-hero" data-city-hero>
                         <div class="destination-hero-content">
-                            <a href="destinations.html" class="destination-back">
+                            <a href="destinations.html" class="destination-back" data-back>
                                 ← All destinations
                             </a>
+
+                            <div class="destination-hero-actions">
+                                <button
+                                    type="button"
+                                    class="destination-action-btn ${fav ? "active" : ""}"
+                                    id="favCityBtn"
+                                    aria-pressed="${fav}"
+                                    aria-label="${fav ? "Remove from saved" : "Save city"}">
+                                    <svg viewBox="0 0 24 24" fill="${fav ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>
+                                    </svg>
+                                    <span class="label">${fav ? "Saved" : "Save"}</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="destination-action-btn"
+                                    id="shareCityBtn"
+                                    aria-label="Share this city">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>
+                                    </svg>
+                                    <span class="label">Share</span>
+                                </button>
+                            </div>
 
                             <div class="destination-kicker">
                                 ${escapeHTML(city.province)} · CANADA
@@ -1942,7 +3454,21 @@
 
                     <div class="destination-shell">
 
-                        <!-- INTRO -->
+                        <section class="destination-stats" aria-label="Quick facts">
+                            <div class="destination-stat">
+                                <small>Best time to visit</small>
+                                <strong>${escapeHTML(city.bestTime)}</strong>
+                            </div>
+                            <div class="destination-stat">
+                                <small>Climate</small>
+                                <strong>${escapeHTML(city.climate)}</strong>
+                            </div>
+                            <div class="destination-stat">
+                                <small>Language</small>
+                                <strong>${escapeHTML(city.language)}</strong>
+                            </div>
+                        </section>
+
                         <section class="destination-intro">
                             <div>
                                 <p class="eyebrow">${escapeHTML(city.province.toUpperCase())}</p>
@@ -1956,24 +3482,23 @@
 
                                 <div class="destination-actions">
                                     <a class="button button-primary"
-                                       href="packages.html?city=${encodeURIComponent(slugify(cityName))}#trip-builder">
+                                       href="packages.html?city=${encodeURIComponent(slug)}#trip-builder">
                                         Build a ${escapeHTML(cityName)} trip ↗
                                     </a>
 
                                     <a class="button button-dark"
-                                       href="events.html?city=${encodeURIComponent(slugify(cityName))}">
+                                       href="events.html?city=${encodeURIComponent(slug)}">
                                         Explore events
                                     </a>
 
                                     <a class="button button-dark"
-                                       href="hotels.html?city=${encodeURIComponent(slugify(cityName))}">
+                                       href="hotels.html?city=${encodeURIComponent(slug)}">
                                         Find hotels
                                     </a>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- HIGHLIGHTS -->
                         <section class="detail-section">
                             <div class="section-header">
                                 <div>
@@ -2002,7 +3527,6 @@
                             </div>
                         </section>
 
-                        <!-- NEIGHBOURHOODS -->
                         <section class="detail-section">
                             <div class="section-header">
                                 <div>
@@ -2018,10 +3542,10 @@
                             <div class="neighborhood-grid">
                                 ${neighborhoods.map(([name, data], index) => `
                                     <article class="neighborhood-card"
+                                             id="nb-${escapeHTML(slugify(name))}"
+                                             data-nb-name="${escapeHTML(name)}"
+                                             data-nb-img="${escapeHTML(data.image)}"
                                              style="animation-delay:${index * 80}ms">
-                                        <div class="neighborhood-image"
-                                             style="background-image:url('${data.image}')"></div>
-
                                         <span class="neighborhood-index">
                                             ${String(index + 1).padStart(2, "0")}
                                         </span>
@@ -2031,7 +3555,7 @@
                                             <h3>${escapeHTML(name)}</h3>
                                             <p>${escapeHTML(data.description)}</p>
 
-                                            <a href="packages.html?city=${encodeURIComponent(slugify(cityName))}&neighborhood=${encodeURIComponent(slugify(name))}#trip-builder">
+                                            <a href="packages.html?city=${encodeURIComponent(slug)}&neighborhood=${encodeURIComponent(slugify(name))}#trip-builder">
                                                 Build around ${escapeHTML(name)} →
                                             </a>
                                         </div>
@@ -2040,7 +3564,36 @@
                             </div>
                         </section>
 
-                        <!-- FINAL CTA -->
+                        ${related.length ? `
+                        <section class="detail-section">
+                            <div class="section-header">
+                                <div>
+                                    <p class="eyebrow">Keep exploring</p>
+                                    <h2>More of <em>Canada.</em></h2>
+                                </div>
+                                <p>
+                                    Other destinations that pair well with
+                                    ${escapeHTML(cityName)}.
+                                </p>
+                            </div>
+
+                            <div class="related-grid">
+                                ${related.map(c => `
+                                    <a class="related-card"
+                                       href="destinations.html?city=${encodeURIComponent(slugify(c.name))}"
+                                       data-related-slug="${escapeHTML(slugify(c.name))}"
+                                       data-related-img="${escapeHTML(c.image)}"
+                                       data-related-province="${escapeHTML(c.province)}">
+                                        <div class="related-body">
+                                            <small>${escapeHTML(c.province)}</small>
+                                            <h4>${escapeHTML(c.name)}</h4>
+                                        </div>
+                                    </a>
+                                `).join("")}
+                            </div>
+                        </section>
+                        ` : ""}
+
                         <section>
                             <div class="destination-final">
                                 <div>
@@ -2053,7 +3606,7 @@
                                 </div>
 
                                 <a class="button button-primary"
-                                   href="packages.html?city=${encodeURIComponent(slugify(cityName))}#trip-builder">
+                                   href="packages.html?city=${encodeURIComponent(slug)}#trip-builder">
                                     Build your trip ↗
                                 </a>
                             </div>
@@ -2062,40 +3615,162 @@
                     </div>
                 `;
 
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                activateParallax();
-            }
-
-
-            /* =====================================================
-               PARALLAX
-               ===================================================== */
-            function activateParallax() {
-                const hero = document.querySelector(".destination-hero");
-                const media = document.querySelector(".destination-hero-media");
-                if (!hero || !media) return;
-
-                // evita duplicar listener
-                if (hero._parallaxBound) return;
-                hero._parallaxBound = true;
-
-                let ticking = false;
-
-                function update() {
-                    const rect = hero.getBoundingClientRect();
-                    const offset = Math.max(-30, Math.min(30, rect.top * -0.035));
-                    media.style.transform = `scale(1.04) translateY(${offset}px)`;
-                    ticking = false;
+                // Insert hero image + neighborhood images + related images via JS
+                const hero = cityView.querySelector("[data-city-hero]");
+                if (hero) {
+                    const heroImg = createImage(
+                        city.image,
+                        `Image of ${cityName}`,
+                        "destination-hero-media",
+                        city.province
+                    );
+                    hero.insertBefore(heroImg, hero.firstChild);
                 }
 
-                window.addEventListener("scroll", () => {
-                    if (!ticking) {
-                        window.requestAnimationFrame(update);
-                        ticking = true;
+                cityView.querySelectorAll(".neighborhood-card").forEach(card => {
+                    const imgSrc = card.dataset.nbImg;
+                    if (!imgSrc) return;
+                    const img = createImage(
+                        imgSrc,
+                        `Image of ${card.dataset.nbName}`,
+                        "neighborhood-image",
+                        provinceName
+                    );
+                    card.insertBefore(img, card.firstChild);
+                });
+
+                cityView.querySelectorAll(".related-card").forEach(card => {
+                    const imgSrc = card.dataset.relatedImg;
+                    if (!imgSrc) return;
+                    const img = createImage(
+                        imgSrc,
+                        `Image of ${card.dataset.relatedSlug}`,
+                        "related-img",
+                        card.dataset.relatedProvince
+                    );
+                    card.insertBefore(img, card.firstChild);
+                });
+
+                // Instant scroll to top
+                window.scrollTo(0, 0);
+
+                // Wire back button (SPA)
+                const backBtn = cityView.querySelector("[data-back]");
+                if (backBtn) {
+                    backBtn.addEventListener("click", (e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                        e.preventDefault();
+                        history.pushState({}, "", "destinations.html");
+                        showCatalog();
+                    });
+                }
+
+                // Wire related cards
+                cityView.querySelectorAll("[data-related-slug]").forEach(card => {
+                    card.addEventListener("click", (e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                        e.preventDefault();
+                        const relSlug = card.dataset.relatedSlug;
+                        const relName = cityNameFromSlug(relSlug);
+                        if (!relName) return;
+                        history.pushState({ city: relSlug }, "", `destinations.html?city=${relSlug}`);
+                        renderCity(relName);
+                    });
+                });
+
+                // Favorite button
+                const favBtn = cityView.querySelector("#favCityBtn");
+                if (favBtn) {
+                    favBtn.addEventListener("click", () => {
+                        const nowFav = toggleFavorite(slug);
+                        favBtn.classList.toggle("active", nowFav);
+                        favBtn.setAttribute("aria-pressed", String(nowFav));
+                        favBtn.setAttribute("aria-label", nowFav ? "Remove from saved" : "Save city");
+                        const label = favBtn.querySelector(".label");
+                        if (label) label.textContent = nowFav ? "Saved" : "Save";
+                        const svgPath = favBtn.querySelector("path");
+                        if (svgPath) svgPath.setAttribute("fill", nowFav ? "currentColor" : "none");
+                        toast(nowFav ? `${cityName} saved` : `${cityName} removed`, nowFav ? "success" : "info", 2000);
+                    });
+                }
+
+                // Share button
+                const shareBtn = cityView.querySelector("#shareCityBtn");
+                if (shareBtn) {
+                    shareBtn.addEventListener("click", async () => {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set("city", slug);
+                        url.hash = "";
+
+                        const shareData = {
+                            title: `${cityName} · GED Travel Agency`,
+                            text: `${city.tagline} Explore ${cityName} on GED.`,
+                            url: url.toString()
+                        };
+
+                        try {
+                            if (navigator.share) {
+                                await navigator.share(shareData);
+                            } else if (navigator.clipboard) {
+                                await navigator.clipboard.writeText(shareData.url);
+                                toast("Link copied to clipboard", "success", 2200);
+                            } else {
+                                prompt("Copy this link:", shareData.url);
+                            }
+                        } catch (err) {
+                            if (err && err.name !== "AbortError") {
+                                toast("Could not share", "error", 2400);
+                            }
+                        }
+                    });
+                }
+
+                // Deep-link scroll to specific neighborhood
+                try {
+                    const params = new URLSearchParams(window.location.search);
+                    const nbSlug = params.get("nb");
+                    if (nbSlug) {
+                        const target = document.getElementById("nb-" + nbSlug);
+                        if (target) {
+                            setTimeout(() => {
+                                const y = target.getBoundingClientRect().top + window.scrollY - 110;
+                                window.scrollTo({ top: y, behavior: "smooth" });
+                            }, 400);
+                        }
                     }
-                }, { passive: true });
+                } catch (_) { }
+
+                // Parallax handled by global listener
+                if (typeof updateParallax === "function") updateParallax();
             }
 
+            /* =====================================================
+               PARALLAX (single global listener, no leak)
+               ===================================================== */
+            let parallaxTicking = false;
+
+            function updateParallax() {
+                const hero = document.querySelector("[data-city-hero]");
+                const media = document.querySelector(".destination-hero-media");
+                if (!hero || !media) { parallaxTicking = false; return; }
+
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                    parallaxTicking = false;
+                    return;
+                }
+
+                const offset = Math.max(-30, Math.min(30, rect.top * -0.035));
+                media.style.transform = `translateY(${offset}px)`;
+                parallaxTicking = false;
+            }
+
+            window.addEventListener("scroll", () => {
+                if (!parallaxTicking) {
+                    window.requestAnimationFrame(updateParallax);
+                    parallaxTicking = true;
+                }
+            }, { passive: true });
 
             /* =====================================================
                SHOW CATALOG
@@ -2107,9 +3782,8 @@
                 document.title = "Explore Canada · GED Travel Agency";
 
                 renderCatalog();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.scrollTo(0, 0);
             }
-
 
             /* =====================================================
                URL ROUTING
@@ -2126,6 +3800,40 @@
                 renderCatalog();
             }
 
+            /* =====================================================
+               SEARCH + SORT LISTENERS
+               ===================================================== */
+            if (searchInput) {
+                let searchDebounce;
+                searchInput.addEventListener("input", () => {
+                    clearTimeout(searchDebounce);
+                    const val = searchInput.value;
+                    if (searchWrap) searchWrap.classList.toggle("has-value", !!val);
+                    searchDebounce = setTimeout(() => {
+                        currentSearch = val.trim();
+                        renderCatalog();
+                    }, 140);
+                });
+            }
+
+            if (searchClear) {
+                searchClear.addEventListener("click", () => {
+                    if (searchInput) {
+                        searchInput.value = "";
+                        searchInput.focus();
+                    }
+                    if (searchWrap) searchWrap.classList.remove("has-value");
+                    currentSearch = "";
+                    renderCatalog();
+                });
+            }
+
+            if (sortSelect) {
+                sortSelect.addEventListener("change", () => {
+                    currentSort = sortSelect.value;
+                    renderCatalog();
+                });
+            }
 
             /* =====================================================
                REVEAL ON SCROLL
@@ -2147,33 +3855,43 @@
                 revealEls.forEach(el => el.classList.add("visible"));
             }
 
-
             /* =====================================================
                BOOT
                ===================================================== */
             buildFilters();
             routeFromURL();
 
-
             /* =====================================================
                BROWSER BACK / FORWARD
                ===================================================== */
             window.addEventListener("popstate", () => {
-                const currentParams = new URLSearchParams(window.location.search);
-                const currentSlug = currentParams.get("city");
+                const params = new URLSearchParams(window.location.search);
+                const slug = params.get("city");
 
-                if (currentSlug) {
-                    const currentCity = cityNameFromSlug(currentSlug);
-                    if (currentCity) { renderCity(currentCity); return; }
+                if (slug) {
+                    const name = cityNameFromSlug(slug);
+                    if (name) { renderCity(name); return; }
                 }
 
                 showCatalog();
             });
 
+            /* =====================================================
+               KEYBOARD: "/" focuses search on catalog
+               ===================================================== */
+            document.addEventListener("keydown", (e) => {
+                if (e.key !== "/") return;
+                const tag = (document.activeElement && document.activeElement.tagName) || "";
+                if (tag === "INPUT" || tag === "TEXTAREA") return;
+                if (catalog.style.display === "none") return;
+                if (!searchInput) return;
+                e.preventDefault();
+                searchInput.focus();
+            });
 
             console.log(
-                "%cGED · Destinations",
-                "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 8px;border-radius:6px;"
+                "%cGED · Destinations v4",
+                "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 8px;border-radius:6px;font-family:monospace;"
             );
             console.log(
                 `Loaded ${CITIES.length} cities · ${Object.keys(neighborhoodsData).length} neighborhoods entries · ${provincesData.length} provinces`

@@ -8,10 +8,18 @@
             content="GED Travel Agency — The people, the idea and the technology behind Canada's most personal trip builder.">
       <meta name="theme-color" content="#08090c">
 
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="About — GED Travel Agency">
+      <meta property="og:description" content="The people, the idea and the technology behind GED.">
+      <meta property="og:image"
+            content="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80">
+      <meta name="twitter:card" content="summary_large_image">
+
       <title>About — GED Travel Agency</title>
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
             rel="stylesheet">
 
@@ -22,10 +30,11 @@
 
       <style>
             /* ============================================================
-       DESIGN TOKENS
-       ============================================================ */
+           DESIGN TOKENS
+           ============================================================ */
             :root {
                   --ios-blue: #007aff;
+                  --ios-blue-2: #4aa3ff;
                   --ios-green: #34c759;
                   --ios-orange: #ff9500;
                   --ios-purple: #af52de;
@@ -49,6 +58,8 @@
 
             html {
                   scroll-behavior: smooth;
+                  scroll-padding-top: 96px;
+                  -webkit-text-size-adjust: 100%;
             }
 
             .about-page {
@@ -64,8 +75,50 @@
             }
 
             /* ============================================================
-       HEADER
-       ============================================================ */
+           GLOBAL POLISH
+           ============================================================ */
+            :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+                  outline: 2px solid rgba(175, 82, 222, 0.65);
+                  outline-offset: 3px;
+                  border-radius: 10px;
+            }
+
+            .sr-only {
+                  position: absolute;
+                  width: 1px;
+                  height: 1px;
+                  padding: 0;
+                  margin: -1px;
+                  overflow: hidden;
+                  clip: rect(0 0 0 0);
+                  white-space: nowrap;
+                  border: 0;
+            }
+
+            .skip-link {
+                  position: fixed;
+                  top: 14px;
+                  left: 14px;
+                  z-index: 10000;
+                  padding: 12px 22px;
+                  border-radius: 999px;
+                  background: #0b0b0b;
+                  color: #fff;
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  text-decoration: none;
+                  transform: translateY(-180%);
+                  transition: transform .3s var(--ease-ios);
+                  box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+            }
+
+            .skip-link:focus {
+                  transform: translateY(0);
+            }
+
+            /* ============================================================
+           HEADER
+           ============================================================ */
             .about-page .site-header {
                   position: fixed;
                   top: 0;
@@ -100,8 +153,8 @@
             }
 
             /* ============================================================
-       HERO
-       ============================================================ */
+           HERO
+           ============================================================ */
             .about-page .about-hero {
                   position: relative;
                   min-height: 800px;
@@ -183,7 +236,7 @@
             .about-page .about-hero h1 {
                   margin: 26px 0 22px;
                   font-family: "Space Grotesk", sans-serif;
-                  font-size: clamp(62px, 9vw, 145px);
+                  font-size: clamp(58px, 8.4vw, 132px);
                   line-height: 0.86;
                   letter-spacing: -0.075em;
                   font-weight: 700;
@@ -201,7 +254,7 @@
                   color: transparent;
             }
 
-            .about-page .about-hero-content>p:not(.eyebrow-pill) {
+            .about-page .about-hero-lead {
                   max-width: 580px;
                   font-size: 18px;
                   line-height: 1.65;
@@ -289,10 +342,11 @@
                   font-weight: 700;
                   letter-spacing: -0.04em;
                   color: #fff;
+                  font-variant-numeric: tabular-nums;
             }
 
             .about-page .hero-stat span {
-                  font-size: 12px;
+                  font-size: 11.5px;
                   font-weight: 600;
                   letter-spacing: 0.06em;
                   text-transform: uppercase;
@@ -300,8 +354,8 @@
             }
 
             /* ============================================================
-       SECTION HEADER
-       ============================================================ */
+           SECTION HEADER
+           ============================================================ */
             .about-page .section-header {
                   display: grid;
                   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
@@ -359,8 +413,8 @@
             }
 
             /* ============================================================
-       TEAM — monogram version (no photos)
-       ============================================================ */
+           TEAM — monogram cards
+           ============================================================ */
             .about-page .team-grid {
                   display: grid;
                   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -390,7 +444,6 @@
                   box-shadow: 0 26px 60px rgba(0, 0, 0, 0.14);
             }
 
-            /* Monogram header */
             .about-page .team-avatar {
                   position: relative;
                   height: 240px;
@@ -400,7 +453,6 @@
                   isolation: isolate;
             }
 
-            /* Each person gets their own gradient */
             .about-page .team-avatar.geovana {
                   background:
                         radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.28), transparent 55%),
@@ -419,20 +471,17 @@
                         linear-gradient(135deg, #34c759 0%, #5ac8fa 60%, #007aff 100%);
             }
 
-            /* Soft decorative dots pattern */
             .about-page .team-avatar .pattern {
                   position: absolute;
                   inset: 0;
                   z-index: 1;
                   opacity: 0.22;
-                  background-image:
-                        radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.2px, transparent 1.6px);
+                  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.2px, transparent 1.6px);
                   background-size: 28px 28px;
                   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
                   -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
             }
 
-            /* Diagonal light streak */
             .about-page .team-avatar::after {
                   content: "";
                   position: absolute;
@@ -447,7 +496,6 @@
                   pointer-events: none;
             }
 
-            /* Big monogram letter */
             .about-page .team-monogram {
                   position: relative;
                   z-index: 3;
@@ -463,7 +511,6 @@
                   user-select: none;
             }
 
-            /* Decorative rings behind the letter */
             .about-page .team-ring {
                   position: absolute;
                   width: 180px;
@@ -516,7 +563,6 @@
                   background: linear-gradient(135deg, #34c759, #5ac8fa);
             }
 
-            /* Initials chip (bottom-right of avatar) */
             .about-page .team-initials {
                   position: absolute;
                   bottom: 16px;
@@ -535,7 +581,6 @@
                   border: 0.5px solid rgba(255, 255, 255, 0.22);
             }
 
-            /* Body */
             .about-page .team-body {
                   padding: 24px 24px 26px;
                   display: flex;
@@ -612,8 +657,8 @@
             }
 
             /* ============================================================
-       MISSION CARDS
-       ============================================================ */
+           MISSION CARDS
+           ============================================================ */
             .about-page .mission-grid {
                   display: grid;
                   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -680,8 +725,8 @@
             }
 
             /* ============================================================
-       TECHNOLOGY (dark section)
-       ============================================================ */
+           TECHNOLOGY (dark)
+           ============================================================ */
             .about-page .tech-section {
                   position: relative;
                   padding: 100px 0 120px;
@@ -832,8 +877,8 @@
             }
 
             /* ============================================================
-       TIMELINE
-       ============================================================ */
+           TIMELINE
+           ============================================================ */
             .about-page .timeline {
                   display: grid;
                   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -913,8 +958,8 @@
             }
 
             /* ============================================================
-       STATS STRIP
-       ============================================================ */
+           STATS STRIP
+           ============================================================ */
             .about-page .about-stats {
                   display: grid;
                   grid-template-columns: repeat(4, 1fr);
@@ -953,6 +998,7 @@
                   font-weight: 700;
                   letter-spacing: -0.05em;
                   color: var(--ios-text);
+                  font-variant-numeric: tabular-nums;
             }
 
             .about-page .about-stat span {
@@ -964,8 +1010,8 @@
             }
 
             /* ============================================================
-       VALUES
-       ============================================================ */
+           VALUES
+           ============================================================ */
             .about-page .values-grid {
                   display: grid;
                   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1039,8 +1085,8 @@
             }
 
             /* ============================================================
-       NOTICE
-       ============================================================ */
+           NOTICE
+           ============================================================ */
             .about-page .notice-card {
                   display: flex;
                   gap: 18px;
@@ -1082,8 +1128,8 @@
             }
 
             /* ============================================================
-       VISUAL BREAK
-       ============================================================ */
+           VISUAL BREAK
+           ============================================================ */
             .about-page .about-break {
                   position: relative;
                   min-height: 600px;
@@ -1183,76 +1229,439 @@
             }
 
             /* ============================================================
-       FOOTER
-       ============================================================ */
+           FOOTER — v2
+           ============================================================ */
             .about-page .site-footer {
-                  background: #070707;
-                  color: #fff;
-                  padding: 80px 0 28px;
+                  position: relative;
+                  isolation: isolate;
+                  overflow: hidden;
+                  margin-top: clamp(30px, 5vw, 70px);
+                  padding: 0;
+                  color: rgba(255, 255, 255, .70);
+                  background:
+                        radial-gradient(900px 420px at 12% -20%, rgba(175, 82, 222, .12), transparent 62%),
+                        radial-gradient(700px 380px at 92% 0%, rgba(0, 122, 255, .07), transparent 60%),
+                        linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+                  border-top: 0.5px solid rgba(255, 255, 255, .10);
             }
 
-            .about-page .site-footer .container {
+            .about-page .site-footer::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0 0 auto 0;
+                  height: 1px;
+                  background: linear-gradient(90deg, transparent, rgba(175, 82, 222, .55), transparent);
+                  opacity: .75;
+                  pointer-events: none;
+            }
+
+            .about-page .site-footer .footer-inner {
+                  width: min(1200px, 100% - 48px);
+                  margin-inline: auto;
+                  padding: clamp(52px, 7vw, 88px) 0 30px;
+                  display: block;
+            }
+
+            .about-page .footer-top {
                   display: grid;
-                  grid-template-columns: 2fr 1fr 1fr 1fr;
-                  gap: 40px;
+                  grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+                  gap: clamp(28px, 4vw, 44px);
+                  padding-bottom: clamp(34px, 5vw, 54px);
+                  border-bottom: 0.5px solid rgba(255, 255, 255, .08);
             }
 
-            @media (max-width: 720px) {
-                  .about-page .site-footer .container {
-                        grid-template-columns: 1fr;
-                        gap: 28px;
+            .about-page .footer-brand {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 18px;
+                  max-width: 340px;
+            }
+
+            .about-page .footer-logo {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 12px;
+                  text-decoration: none;
+                  color: #fff;
+                  width: fit-content;
+            }
+
+            .about-page .footer-logo-mark {
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 14px;
+                  display: grid;
+                  place-items: center;
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-weight: 700;
+                  font-size: 20px;
+                  color: #0a0a0a;
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  box-shadow: 0 10px 26px rgba(175, 82, 222, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+                  transition: transform .3s var(--ease-spring);
+            }
+
+            .about-page .footer-logo:hover .footer-logo-mark {
+                  transform: rotate(-6deg) scale(1.05);
+            }
+
+            .about-page .footer-logo-text {
+                  display: flex;
+                  flex-direction: column;
+                  line-height: 1;
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-weight: 700;
+                  font-size: 19px;
+                  letter-spacing: -.03em;
+            }
+
+            .about-page .footer-logo-text small {
+                  font-family: 'DM Sans', sans-serif;
+                  font-size: 9.5px;
+                  font-weight: 700;
+                  letter-spacing: .22em;
+                  text-transform: uppercase;
+                  color: rgba(255, 255, 255, .42);
+                  margin-top: 5px;
+            }
+
+            .about-page .footer-tagline {
+                  font-size: 14px;
+                  line-height: 1.65;
+                  color: rgba(255, 255, 255, .58);
+                  margin: 0;
+                  max-width: 330px;
+            }
+
+            .about-page .footer-socials {
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+            }
+
+            .about-page .footer-social {
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 13px;
+                  display: grid;
+                  place-items: center;
+                  color: rgba(255, 255, 255, .75);
+                  background: rgba(255, 255, 255, .05);
+                  border: 0.5px solid rgba(255, 255, 255, .12);
+                  text-decoration: none;
+                  transition: transform .28s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+            }
+
+            .about-page .footer-social svg {
+                  width: 18px;
+                  height: 18px;
+            }
+
+            .about-page .footer-social:hover {
+                  color: #0a0a0a;
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  border-color: transparent;
+                  transform: translateY(-3px);
+                  box-shadow: 0 12px 26px rgba(175, 82, 222, .30);
+            }
+
+            .about-page .footer-chip {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  width: fit-content;
+                  padding: 7px 14px;
+                  border-radius: 999px;
+                  background: rgba(255, 255, 255, .05);
+                  border: 0.5px solid rgba(255, 255, 255, .12);
+                  font-size: 10.5px;
+                  font-weight: 800;
+                  letter-spacing: .14em;
+                  text-transform: uppercase;
+                  color: rgba(255, 255, 255, .62);
+            }
+
+            .about-page .footer-chip .badge-dot {
+                  width: 7px;
+                  height: 7px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  box-shadow: 0 0 0 3px rgba(175, 82, 222, .20);
+            }
+
+            .about-page .footer-col h3 {
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-size: 11.5px;
+                  font-weight: 700;
+                  letter-spacing: .18em;
+                  text-transform: uppercase;
+                  color: rgba(255, 255, 255, .42);
+                  margin: 0 0 18px;
+            }
+
+            .about-page .footer-col ul {
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 11px;
+            }
+
+            .about-page .footer-col a {
+                  position: relative;
+                  display: inline-block;
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: rgba(255, 255, 255, .72);
+                  text-decoration: none;
+                  transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+            }
+
+            .about-page .footer-col a::after {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  bottom: -3px;
+                  width: 0;
+                  height: 1.5px;
+                  border-radius: 2px;
+                  background: linear-gradient(90deg, #af52de, #007aff);
+                  transition: width .28s var(--ease-ios);
+            }
+
+            .about-page .footer-col a:hover {
+                  color: #fff;
+                  transform: translateX(3px);
+            }
+
+            .about-page .footer-col a:hover::after {
+                  width: 100%;
+            }
+
+            .about-page .footer-band {
+                  position: relative;
+                  overflow: hidden;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 28px;
+                  flex-wrap: wrap;
+                  margin: clamp(32px, 4vw, 48px) 0;
+                  padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+                  border-radius: 26px;
+                  background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+                  border: 0.5px solid rgba(255, 255, 255, .10);
+                  backdrop-filter: blur(20px) saturate(160%);
+                  -webkit-backdrop-filter: blur(20px) saturate(160%);
+            }
+
+            .about-page .footer-band::before {
+                  content: "";
+                  position: absolute;
+                  top: -120px;
+                  right: -80px;
+                  width: 320px;
+                  height: 320px;
+                  border-radius: 50%;
+                  background: radial-gradient(circle, rgba(175, 82, 222, .18), transparent 70%);
+                  pointer-events: none;
+            }
+
+            .about-page .footer-band-eyebrow {
+                  font-size: 10.5px;
+                  font-weight: 800;
+                  letter-spacing: .18em;
+                  text-transform: uppercase;
+                  color: rgba(175, 82, 222, .9);
+                  margin: 0 0 8px;
+            }
+
+            .about-page .footer-band h3 {
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-size: clamp(21px, 2.6vw, 30px);
+                  font-weight: 700;
+                  letter-spacing: -.04em;
+                  color: #fff;
+                  margin: 0;
+                  line-height: 1.12;
+            }
+
+            .about-page .footer-band h3 em {
+                  font-style: normal;
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  -webkit-text-fill-color: transparent;
+            }
+
+            .about-page .footer-band-actions {
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                  position: relative;
+                  z-index: 1;
+            }
+
+            .about-page .footer-btn {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  height: 48px;
+                  padding: 0 22px;
+                  border-radius: 999px;
+                  font-family: inherit;
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  text-decoration: none;
+                  cursor: pointer;
+                  border: 0;
+                  white-space: nowrap;
+                  transition: transform .26s var(--ease-spring), box-shadow .26s, background .26s, color .26s;
+            }
+
+            .about-page .footer-btn-primary {
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  color: #fff;
+                  box-shadow: 0 12px 30px rgba(175, 82, 222, .28);
+            }
+
+            .about-page .footer-btn-primary:hover {
+                  transform: translateY(-3px);
+                  box-shadow: 0 18px 40px rgba(175, 82, 222, .38);
+            }
+
+            .about-page .footer-btn-ghost {
+                  background: rgba(255, 255, 255, .07);
+                  color: #fff;
+                  border: 0.5px solid rgba(255, 255, 255, .18);
+            }
+
+            .about-page .footer-btn-ghost:hover {
+                  background: rgba(255, 255, 255, .13);
+                  transform: translateY(-3px);
+            }
+
+            .about-page .footer-bottom {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 20px;
+                  flex-wrap: wrap;
+                  padding-top: 26px;
+                  border-top: 0.5px solid rgba(255, 255, 255, .08);
+            }
+
+            .about-page .footer-bottom>p {
+                  margin: 0;
+                  font-size: 12.5px;
+                  line-height: 1.6;
+                  color: rgba(255, 255, 255, .42);
+                  max-width: 660px;
+            }
+
+            .about-page .footer-bottom-right {
+                  display: flex;
+                  align-items: center;
+                  gap: 18px;
+                  flex-wrap: wrap;
+            }
+
+            .about-page .footer-credits {
+                  display: flex;
+                  gap: 8px;
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                  flex-wrap: wrap;
+            }
+
+            .about-page .footer-credits li {
+                  font-size: 10.5px;
+                  font-weight: 800;
+                  letter-spacing: .1em;
+                  text-transform: uppercase;
+                  color: rgba(255, 255, 255, .55);
+                  padding: 6px 13px;
+                  border-radius: 999px;
+                  background: rgba(255, 255, 255, .05);
+                  border: 0.5px solid rgba(255, 255, 255, .10);
+            }
+
+            .about-page .footer-top-link {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 11px;
+                  font-weight: 800;
+                  letter-spacing: .14em;
+                  text-transform: uppercase;
+                  color: rgba(255, 255, 255, .6);
+                  text-decoration: none;
+                  padding: 11px 18px;
+                  border-radius: 999px;
+                  border: 0.5px solid rgba(255, 255, 255, .14);
+                  transition: all .25s var(--ease-ios);
+            }
+
+            .about-page .footer-top-link:hover {
+                  color: #0a0a0a;
+                  background: linear-gradient(135deg, #af52de, #007aff);
+                  border-color: transparent;
+                  transform: translateY(-2px);
+                  box-shadow: 0 12px 28px rgba(175, 82, 222, .28);
+            }
+
+            @media (max-width: 1080px) {
+                  .about-page .footer-top {
+                        grid-template-columns: 1fr 1fr 1fr;
+                  }
+
+                  .about-page .footer-brand {
+                        grid-column: 1 / -1;
+                        max-width: none;
                   }
             }
 
-            .about-page .site-footer .brand {
-                  color: #fff;
-                  display: inline-flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                  gap: 4px;
-                  font-family: "Space Grotesk", sans-serif;
-                  font-size: 20px;
-                  font-weight: 700;
-                  margin-bottom: 8px;
+            @media (max-width: 760px) {
+                  .about-page .site-footer .footer-inner {
+                        width: min(1200px, 100% - 36px);
+                  }
+
+                  .about-page .footer-top {
+                        grid-template-columns: 1fr 1fr;
+                        gap: 32px 20px;
+                  }
+
+                  .about-page .footer-brand {
+                        grid-column: 1 / -1;
+                  }
+
+                  .about-page .footer-band {
+                        flex-direction: column;
+                        align-items: flex-start;
+                  }
+
+                  .about-page .footer-bottom {
+                        flex-direction: column;
+                        align-items: flex-start;
+                  }
+
+                  .about-page .footer-bottom-right {
+                        width: 100%;
+                        justify-content: space-between;
+                  }
             }
 
-            .about-page .site-footer .brand small {
-                  font-size: 10px;
-                  letter-spacing: 0.18em;
-                  color: rgba(255, 255, 255, 0.4);
-                  font-weight: 700;
-            }
-
-            .about-page .site-footer p {
-                  color: rgba(255, 255, 255, 0.45);
-                  font-size: 13px;
-                  margin: 4px 0 0;
-            }
-
-            .about-page .site-footer strong {
-                  display: block;
-                  color: rgba(255, 255, 255, 0.5);
-                  font-size: 10px;
-                  text-transform: uppercase;
-                  letter-spacing: 0.14em;
-                  margin-bottom: 12px;
-            }
-
-            .about-page .site-footer a {
-                  display: block;
-                  color: rgba(255, 255, 255, 0.6);
-                  font-size: 13px;
-                  margin-bottom: 8px;
-                  text-decoration: none;
-            }
-
-            .about-page .site-footer a:hover {
-                  color: #fff;
+            @media (max-width: 380px) {
+                  .about-page .footer-top {
+                        grid-template-columns: 1fr;
+                  }
             }
 
             /* ============================================================
-       ANIMATIONS
-       ============================================================ */
+           ANIMATIONS
+           ============================================================ */
             @keyframes fadeUp {
                   from {
                         opacity: 0;
@@ -1300,19 +1709,19 @@
                         animation-iteration-count: 1 !important;
                         transition-duration: 0.01ms !important;
                   }
-            }
 
-            .about-page :focus-visible {
-                  outline: 3px solid rgba(175, 82, 222, 0.55);
-                  outline-offset: 3px;
-                  border-radius: 8px;
+                  .about-page .about-hero-media,
+                  .about-page .about-break-media {
+                        transform: none !important;
+                  }
             }
       </style>
 </head>
 
 <body class="about-page">
 
-      <!-- HEADER -->
+      <a class="skip-link" href="#main">Skip to content</a>
+
       <header class="site-header" id="site-header">
             <nav class="nav glass" aria-label="Main navigation">
                   <a class="brand" href="../index.html" aria-label="GED Home"><b>G</b><span>GED</span></a>
@@ -1327,10 +1736,13 @@
                   <div class="nav-actions">
                         <button class="icon-btn" type="button" data-search aria-label="Search">⌕</button>
                         <a class="nav-about active" href="about.html" aria-current="page">About</a>
-                        <button class="menu-btn" type="button" data-menu aria-label="Open menu"><i></i><i></i></button>
+                        <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false"
+                              aria-controls="mobile-menu">
+                              <i></i><i></i>
+                        </button>
                   </div>
             </nav>
-            <div class="mobile-menu glass" data-mobile-menu aria-hidden="true">
+            <div id="mobile-menu" class="mobile-menu glass" data-mobile-menu aria-hidden="true">
                   <a href="../index.html">Explore</a>
                   <a href="events.html">Events</a>
                   <a href="flights.html">Flights</a>
@@ -1341,14 +1753,12 @@
             </div>
       </header>
 
-      <main>
+      <main id="main">
 
-            <!-- ============================================================
-         HERO
-         ============================================================ -->
+            <!-- HERO -->
             <section class="about-hero" id="top">
-                  <div class="about-hero-media"></div>
-                  <div class="about-hero-overlay"></div>
+                  <div class="about-hero-media" aria-hidden="true"></div>
+                  <div class="about-hero-overlay" aria-hidden="true"></div>
 
                   <div class="container about-hero-content">
                         <div class="eyebrow-pill">
@@ -1361,7 +1771,7 @@
                               <em>One idea.</em>
                         </h1>
 
-                        <p>
+                        <p class="about-hero-lead">
                               Build something that feels like a real travel product — while being
                               completely honest that it is an educational project. That was the
                               brief. This is the result.
@@ -1369,12 +1779,10 @@
 
                         <div class="hero-actions">
                               <a class="button button-primary" href="#team">
-                                    Meet the team
-                                    <span aria-hidden="true">↓</span>
+                                    Meet the team <span aria-hidden="true">↓</span>
                               </a>
                               <a class="button hero-secondary" href="#technology">
-                                    See the technology
-                                    <span aria-hidden="true">↘</span>
+                                    See the technology <span aria-hidden="true">↘</span>
                               </a>
                         </div>
 
@@ -1399,16 +1807,14 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         MISSION
-         ============================================================ -->
-            <section class="section" id="mission">
+            <!-- MISSION -->
+            <section class="section" id="mission" aria-labelledby="mission-title">
                   <div class="container">
 
                         <div class="section-header reveal">
                               <div>
                                     <p class="eyebrow">Our mission</p>
-                                    <h2>Canada, <em>made personal.</em></h2>
+                                    <h2 id="mission-title">Canada, <em>made personal.</em></h2>
                               </div>
                               <p>
                                     GED was built around a single question: what if planning a trip
@@ -1419,7 +1825,7 @@
 
                         <div class="mission-grid">
                               <article class="mission-card reveal">
-                                    <div class="mission-icon">✦</div>
+                                    <div class="mission-icon" aria-hidden="true">✦</div>
                                     <h3>Curated, not crowded</h3>
                                     <p>
                                           We don't list everything. We list the things that actually
@@ -1429,7 +1835,7 @@
                               </article>
 
                               <article class="mission-card reveal">
-                                    <div class="mission-icon">⛶</div>
+                                    <div class="mission-icon" aria-hidden="true">⛶</div>
                                     <h3>Built around you</h3>
                                     <p>
                                           Province, city, neighborhood, stay, transport, experiences
@@ -1439,7 +1845,7 @@
                               </article>
 
                               <article class="mission-card reveal">
-                                    <div class="mission-icon">⧉</div>
+                                    <div class="mission-icon" aria-hidden="true">⧉</div>
                                     <h3>Honest by design</h3>
                                     <p>
                                           Every price is illustrative, every score is explained and
@@ -1452,16 +1858,14 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         TEAM — monogram cards (no photos)
-         ============================================================ -->
-            <section class="section" id="team">
+            <!-- TEAM -->
+            <section class="section" id="team" aria-labelledby="team-title">
                   <div class="container">
 
                         <div class="section-header reveal">
                               <div>
                                     <p class="eyebrow">The team</p>
-                                    <h2>Different strengths.<br><em>One destination.</em></h2>
+                                    <h2 id="team-title">Different strengths.<br><em>One destination.</em></h2>
                               </div>
                               <p>
                                     Three students, three roles, one shared product. Research,
@@ -1556,7 +1960,7 @@
 
                         </div>
 
-                        <!-- Stats -->
+                        <!-- STATS -->
                         <div class="about-stats reveal">
                               <div class="about-stat">
                                     <strong data-counter="3">0</strong>
@@ -1579,16 +1983,14 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         TECHNOLOGY (dark)
-         ============================================================ -->
-            <section class="tech-section" id="technology">
+            <!-- TECHNOLOGY -->
+            <section class="tech-section" id="technology" aria-labelledby="tech-title">
                   <div class="container">
 
                         <div class="section-header reveal">
                               <div>
                                     <p class="eyebrow">Powered by data</p>
-                                    <h2>Designed by GED.<br><em>Explained by GED.</em></h2>
+                                    <h2 id="tech-title">Designed by GED.<br><em>Explained by GED.</em></h2>
                               </div>
                               <p>
                                     Every page of this project — flights, hotels, events,
@@ -1608,7 +2010,7 @@
                                     </div>
                               </div>
 
-                              <div class="tech-arrow">↓</div>
+                              <div class="tech-arrow" aria-hidden="true">↓</div>
 
                               <div class="tech-stage">
                                     <div class="tech-stage-index">02</div>
@@ -1619,7 +2021,7 @@
                                     </div>
                               </div>
 
-                              <div class="tech-arrow">↓</div>
+                              <div class="tech-arrow" aria-hidden="true">↓</div>
 
                               <div class="tech-branches">
                                     <div class="tech-branch">Flights</div>
@@ -1630,7 +2032,7 @@
                                     <div class="tech-branch">Attractions</div>
                               </div>
 
-                              <div class="tech-arrow">↓</div>
+                              <div class="tech-arrow" aria-hidden="true">↓</div>
 
                               <div class="tech-stage">
                                     <div class="tech-stage-index">03</div>
@@ -1641,7 +2043,7 @@
                                     </div>
                               </div>
 
-                              <div class="tech-arrow">↓</div>
+                              <div class="tech-arrow" aria-hidden="true">↓</div>
 
                               <div class="tech-stage">
                                     <div class="tech-stage-index">04</div>
@@ -1656,16 +2058,14 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         TIMELINE
-         ============================================================ -->
-            <section class="section" id="timeline">
+            <!-- TIMELINE -->
+            <section class="section" id="timeline" aria-labelledby="timeline-title">
                   <div class="container">
 
                         <div class="section-header reveal">
                               <div>
                                     <p class="eyebrow">How we got here</p>
-                                    <h2>From idea<br><em>to itinerary.</em></h2>
+                                    <h2 id="timeline-title">From idea<br><em>to itinerary.</em></h2>
                               </div>
                               <p>
                                     GED was built in four stages — each one adding a layer of
@@ -1675,7 +2075,7 @@
 
                         <div class="timeline">
                               <article class="timeline-item reveal">
-                                    <span class="timeline-num">01</span>
+                                    <span class="timeline-num" aria-hidden="true">01</span>
                                     <h3>Research</h3>
                                     <p>
                                           Mapped provinces, cities, airports, events and attractions.
@@ -1684,7 +2084,7 @@
                               </article>
 
                               <article class="timeline-item reveal">
-                                    <span class="timeline-num">02</span>
+                                    <span class="timeline-num" aria-hidden="true">02</span>
                                     <h3>Architecture</h3>
                                     <p>
                                           Designed the seven-layer system: frontend, experience layer,
@@ -1693,7 +2093,7 @@
                               </article>
 
                               <article class="timeline-item reveal">
-                                    <span class="timeline-num">03</span>
+                                    <span class="timeline-num" aria-hidden="true">03</span>
                                     <h3>Experience</h3>
                                     <p>
                                           Built every page — flights, hotels, events, packages, about —
@@ -1702,7 +2102,7 @@
                               </article>
 
                               <article class="timeline-item reveal">
-                                    <span class="timeline-num">04</span>
+                                    <span class="timeline-num" aria-hidden="true">04</span>
                                     <h3>Refinement</h3>
                                     <p>
                                           Added filters, comparisons, saved trips, modals and toasts.
@@ -1714,16 +2114,14 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         VALUES
-         ============================================================ -->
-            <section class="section" id="values">
+            <!-- VALUES -->
+            <section class="section" id="values" aria-labelledby="values-title">
                   <div class="container">
 
                         <div class="section-header reveal">
                               <div>
                                     <p class="eyebrow">What we believe</p>
-                                    <h2>Four values.<br><em>One product.</em></h2>
+                                    <h2 id="values-title">Four values.<br><em>One product.</em></h2>
                               </div>
                               <p>
                                     These aren't slogans. They're decisions we made every time
@@ -1734,7 +2132,7 @@
                         <div class="values-grid">
 
                               <article class="value-card reveal">
-                                    <div class="value-icon">✦</div>
+                                    <div class="value-icon" aria-hidden="true">✦</div>
                                     <div>
                                           <h3>Clarity over volume</h3>
                                           <p>
@@ -1745,7 +2143,7 @@
                               </article>
 
                               <article class="value-card reveal">
-                                    <div class="value-icon">◎</div>
+                                    <div class="value-icon" aria-hidden="true">◎</div>
                                     <div>
                                           <h3>Design is a service</h3>
                                           <p>
@@ -1756,7 +2154,7 @@
                               </article>
 
                               <article class="value-card reveal">
-                                    <div class="value-icon">⌘</div>
+                                    <div class="value-icon" aria-hidden="true">⌘</div>
                                     <div>
                                           <h3>Honest by default</h3>
                                           <p>
@@ -1767,7 +2165,7 @@
                               </article>
 
                               <article class="value-card reveal">
-                                    <div class="value-icon">⧉</div>
+                                    <div class="value-icon" aria-hidden="true">⧉</div>
                                     <div>
                                           <h3>Built to be used</h3>
                                           <p>
@@ -1782,12 +2180,10 @@
                   </div>
             </section>
 
-            <!-- ============================================================
-         VISUAL BREAK
-         ============================================================ -->
+            <!-- VISUAL BREAK -->
             <section class="container">
                   <div class="about-break reveal">
-                        <div class="about-break-media"
+                        <div class="about-break-media" role="img" aria-label="Open road in Canada"
                               style="background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2200&q=90')">
                         </div>
 
@@ -1800,20 +2196,17 @@
                                     wanted to see how far an idea could go.
                               </p>
                               <a class="btn" href="packages.html#trip-builder">
-                                    Try the trip builder
-                                    <span aria-hidden="true">↘</span>
+                                    Try the trip builder <span aria-hidden="true">↘</span>
                               </a>
                         </div>
                   </div>
             </section>
 
-            <!-- ============================================================
-         NOTICE
-         ============================================================ -->
+            <!-- NOTICE -->
             <section class="section-tight">
                   <div class="container">
                         <div class="notice-card reveal">
-                              <div class="notice-icon">!</div>
+                              <div class="notice-icon" aria-hidden="true">!</div>
                               <div>
                                     <strong>No hidden promises.</strong>
                                     <p>
@@ -1830,36 +2223,165 @@
       </main>
 
       <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-      <footer class="site-footer">
-            <div class="container">
-                  <div>
-                        <a class="brand" href="../index.html">
-                              <span>GED</span>
-                              <small>TRAVEL AGENCY</small>
-                        </a>
-                        <p>Explore Canada with a trip designed around you.</p>
+         FOOTER — v2
+         ============================================================ -->
+      <footer class="site-footer" id="footer">
+            <div class="footer-inner">
+
+                  <div class="footer-top">
+                        <div class="footer-brand">
+                              <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+                                    <span class="footer-logo-mark" aria-hidden="true">G</span>
+                                    <span class="footer-logo-text">
+                                          GED
+                                          <small>Travel Agency</small>
+                                    </span>
+                              </a>
+
+                              <p class="footer-tagline">
+                                    Canada, made accessible. Destinations, flights, hotels,
+                                    events and packages — one system, one trip, designed
+                                    around you.
+                              </p>
+
+                              <div class="footer-socials" aria-label="GED on social media">
+                                    <a class="footer-social" href="https://www.instagram.com/edparducci/"
+                                          aria-label="GED on Instagram" rel="noopener">
+                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                                stroke-linecap="round" aria-hidden="true">
+                                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                                <circle cx="12" cy="12" r="4" />
+                                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                                          </svg>
+                                    </a>
+                                    <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X"
+                                          rel="noopener">
+                                          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                <path
+                                                      d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+                                          </svg>
+                                    </a>
+                                    <a class="footer-social" href="https://www.youtube.com/@edparducci"
+                                          aria-label="GED on YouTube" rel="noopener">
+                                          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                <path
+                                                      d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                                          </svg>
+                                    </a>
+                                    <a class="footer-social" href="mailto:edgarparducci@gmail.com"
+                                          aria-label="Contact GED by email">
+                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                                stroke-linejoin="round" aria-hidden="true">
+                                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                                <path d="m3.5 7.5 8.5 6 8.5-6" />
+                                          </svg>
+                                    </a>
+                              </div>
+
+                              <span class="footer-chip">
+                                    <span class="badge-dot" aria-hidden="true"></span>
+                                    School project · 1°D
+                              </span>
+                        </div>
+
+                        <nav class="footer-col" aria-labelledby="footer-explore">
+                              <h3 id="footer-explore">Explore</h3>
+                              <ul>
+                                    <li><a href="destinations.html">Destinations</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="flights.html">Flights</a></li>
+                                    <li><a href="hotels.html">Hotels</a></li>
+                                    <li><a href="packages.html">Packages</a></li>
+                              </ul>
+                        </nav>
+
+                        <nav class="footer-col" aria-labelledby="footer-plan">
+                              <h3 id="footer-plan">Plan</h3>
+                              <ul>
+                                    <li><a href="packages.html#trip-builder">Trip builder</a></li>
+                                    <li><a href="packages.html#packages">Package catalogue</a></li>
+                                    <li><a href="hotels.html">GED Value Score</a></li>
+                                    <li><a href="flights.html">Route comparison</a></li>
+                                    <li><a href="destinations.html">Canada Explorer</a></li>
+                              </ul>
+                        </nav>
+
+                        <nav class="footer-col" aria-labelledby="footer-company">
+                              <h3 id="footer-company">Company</h3>
+                              <ul>
+                                    <li><a href="about.html">About GED</a></li>
+                                    <li><a href="about.html#team">The team</a></li>
+                                    <li><a href="help.html">Help centre</a></li>
+                                    <li><a href="help.html#contact">Contact</a></li>
+                              </ul>
+                        </nav>
+
+                        <nav class="footer-col" aria-labelledby="footer-support">
+                              <h3 id="footer-support">Support</h3>
+                              <ul>
+                                    <li><a href="help.html#faq">FAQ</a></li>
+                                    <li><a href="help.html#privacy">Privacy</a></li>
+                                    <li><a href="help.html#terms">Terms of use</a></li>
+                                    <li><a href="help.html#accessibility">Accessibility</a></li>
+                                    <li><a href="help.html#credits">Credits</a></li>
+                              </ul>
+                        </nav>
                   </div>
-                  <div>
-                        <strong>Explore</strong>
-                        <a href="destinations.html">Destinations</a>
-                        <a href="events.html">Events</a>
-                        <a href="flights.html">Flights</a>
+
+                  <div class="footer-band">
+                        <div>
+                              <p class="footer-band-eyebrow">Ready when you are</p>
+                              <h3>Let's build the Canada trip <em>you actually want.</em></h3>
+                        </div>
+                        <div class="footer-band-actions">
+                              <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+                                    Open the builder <span aria-hidden="true">↘</span>
+                              </a>
+                              <a class="footer-btn footer-btn-ghost" href="destinations.html">
+                                    Browse destinations <span aria-hidden="true">↗</span>
+                              </a>
+                        </div>
                   </div>
-                  <div>
-                        <strong>Plan</strong>
-                        <a href="hotels.html">Hotels</a>
-                        <a href="packages.html">Packages</a>
-                        <a href="help.html">Help</a>
+
+                  <div class="footer-bottom">
+                        <p>
+                              © <span id="footerYear">2026</span> GED Travel Agency — educational
+                              project. Prices, availability and events shown throughout the site
+                              are illustrative and not bookable. No commercial transactions are
+                              processed.
+                        </p>
+
+                        <div class="footer-bottom-right">
+                              <ul class="footer-credits" aria-label="Project credits">
+                                    <li>Geovana</li>
+                                    <li>Edgar</li>
+                                    <li>Aline</li>
+                                    <li>1°D</li>
+                              </ul>
+
+                              <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+                                    Back to top <span aria-hidden="true">↑</span>
+                              </a>
+                        </div>
                   </div>
-                  <div>
-                        <strong>Project</strong>
-                        <p>Geovana · Edgar · Aline</p>
-                        <p>School Project · 1°D</p>
-                  </div>
+
             </div>
       </footer>
+
+      <!-- SEARCH OVERLAY -->
+      <div class="search-overlay" data-search-overlay aria-hidden="true">
+            <div class="search-box glass" role="dialog" aria-modal="true" aria-labelledby="search-title">
+                  <button class="close" type="button" data-close-search aria-label="Close search">×</button>
+                  <div class="eyebrow dark">GED SEARCH</div>
+                  <h2 id="search-title">Where are you going?</h2>
+                  <input type="search" data-global-search autocomplete="off" spellcheck="false" aria-label="Search GED"
+                        placeholder="Toronto, events, hotels...">
+                  <div class="search-results" data-search-results aria-live="polite"></div>
+            </div>
+      </div>
+
+      <!-- TOASTS -->
+      <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
       <!-- SCRIPTS -->
       <script src="../js/canada-data.js" defer></script>
@@ -1870,6 +2392,16 @@
 
       <script>
             document.addEventListener("DOMContentLoaded", () => {
+                  "use strict";
+
+                  const $ = (sel, root = document) => root.querySelector(sel);
+                  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+                  /* =====================================================
+                     FOOTER YEAR
+                     ===================================================== */
+                  const yearEl = document.getElementById("footerYear");
+                  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
                   /* =====================================================
                      HEADER SCROLL
@@ -1884,12 +2416,16 @@
                   /* =====================================================
                      COUNTERS
                      ===================================================== */
-                  const counters = document.querySelectorAll("[data-counter]");
+                  const counters = $$("[data-counter]");
                   function animateCounter(el) {
-                        const target = Number(el.dataset.counter);
+                        if (el.dataset.counted === "true") return;
+                        el.dataset.counted = "true";
+
+                        const target = Number(el.dataset.counter) || 0;
                         const suffix = el.dataset.suffix || "";
                         const duration = 1400;
                         const start = performance.now();
+
                         function tick(now) {
                               const t = Math.min((now - start) / duration, 1);
                               const eased = 1 - Math.pow(1 - t, 3);
@@ -1898,13 +2434,17 @@
                         }
                         requestAnimationFrame(tick);
                   }
+
                   if ("IntersectionObserver" in window) {
-                        const obs = new IntersectionObserver(entries => {
-                              entries.forEach(e => {
-                                    if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); }
+                        const counterObserver = new IntersectionObserver((entries, observer) => {
+                              entries.forEach((entry) => {
+                                    if (entry.isIntersecting) {
+                                          animateCounter(entry.target);
+                                          observer.unobserve(entry.target);
+                                    }
                               });
                         }, { threshold: 0.4 });
-                        counters.forEach(c => obs.observe(c));
+                        counters.forEach((c) => counterObserver.observe(c));
                   } else {
                         counters.forEach(animateCounter);
                   }
@@ -1912,37 +2452,41 @@
                   /* =====================================================
                      REVEAL ON SCROLL
                      ===================================================== */
-                  const revealEls = document.querySelectorAll(".reveal");
+                  const revealEls = $$(".reveal");
                   if ("IntersectionObserver" in window) {
-                        const obs = new IntersectionObserver(entries => {
-                              entries.forEach(entry => {
+                        const revealObserver = new IntersectionObserver((entries, observer) => {
+                              entries.forEach((entry) => {
                                     if (entry.isIntersecting) {
                                           entry.target.classList.add("visible");
-                                          obs.unobserve(entry.target);
+                                          observer.unobserve(entry.target);
                                     }
                               });
                         }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-                        revealEls.forEach(el => obs.observe(el));
+                        revealEls.forEach((el) => revealObserver.observe(el));
                   } else {
-                        revealEls.forEach(el => el.classList.add("visible"));
+                        revealEls.forEach((el) => el.classList.add("visible"));
                   }
 
                   /* =====================================================
                      SMOOTH ANCHOR SCROLL (offset for fixed header)
                      ===================================================== */
-                  document.querySelectorAll('a[href^="#"]').forEach(link => {
-                        link.addEventListener("click", e => {
+                  $$('a[href^="#"]').forEach((link) => {
+                        link.addEventListener("click", (e) => {
                               const id = link.getAttribute("href");
-                              if (id.length < 2) return;
+                              if (!id || id === "#" || id.length < 2) return;
                               const target = document.querySelector(id);
                               if (!target) return;
                               e.preventDefault();
                               const y = target.getBoundingClientRect().top + window.scrollY - 100;
                               window.scrollTo({ top: y, behavior: "smooth" });
+                              if (history.pushState) history.pushState(null, "", id);
                         });
                   });
 
-                  console.log("%cGED · About", "font-weight:700;color:#af52de;background:#0a0a0a;padding:4px 8px;border-radius:6px;");
+                  console.log(
+                        "%cGED · About v2",
+                        "font-weight:700;color:#af52de;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;"
+                  );
             });
       </script>
 

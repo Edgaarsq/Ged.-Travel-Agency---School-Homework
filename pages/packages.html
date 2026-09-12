@@ -8,10 +8,19 @@
     content="GED Travel Agency — Build a personalized Canadian journey with destinations, stays and experiences.">
   <meta name="theme-color" content="#08090c">
 
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Packages — GED Travel Agency">
+  <meta property="og:description"
+    content="Build a personalized Canadian journey with destinations, stays and experiences.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+
   <title>Packages — GED Travel Agency</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
@@ -23,40 +32,33 @@
 
   <style>
     /* ============================================================
-           DESIGN TOKENS
-           ============================================================ */
+       DESIGN TOKENS
+       ============================================================ */
     :root {
       --ios-blue: #007aff;
-      --ios-blue-light: #4aa3ff;
       --ios-green: #34c759;
       --ios-orange: #ff9500;
       --ios-purple: #af52de;
       --ios-red: #ff3b30;
       --ios-yellow: #ffc400;
-      --ios-teal: #5ac8fa;
-
-      --ios-gray-1: #8e8e93;
-      --ios-gray-2: #aeaeb2;
-      --ios-gray-3: #c7c7cc;
-      --ios-gray-5: #e5e5ea;
-      --ios-gray-6: #f2f2f7;
+      --ios-gold: #ffd21a;
+      --ios-gold-2: #ffb400;
 
       --ios-bg: #f2f2f7;
       --ios-card: #ffffff;
       --ios-border: rgba(60, 60, 67, 0.10);
       --ios-border-strong: rgba(60, 60, 67, 0.18);
-
       --ios-text: #1c1c1e;
       --ios-text-2: #3a3a3c;
       --ios-text-3: #8e8e93;
-
       --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
       --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
-      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+      -webkit-text-size-adjust: 100%;
     }
 
     .packages-page {
@@ -71,9 +73,48 @@
       box-sizing: border-box;
     }
 
+    :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+      outline: 2px solid rgba(255, 180, 0, 0.65);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 10000;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: #0b0b0b;
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-180%);
+      transition: transform .3s var(--ease-ios);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
     /* ============================================================
-           HEADER
-           ============================================================ */
+       HEADER
+       ============================================================ */
     .packages-page .site-header {
       position: fixed;
       top: 0;
@@ -96,8 +137,7 @@
     }
 
     .packages-page .site-header.scrolled .nav-links a:hover,
-    .packages-page .site-header.scrolled .nav-links a.active,
-    .packages-page .site-header.scrolled .nav-about:hover {
+    .packages-page .site-header.scrolled .nav-links a.active {
       color: #000;
       background: rgba(0, 0, 0, 0.05);
     }
@@ -109,8 +149,8 @@
     }
 
     /* ============================================================
-           HERO
-           ============================================================ */
+       HERO
+       ============================================================ */
     .packages-page .package-hero {
       position: relative;
       min-height: 800px;
@@ -126,8 +166,7 @@
       position: absolute;
       inset: 0;
       z-index: -3;
-      background:
-        url("https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
+      background: url("https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
       transform: scale(1.06);
       animation: heroZoom 24s ease-in-out infinite alternate;
     }
@@ -149,12 +188,10 @@
       background:
         linear-gradient(180deg,
           rgba(0, 0, 0, 0.55) 0%,
-          rgba(0, 0, 0, 0.35) 40%,
+          rgba(0, 0, 0, 0.30) 40%,
           rgba(0, 0, 0, 0.55) 75%,
           rgba(242, 242, 247, 1) 100%),
-        radial-gradient(ellipse at 25% 40%,
-          rgba(255, 210, 26, 0.14),
-          transparent 60%);
+        radial-gradient(ellipse at 30% 45%, rgba(255, 210, 26, 0.16), transparent 60%);
     }
 
     .packages-page .package-hero-content {
@@ -162,6 +199,17 @@
       z-index: 2;
       color: #fff;
       max-width: 1200px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    @media (max-width: 980px) {
+      .packages-page .package-hero-content {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
     }
 
     .packages-page .eyebrow-pill {
@@ -187,15 +235,15 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--ios-yellow);
-      box-shadow: 0 0 0 4px rgba(255, 196, 0, 0.22);
+      background: var(--ios-gold);
+      box-shadow: 0 0 0 4px rgba(255, 210, 26, 0.22);
       animation: statusPulse 2.4s ease-in-out infinite;
     }
 
     .packages-page .package-hero h1 {
       margin: 26px 0 22px;
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(62px, 9vw, 145px);
+      font-size: clamp(58px, 8.4vw, 132px);
       line-height: 0.86;
       letter-spacing: -0.075em;
       font-weight: 700;
@@ -206,16 +254,16 @@
 
     .packages-page .package-hero h1 em {
       font-style: normal;
-      background: linear-gradient(135deg, #ffd21a 0%, #ffb400 50%, #ffe680 100%);
+      background: linear-gradient(135deg, #ffd21a 0%, #ff9500 60%, #ffb400 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
     }
 
-    .packages-page .package-hero-content>p:not(.eyebrow-pill) {
-      max-width: 560px;
-      font-size: 18px;
+    .packages-page .package-hero-lead {
+      max-width: 580px;
+      font-size: 17.5px;
       line-height: 1.65;
       color: rgba(255, 255, 255, 0.86);
       margin: 0;
@@ -226,7 +274,7 @@
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 30px;
       animation: fadeUp 1s 0.3s var(--ease-ios) both;
     }
 
@@ -250,12 +298,12 @@
     .packages-page .button-primary {
       background: linear-gradient(135deg, #ffd21a, #ffb400);
       color: #0a0a0a;
-      box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 32px rgba(255, 180, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
     }
 
     .packages-page .button-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 42px rgba(255, 210, 26, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      box-shadow: 0 18px 42px rgba(255, 180, 0, 0.45);
     }
 
     .packages-page .button-dark {
@@ -281,12 +329,11 @@
       transform: translateY(-3px);
     }
 
-    /* Hero stats */
     .packages-page .hero-stats-row {
       display: flex;
-      gap: 40px;
+      gap: 34px;
       flex-wrap: wrap;
-      margin-top: 54px;
+      margin-top: 48px;
       animation: fadeUp 1s 0.4s var(--ease-ios) both;
     }
 
@@ -298,29 +345,171 @@
 
     .packages-page .hero-stat strong {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.04em;
       color: #fff;
+      font-variant-numeric: tabular-nums;
     }
 
     .packages-page .hero-stat span {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.55);
     }
 
+    /* ---------- HERO-PICK ---------- */
+    .packages-page .hero-pick {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 26px 26px 24px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 0.5px solid rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      color: #fff;
+      animation: fadeUp 1s 0.5s var(--ease-ios) both;
+    }
+
+    .packages-page .hero-pick::before {
+      content: "";
+      position: absolute;
+      inset: -50% -20% auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 210, 26, 0.30), transparent 70%);
+      pointer-events: none;
+    }
+
+    .packages-page .hero-pick-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0 0 14px;
+      position: relative;
+    }
+
+    .packages-page .hero-pick-eyebrow .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      box-shadow: 0 0 0 3px rgba(255, 210, 26, 0.28);
+    }
+
+    .packages-page .hero-pick h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin: 0 0 8px;
+      position: relative;
+      color: #fff;
+    }
+
+    .packages-page .hero-pick-location {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.68);
+      margin: 0 0 18px;
+      position: relative;
+    }
+
+    .packages-page .hero-pick-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .packages-page .hero-pick-meta span {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 0.5px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .packages-page .hero-pick-meta span.gold {
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      border-color: transparent;
+      color: #0a0a0a;
+    }
+
+    .packages-page .hero-pick-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+    }
+
+    .packages-page .hero-pick-price small {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 3px;
+    }
+
+    .packages-page .hero-pick-price strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #ffd21a;
+    }
+
+    .packages-page .hero-pick-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: #0a0a0a;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform .24s var(--ease-spring), box-shadow .24s;
+    }
+
+    .packages-page .hero-pick-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 255, 255, 0.24);
+    }
+
     /* ============================================================
-           SECTION HEADER
-           ============================================================ */
+       SECTION HEADER
+       ============================================================ */
     .packages-page .section-header {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
       gap: 60px;
       align-items: end;
-      margin-bottom: 44px;
+      margin-bottom: 40px;
     }
 
     @media (max-width: 900px) {
@@ -341,7 +530,7 @@
 
     .packages-page .section-header h2 em {
       font-style: normal;
-      background: linear-gradient(135deg, #007aff, #af52de);
+      background: linear-gradient(135deg, #ffb400, #ff9500);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -364,8 +553,8 @@
     }
 
     /* ============================================================
-           CATALOG
-           ============================================================ */
+       CATALOG
+       ============================================================ */
     .packages-page .package-catalog {
       position: relative;
       z-index: 3;
@@ -373,18 +562,17 @@
       margin-top: -60px;
     }
 
-    /* Controls */
     .packages-page .package-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      margin: 0 0 28px;
+      margin: 0 0 24px;
       flex-wrap: wrap;
       padding: 18px 22px;
       background: #fff;
-      border: 0.5px solid rgba(60, 60, 67, 0.18);
-      border-radius: 22px;
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      border-radius: 26px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
@@ -412,17 +600,17 @@
     }
 
     .packages-page .package-filter:hover {
-      background: rgba(0, 122, 255, 0.08);
-      border-color: rgba(0, 122, 255, 0.3);
-      color: var(--ios-blue);
+      background: rgba(255, 180, 0, 0.08);
+      border-color: rgba(255, 180, 0, 0.30);
+      color: #b47800;
       transform: translateY(-1.5px);
     }
 
     .packages-page .package-filter.active {
-      background: linear-gradient(135deg, #0a84ff, #007aff);
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
       border-color: transparent;
-      color: #fff;
-      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.30);
+      color: #0a0a0a;
+      box-shadow: 0 6px 20px rgba(255, 180, 0, 0.30);
     }
 
     .packages-page .package-search-sort {
@@ -446,9 +634,9 @@
     }
 
     .packages-page .package-search:focus {
-      border-color: rgba(0, 122, 255, 0.5);
+      border-color: rgba(255, 180, 0, 0.5);
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.10);
+      box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.10);
     }
 
     .packages-page .package-sort {
@@ -463,12 +651,6 @@
       outline: none;
     }
 
-    .packages-page .package-sort:focus {
-      border-color: rgba(0, 122, 255, 0.5);
-      background: #fff;
-    }
-
-    /* Currency selector */
     .packages-page .currency-picker {
       display: inline-flex;
       align-items: center;
@@ -503,9 +685,140 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
+    /* FEATURED SPOTLIGHT */
+    .packages-page .package-featured {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 0;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff;
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .packages-page .package-featured {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .packages-page .package-featured-media {
+      position: relative;
+      min-height: 320px;
+      background-size: cover;
+      background-position: center;
+      transition: transform .9s var(--ease-ios);
+    }
+
+    .packages-page .package-featured:hover .package-featured-media {
+      transform: scale(1.04);
+    }
+
+    .packages-page .package-featured-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.30), rgba(255, 180, 0, 0.12) 70%);
+    }
+
+    .packages-page .package-featured-body {
+      padding: 34px 36px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 700px) {
+      .packages-page .package-featured-body {
+        padding: 26px 22px;
+      }
+    }
+
+    .packages-page .package-featured-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b47800;
+      margin-bottom: 12px;
+    }
+
+    .packages-page .package-featured-eyebrow .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      box-shadow: 0 0 0 3px rgba(255, 210, 26, 0.22);
+    }
+
+    .packages-page .package-featured h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      margin: 0 0 10px;
+      color: var(--ios-text);
+    }
+
+    .packages-page .package-featured-location {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ios-text-3);
+      margin: 0 0 14px;
+    }
+
+    .packages-page .package-featured p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--ios-text-2);
+      margin: 0 0 22px;
+      max-width: 460px;
+    }
+
+    .packages-page .package-featured-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .packages-page .package-featured-meta span {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(120, 120, 128, 0.08);
+      border: 0.5px solid rgba(60, 60, 67, 0.10);
+      color: var(--ios-text-2);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .packages-page .package-featured-meta span.score {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      border-color: transparent;
+      color: #0a0a0a;
+    }
+
+    .packages-page .package-featured-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .package-featured-actions .button {
+      padding: 12px 22px;
+      font-size: 13px;
+    }
+
     /* ============================================================
-           PACKAGE GRID
-           ============================================================ */
+       PACKAGE GRID
+       ============================================================ */
     .packages-page .package-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -563,8 +876,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to top,
+      background: linear-gradient(to top,
           rgba(0, 0, 0, 0.90) 0%,
           rgba(0, 0, 0, 0.55) 40%,
           rgba(0, 0, 0, 0.10) 75%,
@@ -573,7 +885,6 @@
       pointer-events: none;
     }
 
-    /* Card top row */
     .packages-page .package-card-top {
       position: relative;
       z-index: 2;
@@ -662,7 +973,6 @@
       text-transform: uppercase;
     }
 
-    /* Card body */
     .packages-page .package-card-body {
       position: relative;
       z-index: 2;
@@ -767,6 +1077,9 @@
       text-decoration: none;
       transition: all 0.24s var(--ease-spring);
       white-space: nowrap;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .packages-page .package-customize:hover {
@@ -776,17 +1089,16 @@
     }
 
     /* ============================================================
-           STATS STRIP
-           ============================================================ */
+       STATS STRIP
+       ============================================================ */
     .packages-page .package-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       margin: 70px 0 0;
-      border-top: 0.5px solid rgba(60, 60, 67, 0.14);
-      border-bottom: 0.5px solid rgba(60, 60, 67, 0.14);
       background: #fff;
       border-radius: 28px;
       overflow: hidden;
+      border: 0.5px solid rgba(60, 60, 67, 0.14);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
     }
 
@@ -807,7 +1119,7 @@
     }
 
     .packages-page .package-stat:hover {
-      background: rgba(0, 122, 255, 0.03);
+      background: rgba(255, 180, 0, 0.03);
     }
 
     .packages-page .package-stat strong {
@@ -817,6 +1129,7 @@
       font-weight: 700;
       letter-spacing: -0.05em;
       color: var(--ios-text);
+      font-variant-numeric: tabular-nums;
     }
 
     .packages-page .package-stat span {
@@ -825,12 +1138,11 @@
       font-weight: 600;
       margin-top: 6px;
       display: block;
-      letter-spacing: 0.01em;
     }
 
     /* ============================================================
-           VISUAL BREAK
-           ============================================================ */
+       VISUAL BREAK
+       ============================================================ */
     .packages-page .package-break {
       position: relative;
       min-height: 640px;
@@ -868,11 +1180,7 @@
       position: absolute;
       inset: 0;
       z-index: -1;
-      background:
-        linear-gradient(120deg,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.45) 45%,
-          rgba(0, 0, 0, 0.10) 100%);
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(255, 180, 0, 0.10) 100%);
     }
 
     .packages-page .package-break-copy {
@@ -929,12 +1237,16 @@
     .packages-page .package-break-copy .btn:hover {
       background: linear-gradient(135deg, #ffd21a, #ffb400);
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(255, 210, 26, 0.35);
+      box-shadow: 0 12px 32px rgba(255, 180, 0, 0.35);
     }
 
     /* ============================================================
-           BUILDER — STEP PROGRESS
-           ============================================================ */
+       BUILDER
+       ============================================================ */
+    .packages-page .builder-section {
+      padding: 0 0 120px;
+    }
+
     .packages-page .builder-stepper {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -969,9 +1281,9 @@
     }
 
     .packages-page .builder-stepper .step-pill:hover {
-      border-color: rgba(0, 122, 255, 0.4);
+      border-color: rgba(255, 180, 0, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.08);
+      box-shadow: 0 8px 20px rgba(255, 180, 0, 0.08);
     }
 
     .packages-page .builder-stepper .step-pill.completed {
@@ -1010,13 +1322,6 @@
     .packages-page .builder-stepper .step-pill.completed .step-name::after {
       content: " ✓";
       color: #b47800;
-    }
-
-    /* ============================================================
-           BUILDER MAIN
-           ============================================================ */
-    .packages-page .builder-section {
-      padding: 0 0 120px;
     }
 
     .packages-page .builder-pro {
@@ -1058,27 +1363,36 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #0a84ff, #007aff 60%, #0060d0);
-      color: #fff;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
       font-family: "Space Grotesk", sans-serif;
       font-size: 12px;
       font-weight: 700;
-      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.24);
+      box-shadow: 0 8px 20px rgba(255, 180, 0, 0.28);
     }
 
     .packages-page .builder-step:nth-of-type(2)>span {
       background: linear-gradient(135deg, #ff9500, #ffcc00);
-      box-shadow: 0 8px 20px rgba(255, 149, 0, 0.24);
     }
 
     .packages-page .builder-step:nth-of-type(3)>span {
       background: linear-gradient(135deg, #af52de, #c77dff);
-      box-shadow: 0 8px 20px rgba(175, 82, 222, 0.24);
     }
 
     .packages-page .builder-step:nth-of-type(4)>span {
       background: linear-gradient(135deg, #34c759, #5fd97e);
-      box-shadow: 0 8px 20px rgba(52, 199, 89, 0.24);
+    }
+
+    .packages-page .builder-step:nth-of-type(5)>span {
+      background: linear-gradient(135deg, #0a84ff, #007aff);
+    }
+
+    .packages-page .builder-step:nth-of-type(6)>span {
+      background: linear-gradient(135deg, #ff2d55, #ff6482);
+    }
+
+    .packages-page .builder-step:nth-of-type(7)>span {
+      background: linear-gradient(135deg, #5ac8fa, #0a84ff);
     }
 
     .packages-page .builder-step h3 {
@@ -1128,7 +1442,7 @@
     .packages-page .choice:hover,
     .packages-page .option:hover {
       transform: translateY(-2px);
-      border-color: rgba(0, 122, 255, 0.35);
+      border-color: rgba(255, 180, 0, 0.35);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
@@ -1179,8 +1493,8 @@
       margin-top: 12px;
       padding: 5px 11px;
       border-radius: 999px;
-      background: rgba(0, 122, 255, 0.08);
-      color: var(--ios-blue);
+      background: rgba(255, 180, 0, 0.10);
+      color: #b47800;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -1273,14 +1587,12 @@
 
     .packages-page .builder-field input:focus,
     .packages-page .builder-field select:focus {
-      border-color: rgba(0, 122, 255, 0.5);
+      border-color: rgba(255, 180, 0, 0.5);
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.10);
+      box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.10);
     }
 
-    /* ============================================================
-           SIDEBAR SUMMARY
-           ============================================================ */
+    /* SIDEBAR */
     .packages-page .builder-side {
       position: sticky;
       top: 100px;
@@ -1459,8 +1771,8 @@
     }
 
     /* ============================================================
-           MODAL
-           ============================================================ */
+       MODAL
+       ============================================================ */
     .packages-page .itinerary-modal {
       position: fixed;
       inset: 0;
@@ -1468,7 +1780,7 @@
       display: none;
       place-items: center;
       padding: 20px;
-      background: rgba(10, 11, 13, 0.55);
+      background: rgba(10, 11, 13, 0.60);
       backdrop-filter: blur(24px) saturate(140%);
       -webkit-backdrop-filter: blur(24px) saturate(140%);
     }
@@ -1579,12 +1891,15 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
       transition: all 0.25s var(--ease-ios);
       animation: fadeUp 0.4s var(--ease-ios) both;
+      text-align: left;
+      font-family: inherit;
+      cursor: default;
     }
 
     .packages-page .route-day:hover {
       transform: translateX(4px);
-      border-color: rgba(0, 122, 255, 0.25);
-      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.08);
+      border-color: rgba(255, 180, 0, 0.25);
+      box-shadow: 0 8px 24px rgba(255, 180, 0, 0.08);
     }
 
     .packages-page .route-day-number {
@@ -1631,8 +1946,8 @@
     }
 
     /* ============================================================
-           COMPARE DRAWER
-           ============================================================ */
+       COMPARE DRAWER
+       ============================================================ */
     .packages-page .compare-drawer {
       position: fixed;
       left: 50%;
@@ -1653,6 +1968,7 @@
       transition: transform 0.4s var(--ease-spring), opacity 0.3s;
       opacity: 0;
       pointer-events: none;
+      max-width: calc(100vw - 32px);
     }
 
     .packages-page .compare-drawer.visible {
@@ -1665,6 +1981,7 @@
       font-size: 13px;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
     }
 
     .packages-page .compare-drawer .compare-names {
@@ -1719,6 +2036,22 @@
 
     .packages-page .compare-drawer .btn-clear:hover {
       background: rgba(255, 255, 255, 0.20);
+    }
+
+    @media (max-width: 560px) {
+      .packages-page .compare-drawer {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 20px;
+      }
+
+      .packages-page .compare-drawer .compare-actions {
+        justify-content: stretch;
+      }
+
+      .packages-page .compare-drawer .compare-actions button {
+        flex: 1;
+      }
     }
 
     /* Compare modal */
@@ -1834,20 +2167,9 @@
       text-align: right;
     }
 
-    .packages-page .compare-col .compare-winner {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #34c759, #5fd97e);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
     /* ============================================================
-           TOASTS
-           ============================================================ */
+       TOASTS
+       ============================================================ */
     .packages-page .toast-stack {
       position: fixed;
       top: 90px;
@@ -1926,9 +2248,22 @@
       }
     }
 
+    @media (max-width: 560px) {
+      .packages-page .toast-stack {
+        top: auto;
+        bottom: 20px;
+        right: 14px;
+        left: 14px;
+      }
+
+      .packages-page .ged-toast {
+        max-width: none;
+      }
+    }
+
     /* ============================================================
-           CONFETTI
-           ============================================================ */
+       CONFETTI
+       ============================================================ */
     .packages-page .confetti-canvas {
       position: fixed;
       inset: 0;
@@ -1937,64 +2272,439 @@
     }
 
     /* ============================================================
-           FOOTER
-           ============================================================ */
+       FOOTER — v2
+       ============================================================ */
     .packages-page .site-footer {
-      background: #070707;
-      color: #fff;
-      padding: 80px 0 28px;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      margin-top: clamp(30px, 5vw, 70px);
+      padding: 0;
+      color: rgba(255, 255, 255, .70);
+      background:
+        radial-gradient(900px 420px at 12% -20%, rgba(255, 180, 0, .12), transparent 62%),
+        radial-gradient(700px 380px at 92% 0%, rgba(255, 45, 85, .07), transparent 60%),
+        linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+      border-top: 0.5px solid rgba(255, 255, 255, .10);
     }
 
-    .packages-page .site-footer .container {
+    .packages-page .site-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 180, 0, .55), transparent);
+      opacity: .75;
+      pointer-events: none;
+    }
+
+    .packages-page .site-footer .footer-inner {
+      width: min(1200px, 100% - 48px);
+      margin-inline: auto;
+      padding: clamp(52px, 7vw, 88px) 0 30px;
+      display: block;
+    }
+
+    .packages-page .footer-top {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+      gap: clamp(28px, 4vw, 44px);
+      padding-bottom: clamp(34px, 5vw, 54px);
+      border-bottom: 0.5px solid rgba(255, 255, 255, .08);
     }
 
-    @media (max-width: 720px) {
-      .packages-page .site-footer .container {
-        grid-template-columns: 1fr;
-        gap: 28px;
+    .packages-page .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 340px;
+    }
+
+    .packages-page .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      width: fit-content;
+    }
+
+    .packages-page .footer-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #0a0a0a;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      box-shadow: 0 10px 26px rgba(255, 180, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .3s var(--ease-spring);
+    }
+
+    .packages-page .footer-logo:hover .footer-logo-mark {
+      transform: rotate(-6deg) scale(1.05);
+    }
+
+    .packages-page .footer-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    .packages-page .footer-logo-text small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .42);
+      margin-top: 5px;
+    }
+
+    .packages-page .footer-tagline {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .58);
+      margin: 0;
+      max-width: 330px;
+    }
+
+    .packages-page .footer-socials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .footer-social {
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, .75);
+      background: rgba(255, 255, 255, .05);
+      border: 0.5px solid rgba(255, 255, 255, .12);
+      text-decoration: none;
+      transition: transform .28s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .packages-page .footer-social svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .packages-page .footer-social:hover {
+      color: #0a0a0a;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      border-color: transparent;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(255, 180, 0, .30);
+    }
+
+    .packages-page .footer-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .05);
+      border: 0.5px solid rgba(255, 255, 255, .12);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .62);
+    }
+
+    .packages-page .footer-chip .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd21a, #ff9500);
+      box-shadow: 0 0 0 3px rgba(255, 210, 26, .20);
+    }
+
+    .packages-page .footer-col h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .42);
+      margin: 0 0 18px;
+    }
+
+    .packages-page .footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .packages-page .footer-col a {
+      position: relative;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .72);
+      text-decoration: none;
+      transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+    }
+
+    .packages-page .footer-col a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1.5px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #ffd21a, #ffb400);
+      transition: width .28s var(--ease-ios);
+    }
+
+    .packages-page .footer-col a:hover {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    .packages-page .footer-col a:hover::after {
+      width: 100%;
+    }
+
+    .packages-page .footer-band {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin: clamp(32px, 4vw, 48px) 0;
+      padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+      border: 0.5px solid rgba(255, 255, 255, .10);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+    }
+
+    .packages-page .footer-band::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 180, 0, .18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .packages-page .footer-band-eyebrow {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 180, 0, .9);
+      margin: 0 0 8px;
+    }
+
+    .packages-page .footer-band h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(21px, 2.6vw, 30px);
+      font-weight: 700;
+      letter-spacing: -.04em;
+      color: #fff;
+      margin: 0;
+      line-height: 1.12;
+    }
+
+    .packages-page .footer-band h3 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .packages-page .footer-band-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packages-page .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      white-space: nowrap;
+      transition: transform .26s var(--ease-spring), box-shadow .26s, background .26s, color .26s;
+    }
+
+    .packages-page .footer-btn-primary {
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      color: #0a0a0a;
+      box-shadow: 0 12px 30px rgba(255, 180, 0, .28);
+    }
+
+    .packages-page .footer-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(255, 180, 0, .38);
+    }
+
+    .packages-page .footer-btn-ghost {
+      background: rgba(255, 255, 255, .07);
+      color: #fff;
+      border: 0.5px solid rgba(255, 255, 255, .18);
+    }
+
+    .packages-page .footer-btn-ghost:hover {
+      background: rgba(255, 255, 255, .13);
+      transform: translateY(-3px);
+    }
+
+    .packages-page .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 26px;
+      border-top: 0.5px solid rgba(255, 255, 255, .08);
+    }
+
+    .packages-page .footer-bottom>p {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, .42);
+      max-width: 660px;
+    }
+
+    .packages-page .footer-bottom-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .footer-credits {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .packages-page .footer-credits li {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .55);
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .05);
+      border: 0.5px solid rgba(255, 255, 255, .10);
+    }
+
+    .packages-page .footer-top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      text-decoration: none;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 0.5px solid rgba(255, 255, 255, .14);
+      transition: all .25s var(--ease-ios);
+    }
+
+    .packages-page .footer-top-link:hover {
+      color: #0a0a0a;
+      background: linear-gradient(135deg, #ffd21a, #ffb400);
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 180, 0, .28);
+    }
+
+    @media (max-width: 1080px) {
+      .packages-page .footer-top {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .packages-page .footer-brand {
+        grid-column: 1 / -1;
+        max-width: none;
       }
     }
 
-    .packages-page .site-footer .brand {
-      color: #fff;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
+    @media (max-width: 760px) {
+      .packages-page .site-footer .footer-inner {
+        width: min(1200px, 100% - 36px);
+      }
+
+      .packages-page .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 20px;
+      }
+
+      .packages-page .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .packages-page .footer-band {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .packages-page .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .packages-page .footer-bottom-right {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
-    .packages-page .site-footer .brand small {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: rgba(255, 255, 255, 0.4);
-      font-weight: 700;
-    }
-
-    .packages-page .site-footer p {
-      color: rgba(255, 255, 255, 0.45);
-      font-size: 13px;
-      margin: 4px 0 0;
-    }
-
-    .packages-page .site-footer strong {
-      display: block;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 12px;
+    @media (max-width: 380px) {
+      .packages-page .footer-top {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ============================================================
-           ANIMATIONS
-           ============================================================ */
+       ANIMATIONS
+       ============================================================ */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -2021,6 +2731,7 @@
       }
     }
 
+    /* Reveal — apenas para elementos estáticos (NÃO os cards) */
     .packages-page .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -2030,6 +2741,18 @@
     .packages-page .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Garantir visibilidade imediata para elementos já revelados ou cards */
+    .packages-page .package-card,
+    .packages-page .package-featured,
+    .packages-page .hero-pick,
+    .packages-page .package-controls,
+    .packages-page .package-stats,
+    .packages-page .builder-stepper,
+    .packages-page .builder-pro {
+      opacity: 1;
+      transform: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2042,17 +2765,16 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
+
+      .packages-page .package-hero-media,
+      .packages-page .package-card-image,
+      .packages-page .package-break-media,
+      .packages-page .package-featured-media {
+        transform: none !important;
+      }
     }
 
-    .packages-page :focus-visible {
-      outline: 3px solid rgba(0, 122, 255, 0.55);
-      outline-offset: 3px;
-      border-radius: 8px;
-    }
-
-    /* ============================================================
-           PRINT-FRIENDLY
-           ============================================================ */
+    /* Print */
     @media print {
 
       .packages-page .site-header,
@@ -2089,39 +2811,11 @@
         width: 100% !important;
       }
 
-      .packages-page .itinerary-panel h2 {
-        color: #000 !important;
-        font-size: 28px !important;
-      }
-
-      .packages-page .itinerary-panel p#modalIntro {
-        color: #333 !important;
-      }
-
       .packages-page .route-day {
         border-color: #ccc !important;
         box-shadow: none !important;
         page-break-inside: avoid;
         background: #fafafa !important;
-      }
-
-      .packages-page .route-day-number {
-        background: #ffd21a !important;
-        color: #000 !important;
-        box-shadow: none !important;
-      }
-
-      .packages-page .itinerary-panel h2 .yellow {
-        color: #b47800 !important;
-        -webkit-text-fill-color: #b47800 !important;
-      }
-
-      .packages-page .eyebrow {
-        color: #666 !important;
-      }
-
-      @page {
-        margin: 1.5cm;
       }
     }
   </style>
@@ -2129,14 +2823,11 @@
 
 <body class="packages-page">
 
-  <!-- ============================================================
-         HEADER
-         ============================================================ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header" id="site-header">
     <nav class="nav glass" aria-label="Main navigation">
-      <a class="brand" href="../index.html" aria-label="GED Home">
-        <b>G</b><span>GED</span>
-      </a>
+      <a class="brand" href="../index.html" aria-label="GED Home"><b>G</b><span>GED</span></a>
       <div class="nav-links">
         <a href="../index.html">Explore</a>
         <a href="events.html">Events</a>
@@ -2146,9 +2837,9 @@
         <a href="help.html">Help</a>
       </div>
       <div class="nav-actions">
-        <button class="icon-btn" type="button" data-search aria-label="Search" title="Search">⌕</button>
+        <button class="icon-btn" type="button" data-search aria-label="Search">⌕</button>
         <a class="nav-about" href="about.html">About</a>
-        <button class="menu-btn" type="button" data-menu aria-label="Open menu">
+        <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false">
           <i></i><i></i>
         </button>
       </div>
@@ -2164,86 +2855,99 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
-    <!-- ============================================================
-             HERO
-             ============================================================ -->
+    <!-- HERO -->
     <section class="package-hero" id="top">
-      <div class="package-hero-media"></div>
-      <div class="package-hero-overlay"></div>
+      <div class="package-hero-media" aria-hidden="true"></div>
+      <div class="package-hero-overlay" aria-hidden="true"></div>
 
       <div class="container package-hero-content">
+        <div>
+          <div class="eyebrow-pill">
+            <span class="pill-dot" aria-hidden="true"></span>
+            GED / Packages
+          </div>
 
-        <div class="eyebrow-pill">
-          <span class="pill-dot" aria-hidden="true"></span>
-          GED / Packages
+          <h1>
+            Build Canada<br>
+            <em>your way.</em>
+          </h1>
+
+          <p class="package-hero-lead">
+            Don't choose a generic package. Build a journey around
+            the places, people, experiences and pace that fit you.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#trip-builder">
+              Build my trip <span aria-hidden="true">↘</span>
+            </a>
+            <a class="button hero-secondary" href="#packages">
+              Explore packages <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat">
+              <strong data-counter="13">0</strong>
+              <span>Canadian regions</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-counter="20" data-suffix="+">0</strong>
+              <span>Destinations</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-counter="4">0</strong>
+              <span>Curated packages</span>
+            </div>
+            <div class="hero-stat">
+              <strong>∞</strong>
+              <span>Combinations</span>
+            </div>
+          </div>
         </div>
 
-        <h1>
-          Build Canada<br>
-          <em>your way.</em>
-        </h1>
-
-        <p>
-          Don't choose a generic package. Build a journey around
-          the places, people, experiences and pace that fit you.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="#trip-builder">
-            Build my trip
-            <span aria-hidden="true">↘</span>
-          </a>
-          <a class="button hero-secondary" href="#packages">
-            Explore packages
-            <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-
-        <div class="hero-stats-row">
-          <div class="hero-stat">
-            <strong data-counter="13">0</strong>
-            <span>Canadian regions</span>
+        <!-- HERO-PICK -->
+        <aside class="hero-pick" id="heroPick" aria-label="Most popular package">
+          <p class="hero-pick-eyebrow">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Most popular this season
+          </p>
+          <h3 id="heroPickTitle">Loading…</h3>
+          <p class="hero-pick-location" id="heroPickLocation">—</p>
+          <div class="hero-pick-meta" id="heroPickMeta"></div>
+          <div class="hero-pick-price">
+            <div>
+              <small>From · per person</small>
+              <strong id="heroPickPrice">—</strong>
+            </div>
+            <button type="button" class="hero-pick-cta" id="heroPickCta">
+              Open package
+              <span aria-hidden="true">↗</span>
+            </button>
           </div>
-          <div class="hero-stat">
-            <strong data-counter="20" data-suffix="+">0</strong>
-            <span>Destinations</span>
-          </div>
-          <div class="hero-stat">
-            <strong>∞</strong>
-            <span>Combinations</span>
-          </div>
-          <div class="hero-stat">
-            <strong data-counter="1" data-pad="2">00</strong>
-            <span>Trip for you</span>
-          </div>
-        </div>
-
+        </aside>
       </div>
     </section>
 
-    <!-- ============================================================
-             CURATED PACKAGES
-             ============================================================ -->
-    <section class="package-catalog" id="packages">
+    <!-- PACKAGES -->
+    <section class="package-catalog" id="packages" aria-labelledby="packages-title">
       <div class="container">
 
         <div class="section-header reveal">
           <div>
             <p class="eyebrow">Curated starts</p>
-            <h2>Start with <em>an idea.</em></h2>
+            <h2 id="packages-title">Start with <em>an idea.</em></h2>
           </div>
           <p>
             Four different ways to experience Canada. Start here,
-            then make every detail yours. Use the compare button to
-            see any two side by side.
+            then make every detail yours. Use compare to see any two side by side.
           </p>
         </div>
 
         <!-- Controls -->
-        <div class="package-controls reveal">
-
+        <div class="package-controls">
           <div class="package-filters">
             <button class="package-filter active" data-filter="all">All</button>
             <button class="package-filter" data-filter="city">City</button>
@@ -2253,29 +2957,52 @@
           </div>
 
           <div class="package-search-sort">
+            <label class="sr-only" for="packageSearch">Search packages</label>
             <input class="package-search" type="search" id="packageSearch" placeholder="Search packages…"
-              aria-label="Search packages">
-            <select class="package-sort" id="packageSort" aria-label="Sort packages">
+              autocomplete="off">
+            <label class="sr-only" for="packageSort">Sort packages</label>
+            <select class="package-sort" id="packageSort">
               <option value="default">Sort</option>
               <option value="low">Price: low → high</option>
               <option value="high">Price: high → low</option>
             </select>
-
             <div class="currency-picker" role="tablist" aria-label="Currency">
-              <button class="currency-btn active" data-currency="CAD" role="tab">CAD</button>
-              <button class="currency-btn" data-currency="USD" role="tab">USD</button>
-              <button class="currency-btn" data-currency="EUR" role="tab">EUR</button>
-              <button class="currency-btn" data-currency="BRL" role="tab">BRL</button>
+              <button class="currency-btn active" data-currency="CAD" role="tab" aria-pressed="true">CAD</button>
+              <button class="currency-btn" data-currency="USD" role="tab" aria-pressed="false">USD</button>
+              <button class="currency-btn" data-currency="EUR" role="tab" aria-pressed="false">EUR</button>
+              <button class="currency-btn" data-currency="BRL" role="tab" aria-pressed="false">BRL</button>
             </div>
           </div>
-
         </div>
+
+        <!-- FEATURED SPOTLIGHT -->
+        <article class="package-featured" id="packageFeatured" hidden>
+          <div class="package-featured-media" id="featuredMedia" role="img" aria-label="Featured package image"></div>
+          <div class="package-featured-body">
+            <p class="package-featured-eyebrow">
+              <span class="badge-dot" aria-hidden="true"></span>
+              Editor's pick
+            </p>
+            <h3 id="featuredTitle">—</h3>
+            <p class="package-featured-location" id="featuredLocation">—</p>
+            <p id="featuredDescription">—</p>
+            <div class="package-featured-meta" id="featuredMeta"></div>
+            <div class="package-featured-actions">
+              <button type="button" class="button button-primary" id="featuredCta">
+                Customize <span aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="button button-dark" id="featuredView">
+                View package
+              </button>
+            </div>
+          </div>
+        </article>
 
         <!-- Grid -->
         <div class="package-grid" id="packageGrid">
 
           <!-- TORONTO -->
-          <article class="package-card reveal" data-type="city" data-price="899" data-name="The City Experience Toronto"
+          <article class="package-card" data-type="city" data-price="899" data-name="The City Experience Toronto"
             data-id="toronto" data-duration="4 nights" data-hotel="Downtown" data-experiences="CN Tower, Breakfast"
             data-image="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=90">
             <div class="package-card-image"
@@ -2309,15 +3036,15 @@
                   <small>From</small>
                   <strong data-price="899">CA$899 <em>/ person</em></strong>
                 </div>
-                <a class="package-customize" href="#trip-builder" data-preset="toronto">
+                <button class="package-customize" type="button" data-preset="toronto">
                   Customize <span aria-hidden="true">↗</span>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
           <!-- ROCKIES -->
-          <article class="package-card reveal" data-type="nature" data-price="1290" data-name="Wild by Design Rockies"
+          <article class="package-card" data-type="nature" data-price="1290" data-name="Wild by Design Rockies"
             data-id="rockies" data-duration="6 nights" data-hotel="Banff · Town Centre"
             data-experiences="Rockies adventure, Breakfast"
             data-image="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=90">
@@ -2352,15 +3079,15 @@
                   <small>From</small>
                   <strong data-price="1290">CA$1,290 <em>/ person</em></strong>
                 </div>
-                <a class="package-customize" href="#trip-builder" data-preset="rockies">
+                <button class="package-customize" type="button" data-preset="rockies">
                   Customize <span aria-hidden="true">↗</span>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
           <!-- QUEBEC -->
-          <article class="package-card reveal" data-type="culture" data-price="1095" data-name="Old Soul Quebec"
+          <article class="package-card" data-type="culture" data-price="1095" data-name="Old Soul Quebec"
             data-id="quebec" data-duration="5 nights" data-hotel="Old Québec"
             data-experiences="Food experience, Breakfast"
             data-image="https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=90">
@@ -2394,15 +3121,15 @@
                   <small>From</small>
                   <strong data-price="1095">CA$1,095 <em>/ person</em></strong>
                 </div>
-                <a class="package-customize" href="#trip-builder" data-preset="quebec">
+                <button class="package-customize" type="button" data-preset="quebec">
                   Customize <span aria-hidden="true">↗</span>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
           <!-- VANCOUVER -->
-          <article class="package-card reveal" data-type="coast" data-price="1390" data-name="Pacific Edge Vancouver"
+          <article class="package-card" data-type="coast" data-price="1390" data-name="Pacific Edge Vancouver"
             data-id="vancouver" data-duration="7 nights" data-hotel="Downtown Vancouver"
             data-experiences="Ferry, Breakfast"
             data-image="https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=90">
@@ -2437,16 +3164,16 @@
                   <small>From</small>
                   <strong data-price="1390">CA$1,390 <em>/ person</em></strong>
                 </div>
-                <a class="package-customize" href="#trip-builder" data-preset="vancouver">
+                <button class="package-customize" type="button" data-preset="vancouver">
                   Customize <span aria-hidden="true">↗</span>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
         </div>
 
-        <!-- Stats -->
+        <!-- STATS -->
         <div class="package-stats reveal">
           <div class="package-stat">
             <strong data-counter="13">0</strong>
@@ -2469,12 +3196,10 @@
       </div>
     </section>
 
-    <!-- ============================================================
-             VISUAL BREAK
-             ============================================================ -->
+    <!-- VISUAL BREAK -->
     <section class="container">
       <div class="package-break reveal">
-        <div class="package-break-media"
+        <div class="package-break-media" role="img" aria-label="Mountain landscape"
           style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2200&q=90')">
         </div>
 
@@ -2494,16 +3219,14 @@
       </div>
     </section>
 
-    <!-- ============================================================
-             TRIP BUILDER
-             ============================================================ -->
-    <section class="builder-section" id="trip-builder">
+    <!-- BUILDER -->
+    <section class="builder-section" id="trip-builder" aria-labelledby="builder-title">
       <div class="container">
 
         <div class="section-header reveal">
           <div>
             <p class="eyebrow">Trip builder</p>
-            <h2>Build it <em>from zero.</em></h2>
+            <h2 id="builder-title">Build it <em>from zero.</em></h2>
           </div>
           <p>
             Every selection changes your estimated itinerary.
@@ -2511,15 +3234,12 @@
           </p>
         </div>
 
-        <!-- Step progress -->
         <div class="builder-stepper" id="builderStepper" aria-label="Builder progress"></div>
 
         <div class="builder-pro">
 
-          <!-- MAIN -->
           <div class="builder-main">
 
-            <!-- STEP 01 -->
             <div class="builder-step" data-step-anchor="province">
               <span>01</span>
               <div>
@@ -2530,32 +3250,25 @@
 
             <div class="choice-grid" data-choice-group="province">
               <button class="choice selected" data-value="Ontario" type="button">
-                <strong>Ontario</strong>
-                <small>Toronto · Ottawa</small>
+                <strong>Ontario</strong><small>Toronto · Ottawa</small>
               </button>
               <button class="choice" data-value="British Columbia" type="button">
-                <strong>British Columbia</strong>
-                <small>Vancouver · Victoria</small>
+                <strong>British Columbia</strong><small>Vancouver · Victoria</small>
               </button>
               <button class="choice" data-value="Alberta" type="button">
-                <strong>Alberta</strong>
-                <small>Calgary · Banff</small>
+                <strong>Alberta</strong><small>Calgary · Banff</small>
               </button>
               <button class="choice" data-value="Québec" type="button">
-                <strong>Québec</strong>
-                <small>Montréal · Québec City</small>
+                <strong>Québec</strong><small>Montréal · Québec City</small>
               </button>
               <button class="choice" data-value="Nova Scotia" type="button">
-                <strong>Nova Scotia</strong>
-                <small>Halifax</small>
+                <strong>Nova Scotia</strong><small>Halifax</small>
               </button>
               <button class="choice" data-value="Manitoba" type="button">
-                <strong>Manitoba</strong>
-                <small>Winnipeg</small>
+                <strong>Manitoba</strong><small>Winnipeg</small>
               </button>
             </div>
 
-            <!-- STEP 02 -->
             <div class="builder-step" data-step-anchor="city">
               <span>02</span>
               <div>
@@ -2597,7 +3310,6 @@
               </button>
             </div>
 
-            <!-- STEP 03 -->
             <div class="builder-step" data-step-anchor="neighborhood">
               <span>03</span>
               <div>
@@ -2619,15 +3331,11 @@
               <button class="choice" data-value="North York" type="button">
                 <strong>North York</strong><small>Modern · residential</small>
               </button>
-              <button class="choice" data-value="Old Québec" type="button">
-                <strong>Old Québec</strong><small>Historic · cultural</small>
-              </button>
-              <button class="choice" data-value="Downtown Vancouver" type="button">
-                <strong>Downtown Vancouver</strong><small>Urban · Pacific</small>
+              <button class="choice" data-value="Etobicoke" type="button">
+                <strong>Etobicoke</strong><small>Lakeside · quiet</small>
               </button>
             </div>
 
-            <!-- STEP 04 -->
             <div class="builder-step" data-step-anchor="hotel">
               <span>04</span>
               <div>
@@ -2654,7 +3362,6 @@
               </button>
             </div>
 
-            <!-- STEP 05 -->
             <div class="builder-step" data-step-anchor="transport">
               <span>05</span>
               <div>
@@ -2681,7 +3388,6 @@
               </button>
             </div>
 
-            <!-- STEP 06 -->
             <div class="builder-step" data-step-anchor="experience">
               <span>06</span>
               <div>
@@ -2728,7 +3434,6 @@
               </label>
             </div>
 
-            <!-- STEP 07 -->
             <div class="builder-step" data-step-anchor="meal">
               <span>07</span>
               <div>
@@ -2755,7 +3460,6 @@
               </button>
             </div>
 
-            <!-- Extras -->
             <div class="builder-extra">
               <div class="builder-field">
                 <label for="travelers">Travelers</label>
@@ -2775,10 +3479,8 @@
 
           </div>
 
-          <!-- SIDEBAR -->
           <aside class="builder-side">
             <div class="builder-side-sticky">
-
               <p class="eyebrow">Your itinerary</p>
               <h3>Canada,<br><em>customized.</em></h3>
 
@@ -2840,25 +3542,16 @@
                 <button class="button button-primary" id="buildItinerary" type="button">
                   Generate itinerary ↗
                 </button>
-                <button class="button button-dark" id="saveTrip" type="button">
-                  Save my trip
-                </button>
-                <button class="button button-dark" id="shareTrip" type="button">
-                  Share trip link
-                </button>
-                <button class="button button-dark" id="myTripsBtn" type="button">
-                  My saved trips
-                </button>
-                <button class="button button-dark" id="resetTrip" type="button">
-                  Reset builder
-                </button>
+                <button class="button button-dark" id="saveTrip" type="button">Save my trip</button>
+                <button class="button button-dark" id="shareTrip" type="button">Share trip link</button>
+                <button class="button button-dark" id="myTripsBtn" type="button">My saved trips</button>
+                <button class="button button-dark" id="resetTrip" type="button">Reset builder</button>
               </div>
 
               <small>
                 Educational demo only. All prices are fictional
                 and no commercial transactions are available.
               </small>
-
             </div>
           </aside>
 
@@ -2869,44 +3562,156 @@
   </main>
 
   <!-- ============================================================
-         FOOTER
-         ============================================================ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div>
-        <a class="brand" href="../index.html">
-          <span>GED</span>
-          <small>TRAVEL AGENCY</small>
-        </a>
-        <p>Explore Canada with a trip designed around you.</p>
+       FOOTER — v2
+       ============================================================ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+            <span class="footer-logo-mark" aria-hidden="true">G</span>
+            <span class="footer-logo-text">
+              GED
+              <small>Travel Agency</small>
+            </span>
+          </a>
+
+          <p class="footer-tagline">
+            Canada, made accessible. Destinations, flights, hotels,
+            events and packages — one system, one trip, designed
+            around you.
+          </p>
+
+          <div class="footer-socials" aria-label="GED on social media">
+            <a class="footer-social" href="https://www.instagram.com/edparducci/" aria-label="GED on Instagram"
+              rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+              </svg>
+            </a>
+            <a class="footer-social" href="https://www.youtube.com/@edparducci" aria-label="GED on YouTube"
+              rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+              </svg>
+            </a>
+            <a class="footer-social" href="mailto:edgarparducci@gmail.com" aria-label="Contact GED by email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"
+                aria-hidden="true">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                <path d="m3.5 7.5 8.5 6 8.5-6" />
+              </svg>
+            </a>
+          </div>
+
+          <span class="footer-chip">
+            <span class="badge-dot" aria-hidden="true"></span>
+            School project · 1°D
+          </span>
+        </div>
+
+        <nav class="footer-col" aria-labelledby="footer-explore">
+          <h3 id="footer-explore">Explore</h3>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="footer-plan">
+          <h3 id="footer-plan">Plan</h3>
+          <ul>
+            <li><a href="packages.html#trip-builder">Trip builder</a></li>
+            <li><a href="packages.html#packages">Package catalogue</a></li>
+            <li><a href="hotels.html">GED Value Score</a></li>
+            <li><a href="flights.html">Route comparison</a></li>
+            <li><a href="destinations.html">Canada Explorer</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="footer-company">
+          <h3 id="footer-company">Company</h3>
+          <ul>
+            <li><a href="about.html">About GED</a></li>
+            <li><a href="about.html#team">The team</a></li>
+            <li><a href="help.html">Help centre</a></li>
+            <li><a href="help.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="footer-support">
+          <h3 id="footer-support">Support</h3>
+          <ul>
+            <li><a href="help.html#faq">FAQ</a></li>
+            <li><a href="help.html#privacy">Privacy</a></li>
+            <li><a href="help.html#terms">Terms of use</a></li>
+            <li><a href="help.html#accessibility">Accessibility</a></li>
+            <li><a href="help.html#credits">Credits</a></li>
+          </ul>
+        </nav>
       </div>
-      <div>
-        <strong>Project</strong>
-        <p>Geovana · Edgar · Aline</p>
-        <p>School Project · 1°D</p>
+
+      <div class="footer-band">
+        <div>
+          <p class="footer-band-eyebrow">Ready when you are</p>
+          <h3>Let's build the Canada trip <em>you actually want.</em></h3>
+        </div>
+        <div class="footer-band-actions">
+          <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+            Open the builder <span aria-hidden="true">↘</span>
+          </a>
+          <a class="footer-btn footer-btn-ghost" href="destinations.html">
+            Browse destinations <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
-      <div>
-        <strong>Notice</strong>
-        <p>Educational project · No commercial transactions.</p>
+
+      <div class="footer-bottom">
+        <p>
+          © <span id="footerYear">2026</span> GED Travel Agency — educational
+          project. Prices, availability and events shown throughout the site
+          are illustrative and not bookable. No commercial transactions are
+          processed.
+        </p>
+
+        <div class="footer-bottom-right">
+          <ul class="footer-credits" aria-label="Project credits">
+            <li>Geovana</li>
+            <li>Edgar</li>
+            <li>Aline</li>
+            <li>1°D</li>
+          </ul>
+
+          <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+            Back to top <span aria-hidden="true">↑</span>
+          </a>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- Search overlay -->
-  <div class="search-overlay" data-search-overlay hidden>
-    <div class="search-panel">
-      <button type="button" data-search-close aria-label="Close search">×</button>
-      <input type="search" data-search-input placeholder="Search Canada...">
-    </div>
-  </div>
-
-  <!-- Itinerary modal -->
-  <div class="itinerary-modal" id="itineraryModal">
+  <!-- MODAL -->
+  <div class="itinerary-modal" id="itineraryModal" role="dialog" aria-modal="true" aria-labelledby="itineraryTitle">
     <div class="itinerary-panel">
       <div class="modal-head">
         <div>
           <p class="eyebrow">GED / Generated itinerary</p>
-          <h2>Your <span class="yellow">Canada</span> trip.</h2>
+          <h2 id="itineraryTitle">Your <span class="yellow">Canada</span> trip.</h2>
           <p id="modalIntro">Your personalized journey is ready.</p>
         </div>
         <button class="modal-close" id="closeModal" aria-label="Close">×</button>
@@ -2917,12 +3722,15 @@
       <div class="modal-actions">
         <button class="button button-primary" id="printItinerary">Print itinerary</button>
         <button class="button button-dark" id="modalSave">Save trip</button>
-        <button class="button" id="modalCloseSecondary">Close</button>
+        <button class="button hero-secondary" id="modalCloseSecondary"
+          style="background: rgba(0,0,0,.06); color: #1c1c1e; border-color: rgba(0,0,0,.10);">
+          Close
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Compare drawer -->
+  <!-- COMPARE DRAWER -->
   <div class="compare-drawer" id="compareDrawer" role="region" aria-label="Compare packages">
     <div class="compare-count" id="compareCount">0 packages selected</div>
     <div class="compare-names" id="compareNames"></div>
@@ -2932,13 +3740,13 @@
     </div>
   </div>
 
-  <!-- Compare modal -->
-  <div class="compare-modal" id="compareModal">
+  <!-- COMPARE MODAL -->
+  <div class="compare-modal" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
     <div class="compare-panel">
       <div class="modal-head">
         <div>
           <p class="eyebrow">GED / Comparison</p>
-          <h2>Side by side.</h2>
+          <h2 id="compareTitle">Side by side.</h2>
           <p>Two packages, at a glance.</p>
         </div>
         <button class="modal-close" id="closeCompare" aria-label="Close">×</button>
@@ -2947,15 +3755,13 @@
     </div>
   </div>
 
-  <!-- Toasts -->
+  <!-- TOASTS -->
   <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
-  <!-- Confetti -->
+  <!-- CONFETTI -->
   <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
 
-  <!-- ============================================================
-         SCRIPTS
-         ============================================================ -->
+  <!-- SCRIPTS -->
   <script src="../js/canada-data.js" defer></script>
   <script src="../js/provinces.js" defer></script>
   <script src="../js/app.js" defer></script>
@@ -2964,21 +3770,38 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      "use strict";
+
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
       /* =====================================================
-         TOAST SYSTEM
+         FOOTER YEAR
+         ===================================================== */
+      const yearEl = document.getElementById("footerYear");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      /* =====================================================
+         TOASTS
          ===================================================== */
       const toastStack = document.getElementById("toastStack");
+      const TOAST_ICONS = { info: "i", success: "✓", warn: "!", error: "×" };
 
       function toast(message, type = "info", duration = 3200) {
+        if (!toastStack) return;
         const el = document.createElement("div");
         el.className = "ged-toast " + type;
+        el.setAttribute("role", type === "error" || type === "warn" ? "alert" : "status");
 
-        const iconMap = { info: "i", success: "✓", warn: "!", error: "×" };
-        el.innerHTML = `
-                    <span class="toast-icon">${iconMap[type] || "i"}</span>
-                    <span>${message}</span>
-                `;
+        const icon = document.createElement("span");
+        icon.className = "toast-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = TOAST_ICONS[type] || "i";
+
+        const text = document.createElement("span");
+        text.textContent = message;
+
+        el.append(icon, text);
         toastStack.appendChild(el);
 
         setTimeout(() => {
@@ -2988,7 +3811,7 @@
       }
 
       /* =====================================================
-         HEADER SCROLLED STATE
+         HEADER SCROLL
          ===================================================== */
       const header = document.getElementById("site-header");
       if (header) {
@@ -2998,12 +3821,14 @@
       }
 
       /* =====================================================
-         ANIMATED COUNTERS (hero + stats)
+         COUNTERS
          ===================================================== */
-      const counters = document.querySelectorAll("[data-counter]");
-
+      const counters = $$("[data-counter]");
       function animateCounter(el) {
-        const target = Number(el.dataset.counter);
+        if (el.dataset.counted === "true") return;
+        el.dataset.counted = "true";
+
+        const target = Number(el.dataset.counter) || 0;
         const pad = Number(el.dataset.pad || 0);
         const suffix = el.dataset.suffix || "";
         const duration = 1400;
@@ -3020,15 +3845,15 @@
       }
 
       if ("IntersectionObserver" in window) {
-        const counterObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
               animateCounter(entry.target);
-              counterObserver.unobserve(entry.target);
+              observer.unobserve(entry.target);
             }
           });
         }, { threshold: 0.4 });
-        counters.forEach(c => counterObserver.observe(c));
+        counters.forEach((c) => counterObserver.observe(c));
       } else {
         counters.forEach(animateCounter);
       }
@@ -3059,12 +3884,30 @@
           const suffix = em ? em.outerHTML : "";
           el.innerHTML = formatPrice(cad) + " " + suffix;
         });
+        // Refresh hero-pick price too
+        if (heroPickData) {
+          document.getElementById("heroPickPrice").textContent = formatPrice(heroPickData.price);
+        }
+        // Refresh featured meta price too
+        if (featuredData) {
+          const metaEl = document.getElementById("featuredMeta");
+          if (metaEl) {
+            const spans = metaEl.querySelectorAll("span");
+            if (spans[2]) spans[2].textContent = formatPrice(featuredData.price);
+          }
+        }
+        // Refresh sidebar totals
+        if (typeof updateSummary === "function") updateSummary();
       }
 
-      document.querySelectorAll(".currency-btn").forEach(btn => {
+      $$(".currency-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-          document.querySelectorAll(".currency-btn").forEach(b => b.classList.remove("active"));
+          $$(".currency-btn").forEach(b => {
+            b.classList.remove("active");
+            b.setAttribute("aria-pressed", "false");
+          });
           btn.classList.add("active");
+          btn.setAttribute("aria-pressed", "true");
           activeCurrency = btn.dataset.currency;
           refreshCurrencyUI();
           toast(`Currency switched to ${activeCurrency}`, "info", 1800);
@@ -3072,10 +3915,10 @@
       });
 
       /* =====================================================
-         PACKAGE FILTER + SORT
+         PACKAGE FILTER + SORT + SEARCH
          ===================================================== */
-      const filters = document.querySelectorAll(".package-filter");
-      const cards = [...document.querySelectorAll(".package-card")];
+      const filters = $$(".package-filter");
+      const cards = $$(".package-card");
       const search = document.getElementById("packageSearch");
       const sort = document.getElementById("packageSort");
       let currentFilter = "all";
@@ -3103,7 +3946,7 @@
         });
       });
 
-      search.addEventListener("input", updatePackages);
+      if (search) search.addEventListener("input", updatePackages);
 
       function sortCards() {
         const grid = document.getElementById("packageGrid");
@@ -3118,12 +3961,12 @@
         visible.forEach(card => grid.appendChild(card));
       }
 
-      sort.addEventListener("change", updatePackages);
+      if (sort) sort.addEventListener("change", updatePackages);
 
       /* =====================================================
          FAVORITES
          ===================================================== */
-      document.querySelectorAll("[data-favorite]").forEach(button => {
+      $$("[data-favorite]").forEach(button => {
         const key = "ged-favorite-" + button.dataset.favorite;
 
         if (localStorage.getItem(key) === "true") {
@@ -3145,7 +3988,7 @@
       });
 
       /* =====================================================
-         COMPARE MODE
+         COMPARE
          ===================================================== */
       const compareDrawer = document.getElementById("compareDrawer");
       const compareCount = document.getElementById("compareCount");
@@ -3159,6 +4002,8 @@
       let compareSelection = [];
 
       function updateCompareDrawer() {
+        if (!compareDrawer) return;
+
         if (compareSelection.length === 0) {
           compareDrawer.classList.remove("visible");
         } else {
@@ -3176,7 +4021,7 @@
         compareBtn.disabled = compareSelection.length !== 2;
       }
 
-      document.querySelectorAll(".package-compare-btn").forEach(btn => {
+      $$(".package-compare-btn").forEach(btn => {
         btn.addEventListener("click", event => {
           event.preventDefault();
           event.stopPropagation();
@@ -3198,146 +4043,59 @@
           }
 
           cards.forEach(card => {
-            card.classList.toggle("compare-selected",
-              compareSelection.includes(card.dataset.id));
+            card.classList.toggle("compare-selected", compareSelection.includes(card.dataset.id));
           });
 
           updateCompareDrawer();
         });
       });
 
-      clearCompareBtn.addEventListener("click", () => {
-        compareSelection = [];
-        document.querySelectorAll(".package-compare-btn").forEach(b => b.classList.remove("active"));
-        cards.forEach(card => card.classList.remove("compare-selected"));
-        updateCompareDrawer();
-      });
+      if (clearCompareBtn) {
+        clearCompareBtn.addEventListener("click", () => {
+          compareSelection = [];
+          $$(".package-compare-btn").forEach(b => b.classList.remove("active"));
+          cards.forEach(card => card.classList.remove("compare-selected"));
+          updateCompareDrawer();
+        });
+      }
 
-      compareBtn.addEventListener("click", () => {
-        if (compareSelection.length !== 2) return;
+      if (compareBtn) {
+        compareBtn.addEventListener("click", () => {
+          if (compareSelection.length !== 2) return;
 
-        const [a, b] = compareSelection.map(id =>
-          document.querySelector(`[data-id="${id}"]`)
-        );
+          const [a, b] = compareSelection.map(id => document.querySelector(`[data-id="${id}"]`));
 
-        compareGrid.innerHTML = [a, b].map(card => `
-                    <div class="compare-col">
-                        <div class="compare-col-img" style="background-image:url('${card.dataset.image}')"></div>
-                        <div class="compare-col-body">
-                            <small>${card.querySelector(".package-card-body > span").textContent}</small>
-                            <h3>${card.querySelector(".package-card-body h3").textContent}</h3>
-                            <div class="compare-rows">
-                                <div class="compare-row">
-                                    <span>Duration</span>
-                                    <span>${card.dataset.duration}</span>
-                                </div>
-                                <div class="compare-row">
-                                    <span>Hotel</span>
-                                    <span>${card.dataset.hotel}</span>
-                                </div>
-                                <div class="compare-row">
-                                    <span>Experiences</span>
-                                    <span>${card.dataset.experiences}</span>
-                                </div>
-                                <div class="compare-row">
-                                    <span>GED Score</span>
-                                    <span>${card.querySelector(".package-ged-badge span").textContent}</span>
-                                </div>
-                                <div class="compare-row">
-                                    <span>From</span>
-                                    <span>${formatPrice(Number(card.dataset.price))}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `).join("");
+          compareGrid.innerHTML = [a, b].map(card => `
+            <div class="compare-col">
+              <div class="compare-col-img" style="background-image:url('${card.dataset.image}')"></div>
+              <div class="compare-col-body">
+                <small>${card.querySelector(".package-card-body > span").textContent}</small>
+                <h3>${card.querySelector(".package-card-body h3").textContent}</h3>
+                <div class="compare-rows">
+                  <div class="compare-row"><span>Duration</span><span>${card.dataset.duration}</span></div>
+                  <div class="compare-row"><span>Hotel</span><span>${card.dataset.hotel}</span></div>
+                  <div class="compare-row"><span>Experiences</span><span>${card.dataset.experiences}</span></div>
+                  <div class="compare-row"><span>GED Score</span><span>${card.querySelector(".package-ged-badge span").textContent}</span></div>
+                  <div class="compare-row"><span>From</span><span>${formatPrice(Number(card.dataset.price))}</span></div>
+                </div>
+              </div>
+            </div>
+          `).join("");
 
-        compareModal.classList.add("open");
-        document.body.style.overflow = "hidden";
-      });
+          compareModal.classList.add("open");
+          document.body.style.overflow = "hidden";
+        });
+      }
 
-      closeCompare.addEventListener("click", () => {
+      function closeCompareModal() {
         compareModal.classList.remove("open");
         document.body.style.overflow = "";
-      });
+      }
 
-      compareModal.addEventListener("click", e => {
-        if (e.target === compareModal) {
-          compareModal.classList.remove("open");
-          document.body.style.overflow = "";
-        }
-      });
-
-      /* =====================================================
-         BUILDER — STEPPER
-         ===================================================== */
-      const builderStepper = document.getElementById("builderStepper");
-
-      const STEP_LABELS = [
-        { key: "province", name: "Province" },
-        { key: "city", name: "City" },
-        { key: "neighborhood", name: "Neighborhood" },
-        { key: "hotel", name: "Stay" },
-        { key: "transport", name: "Transport" },
-        { key: "experience", name: "Experiences" },
-        { key: "meal", name: "Dining" }
-      ];
-
-      function renderStepper() {
-        builderStepper.innerHTML = STEP_LABELS.map((step, i) => {
-          let value = "—";
-          let completed = false;
-
-          if (step.key === "province" && state.province) {
-            value = state.province;
-            completed = true;
-          }
-          if (step.key === "city" && state.city) {
-            value = state.city;
-            completed = true;
-          }
-          if (step.key === "neighborhood" && state.neighborhood) {
-            value = state.neighborhood;
-            completed = true;
-          }
-          if (step.key === "hotel" && state.hotel) {
-            value = "From " + formatPrice(state.hotel);
-            completed = true;
-          }
-          if (step.key === "transport" && state.transport) {
-            value = "From " + formatPrice(state.transport);
-            completed = true;
-          }
-          if (step.key === "experience") {
-            const count = document.querySelectorAll(".experience:checked").length;
-            value = count ? count + " selected" : "None";
-            completed = count > 0;
-          }
-          if (step.key === "meal") {
-            value = state.meal === 0 ? "Flexible" :
-              state.meal === 160 ? "Breakfast + dinner" :
-                state.meal === 250 ? "Full plan" : "—";
-            completed = true;
-          }
-
-          return `
-                        <button type="button" class="step-pill ${completed ? "completed" : ""}"
-                                data-step-scroll="${step.key}">
-                            <span class="step-index">${String(i + 1).padStart(2, "0")}</span>
-                            <span class="step-name">${step.name}</span>
-                            <span class="step-value">${value}</span>
-                        </button>
-                    `;
-        }).join("");
-
-        builderStepper.querySelectorAll("[data-step-scroll]").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const anchor = document.querySelector(`[data-step-anchor="${btn.dataset.stepScroll}"]`);
-            if (anchor) {
-              const y = anchor.getBoundingClientRect().top + window.scrollY - 120;
-              window.scrollTo({ top: y, behavior: "smooth" });
-            }
-          });
+      if (closeCompare) closeCompare.addEventListener("click", closeCompareModal);
+      if (compareModal) {
+        compareModal.addEventListener("click", e => {
+          if (e.target === compareModal) closeCompareModal();
         });
       }
 
@@ -3389,6 +4147,7 @@
       }
 
       function updateCities() {
+        if (!cityGroup) return;
         const cities = provinceMap[state.province] || [];
         cityGroup.querySelectorAll(".choice").forEach(button => {
           const allowed = cities.includes(button.dataset.value);
@@ -3401,47 +4160,53 @@
       }
 
       function updateNeighborhoods() {
+        if (!neighborhoodGroup) return;
         const list = neighborhoods[state.city] || ["Downtown"];
 
         neighborhoodGroup.innerHTML = list.map((name, index) => `
-                    <button class="choice ${index === 0 ? "selected" : ""}" data-value="${name}" type="button">
-                        <strong>${name}</strong>
-                        <small>Explore ${state.city}</small>
-                    </button>
-                `).join("");
+          <button class="choice ${index === 0 ? "selected" : ""}" data-value="${name}" type="button">
+            <strong>${name}</strong>
+            <small>Explore ${state.city}</small>
+          </button>
+        `).join("");
 
         state.neighborhood = list.includes(state.neighborhood) ? state.neighborhood : list[0];
         selectButton(neighborhoodGroup, state.neighborhood);
       }
 
-      provinceGroup.addEventListener("click", event => {
-        const button = event.target.closest(".choice");
-        if (!button) return;
-        state.province = button.dataset.value;
-        selectButton(provinceGroup, state.province);
-        updateCities();
-        updateSummary();
-      });
+      if (provinceGroup) {
+        provinceGroup.addEventListener("click", event => {
+          const button = event.target.closest(".choice");
+          if (!button) return;
+          state.province = button.dataset.value;
+          selectButton(provinceGroup, state.province);
+          updateCities();
+          updateSummary();
+        });
+      }
 
-      cityGroup.addEventListener("click", event => {
-        const button = event.target.closest(".choice");
-        if (!button || button.hidden) return;
-        state.city = button.dataset.value;
-        selectButton(cityGroup, state.city);
-        updateNeighborhoods();
-        updateSummary();
-      });
+      if (cityGroup) {
+        cityGroup.addEventListener("click", event => {
+          const button = event.target.closest(".choice");
+          if (!button || button.hidden) return;
+          state.city = button.dataset.value;
+          selectButton(cityGroup, state.city);
+          updateNeighborhoods();
+          updateSummary();
+        });
+      }
 
-      neighborhoodGroup.addEventListener("click", event => {
-        const button = event.target.closest(".choice");
-        if (!button) return;
-        state.neighborhood = button.dataset.value;
-        selectButton(neighborhoodGroup, state.neighborhood);
-        updateSummary();
-      });
+      if (neighborhoodGroup) {
+        neighborhoodGroup.addEventListener("click", event => {
+          const button = event.target.closest(".choice");
+          if (!button) return;
+          state.neighborhood = button.dataset.value;
+          selectButton(neighborhoodGroup, state.neighborhood);
+          updateSummary();
+        });
+      }
 
-      /* OPTIONS */
-      document.querySelectorAll('[data-option-group]').forEach(group => {
+      $$('[data-option-group]').forEach(group => {
         group.addEventListener("click", event => {
           const button = event.target.closest(".option");
           if (!button) return;
@@ -3458,8 +4223,7 @@
         });
       });
 
-      /* EXPERIENCES */
-      document.querySelectorAll(".experience-option").forEach(label => {
+      $$(".experience-option").forEach(label => {
         const checkbox = label.querySelector("input");
         checkbox.addEventListener("change", () => {
           label.classList.toggle("selected", checkbox.checked);
@@ -3467,27 +4231,28 @@
         });
       });
 
-      /* TRAVELERS + DURATION */
       const travelers = document.getElementById("travelers");
       const duration = document.getElementById("duration");
 
-      travelers.addEventListener("input", () => {
-        let value = Number(travelers.value) || 1;
-        value = Math.max(1, Math.min(12, value));
-        travelers.value = value;
-        state.travelers = value;
-        updateSummary();
-      });
+      if (travelers) {
+        travelers.addEventListener("input", () => {
+          let value = Number(travelers.value) || 1;
+          value = Math.max(1, Math.min(12, value));
+          travelers.value = value;
+          state.travelers = value;
+          updateSummary();
+        });
+      }
 
-      duration.addEventListener("change", () => {
-        state.duration = Number(duration.value);
-        updateSummary();
-      });
+      if (duration) {
+        duration.addEventListener("change", () => {
+          state.duration = Number(duration.value);
+          updateSummary();
+        });
+      }
 
-      /* CALC */
       function experienceTotal() {
-        return [...document.querySelectorAll(".experience:checked")]
-          .reduce((sum, checkbox) => sum + Number(checkbox.dataset.price), 0);
+        return $$(".experience:checked").reduce((sum, checkbox) => sum + Number(checkbox.dataset.price), 0);
       }
 
       function calculateTotal() {
@@ -3506,21 +4271,32 @@
         const hotel = state.hotel * Math.max(1, state.duration / 3);
         const meals = state.meal * Math.max(1, state.duration / 3);
 
-        document.querySelector("[data-builder-province]").textContent = state.province;
-        document.querySelector("[data-builder-city]").textContent = state.city;
-        document.querySelector("[data-builder-neighborhood]").textContent = state.neighborhood;
-        document.getElementById("summaryTravelers").textContent = state.travelers;
-        document.getElementById("summaryDuration").textContent =
-          state.duration === 1 ? "1 day" : state.duration + " days";
-        document.getElementById("summaryTransport").textContent = formatPrice(state.transport * state.travelers);
-        document.getElementById("summaryHotel").textContent = formatPrice(hotel);
-        document.getElementById("summaryExperience").textContent = formatPrice(experience * state.travelers);
-        document.getElementById("summaryMeal").textContent = formatPrice(meals);
+        const elProv = document.querySelector("[data-builder-province]");
+        const elCity = document.querySelector("[data-builder-city]");
+        const elNb = document.querySelector("[data-builder-neighborhood]");
+        if (elProv) elProv.textContent = state.province;
+        if (elCity) elCity.textContent = state.city;
+        if (elNb) elNb.textContent = state.neighborhood;
 
-        // flash total
-        builderTotal.classList.add("flash");
-        setTimeout(() => builderTotal.classList.remove("flash"), 200);
-        builderTotal.textContent = formatPrice(calculateTotal());
+        const elTrav = document.getElementById("summaryTravelers");
+        const elDur = document.getElementById("summaryDuration");
+        const elTrans = document.getElementById("summaryTransport");
+        const elHotel = document.getElementById("summaryHotel");
+        const elExp = document.getElementById("summaryExperience");
+        const elMeal = document.getElementById("summaryMeal");
+
+        if (elTrav) elTrav.textContent = state.travelers;
+        if (elDur) elDur.textContent = state.duration === 1 ? "1 day" : state.duration + " days";
+        if (elTrans) elTrans.textContent = formatPrice(state.transport * state.travelers);
+        if (elHotel) elHotel.textContent = formatPrice(hotel);
+        if (elExp) elExp.textContent = formatPrice(experience * state.travelers);
+        if (elMeal) elMeal.textContent = formatPrice(meals);
+
+        if (builderTotal) {
+          builderTotal.classList.add("flash");
+          setTimeout(() => builderTotal.classList.remove("flash"), 200);
+          builderTotal.textContent = formatPrice(calculateTotal());
+        }
 
         updateProgress();
         renderStepper();
@@ -3533,13 +4309,15 @@
         if (state.neighborhood) progress += 10;
         if (state.hotel) progress += 10;
         if (state.transport) progress += 10;
-        if (document.querySelector(".experience:checked")) progress += 10;
+        if ($$(".experience:checked").length) progress += 10;
         if (state.meal !== undefined) progress += 6;
         if (state.duration) progress += 5;
         progress = Math.min(100, progress);
 
-        document.getElementById("progressBar").style.width = progress + "%";
-        document.getElementById("progressText").textContent = progress + "%";
+        const bar = document.getElementById("progressBar");
+        const txt = document.getElementById("progressText");
+        if (bar) bar.style.width = progress + "%";
+        if (txt) txt.textContent = progress + "%";
       }
 
       /* PRESETS */
@@ -3550,7 +4328,7 @@
         vancouver: { province: "British Columbia", city: "Vancouver", neighborhood: "Downtown Vancouver" }
       };
 
-      document.querySelectorAll("[data-preset]").forEach(link => {
+      $$("[data-preset]").forEach(link => {
         link.addEventListener("click", () => {
           const preset = presets[link.dataset.preset];
           if (!preset) return;
@@ -3567,18 +4345,85 @@
           updateSummary();
 
           toast("Package loaded into the builder", "success", 2200);
+
+          const target = document.getElementById("trip-builder");
+          if (target) {
+            const y = target.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
         });
       });
+
+      /* =====================================================
+         BUILDER — STEPPER
+         ===================================================== */
+      const builderStepper = document.getElementById("builderStepper");
+
+      const STEP_LABELS = [
+        { key: "province", name: "Province" },
+        { key: "city", name: "City" },
+        { key: "neighborhood", name: "Neighborhood" },
+        { key: "hotel", name: "Stay" },
+        { key: "transport", name: "Transport" },
+        { key: "experience", name: "Experiences" },
+        { key: "meal", name: "Dining" }
+      ];
+
+      function renderStepper() {
+        if (!builderStepper) return;
+
+        builderStepper.innerHTML = STEP_LABELS.map((step, i) => {
+          let value = "—";
+          let completed = false;
+
+          if (step.key === "province" && state.province) { value = state.province; completed = true; }
+          if (step.key === "city" && state.city) { value = state.city; completed = true; }
+          if (step.key === "neighborhood" && state.neighborhood) { value = state.neighborhood; completed = true; }
+          if (step.key === "hotel" && state.hotel) { value = "From " + formatPrice(state.hotel); completed = true; }
+          if (step.key === "transport" && state.transport) { value = "From " + formatPrice(state.transport); completed = true; }
+          if (step.key === "experience") {
+            const count = $$(".experience:checked").length;
+            value = count ? count + " selected" : "None";
+            completed = count > 0;
+          }
+          if (step.key === "meal") {
+            value = state.meal === 0 ? "Flexible" :
+              state.meal === 160 ? "Breakfast + dinner" :
+                state.meal === 250 ? "Full plan" : "—";
+            completed = true;
+          }
+
+          return `
+            <button type="button" class="step-pill ${completed ? "completed" : ""}"
+                    data-step-scroll="${step.key}">
+              <span class="step-index">${String(i + 1).padStart(2, "0")}</span>
+              <span class="step-name">${step.name}</span>
+              <span class="step-value">${value}</span>
+            </button>
+          `;
+        }).join("");
+
+        builderStepper.querySelectorAll("[data-step-scroll]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const anchor = document.querySelector(`[data-step-anchor="${btn.dataset.stepScroll}"]`);
+            if (anchor) {
+              const y = anchor.getBoundingClientRect().top + window.scrollY - 120;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          });
+        });
+      }
 
       /* =====================================================
          CONFETTI
          ===================================================== */
       const confettiCanvas = document.getElementById("confettiCanvas");
-      const ctx = confettiCanvas.getContext("2d");
+      const ctx = confettiCanvas ? confettiCanvas.getContext("2d") : null;
       let confettiParticles = [];
       let confettiAnimating = false;
 
       function resizeCanvas() {
+        if (!confettiCanvas) return;
         confettiCanvas.width = window.innerWidth;
         confettiCanvas.height = window.innerHeight;
       }
@@ -3586,6 +4431,7 @@
       resizeCanvas();
 
       function launchConfetti() {
+        if (!ctx) return;
         const colors = ["#ffd21a", "#007aff", "#af52de", "#34c759", "#ff9500"];
         const count = 140;
 
@@ -3611,6 +4457,7 @@
       }
 
       function animateConfetti() {
+        if (!ctx) return;
         ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 
         confettiParticles = confettiParticles.filter(p => p.life < p.maxLife && p.y < confettiCanvas.height + 40);
@@ -3639,14 +4486,14 @@
       }
 
       /* =====================================================
-         GENERATE ITINERARY
+         ITINERARY MODAL
          ===================================================== */
       const modal = document.getElementById("itineraryModal");
       const route = document.getElementById("generatedRoute");
+      const itineraryTitle = document.getElementById("itineraryTitle");
 
       function generateItinerary() {
-        const experiences = [...document.querySelectorAll(".experience:checked")]
-          .map(item => item.dataset.name);
+        const experiences = $$(".experience:checked").map(item => item.dataset.name);
 
         const days = Number(state.duration);
         const selectedExperiences = experiences.length ? experiences :
@@ -3671,14 +4518,18 @@
           `${state.duration} ${state.duration === 1 ? "day" : "days"} in ${state.city}, ${state.province} · ${state.travelers} ${state.travelers === 1 ? "traveler" : "travelers"}. Estimated total: ${formatPrice(calculateTotal())}.`;
 
         route.innerHTML = itinerary.map(item => `
-                    <div class="route-day">
-                        <div class="route-day-number">${String(item.day).padStart(2, "0")}</div>
-                        <div>
-                            <strong>Day ${item.day}</strong>
-                            <p>${item.activity}</p>
-                        </div>
-                    </div>
-                `).join("");
+          <div class="route-day">
+            <div class="route-day-number">${String(item.day).padStart(2, "0")}</div>
+            <div>
+              <strong>Day ${item.day}</strong>
+              <p>${item.activity}</p>
+            </div>
+          </div>
+        `).join("");
+
+        if (itineraryTitle) {
+          itineraryTitle.innerHTML = `Your <span class="yellow">Canada</span> trip.`;
+        }
 
         modal.classList.add("open");
         document.body.style.overflow = "hidden";
@@ -3687,9 +4538,9 @@
         toast("Itinerary generated", "success", 2400);
       }
 
-      document.getElementById("buildItinerary").addEventListener("click", generateItinerary);
+      const buildBtn = document.getElementById("buildItinerary");
+      if (buildBtn) buildBtn.addEventListener("click", generateItinerary);
 
-      /* MODAL */
       function closeModal() {
         modal.classList.remove("open");
         document.body.style.overflow = "";
@@ -3705,10 +4556,7 @@
       document.addEventListener("keydown", event => {
         if (event.key === "Escape") {
           if (modal.classList.contains("open")) closeModal();
-          if (compareModal.classList.contains("open")) {
-            compareModal.classList.remove("open");
-            document.body.style.overflow = "";
-          }
+          if (compareModal.classList.contains("open")) closeCompareModal();
         }
       });
 
@@ -3721,7 +4569,7 @@
       function collectState() {
         return {
           state,
-          experiences: [...document.querySelectorAll(".experience:checked")].map(item => item.dataset.name)
+          experiences: $$(".experience:checked").map(item => item.dataset.name)
         };
       }
 
@@ -3729,20 +4577,20 @@
         if (!data || !data.state) return;
         state = { ...state, ...data.state };
 
-        travelers.value = state.travelers;
-        duration.value = state.duration;
+        if (travelers) travelers.value = state.travelers;
+        if (duration) duration.value = state.duration;
+
         selectButton(provinceGroup, state.province);
         updateCities();
         selectButton(cityGroup, state.city);
         updateNeighborhoods();
         selectButton(neighborhoodGroup, state.neighborhood);
 
-        document.querySelectorAll(".experience").forEach(item => { item.checked = false; });
-        document.querySelectorAll(".experience-option").forEach(item => item.classList.remove("selected"));
+        $$(".experience").forEach(item => { item.checked = false; });
+        $$(".experience-option").forEach(item => item.classList.remove("selected"));
 
         (data.experiences || []).forEach(name => {
-          const cb = [...document.querySelectorAll(".experience")]
-            .find(el => el.dataset.name === name);
+          const cb = $$(".experience").find(el => el.dataset.name === name);
           if (cb) {
             cb.checked = true;
             cb.closest(".experience-option")?.classList.add("selected");
@@ -3756,7 +4604,6 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
         toast("Trip saved locally", "success", 2000);
 
-        // Also keep a history of saved trips
         try {
           const history = JSON.parse(localStorage.getItem(SAVED_TRIPS_KEY) || "[]");
           history.unshift({ ...collectState(), savedAt: Date.now() });
@@ -3814,8 +4661,8 @@
           duration: 3
         };
 
-        travelers.value = 1;
-        duration.value = 3;
+        if (travelers) travelers.value = 1;
+        if (duration) duration.value = 3;
 
         selectButton(provinceGroup, "Ontario");
         updateCities();
@@ -3823,18 +4670,12 @@
         updateNeighborhoods();
         selectButton(neighborhoodGroup, "Downtown");
 
-        document.querySelectorAll(".experience").forEach(item => { item.checked = false; });
-        document.querySelectorAll(".experience-option").forEach(item => item.classList.remove("selected"));
+        $$(".experience").forEach(item => { item.checked = false; });
+        $$(".experience-option").forEach(item => item.classList.remove("selected"));
 
-        document.querySelectorAll('[data-option-group="hotel"] .option').forEach((btn, i) => {
-          btn.classList.toggle("selected", i === 0);
-        });
-        document.querySelectorAll('[data-option-group="transport"] .option').forEach((btn, i) => {
-          btn.classList.toggle("selected", i === 0);
-        });
-        document.querySelectorAll('[data-option-group="meal"] .option').forEach((btn, i) => {
-          btn.classList.toggle("selected", i === 0);
-        });
+        $$('[data-option-group="hotel"] .option').forEach((btn, i) => btn.classList.toggle("selected", i === 0));
+        $$('[data-option-group="transport"] .option').forEach((btn, i) => btn.classList.toggle("selected", i === 0));
+        $$('[data-option-group="meal"] .option').forEach((btn, i) => btn.classList.toggle("selected", i === 0));
 
         localStorage.removeItem(STORAGE_KEY);
         updateSummary();
@@ -3852,32 +4693,32 @@
           return;
         }
 
-        // Build a simple picker inside the itinerary modal shell
+        if (itineraryTitle) {
+          itineraryTitle.innerHTML = `My <span class="yellow">saved</span> trips.`;
+        }
+
         route.innerHTML = `
-                    <p style="margin:0 0 16px;font-size:14px;color:var(--ios-text-3);">
-                        Select a saved trip to restore it. Most recent first.
-                    </p>
-                ` + history.map((item, index) => {
+          <p style="margin:0 0 16px;font-size:14px;color:var(--ios-text-3);">
+            Select a saved trip to restore it. Most recent first.
+          </p>
+        ` + history.map((item, index) => {
           const s = item.state || {};
           const savedDate = item.savedAt ? new Date(item.savedAt).toLocaleString() : "Unknown date";
           return `
-                        <button class="route-day" type="button"
-                                style="text-align:left;width:100%;cursor:pointer;border:0.5px solid rgba(60,60,67,0.12);"
-                                data-load-saved="${index}">
-                            <div class="route-day-number">${String(index + 1).padStart(2, "0")}</div>
-                            <div>
-                                <strong>${s.city || "—"}, ${s.province || "—"}</strong>
-                                <p>${s.duration || 3} days · ${s.travelers || 1} traveler(s) · saved ${savedDate}</p>
-                            </div>
-                        </button>
-                    `;
+            <button class="route-day" type="button"
+                    style="width:100%;cursor:pointer;"
+                    data-load-saved="${index}">
+              <div class="route-day-number">${String(index + 1).padStart(2, "0")}</div>
+              <div>
+                <strong>${s.city || "—"}, ${s.province || "—"}</strong>
+                <p>${s.duration || 3} days · ${s.travelers || 1} traveler(s) · saved ${savedDate}</p>
+              </div>
+            </button>
+          `;
         }).join("");
 
         document.getElementById("modalIntro").textContent =
           `${history.length} saved trip${history.length === 1 ? "" : "s"} found on this device.`;
-
-        const titleEl = document.querySelector(".itinerary-panel h2");
-        if (titleEl) titleEl.innerHTML = `My <span class="yellow">saved</span> trips.`;
 
         modal.classList.add("open");
         document.body.style.overflow = "hidden";
@@ -3891,52 +4732,156 @@
             applyState(data);
             closeModal();
             toast("Saved trip restored", "success", 2200);
-
-            // restore modal title for next itinerary generation
-            if (titleEl) titleEl.innerHTML = `Your <span class="yellow">Canada</span> trip.`;
           });
         });
       }
-
-      /* Restore modal title helper before generating itinerary */
-      const itineraryTitleEl = document.querySelector(".itinerary-panel h2");
-
-      const originalGenerateItinerary = generateItinerary;
-      generateItinerary = function () {
-        if (itineraryTitleEl) {
-          itineraryTitleEl.innerHTML = `Your <span class="yellow">Canada</span> trip.`;
-        }
-        originalGenerateItinerary();
-      };
 
       document.getElementById("saveTrip").addEventListener("click", saveTrip);
       document.getElementById("shareTrip").addEventListener("click", shareTrip);
       document.getElementById("resetTrip").addEventListener("click", resetTrip);
       document.getElementById("myTripsBtn").addEventListener("click", showSavedTrips);
-      document.getElementById("modalSave").addEventListener("click", () => {
-        saveTrip();
-      });
+      document.getElementById("modalSave").addEventListener("click", saveTrip);
 
       document.getElementById("printItinerary").addEventListener("click", () => {
         window.print();
       });
 
       /* =====================================================
-         REVEAL ON SCROLL
+         HERO-PICK + FEATURED SPOTLIGHT
          ===================================================== */
-      const revealEls = document.querySelectorAll(".reveal");
+      let heroPickData = null;
+      let featuredData = null;
 
+      function findBestCard() {
+        return cards.reduce((prev, card) => {
+          const sPrev = Number(prev.querySelector(".package-ged-badge span").textContent.replace("GED ", ""));
+          const sCur = Number(card.querySelector(".package-ged-badge span").textContent.replace("GED ", ""));
+          return sCur > sPrev ? card : prev;
+        });
+      }
+
+      function initHeroPick() {
+        const best = findBestCard();
+        if (!best) return;
+
+        const titleEl = document.getElementById("heroPickTitle");
+        const locEl = document.getElementById("heroPickLocation");
+        const metaEl = document.getElementById("heroPickMeta");
+        const priceEl = document.getElementById("heroPickPrice");
+        const ctaEl = document.getElementById("heroPickCta");
+
+        const name = best.dataset.name;
+        const city = best.querySelector(".package-card-body > span").textContent.trim();
+        const price = Number(best.dataset.price);
+        const score = best.querySelector(".package-ged-badge span").textContent.replace("GED ", "");
+        const duration = best.dataset.duration;
+
+        heroPickData = { name, price };
+
+        titleEl.textContent = name;
+        locEl.textContent = city;
+        metaEl.innerHTML = `
+          <span class="gold">GED ${score}</span>
+          <span>${duration}</span>
+          <span>${best.dataset.hotel}</span>
+        `;
+        priceEl.textContent = formatPrice(price);
+
+        ctaEl.addEventListener("click", () => {
+          const id = best.dataset.id;
+          const preset = presets[id];
+          if (preset) {
+            state.province = preset.province;
+            state.city = preset.city;
+            state.neighborhood = preset.neighborhood;
+            selectButton(provinceGroup, state.province);
+            updateCities();
+            selectButton(cityGroup, state.city);
+            updateNeighborhoods();
+            selectButton(neighborhoodGroup, state.neighborhood);
+            updateSummary();
+          }
+          const target = document.getElementById("trip-builder");
+          if (target) {
+            const y = target.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+          toast(`${name} loaded into the builder`, "success", 2200);
+        });
+      }
+
+      function initFeaturedSpotlight() {
+        const best = findBestCard();
+        if (!best) return;
+
+        const card = document.getElementById("packageFeatured");
+        if (!card) return;
+
+        const name = best.dataset.name;
+        const city = best.querySelector(".package-card-body > span").textContent.trim();
+        const desc = best.querySelector(".package-card-body p").textContent.trim();
+        const score = best.querySelector(".package-ged-badge span").textContent.replace("GED ", "");
+        const price = Number(best.dataset.price);
+
+        featuredData = { name, price };
+
+        document.getElementById("featuredMedia").style.backgroundImage = `url('${best.dataset.image}')`;
+        document.getElementById("featuredMedia").setAttribute("aria-label", `Image for ${name}`);
+        document.getElementById("featuredTitle").textContent = name;
+        document.getElementById("featuredLocation").textContent = city;
+        document.getElementById("featuredDescription").textContent = desc;
+        document.getElementById("featuredMeta").innerHTML = `
+          <span>${best.dataset.duration}</span>
+          <span>${best.dataset.hotel}</span>
+          <span>${formatPrice(price)}</span>
+          <span class="score">GED ${score}</span>
+        `;
+
+        document.getElementById("featuredCta").addEventListener("click", () => {
+          const preset = presets[best.dataset.id];
+          if (preset) {
+            state.province = preset.province;
+            state.city = preset.city;
+            state.neighborhood = preset.neighborhood;
+            selectButton(provinceGroup, state.province);
+            updateCities();
+            selectButton(cityGroup, state.city);
+            updateNeighborhoods();
+            selectButton(neighborhoodGroup, state.neighborhood);
+            updateSummary();
+          }
+          const target = document.getElementById("trip-builder");
+          if (target) {
+            const y = target.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+          toast(`${name} loaded into the builder`, "success", 2200);
+        });
+
+        document.getElementById("featuredView").addEventListener("click", () => {
+          toast(`${name} — full details coming soon.`, "info", 2600);
+        });
+
+        card.hidden = false;
+        // Força visibilidade
+        requestAnimationFrame(() => card.classList.add("visible"));
+      }
+
+      /* =====================================================
+         REVEAL ON SCROLL — para elementos estáticos
+         (cards NÃO usam reveal)
+         ===================================================== */
+      const revealEls = $$(".reveal");
       if ("IntersectionObserver" in window) {
-        const revealObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
+        const obs = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              revealObserver.unobserve(entry.target);
+              observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-
-        revealEls.forEach(el => revealObserver.observe(el));
+        }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+        revealEls.forEach(el => obs.observe(el));
       } else {
         revealEls.forEach(el => el.classList.add("visible"));
       }
@@ -3944,13 +4889,30 @@
       /* =====================================================
          INIT
          ===================================================== */
+      // Inicializa os bairros da cidade default
+      updateNeighborhoods();
+      selectButton(provinceGroup, state.province);
+      selectButton(cityGroup, state.city);
+      selectButton(neighborhoodGroup, state.neighborhood);
+
+      // Inicializa hero-pick e spotlight (precisam de cards já no DOM)
+      initHeroPick();
+      initFeaturedSpotlight();
+
+      // Carrega trip salva / da URL
       loadTripFromURL();
       loadTrip();
+
+      // Summary inicial
       updateSummary();
 
-      console.log("%cGED · Packages", "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 8px;border-radius:6px;");
+      console.log(
+        "%cGED · Packages v3 (fixed)",
+        "font-weight:700;color:#ffd21a;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;"
+      );
     });
   </script>
+
 </body>
 
 </html>

@@ -9,12 +9,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Help · GED Concierge">
+    <meta property="og:description" content="Your intelligent travel assistant for exploring Canada.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>Help · GED Concierge</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="../css/main.css">
@@ -28,23 +36,29 @@
            ============================================================ */
         :root {
             --ios-blue: #007aff;
+            --ios-blue-2: #4aa3ff;
             --ios-green: #34c759;
             --ios-red: #ff3b30;
             --ios-orange: #ff9500;
             --ios-purple: #af52de;
-            --ios-gray-1: #8e8e93;
-            --ios-gray-2: #aeaeb2;
-            --ios-gray-3: #c7c7cc;
-            --ios-gray-4: #d1d1d6;
-            --ios-gray-5: #e5e5ea;
+            --ios-yellow: #ffc400;
+            --ios-gold: #ffd21a;
+            --ios-gold-2: #ffb400;
             --ios-bg: #f2f2f7;
+            --ios-card: #ffffff;
+            --ios-border: rgba(60, 60, 67, 0.10);
+            --ios-border-strong: rgba(60, 60, 67, 0.18);
             --ios-text: #1c1c1e;
             --ios-text-2: #3a3a3c;
             --ios-text-3: #8e8e93;
-            --imsg-blue-gradient: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%);
-            --imsg-gray: #e9e9eb;
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+            -webkit-text-size-adjust: 100%;
         }
 
         .help-page {
@@ -60,14 +74,64 @@
         }
 
         /* ============================================================
+           GLOBAL POLISH
+           ============================================================ */
+        :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+            outline: 2px solid rgba(0, 122, 255, 0.65);
+            outline-offset: 3px;
+            border-radius: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 10000;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transform: translateY(-180%);
+            transition: transform .3s var(--ease-ios);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* ============================================================
            HEADER
            ============================================================ */
         .help-page .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding-top: 18px;
+            background: transparent;
             transition: background 0.3s var(--ease-ios);
         }
 
         .help-page .site-header.scrolled .nav {
             background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(60, 60, 67, 0.10);
         }
 
         .help-page .site-header.scrolled .nav-links a,
@@ -76,8 +140,7 @@
         }
 
         .help-page .site-header.scrolled .nav-links a:hover,
-        .help-page .site-header.scrolled .nav-links a.active,
-        .help-page .site-header.scrolled .nav-about:hover {
+        .help-page .site-header.scrolled .nav-links a.active {
             color: #000;
             background: rgba(0, 0, 0, 0.05);
         }
@@ -106,7 +169,7 @@
             position: absolute;
             inset: 0;
             z-index: -3;
-            background: url("https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat;
+            background: url("https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
             transform: scale(1.06);
             animation: heroZoom 24s ease-in-out infinite alternate;
         }
@@ -125,8 +188,13 @@
             position: absolute;
             inset: 0;
             z-index: -2;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.28) 30%, rgba(0, 0, 0, 0.40) 70%, rgba(242, 242, 247, 1) 100%),
-                radial-gradient(ellipse at 25% 40%, rgba(0, 122, 255, 0.12), transparent 60%);
+            background:
+                linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.30) 40%,
+                    rgba(0, 0, 0, 0.55) 75%,
+                    rgba(242, 242, 247, 1) 100%),
+                radial-gradient(ellipse at 25% 40%, rgba(0, 122, 255, 0.14), transparent 60%);
         }
 
         .help-page .help-hero-content {
@@ -185,7 +253,7 @@
             color: transparent;
         }
 
-        .help-page .help-hero>.container>p {
+        .help-page .help-hero-lead {
             max-width: 540px;
             font-size: 17px;
             line-height: 1.65;
@@ -215,6 +283,7 @@
             border: 0;
             cursor: pointer;
             font-family: inherit;
+            white-space: nowrap;
         }
 
         .help-page .help-cta.primary {
@@ -242,7 +311,7 @@
         }
 
         /* ============================================================
-           CHAT LAYOUT
+           CHAT SECTION
            ============================================================ */
         .help-page .help-chat-section {
             padding: 0 0 100px;
@@ -258,9 +327,7 @@
             align-items: stretch;
         }
 
-        /* ============================================================
-           SIDEBAR
-           ============================================================ */
+        /* ---------- SIDEBAR ---------- */
         .help-page .help-sidebar {
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.18);
@@ -500,14 +567,15 @@
             background: rgba(255, 59, 48, 0.15);
         }
 
-        /* ============================================================
-           CHAT PANEL
-           ============================================================ */
+        /* ---------- CHAT PANEL ---------- */
         .help-page .help-chat-panel {
             background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
             border: 0.5px solid rgba(60, 60, 67, 0.18);
             border-radius: 28px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
             display: flex;
             flex-direction: column;
             min-height: 680px;
@@ -675,7 +743,7 @@
         }
 
         /* ============================================================
-           MESSAGES — MAXIMUM SPECIFICITY (uses #chat ID)
+           CHAT MESSAGES — CLEAN LAYOUT
            ============================================================ */
         #chat {
             flex: 1;
@@ -694,8 +762,6 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(60, 60, 67, 0.20) transparent;
             position: relative;
-            grid-template-columns: none !important;
-            grid-template-rows: none !important;
         }
 
         #chat::-webkit-scrollbar {
@@ -709,55 +775,42 @@
             background-clip: padding-box;
         }
 
-        /* --- CHAT MESSAGE RESET — kills main.css .assistant --- */
+        /* Kill any global .assistant styles */
         #chat .chat-message,
         #chat .chat-message.assistant,
-        #chat .chat-message.user,
-        .help-page #chat .chat-message,
-        .help-page #chat .chat-message.assistant,
-        .help-page #chat .chat-message.user {
+        #chat .chat-message.user {
             display: flex !important;
             flex-direction: row !important;
             grid-template-columns: none !important;
-            grid-template-rows: none !important;
             align-items: flex-end !important;
             gap: 10px !important;
-            max-width: 82% !important;
+            max-width: 84% !important;
             margin: 0 !important;
             padding: 0 !important;
             background: transparent !important;
             border: 0 !important;
-            border-radius: 0 !important;
             box-shadow: none !important;
-            box-sizing: border-box !important;
-            font-family: "DM Sans", -apple-system, sans-serif !important;
-            animation: messageIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+            animation: messageIn 0.5s var(--ease-spring) both !important;
             position: relative !important;
         }
 
-        #chat .chat-message.assistant,
-        .help-page #chat .chat-message.assistant {
+        #chat .chat-message.assistant {
             align-self: flex-start !important;
-            flex-direction: row !important;
         }
 
-        #chat .chat-message.user,
-        .help-page #chat .chat-message.user {
+        #chat .chat-message.user {
             align-self: flex-end !important;
             flex-direction: row-reverse !important;
         }
 
-        /* --- AVATAR --- */
+        /* --- AVATAR (both sides) --- */
         #chat .message-avatar {
             width: 32px !important;
             height: 32px !important;
             border-radius: 50% !important;
             flex: 0 0 32px !important;
             display: grid !important;
-            grid-template-columns: 1fr !important;
             place-items: center !important;
-            background: #0a0a0a !important;
-            color: #ffd21a !important;
             font-family: "Space Grotesk", sans-serif !important;
             font-size: 11px !important;
             font-weight: 700 !important;
@@ -765,10 +818,24 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
             margin: 0 !important;
             padding: 0 !important;
+            overflow: hidden !important;
+            background: #0a0a0a !important;
+            color: #ffd21a !important;
+            user-select: none;
+        }
+
+        #chat .message-avatar img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
         }
 
         #chat .chat-message.user .message-avatar {
-            display: none !important;
+            background: linear-gradient(135deg, #007aff, #4aa3ff) !important;
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.28) !important;
         }
 
         /* --- BODY --- */
@@ -785,7 +852,7 @@
             box-shadow: none !important;
         }
 
-        /* --- META (Thought for X) --- */
+        /* --- META "Thought for X.Xs" --- */
         #chat .message-meta {
             display: inline-flex !important;
             align-items: center !important;
@@ -808,10 +875,10 @@
 
         #chat .chat-message.user .message-meta {
             justify-content: flex-end !important;
-            color: rgba(255, 255, 255, 0.8) !important;
+            color: rgba(255, 255, 255, 0.75) !important;
         }
 
-        /* --- BUBBLE (message-content) --- */
+        /* --- BUBBLE --- */
         #chat .message-content,
         .help-page #chat .message-content {
             padding: 12px 18px !important;
@@ -823,40 +890,156 @@
             color: #1c1c1e !important;
             border-radius: 22px 22px 22px 6px !important;
             border: 0.5px solid rgba(0, 0, 0, 0.05) !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 4px 12px rgba(0, 0, 0, 0.03) !important;
             position: relative !important;
             max-width: 100% !important;
             margin: 0 !important;
-            font-family: "DM Sans", -apple-system, sans-serif !important;
         }
 
-        #chat .chat-message.user .message-content,
-        .help-page #chat .chat-message.user .message-content {
+        #chat .chat-message.user .message-content {
             background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%) !important;
             color: #fff !important;
             border-radius: 22px 22px 6px 22px !important;
             border: 0 !important;
-            box-shadow: 0 2px 12px rgba(0, 122, 255, 0.28), 0 1px 2px rgba(0, 122, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            box-shadow:
+                0 2px 12px rgba(0, 122, 255, 0.28),
+                0 1px 2px rgba(0, 122, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }
 
+        /* --- MARKDOWN STYLES --- */
         #chat .message-content p {
             margin: 0 !important;
         }
 
         #chat .message-content p+p {
-            margin-top: 8px !important;
+            margin-top: 10px !important;
         }
 
         #chat .message-content strong {
             font-weight: 700 !important;
+            color: #0a0a0a !important;
+        }
+
+        #chat .chat-message.user .message-content strong {
+            color: #fff !important;
         }
 
         #chat .message-content em {
             font-style: italic !important;
-            opacity: 0.85 !important;
+            opacity: 0.88 !important;
         }
 
-        /* --- FOOTER (Sources / AI disclaimer) --- */
+        #chat .message-content a {
+            color: var(--ios-blue) !important;
+            text-decoration: none !important;
+            border-bottom: 1px solid rgba(0, 122, 255, 0.35) !important;
+            transition: border-color 0.2s !important;
+        }
+
+        #chat .chat-message.user .message-content a {
+            color: #fff !important;
+            border-bottom-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        #chat .message-content a:hover {
+            border-bottom-color: var(--ios-blue) !important;
+        }
+
+        #chat .chat-message.user .message-content a:hover {
+            border-bottom-color: #fff !important;
+        }
+
+        #chat .message-content ul,
+        #chat .message-content ol {
+            margin: 8px 0 8px 0 !important;
+            padding-left: 22px !important;
+        }
+
+        #chat .message-content li {
+            margin: 4px 0 !important;
+            line-height: 1.55 !important;
+        }
+
+        #chat .message-content h1,
+        #chat .message-content h2,
+        #chat .message-content h3 {
+            font-family: "Space Grotesk", sans-serif !important;
+            margin: 12px 0 6px !important;
+            letter-spacing: -0.02em !important;
+            line-height: 1.2 !important;
+            font-weight: 700 !important;
+            color: #0a0a0a !important;
+        }
+
+        #chat .chat-message.user .message-content h1,
+        #chat .chat-message.user .message-content h2,
+        #chat .chat-message.user .message-content h3 {
+            color: #fff !important;
+        }
+
+        #chat .message-content h1 {
+            font-size: 17px !important;
+        }
+
+        #chat .message-content h2 {
+            font-size: 16px !important;
+        }
+
+        #chat .message-content h3 {
+            font-size: 15px !important;
+        }
+
+        #chat .message-content code {
+            font-family: "JetBrains Mono", ui-monospace, monospace !important;
+            font-size: 0.88em !important;
+            background: rgba(0, 0, 0, 0.06) !important;
+            padding: 2px 6px !important;
+            border-radius: 6px !important;
+            color: #c9224a !important;
+            font-weight: 500 !important;
+        }
+
+        #chat .chat-message.user .message-content code {
+            background: rgba(255, 255, 255, 0.22) !important;
+            color: #fff !important;
+        }
+
+        #chat .message-content pre {
+            margin: 10px 0 !important;
+            padding: 12px 14px !important;
+            background: #0d1117 !important;
+            border-radius: 12px !important;
+            overflow-x: auto !important;
+            border: 0.5px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        #chat .message-content pre code {
+            background: transparent !important;
+            color: #e6edf3 !important;
+            font-size: 12.5px !important;
+            padding: 0 !important;
+        }
+
+        #chat .message-content blockquote {
+            margin: 10px 0 !important;
+            padding: 8px 14px !important;
+            border-left: 3px solid var(--ios-blue) !important;
+            background: rgba(0, 122, 255, 0.05) !important;
+            border-radius: 0 8px 8px 0 !important;
+            color: var(--ios-text-2) !important;
+            font-style: italic !important;
+        }
+
+        #chat .chat-message.user .message-content blockquote {
+            border-left-color: rgba(255, 255, 255, 0.5) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            color: #fff !important;
+        }
+
+        /* --- FOOTER / FONTS --- */
         #chat .message-footer {
             display: inline-flex !important;
             align-items: center !important;
@@ -905,6 +1088,42 @@
             transform: translateY(-1px) !important;
         }
 
+        /* --- MESSAGE ACTIONS (copy / regenerate) --- */
+        #chat .message-actions {
+            display: inline-flex !important;
+            gap: 4px !important;
+            padding: 0 4px !important;
+            opacity: 0 !important;
+            transition: opacity 0.22s var(--ease-ios) !important;
+            animation: fadeIn 0.5s var(--ease-ios) both !important;
+        }
+
+        #chat .chat-message:hover .message-actions {
+            opacity: 1 !important;
+        }
+
+        #chat .message-actions button {
+            width: 28px !important;
+            height: 28px !important;
+            border-radius: 8px !important;
+            border: 0.5px solid rgba(60, 60, 67, 0.14) !important;
+            background: #fff !important;
+            color: var(--ios-text-3) !important;
+            cursor: pointer !important;
+            font-size: 12px !important;
+            display: grid !important;
+            place-items: center !important;
+            font-family: inherit !important;
+            transition: all 0.2s var(--ease-ios) !important;
+        }
+
+        #chat .message-actions button:hover {
+            background: var(--ios-blue) !important;
+            color: #fff !important;
+            border-color: transparent !important;
+            transform: translateY(-1px) !important;
+        }
+
         /* --- IMAGE --- */
         #chat .message-image {
             margin-top: 6px !important;
@@ -934,7 +1153,7 @@
             font-weight: 500 !important;
         }
 
-        /* --- WELCOME SUGGESTIONS --- */
+        /* --- WELCOME / SUGGESTIONS --- */
         #chat .welcome-suggestions {
             display: flex !important;
             flex-wrap: wrap !important;
@@ -960,11 +1179,10 @@
         #chat .welcome-suggestions button:hover {
             transform: translateY(-2px) !important;
             box-shadow: 0 6px 16px rgba(0, 122, 255, 0.18) !important;
+            background: rgba(0, 122, 255, 0.14) !important;
         }
 
-        /* ============================================================
-           TYPING / QUICK PROMPTS / INPUT
-           ============================================================ */
+        /* ---------- TYPING INDICATOR ---------- */
         .help-page .help-chat-panel .typing-indicator {
             display: flex;
             align-items: flex-end;
@@ -985,6 +1203,13 @@
             flex: 0 0 32px;
             border: 1px solid rgba(0, 0, 0, 0.06);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background: #0a0a0a;
+            display: grid;
+            place-items: center;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffd21a;
         }
 
         .help-page .help-chat-panel .typing-indicator .avatar img {
@@ -1033,6 +1258,7 @@
             font-weight: 500;
         }
 
+        /* ---------- QUICK PROMPTS ---------- */
         .help-page .help-chat-panel .quick-prompts {
             display: flex;
             gap: 8px;
@@ -1074,14 +1300,13 @@
         }
 
         .help-page .help-chat-panel .quick-prompts .chip:hover {
-            background: #fff !important;
             border-color: rgba(0, 122, 255, 0.4) !important;
             color: var(--ios-blue) !important;
             transform: translateY(-2px) !important;
             box-shadow: 0 8px 20px rgba(0, 122, 255, 0.12) !important;
         }
 
-        /* INPUT */
+        /* ---------- INPUT ---------- */
         .help-page .help-chat-panel .chat-input-wrap {
             padding: 0 22px 16px;
             background: linear-gradient(180deg, rgba(251, 251, 253, 0) 0%, rgba(251, 251, 253, 0.9) 100%);
@@ -1096,16 +1321,20 @@
             border-radius: 26px !important;
             background: #fff !important;
             border: 0.5px solid rgba(60, 60, 67, 0.18) !important;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+            box-shadow:
+                0 2px 12px rgba(0, 0, 0, 0.05),
+                0 1px 2px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 1) !important;
             transition: border-color 0.24s var(--ease-ios), box-shadow 0.24s var(--ease-ios);
             min-height: 52px !important;
-            margin-top: 0 !important;
-            grid-template-columns: none !important;
         }
 
         .help-page .help-chat-panel .chat-input:focus-within {
             border-color: rgba(0, 122, 255, 0.5) !important;
-            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.12), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 4px rgba(0, 122, 255, 0.08) !important;
+            box-shadow:
+                0 4px 20px rgba(0, 122, 255, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.03),
+                0 0 0 4px rgba(0, 122, 255, 0.08) !important;
         }
 
         .help-page .help-chat-panel .chat-input textarea#question {
@@ -1122,12 +1351,10 @@
             color: var(--ios-text) !important;
             font-family: inherit !important;
             letter-spacing: -0.011em !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
         }
 
         .help-page .help-chat-panel .chat-input textarea#question::placeholder {
-            color: var(--ios-gray-2) !important;
+            color: #aeaeb2 !important;
         }
 
         .help-page .help-chat-panel .chat-input .actions {
@@ -1142,18 +1369,18 @@
             width: 38px !important;
             height: 38px !important;
             border-radius: 50% !important;
-            background: var(--imsg-blue-gradient) !important;
+            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%) !important;
             color: #fff !important;
             border: 0 !important;
             cursor: pointer !important;
             font-size: 18px !important;
             display: grid !important;
             place-items: center !important;
-            box-shadow: 0 4px 14px rgba(0, 122, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            box-shadow:
+                0 4px 14px rgba(0, 122, 255, 0.32),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
             transition: all 0.3s var(--ease-spring) !important;
             font-family: inherit !important;
-            position: relative !important;
-            overflow: hidden !important;
             margin: 0 !important;
             padding: 0 !important;
         }
@@ -1162,8 +1389,6 @@
             display: block !important;
             transform: translateY(-1px) !important;
             transition: transform 0.3s var(--ease-spring) !important;
-            position: relative !important;
-            z-index: 1 !important;
         }
 
         .help-page .help-chat-panel .chat-input .send:hover {
@@ -1175,8 +1400,8 @@
         }
 
         .help-page .help-chat-panel .chat-input .send:disabled {
-            background: var(--ios-gray-4) !important;
-            color: var(--ios-gray-2) !important;
+            background: #d1d1d6 !important;
+            color: #aeaeb2 !important;
             box-shadow: none !important;
             cursor: not-allowed !important;
         }
@@ -1184,10 +1409,6 @@
         .help-page .help-chat-panel .chat-input .send.state-pause {
             background: linear-gradient(180deg, #ff5f57, #ff3b30 55%, #d70015) !important;
             box-shadow: 0 4px 14px rgba(255, 59, 48, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .send.state-pause span {
-            animation: pulseSquare 1.4s ease-in-out infinite !important;
         }
 
         .help-page .help-chat-panel .chat-input .send.state-resume {
@@ -1199,18 +1420,6 @@
             background: linear-gradient(180deg, #ff453a, #d70015 55%, #a50011) !important;
             box-shadow: 0 4px 18px rgba(255, 59, 48, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
             animation: deletePulse 1.6s ease-in-out infinite !important;
-        }
-
-        @keyframes pulseSquare {
-
-            0%,
-            100% {
-                transform: translateY(-1px) scale(1);
-            }
-
-            50% {
-                transform: translateY(-1px) scale(0.85);
-            }
         }
 
         @keyframes deletePulse {
@@ -1368,6 +1577,15 @@
             line-height: 1.65;
         }
 
+        .help-page .eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin: 0 0 8px;
+        }
+
         .help-page .help-features-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1386,7 +1604,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
             transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios);
             overflow: hidden;
-            animation: none !important;
         }
 
         .help-page .help-feature-card:hover {
@@ -1473,7 +1690,6 @@
             border: 0.5px solid rgba(60, 60, 67, 0.18);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
             transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-ios);
-            animation: none !important;
         }
 
         .help-page .help-how-card:hover {
@@ -1571,7 +1787,438 @@
         }
 
         /* ============================================================
-           KEYFRAMES
+           FOOTER — v2
+           ============================================================ */
+        .help-page .site-footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            margin-top: clamp(30px, 5vw, 70px);
+            padding: 0;
+            color: rgba(255, 255, 255, .70);
+            background:
+                radial-gradient(900px 420px at 12% -20%, rgba(0, 122, 255, .12), transparent 62%),
+                radial-gradient(700px 380px at 92% 0%, rgba(175, 82, 222, .07), transparent 60%),
+                linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+            border-top: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .help-page .site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, .55), transparent);
+            opacity: .75;
+            pointer-events: none;
+        }
+
+        .help-page .site-footer .footer-inner {
+            width: min(1200px, 100% - 48px);
+            margin-inline: auto;
+            padding: clamp(52px, 7vw, 88px) 0 30px;
+            display: block;
+        }
+
+        .help-page .footer-top {
+            display: grid;
+            grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+            gap: clamp(28px, 4vw, 44px);
+            padding-bottom: clamp(34px, 5vw, 54px);
+            border-bottom: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .help-page .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-width: 340px;
+        }
+
+        .help-page .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            width: fit-content;
+        }
+
+        .help-page .footer-logo-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            box-shadow: 0 10px 26px rgba(0, 122, 255, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+            transition: transform .3s var(--ease-spring);
+        }
+
+        .help-page .footer-logo:hover .footer-logo-mark {
+            transform: rotate(-6deg) scale(1.05);
+        }
+
+        .help-page .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -.03em;
+        }
+
+        .help-page .footer-logo-text small {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin-top: 5px;
+        }
+
+        .help-page .footer-tagline {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, .58);
+            margin: 0;
+            max-width: 330px;
+        }
+
+        .help-page .footer-socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .help-page .footer-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .75);
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            text-decoration: none;
+            transition: transform .28s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+        }
+
+        .help-page .footer-social svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .help-page .footer-social:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(0, 122, 255, .30);
+        }
+
+        .help-page .footer-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .62);
+        }
+
+        .help-page .footer-chip .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, .20);
+        }
+
+        .help-page .footer-col h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin: 0 0 18px;
+        }
+
+        .help-page .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .help-page .footer-col a {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .72);
+            text-decoration: none;
+            transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+        }
+
+        .help-page .footer-col a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1.5px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #007aff, #4aa3ff);
+            transition: width .28s var(--ease-ios);
+        }
+
+        .help-page .footer-col a:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .help-page .footer-col a:hover::after {
+            width: 100%;
+        }
+
+        .help-page .footer-band {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: clamp(32px, 4vw, 48px) 0;
+            padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+            border: 0.5px solid rgba(255, 255, 255, .10);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+        }
+
+        .help-page .footer-band::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 122, 255, .18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .help-page .footer-band-eyebrow {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(74, 163, 255, .9);
+            margin: 0 0 8px;
+        }
+
+        .help-page .footer-band h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(21px, 2.6vw, 30px);
+            font-weight: 700;
+            letter-spacing: -.04em;
+            color: #fff;
+            margin: 0;
+            line-height: 1.12;
+        }
+
+        .help-page .footer-band h3 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .help-page .footer-band-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .help-page .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            white-space: nowrap;
+            transition: transform .26s var(--ease-spring), box-shadow .26s, background .26s, color .26s;
+        }
+
+        .help-page .footer-btn-primary {
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, .28);
+        }
+
+        .help-page .footer-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0, 122, 255, .38);
+        }
+
+        .help-page .footer-btn-ghost {
+            background: rgba(255, 255, 255, .07);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, .18);
+        }
+
+        .help-page .footer-btn-ghost:hover {
+            background: rgba(255, 255, 255, .13);
+            transform: translateY(-3px);
+        }
+
+        .help-page .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 26px;
+            border-top: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .help-page .footer-bottom>p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .42);
+            max-width: 660px;
+        }
+
+        .help-page .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .help-page .footer-credits {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .help-page .footer-credits li {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .55);
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .help-page .footer-top-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, .14);
+            transition: all .25s var(--ease-ios);
+        }
+
+        .help-page .footer-top-link:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 122, 255, .28);
+        }
+
+        @media (max-width: 1080px) {
+            .help-page .footer-top {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .help-page .footer-brand {
+                grid-column: 1 / -1;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .help-page .site-footer .footer-inner {
+                width: min(1200px, 100% - 36px);
+            }
+
+            .help-page .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 20px;
+            }
+
+            .help-page .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .help-page .footer-band {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .help-page .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .help-page .footer-bottom-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .help-page .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================================
+           ANIMATIONS
            ============================================================ */
         @keyframes fadeUp {
             from {
@@ -1647,6 +2294,19 @@
             50% {
                 opacity: 1;
                 transform: scale(1.15);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
             }
         }
 
@@ -1777,19 +2437,17 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-        }
 
-        .help-page :focus-visible {
-            outline: 3px solid rgba(0, 122, 255, 0.55);
-            outline-offset: 3px;
-            border-radius: 6px;
+            .help-page .help-hero-media {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 
 <body class="help-page">
 
-    <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" id="site-header">
         <nav class="nav glass" aria-label="Main navigation">
@@ -1824,26 +2482,34 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
+
+        <!-- HERO -->
         <section class="help-hero" id="top">
-            <div class="help-hero-media"></div>
-            <div class="help-hero-overlay"></div>
+            <div class="help-hero-media" aria-hidden="true"></div>
+            <div class="help-hero-overlay" aria-hidden="true"></div>
             <div class="container help-hero-content">
                 <div class="help-eyebrow-pill">
                     <span class="pill-dot" aria-hidden="true"></span>
                     GED Concierge · AI Travel Assistant
                 </div>
                 <h1>Your trip.<br><em>Understood.</em></h1>
-                <p>Ask GED Concierge about Canadian destinations, neighborhoods, hotels, events, packages,
-                    transportation and itinerary ideas.</p>
+                <p class="help-hero-lead">
+                    Ask GED Concierge about Canadian destinations, neighborhoods, hotels,
+                    events, packages, transportation and itinerary ideas.
+                </p>
                 <div class="help-hero-ctas">
-                    <a class="help-cta primary" href="#chat">Start a conversation <span aria-hidden="true">↓</span></a>
-                    <a class="help-cta secondary" href="packages.html#trip-builder">Build a trip <span
-                            aria-hidden="true">↗</span></a>
+                    <a class="help-cta primary" href="#chat">
+                        Start a conversation <span aria-hidden="true">↓</span>
+                    </a>
+                    <a class="help-cta secondary" href="packages.html#trip-builder">
+                        Build a trip <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- CHAT -->
         <section class="help-chat-section" id="chat-section" aria-labelledby="concierge-title">
             <div class="container">
                 <div class="help-chat-layout">
@@ -1852,7 +2518,7 @@
                         <div class="sidebar-brand">
                             <div class="brand-avatar" aria-hidden="true">
                                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
-                                    alt="GED">
+                                    alt="">
                             </div>
                             <div>
                                 <h2 id="concierge-title">Concierge</h2>
@@ -1916,7 +2582,7 @@
                             <div class="help-chat-agent">
                                 <div class="agent-avatar" aria-hidden="true">
                                     <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
-                                        alt="GED Concierge">
+                                        alt="">
                                 </div>
                                 <div class="info">
                                     <strong>GED Concierge <span class="verified" aria-hidden="true">✓</span></strong>
@@ -1947,7 +2613,7 @@
                             aria-label="GED Concierge is thinking">
                             <div class="avatar" aria-hidden="true">
                                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
-                                    alt="GED">
+                                    alt="">
                             </div>
                             <div class="typing-bubble">
                                 <div class="typing-dots" aria-hidden="true">
@@ -1994,8 +2660,9 @@
 
                         <div class="chat-input-wrap">
                             <div class="chat-input">
+                                <label class="sr-only" for="question">Ask GED Concierge</label>
                                 <textarea id="question" rows="1" maxlength="2000" autocomplete="off" spellcheck="true"
-                                    aria-label="Ask GED Concierge" placeholder="Message GED Concierge…"></textarea>
+                                    placeholder="Message GED Concierge…"></textarea>
                                 <div class="actions" id="actions-wrap">
                                     <span class="tooltip" id="action-tooltip">Click to delete all chats</span>
                                     <button id="stop-generation" class="stop" type="button" hidden
@@ -2017,11 +2684,12 @@
             </div>
         </section>
 
+        <!-- FEATURES -->
         <section class="help-features" aria-labelledby="features-title">
             <div class="container">
                 <div class="help-features-head reveal">
                     <div>
-                        <p class="eyebrow dark">Built into GED</p>
+                        <p class="eyebrow">Built into GED</p>
                         <h2 id="features-title">More than<br><em>just a chatbot.</em></h2>
                     </div>
                     <p>Concierge connects conversational intelligence with GED's travel data, value scoring and
@@ -2032,7 +2700,7 @@
                         <span class="feature-number">01</span>
                         <img class="f-icon"
                             src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
-                            alt="Destination intelligence">
+                            alt="">
                         <h3>Destination intelligence</h3>
                         <p>Explore Canadian cities, provinces, neighborhoods and attractions through conversational
                             recommendations.</p>
@@ -2042,7 +2710,7 @@
                         <span class="feature-number">02</span>
                         <img class="f-icon"
                             src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=200&q=80"
-                            alt="GED Value Score">
+                            alt="">
                         <h3>GED Value Score</h3>
                         <p>Find experiences that balance price, quality, location and overall trip value.</p>
                         <span class="arrow" aria-hidden="true">↗</span>
@@ -2051,7 +2719,7 @@
                         <span class="feature-number">03</span>
                         <img class="f-icon"
                             src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=200&q=80"
-                            alt="Smart offers">
+                            alt="">
                         <h3>Smart offers</h3>
                         <p>Eligible GED packages can receive dynamic discounts, with a maximum discount of 25%.</p>
                         <span class="arrow" aria-hidden="true">↗</span>
@@ -2060,7 +2728,7 @@
                         <span class="feature-number">04</span>
                         <img class="f-icon"
                             src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=80"
-                            alt="Trip intelligence">
+                            alt="">
                         <h3>Trip intelligence</h3>
                         <p>Combine destinations, hotels, events and activities into a more coherent travel plan.</p>
                         <span class="arrow" aria-hidden="true">↗</span>
@@ -2069,11 +2737,12 @@
             </div>
         </section>
 
+        <!-- HOW IT WORKS -->
         <section class="help-how" aria-labelledby="how-title">
             <div class="container">
                 <div class="help-how-head reveal">
                     <div>
-                        <p class="eyebrow dark">How it works</p>
+                        <p class="eyebrow">How it works</p>
                         <h2 id="how-title">From question<br><em>to itinerary.</em></h2>
                     </div>
                     <p>GED Concierge is a layer between the traveler and GED's travel intelligence.</p>
@@ -2103,12 +2772,13 @@
             </div>
         </section>
 
+        <!-- DISCLAIMER -->
         <section class="help-disclaimer" aria-labelledby="disclaimer-title">
             <div class="container">
                 <div class="disclaimer-card reveal">
                     <span class="disclaimer-icon" aria-hidden="true">✦</span>
                     <div>
-                        <p class="eyebrow dark">Educational project</p>
+                        <p class="eyebrow">Educational project</p>
                         <h3 id="disclaimer-title">Intelligence with transparency.</h3>
                         <p>GED Concierge is an AI-powered feature created for the GED Travel Agency school project.
                             AI-generated recommendations may contain errors and should be verified before making
@@ -2117,49 +2787,153 @@
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-hero">
-                <div class="eyebrow">GED TRAVEL AGENCY</div>
-                <h2>Canada is big.<br><em>Your dreams should be too.</em></h2>
-                <a class="btn btn-yellow" href="packages.html#trip-builder">Build your trip ↗</a>
-            </div>
-            <div class="footer-grid">
-                <div>
-                    <a class="brand light-brand" href="../index.html" aria-label="GED Home">
-                        <b>G</b><span>GED</span>
+    <!-- FOOTER v2 -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+                        <span class="footer-logo-mark" aria-hidden="true">G</span>
+                        <span class="footer-logo-text">
+                            GED
+                            <small>Travel Agency</small>
+                        </span>
                     </a>
-                    <p>Canada, made accessible.</p>
+
+                    <p class="footer-tagline">
+                        Canada, made accessible. Destinations, flights, hotels,
+                        events and packages — one system, one trip, designed
+                        around you.
+                    </p>
+
+                    <div class="footer-socials" aria-label="GED on social media">
+                        <a class="footer-social" href="https://www.instagram.com/edparducci/"
+                            aria-label="GED on Instagram" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://www.youtube.com/@edparducci" aria-label="GED on YouTube"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="mailto:edgarparducci@gmail.com"
+                            aria-label="Contact GED by email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                <path d="m3.5 7.5 8.5 6 8.5-6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <span class="footer-chip">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        School project · 1°D
+                    </span>
                 </div>
+
+                <nav class="footer-col" aria-labelledby="footer-explore">
+                    <h3 id="footer-explore">Explore</h3>
+                    <ul>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-plan">
+                    <h3 id="footer-plan">Plan</h3>
+                    <ul>
+                        <li><a href="packages.html#trip-builder">Trip builder</a></li>
+                        <li><a href="packages.html#packages">Package catalogue</a></li>
+                        <li><a href="hotels.html">GED Value Score</a></li>
+                        <li><a href="flights.html">Route comparison</a></li>
+                        <li><a href="destinations.html">Canada Explorer</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-company">
+                    <h3 id="footer-company">Company</h3>
+                    <ul>
+                        <li><a href="about.html">About GED</a></li>
+                        <li><a href="about.html#team">The team</a></li>
+                        <li><a href="help.html">Help centre</a></li>
+                        <li><a href="help.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-support">
+                    <h3 id="footer-support">Support</h3>
+                    <ul>
+                        <li><a href="help.html#faq">FAQ</a></li>
+                        <li><a href="help.html#privacy">Privacy</a></li>
+                        <li><a href="help.html#terms">Terms of use</a></li>
+                        <li><a href="help.html#accessibility">Accessibility</a></li>
+                        <li><a href="help.html#credits">Credits</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-band">
                 <div>
-                    <small>EXPLORE</small>
-                    <a href="destinations.html">Destinations</a>
-                    <a href="events.html">Events</a>
-                    <a href="flights.html">Flights</a>
+                    <p class="footer-band-eyebrow">Ready when you are</p>
+                    <h3>Let's build the Canada trip <em>you actually want.</em></h3>
                 </div>
-                <div>
-                    <small>PLAN</small>
-                    <a href="hotels.html">Hotels</a>
-                    <a href="packages.html">Packages</a>
-                    <a href="help.html">Help</a>
-                </div>
-                <div>
-                    <small>GED</small>
-                    <a href="about.html">About</a>
-                    <a href="about.html#team">Team</a>
-                    <a href="about.html#technology">Technology</a>
+                <div class="footer-band-actions">
+                    <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+                        Open the builder <span aria-hidden="true">↘</span>
+                    </a>
+                    <a class="footer-btn footer-btn-ghost" href="destinations.html">
+                        Browse destinations <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <span>GED Travel Agency · School Project · 1°D</span>
-                <span>Geovana · Edgar · Aline</span>
-                <span>Educational project · No commercial transactions</span>
+                <p>
+                    © <span id="footerYear">2026</span> GED Travel Agency — educational
+                    project. Prices, availability and events shown throughout the site
+                    are illustrative and not bookable. No commercial transactions are
+                    processed.
+                </p>
+
+                <div class="footer-bottom-right">
+                    <ul class="footer-credits" aria-label="Project credits">
+                        <li>Geovana</li>
+                        <li>Edgar</li>
+                        <li>Aline</li>
+                        <li>1°D</li>
+                    </ul>
+
+                    <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+                        Back to top <span aria-hidden="true">↑</span>
+                    </a>
+                </div>
             </div>
+
         </div>
     </footer>
 
+    <!-- SEARCH OVERLAY -->
     <div class="search-overlay" data-search-overlay aria-hidden="true">
         <div class="search-box glass" role="dialog" aria-modal="true" aria-labelledby="search-title">
             <button class="close" type="button" data-close-search aria-label="Close search">×</button>
@@ -2171,9 +2945,11 @@
         </div>
     </div>
 
-    <!-- ============================================================
-         SCRIPTS
-         ============================================================ -->
+    <!-- TOASTS -->
+    <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+    <!-- SCRIPTS -->
     <script src="../js/canada-data.js"></script>
     <script src="../js/provinces.js"></script>
     <script src="../js/data-loader.js"></script>
@@ -2190,7 +2966,7 @@
         (function () {
             "use strict";
 
-            /* Header scrolled */
+            /* ---------- HEADER SCROLL ---------- */
             var header = document.getElementById("site-header");
             if (header) {
                 var onScroll = function () {
@@ -2200,7 +2976,11 @@
                 onScroll();
             }
 
-            /* Reveal */
+            /* ---------- FOOTER YEAR ---------- */
+            var yearEl = document.getElementById("footerYear");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            /* ---------- REVEAL ---------- */
             var revealEls = document.querySelectorAll(".reveal");
             if ("IntersectionObserver" in window && revealEls.length) {
                 var obs = new IntersectionObserver(function (entries) {
@@ -2216,16 +2996,16 @@
                 revealEls.forEach(function (el) { el.classList.add("visible"); });
             }
 
-            /* Chat elements */
+            /* ---------- CHAT ELEMENTS ---------- */
             var askBtn = document.getElementById("ask");
-            var stopBtn = document.getElementById("stop-generation");
             var actionsWrap = document.getElementById("actions-wrap");
-            var tooltip = document.getElementById("action-tooltip");
             var chatContainer = document.getElementById("chat");
             var typingIndicator = document.getElementById("typing-indicator");
             var clearChatBtn = document.getElementById("clear-chat");
             var resetAllBtn = document.getElementById("reset-all");
             var scrollBottomBtn = document.getElementById("scroll-bottom");
+            var textarea = document.getElementById("question");
+            var charCount = document.getElementById("character-count");
 
             if (!askBtn || !chatContainer) return;
 
@@ -2236,7 +3016,7 @@
                 generationStart: 0
             };
 
-            /* Track generation via typing indicator */
+            /* ---------- TRACK GENERATION ---------- */
             if (typingIndicator) {
                 var typingObserver = new MutationObserver(function () {
                     var nowGenerating = !typingIndicator.hidden;
@@ -2262,7 +3042,6 @@
                     askBtn.setAttribute("aria-label", "Delete all conversations");
                     askBtn.title = "Delete all conversations";
                     if (actionsWrap) actionsWrap.classList.add("delete-mode");
-                    if (tooltip) tooltip.textContent = "Click to delete all chats";
                     return;
                 }
                 if (actionsWrap) actionsWrap.classList.remove("delete-mode");
@@ -2270,8 +3049,8 @@
                 if (state.paused) {
                     askBtn.classList.add("state-resume");
                     askBtn.innerHTML = '<span aria-hidden="true">▶</span>';
-                    askBtn.setAttribute("aria-label", "Resume");
-                    askBtn.title = "Resume";
+                    askBtn.setAttribute("aria-label", "Resume generation");
+                    askBtn.title = "Resume generation";
                     return;
                 }
                 if (state.generating) {
@@ -2295,21 +3074,27 @@
                         chatContainer.innerHTML = "";
                         if (clearChatBtn) clearChatBtn.click();
                     }
-                    state.deleteMode = false; updateActionButton(); return;
+                    state.deleteMode = false;
+                    updateActionButton();
+                    return;
                 }
                 if (state.paused) {
                     e.preventDefault(); e.stopImmediatePropagation();
-                    state.paused = false; updateActionButton(); return;
+                    state.paused = false;
+                    updateActionButton();
+                    return;
                 }
                 if (state.generating) {
                     e.preventDefault(); e.stopImmediatePropagation();
-                    state.paused = true; state.generating = false;
-                    if (stopBtn) stopBtn.click();
-                    updateActionButton(); return;
+                    state.paused = true;
+                    state.generating = false;
+                    updateActionButton();
+                    return;
                 }
                 state.generationStart = Date.now();
             }, true);
 
+            /* ---------- LONG PRESS / RIGHT CLICK FOR DELETE MODE ---------- */
             askBtn.addEventListener("contextmenu", function (e) {
                 e.preventDefault();
                 state.deleteMode = !state.deleteMode;
@@ -2332,12 +3117,149 @@
                         try { localStorage.removeItem("ged-concierge-history"); } catch (err) { }
                         chatContainer.innerHTML = "";
                         if (clearChatBtn) clearChatBtn.click();
-                        state.paused = false; state.generating = false; state.deleteMode = false;
+                        state.paused = false;
+                        state.generating = false;
+                        state.deleteMode = false;
                         updateActionButton();
                     }
                 });
             }
 
+            /* ============================================================
+               MARKDOWN-LITE RENDERER
+               Converts markdown-ish text into safe HTML
+               ============================================================ */
+            function escapeHtml(str) {
+                return String(str ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function renderInline(text) {
+                var html = escapeHtml(text);
+
+                /* Code `x` */
+                html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+                /* Bold **x** */
+                html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+                /* Italic *x* or _x_ */
+                html = html.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
+                html = html.replace(/(^|[^_])_([^_\n]+)_(?!_)/g, '$1<em>$2</em>');
+
+                /* Links [text](url) */
+                html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+                    '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+                /* Auto-links https://... */
+                html = html.replace(/(^|[^"'])(https?:\/\/[^\s<)]+)/g,
+                    '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+
+                return html;
+            }
+
+            function renderMarkdown(text) {
+                if (!text) return "";
+
+                /* Normalize */
+                var src = String(text).replace(/\r\n/g, "\n").trim();
+
+                var lines = src.split("\n");
+                var html = "";
+                var inUl = false;
+                var inOl = false;
+                var inCode = false;
+                var codeBuffer = [];
+
+                function closeLists() {
+                    if (inUl) { html += "</ul>"; inUl = false; }
+                    if (inOl) { html += "</ol>"; inOl = false; }
+                }
+
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i];
+
+                    /* Fenced code ``` */
+                    if (/^```/.test(line.trim())) {
+                        if (!inCode) {
+                            closeLists();
+                            inCode = true;
+                            codeBuffer = [];
+                        } else {
+                            inCode = false;
+                            html += "<pre><code>" + escapeHtml(codeBuffer.join("\n")) + "</code></pre>";
+                        }
+                        continue;
+                    }
+
+                    if (inCode) {
+                        codeBuffer.push(line);
+                        continue;
+                    }
+
+                    /* Blank line */
+                    if (!line.trim()) {
+                        closeLists();
+                        continue;
+                    }
+
+                    /* Headings */
+                    var h = line.match(/^(#{1,3})\s+(.+)$/);
+                    if (h) {
+                        closeLists();
+                        var level = h[1].length;
+                        html += "<h" + level + ">" + renderInline(h[2]) + "</h" + level + ">";
+                        continue;
+                    }
+
+                    /* Blockquote */
+                    if (/^>\s?/.test(line)) {
+                        closeLists();
+                        html += "<blockquote>" + renderInline(line.replace(/^>\s?/, "")) + "</blockquote>";
+                        continue;
+                    }
+
+                    /* Unordered list */
+                    var ul = line.match(/^\s*[-*+]\s+(.+)$/);
+                    if (ul) {
+                        if (inOl) { html += "</ol>"; inOl = false; }
+                        if (!inUl) { html += "<ul>"; inUl = true; }
+                        html += "<li>" + renderInline(ul[1]) + "</li>";
+                        continue;
+                    }
+
+                    /* Ordered list */
+                    var ol = line.match(/^\s*\d+[.)]\s+(.+)$/);
+                    if (ol) {
+                        if (inUl) { html += "</ul>"; inUl = false; }
+                        if (!inOl) { html += "<ol>"; inOl = true; }
+                        html += "<li>" + renderInline(ol[1]) + "</li>";
+                        continue;
+                    }
+
+                    /* Paragraph */
+                    closeLists();
+                    html += "<p>" + renderInline(line) + "</p>";
+                }
+
+                closeLists();
+                if (inCode && codeBuffer.length) {
+                    html += "<pre><code>" + escapeHtml(codeBuffer.join("\n")) + "</code></pre>";
+                }
+
+                return html;
+            }
+
+            /* Expose for possible reuse */
+            window.GED_markdown = renderMarkdown;
+
+            /* ============================================================
+               SOURCES EXTRACTOR
+               ============================================================ */
             function extractSources(text) {
                 var urlRegex = /(https?:\/\/[^\s)]+)/g;
                 var matches = text.match(urlRegex) || [];
@@ -2345,17 +3267,78 @@
                 var labelMatch = text.match(labelRegex);
                 if (labelMatch && labelMatch[1]) {
                     var tokens = labelMatch[1].split(/[,;|]/).map(function (s) { return s.trim(); }).filter(Boolean);
-                    tokens.forEach(function (t) { if (matches.indexOf(t) === -1) matches.push(t); });
+                    tokens.forEach(function (t) {
+                        if (/^https?:\/\//.test(t) && matches.indexOf(t) === -1) matches.push(t);
+                    });
                 }
                 return matches.slice(0, 3);
             }
 
+            /* ============================================================
+               MESSAGE ENHANCER
+               Adds avatars, meta, footer, actions, markdown rendering
+               ============================================================ */
+            function getAvatarContent(isAssistant) {
+                if (isAssistant) {
+                    /* Show image avatar */
+                    var img = document.createElement("img");
+                    img.src = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80";
+                    img.alt = "";
+                    return img;
+                }
+                /* User: initials */
+                var span = document.createElement("span");
+                span.textContent = "YOU";
+                span.style.fontSize = "9px";
+                span.style.letterSpacing = "0.04em";
+                return span;
+            }
+
             function enhanceMessage(node) {
                 if (!node.classList || !node.classList.contains("chat-message")) return;
-                var body = node.querySelector(".message-body");
-                if (!body) return;
 
-                if (node.classList.contains("assistant") && !body.querySelector(".message-meta")) {
+                var isAssistant = node.classList.contains("assistant");
+                var isUser = node.classList.contains("user");
+
+                /* ---- 1. AVATAR (both sides) ---- */
+                if (!node.querySelector(".message-avatar")) {
+                    var avatar = document.createElement("div");
+                    avatar.className = "message-avatar";
+                    avatar.setAttribute("aria-hidden", "true");
+                    avatar.appendChild(getAvatarContent(isAssistant));
+                    node.insertBefore(avatar, node.firstChild);
+                }
+
+                /* Ensure body exists */
+                var body = node.querySelector(".message-body");
+                if (!body) {
+                    /* Wrap content if not already wrapped */
+                    var contentEl = node.querySelector(".message-content");
+                    if (contentEl) {
+                        body = document.createElement("div");
+                        body.className = "message-body";
+                        contentEl.parentNode.insertBefore(body, contentEl);
+                        body.appendChild(contentEl);
+                    } else {
+                        return;
+                    }
+                }
+
+                /* ---- 2. MARKDOWN RENDER (only for assistant, and only once) ---- */
+                var contentEl = node.querySelector(".message-content");
+                if (contentEl && isAssistant && !contentEl.dataset.rendered) {
+                    var rawText = contentEl.textContent || "";
+                    /* Skip if there are already HTML children we shouldn't touch */
+                    if (!contentEl.querySelector("img, a, button, ul, ol, pre")) {
+                        contentEl.innerHTML = renderMarkdown(rawText);
+                        contentEl.dataset.rendered = "1";
+                    } else {
+                        contentEl.dataset.rendered = "1";
+                    }
+                }
+
+                /* ---- 3. META "Thought for X.Xs" (assistant only) ---- */
+                if (isAssistant && !body.querySelector(".message-meta")) {
                     var meta = document.createElement("div");
                     meta.className = "message-meta";
                     var elapsed = 0;
@@ -2367,10 +3350,10 @@
                     body.insertBefore(meta, body.firstChild);
                 }
 
-                if (node.classList.contains("assistant") && !body.querySelector(".message-footer")) {
+                /* ---- 4. FOOTER (Fonts / AI disclaimer) ---- */
+                if (isAssistant && !body.querySelector(".message-footer")) {
                     var footer = document.createElement("div");
                     footer.className = "message-footer";
-                    var contentEl = node.querySelector(".message-content");
                     var text = contentEl ? contentEl.textContent : "";
                     var sources = extractSources(text);
 
@@ -2378,18 +3361,64 @@
                         var html = '<span class="footer-label">Fonts</span>';
                         sources.forEach(function (src) {
                             var label = src.length > 40 ? src.slice(0, 38) + "…" : src;
-                            if (/^https?:\/\//.test(src)) {
-                                html += '<a class="source-chip" href="' + src + '" target="_blank" rel="noopener">' + label + '</a>';
-                            } else {
-                                html += '<span class="source-chip">' + label + '</span>';
-                            }
+                            html += '<a class="source-chip" href="' + src + '" target="_blank" rel="noopener">' + label + '</a>';
                         });
                         footer.innerHTML = html;
                     } else {
-                        footer.innerHTML = '<span class="footer-icon" aria-hidden="true">✦</span>' +
+                        footer.innerHTML =
+                            '<span class="footer-icon" aria-hidden="true">✦</span>' +
                             'AI can make mistakes — verify important info';
                     }
                     body.appendChild(footer);
+                }
+
+                /* ---- 5. MESSAGE ACTIONS (copy / regenerate) ---- */
+                if (!body.querySelector(".message-actions")) {
+                    var actions = document.createElement("div");
+                    actions.className = "message-actions";
+
+                    var copyBtn = document.createElement("button");
+                    copyBtn.type = "button";
+                    copyBtn.setAttribute("aria-label", "Copy message");
+                    copyBtn.title = "Copy";
+                    copyBtn.innerHTML = "⧉";
+                    copyBtn.addEventListener("click", function () {
+                        var text = contentEl ? contentEl.innerText : "";
+                        navigator.clipboard.writeText(text).then(function () {
+                            copyBtn.innerHTML = "✓";
+                            setTimeout(function () { copyBtn.innerHTML = "⧉"; }, 1200);
+                        });
+                    });
+                    actions.appendChild(copyBtn);
+
+                    if (isAssistant) {
+                        var regenBtn = document.createElement("button");
+                        regenBtn.type = "button";
+                        regenBtn.setAttribute("aria-label", "Regenerate response");
+                        regenBtn.title = "Regenerate";
+                        regenBtn.innerHTML = "↻";
+                        regenBtn.addEventListener("click", function () {
+                            if (window.GED && typeof GED.toast === "function") {
+                                GED.toast("Regenerating response…");
+                            }
+                            /* Find the previous user message */
+                            var prev = node.previousElementSibling;
+                            while (prev && !prev.classList.contains("user")) {
+                                prev = prev.previousElementSibling;
+                            }
+                            if (prev && textarea) {
+                                var prevText = prev.querySelector(".message-content");
+                                if (prevText) {
+                                    textarea.value = prevText.innerText;
+                                    textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                                    setTimeout(function () { askBtn.click(); }, 100);
+                                }
+                            }
+                        });
+                        actions.appendChild(regenBtn);
+                    }
+
+                    body.appendChild(actions);
                 }
             }
 
@@ -2397,6 +3426,49 @@
                 chatContainer.querySelectorAll(".chat-message").forEach(enhanceMessage);
             }
 
+            /* ============================================================
+               WELCOME STATE
+               ============================================================ */
+            function ensureWelcome() {
+                if (chatContainer.querySelector(".chat-message")) return;
+
+                var welcome = document.createElement("div");
+                welcome.className = "chat-message assistant";
+                welcome.innerHTML =
+                    '<div class="message-avatar" aria-hidden="true">' +
+                    '<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80" alt="">' +
+                    '</div>' +
+                    '<div class="message-body">' +
+                    '<div class="message-meta"><span class="meta-icon" aria-hidden="true">✦</span>Ready</div>' +
+                    '<div class="message-content">' +
+                    '<p><strong>Olá! Eu sou o GED Concierge.</strong> 🇨🇦</p>' +
+                    '<p>Posso te ajudar a explorar o Canadá — cidades, bairros, hotéis, eventos, voos e pacotes. Por onde quer começar?</p>' +
+                    '<div class="welcome-suggestions">' +
+                    '<button type="button" data-welcome="Quais são os melhores destinos no Canadá para uma primeira viagem?">Primeira viagem</button>' +
+                    '<button type="button" data-welcome="Monte um roteiro de 7 dias entre Toronto e Montreal.">7 dias ON + QC</button>' +
+                    '<button type="button" data-welcome="Quais eventos acontecem no Canadá em outubro de 2026?">Eventos em outubro</button>' +
+                    '<button type="button" data-welcome="Qual é o melhor destino para ver a aurora boreal no Canadá?">Aurora boreal</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                chatContainer.appendChild(welcome);
+
+                welcome.querySelectorAll("[data-welcome]").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        if (textarea) {
+                            textarea.value = btn.dataset.welcome;
+                            textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                            textarea.focus();
+                            setTimeout(function () { askBtn.click(); }, 60);
+                        }
+                    });
+                });
+            }
+
+            /* ============================================================
+               MUTATION OBSERVER
+               ============================================================ */
             var chatObserver = new MutationObserver(function (mutations) {
                 var shouldUpdateScroll = false;
                 mutations.forEach(function (mutation) {
@@ -2418,21 +3490,59 @@
 
             updateActionButton();
 
-            requestAnimationFrame(function () {
-                enhanceAll();
-                setTimeout(enhanceAll, 250);
-                setTimeout(enhanceAll, 800);
-            });
+            /* Ensure welcome shows on load if empty */
+            ensureWelcome();
+            enhanceAll();
 
-            var ta = document.getElementById("question");
-            if (ta) {
-                ta.addEventListener("keydown", function (e) {
-                    if (e.key === "Enter" && !e.shiftKey) {
-                        state.generationStart = Date.now();
+            setTimeout(enhanceAll, 300);
+            setTimeout(enhanceAll, 900);
+
+            /* ============================================================
+               TEXTAREA — auto-resize + char count + shortcuts
+               ============================================================ */
+            if (textarea) {
+                var maxHeight = 130;
+
+                function autosize() {
+                    textarea.style.height = "auto";
+                    textarea.style.height = Math.min(textarea.scrollHeight, maxHeight) + "px";
+                }
+
+                textarea.addEventListener("input", function () {
+                    autosize();
+                    if (charCount) {
+                        charCount.textContent = textarea.value.length + " / 2000";
                     }
-                }, true);
+                });
+
+                autosize();
+
+                textarea.addEventListener("keydown", function (e) {
+                    /* Cmd/Ctrl + Enter → send */
+                    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                        e.preventDefault();
+                        askBtn.click();
+                        return;
+                    }
+                    /* Enter (without shift) → send */
+                    if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        state.generationStart = Date.now();
+                        askBtn.click();
+                        return;
+                    }
+                    /* Escape → clear */
+                    if (e.key === "Escape") {
+                        textarea.value = "";
+                        autosize();
+                        if (charCount) charCount.textContent = "0 / 2000";
+                    }
+                });
             }
 
+            /* ============================================================
+               SCROLL BOTTOM BUTTON
+               ============================================================ */
             function updateScrollButton() {
                 if (!scrollBottomBtn) return;
                 var distanceFromBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
@@ -2445,6 +3555,89 @@
                     chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
                 });
                 updateScrollButton();
+            }
+
+            /* ============================================================
+               GLOBAL KEYBOARD SHORTCUTS
+               ============================================================ */
+            document.addEventListener("keydown", function (e) {
+                /* Cmd/Ctrl + K → focus input */
+                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+                    e.preventDefault();
+                    if (textarea) textarea.focus();
+                }
+                /* T → toggle think (only if not in input) */
+                if (e.key.toLowerCase() === "t" && document.activeElement !== textarea
+                    && document.activeElement.tagName !== "INPUT"
+                    && document.activeElement.tagName !== "TEXTAREA") {
+                    var btn = document.getElementById("toggle-think");
+                    if (btn) btn.click();
+                }
+                /* S → toggle search */
+                if (e.key.toLowerCase() === "s" && document.activeElement !== textarea
+                    && document.activeElement.tagName !== "INPUT"
+                    && document.activeElement.tagName !== "TEXTAREA") {
+                    var btn = document.getElementById("toggle-search");
+                    if (btn) btn.click();
+                }
+            });
+
+            /* ============================================================
+               TOGGLE THINK / SEARCH / COPY-LAST
+               ============================================================ */
+            var thinkBtn = document.getElementById("toggle-think");
+            var searchBtn = document.getElementById("toggle-search");
+            var copyLastBtn = document.getElementById("copy-last");
+            var modelLabel = document.getElementById("model-label");
+
+            var thinkActive = false;
+            var searchActive = false;
+
+            function updateModelLabel() {
+                if (!modelLabel) return;
+                var parts = ["GED Smart"];
+                if (thinkActive) parts.push("Think");
+                if (searchActive) parts.push("Search");
+                modelLabel.textContent = parts.join(" · ");
+            }
+
+            if (thinkBtn) {
+                thinkBtn.addEventListener("click", function () {
+                    thinkActive = !thinkActive;
+                    thinkBtn.classList.toggle("active-think", thinkActive);
+                    updateModelLabel();
+                    if (window.GED && typeof GED.toast === "function") {
+                        GED.toast(thinkActive ? "Profound Think on" : "Profound Think off");
+                    }
+                });
+            }
+
+            if (searchBtn) {
+                searchBtn.addEventListener("click", function () {
+                    searchActive = !searchActive;
+                    searchBtn.classList.toggle("active-search", searchActive);
+                    updateModelLabel();
+                    if (window.GED && typeof GED.toast === "function") {
+                        GED.toast(searchActive ? "Profound Search on" : "Profound Search off");
+                    }
+                });
+            }
+
+            if (copyLastBtn) {
+                copyLastBtn.addEventListener("click", function () {
+                    var messages = chatContainer.querySelectorAll(".chat-message.assistant");
+                    if (!messages.length) return;
+                    var last = messages[messages.length - 1];
+                    var content = last.querySelector(".message-content");
+                    if (!content) return;
+                    navigator.clipboard.writeText(content.innerText).then(function () {
+                        copyLastBtn.innerHTML = "✓";
+                        setTimeout(function () { copyLastBtn.innerHTML = "⧉"; }, 1200);
+                        if (window.GED && typeof GED.toast === "function") {
+                            GED.toast("Last response copied", "success");
+                        }
+                    });
+                });
             }
 
         })();

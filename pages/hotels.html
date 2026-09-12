@@ -7,10 +7,18 @@
     <meta name="description" content="GED Travel Agency — Compare Canadian hotels by value, not just stars.">
     <meta name="theme-color" content="#08090c">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotels · GED Travel Agency">
+    <meta property="og:description" content="Compare Canadian hotels by value, not just stars.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>Hotels · GED Travel Agency</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -30,22 +38,26 @@
             --ios-orange: #ff9500;
             --ios-purple: #af52de;
             --ios-red: #ff3b30;
-
-            --ios-gray-1: #8e8e93;
-            --ios-gray-2: #aeaeb2;
-            --ios-gray-5: #e5e5ea;
+            --ios-yellow: #ffc400;
+            --ios-gold: #ffd21a;
+            --ios-gold-2: #ffb400;
+            --ios-teal: #5ac8fa;
 
             --ios-bg: #f2f2f7;
+            --ios-card: #ffffff;
+            --ios-border: rgba(60, 60, 67, 0.10);
+            --ios-border-strong: rgba(60, 60, 67, 0.18);
             --ios-text: #1c1c1e;
             --ios-text-2: #3a3a3c;
             --ios-text-3: #8e8e93;
-
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+            -webkit-text-size-adjust: 100%;
         }
 
         .hotels-page {
@@ -61,7 +73,49 @@
         }
 
         /* ============================================================
-           HEADER — sticky + scrolled state (white glass)
+           GLOBAL POLISH
+           ============================================================ */
+        :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+            outline: 2px solid rgba(255, 180, 0, 0.65);
+            outline-offset: 3px;
+            border-radius: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 10000;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transform: translateY(-180%);
+            transition: transform .3s var(--ease-ios);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           HEADER
            ============================================================ */
         .hotels-page .site-header {
             position: fixed;
@@ -77,8 +131,6 @@
         .hotels-page .site-header.scrolled .nav {
             background: rgba(255, 255, 255, 0.85);
             border-color: rgba(60, 60, 67, 0.10);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
 
         .hotels-page .site-header.scrolled .nav-links a,
@@ -87,8 +139,7 @@
         }
 
         .hotels-page .site-header.scrolled .nav-links a:hover,
-        .hotels-page .site-header.scrolled .nav-links a.active,
-        .hotels-page .site-header.scrolled .nav-about:hover {
+        .hotels-page .site-header.scrolled .nav-links a.active {
             color: #000;
             background: rgba(0, 0, 0, 0.05);
         }
@@ -104,8 +155,8 @@
            ============================================================ */
         .hotels-page .hotels-hero {
             position: relative;
-            min-height: 620px;
-            padding: 160px 0 100px;
+            min-height: 760px;
+            padding: 170px 0 130px;
             display: flex;
             align-items: center;
             overflow: hidden;
@@ -139,12 +190,10 @@
             background:
                 linear-gradient(180deg,
                     rgba(0, 0, 0, 0.55) 0%,
-                    rgba(0, 0, 0, 0.35) 40%,
+                    rgba(0, 0, 0, 0.30) 40%,
                     rgba(0, 0, 0, 0.55) 75%,
                     rgba(242, 242, 247, 1) 100%),
-                radial-gradient(ellipse at 30% 40%,
-                    rgba(0, 122, 255, 0.14),
-                    transparent 60%);
+                radial-gradient(ellipse at 30% 45%, rgba(255, 180, 0, 0.16), transparent 60%);
         }
 
         .hotels-page .hotels-hero-content {
@@ -152,6 +201,17 @@
             z-index: 2;
             color: #fff;
             max-width: 1200px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 48px;
+            align-items: end;
+        }
+
+        @media (max-width: 980px) {
+            .hotels-page .hotels-hero-content {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
         }
 
         .hotels-page .eyebrow-pill {
@@ -177,47 +237,106 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--ios-orange);
-            box-shadow: 0 0 0 4px rgba(255, 149, 0, 0.22);
+            background: var(--ios-gold);
+            box-shadow: 0 0 0 4px rgba(255, 210, 26, 0.22);
             animation: statusPulse 2.4s ease-in-out infinite;
         }
 
         .hotels-page .hotels-hero h1 {
-            margin: 24px 0 20px;
+            margin: 26px 0 22px;
             font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(58px, 8vw, 118px);
-            line-height: 0.88;
+            font-size: clamp(58px, 8.4vw, 132px);
+            line-height: 0.86;
             letter-spacing: -0.075em;
             font-weight: 700;
-            max-width: 850px;
+            max-width: 950px;
             color: #fff;
             animation: fadeUp 1s 0.1s var(--ease-ios) both;
         }
 
         .hotels-page .hotels-hero h1 em {
             font-style: normal;
-            background: linear-gradient(135deg, #ffd21a 0%, #ffb400 50%, #ffe680 100%);
+            background: linear-gradient(135deg, #ffd21a 0%, #ff9500 60%, #ffb400 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
         }
 
-        .hotels-page .hotels-hero>.container>p {
-            max-width: 560px;
-            font-size: 17px;
+        .hotels-page .hotels-hero-lead {
+            max-width: 580px;
+            font-size: 17.5px;
             line-height: 1.65;
             color: rgba(255, 255, 255, 0.86);
             margin: 0;
             animation: fadeUp 1s 0.2s var(--ease-ios) both;
         }
 
+        .hotels-page .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeUp 1s 0.3s var(--ease-ios) both;
+        }
+
+        .hotels-page .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+            transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios), background 0.25s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .hotels-page .button-primary {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            box-shadow: 0 12px 32px rgba(255, 180, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .hotels-page .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(255, 180, 0, 0.45);
+        }
+
+        .hotels-page .button-dark {
+            background: #0b0b0b;
+            color: #fff;
+        }
+
+        .hotels-page .button-dark:hover {
+            background: #1a1a1c;
+            transform: translateY(-2px);
+        }
+
+        .hotels-page .hero-secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .hotels-page .hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-3px);
+        }
+
         .hotels-page .hero-stats-row {
             display: flex;
-            gap: 32px;
+            gap: 34px;
             flex-wrap: wrap;
-            margin-top: 34px;
-            animation: fadeUp 1s 0.3s var(--ease-ios) both;
+            margin-top: 48px;
+            animation: fadeUp 1s 0.4s var(--ease-ios) both;
         }
 
         .hotels-page .hero-stat {
@@ -232,18 +351,211 @@
             font-weight: 700;
             letter-spacing: -0.04em;
             color: #fff;
+            font-variant-numeric: tabular-nums;
         }
 
         .hotels-page .hero-stat span {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.55);
         }
 
+        /* ---------- HERO-PICK CARD ---------- */
+        .hotels-page .hero-pick {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            padding: 26px 26px 24px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 0.5px solid rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            color: #fff;
+            animation: fadeUp 1s 0.5s var(--ease-ios) both;
+        }
+
+        .hotels-page .hero-pick::before {
+            content: "";
+            position: absolute;
+            inset: -50% -20% auto auto;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 210, 26, 0.30), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hotels-page .hero-pick-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.72);
+            margin: 0 0 14px;
+            position: relative;
+        }
+
+        .hotels-page .hero-pick-eyebrow .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 210, 26, 0.28);
+        }
+
+        .hotels-page .hero-pick h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(22px, 2.4vw, 28px);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.08;
+            margin: 0 0 8px;
+            position: relative;
+            color: #fff;
+        }
+
+        .hotels-page .hero-pick-location {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.68);
+            margin: 0 0 18px;
+            position: relative;
+        }
+
+        .hotels-page .hero-pick-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hotels-page .hero-pick-meta span {
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 0.5px solid rgba(255, 255, 255, 0.22);
+            color: rgba(255, 255, 255, 0.94);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .hotels-page .hero-pick-meta span.gold {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            border-color: transparent;
+            color: #0a0a0a;
+        }
+
+        .hotels-page .hero-pick-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+
+        .hotels-page .hero-pick-price small {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3px;
+        }
+
+        .hotels-page .hero-pick-price strong {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #ffd21a;
+        }
+
+        .hotels-page .hero-pick-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: #fff;
+            color: #0a0a0a;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform .24s var(--ease-spring), box-shadow .24s;
+        }
+
+        .hotels-page .hero-pick-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 255, 255, 0.24);
+        }
+
         /* ============================================================
-           SEARCH / FILTER SECTION
+           SECTION HEADER
+           ============================================================ */
+        .hotels-page .section-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .hotels-page .section-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .hotels-page .section-header h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(42px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.065em;
+            margin: 12px 0 0;
+            color: var(--ios-text);
+        }
+
+        .hotels-page .section-header h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffb400, #ff9500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hotels-page .section-header>p {
+            margin: 0;
+            color: var(--ios-text-3);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .hotels-page .eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin: 0 0 8px;
+        }
+
+        /* ============================================================
+           CATALOG
            ============================================================ */
         .hotels-page .hotels-section {
             position: relative;
@@ -252,17 +564,18 @@
             margin-top: -60px;
         }
 
+        /* ---------- SEARCH PANEL ---------- */
         .hotels-page .search-card {
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.18);
-            border-radius: 28px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            padding: 24px;
+            border-radius: 26px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            padding: 22px 24px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr) auto;
+            grid-template-columns: 1fr 1fr 1fr auto;
             gap: 14px;
             align-items: end;
-            margin-bottom: 34px;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 900px) {
@@ -274,20 +587,21 @@
         .hotels-page .field {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 7px;
         }
 
         .hotels-page .field label {
-            font-size: 10.5px;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--ios-text-3);
         }
 
         .hotels-page .field select,
         .hotels-page .field input {
-            padding: 12px 14px;
+            width: 100%;
+            padding: 13px 16px;
             border-radius: 14px;
             border: 0.5px solid rgba(60, 60, 67, 0.18);
             background: rgba(120, 120, 128, 0.04);
@@ -295,92 +609,293 @@
             font-family: inherit;
             color: var(--ios-text);
             outline: none;
-            transition: border-color 0.2s var(--ease-ios), box-shadow 0.2s var(--ease-ios), background 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
 
         .hotels-page .field select:focus,
         .hotels-page .field input:focus {
-            border-color: rgba(0, 122, 255, 0.5);
+            border-color: rgba(255, 180, 0, 0.5);
             background: #fff;
-            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.10);
+            box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.10);
         }
 
-        .hotels-page .search-card .btn {
-            padding: 14px 22px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #1a8cff, #007aff 55%, #0060d0);
-            color: #fff;
+        .hotels-page .search-card .button {
+            height: 48px;
+            align-self: end;
+        }
+
+        /* ---------- FEATURED SPOTLIGHT ---------- */
+        .hotels-page .hotel-featured {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+            gap: 0;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .hotels-page .hotel-featured {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hotels-page .hotel-featured-media {
+            position: relative;
+            min-height: 340px;
+            background-size: cover;
+            background-position: center;
+            transition: transform .9s var(--ease-ios);
+        }
+
+        .hotels-page .hotel-featured:hover .hotel-featured-media {
+            transform: scale(1.04);
+        }
+
+        .hotels-page .hotel-featured-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.32), rgba(255, 180, 0, 0.12) 70%);
+        }
+
+        .hotels-page .hotel-featured-body {
+            padding: 34px 36px 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 700px) {
+            .hotels-page .hotel-featured-body {
+                padding: 26px 22px;
+            }
+        }
+
+        .hotels-page .hotel-featured-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #d97706;
+            margin-bottom: 12px;
+        }
+
+        .hotels-page .hotel-featured-eyebrow .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 210, 26, 0.22);
+        }
+
+        .hotels-page .hotel-featured h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(26px, 3.2vw, 38px);
             font-weight: 700;
-            font-size: 14px;
-            border: 0;
-            cursor: pointer;
-            transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-ios);
-            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.32);
-            white-space: nowrap;
-            font-family: inherit;
-            height: 46px;
+            letter-spacing: -0.045em;
+            line-height: 1.05;
+            margin: 0 0 10px;
+            color: var(--ios-text);
         }
 
-        .hotels-page .search-card .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 122, 255, 0.42);
+        .hotels-page .hotel-featured-location {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+            margin: 0 0 14px;
         }
 
-        /* Filter chips */
-        .hotels-page .filter-row {
+        .hotels-page .hotel-featured p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--ios-text-2);
+            margin: 0 0 22px;
+            max-width: 460px;
+        }
+
+        .hotels-page .hotel-featured-meta {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 28px;
-            align-items: center;
+            margin-bottom: 22px;
         }
 
-        .hotels-page .filter-row>span {
+        .hotels-page .hotel-featured-meta span {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(120, 120, 128, 0.08);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+            color: var(--ios-text-2);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ios-text-3);
-            margin-right: 6px;
         }
 
-        .hotels-page .filter-chip {
+        .hotels-page .hotel-featured-meta span.score {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            border-color: transparent;
+            color: #0a0a0a;
+        }
+
+        .hotels-page .hotel-featured-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .hotel-featured-actions .button {
+            padding: 12px 22px;
+            font-size: 13px;
+        }
+
+        /* ---------- CONTROLS ---------- */
+        .hotels-page .hotel-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 20px 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            border-radius: 26px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+
+        .hotels-page .hotel-controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .hotel-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .hotel-filter {
             display: inline-flex;
             align-items: center;
             gap: 7px;
             padding: 9px 16px;
             border-radius: 999px;
-            background: #fff;
-            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            background: rgba(120, 120, 128, 0.06);
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
             font-size: 12.5px;
             font-weight: 600;
             color: var(--ios-text-2);
             cursor: pointer;
             transition: all 0.24s var(--ease-spring);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
             font-family: inherit;
+            white-space: nowrap;
         }
 
-        .hotels-page .filter-chip:hover {
-            border-color: rgba(0, 122, 255, 0.4);
-            color: var(--ios-blue);
+        .hotels-page .hotel-filter:hover {
+            background: rgba(255, 180, 0, 0.08);
+            border-color: rgba(255, 180, 0, 0.30);
+            color: #b47800;
             transform: translateY(-1.5px);
-            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.12);
         }
 
-        .hotels-page .filter-chip.active {
-            background: linear-gradient(135deg, #1a8cff, #007aff 55%, #0060d0);
+        .hotels-page .hotel-filter.active {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
             border-color: transparent;
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.30);
+            color: #0a0a0a;
+            box-shadow: 0 6px 20px rgba(255, 180, 0, 0.30);
         }
 
-        .hotels-page .filter-chip .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: currentColor;
-            opacity: 0.65;
+        .hotels-page .hotel-filter .filter-count {
+            padding: 1px 7px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.08);
+            font-size: 10.5px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hotels-page .hotel-filter.active .filter-count {
+            background: rgba(255, 255, 255, 0.40);
+        }
+
+        .hotels-page .hotel-search-sort {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .hotel-sort {
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            background: rgba(120, 120, 128, 0.04);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--ios-text);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .hotels-page .hotel-sort:focus {
+            border-color: rgba(255, 180, 0, 0.5);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.10);
+        }
+
+        .hotels-page .hotel-view-toggle {
+            display: inline-flex;
+            gap: 2px;
+            padding: 3px;
+            border-radius: 999px;
+            background: rgba(120, 120, 128, 0.08);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+        }
+
+        .hotels-page .hotel-view-toggle button {
+            width: 36px;
+            height: 32px;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--ios-text-3);
+            font-family: inherit;
+            display: grid;
+            place-items: center;
+            transition: all .22s var(--ease-spring);
+        }
+
+        .hotels-page .hotel-view-toggle button:hover {
+            color: var(--ios-text);
+        }
+
+        .hotels-page .hotel-view-toggle button.active {
+            background: #fff;
+            color: var(--ios-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+
+        .hotels-page .hotel-result-count {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+            padding-left: 4px;
+            margin-bottom: 6px;
+        }
+
+        .hotels-page .hotel-result-count strong {
+            color: var(--ios-text);
+            font-weight: 800;
         }
 
         /* ============================================================
@@ -390,6 +905,11 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 22px;
+        }
+
+        .hotels-page .hotel-grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 14px;
         }
 
         @media (max-width: 1000px) {
@@ -411,15 +931,15 @@
             overflow: hidden;
             border: 0.5px solid rgba(60, 60, 67, 0.18);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios);
+            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios), border-color .4s;
             display: flex;
             flex-direction: column;
-            animation: fadeUp 0.6s var(--ease-ios) both;
         }
 
         .hotels-page .hotel-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+            border-color: rgba(255, 180, 0, 0.30);
         }
 
         .hotels-page .hotel-media {
@@ -438,10 +958,9 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent 55%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 55%);
         }
 
-        /* GED score badge */
         .hotels-page .ged-badge {
             position: absolute;
             top: 16px;
@@ -481,7 +1000,6 @@
             text-transform: uppercase;
         }
 
-        /* Favorite button */
         .hotels-page .fav-btn {
             position: absolute;
             top: 16px;
@@ -491,7 +1009,7 @@
             height: 40px;
             border-radius: 50%;
             border: 0.5px solid rgba(255, 255, 255, 0.4);
-            background: rgba(0, 0, 0, 0.28);
+            background: rgba(0, 0, 0, 0.32);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             color: #fff;
@@ -500,11 +1018,12 @@
             display: grid;
             place-items: center;
             transition: all 0.24s var(--ease-spring);
+            padding: 0;
         }
 
         .hotels-page .fav-btn:hover {
             transform: scale(1.08);
-            background: rgba(0, 0, 0, 0.42);
+            background: rgba(0, 0, 0, 0.45);
         }
 
         .hotels-page .fav-btn.active {
@@ -514,7 +1033,6 @@
             box-shadow: 0 6px 20px rgba(255, 149, 0, 0.4);
         }
 
-        /* Card body */
         .hotels-page .hotel-body {
             padding: 20px 22px 22px;
             display: flex;
@@ -535,7 +1053,7 @@
         }
 
         .hotels-page .hotel-meta .pin {
-            color: var(--ios-blue);
+            color: #b47800;
         }
 
         .hotels-page .hotel-body h3 {
@@ -631,18 +1149,55 @@
         }
 
         .hotels-page .hotel-cta:hover {
-            background: linear-gradient(135deg, #1a8cff, #007aff);
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.30);
+            box-shadow: 0 8px 20px rgba(255, 180, 0, 0.35);
         }
 
-        /* ============================================================
-           EMPTY STATE
-           ============================================================ */
+        /* LIST VIEW */
+        .hotels-page .hotel-grid.list-view .hotel-card {
+            flex-direction: row;
+            align-items: stretch;
+            min-height: 200px;
+        }
+
+        .hotels-page .hotel-grid.list-view .hotel-media {
+            width: 300px;
+            flex: 0 0 300px;
+            height: auto;
+            min-height: 200px;
+        }
+
+        .hotels-page .hotel-grid.list-view .hotel-body {
+            padding: 26px 28px;
+        }
+
+        .hotels-page .hotel-grid.list-view .hotel-body h3 {
+            font-size: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .hotels-page .hotel-grid.list-view .hotel-card {
+                flex-direction: column;
+            }
+
+            .hotels-page .hotel-grid.list-view .hotel-media {
+                width: 100%;
+                flex: none;
+                height: 200px;
+                min-height: 200px;
+            }
+        }
+
+        /* EMPTY STATE */
         .hotels-page .empty-state {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 80px 24px;
+            padding: 70px 24px;
+            background: #fff;
+            border-radius: 26px;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
             color: var(--ios-text-3);
         }
 
@@ -651,7 +1206,7 @@
             height: 64px;
             margin: 0 auto 16px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.12), rgba(175, 82, 222, 0.08));
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.14), rgba(255, 210, 26, 0.08));
             display: grid;
             place-items: center;
             font-size: 26px;
@@ -666,15 +1221,86 @@
         }
 
         .hotels-page .empty-state p {
-            margin: 0;
+            margin: 0 0 18px;
             font-size: 14px;
+        }
+
+        .hotels-page .empty-state button {
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .24s var(--ease-spring);
+        }
+
+        .hotels-page .empty-state button:hover {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           STATS STRIP
+           ============================================================ */
+        .hotels-page .hotel-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin: 70px 0 0;
+            background: #fff;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (max-width: 720px) {
+            .hotels-page .hotel-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .hotels-page .hotel-stat {
+            padding: 34px 26px;
+            border-right: 0.5px solid rgba(60, 60, 67, 0.10);
+            transition: background 0.3s var(--ease-ios);
+        }
+
+        .hotels-page .hotel-stat:last-child {
+            border-right: 0;
+        }
+
+        .hotels-page .hotel-stat:hover {
+            background: rgba(255, 180, 0, 0.03);
+        }
+
+        .hotels-page .hotel-stat strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: var(--ios-text);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hotels-page .hotel-stat span {
+            color: var(--ios-text-3);
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-top: 6px;
+            display: block;
         }
 
         /* ============================================================
            VALUE SCORE EXPLAINER
            ============================================================ */
         .hotels-page .value-section {
-            padding: 60px 0 100px;
+            padding: 20px 0 100px;
         }
 
         .hotels-page .value-card {
@@ -789,59 +1415,628 @@
         }
 
         /* ============================================================
-           FOOTER — matches packages.html
+           VISUAL BREAK
            ============================================================ */
-        .hotels-page .site-footer {
-            background: #070707;
-            color: #fff;
-            padding: 80px 0 28px;
-        }
-
-        .hotels-page .site-footer .container {
+        .hotels-page .hotel-break {
+            position: relative;
+            min-height: 560px;
+            margin: 20px 0 120px;
+            border-radius: 40px;
+            overflow: hidden;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            align-items: center;
+            isolation: isolate;
         }
 
-        @media (max-width: 720px) {
-            .hotels-page .site-footer .container {
-                grid-template-columns: 1fr;
-                gap: 28px;
+        @media (max-width: 1000px) {
+            .hotels-page .hotel-break {
+                border-radius: 28px;
+                margin: 20px 0 90px;
             }
         }
 
-        .hotels-page .site-footer .brand {
+        .hotels-page .hotel-break-media {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.04);
+            transition: transform 12s ease-out;
+        }
+
+        .hotels-page .hotel-break:hover .hotel-break-media {
+            transform: scale(1.10);
+        }
+
+        .hotels-page .hotel-break::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(120deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(255, 180, 0, 0.10) 100%);
+        }
+
+        .hotels-page .hotel-break-copy {
+            position: relative;
+            z-index: 2;
             color: #fff;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
+            padding: 80px max(6vw, calc((100vw - 1200px) / 2));
+            max-width: 900px;
+        }
+
+        .hotels-page .hotel-break-copy .eyebrow {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hotels-page .hotel-break-copy h2 {
             font-family: "Space Grotesk", sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: clamp(48px, 7vw, 96px);
+            line-height: 0.92;
+            letter-spacing: -0.065em;
+            margin: 15px 0 25px;
+            color: #fff;
         }
 
-        .hotels-page .site-footer .brand small {
-            font-size: 10px;
-            letter-spacing: 0.18em;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 700;
+        .hotels-page .hotel-break-copy h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hotels-page .site-footer p {
-            color: rgba(255, 255, 255, 0.45);
+        .hotels-page .hotel-break-copy p {
+            font-size: 18px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 580px;
+            margin: 0 0 28px;
+        }
+
+        .hotels-page .hotel-break-copy .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            background: #fff;
+            color: #0a0a0a;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.24s var(--ease-spring);
+        }
+
+        .hotels-page .hotel-break-copy .btn:hover {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(255, 180, 0, 0.35);
+        }
+
+        /* ============================================================
+           TOASTS
+           ============================================================ */
+        .hotels-page .toast-stack {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 9997;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .hotels-page .ged-toast {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: rgba(28, 28, 30, 0.94);
+            color: #fff;
             font-size: 13px;
-            margin: 4px 0 0;
+            font-weight: 600;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 0.5px solid rgba(255, 255, 255, 0.10);
+            pointer-events: auto;
+            max-width: 340px;
+            animation: toastIn 0.4s var(--ease-spring) both;
         }
 
-        .hotels-page .site-footer strong {
+        .hotels-page .ged-toast.out {
+            animation: toastOut 0.3s var(--ease-ios) forwards;
+        }
+
+        .hotels-page .ged-toast .toast-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex: 0 0 24px;
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            color: #fff;
+        }
+
+        .hotels-page .ged-toast.success .toast-icon {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+        }
+
+        .hotels-page .ged-toast.warn .toast-icon {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            color: #0a0a0a;
+        }
+
+        .hotels-page .ged-toast.error .toast-icon {
+            background: linear-gradient(135deg, #ff453a, #d70015);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(-14px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes toastOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.96);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hotels-page .toast-stack {
+                top: auto;
+                bottom: 20px;
+                right: 14px;
+                left: 14px;
+            }
+
+            .hotels-page .ged-toast {
+                max-width: none;
+            }
+        }
+
+        /* ============================================================
+           FOOTER — v2
+           ============================================================ */
+        .hotels-page .site-footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            margin-top: clamp(30px, 5vw, 70px);
+            padding: 0;
+            color: rgba(255, 255, 255, .70);
+            background:
+                radial-gradient(900px 420px at 12% -20%, rgba(255, 180, 0, .12), transparent 62%),
+                radial-gradient(700px 380px at 92% 0%, rgba(255, 45, 85, .07), transparent 60%),
+                linear-gradient(180deg, #0b0c10 0%, #08090c 58%, #060709 100%);
+            border-top: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .hotels-page .site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 180, 0, .55), transparent);
+            opacity: .75;
+            pointer-events: none;
+        }
+
+        .hotels-page .site-footer .footer-inner {
+            width: min(1200px, 100% - 48px);
+            margin-inline: auto;
+            padding: clamp(52px, 7vw, 88px) 0 30px;
             display: block;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 10px;
+        }
+
+        .hotels-page .footer-top {
+            display: grid;
+            grid-template-columns: minmax(250px, 1.7fr) repeat(4, minmax(0, 1fr));
+            gap: clamp(28px, 4vw, 44px);
+            padding-bottom: clamp(34px, 5vw, 54px);
+            border-bottom: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .hotels-page .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-width: 340px;
+        }
+
+        .hotels-page .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            width: fit-content;
+        }
+
+        .hotels-page .footer-logo-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            box-shadow: 0 10px 26px rgba(255, 180, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .6);
+            transition: transform .3s var(--ease-spring);
+        }
+
+        .hotels-page .footer-logo:hover .footer-logo-mark {
+            transform: rotate(-6deg) scale(1.05);
+        }
+
+        .hotels-page .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -.03em;
+        }
+
+        .hotels-page .footer-logo-text small {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .22em;
             text-transform: uppercase;
-            letter-spacing: 0.14em;
-            margin-bottom: 12px;
+            color: rgba(255, 255, 255, .42);
+            margin-top: 5px;
+        }
+
+        .hotels-page .footer-tagline {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, .58);
+            margin: 0;
+            max-width: 330px;
+        }
+
+        .hotels-page .footer-socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .footer-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .75);
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            text-decoration: none;
+            transition: transform .28s var(--ease-spring), background .25s, color .25s, border-color .25s, box-shadow .25s;
+        }
+
+        .hotels-page .footer-social svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hotels-page .footer-social:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(255, 180, 0, .30);
+        }
+
+        .hotels-page .footer-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .12);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .62);
+        }
+
+        .hotels-page .footer-chip .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            box-shadow: 0 0 0 3px rgba(255, 210, 26, .20);
+        }
+
+        .hotels-page .footer-col h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            margin: 0 0 18px;
+        }
+
+        .hotels-page .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .hotels-page .footer-col a {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .72);
+            text-decoration: none;
+            transition: color .22s var(--ease-ios), transform .22s var(--ease-ios);
+        }
+
+        .hotels-page .footer-col a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1.5px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ffd21a, #ffb400);
+            transition: width .28s var(--ease-ios);
+        }
+
+        .hotels-page .footer-col a:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .hotels-page .footer-col a:hover::after {
+            width: 100%;
+        }
+
+        .hotels-page .footer-band {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: clamp(32px, 4vw, 48px) 0;
+            padding: clamp(26px, 3.4vw, 38px) clamp(24px, 3.2vw, 40px);
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+            border: 0.5px solid rgba(255, 255, 255, .10);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+        }
+
+        .hotels-page .footer-band::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 180, 0, .18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hotels-page .footer-band-eyebrow {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 180, 0, .9);
+            margin: 0 0 8px;
+        }
+
+        .hotels-page .footer-band h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(21px, 2.6vw, 30px);
+            font-weight: 700;
+            letter-spacing: -.04em;
+            color: #fff;
+            margin: 0;
+            line-height: 1.12;
+        }
+
+        .hotels-page .footer-band h3 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hotels-page .footer-band-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hotels-page .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            white-space: nowrap;
+            transition: transform .26s var(--ease-spring), box-shadow .26s, background .26s, color .26s;
+        }
+
+        .hotels-page .footer-btn-primary {
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            color: #0a0a0a;
+            box-shadow: 0 12px 30px rgba(255, 180, 0, .28);
+        }
+
+        .hotels-page .footer-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(255, 180, 0, .38);
+        }
+
+        .hotels-page .footer-btn-ghost {
+            background: rgba(255, 255, 255, .07);
+            color: #fff;
+            border: 0.5px solid rgba(255, 255, 255, .18);
+        }
+
+        .hotels-page .footer-btn-ghost:hover {
+            background: rgba(255, 255, 255, .13);
+            transform: translateY(-3px);
+        }
+
+        .hotels-page .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 26px;
+            border-top: 0.5px solid rgba(255, 255, 255, .08);
+        }
+
+        .hotels-page .footer-bottom>p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .42);
+            max-width: 660px;
+        }
+
+        .hotels-page .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .footer-credits {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .hotels-page .footer-credits li {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .55);
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 0.5px solid rgba(255, 255, 255, .10);
+        }
+
+        .hotels-page .footer-top-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(255, 255, 255, .14);
+            transition: all .25s var(--ease-ios);
+        }
+
+        .hotels-page .footer-top-link:hover {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, #ffd21a, #ffb400);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 180, 0, .28);
+        }
+
+        @media (max-width: 1080px) {
+            .hotels-page .footer-top {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .hotels-page .footer-brand {
+                grid-column: 1 / -1;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .hotels-page .site-footer .footer-inner {
+                width: min(1200px, 100% - 36px);
+            }
+
+            .hotels-page .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 20px;
+            }
+
+            .hotels-page .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .hotels-page .footer-band {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hotels-page .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hotels-page .footer-bottom-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hotels-page .footer-top {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ============================================================
@@ -894,26 +2089,24 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-        }
 
-        .hotels-page :focus-visible {
-            outline: 3px solid rgba(0, 122, 255, 0.55);
-            outline-offset: 3px;
-            border-radius: 8px;
+            .hotels-page .hotels-hero-media,
+            .hotels-page .hotel-media,
+            .hotels-page .hotel-break-media,
+            .hotels-page .hotel-featured-media {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 
 <body class="hotels-page">
 
-    <!-- ============================================================
-         HEADER
-         ============================================================ -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header" id="site-header">
         <nav class="nav glass" aria-label="Main navigation">
-            <a class="brand" href="../index.html" aria-label="GED Home">
-                <b>G</b><span>GED</span>
-            </a>
+            <a class="brand" href="../index.html" aria-label="GED Home"><b>G</b><span>GED</span></a>
             <div class="nav-links">
                 <a href="../index.html">Explore</a>
                 <a href="events.html">Events</a>
@@ -923,9 +2116,9 @@
                 <a href="help.html">Help</a>
             </div>
             <div class="nav-actions">
-                <button class="icon-btn" type="button" data-search aria-label="Search GED" title="Search">⌕</button>
+                <button class="icon-btn" type="button" data-search aria-label="Search">⌕</button>
                 <a class="nav-about" href="about.html">About</a>
-                <button class="menu-btn" type="button" data-menu aria-label="Open menu">
+                <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false">
                     <i></i><i></i>
                 </button>
             </div>
@@ -941,58 +2134,101 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
 
-        <!-- ============================================================
-             HERO
-             ============================================================ -->
-        <section class="hotels-hero">
-            <div class="hotels-hero-media"></div>
-            <div class="hotels-hero-overlay"></div>
+        <!-- HERO -->
+        <section class="hotels-hero" id="top">
+            <div class="hotels-hero-media" aria-hidden="true"></div>
+            <div class="hotels-hero-overlay" aria-hidden="true"></div>
 
             <div class="container hotels-hero-content">
+                <div>
+                    <div class="eyebrow-pill">
+                        <span class="pill-dot" aria-hidden="true"></span>
+                        GED / Value Score
+                    </div>
 
-                <div class="eyebrow-pill">
-                    <span class="pill-dot" aria-hidden="true"></span>
-                    GED Value Score · Hotels
+                    <h1>
+                        Stay<br>
+                        <em>well.</em>
+                    </h1>
+
+                    <p class="hotels-hero-lead">
+                        Look beyond stars. Compare location, reviews, amenities and price
+                        through one simple GED Score — the stays that actually make sense.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#hotels">
+                            Browse hotels
+                            <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="button hero-secondary" href="packages.html#trip-builder">
+                            Build a trip
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats-row">
+                        <div class="hero-stat">
+                            <strong data-counter="61">0</strong>
+                            <span>Curated stays</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="13">0</strong>
+                            <span>Regions covered</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong data-counter="1">0</strong>
+                            <span>Score to trust</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong>∞</strong>
+                            <span>Nights worth sleeping</span>
+                        </div>
+                    </div>
                 </div>
 
-                <h1>
-                    Stay<br>
-                    <em>well.</em>
-                </h1>
-
-                <p>
-                    Look beyond stars. Compare location, reviews, amenities and price
-                    through one simple GED score.
-                </p>
-
-                <div class="hero-stats-row">
-                    <div class="hero-stat">
-                        <strong>6+</strong>
-                        <span>Curated hotels</span>
+                <aside class="hero-pick" id="heroPick" aria-label="Best value hotel">
+                    <p class="hero-pick-eyebrow">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        Best value tonight
+                    </p>
+                    <h3 id="heroPickTitle">Loading…</h3>
+                    <p class="hero-pick-location" id="heroPickLocation">—</p>
+                    <div class="hero-pick-meta" id="heroPickMeta"></div>
+                    <div class="hero-pick-price">
+                        <div>
+                            <small>From · per night</small>
+                            <strong id="heroPickPrice">—</strong>
+                        </div>
+                        <button type="button" class="hero-pick-cta" id="heroPickCta">
+                            See stay
+                            <span aria-hidden="true">↗</span>
+                        </button>
                     </div>
-                    <div class="hero-stat">
-                        <strong>13</strong>
-                        <span>Regions covered</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>1</strong>
-                        <span>Score to trust</span>
-                    </div>
-                </div>
-
+                </aside>
             </div>
         </section>
 
-        <!-- ============================================================
-             SEARCH + GRID
-             ============================================================ -->
-        <section class="hotels-section">
+        <!-- CATALOG -->
+        <section class="hotels-section" id="hotels" aria-labelledby="hotels-title">
             <div class="container">
 
-                <!-- Search panel -->
-                <div class="search-card" role="search" aria-label="Search hotels">
+                <div class="section-header reveal">
+                    <div>
+                        <p class="eyebrow">Curated catalogue</p>
+                        <h2 id="hotels-title">Sleep well, <em>everywhere.</em></h2>
+                    </div>
+                    <p>
+                        Every stay is scored with the GED Value Score — reviews, location,
+                        amenities and price in one number. Filter, sort and compare without
+                        opening ten tabs.
+                    </p>
+                </div>
+
+                <!-- SEARCH PANEL -->
+                <div class="search-card reveal" role="search" aria-label="Search hotels">
                     <div class="field">
                         <label for="hotel-city">City</label>
                         <select id="hotel-city">
@@ -1003,6 +2239,10 @@
                             <option>Ottawa</option>
                             <option>Banff</option>
                             <option>Yellowknife</option>
+                            <option>Quebec City</option>
+                            <option>Calgary</option>
+                            <option>Halifax</option>
+                            <option>Winnipeg</option>
                         </select>
                     </div>
 
@@ -1016,42 +2256,108 @@
                         <input id="hotel-nights" type="text" value="4 nights" autocomplete="off">
                     </div>
 
-                    <button class="btn" id="hotel-search-btn" type="button">Search stays</button>
-                </div>
-
-                <!-- Filter chips -->
-                <div class="filter-row" role="tablist" aria-label="Hotel type filters">
-                    <span>Filter</span>
-                    <button class="filter-chip active" data-filter="all" role="tab">
-                        <span class="dot"></span> All hotels
-                    </button>
-                    <button class="filter-chip" data-filter="premium" role="tab">
-                        <span class="dot"></span> Premium (9.0+)
-                    </button>
-                    <button class="filter-chip" data-filter="mid" role="tab">
-                        <span class="dot"></span> Mid-range (8.5–9.0)
-                    </button>
-                    <button class="filter-chip" data-filter="budget" role="tab">
-                        <span class="dot"></span> Under CA$180
+                    <button class="button button-primary" id="hotel-search-btn" type="button">
+                        Search stays <span aria-hidden="true">↗</span>
                     </button>
                 </div>
 
-                <!-- Grid -->
-                <div class="hotel-grid" id="hotel-grid" aria-live="polite">
-                    <!-- populated by JS -->
+                <!-- FEATURED SPOTLIGHT -->
+                <article class="hotel-featured reveal" id="hotelFeatured" hidden>
+                    <div class="hotel-featured-media" id="featuredMedia" role="img" aria-label="Featured hotel image">
+                    </div>
+                    <div class="hotel-featured-body">
+                        <p class="hotel-featured-eyebrow">
+                            <span class="badge-dot" aria-hidden="true"></span>
+                            Best value in the catalogue
+                        </p>
+                        <h3 id="featuredTitle">—</h3>
+                        <p class="hotel-featured-location" id="featuredLocation">—</p>
+                        <p id="featuredDescription">—</p>
+                        <div class="hotel-featured-meta" id="featuredMeta"></div>
+                        <div class="hotel-featured-actions">
+                            <button type="button" class="button button-primary" id="featuredCta">
+                                View stay <span aria-hidden="true">↗</span>
+                            </button>
+                            <button type="button" class="button button-dark" id="featuredPlan">
+                                Plan around this
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CONTROLS -->
+                <div class="hotel-controls reveal">
+                    <div class="hotel-controls-row">
+                        <div class="hotel-filters" id="hotelFilters" role="group" aria-label="Filter hotels">
+                            <button class="hotel-filter active" data-filter="all" aria-pressed="true">
+                                All hotels <span class="filter-count" data-count="all">0</span>
+                            </button>
+                            <button class="hotel-filter" data-filter="premium" aria-pressed="false">
+                                Premium (9.0+) <span class="filter-count" data-count="premium">0</span>
+                            </button>
+                            <button class="hotel-filter" data-filter="mid" aria-pressed="false">
+                                Mid-range <span class="filter-count" data-count="mid">0</span>
+                            </button>
+                            <button class="hotel-filter" data-filter="budget" aria-pressed="false">
+                                Under CA$180 <span class="filter-count" data-count="budget">0</span>
+                            </button>
+                        </div>
+
+                        <div class="hotel-search-sort">
+                            <label class="sr-only" for="hotelSort">Sort hotels</label>
+                            <select class="hotel-sort" id="hotelSort">
+                                <option value="score">Sort: GED Score</option>
+                                <option value="price-low">Sort: Price low → high</option>
+                                <option value="price-high">Sort: Price high → low</option>
+                                <option value="name">Sort: Name (A–Z)</option>
+                            </select>
+
+                            <div class="hotel-view-toggle" role="group" aria-label="View mode">
+                                <button type="button" data-view-mode="grid" class="active" aria-label="Grid view"
+                                    aria-pressed="true">▦</button>
+                                <button type="button" data-view-mode="list" aria-label="List view"
+                                    aria-pressed="false">☰</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="hotel-result-count" id="hotelResultCount" aria-live="polite">
+                    Showing <strong>0</strong> hotels
+                </p>
+
+                <!-- HOTEL GRID -->
+                <div class="hotel-grid" id="hotel-grid"></div>
+
+                <!-- STATS -->
+                <div class="hotel-stats reveal">
+                    <div class="hotel-stat">
+                        <strong data-counter="61">0</strong>
+                        <span>Curated stays</span>
+                    </div>
+                    <div class="hotel-stat">
+                        <strong data-counter="13">0</strong>
+                        <span>Regions covered</span>
+                    </div>
+                    <div class="hotel-stat">
+                        <strong data-counter="5">0</strong>
+                        <span>Score pillars</span>
+                    </div>
+                    <div class="hotel-stat">
+                        <strong>∞</strong>
+                        <span>Nights of sleep</span>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- ============================================================
-             VALUE SCORE EXPLAINER
-             ============================================================ -->
+        <!-- VALUE SCORE EXPLAINER -->
         <section class="value-section">
             <div class="container">
                 <div class="value-card reveal">
                     <div>
-                        <div class="eyebrow" style="color:rgba(255,255,255,.55)">How the GED score works</div>
+                        <div class="eyebrow" style="color:rgba(255,255,255,.55)">How the GED Score works</div>
                         <h2>
                             Stars don't tell<br>
                             <em>the whole story.</em>
@@ -1097,90 +2403,334 @@
             </div>
         </section>
 
+        <!-- VISUAL BREAK -->
+        <section class="container">
+            <div class="hotel-break reveal">
+                <div class="hotel-break-media" role="img" aria-label="Hotel room with a view"
+                    style="background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2200&q=90')">
+                </div>
+                <div class="hotel-break-copy">
+                    <p class="eyebrow">Sleep is part of the journey</p>
+                    <h2>A hotel is not a <em>place to crash.</em></h2>
+                    <p>
+                        A great stay is the difference between a trip you survive
+                        and one you actually remember. Pick by value, not by stars.
+                    </p>
+                    <a class="btn" href="packages.html#trip-builder">
+                        Open the trip builder
+                        <span aria-hidden="true">↘</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- ============================================================
-         FOOTER — matches packages.html
+         FOOTER — v2
          ============================================================ -->
-    <footer class="site-footer">
-        <div class="container">
-            <div>
-                <a class="brand" href="../index.html">
-                    <span>GED</span>
-                    <small>TRAVEL AGENCY</small>
-                </a>
-                <p>Explore Canada with a trip designed around you.</p>
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="../index.html" aria-label="GED Travel Agency — home">
+                        <span class="footer-logo-mark" aria-hidden="true">G</span>
+                        <span class="footer-logo-text">
+                            GED
+                            <small>Travel Agency</small>
+                        </span>
+                    </a>
+
+                    <p class="footer-tagline">
+                        Canada, made accessible. Destinations, flights, hotels,
+                        events and packages — one system, one trip, designed
+                        around you.
+                    </p>
+
+                    <div class="footer-socials" aria-label="GED on social media">
+                        <a class="footer-social" href="https://www.instagram.com/edparducci/"
+                            aria-label="GED on Instagram" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="https://www.youtube.com/@edparducci" aria-label="GED on YouTube"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                            </svg>
+                        </a>
+                        <a class="footer-social" href="mailto:edgarparducci@gmail.com"
+                            aria-label="Contact GED by email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                <path d="m3.5 7.5 8.5 6 8.5-6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <span class="footer-chip">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        School project · 1°D
+                    </span>
+                </div>
+
+                <nav class="footer-col" aria-labelledby="footer-explore">
+                    <h3 id="footer-explore">Explore</h3>
+                    <ul>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-plan">
+                    <h3 id="footer-plan">Plan</h3>
+                    <ul>
+                        <li><a href="packages.html#trip-builder">Trip builder</a></li>
+                        <li><a href="packages.html#packages">Package catalogue</a></li>
+                        <li><a href="hotels.html">GED Value Score</a></li>
+                        <li><a href="flights.html">Route comparison</a></li>
+                        <li><a href="destinations.html">Canada Explorer</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-company">
+                    <h3 id="footer-company">Company</h3>
+                    <ul>
+                        <li><a href="about.html">About GED</a></li>
+                        <li><a href="about.html#team">The team</a></li>
+                        <li><a href="help.html">Help centre</a></li>
+                        <li><a href="help.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-labelledby="footer-support">
+                    <h3 id="footer-support">Support</h3>
+                    <ul>
+                        <li><a href="help.html#faq">FAQ</a></li>
+                        <li><a href="help.html#privacy">Privacy</a></li>
+                        <li><a href="help.html#terms">Terms of use</a></li>
+                        <li><a href="help.html#accessibility">Accessibility</a></li>
+                        <li><a href="help.html#credits">Credits</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div>
-                <strong>Project</strong>
-                <p>Geovana · Edgar · Aline</p>
-                <p>School Project · 1°D</p>
+
+            <div class="footer-band">
+                <div>
+                    <p class="footer-band-eyebrow">Ready when you are</p>
+                    <h3>Let's build the Canada trip <em>you actually want.</em></h3>
+                </div>
+                <div class="footer-band-actions">
+                    <a class="footer-btn footer-btn-primary" href="packages.html#trip-builder">
+                        Open the builder <span aria-hidden="true">↘</span>
+                    </a>
+                    <a class="footer-btn footer-btn-ghost" href="destinations.html">
+                        Browse destinations <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <strong>Notice</strong>
-                <p>Educational project · No commercial transactions.</p>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="footerYear">2026</span> GED Travel Agency — educational
+                    project. Prices, availability and events shown throughout the site
+                    are illustrative and not bookable. No commercial transactions are
+                    processed.
+                </p>
+
+                <div class="footer-bottom-right">
+                    <ul class="footer-credits" aria-label="Project credits">
+                        <li>Geovana</li>
+                        <li>Edgar</li>
+                        <li>Aline</li>
+                        <li>1°D</li>
+                    </ul>
+
+                    <a class="footer-top-link" href="#top" aria-label="Back to top of page">
+                        Back to top <span aria-hidden="true">↑</span>
+                    </a>
+                </div>
             </div>
+
         </div>
     </footer>
 
-    <!-- ============================================================
-         SEARCH OVERLAY
-         ============================================================ -->
-    <div class="search-overlay" data-search-overlay aria-hidden="true">
-        <div class="search-box glass" role="dialog" aria-modal="true" aria-labelledby="search-title">
-            <button class="close" type="button" data-close-search aria-label="Close search">×</button>
-            <div class="eyebrow dark">GED SEARCH</div>
-            <h2 id="search-title">Where are you going?</h2>
-            <input type="search" data-global-search placeholder="Toronto, events, hotels..." autocomplete="off">
-            <div class="search-results" data-search-results aria-live="polite"></div>
-        </div>
-    </div>
+    <!-- TOASTS -->
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
-    <!-- ============================================================
-         SCRIPTS
-         ============================================================ -->
-    <script src="../js/canada-data.js"></script>
-    <script src="../js/provinces.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/navigation.js"></script>
-    <script src="../js/search.js"></script>
-    <script src="../js/hotels.js"></script>
-    <script src="../js/value-score.js"></script>
+    <!-- SCRIPTS -->
+    <script src="../js/canada-data.js" defer></script>
+    <script src="../js/provinces.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/hotels.js" defer></script>
+    <script src="../js/value-score.js" defer></script>
 
     <script>
-        (function () {
+        document.addEventListener("DOMContentLoaded", () => {
             "use strict";
 
-            /* ------------------------------------------------------
-               HEADER — scrolled state (white glass navbar)
-               ------------------------------------------------------ */
-            var header = document.getElementById("site-header");
+            const $ = (sel, root = document) => root.querySelector(sel);
+            const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+            /* =====================================================
+               FOOTER YEAR
+               ===================================================== */
+            const yearEl = document.getElementById("footerYear");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            /* =====================================================
+               HEADER SCROLL
+               ===================================================== */
+            const header = document.getElementById("site-header");
             if (header) {
-                var onScroll = function () {
-                    header.classList.toggle("scrolled", window.scrollY > 40);
-                };
+                const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
                 window.addEventListener("scroll", onScroll, { passive: true });
                 onScroll();
             }
 
-            var grid = document.getElementById("hotel-grid");
-            var citySelect = document.getElementById("hotel-city");
-            var areaInput = document.getElementById("hotel-area");
-            var searchBtn = document.getElementById("hotel-search-btn");
-            var filterChips = document.querySelectorAll(".filter-chip");
+            /* =====================================================
+               COUNTERS
+               ===================================================== */
+            const counters = $$("[data-counter]");
+            function animateCounter(el) {
+                if (el.dataset.counted === "true") return;
+                el.dataset.counted = "true";
 
-            var currentFilter = "all";
-            var favorites = loadFavorites();
+                const target = Number(el.dataset.counter) || 0;
+                const suffix = el.dataset.suffix || "";
+                const duration = 1400;
+                const start = performance.now();
 
-            /* ------------------------------------------------------
-               Helpers
-               ------------------------------------------------------ */
-
-            function scoreToClass(score) {
-                if (score >= 9.2) return "premium";
-                if (score >= 8.5) return "mid";
-                return "budget";
+                function tick(now) {
+                    const t = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    el.textContent = Math.round(eased * target) + suffix;
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
             }
+
+            if ("IntersectionObserver" in window) {
+                const counterObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.4 });
+                counters.forEach((c) => counterObserver.observe(c));
+            } else {
+                counters.forEach(animateCounter);
+            }
+
+            /* =====================================================
+               TOASTS
+               ===================================================== */
+            const toastStack = document.getElementById("toastStack");
+            const TOAST_ICONS = { info: "i", success: "✓", warn: "!", error: "×" };
+
+            function toast(message, type = "info", duration = 3000) {
+                if (!toastStack) return;
+                const el = document.createElement("div");
+                el.className = "ged-toast " + type;
+                el.setAttribute("role", type === "error" || type === "warn" ? "alert" : "status");
+
+                const icon = document.createElement("span");
+                icon.className = "toast-icon";
+                icon.setAttribute("aria-hidden", "true");
+                icon.textContent = TOAST_ICONS[type] || "i";
+
+                const text = document.createElement("span");
+                text.textContent = message;
+
+                el.append(icon, text);
+                toastStack.appendChild(el);
+
+                setTimeout(() => {
+                    el.classList.add("out");
+                    setTimeout(() => el.remove(), 320);
+                }, duration);
+            }
+
+            /* =====================================================
+               HOTELS DATA
+               =====================================================
+               Format: [name, city, area, price/night, rating, GED score, image]
+               ===================================================== */
+            const HOTELS = [
+                ["Northline House", "Toronto", "Downtown", 189, 4.7, 9.4, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+                ["The Ivy on King", "Toronto", "King West", 245, 4.8, 9.6, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+                ["Queen's Quay Loft", "Toronto", "Harbourfront", 210, 4.6, 9.3, "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"],
+                ["Distillery Rooms", "Toronto", "Distillery District", 232, 4.7, 9.5, "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"],
+
+                ["Harbour 27", "Vancouver", "Downtown", 214, 4.6, 9.2, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+                ["Yaletown Loft", "Vancouver", "Yaletown", 238, 4.7, 9.4, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+                ["Gastown Heritage", "Vancouver", "Gastown", 225, 4.6, 9.3, "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"],
+                ["Coal Harbour Suites", "Vancouver", "Coal Harbour", 285, 4.9, 9.7, "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"],
+
+                ["Old Port Atelier", "Montréal", "Old Montréal", 168, 4.6, 9.1, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+                ["Plateau Maison", "Montréal", "Plateau Mont-Royal", 152, 4.7, 9.3, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+                ["Mile End Studio", "Montréal", "Mile End", 145, 4.5, 9.2, "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"],
+                ["Griffintown Riverside", "Montréal", "Griffintown", 178, 4.8, 9.4, "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"],
+
+                ["ByWard Boutique", "Ottawa", "ByWard Market", 175, 4.5, 9.2, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+                ["Canal View Inn", "Ottawa", "The Glebe", 198, 4.7, 9.4, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+
+                ["Summit Lodge", "Banff", "Town Centre", 242, 4.9, 9.6, "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80"],
+                ["Bow River Retreat", "Banff", "Bow Falls", 295, 4.8, 9.5, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+                ["Tunnel Mountain Cabin", "Banff", "Tunnel Mountain", 210, 4.7, 9.2, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+
+                ["Yellowknife Aurora Suites", "Yellowknife", "Old Town", 245, 4.8, 9.6, "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80"],
+                ["Frame Lake Lodge", "Yellowknife", "Frame Lake", 220, 4.7, 9.4, "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"],
+
+                ["Vieux-Québec Château", "Quebec City", "Old Québec", 210, 4.9, 9.6, "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=800&q=80"],
+                ["Saint-Roch Atelier", "Quebec City", "Saint-Roch", 165, 4.6, 9.2, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+
+                ["Calgary Beltline Suites", "Calgary", "Beltline", 168, 4.6, 9.1, "https://images.unsplash.com/photo-1533228100845-08145b01de14?auto=format&fit=crop&w=800&q=80"],
+                ["Kensington Calgary Loft", "Calgary", "Kensington", 155, 4.5, 9.0, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+
+                ["Halifax Waterfront Inn", "Halifax", "Waterfront", 198, 4.7, 9.3, "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"],
+                ["Hydrostone Heritage", "Halifax", "Hydrostone", 172, 4.6, 9.1, "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"],
+
+                ["Exchange District Loft", "Winnipeg", "Exchange District", 145, 4.6, 9.2, "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+                ["The Forks Riverstay", "Winnipeg", "The Forks", 165, 4.5, 9.0, "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"]
+            ];
+
+            /* =====================================================
+               HELPERS
+               ===================================================== */
+            const hotelGrid = document.getElementById("hotel-grid");
+            const citySelect = document.getElementById("hotel-city");
+            const areaInput = document.getElementById("hotel-area");
+            const searchBtn = document.getElementById("hotel-search-btn");
+            const sortSelect = document.getElementById("hotelSort");
+            const resultCount = document.getElementById("hotelResultCount");
+            const filterBtns = $$(".hotel-filter");
+            const viewToggleBtns = $$("[data-view-mode]");
+
+            let currentFilter = "all";
+            let currentSort = "score";
+            let currentView = "grid";
+            let favorites = loadFavorites();
 
             function loadFavorites() {
                 try {
@@ -1195,8 +2745,8 @@
             }
 
             function matchesFilter(hotel, filter) {
-                var score = Number(hotel[5]);
-                var price = Number(hotel[3]);
+                const score = Number(hotel[5]);
+                const price = Number(hotel[3]);
                 if (filter === "all") return true;
                 if (filter === "premium") return score >= 9.0;
                 if (filter === "mid") return score >= 8.5 && score < 9.0;
@@ -1205,209 +2755,339 @@
             }
 
             function matchesSearch(hotel) {
-                var city = citySelect.value;
-                var area = (areaInput.value || "").trim().toLowerCase();
+                const city = citySelect.value;
+                const area = (areaInput.value || "").trim().toLowerCase();
 
                 if (city && hotel[1] !== city) return false;
                 if (area && !hotel[2].toLowerCase().includes(area)) return false;
                 return true;
             }
 
-            /* ------------------------------------------------------
-               Render
-               ------------------------------------------------------ */
-
-            function hotelCardHTML(hotel) {
-                var name = hotel[0];
-                var city = hotel[1];
-                var area = hotel[2];
-                var price = hotel[3];
-                var rating = hotel[4];
-                var score = hotel[5];
-                var image = hotel[6];
-                var favKey = name + "·" + city;
-                var isFav = favorites.indexOf(favKey) !== -1;
-
-                return (
-                    '<article class="hotel-card" data-city="' + city + '">' +
-                    '<div class="hotel-media" style="background-image:url(\'' + image + '\')">' +
-                    '<button class="fav-btn ' + (isFav ? "active" : "") + '" ' +
-                    'data-fav="' + favKey + '" ' +
-                    'aria-label="Save ' + name + '">' +
-                    (isFav ? "♥" : "♡") +
-                    '</button>' +
-                    '<div class="ged-badge">' +
-                    '<span class="badge-dot"></span>' +
-                    '<span class="badge-num">GED ' + score + '</span>' +
-                    '<span class="badge-label">Value</span>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="hotel-body">' +
-                    '<div class="hotel-meta">' +
-                    '<span class="pin">📍</span>' +
-                    city + ' · ' + area +
-                    '</div>' +
-                    '<h3>' + name + '</h3>' +
-                    '<p class="hotel-desc">' +
-                    'Rated ' + rating + '/5 by guests — a strong balance of comfort and location.' +
-                    '</p>' +
-                    '<div class="hotel-amenities">' +
-                    '<span class="amenity">Wi-Fi</span>' +
-                    '<span class="amenity">Breakfast</span>' +
-                    '<span class="amenity">Free cancel</span>' +
-                    '</div>' +
-                    '<div class="hotel-footer">' +
-                    '<div class="hotel-price">' +
-                    '<small>From</small>' +
-                    '<strong>CA$' + price + '<span>/night</span></strong>' +
-                    '</div>' +
-                    '<button class="hotel-cta" type="button" ' +
-                    'data-name="' + name + '">View ↗</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</article>'
-                );
-            }
-
-            function render() {
-                if (!window.GED_DATA || !Array.isArray(GED_DATA.hotels)) {
-                    grid.innerHTML = emptyStateHTML("No hotel data available.");
-                    return;
-                }
-
-                var hotels = GED_DATA.hotels.filter(function (h) {
+            function getFiltered() {
+                let list = HOTELS.filter(function (h) {
                     return matchesFilter(h, currentFilter) && matchesSearch(h);
                 });
 
-                if (!hotels.length) {
-                    grid.innerHTML = emptyStateHTML(
-                        "No hotels match your filters.",
-                        "Try adjusting the city, area, or filter chips."
-                    );
-                    return;
+                if (currentSort === "price-low") list.sort((a, b) => a[3] - b[3]);
+                else if (currentSort === "price-high") list.sort((a, b) => b[3] - a[3]);
+                else if (currentSort === "name") list.sort((a, b) => String(a[0]).localeCompare(String(b[0])));
+                else list.sort((a, b) => b[5] - a[5]);
+
+                return list;
+            }
+
+            function updateFilterCounts() {
+                const base = HOTELS.filter(matchesSearch);
+                const counts = {
+                    all: base.length,
+                    premium: base.filter(h => Number(h[5]) >= 9.0).length,
+                    mid: base.filter(h => Number(h[5]) >= 8.5 && Number(h[5]) < 9.0).length,
+                    budget: base.filter(h => Number(h[3]) < 180).length
+                };
+
+                $$(".filter-count").forEach(el => {
+                    const key = el.dataset.count;
+                    if (counts[key] !== undefined) el.textContent = counts[key];
+                });
+            }
+
+            /* =====================================================
+               RENDER CARD
+               ===================================================== */
+            function renderHotelCard(hotel) {
+                const [name, city, area, price, rating, score, image] = hotel;
+                const favKey = name + "·" + city;
+                const isFav = favorites.indexOf(favKey) !== -1;
+
+                return `
+                    <article class="hotel-card reveal"
+                             data-city="${city}"
+                             data-area="${area}"
+                             data-score="${score}"
+                             data-price="${price}"
+                             data-name="${name}">
+                        <div class="hotel-media" style="background-image:url('${image}')">
+                            <button class="fav-btn ${isFav ? "active" : ""}"
+                                    data-fav="${favKey}"
+                                    aria-label="${isFav ? "Remove from saved" : "Save hotel"}"
+                                    aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</button>
+                            <div class="ged-badge">
+                                <span class="badge-dot" aria-hidden="true"></span>
+                                <span class="badge-num">GED ${score}</span>
+                                <span class="badge-label">Value</span>
+                            </div>
+                        </div>
+                        <div class="hotel-body">
+                            <div class="hotel-meta">
+                                <span class="pin" aria-hidden="true">📍</span>
+                                ${city} · ${area}
+                            </div>
+                            <h3>${name}</h3>
+                            <p class="hotel-desc">
+                                Rated ${rating}/5 by guests — a strong balance of comfort and location.
+                            </p>
+                            <div class="hotel-amenities">
+                                <span class="amenity">Wi-Fi</span>
+                                <span class="amenity">Breakfast</span>
+                                <span class="amenity">Free cancel</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <small>From</small>
+                                    <strong>CA$${price}<span>/night</span></strong>
+                                </div>
+                                <button class="hotel-cta" type="button"
+                                        data-hotel-name="${name}">
+                                    View <span aria-hidden="true">↗</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }
+
+            /* =====================================================
+               RENDER
+               ===================================================== */
+            function applyViewMode() {
+                hotelGrid.classList.toggle("list-view", currentView === "list");
+                viewToggleBtns.forEach(b => {
+                    const active = b.dataset.viewMode === currentView;
+                    b.classList.toggle("active", active);
+                    b.setAttribute("aria-pressed", String(active));
+                });
+            }
+
+            function render() {
+                const list = getFiltered();
+
+                if (list.length === 0) {
+                    hotelGrid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon" aria-hidden="true">🏨</div>
+                            <h3>No hotels match your filters</h3>
+                            <p>Try adjusting the city, area, or filter chips to see more stays.</p>
+                            <button type="button" id="clearHotelFilters">Clear filters</button>
+                        </div>
+                    `;
+                    const clearBtn = document.getElementById("clearHotelFilters");
+                    if (clearBtn) {
+                        clearBtn.addEventListener("click", () => {
+                            currentFilter = "all";
+                            currentSort = "score";
+                            citySelect.value = "";
+                            areaInput.value = "";
+                            sortSelect.value = "score";
+                            filterBtns.forEach(b => {
+                                const isAll = b.dataset.filter === "all";
+                                b.classList.toggle("active", isAll);
+                                b.setAttribute("aria-pressed", String(isAll));
+                            });
+                            render();
+                        });
+                    }
+                } else {
+                    hotelGrid.innerHTML = list.map(renderHotelCard).join("");
+                    bindCardEvents();
+
+                    requestAnimationFrame(() => {
+                        hotelGrid.querySelectorAll(".reveal").forEach((el, i) => {
+                            setTimeout(() => el.classList.add("visible"), Math.min(i * 30, 600));
+                        });
+                    });
                 }
 
-                grid.innerHTML = hotels.map(hotelCardHTML).join("");
+                if (resultCount) {
+                    resultCount.innerHTML = `Showing <strong>${list.length}</strong> ${list.length === 1 ? "hotel" : "hotels"}`;
+                }
 
-                // Bind fav buttons
-                grid.querySelectorAll(".fav-btn").forEach(function (btn) {
-                    btn.addEventListener("click", function (e) {
-                        e.preventDefault();
+                applyViewMode();
+                updateFilterCounts();
+            }
+
+            function bindCardEvents() {
+                hotelGrid.querySelectorAll("[data-fav]").forEach(btn => {
+                    btn.addEventListener("click", (e) => {
                         e.stopPropagation();
-
-                        var key = btn.getAttribute("data-fav");
-                        var idx = favorites.indexOf(key);
+                        const key = btn.dataset.fav;
+                        const idx = favorites.indexOf(key);
 
                         if (idx === -1) {
                             favorites.push(key);
                             btn.classList.add("active");
                             btn.textContent = "♥";
+                            btn.setAttribute("aria-pressed", "true");
+                            btn.setAttribute("aria-label", "Remove from saved");
+                            toast("Hotel saved", "success", 1600);
                         } else {
                             favorites.splice(idx, 1);
                             btn.classList.remove("active");
                             btn.textContent = "♡";
+                            btn.setAttribute("aria-pressed", "false");
+                            btn.setAttribute("aria-label", "Save hotel");
+                            toast("Hotel removed", "info", 1600);
                         }
                         saveFavorites();
                     });
                 });
 
-                // Bind "view" buttons → toast
-                grid.querySelectorAll(".hotel-cta").forEach(function (btn) {
-                    btn.addEventListener("click", function () {
-                        var name = btn.getAttribute("data-name");
-                        if (window.GED && typeof GED.toast === "function") {
-                            GED.toast(name + " — full details coming soon.");
-                        } else {
-                            alert(name + " — full details coming soon.");
-                        }
-                    });
-                });
-
-                // Reveal animation
-                requestAnimationFrame(function () {
-                    grid.querySelectorAll(".hotel-card").forEach(function (card, i) {
-                        card.style.animationDelay = (i * 60) + "ms";
-                        card.classList.add("reveal", "visible");
+                hotelGrid.querySelectorAll("[data-hotel-name]").forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const name = btn.dataset.hotelName;
+                        toast(`${name} — full details coming soon.`, "info", 2600);
                     });
                 });
             }
 
-            function emptyStateHTML(title, subtitle) {
-                return (
-                    '<div class="empty-state">' +
-                    '<div class="empty-icon">🏨</div>' +
-                    '<h3>' + title + '</h3>' +
-                    (subtitle ? '<p>' + subtitle + '</p>' : '') +
-                    '</div>'
-                );
-            }
-
-            /* ------------------------------------------------------
-               Events
-               ------------------------------------------------------ */
-
-            filterChips.forEach(function (chip) {
-                chip.addEventListener("click", function () {
-                    filterChips.forEach(function (c) {
-                        c.classList.remove("active");
+            /* =====================================================
+               EVENTS
+               ===================================================== */
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-pressed", "false");
                     });
-                    chip.classList.add("active");
-                    currentFilter = chip.getAttribute("data-filter");
+                    btn.classList.add("active");
+                    btn.setAttribute("aria-pressed", "true");
+                    currentFilter = btn.dataset.filter;
                     render();
                 });
             });
 
-            if (citySelect) citySelect.addEventListener("change", render);
-            if (areaInput) areaInput.addEventListener("input", debounce(render, 220));
-            if (searchBtn) {
-                searchBtn.addEventListener("click", function () {
-                    render();
-                    if (window.GED && typeof GED.toast === "function") {
-                        GED.toast("Hotel search updated.");
-                    }
+            sortSelect.addEventListener("change", () => {
+                currentSort = sortSelect.value;
+                render();
+            });
+
+            citySelect.addEventListener("change", render);
+            areaInput.addEventListener("input", debounce(render, 220));
+
+            searchBtn.addEventListener("click", () => {
+                render();
+                toast("Hotel search updated.", "info", 1600);
+                document.getElementById("hotels").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+
+            viewToggleBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    currentView = btn.dataset.viewMode;
+                    applyViewMode();
                 });
-            }
+            });
 
             function debounce(fn, ms) {
-                var t;
+                let t;
                 return function () {
                     clearTimeout(t);
-                    var args = arguments;
-                    var self = this;
-                    t = setTimeout(function () { fn.apply(self, args); }, ms);
+                    const args = arguments;
+                    const self = this;
+                    t = setTimeout(() => fn.apply(self, args), ms);
                 };
             }
 
-            /* ------------------------------------------------------
-               Reveal on scroll for the value section
-               ------------------------------------------------------ */
+            /* =====================================================
+               HERO-PICK (best value tonight)
+               ===================================================== */
+            function initHeroPick() {
+                const best = [...HOTELS].sort((a, b) => b[5] - a[5])[0];
+                if (!best) return;
 
-            var revealEls = document.querySelectorAll(".reveal");
+                const [name, city, area, price, rating, score] = best;
+
+                const titleEl = document.getElementById("heroPickTitle");
+                const locEl = document.getElementById("heroPickLocation");
+                const metaEl = document.getElementById("heroPickMeta");
+                const priceEl = document.getElementById("heroPickPrice");
+                const ctaEl = document.getElementById("heroPickCta");
+
+                titleEl.textContent = name;
+                locEl.textContent = `${city} · ${area}`;
+                metaEl.innerHTML = `
+                    <span class="gold">GED ${score}</span>
+                    <span>★ ${rating}</span>
+                    <span>${area}</span>
+                `;
+                priceEl.textContent = `CA$${price}`;
+
+                ctaEl.addEventListener("click", () => {
+                    citySelect.value = city;
+                    areaInput.value = area;
+                    render();
+                    document.getElementById("hotels").scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            }
+
+            /* =====================================================
+               FEATURED SPOTLIGHT
+               ===================================================== */
+            function initFeaturedSpotlight() {
+                const best = [...HOTELS].sort((a, b) => b[5] - a[5])[0];
+                if (!best) return;
+
+                const [name, city, area, price, rating, score, image] = best;
+
+                const card = document.getElementById("hotelFeatured");
+                document.getElementById("featuredMedia").style.backgroundImage = `url('${image}')`;
+                document.getElementById("featuredMedia").setAttribute("aria-label", `Image for ${name}`);
+                document.getElementById("featuredTitle").textContent = name;
+                document.getElementById("featuredLocation").textContent = `${city} · ${area}`;
+                document.getElementById("featuredDescription").textContent =
+                    `Rated ${rating}/5 by guests. Located in ${area}, one of the strongest value stays in our catalogue.`;
+                document.getElementById("featuredMeta").innerHTML = `
+                    <span>📍 ${city}</span>
+                    <span>★ ${rating}</span>
+                    <span>CA$${price}/night</span>
+                    <span class="score">GED ${score}</span>
+                `;
+
+                document.getElementById("featuredCta").addEventListener("click", () => {
+                    citySelect.value = city;
+                    areaInput.value = area;
+                    render();
+                    document.getElementById("hotels").scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+
+                document.getElementById("featuredPlan").addEventListener("click", () => {
+                    window.location.href = "packages.html#trip-builder";
+                });
+
+                card.hidden = false;
+            }
+
+            /* =====================================================
+               REVEAL ON SCROLL (static .reveal)
+               ===================================================== */
+            const revealEls = $$(".reveal:not(.hotel-card)");
             if ("IntersectionObserver" in window) {
-                var obs = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
+                const obs = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("visible");
-                            obs.unobserve(entry.target);
+                            observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.12 });
-                revealEls.forEach(function (el) { obs.observe(el); });
+                }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+                revealEls.forEach(el => obs.observe(el));
             } else {
-                revealEls.forEach(function (el) { el.classList.add("visible"); });
+                revealEls.forEach(el => el.classList.add("visible"));
             }
 
-            /* ------------------------------------------------------
-               Init
-               ------------------------------------------------------ */
+            /* =====================================================
+               INIT
+               ===================================================== */
+            initHeroPick();
+            initFeaturedSpotlight();
+            render();
 
-            if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", render);
-            } else {
-                render();
-            }
-        })();
+            console.log(
+                "%cGED · Hotels v2",
+                "font-weight:700;color:#ffb400;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;"
+            );
+        });
     </script>
+
 </body>
 
 </html>

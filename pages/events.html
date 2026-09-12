@@ -52,7 +52,6 @@
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
-            /* Category palette (reused across the site) */
             --cat-music-1: #af52de;
             --cat-music-2: #ff2d55;
             --cat-sports-1: #34c759;
@@ -87,9 +86,6 @@
             box-sizing: border-box;
         }
 
-        /* ============================================================
-           GLOBAL POLISH
-           ============================================================ */
         :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
             outline: 2px solid rgba(255, 45, 85, 0.65);
             outline-offset: 3px;
@@ -377,7 +373,6 @@
             color: rgba(255, 255, 255, 0.55);
         }
 
-        /* ---------- HERO — FEATURED PICK CARD ---------- */
         .events-page .hero-pick {
             position: relative;
             overflow: hidden;
@@ -545,7 +540,6 @@
             margin-top: -60px;
         }
 
-        /* ---------- FEATURED SPOTLIGHT ---------- */
         .events-page .event-featured {
             position: relative;
             display: grid;
@@ -676,7 +670,6 @@
             font-size: 13px;
         }
 
-        /* ---------- CONTROLS ---------- */
         .events-page .event-controls {
             display: flex;
             flex-direction: column;
@@ -825,7 +818,6 @@
             background: #fff;
         }
 
-        /* View toggle */
         .events-page .event-view-toggle {
             display: inline-flex;
             gap: 2px;
@@ -860,7 +852,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
         }
 
-        /* Result count */
         .events-page .event-result-count {
             font-size: 12.5px;
             font-weight: 600;
@@ -1108,7 +1099,6 @@
             font-weight: 600;
         }
 
-        /* Card body */
         .events-page .event-card-body {
             padding: 22px 22px 20px;
             display: flex;
@@ -1147,8 +1137,67 @@
             font-size: 13.5px;
             line-height: 1.55;
             color: var(--ios-text-2);
-            margin: 0 0 16px;
+            margin: 0 0 6px;
             flex: 1;
+
+            /* Trunca em 2 linhas */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Link amarelo "see more…" */
+        .events-page .event-card-more {
+            background: none;
+            border: 0;
+            padding: 0;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: #ff9500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 0 14px;
+            transition: color .2s var(--ease-ios), transform .2s var(--ease-ios);
+        }
+
+        .events-page .event-card-more:hover {
+            color: #ffb400;
+            transform: translateX(2px);
+        }
+
+        /* Modal — descrição + toggle */
+        .events-page .modal-description {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--ios-text-2);
+            margin: 0 0 8px;
+            white-space: pre-line;
+        }
+
+        .events-page .modal-description-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: 0;
+            padding: 0;
+            font: inherit;
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #ff9500;
+            cursor: pointer;
+            margin: 0 0 20px;
+            transition: color .2s var(--ease-ios);
+        }
+
+        .events-page .modal-description-toggle:hover {
+            color: #ffb400;
         }
 
         .events-page .event-card-bottom {
@@ -1238,7 +1287,6 @@
             transform: translateY(-2px);
         }
 
-        /* ---------- LIST VIEW ---------- */
         .events-page .event-grid.list-view .event-card {
             flex-direction: row;
             align-items: stretch;
@@ -1273,7 +1321,6 @@
             }
         }
 
-        /* ---------- EMPTY STATE ---------- */
         .events-page .empty-state {
             grid-column: 1 / -1;
             padding: 70px 24px;
@@ -2213,9 +2260,6 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           REDUCED MOTION
-           ============================================================ */
         @media (prefers-reduced-motion: reduce) {
 
             .events-page *,
@@ -2239,10 +2283,8 @@
 
 <body class="events-page">
 
-    <!-- SKIP LINK -->
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- HEADER -->
     <header class="site-header" id="site-header">
         <nav class="nav glass" aria-label="Main navigation">
             <a class="brand" href="../index.html" aria-label="GED Home"><b>G</b><span>GED</span></a>
@@ -2275,7 +2317,6 @@
 
     <main id="main">
 
-        <!-- HERO -->
         <section class="event-hero" id="top">
             <div class="event-hero-media" aria-hidden="true"></div>
             <div class="event-hero-overlay" aria-hidden="true"></div>
@@ -2328,7 +2369,6 @@
                     </div>
                 </div>
 
-                <!-- Featured pick card (populated by JS) -->
                 <aside class="hero-pick" id="heroPick" aria-label="Featured event">
                     <p class="hero-pick-eyebrow">
                         <span class="badge-dot" aria-hidden="true"></span>
@@ -2345,7 +2385,6 @@
             </div>
         </section>
 
-        <!-- CATALOG -->
         <section class="event-catalog" id="events" aria-labelledby="events-title">
             <div class="container">
 
@@ -2360,7 +2399,6 @@
                     </p>
                 </div>
 
-                <!-- Featured spotlight (populated by JS) -->
                 <article class="event-featured reveal" id="eventFeatured" hidden>
                     <div class="event-featured-media" id="featuredMedia" role="img" aria-label="Featured event image">
                     </div>
@@ -2384,7 +2422,6 @@
                     </div>
                 </article>
 
-                <!-- Controls -->
                 <div class="event-controls reveal">
                     <div class="event-controls-row">
                         <div class="event-filters" id="eventFilters" role="group"
@@ -2441,10 +2478,8 @@
                     Showing <strong>0</strong> events
                 </p>
 
-                <!-- Grid -->
                 <div class="event-grid" id="eventGrid"></div>
 
-                <!-- Stats -->
                 <div class="event-stats reveal">
                     <div class="event-stat">
                         <strong data-counter="13">0</strong>
@@ -2467,7 +2502,6 @@
             </div>
         </section>
 
-        <!-- VISUAL BREAK -->
         <section class="container">
             <div class="event-break reveal">
                 <div class="event-break-media" role="img" aria-label="Festival crowd during a live event"
@@ -2492,9 +2526,6 @@
 
     </main>
 
-    <!-- ============================================================
-         FOOTER — v2
-         ============================================================ -->
     <footer class="site-footer" id="footer">
         <div class="footer-inner">
 
@@ -2515,7 +2546,8 @@
                     </p>
 
                     <div class="footer-socials" aria-label="GED on social media">
-                        <a class="footer-social" href="#" aria-label="GED on Instagram" rel="noopener">
+                        <a class="footer-social" href="https://www.instagram.com/edparducci/"
+                            aria-label="GED on Instagram" rel="noopener">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                                 stroke-linecap="round" aria-hidden="true">
                                 <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -2523,24 +2555,24 @@
                                 <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
                             </svg>
                         </a>
-                        <a class="footer-social" href="#" aria-label="GED on X" rel="noopener">
+                        <a class="footer-social" href="https://x.com/brskeru" aria-label="GED on X" rel="noopener">
                             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path
                                     d="M17.5 3h3.2l-7 8 7.3 10h-5.6l-4.4-6-5 6H2.8l7.3-8.6L3.1 3h5.7l4.1 5.6L17.5 3Zm-1.1 16h1.7L7.6 4.8H5.8L16.4 19Z" />
                             </svg>
                         </a>
-                        <a class="footer-social" href="#" aria-label="GED on YouTube" rel="noopener">
+                        <a class="footer-social" href="https://www.youtube.com/@edparducci" aria-label="GED on YouTube"
+                            rel="noopener">
                             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.3 3.1-5.3 3.1Z" />
+                                <path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 
                             </svg>
                         </a>
-                        <a class="footer-social" href="help.html" aria-label="Contact GED by email">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-                                stroke-linejoin="round" aria-hidden="true">
-                                <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
-                                <path d="m3.5 7.5 8.5 6 8.5-6" />
-                            </svg>
+                        <a class=" footer-social" href="edgarparducci@gmail.com" aria-label="Contact GED by email">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linejoin="round" aria-hidden="true">
+                                        <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                                        <path d="m3.5 7.5 8.5 6 8.5-6" />
+                                    </svg>
                         </a>
                     </div>
 
@@ -2649,7 +2681,10 @@
 
             <div class="modal-meta" id="modalMeta"></div>
 
-            <p id="modalDescription"></p>
+            <p class="modal-description" id="modalDescription"></p>
+            <button type="button" class="modal-description-toggle" id="modalDescToggle" hidden>
+                Show full description ↓
+            </button>
 
             <div class="modal-actions">
                 <button class="button button-primary" id="modalPlan" type="button">
@@ -2668,10 +2703,8 @@
         </div>
     </div>
 
-    <!-- TOASTS -->
     <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
-    <!-- SCRIPTS -->
     <script src="../js/canada-data.js" defer></script>
     <script src="../js/provinces.js" defer></script>
     <script src="../js/app.js" defer></script>
@@ -2838,6 +2871,47 @@
             }
 
             /* =====================================================
+               SUMMARY HELPERS
+               ===================================================== */
+            function cleanDescription(raw, eventName = "") {
+                if (!raw) return "";
+
+                let text = String(raw);
+
+                if (eventName && eventName.length > 4) {
+                    const n = eventName.trim();
+                    while (text.toLowerCase().startsWith(n.toLowerCase())) {
+                        text = text.slice(n.length).replace(/^[\s\-:–—•·]+/, "");
+                    }
+                }
+
+                text = text.replace(/\s+/g, " ").trim();
+
+                const noisePatterns = [
+                    /PLEASE CHECK THE TIME, DATE, AND SEATS BEFORE PURCHASING\.?/gi,
+                    /TICKETS ARE NON[\s-]REFUNDABLE[^.]*\./gi,
+                    /REFUNDS OR EXCHANGES WILL NOT BE ISSUED\.?/gi,
+                    /DOORS AND SHOW TIMES ARE SUBJECT TO CHANGE\.?/gi,
+                    /PLEASE ARRIVE EARLY TO AVOID DELAYS[^.]*\./gi,
+                    /SEE VENUE WEBSITE FOR ANSWERS TO FAQ'?S\.?/gi,
+                    /Ticketmaster is the only official ticketing partner[^.]*\./gi,
+                ];
+                for (const re of noisePatterns) text = text.replace(re, "");
+
+                return text.replace(/\s+/g, " ").trim();
+            }
+
+            function summarize(text, max = 130) {
+                if (!text) return "";
+                if (text.length <= max) return text;
+
+                const cut = text.slice(0, max);
+                const lastSpace = cut.lastIndexOf(" ");
+                const safeCut = lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut;
+                return safeCut.trim() + "…";
+            }
+
+            /* =====================================================
                HERO PICK + FEATURED SPOTLIGHT
                ===================================================== */
             function getUpcoming() {
@@ -2851,7 +2925,6 @@
             function getFeatured() {
                 const upcoming = getUpcoming();
                 if (upcoming.length === 0) return null;
-                // Choose highest score among the next upcoming
                 return upcoming.slice(0, 5).sort((a, b) => (b.score || 0) - (a.score || 0))[0];
             }
 
@@ -2880,11 +2953,14 @@
                 if (!feat) return;
 
                 const card = document.getElementById("eventFeatured");
+                const clean = cleanDescription(feat.description, feat.name);
+                const featuredShort = summarize(clean, 200);
+
                 document.getElementById("featuredMedia").style.backgroundImage = `url('${feat.image}')`;
                 document.getElementById("featuredMedia").setAttribute("aria-label", `Image for ${feat.name}`);
                 document.getElementById("featuredTitle").textContent = feat.name;
                 document.getElementById("featuredLocation").textContent = `${feat.city} · ${feat.province}`;
-                document.getElementById("featuredDescription").textContent = feat.description;
+                document.getElementById("featuredDescription").textContent = featuredShort;
                 document.getElementById("featuredMeta").innerHTML = `
                     <span>${formatDateRange(feat.date, feat.endDate)}</span>
                     <span>${feat.category}</span>
@@ -2910,6 +2986,11 @@
                 const free = isFree(event.price);
                 const cat = catClass(event.category);
                 const saved = localStorage.getItem("ged-event-saved-" + event.name) === "true";
+
+                // Limpa + resume
+                const clean = cleanDescription(event.description, event.name);
+                const short = summarize(clean, 120);
+                const hasMore = clean.length > 120;
 
                 return `
                 <article class="event-card reveal"
@@ -2938,7 +3019,8 @@
                     <div class="event-card-body">
                         <span class="event-location">${escapeHtml(event.city)} · ${escapeHtml(event.province)}</span>
                         <h3>${escapeHtml(event.name)}</h3>
-                        <p>${escapeHtml(event.description)}</p>
+                        <p>${escapeHtml(short)}</p>
+                        ${hasMore ? `<button type="button" class="event-card-more" data-view="${escapeHtml(event.name)}">see more…</button>` : ""}
 
                         <div class="event-card-bottom">
                             <div class="event-price">
@@ -3015,7 +3097,6 @@
             }
 
             function bindCardEvents() {
-                // Save buttons
                 grid.querySelectorAll("[data-save]").forEach(btn => {
                     btn.addEventListener("click", (event) => {
                         event.stopPropagation();
@@ -3030,7 +3111,6 @@
                     });
                 });
 
-                // View buttons
                 grid.querySelectorAll("[data-view]").forEach(btn => {
                     btn.addEventListener("click", (event) => {
                         event.stopPropagation();
@@ -3038,7 +3118,6 @@
                     });
                 });
 
-                // Card click → modal
                 grid.querySelectorAll(".event-card").forEach(card => {
                     card.addEventListener("click", (e) => {
                         if (e.target.closest("button")) return;
@@ -3148,12 +3227,16 @@
             const modalHero = document.getElementById("modalHero");
             const modalMeta = document.getElementById("modalMeta");
             const modalDescription = document.getElementById("modalDescription");
+            const modalDescToggle = document.getElementById("modalDescToggle");
             const modalEyebrow = document.getElementById("modalEyebrow");
             const modalSaveBtn = document.getElementById("modalSaveBtn");
             const modalShareBtn = document.getElementById("modalShareBtn");
 
             let currentModalEvent = null;
             let lastFocused = null;
+            let modalFullText = "";
+            let modalShortText = "";
+            let modalExpanded = false;
 
             function openEventModal(name) {
                 const event = EVENTS.find(e => e.name === name);
@@ -3166,7 +3249,25 @@
                 modalTitle.innerHTML = `${escapeHtml(event.name)} <em>·</em> ${escapeHtml(event.city)}`;
                 modalHero.style.backgroundImage = `url('${escapeHtml(event.image)}')`;
                 modalHero.setAttribute("aria-label", `Image for ${event.name}`);
-                modalDescription.textContent = event.description;
+
+                // Descrição com resumo expansível
+                const clean = cleanDescription(event.description, event.name);
+                const isLong = clean.length > 280;
+
+                modalFullText = clean;
+                modalShortText = isLong ? summarize(clean, 280) : clean;
+                modalExpanded = false;
+
+                modalDescription.textContent = modalShortText;
+
+                if (modalDescToggle) {
+                    if (isLong) {
+                        modalDescToggle.hidden = false;
+                        modalDescToggle.textContent = "Show full description ↓";
+                    } else {
+                        modalDescToggle.hidden = true;
+                    }
+                }
 
                 const saved = localStorage.getItem("ged-event-saved-" + event.name) === "true";
                 modalSaveBtn.textContent = saved ? "Saved ✓" : "Save event";
@@ -3213,6 +3314,16 @@
                 if (lastFocused && typeof lastFocused.focus === "function") {
                     lastFocused.focus();
                 }
+            }
+
+            if (modalDescToggle) {
+                modalDescToggle.addEventListener("click", () => {
+                    modalExpanded = !modalExpanded;
+                    modalDescription.textContent = modalExpanded ? modalFullText : modalShortText;
+                    modalDescToggle.textContent = modalExpanded
+                        ? "Show less ↑"
+                        : "Show full description ↓";
+                });
             }
 
             modal.addEventListener("keydown", (e) => {
@@ -3281,7 +3392,7 @@
             });
 
             /* =====================================================
-               DEEP LINK (open modal from ?event=Name)
+               DEEP LINK
                ===================================================== */
             function handleDeepLink() {
                 const params = new URLSearchParams(window.location.search);
