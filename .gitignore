@@ -1,6 +1,21 @@
-.DS_Store
-Thumbs.db
+# Environment variables — NUNCA commitar
+api/.env
+.env
+*.env
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python
 __pycache__/
 *.pyc
-node_modules/
-.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

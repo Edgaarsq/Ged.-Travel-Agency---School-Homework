@@ -1,1 +1,2129 @@
-{"packages":[{"name":"Toronto — The City Experience","nights":4,"price":899},{"name":"Rockies — Wild by Design","nights":6,"price":1290},{"name":"Québec — Old Soul","nights":5,"price":1095},{"name":"Pacific Edge","nights":7,"price":1390}]}
+{
+    "meta": {
+        "version": "3.0",
+        "currency": "CAD",
+        "scope": "Educational demo data for GED Travel Agency",
+        "updated": "2026-01",
+        "country": "Canada",
+        "regions": 13,
+        "note": "All prices are illustrative and not bookable. This is an educational school project.",
+        "lastExpanded": "2026-01-15",
+        "sources": [
+            "Wikipedia",
+            "Parks Canada",
+            "UNESCO",
+            "NHL.com",
+            "CFL.ca",
+            "Ticketmaster",
+            "Tourism boards"
+        ]
+    },
+    "packages": [
+        {
+            "id": "toronto",
+            "type": "city",
+            "featured": false,
+            "name": "The City Experience",
+            "tagline": "Canada's biggest city, on your own terms.",
+            "city": "Toronto",
+            "province": "Ontario",
+            "country": "Canada",
+            "duration": {
+                "nights": 4,
+                "days": 5
+            },
+            "price": {
+                "amount": 899,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.4,
+            "rating": 4.7,
+            "reviewCount": 284,
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Northline House",
+                "area": "Downtown",
+                "score": 9.4
+            },
+            "experiences": [
+                "CN Tower",
+                "Distillery District",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "Downtown Toronto energy",
+                "Skyline views from the CN Tower",
+                "Waterfront walks at Harbourfront",
+                "Yorkville boutiques & cafés"
+            ],
+            "includes": [
+                "4 nights in a downtown hotel",
+                "Daily breakfast",
+                "CN Tower entry",
+                "Airport transfer"
+            ],
+            "tags": [
+                "4 nights",
+                "Breakfast",
+                "CN Tower"
+            ],
+            "bestFor": [
+                "First-time visitors",
+                "City lovers",
+                "Culture & food"
+            ],
+            "seasonality": "Year-round · best May – October",
+            "description": "Downtown energy, Yorkville, skyline views, waterfront walks and Canada's biggest-city atmosphere — all in one compact trip."
+        },
+        {
+            "id": "rockies",
+            "type": "nature",
+            "featured": true,
+            "name": "Wild by Design",
+            "tagline": "The Rockies at your doorstep.",
+            "city": "Banff",
+            "province": "Alberta",
+            "country": "Canada",
+            "duration": {
+                "nights": 6,
+                "days": 7
+            },
+            "price": {
+                "amount": 1290,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.6,
+            "rating": 4.9,
+            "reviewCount": 412,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Summit Lodge",
+                "area": "Banff · Town Centre",
+                "score": 9.6
+            },
+            "experiences": [
+                "Rockies adventure",
+                "Lake Louise",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "Banff National Park",
+                "Turquoise lakes & glaciers",
+                "Mountain trails & wildlife",
+                "Sulphur Mountain gondola"
+            ],
+            "includes": [
+                "6 nights in Banff",
+                "Daily breakfast",
+                "Rockies adventure day",
+                "Lake Louise guided visit",
+                "Airport transfer from Calgary"
+            ],
+            "tags": [
+                "6 nights",
+                "Banff",
+                "Mountain"
+            ],
+            "bestFor": [
+                "Nature lovers",
+                "Adventure",
+                "Photographers"
+            ],
+            "seasonality": "June – September · December – March",
+            "description": "Mountain landscapes, Banff, outdoor adventures and premium alpine stays — built around the wild side of Canada."
+        },
+        {
+            "id": "quebec",
+            "type": "culture",
+            "featured": false,
+            "name": "Old Soul",
+            "tagline": "History at every corner.",
+            "city": "Québec City",
+            "province": "Quebec",
+            "country": "Canada",
+            "duration": {
+                "nights": 5,
+                "days": 6
+            },
+            "price": {
+                "amount": 1095,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 198,
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Vieux-Québec Château",
+                "area": "Old Québec",
+                "score": 9.6
+            },
+            "experiences": [
+                "Food experience",
+                "Old Québec walking tour",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "UNESCO-listed walled city",
+                "Château Frontenac",
+                "Petit-Champlain streets",
+                "Local French-Canadian cuisine"
+            ],
+            "includes": [
+                "5 nights in Old Québec",
+                "Daily breakfast",
+                "Curated food experience",
+                "Old Québec walking tour",
+                "Airport transfer"
+            ],
+            "tags": [
+                "5 nights",
+                "Culture",
+                "Food"
+            ],
+            "bestFor": [
+                "History lovers",
+                "Foodies",
+                "Couples"
+            ],
+            "seasonality": "Year-round · magical in winter",
+            "description": "Historic streets, architecture, local food and a slower European-inspired rhythm in North America's oldest walled city."
+        },
+        {
+            "id": "vancouver",
+            "type": "coast",
+            "featured": false,
+            "name": "Pacific Edge",
+            "tagline": "Mountains. Ocean. City.",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "country": "Canada",
+            "duration": {
+                "nights": 7,
+                "days": 8
+            },
+            "price": {
+                "amount": 1390,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 341,
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Harbour 27",
+                "area": "Downtown Vancouver",
+                "score": 9.2
+            },
+            "experiences": [
+                "Ferry to Victoria",
+                "Stanley Park",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "Stanley Park seawall",
+                "Granville Island market",
+                "Grouse Mountain views",
+                "Ferry crossing to Victoria"
+            ],
+            "includes": [
+                "7 nights across Vancouver & Victoria",
+                "Daily breakfast",
+                "Ferry crossing",
+                "Stanley Park bike tour",
+                "Airport transfer"
+            ],
+            "tags": [
+                "7 nights",
+                "Ferry",
+                "Coast"
+            ],
+            "bestFor": [
+                "Coast lovers",
+                "Active travellers",
+                "Food & markets"
+            ],
+            "seasonality": "May – September",
+            "description": "Ocean, mountains, modern neighbourhoods and West Coast energy — Vancouver and Victoria in one continuous journey."
+        },
+        {
+            "id": "nhl-east",
+            "type": "sports",
+            "featured": false,
+            "name": "NHL Eastern Road Trip",
+            "tagline": "Three arenas. Two languages. One obsession.",
+            "city": "Toronto, Ottawa & Montréal",
+            "province": "Ontario & Quebec",
+            "country": "Canada",
+            "duration": {
+                "nights": 6,
+                "days": 7
+            },
+            "price": {
+                "amount": 1890,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 156,
+            "image": "https://images.unsplash.com/photo-1515703407324-5f753afd8be8?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Multiple city hotels",
+                "area": "Toronto · Ottawa · Montréal",
+                "score": 9.3
+            },
+            "experiences": [
+                "NHL game tickets",
+                "Arena tours",
+                "City transfers",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "Scotiabank Arena (Maple Leafs)",
+                "Canadian Tire Centre (Senators)",
+                "Bell Centre (Canadiens)",
+                "Hockey Hall of Fame"
+            ],
+            "includes": [
+                "6 nights across 3 cities",
+                "3 NHL game tickets",
+                "Arena tours",
+                "Inter-city transport",
+                "Daily breakfast"
+            ],
+            "tags": [
+                "6 nights",
+                "NHL",
+                "3 cities"
+            ],
+            "bestFor": [
+                "Hockey fans",
+                "Sports travellers",
+                "Bucket-list trips"
+            ],
+            "seasonality": "October – April (NHL season)",
+            "description": "Follow the Original Six energy across Ontario and Quebec — Toronto, Ottawa and Montréal in one epic hockey journey."
+        },
+        {
+            "id": "nhl-west",
+            "type": "sports",
+            "featured": false,
+            "name": "NHL Western Circuit",
+            "tagline": "From the Pacific to the Prairies.",
+            "city": "Vancouver, Calgary, Edmonton & Winnipeg",
+            "province": "BC, Alberta & Manitoba",
+            "country": "Canada",
+            "duration": {
+                "nights": 8,
+                "days": 9
+            },
+            "price": {
+                "amount": 2450,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 112,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Multiple city hotels",
+                "area": "Vancouver · Calgary · Edmonton · Winnipeg",
+                "score": 9.2
+            },
+            "experiences": [
+                "NHL game tickets",
+                "Arena tours",
+                "Rockies stop",
+                "Breakfast included"
+            ],
+            "highlights": [
+                "Rogers Arena (Canucks)",
+                "Scotiabank Saddledome (Flames)",
+                "Rogers Place (Oilers)",
+                "Canada Life Centre (Jets)"
+            ],
+            "includes": [
+                "8 nights across 4 cities",
+                "4 NHL game tickets",
+                "Arena tours",
+                "Rockies scenic stop",
+                "Inter-city transport"
+            ],
+            "tags": [
+                "8 nights",
+                "NHL",
+                "4 cities"
+            ],
+            "bestFor": [
+                "Hockey fans",
+                "Road-trippers",
+                "Sports collectors"
+            ],
+            "seasonality": "October – April (NHL season)",
+            "description": "The ultimate western hockey pilgrimage — four NHL arenas, four cities, and the Canadian Rockies along the way."
+        },
+        {
+            "id": "cfl-stadiums",
+            "type": "sports",
+            "featured": false,
+            "name": "CFL Stadium Tour",
+            "tagline": "Canadian football, coast to coast.",
+            "city": "Multiple",
+            "province": "Multiple provinces",
+            "country": "Canada",
+            "duration": {
+                "nights": 7,
+                "days": 8
+            },
+            "price": {
+                "amount": 1650,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 87,
+            "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Multiple city hotels",
+                "area": "3 CFL cities",
+                "score": 9.0
+            },
+            "experiences": [
+                "CFL game tickets",
+                "Stadium tours",
+                "Grey Cup history"
+            ],
+            "highlights": [
+                "Commonwealth Stadium (Edmonton)",
+                "BC Place (Vancouver)",
+                "BMO Field (Toronto)",
+                "TD Place (Ottawa)"
+            ],
+            "includes": [
+                "7 nights across 3 cities",
+                "3 CFL game tickets",
+                "Stadium tours",
+                "Inter-city transport"
+            ],
+            "tags": [
+                "7 nights",
+                "CFL",
+                "3 cities"
+            ],
+            "bestFor": [
+                "Football fans",
+                "Sports historians",
+                "Road-trippers"
+            ],
+            "seasonality": "June – November (CFL season)",
+            "description": "Experience the uniquely Canadian game — bigger field, three downs, and a stadium culture all its own."
+        },
+        {
+            "id": "music-east",
+            "type": "music",
+            "featured": false,
+            "name": "Music East",
+            "tagline": "Jazz, indie and everything in between.",
+            "city": "Montréal & Toronto",
+            "province": "Quebec & Ontario",
+            "country": "Canada",
+            "duration": {
+                "nights": 5,
+                "days": 6
+            },
+            "price": {
+                "amount": 1250,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 203,
+            "image": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Music district hotels",
+                "area": "Montréal · Toronto",
+                "score": 9.2
+            },
+            "experiences": [
+                "Jazz festival tickets",
+                "Indie venue night",
+                "Music walking tour"
+            ],
+            "highlights": [
+                "Montréal Jazz Festival",
+                "Osheaga",
+                "Toronto indie venues",
+                "Quartier des Spectacles"
+            ],
+            "includes": [
+                "5 nights across 2 cities",
+                "Festival passes",
+                "Music walking tour",
+                "Inter-city transport"
+            ],
+            "tags": [
+                "5 nights",
+                "Music",
+                "Festival"
+            ],
+            "bestFor": [
+                "Music lovers",
+                "Festival goers",
+                "Nightlife"
+            ],
+            "seasonality": "June – September",
+            "description": "Two cities, two music scenes — Montréal's jazz legacy and Toronto's indie energy in one festival-focused trip."
+        },
+        {
+            "id": "ski-rockies",
+            "type": "ski",
+            "featured": false,
+            "name": "Rockies Ski Week",
+            "tagline": "Powder. Peaks. Poutine.",
+            "city": "Banff & Lake Louise",
+            "province": "Alberta",
+            "country": "Canada",
+            "duration": {
+                "nights": 7,
+                "days": 8
+            },
+            "price": {
+                "amount": 2100,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 456,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Mountain lodge",
+                "area": "Banff · Lake Louise",
+                "score": 9.5
+            },
+            "experiences": [
+                "Ski passes",
+                "Equipment rental",
+                "Mountain guide",
+                "Hot springs"
+            ],
+            "highlights": [
+                "Lake Louise Ski Resort",
+                "Sunshine Village",
+                "Banff Sunshine",
+                "Upper Hot Springs"
+            ],
+            "includes": [
+                "7 nights mountain lodge",
+                "5-day ski pass",
+                "Equipment rental",
+                "Daily breakfast",
+                "Airport transfer"
+            ],
+            "tags": [
+                "7 nights",
+                "Ski",
+                "Rockies"
+            ],
+            "bestFor": [
+                "Skiers",
+                "Snowboarders",
+                "Winter sports"
+            ],
+            "seasonality": "December – April",
+            "description": "Ski the legendary powder of Banff and Lake Louise — three resorts, one unforgettable mountain week."
+        },
+        {
+            "id": "ski-east",
+            "type": "ski",
+            "featured": false,
+            "name": "Laurentians Ski Escape",
+            "tagline": "Europe vibes. Canadian snow.",
+            "city": "Mont-Tremblant",
+            "province": "Quebec",
+            "country": "Canada",
+            "duration": {
+                "nights": 5,
+                "days": 6
+            },
+            "price": {
+                "amount": 1450,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 234,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Village condo",
+                "area": "Mont-Tremblant Village",
+                "score": 9.3
+            },
+            "experiences": [
+                "Ski passes",
+                "Equipment rental",
+                "Village access"
+            ],
+            "highlights": [
+                "Mont-Tremblant Ski Resort",
+                "Pedestrian village",
+                "Casino",
+                "Nordic spa"
+            ],
+            "includes": [
+                "5 nights village condo",
+                "4-day ski pass",
+                "Equipment rental",
+                "Daily breakfast"
+            ],
+            "tags": [
+                "5 nights",
+                "Ski",
+                "Village"
+            ],
+            "bestFor": [
+                "Skiers",
+                "Families",
+                "Couples"
+            ],
+            "seasonality": "December – April",
+            "description": "A colourful pedestrian village at the base of one of eastern Canada's best ski mountains."
+        },
+        {
+            "id": "wildlife-churchill",
+            "type": "wildlife",
+            "featured": false,
+            "name": "Polar Bear Capital",
+            "tagline": "Face to face with the Arctic.",
+            "city": "Churchill",
+            "province": "Manitoba",
+            "country": "Canada",
+            "duration": {
+                "nights": 4,
+                "days": 5
+            },
+            "price": {
+                "amount": 3200,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 178,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Northern lodge",
+                "area": "Churchill",
+                "score": 9.4
+            },
+            "experiences": [
+                "Tundra buggy tour",
+                "Polar bear viewing",
+                "Northern lights",
+                "Dog sledding"
+            ],
+            "highlights": [
+                "Polar bears in the wild",
+                "Beluga whales (summer)",
+                "Aurora borealis",
+                "Tundra landscape"
+            ],
+            "includes": [
+                "4 nights lodge",
+                "Tundra buggy tours",
+                "All meals",
+                "Local guides",
+                "Airport transfer"
+            ],
+            "tags": [
+                "4 nights",
+                "Wildlife",
+                "Arctic"
+            ],
+            "bestFor": [
+                "Wildlife photographers",
+                "Nature lovers",
+                "Bucket-list"
+            ],
+            "seasonality": "October – November (bears) · July – August (whales)",
+            "description": "The polar bear capital of the world — where Hudson Bay meets the Arctic tundra."
+        },
+        {
+            "id": "aurora-yellowknife",
+            "type": "aurora",
+            "featured": false,
+            "name": "Aurora Nights",
+            "tagline": "Under the northern lights.",
+            "city": "Yellowknife",
+            "province": "Northwest Territories",
+            "country": "Canada",
+            "duration": {
+                "nights": 4,
+                "days": 5
+            },
+            "price": {
+                "amount": 1850,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 312,
+            "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Aurora lodge",
+                "area": "Old Town",
+                "score": 9.5
+            },
+            "experiences": [
+                "Aurora viewing",
+                "Ice fishing",
+                "Dog sledding",
+                "Heated teepee"
+            ],
+            "highlights": [
+                "Aurora borealis",
+                "Great Slave Lake",
+                "Old Town",
+                "Northern culture"
+            ],
+            "includes": [
+                "4 nights lodge",
+                "3 aurora viewing nights",
+                "Winter activities",
+                "All meals",
+                "Arctic gear"
+            ],
+            "tags": [
+                "4 nights",
+                "Aurora",
+                "Arctic"
+            ],
+            "bestFor": [
+                "Aurora chasers",
+                "Photographers",
+                "Winter travellers"
+            ],
+            "seasonality": "November – March (aurora) · June – August (midnight sun)",
+            "description": "Yellowknife is one of the best places on Earth to see the aurora borealis — 95% success rate."
+        },
+        {
+            "id": "aurora-yukon",
+            "type": "aurora",
+            "featured": false,
+            "name": "Yukon Aurora & Wilderness",
+            "tagline": "Where the road ends and the lights begin.",
+            "city": "Whitehorse",
+            "province": "Yukon",
+            "country": "Canada",
+            "duration": {
+                "nights": 5,
+                "days": 6
+            },
+            "price": {
+                "amount": 2050,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.6,
+            "rating": 4.8,
+            "reviewCount": 145,
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Wilderness lodge",
+                "area": "Whitehorse",
+                "score": 9.4
+            },
+            "experiences": [
+                "Aurora viewing",
+                "Dog sledding",
+                "Hot springs",
+                "Snowshoeing"
+            ],
+            "highlights": [
+                "Aurora borealis",
+                "Eclipse Nordic Hot Springs",
+                "Yukon wildlife",
+                "Dog sledding"
+            ],
+            "includes": [
+                "5 nights lodge",
+                "4 aurora viewing nights",
+                "Dog sledding",
+                "Hot springs entry",
+                "Winter gear"
+            ],
+            "tags": [
+                "5 nights",
+                "Aurora",
+                "Wilderness"
+            ],
+            "bestFor": [
+                "Aurora chasers",
+                "Adventure",
+                "Photographers"
+            ],
+            "seasonality": "August – April (aurora)",
+            "description": "Whitehorse combines aurora viewing with true Yukon wilderness — dogsledding, hot springs, and endless skies."
+        },
+        {
+            "id": "rocky-mountaineer",
+            "type": "train",
+            "featured": false,
+            "name": "Rockies by Rail",
+            "tagline": "The most scenic train ride in the world.",
+            "city": "Vancouver to Banff",
+            "province": "BC & Alberta",
+            "country": "Canada",
+            "duration": {
+                "nights": 6,
+                "days": 7
+            },
+            "price": {
+                "amount": 3490,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.9,
+            "rating": 4.9,
+            "reviewCount": 567,
+            "image": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Multiple hotels",
+                "area": "Vancouver · Kamloops · Banff",
+                "score": 9.6
+            },
+            "experiences": [
+                "Rocky Mountaineer train",
+                "GoldLeaf service",
+                "National parks",
+                "Gourmet dining"
+            ],
+            "highlights": [
+                "Rocky Mountaineer",
+                "Canadian Rockies",
+                "Lake Louise",
+                "Kamloops"
+            ],
+            "includes": [
+                "6 nights hotels",
+                "2-day train journey",
+                "All onboard meals",
+                "National park entry",
+                "Transfers"
+            ],
+            "tags": [
+                "6 nights",
+                "Train",
+                "Rockies"
+            ],
+            "bestFor": [
+                "Luxury travellers",
+                "Rail enthusiasts",
+                "Bucket-list"
+            ],
+            "seasonality": "April – October",
+            "description": "The legendary Rocky Mountaineer — two days of glass-domed train travel through the heart of the Rockies."
+        },
+        {
+            "id": "culinary-quebec",
+            "type": "food",
+            "featured": false,
+            "name": "Québec Food & Wine",
+            "tagline": "Eat your way through French Canada.",
+            "city": "Montréal & Québec City",
+            "province": "Quebec",
+            "country": "Canada",
+            "duration": {
+                "nights": 5,
+                "days": 6
+            },
+            "price": {
+                "amount": 1680,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 189,
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Boutique hotels",
+                "area": "Montréal · Québec City",
+                "score": 9.3
+            },
+            "experiences": [
+                "Food tours",
+                "Wine tasting",
+                "Cooking class",
+                "Market visits"
+            ],
+            "highlights": [
+                "Jean-Talon Market",
+                "Old Montréal food scene",
+                "Île d'Orléans",
+                "Ice cider tasting"
+            ],
+            "includes": [
+                "5 nights boutique hotels",
+                "3 food tours",
+                "Wine tasting",
+                "Cooking class",
+                "Daily breakfast"
+            ],
+            "tags": [
+                "5 nights",
+                "Food",
+                "Wine"
+            ],
+            "bestFor": [
+                "Foodies",
+                "Wine lovers",
+                "Couples"
+            ],
+            "seasonality": "Year-round · best June – October",
+            "description": "Two cities, endless flavour — from Montréal's multicultural food corridors to Québec's farm-to-table traditions."
+        },
+        {
+            "id": "unesco-ontario",
+            "type": "unesco",
+            "featured": false,
+            "name": "UNESCO Ontario",
+            "tagline": "World heritage, close to home.",
+            "city": "Ottawa & Kingston",
+            "province": "Ontario",
+            "country": "Canada",
+            "duration": {
+                "nights": 4,
+                "days": 5
+            },
+            "price": {
+                "amount": 1190,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 98,
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Heritage hotels",
+                "area": "Ottawa · Kingston",
+                "score": 9.2
+            },
+            "experiences": [
+                "Rideau Canal",
+                "Fort Henry",
+                "Parliament tour",
+                "Heritage walks"
+            ],
+            "highlights": [
+                "Rideau Canal UNESCO Site",
+                "Fort Henry",
+                "Parliament Hill",
+                "Kingston Penitentiary"
+            ],
+            "includes": [
+                "4 nights heritage hotels",
+                "Guided tours",
+                "Canal cruise",
+                "Daily breakfast"
+            ],
+            "tags": [
+                "4 nights",
+                "UNESCO",
+                "History"
+            ],
+            "bestFor": [
+                "History lovers",
+                "Architecture",
+                "Families"
+            ],
+            "seasonality": "May – October · winter skating",
+            "description": "Rideau Canal, Fort Henry and Canada's capital — UNESCO history at every turn."
+        },
+        {
+            "id": "unesco-atlantic",
+            "type": "unesco",
+            "featured": false,
+            "name": "Atlantic UNESCO Trail",
+            "tagline": "Vikings. Fossils. Whales.",
+            "city": "St. John's, Gros Morne & Halifax",
+            "province": "Newfoundland & Nova Scotia",
+            "country": "Canada",
+            "duration": {
+                "nights": 7,
+                "days": 8
+            },
+            "price": {
+                "amount": 2280,
+                "currency": "CAD",
+                "per": "person",
+                "from": true
+            },
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 76,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=90",
+            "hotel": {
+                "name": "Coastal hotels",
+                "area": "St. John's · Gros Morne · Halifax",
+                "score": 9.3
+            },
+            "experiences": [
+                "Viking settlement",
+                "Fjord cruise",
+                "Joggins fossils",
+                "Whale watching"
+            ],
+            "highlights": [
+                "L'Anse aux Meadows",
+                "Gros Morne National Park",
+                "Joggins Fossil Cliffs",
+                "Peggy's Cove"
+            ],
+            "includes": [
+                "7 nights coastal hotels",
+                "Fjord cruise",
+                "Viking site tour",
+                "Whale watching",
+                "Daily breakfast"
+            ],
+            "tags": [
+                "7 nights",
+                "UNESCO",
+                "Atlantic"
+            ],
+            "bestFor": [
+                "History lovers",
+                "Nature",
+                "Adventure"
+            ],
+            "seasonality": "June – September",
+            "description": "Viking settlements, ancient fossils and Atlantic fjords — the wildest UNESCO trail in Canada."
+        }
+    ],
+    "stadiums": [
+        {
+            "id": "commonwealth-stadium",
+            "name": "Commonwealth Stadium",
+            "city": "Edmonton",
+            "province": "Alberta",
+            "capacity": 56302,
+            "opened": 1978,
+            "surface": "Turf",
+            "teams": [
+                "Edmonton Elks (CFL)"
+            ],
+            "type": "Multi-purpose",
+            "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Largest stadium in Canada by capacity. Hosted 1978 Commonwealth Games, 2001 IAAF World Championships, and the 2010 Heritage Classic."
+        },
+        {
+            "id": "olympic-stadium-montreal",
+            "name": "Olympic Stadium",
+            "city": "Montreal",
+            "province": "Quebec",
+            "capacity": 56040,
+            "opened": 1976,
+            "surface": "Turf",
+            "teams": [
+                "Montreal Alouettes (CFL, playoffs only)"
+            ],
+            "type": "Multi-purpose",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Built for the 1976 Summer Olympics. Features the tallest inclined tower in the world (Montreal Tower, 175m)."
+        },
+        {
+            "id": "bc-place",
+            "name": "BC Place",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "capacity": 54500,
+            "opened": 1983,
+            "surface": "Turf",
+            "teams": [
+                "BC Lions (CFL)",
+                "Vancouver Whitecaps FC (MLS)"
+            ],
+            "type": "Multi-purpose",
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Largest stadium in Western Canada. Retractable roof. Hosted 2010 Winter Olympics ceremonies and the 2015 FIFA Women's World Cup final."
+        },
+        {
+            "id": "rogers-centre",
+            "name": "Rogers Centre",
+            "city": "Toronto",
+            "province": "Ontario",
+            "capacity": 39150,
+            "opened": 1989,
+            "surface": "Turf",
+            "teams": [
+                "Toronto Blue Jays (MLB)"
+            ],
+            "type": "Baseball stadium",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "notable": "First stadium in the world with a fully retractable roof. Home of the Toronto Blue Jays."
+        },
+        {
+            "id": "mcmahon-stadium",
+            "name": "McMahon Stadium",
+            "city": "Calgary",
+            "province": "Alberta",
+            "capacity": 35400,
+            "opened": 1960,
+            "surface": "Turf",
+            "teams": [
+                "Calgary Stampeders (CFL)"
+            ],
+            "type": "Multi-purpose",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Home of the Calgary Stampeders since 1960. Hosted the 1988 Winter Olympics opening ceremony."
+        },
+        {
+            "id": "mosaic-stadium",
+            "name": "Mosaic Stadium",
+            "city": "Regina",
+            "province": "Saskatchewan",
+            "capacity": 33350,
+            "opened": 2016,
+            "surface": "Turf",
+            "teams": [
+                "Saskatchewan Roughriders (CFL)"
+            ],
+            "type": "Football stadium",
+            "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Modern home of the Saskatchewan Roughriders, known for its passionate fan base."
+        },
+        {
+            "id": "bmo-field",
+            "name": "BMO Field",
+            "city": "Toronto",
+            "province": "Ontario",
+            "capacity": 25000,
+            "opened": 2007,
+            "surface": "Hybrid grass",
+            "teams": [
+                "Toronto FC (MLS)",
+                "Toronto Argonauts (CFL)"
+            ],
+            "type": "Soccer & football",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Expanded for the 2026 FIFA World Cup. Home of Toronto FC and the Argonauts."
+        },
+        {
+            "id": "td-place-stadium",
+            "name": "TD Place Stadium",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "capacity": 24000,
+            "opened": 2014,
+            "surface": "Turf",
+            "teams": [
+                "Ottawa Redblacks (CFL)",
+                "Atlético Ottawa (CPL)"
+            ],
+            "type": "Football stadium",
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Built on the site of the historic Lansdowne Park. Hosted the 2017 Grey Cup."
+        },
+        {
+            "id": "tim-hortons-field",
+            "name": "Tim Hortons Field",
+            "city": "Hamilton",
+            "province": "Ontario",
+            "capacity": 23218,
+            "opened": 2014,
+            "surface": "Turf",
+            "teams": [
+                "Hamilton Tiger-Cats (CFL)",
+                "Forge FC (CPL)"
+            ],
+            "type": "Football stadium",
+            "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Built for the 2015 Pan American Games. Home of the Tiger-Cats."
+        },
+        {
+            "id": "percip-molson",
+            "name": "Percival Molson Memorial Stadium",
+            "city": "Montreal",
+            "province": "Quebec",
+            "capacity": 20025,
+            "opened": 1919,
+            "surface": "Turf",
+            "teams": [
+                "Montreal Alouettes (CFL)",
+                "McGill Redbirds"
+            ],
+            "type": "Football stadium",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "notable": "One of the oldest stadiums in North America, set on the slopes of Mount Royal."
+        },
+        {
+            "id": "investors-group-field",
+            "name": "Princess Auto Stadium",
+            "city": "Winnipeg",
+            "province": "Manitoba",
+            "capacity": 33422,
+            "opened": 2013,
+            "surface": "Turf",
+            "teams": [
+                "Winnipeg Blue Bombers (CFL)",
+                "Valour FC (CPL)"
+            ],
+            "type": "Football stadium",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Modern stadium with a canopy covering 80% of seats. Home of the Blue Bombers."
+        },
+        {
+            "id": "percy-perry",
+            "name": "Percy Perry Stadium",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "capacity": 6500,
+            "opened": 2019,
+            "surface": "Turf",
+            "teams": [
+                "Vancouver FC (CPL)"
+            ],
+            "type": "Soccer stadium",
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Modern soccer-specific stadium in Langley, home of Vancouver FC."
+        }
+    ],
+    "arenas": [
+        {
+            "id": "bell-centre",
+            "name": "Bell Centre",
+            "city": "Montreal",
+            "province": "Quebec",
+            "capacity": 21302,
+            "opened": 1996,
+            "teams": [
+                "Montreal Canadiens (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Largest NHL arena in Canada. Home of the Canadiens — 24 Stanley Cup banners hang from the rafters."
+        },
+        {
+            "id": "scotiabank-arena",
+            "name": "Scotiabank Arena",
+            "city": "Toronto",
+            "province": "Ontario",
+            "capacity": 19800,
+            "opened": 1999,
+            "teams": [
+                "Toronto Maple Leafs (NHL)",
+                "Toronto Raptors (NBA)"
+            ],
+            "sport": "Hockey & basketball",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "notable": "One of the busiest arenas in the world. Home of the Maple Leafs and Raptors."
+        },
+        {
+            "id": "rogers-arena",
+            "name": "Rogers Arena",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "capacity": 18910,
+            "opened": 1995,
+            "teams": [
+                "Vancouver Canucks (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Home of the Vancouver Canucks, in the heart of downtown Vancouver."
+        },
+        {
+            "id": "scotiabank-saddledome",
+            "name": "Scotiabank Saddledome",
+            "city": "Calgary",
+            "province": "Alberta",
+            "capacity": 19289,
+            "opened": 1983,
+            "teams": [
+                "Calgary Flames (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Iconic saddle-shaped roof. Home of the Flames since 1983."
+        },
+        {
+            "id": "rogers-place",
+            "name": "Rogers Place",
+            "city": "Edmonton",
+            "province": "Alberta",
+            "capacity": 18347,
+            "opened": 2016,
+            "teams": [
+                "Edmonton Oilers (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Modern arena in the Ice District. Home of Connor McDavid and the Oilers."
+        },
+        {
+            "id": "canada-life-centre",
+            "name": "Canada Life Centre",
+            "city": "Winnipeg",
+            "province": "Manitoba",
+            "capacity": 15321,
+            "opened": 2004,
+            "teams": [
+                "Winnipeg Jets (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Home of the Winnipeg Jets. Known for its loud, passionate crowds."
+        },
+        {
+            "id": "canadian-tire-centre",
+            "name": "Canadian Tire Centre",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "capacity": 18652,
+            "opened": 1996,
+            "teams": [
+                "Ottawa Senators (NHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80",
+            "notable": "Home of the Ottawa Senators. Frequently visited by Canadiens fans — creating one of the NHL's most unique atmospheres."
+        },
+        {
+            "id": "budweiser-gardens",
+            "name": "Budweiser Gardens",
+            "city": "London",
+            "province": "Ontario",
+            "capacity": 9046,
+            "opened": 2002,
+            "teams": [
+                "London Knights (OHL)"
+            ],
+            "sport": "Hockey",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "notable": "One of the top junior hockey arenas in Canada. Home of the London Knights."
+        }
+    ],
+    "national_parks": [
+        {
+            "id": "banff",
+            "name": "Banff National Park",
+            "province": "Alberta",
+            "established": 1885,
+            "area": "6,641 km²",
+            "unesco": true,
+            "highlight": "Canada's first national park. Turquoise lakes, glaciers and the Icefields Parkway."
+        },
+        {
+            "id": "jasper",
+            "name": "Jasper National Park",
+            "province": "Alberta",
+            "established": 1907,
+            "area": "11,228 km²",
+            "unesco": true,
+            "highlight": "Largest national park in the Rockies. Dark-sky preserve."
+        },
+        {
+            "id": "yoho",
+            "name": "Yoho National Park",
+            "province": "British Columbia",
+            "established": 1886,
+            "area": "1,313 km²",
+            "unesco": true,
+            "highlight": "Takakkaw Falls, Emerald Lake and the Burgess Shale fossils."
+        },
+        {
+            "id": "kootenay",
+            "name": "Kootenay National Park",
+            "province": "British Columbia",
+            "established": 1920,
+            "area": "1,406 km²",
+            "unesco": true,
+            "highlight": "Radium Hot Springs, Marble Canyon and the Paint Pots."
+        },
+        {
+            "id": "gros-morne",
+            "name": "Gros Morne National Park",
+            "province": "Newfoundland and Labrador",
+            "established": 1973,
+            "area": "1,805 km²",
+            "unesco": true,
+            "highlight": "UNESCO site with fjords, cliffs and ancient geological formations."
+        },
+        {
+            "id": "fundy",
+            "name": "Fundy National Park",
+            "province": "New Brunswick",
+            "established": 1948,
+            "area": "206 km²",
+            "unesco": false,
+            "highlight": "Highest tides in the world. Coastal cliffs and Acadian forest."
+        },
+        {
+            "id": "cape-breton",
+            "name": "Cape Breton Highlands National Park",
+            "province": "Nova Scotia",
+            "established": 1936,
+            "area": "950 km²",
+            "unesco": false,
+            "highlight": "Cabot Trail, coastal cliffs and Acadian culture."
+        },
+        {
+            "id": "peis",
+            "name": "Prince Edward Island National Park",
+            "province": "Prince Edward Island",
+            "established": 1937,
+            "area": "27 km²",
+            "unesco": false,
+            "highlight": "Red-sand beaches, dunes and Green Gables heritage."
+        },
+        {
+            "id": "riding-mountain",
+            "name": "Riding Mountain National Park",
+            "province": "Manitoba",
+            "established": 1929,
+            "area": "2,973 km²",
+            "unesco": true,
+            "highlight": "Boreal forest, prairies and the historic Wasagaming townsite."
+        },
+        {
+            "id": "wood-buffalo",
+            "name": "Wood Buffalo National Park",
+            "province": "Alberta & NWT",
+            "established": 1922,
+            "area": "44,807 km²",
+            "unesco": true,
+            "highlight": "Largest national park in Canada. Home to free-roaming bison."
+        },
+        {
+            "id": "nahanni",
+            "name": "Nahanni National Park Reserve",
+            "province": "Northwest Territories",
+            "established": 1972,
+            "area": "30,050 km²",
+            "unesco": true,
+            "highlight": "Virginia Falls (twice the height of Niagara), canyons and whitewater."
+        },
+        {
+            "id": "kluane",
+            "name": "Kluane National Park",
+            "province": "Yukon",
+            "established": 1972,
+            "area": "22,013 km²",
+            "unesco": true,
+            "highlight": "Mount Logan (Canada's highest peak) and vast icefields."
+        },
+        {
+            "id": "pacific-rim",
+            "name": "Pacific Rim National Park Reserve",
+            "province": "British Columbia",
+            "established": 1970,
+            "area": "511 km²",
+            "unesco": true,
+            "highlight": "Wild Pacific coastline, temperate rainforest and storm-watching."
+        },
+        {
+            "id": "gwaii-hanaas",
+            "name": "Gwaii Haanas National Park Reserve",
+            "province": "British Columbia",
+            "established": 1988,
+            "area": "1,495 km²",
+            "unesco": true,
+            "highlight": "Haida heritage sites, ancient totem poles and remote islands."
+        },
+        {
+            "id": "torngat",
+            "name": "Torngat Mountains National Park",
+            "province": "Newfoundland and Labrador",
+            "established": 2008,
+            "area": "9,700 km²",
+            "unesco": false,
+            "highlight": "Arctic landscapes, Inuit culture and polar bears."
+        },
+        {
+            "id": "auyuittuq",
+            "name": "Auyuittuq National Park",
+            "province": "Nunavut",
+            "established": 1976,
+            "area": "19,707 km²",
+            "unesco": false,
+            "highlight": "Arctic fjords, glaciers and Mount Thor — world's tallest vertical cliff."
+        },
+        {
+            "id": "sirmilik",
+            "name": "Sirmilik National Park",
+            "province": "Nunavut",
+            "established": 2001,
+            "area": "22,200 km²",
+            "unesco": false,
+            "highlight": "Bylot Island bird cliffs, glaciers and floe-edge safaris."
+        }
+    ],
+    "unesco_sites": [
+        {
+            "id": "l-anse-aux-meadows",
+            "name": "L'Anse aux Meadows",
+            "province": "Newfoundland and Labrador",
+            "year": 1978,
+            "type": "Cultural",
+            "description": "11th-century Viking settlement — earliest documented European presence in the New World."
+        },
+        {
+            "id": "nahanni",
+            "name": "Nahanni National Park",
+            "province": "Northwest Territories",
+            "year": 1978,
+            "type": "Natural",
+            "description": "Outstanding geomorphological features, canyons and Virginia Falls."
+        },
+        {
+            "id": "dinosaur-park",
+            "name": "Dinosaur Provincial Park",
+            "province": "Alberta",
+            "year": 1979,
+            "type": "Natural",
+            "description": "One of the most important dinosaur fossil sites in the world."
+        },
+        {
+            "id": "kluane-wrangell",
+            "name": "Kluane / Wrangell-St. Elias / Glacier Bay / Tatshenshini-Alsek",
+            "province": "Yukon & BC",
+            "year": 1979,
+            "type": "Natural",
+            "description": "Transnational parks with the largest non-polar icefield in the world."
+        },
+        {
+            "id": "head-smashed-in",
+            "name": "Head-Smashed-In Buffalo Jump",
+            "province": "Alberta",
+            "year": 1981,
+            "type": "Cultural",
+            "description": "Indigenous buffalo jump used for nearly 6,000 years."
+        },
+        {
+            "id": "wood-buffalo-unesco",
+            "name": "Wood Buffalo National Park",
+            "province": "Alberta & NWT",
+            "year": 1983,
+            "type": "Natural",
+            "description": "Largest national park in Canada, home to wild bison and whooping cranes."
+        },
+        {
+            "id": "canadian-rockies",
+            "name": "Canadian Rocky Mountain Parks",
+            "province": "Alberta & BC",
+            "year": 1984,
+            "type": "Natural",
+            "description": "Banff, Jasper, Yoho, Kootenay and the Burgess Shale fossil site."
+        },
+        {
+            "id": "quebec-historic",
+            "name": "Historic District of Old Québec",
+            "province": "Quebec",
+            "year": 1985,
+            "type": "Cultural",
+            "description": "Only remaining fortified city north of Mexico. French-Canadian heritage."
+        },
+        {
+            "id": "gros-morne-unesco",
+            "name": "Gros Morne National Park",
+            "province": "Newfoundland and Labrador",
+            "year": 1987,
+            "type": "Natural",
+            "description": "Fjords, cliffs and ancient geological formations."
+        },
+        {
+            "id": "sgwaii",
+            "name": "SG̱ang Gwaay (Anthony Island)",
+            "province": "British Columbia",
+            "year": 1981,
+            "type": "Cultural",
+            "description": "Haida village with standing totem poles and longhouses."
+        },
+        {
+            "id": "miguasha",
+            "name": "Miguasha National Park",
+            "province": "Quebec",
+            "year": 1999,
+            "type": "Natural",
+            "description": "World's most outstanding fossil record of the Devonian 'Age of Fishes'."
+        },
+        {
+            "id": "rideau-canal",
+            "name": "Rideau Canal",
+            "province": "Ontario",
+            "year": 2007,
+            "type": "Cultural",
+            "description": "UNESCO canal — world's largest skating rink every winter."
+        },
+        {
+            "id": "joggins",
+            "name": "Joggins Fossil Cliffs",
+            "province": "Nova Scotia",
+            "year": 2008,
+            "type": "Natural",
+            "description": "World's most complete fossil record of the Carboniferous period."
+        },
+        {
+            "id": "grand-pre",
+            "name": "Grand-Pré",
+            "province": "Nova Scotia",
+            "year": 2012,
+            "type": "Cultural",
+            "description": "Acadian deportation site and cultural landscape."
+        },
+        {
+            "id": "mistaken-point",
+            "name": "Mistaken Point",
+            "province": "Newfoundland and Labrador",
+            "year": 2016,
+            "type": "Natural",
+            "description": "Ediacaran fossils — some of the oldest complex life forms on Earth."
+        },
+        {
+            "id": "pimachiowin-aki",
+            "name": "Pimachiowin Aki",
+            "province": "Manitoba & Ontario",
+            "year": 2018,
+            "type": "Mixed",
+            "description": "Indigenous cultural landscape and boreal forest."
+        },
+        {
+            "id": "writing-on-stone",
+            "name": "Writing-on-Stone / Áísínai'pi",
+            "province": "Alberta",
+            "year": 2019,
+            "type": "Cultural",
+            "description": "Sacred Blackfoot rock art site."
+        },
+        {
+            "id": "tr-ond-k-klondike",
+            "name": "Tr'ondëk-Klondike",
+            "province": "Yukon",
+            "year": 2023,
+            "type": "Cultural",
+            "description": "Klondike Gold Rush heritage and Tr'ondëk Hwëch'in culture."
+        },
+        {
+            "id": "anticosti",
+            "name": "Anticosti",
+            "province": "Quebec",
+            "year": 2023,
+            "type": "Natural",
+            "description": "Fossil-rich island documenting the first mass extinction."
+        }
+    ],
+    "festivals": [
+        {
+            "id": "calgary-stampede",
+            "name": "Calgary Stampede",
+            "city": "Calgary",
+            "province": "Alberta",
+            "month": "July",
+            "type": "Culture · Rodeo",
+            "price": "CA$22+",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1533228100845-08145b01de14?auto=format&fit=crop&w=1200&q=80",
+            "description": "The Greatest Outdoor Show on Earth — rodeo, chuckwagons and live music."
+        },
+        {
+            "id": "montreal-jazz",
+            "name": "Montréal International Jazz Festival",
+            "city": "Montréal",
+            "province": "Quebec",
+            "month": "June–July",
+            "type": "Music · Jazz",
+            "price": "Free + paid",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=1200&q=80",
+            "description": "World's largest jazz festival — hundreds of free outdoor concerts."
+        },
+        {
+            "id": "osheaga",
+            "name": "Osheaga",
+            "city": "Montréal",
+            "province": "Quebec",
+            "month": "July–August",
+            "type": "Music · Indie",
+            "price": "CA$145",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1470229722913-7ea0d7e7e1e6?auto=format&fit=crop&w=1200&q=80",
+            "description": "Three-day indie, pop and electronic festival on Île Sainte-Hélène."
+        },
+        {
+            "id": "tiff",
+            "name": "Toronto International Film Festival",
+            "city": "Toronto",
+            "province": "Ontario",
+            "month": "September",
+            "type": "Film · Culture",
+            "price": "CA$32",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's biggest public film festivals — premieres, red carpets and Q&As."
+        },
+        {
+            "id": "caribana",
+            "name": "Toronto Caribbean Carnival",
+            "city": "Toronto",
+            "province": "Ontario",
+            "month": "August",
+            "type": "Culture · Parade",
+            "price": "CA$35",
+            "score": 9.3,
+            "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80",
+            "description": "North America's largest Caribbean festival — parade, soca and food."
+        },
+        {
+            "id": "quebec-winter",
+            "name": "Québec Winter Carnival",
+            "city": "Québec City",
+            "province": "Quebec",
+            "month": "January–February",
+            "type": "Culture · Winter",
+            "price": "CA$20",
+            "score": 9.7,
+            "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+            "description": "World's largest winter carnival — ice palace, parades and Bonhomme."
+        },
+        {
+            "id": "winterlude",
+            "name": "Winterlude",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "month": "February",
+            "type": "Nature · Winter",
+            "price": "Free",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=1200&q=80",
+            "description": "Ice sculptures, skating on the Rideau Canal and winter celebrations."
+        },
+        {
+            "id": "tulip-festival",
+            "name": "Canadian Tulip Festival",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "month": "May",
+            "type": "Nature · Flowers",
+            "price": "Free",
+            "score": 9.3,
+            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=80",
+            "description": "Over one million tulips bloom across the capital every spring."
+        },
+        {
+            "id": "canadian-grand-prix",
+            "name": "Canadian Grand Prix",
+            "city": "Montréal",
+            "province": "Quebec",
+            "month": "June",
+            "type": "Sports · F1",
+            "price": "CA$185",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1541443131876-44b03de101c5?auto=format&fit=crop&w=1200&q=80",
+            "description": "Formula 1 weekend on the Circuit Gilles Villeneuve."
+        },
+        {
+            "id": "celebration-of-light",
+            "name": "Vancouver Celebration of Light",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "month": "July–August",
+            "type": "Culture · Fireworks",
+            "price": "Free",
+            "score": 9.2,
+            "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+            "description": "International fireworks competition over English Bay."
+        },
+        {
+            "id": "banff-mountain-film",
+            "name": "Banff Mountain Film Festival",
+            "city": "Banff",
+            "province": "Alberta",
+            "month": "November",
+            "type": "Culture · Film",
+            "price": "CA$28",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "World tour of adventure, environment and mountain-culture films."
+        },
+        {
+            "id": "northern-lights-nights",
+            "name": "Northern Lights Nights",
+            "city": "Yellowknife",
+            "province": "Northwest Territories",
+            "month": "November",
+            "type": "Nature · Aurora",
+            "price": "CA$25",
+            "score": 9.7,
+            "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
+            "description": "Guided aurora viewing under some of the clearest skies on Earth."
+        },
+        {
+            "id": "toonik-tyme",
+            "name": "Toonik Tyme",
+            "city": "Iqaluit",
+            "province": "Nunavut",
+            "month": "April",
+            "type": "Culture · Inuit",
+            "price": "Free",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
+            "description": "Nunavut's spring festival — Inuit games, dog sled races and northern traditions."
+        }
+    ],
+    "ski_resorts": [
+        {
+            "id": "whistler",
+            "name": "Whistler Blackcomb",
+            "province": "British Columbia",
+            "vertical": "1,609 m",
+            "runs": 200,
+            "score": 9.9,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Largest ski area in North America. Hosted the 2010 Winter Olympics."
+        },
+        {
+            "id": "lake-louise",
+            "name": "Lake Louise Ski Resort",
+            "province": "Alberta",
+            "vertical": "991 m",
+            "runs": 145,
+            "score": 9.8,
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "Legendary Rockies skiing with views of Victoria Glacier."
+        },
+        {
+            "id": "sunshine",
+            "name": "Sunshine Village",
+            "province": "Alberta",
+            "vertical": "1,070 m",
+            "runs": 137,
+            "score": 9.7,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Banff's highest ski resort. Long season, dry powder."
+        },
+        {
+            "id": "marmot",
+            "name": "Marmot Basin",
+            "province": "Alberta",
+            "vertical": "914 m",
+            "runs": 91,
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Jasper's mountain. Unpretentious, uncrowded skiing."
+        },
+        {
+            "id": "mont-tremblant",
+            "name": "Mont-Tremblant",
+            "province": "Quebec",
+            "vertical": "645 m",
+            "runs": 102,
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Eastern Canada's premier resort. Colourful pedestrian village."
+        },
+        {
+            "id": "fernie",
+            "name": "Fernie Alpine Resort",
+            "province": "British Columbia",
+            "vertical": "1,082 m",
+            "runs": 142,
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Legendary powder. Voted Best Ski Resort in Canada."
+        }
+    ],
+    "food_experiences": [
+        {
+            "id": "montreal-food",
+            "name": "Montréal Food Tour",
+            "city": "Montréal",
+            "province": "Quebec",
+            "type": "Food · Walking",
+            "price": "CA$85",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+            "description": "Bagels, smoked meat, poutine and Jean-Talon Market."
+        },
+        {
+            "id": "quebec-food",
+            "name": "Québec City Culinary Walk",
+            "city": "Québec City",
+            "province": "Quebec",
+            "type": "Food · Culture",
+            "price": "CA$75",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+            "description": "Farm-to-table, ice cider and French-Canadian classics."
+        },
+        {
+            "id": "kelowna-wine",
+            "name": "Okanagan Wine Tour",
+            "city": "Kelowna",
+            "province": "British Columbia",
+            "type": "Wine · Vineyard",
+            "price": "CA$120",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80",
+            "description": "Canada's first UNESCO City of Gastronomy. Vineyards and farm-to-table."
+        },
+        {
+            "id": "niagara-wine",
+            "name": "Niagara Wine Route",
+            "city": "Niagara-on-the-Lake",
+            "province": "Ontario",
+            "type": "Wine · Vineyard",
+            "price": "CA$95",
+            "score": 9.3,
+            "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80",
+            "description": "Ice wine, VQA wines and scenic vineyard drives."
+        }
+    ],
+    "wildlife_experiences": [
+        {
+            "id": "churchill-bears",
+            "name": "Polar Bear Tundra Buggy",
+            "city": "Churchill",
+            "province": "Manitoba",
+            "season": "October–November",
+            "price": "CA$500+",
+            "score": 9.9,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Tundra buggy tours to see wild polar bears up close."
+        },
+        {
+            "id": "churchill-belugas",
+            "name": "Beluga Whale Watching",
+            "city": "Churchill",
+            "province": "Manitoba",
+            "season": "July–August",
+            "price": "CA$180",
+            "score": 9.7,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Kayak or boat with thousands of beluga whales in Hudson Bay."
+        },
+        {
+            "id": "tofino-whales",
+            "name": "Pacific Whale Watching",
+            "city": "Tofino",
+            "province": "British Columbia",
+            "season": "March–October",
+            "price": "CA$135",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Grey whales, humpbacks, orcas and sea otters."
+        },
+        {
+            "id": "grizzly-bears",
+            "name": "Grizzly Bear Viewing",
+            "city": "Knight Inlet",
+            "province": "British Columbia",
+            "season": "August–October",
+            "price": "CA$450",
+            "score": 9.8,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Watch grizzly bears fish for salmon in remote river valleys."
+        }
+    ],
+    "northern_lights": [
+        {
+            "id": "yellowknife-aurora",
+            "name": "Yellowknife Aurora Viewing",
+            "city": "Yellowknife",
+            "province": "Northwest Territories",
+            "season": "November–March",
+            "success": "95%",
+            "price": "CA$199+",
+            "score": 9.7,
+            "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the best places on Earth to see the aurora borealis."
+        },
+        {
+            "id": "whitehorse-aurora",
+            "name": "Whitehorse Aurora & Hot Springs",
+            "city": "Whitehorse",
+            "province": "Yukon",
+            "season": "August–April",
+            "success": "90%",
+            "price": "CA$185+",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=80",
+            "description": "Aurora viewing combined with Eclipse Nordic Hot Springs."
+        },
+        {
+            "id": "churchill-aurora",
+            "name": "Churchill Aurora & Wildlife",
+            "city": "Churchill",
+            "province": "Manitoba",
+            "season": "January–March",
+            "success": "85%",
+            "price": "CA$250+",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
+            "description": "Combine aurora viewing with polar bear and beluga experiences."
+        }
+    ],
+    "train_experiences": [
+        {
+            "id": "rocky-mountaineer-train",
+            "name": "Rocky Mountaineer",
+            "route": "Vancouver → Banff / Jasper",
+            "duration": "2 days",
+            "class": "GoldLeaf · SilverLeaf",
+            "price": "CA$1,428+",
+            "score": 9.9,
+            "image": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80",
+            "description": "The most scenic train ride in the world. Glass-domed carriages."
+        },
+        {
+            "id": "canadian-train",
+            "name": "The Canadian (VIA Rail)",
+            "route": "Toronto → Vancouver",
+            "duration": "4 nights",
+            "class": "Prestige · Sleeper Plus",
+            "price": "CA$1,200+",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80",
+            "description": "Cross-country train journey through the Canadian Shield and Rockies."
+        },
+        {
+            "id": "ocean-train",
+            "name": "The Ocean (VIA Rail)",
+            "route": "Montréal → Halifax",
+            "duration": "1 night",
+            "class": "Sleeper · Economy",
+            "price": "CA$350+",
+            "score": 9.2,
+            "image": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80",
+            "description": "Atlantic Canada by rail — forests, rivers and maritime landscapes."
+        }
+    ],
+    "experiences": [
+        {
+            "id": "cn-tower",
+            "name": "CN Tower EdgeWalk",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Adventure · Landmark",
+            "price": "CA$225",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Walk on the edge of the world's tallest free-standing structure."
+        },
+        {
+            "id": "niagara",
+            "name": "Niagara Falls Boat Tour",
+            "city": "Niagara Falls",
+            "province": "Ontario",
+            "type": "Nature · Iconic",
+            "price": "CA$35",
+            "score": 9.8,
+            "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=80",
+            "description": "Get soaked at the base of one of the world's great waterfalls."
+        },
+        {
+            "id": "cn-tower-dinner",
+            "name": "CN Tower 360 Restaurant",
+            "city": "Toronto",
+            "province": "Ontario",
+            "type": "Dining · View",
+            "price": "CA$85",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Dine 351 metres above the city in a rotating restaurant."
+        },
+        {
+            "id": "dog-sledding",
+            "name": "Dogsledding Adventure",
+            "city": "Banff / Yellowknife / Whitehorse",
+            "province": "Multiple",
+            "type": "Adventure · Winter",
+            "price": "CA$180",
+            "score": 9.6,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Mush your own team through pristine winter landscapes."
+        },
+        {
+            "id": "ice-fishing",
+            "name": "Ice Fishing Experience",
+            "city": "Yellowknife / Québec",
+            "province": "Multiple",
+            "type": "Adventure · Winter",
+            "price": "CA$120",
+            "score": 9.3,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Fish through the ice on a frozen lake — a true Canadian winter ritual."
+        },
+        {
+            "id": "kayaking",
+            "name": "Sea Kayaking",
+            "city": "Tofino / Vancouver Island",
+            "province": "British Columbia",
+            "type": "Adventure · Water",
+            "price": "CA$95",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Paddle through temperate rainforest and Pacific coastline."
+        },
+        {
+            "id": "heli-skiing",
+            "name": "Heli-Skiing",
+            "city": "Revelstoke / Whistler",
+            "province": "British Columbia",
+            "type": "Adventure · Ski",
+            "price": "CA$1,200+",
+            "score": 9.9,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Helicopter access to untouched powder in the Canadian Rockies."
+        },
+        {
+            "id": "hot-springs",
+            "name": "Hot Springs Soak",
+            "city": "Banff / Whitehorse / Jasper",
+            "province": "Multiple",
+            "type": "Wellness · Nature",
+            "price": "CA$15",
+            "score": 9.4,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Soak in natural hot springs surrounded by mountain scenery."
+        },
+        {
+            "id": "ice-canyon",
+            "name": "Ice Canyon Walk",
+            "city": "Jasper / Banff",
+            "province": "Alberta",
+            "type": "Adventure · Winter",
+            "price": "CA$75",
+            "score": 9.5,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Walk through frozen waterfalls and blue ice canyons."
+        }
+    ]
+}

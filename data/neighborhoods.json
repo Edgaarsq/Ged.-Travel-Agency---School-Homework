@@ -1,345 +1,1027 @@
 {
-    "Toronto": [
-        "Downtown",
-        "Distillery District",
-        "Financial District",
-        "Yorkville",
-        "Kensington Market",
-        "Queen West",
-        "King West",
-        "Liberty Village",
-        "The Annex",
-        "Leslieville",
-        "Riverdale",
-        "Parkdale",
-        "Roncesvalles",
-        "High Park",
-        "The Beaches",
-        "Chinatown",
-        "Greektown (Danforth)",
-        "Scarborough",
-        "North York",
-        "Etobicoke"
-    ],
-    "Ottawa": [
-        "ByWard Market",
-        "Centretown",
-        "The Glebe",
-        "Westboro",
-        "Hintonburg",
-        "Sandy Hill",
-        "New Edinburgh",
-        "Little Italy",
-        "Chinatown",
-        "Kanata",
-        "Barrhaven",
-        "Orléans"
-    ],
-    "Hamilton": [
-        "Downtown",
-        "James North",
-        "Dundas",
-        "Westdale",
-        "Locke Street",
-        "Ancaster",
-        "Waterdown"
-    ],
-    "London": [
-        "Downtown",
-        "Richmond Row",
-        "Old East Village",
-        "Wortley Village",
-        "Byron",
-        "Masonville"
-    ],
-    "Kingston": [
-        "Downtown",
-        "Sydenham",
-        "Williamsville",
-        "Portsmouth",
-        "Cataraqui"
-    ],
-    "Windsor": [
-        "Downtown",
-        "Walkerville",
-        "Sandwich",
-        "Ford City",
-        "Riverside"
-    ],
-    "Stratford": [
-        "Downtown",
-        "Avon Ward",
-        "Shakespeare",
-        "Festival District"
-    ],
-    "Niagara Falls": [
-        "Clifton Hill",
-        "Fallsview",
-        "Downtown",
-        "Lundy's Lane",
-        "Queen Victoria Park"
-    ],
-    "Montréal": [
-        "Old Montréal (Vieux-Montréal)",
-        "Plateau Mont-Royal",
-        "Mile End",
-        "Outremont",
-        "Griffintown",
-        "Little Italy",
-        "Chinatown",
-        "Le Village",
-        "Rosemont",
-        "Verdun",
-        "Saint-Henri",
-        "Hochelaga-Maisonneuve",
-        "Downtown",
-        "Quartier des Spectacles",
-        "Westmount"
-    ],
-    "Quebec City": [
-        "Old Québec (Vieux-Québec)",
-        "Basse-Ville",
-        "Haute-Ville",
-        "Petit-Champlain",
-        "Saint-Roch",
-        "Saint-Jean-Baptiste",
-        "Montcalm",
-        "Limoilou",
-        "Sainte-Foy"
-    ],
-    "Laval": [
-        "Vieux-Laval",
-        "Sainte-Rose",
-        "Chomedey",
-        "Vimont",
-        "Laval-des-Rapides"
-    ],
-    "Gatineau": [
-        "Hull",
-        "Aylmer",
-        "Buckingham",
-        "Masson-Angers",
-        "Le Plateau"
-    ],
-    "Sherbrooke": [
-        "Vieux-Sherbrooke",
-        "Jacques-Cartier",
-        "Mont-Bellevue",
-        "Fleurimont"
-    ],
-    "Vancouver": [
-        "Downtown",
-        "Gastown",
-        "Yaletown",
-        "Kitsilano",
-        "Mount Pleasant",
-        "Commercial Drive",
-        "Chinatown",
-        "Davie Village",
-        "Coal Harbour",
-        "Fairview",
-        "Kerrisdale",
-        "Main Street",
-        "Olympic Village",
-        "West End"
-    ],
-    "Victoria": [
-        "Downtown",
-        "Inner Harbour",
-        "James Bay",
-        "Cook Street Village",
-        "Fernwood",
-        "Fairfield",
-        "Oak Bay",
-        "Esquimalt"
-    ],
-    "Whistler": [
-        "Whistler Village",
-        "Upper Village",
-        "Creekside",
-        "Blueberry Hill",
-        "Nicklaus North"
-    ],
-    "Kelowna": [
-        "Downtown",
-        "Cultural District",
-        "South Pandosy",
-        "Rutland",
-        "Glenmore",
-        "West Kelowna"
-    ],
-    "Surrey": [
-        "Whalley",
-        "Newton",
-        "Cloverdale",
-        "Guildford",
-        "South Surrey",
-        "Fleetwood"
-    ],
-    "Calgary": [
-        "Downtown",
-        "Beltline",
-        "Kensington",
-        "Inglewood",
-        "Mission",
-        "Bridgeland",
-        "East Village",
-        "Sunnyside",
-        "Bowness",
-        "University District"
-    ],
-    "Edmonton": [
-        "Downtown",
-        "Ice District",
-        "Old Strathcona",
-        "Whyte Avenue",
-        "Oliver",
-        "Garneau",
-        "Glenora",
-        "Ritchie",
-        "Alberta Avenue"
-    ],
-    "Banff": [
-        "Town Centre",
-        "Tunnel Mountain",
-        "Banff Springs",
-        "Bow Falls"
-    ],
-    "Jasper": [
-        "Jasper Townsite",
-        "Patricia Street",
-        "Connaught Drive",
-        "Cabin Creek"
-    ],
-    "Winnipeg": [
-        "Downtown",
-        "Exchange District",
-        "The Forks",
-        "Osborne Village",
-        "Corydon",
-        "Wolseley",
-        "Saint-Boniface",
-        "West Broadway",
-        "Fort Garry"
-    ],
-    "Brandon": [
-        "Downtown",
-        "Riverview",
-        "Riverheights",
-        "South End"
-    ],
-    "Churchill": [
-        "Town Centre",
-        "Hudson Bay Coast"
-    ],
-    "Saskatoon": [
-        "Downtown",
-        "Riversdale",
-        "Broadway",
-        "Nutana",
-        "City Park",
-        "Lakeview"
-    ],
-    "Regina": [
-        "Downtown",
-        "Cathedral Village",
-        "Warehouse District",
-        "Lakeview",
-        "Harbour Landing"
-    ],
-    "Halifax": [
-        "Downtown",
-        "Waterfront",
-        "North End",
-        "South End",
-        "Spring Garden",
-        "Hydrostone",
-        "Quinpool",
-        "Dartmouth Crossing"
-    ],
-    "Sydney": [
-        "Downtown",
-        "Whitney Pier",
-        "Ashby",
-        "Westmount"
-    ],
-    "Moncton": [
-        "Downtown",
-        "Dieppe",
-        "Riverview",
-        "Magnetic Hill"
-    ],
-    "Saint John": [
-        "Uptown",
-        "Trinity Royal",
-        "Market Square",
-        "North End"
-    ],
-    "Fredericton": [
-        "Downtown",
-        "Historic Garrison",
-        "Devon",
-        "Nashwaaksis"
-    ],
-    "St. John's": [
-        "Downtown",
-        "George Street",
-        "Water Street",
-        "Signal Hill",
-        "Quidi Vidi",
-        "The Battery"
-    ],
-    "Corner Brook": [
-        "Downtown",
-        "Curling",
-        "Sun Valley"
-    ],
-    "Charlottetown": [
-        "Downtown",
-        "Historic Charlottetown",
-        "Waterfront",
-        "Victoria Park"
-    ],
-    "Summerside": [
-        "Downtown",
-        "Spinnakers Landing",
-        "Wilmont"
-    ],
-    "Whitehorse": [
-        "Downtown",
-        "Whistle Bend",
-        "Riverdale",
-        "Marwell"
-    ],
-    "Dawson City": [
-        "Downtown",
-        "Klondike Valley",
-        "Bonanza Creek"
-    ],
-    "Yellowknife": [
-        "Old Town",
-        "New Town",
-        "Downtown",
-        "Frame Lake"
-    ],
-    "Hay River": [
-        "Downtown",
-        "Vale Island",
-        "Paradise Gardens"
-    ],
-    "Inuvik": [
-        "Downtown",
-        "Boot Lake",
-        "East Three"
-    ],
-    "Iqaluit": [
-        "Downtown",
-        "Apex",
-        "Tundra Valley",
-        "Niaqungu"
-    ],
-    "Rankin Inlet": [
-        "Downtown",
-        "Kangigliniq"
-    ]
+    "meta": {
+        "version": "3.0",
+        "scope": "Educational demo data for GED Travel Agency",
+        "country": "Canada",
+        "totalNeighborhoods": 320,
+        "updated": "2026-01",
+        "schema": "City → { name, description, image, type }"
+    },
+    "imageFallback": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+    "byCity": {
+        "Toronto": {
+            "Downtown": {
+                "description": "The energetic heart of Toronto, surrounded by skyscrapers, restaurants, shopping and major attractions.",
+                "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban core"
+            },
+            "Distillery District": {
+                "description": "Victorian industrial district turned pedestrian arts and dining hub.",
+                "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Financial District": {
+                "description": "Canada's financial heart — banks, towers and underground PATH network.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Business"
+            },
+            "Yorkville": {
+                "description": "An elegant neighbourhood known for luxury shopping, galleries, restaurants and sophisticated streets.",
+                "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=90",
+                "type": "Upscale"
+            },
+            "Kensington Market": {
+                "description": "Bohemian neighbourhood full of street food, vintage shops and murals.",
+                "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=90",
+                "type": "Bohemian"
+            },
+            "Queen West": {
+                "description": "Toronto's creative strip — galleries, boutiques and nightlife.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "King West": {
+                "description": "Trendy district with restaurants, clubs and converted warehouses.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nightlife"
+            },
+            "Liberty Village": {
+                "description": "Modern residential district popular with young professionals.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "The Annex": {
+                "description": "Historic residential neighbourhood near the University of Toronto.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Academic"
+            },
+            "Leslieville": {
+                "description": "Family-friendly east-end district with cafés and independent shops.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Riverdale": {
+                "description": "Leafy neighbourhood with parks, schools and the Danforth nearby.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Parkdale": {
+                "description": "Diverse west-end neighbourhood known for its food and art scene.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Diverse"
+            },
+            "Roncesvalles": {
+                "description": "Polish heritage village with cafés, bakeries and independent shops.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "High Park": {
+                "description": "Home to Toronto's largest park — cherry blossoms, trails and a zoo.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Park"
+            },
+            "The Beaches": {
+                "description": "Lakeside neighbourhood with boardwalk, beach and small-town feel.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Lakeside"
+            },
+            "Chinatown": {
+                "description": "Bustling district with restaurants, markets and Asian heritage.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Greektown (Danforth)": {
+                "description": "Greek heritage along the Danforth — restaurants and festivals.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Scarborough": {
+                "description": "A diverse area with parks, cultural experiences and access to the famous Scarborough Bluffs.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            },
+            "North York": {
+                "description": "A modern urban district with shopping, parks, restaurants and a quieter atmosphere.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Etobicoke": {
+                "description": "A greener part of Toronto with waterfront parks, trails and residential neighbourhoods.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            }
+        },
+        "Ottawa": {
+            "ByWard Market": {
+                "description": "A lively historic district filled with restaurants, cafés, shops and nightlife.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Centretown": {
+                "description": "A central urban area close to museums, restaurants and Ottawa's main attractions.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "The Glebe": {
+                "description": "A walkable neighbourhood with local shops, restaurants and access to parks.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Westboro": {
+                "description": "A relaxed neighbourhood known for independent businesses, cafés and outdoor activities.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "Hintonburg": {
+                "description": "Artsy neighbourhood with breweries, galleries and independent restaurants.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Artsy"
+            },
+            "Sandy Hill": {
+                "description": "A historic neighbourhood near the University of Ottawa and Rideau River.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Academic"
+            },
+            "New Edinburgh": {
+                "description": "Elegant historic district along the Rideau River.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Little Italy": {
+                "description": "Italian heritage district famous for restaurants and cafés.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Chinatown": {
+                "description": "Ottawa's Chinatown with markets, restaurants and Asian groceries.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Kanata": {
+                "description": "Tech hub and residential suburb with green spaces.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            },
+            "Barrhaven": {
+                "description": "Modern residential suburb south of Ottawa.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            },
+            "Orléans": {
+                "description": "Francophone suburb east of Ottawa along the Ottawa River.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            }
+        },
+        "Montréal": {
+            "Old Montréal": {
+                "description": "Historic streets, stone buildings, galleries, restaurants and the Old Port.",
+                "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Le Plateau-Mont-Royal": {
+                "description": "Colourful streets, cafés, restaurants, murals and classic Montréal architecture.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Bohemian"
+            },
+            "Mile End": {
+                "description": "A creative neighbourhood famous for cafés, music, food and independent culture.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Griffintown": {
+                "description": "A rapidly evolving district with modern architecture, restaurants and waterfront access.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Downtown": {
+                "description": "Montréal's commercial centre with shopping, museums, offices and nightlife.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Le Village": {
+                "description": "LGBTQ+ village with colourful shops, bars and cafés.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Little Italy": {
+                "description": "Italian district famous for Marché Jean-Talon and cafés.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Outremont": {
+                "description": "Upscale francophone neighbourhood with tree-lined streets.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Upscale"
+            },
+            "Westmount": {
+                "description": "Affluent English-speaking enclave on the slopes of Mount Royal.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Upscale"
+            },
+            "Quartier des Spectacles": {
+                "description": "Festival district with venues, public art and cultural spaces.",
+                "image": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            }
+        },
+        "Quebec City": {
+            "Vieux-Québec": {
+                "description": "The historic heart of Québec City, surrounded by fortified walls and centuries of history.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Vieux-Québec (UNESCO)": {
+                "description": "UNESCO-listed walled city — the only fortified city north of Mexico.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "UNESCO"
+            },
+            "Sainte-Foy": {
+                "description": "A modern district with shopping, universities and convenient access to the city.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Saint-Roch": {
+                "description": "A creative and urban neighbourhood filled with restaurants, shops and nightlife.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Montcalm": {
+                "description": "A cultural neighbourhood near museums, galleries and the Plains of Abraham.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Limoilou": {
+                "description": "A local residential district with parks, cafés and a strong community atmosphere.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Petit-Champlain": {
+                "description": "Charming cobblestone street in the lower town with shops and bistros.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            }
+        },
+        "Vancouver": {
+            "Downtown": {
+                "description": "The urban centre of Vancouver surrounded by skyscrapers, parks and the waterfront.",
+                "image": "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Gastown": {
+                "description": "Historic streets, restaurants, design stores and the famous steam clock.",
+                "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Yaletown": {
+                "description": "A modern waterfront neighbourhood filled with restaurants, cafés and converted warehouses.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Kitsilano": {
+                "description": "Relaxed beaches, outdoor activities and views toward the mountains.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Beach"
+            },
+            "West End": {
+                "description": "A green and walkable neighbourhood beside Stanley Park and English Bay.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Mount Pleasant": {
+                "description": "Industrial-chic district with breweries, galleries and cafés.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Commercial Drive": {
+                "description": "Vibrant, multicultural neighbourhood known for cafés and Italian food.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Chinatown": {
+                "description": "Historic Chinatown with restaurants, markets and cultural landmarks.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Coal Harbour": {
+                "description": "Waterfront district with marina, seawall and mountain views.",
+                "image": "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "Olympic Village": {
+                "description": "Modern waterfront neighbourhood from the 2010 Winter Olympics.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            }
+        },
+        "Victoria": {
+            "Downtown": {
+                "description": "The centre of Victoria with historic buildings, restaurants and the Inner Harbour.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Inner Harbour": {
+                "description": "Iconic waterfront with the BC Parliament and Fairmont Empress Hotel.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "James Bay": {
+                "description": "A peaceful waterfront neighbourhood near parks and major attractions.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Cook Street Village": {
+                "description": "A compact village-like area with cafés, restaurants and a local atmosphere.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "Fernwood": {
+                "description": "A creative residential neighbourhood known for local cafés and community culture.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Fairfield": {
+                "description": "A leafy area close to beaches, parks and scenic walking routes.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Oak Bay": {
+                "description": "Upscale waterfront suburb known as the 'Tweed Curtain'.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Upscale"
+            },
+            "Esquimalt": {
+                "description": "Western suburb with naval history and waterfront views.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Whistler": {
+            "Whistler Village": {
+                "description": "Pedestrian village at the base of Whistler and Blackcomb mountains.",
+                "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            },
+            "Upper Village": {
+                "description": "Quieter area near Blackcomb with hotels and restaurants.",
+                "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            },
+            "Creekside": {
+                "description": "Historic Whistler base with gondola access to the alpine.",
+                "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            },
+            "Blueberry Hill": {
+                "description": "Quiet residential area with mountain views.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Nicklaus North": {
+                "description": "Golf-course neighbourhood north of the village.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            }
+        },
+        "Kelowna": {
+            "Cultural District": {
+                "description": "Home to galleries, museums and the lakefront.",
+                "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "South Pandosy": {
+                "description": "Lakeside neighbourhood with boutiques, cafés and beaches.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Lakeside"
+            },
+            "Rutland": {
+                "description": "Multicultural residential suburb with local markets.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Glenmore": {
+                "description": "Family-friendly district near the lake and wineries.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Calgary": {
+            "Downtown": {
+                "description": "Calgary's business and cultural centre surrounded by the Bow River.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Beltline": {
+                "description": "A lively central district with restaurants, nightlife and modern city life.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nightlife"
+            },
+            "Kensington": {
+                "description": "A walkable neighbourhood filled with cafés, shops and independent businesses.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "Inglewood": {
+                "description": "A historic and creative district known for local businesses and culture.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Mission": {
+                "description": "A vibrant inner-city area with restaurants, river pathways and nightlife.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Bridgeland": {
+                "description": "Riverside community with cafés and views of downtown.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "East Village": {
+                "description": "Riverside redevelopment district with modern architecture.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Sunnyside": {
+                "description": "Hillside neighbourhood north of the Bow River.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Bowness": {
+                "description": "West-end neighbourhood near the Bow River and parks.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "University District": {
+                "description": "Modern urban community near the University of Calgary.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Academic"
+            }
+        },
+        "Edmonton": {
+            "Downtown": {
+                "description": "The urban centre with restaurants, attractions and access to the river valley.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Ice District": {
+                "description": "Modern sports and entertainment district around Rogers Place.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Sports"
+            },
+            "Old Strathcona": {
+                "description": "A lively district famous for festivals, restaurants, nightlife and local culture.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Whyte Avenue": {
+                "description": "Bustling shopping and entertainment street in Old Strathcona.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nightlife"
+            },
+            "Oliver": {
+                "description": "A central residential area close to parks, restaurants and downtown.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Garneau": {
+                "description": "A university-area neighbourhood with cafés, shops and cultural venues.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Academic"
+            },
+            "Glenora": {
+                "description": "A peaceful neighbourhood surrounded by trees and river valley scenery.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Ritchie": {
+                "description": "Trendy neighbourhood with cafés, breweries and a farmers market.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Alberta Avenue": {
+                "description": "Multicultural neighbourhood known for its arts scene.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            }
+        },
+        "Banff": {
+            "Town Centre": {
+                "description": "The lively heart of Banff with restaurants, shops, galleries and mountain views.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            },
+            "Tunnel Mountain": {
+                "description": "A peaceful area surrounded by forests, trails and spectacular mountain scenery.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            },
+            "Banff Springs": {
+                "description": "Area around the iconic Fairmont Banff Springs Hotel.",
+                "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Bow Falls": {
+                "description": "Scenic waterfall area just outside the town centre.",
+                "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            }
+        },
+        "Jasper": {
+            "Jasper Townsite": {
+                "description": "The main townsite with restaurants, shops and mountain views.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Resort"
+            },
+            "Patricia Street": {
+                "description": "Main street with restaurants, galleries and shops.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Connaught Drive": {
+                "description": "Central street with lodging and access to trails.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Cabin Creek": {
+                "description": "Quiet residential area with cabins and trails.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            }
+        },
+        "Winnipeg": {
+            "Downtown": {
+                "description": "Winnipeg's commercial and cultural centre.",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Exchange District": {
+                "description": "Historic architecture, restaurants, galleries and creative spaces.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "The Forks": {
+                "description": "A major meeting place where Winnipeg's rivers, food and culture come together.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Osborne Village": {
+                "description": "A lively neighbourhood with local businesses, restaurants and nightlife.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "Corydon": {
+                "description": "A popular dining and entertainment district with a strong local identity.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Dining"
+            },
+            "Wolseley": {
+                "description": "Tree-lined historic residential neighbourhood.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Saint-Boniface": {
+                "description": "Winnipeg's historic Francophone district with cultural landmarks and cafés.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "West Broadway": {
+                "description": "Diverse urban neighbourhood with restaurants and shops.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Fort Garry": {
+                "description": "Southern residential district near the University of Manitoba.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Churchill": {
+            "Town Centre": {
+                "description": "The compact centre with restaurants, lodges and polar bear tour operators.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Remote"
+            },
+            "Hudson Bay Coast": {
+                "description": "The wild coastline where polar bears and beluga whales gather.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            }
+        },
+        "Saskatoon": {
+            "Downtown": {
+                "description": "Saskatoon's commercial centre with restaurants and shops.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Riversdale": {
+                "description": "Vibrant neighbourhood with farmers market and cafés.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Broadway": {
+                "description": "Popular shopping and dining street.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Dining"
+            },
+            "Nutana": {
+                "description": "Historic residential neighbourhood along the river.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "City Park": {
+                "description": "Green neighbourhood near downtown with parks.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Lakeview": {
+                "description": "Lakeside residential area.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Regina": {
+            "Downtown": {
+                "description": "Regina's commercial and government centre.",
+                "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Cathedral Village": {
+                "description": "Historic neighbourhood with cafés, boutiques and markets.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Warehouse District": {
+                "description": "Redeveloped district with restaurants and breweries.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "Lakeview": {
+                "description": "Upscale residential neighbourhood near Wascana Lake.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Upscale"
+            },
+            "Harbour Landing": {
+                "description": "Modern residential community with a marina.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            }
+        },
+        "Halifax": {
+            "Downtown": {
+                "description": "The centre of Halifax with the waterfront, restaurants and historic attractions.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Waterfront": {
+                "description": "Bustling harbourfront with boardwalk, markets and boats.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "North End": {
+                "description": "A creative district with cafés, breweries, restaurants and local culture.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Creative"
+            },
+            "South End": {
+                "description": "A leafy area near universities, parks and the waterfront.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Academic"
+            },
+            "Spring Garden": {
+                "description": "Elegant shopping district with restaurants and cafés.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Dining"
+            },
+            "Hydrostone": {
+                "description": "Historic market district with cafés and shops.",
+                "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Quinpool": {
+                "description": "Vibrant street with ethnic restaurants and shops.",
+                "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Dartmouth Crossing": {
+                "description": "Modern retail and residential district across the harbour.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            }
+        },
+        "Sydney": {
+            "Downtown": {
+                "description": "Sydney's compact downtown with shops and restaurants.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Whitney Pier": {
+                "description": "Historic multicultural neighbourhood with cafés.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Cultural"
+            },
+            "Ashby": {
+                "description": "Residential district near the harbour.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Westmount": {
+                "description": "Western suburb with views over the harbour.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Moncton": {
+            "Downtown": {
+                "description": "Moncton's main commercial and cultural district.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Dieppe": {
+                "description": "Francophone suburb with parks, shops and the airport.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            },
+            "Riverview": {
+                "description": "Residential town across the Petitcodiac River.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Magnetic Hill": {
+                "description": "Tourist area with the famous Magnetic Hill illusion.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Tourist"
+            }
+        },
+        "Saint John": {
+            "Uptown": {
+                "description": "Historic uptown with Victorian architecture and markets.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Trinity Royal": {
+                "description": "Heritage district near the harbour.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Market Square": {
+                "description": "Bustling waterfront market area.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "North End": {
+                "description": "Residential and industrial area with parks.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Fredericton": {
+            "Downtown": {
+                "description": "Historic capital downtown with riverfront trails.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Historic Garrison": {
+                "description": "Military heritage district with officers' quarters.",
+                "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Devon": {
+                "description": "Residential area across the Saint John River.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Nashwaaksis": {
+                "description": "Northern suburb with riverside views.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Suburb"
+            }
+        },
+        "St. John's": {
+            "Downtown": {
+                "description": "Colourful row houses and steep streets around the harbour.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "George Street": {
+                "description": "Famous street with the highest concentration of bars in North America.",
+                "image": "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nightlife"
+            },
+            "Water Street": {
+                "description": "Historic commercial street along the harbour.",
+                "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Signal Hill": {
+                "description": "Historic hill with Cabot Tower and ocean views.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Landmark"
+            },
+            "Quidi Vidi": {
+                "description": "Small fishing village inside the city with a brewery.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Village"
+            },
+            "The Battery": {
+                "description": "Steep cliffside area at the entrance to the harbour.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Scenic"
+            }
+        },
+        "Corner Brook": {
+            "Downtown": {
+                "description": "Corner Brook's commercial centre with shops and restaurants.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Curling": {
+                "description": "Western residential area with river views.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Sun Valley": {
+                "description": "Scenic valley neighbourhood near Marble Mountain.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Scenic"
+            }
+        },
+        "Charlottetown": {
+            "Downtown": {
+                "description": "Historic downtown with Victorian architecture and shops.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Historic Charlottetown": {
+                "description": "Birthplace of Confederation with heritage buildings.",
+                "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=90",
+                "type": "UNESCO"
+            },
+            "Waterfront": {
+                "description": "Harbourfront with boardwalk and Peake's Wharf.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "Victoria Park": {
+                "description": "Green neighbourhood near the park and waterfront.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Summerside": {
+            "Downtown": {
+                "description": "Summerside's main street with shops and restaurants.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Spinnakers Landing": {
+                "description": "Waterfront development with shops and marina.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Waterfront"
+            },
+            "Wilmont": {
+                "description": "Residential community near the waterfront.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Whitehorse": {
+            "Downtown": {
+                "description": "The compact centre of Whitehorse with restaurants, museums and local culture.",
+                "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Whistle Bend": {
+                "description": "Modern residential neighbourhood.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Riverdale": {
+                "description": "A residential area beside the Yukon River.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Marwell": {
+                "description": "Northern neighbourhood with wilderness access.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            }
+        },
+        "Dawson City": {
+            "Downtown": {
+                "description": "Gold Rush-era streets with wooden boardwalks.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Klondike Valley": {
+                "description": "The valley that sparked the Klondike Gold Rush.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            },
+            "Bonanza Creek": {
+                "description": "Historic gold mining creek.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            }
+        },
+        "Yellowknife": {
+            "Old Town": {
+                "description": "Yellowknife's historic lakeside district with colourful buildings and incredible views.",
+                "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "New Town": {
+                "description": "Modern commercial district with shops and restaurants.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            },
+            "Downtown": {
+                "description": "The compact centre with restaurants, services and northern culture.",
+                "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Frame Lake": {
+                "description": "A central area surrounding Frame Lake and urban amenities.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            },
+            "Range Lake": {
+                "description": "A residential neighbourhood close to parks and lakes.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            },
+            "Niven Lake": {
+                "description": "A modern neighbourhood surrounded by northern scenery.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Modern"
+            }
+        },
+        "Hay River": {
+            "Downtown": {
+                "description": "Hay River's main commercial area.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Vale Island": {
+                "description": "Historic island district with fisher cabins.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Paradise Gardens": {
+                "description": "Northern residential area.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Inuvik": {
+            "Downtown": {
+                "description": "Inuvik's compact centre with the Igloo Church.",
+                "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Boot Lake": {
+                "description": "Residential area around a small lake.",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            },
+            "East Three": {
+                "description": "Eastern residential area.",
+                "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Iqaluit": {
+            "Downtown": {
+                "description": "Iqaluit's capital centre with shops and services.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Apex": {
+                "description": "A historic community beside Frobisher Bay.",
+                "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=90",
+                "type": "Historic"
+            },
+            "Tundra Valley": {
+                "description": "A quieter area surrounded by open northern landscapes.",
+                "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90",
+                "type": "Nature"
+            },
+            "Niaqungu": {
+                "description": "Northern residential district with wide Arctic views.",
+                "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        },
+        "Rankin Inlet": {
+            "Downtown": {
+                "description": "Rankin Inlet's commercial centre.",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90",
+                "type": "Urban"
+            },
+            "Kangigliniq": {
+                "description": "Residential area with Hudson Bay views.",
+                "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                "type": "Residential"
+            }
+        }
+    }
 }

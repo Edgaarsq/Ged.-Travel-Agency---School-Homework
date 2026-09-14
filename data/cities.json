@@ -1,1 +1,1549 @@
-{"cities":[{"name":"Toronto","province":"Ontario","neighborhood":"Downtown"},{"name":"Ottawa","province":"Ontario","neighborhood":"ByWard Market"},{"name":"Vancouver","province":"British Columbia","neighborhood":"Downtown"},{"name":"Victoria","province":"British Columbia","neighborhood":"Inner Harbour"},{"name":"Montréal","province":"Quebec","neighborhood":"Old Montréal"},{"name":"Québec City","province":"Quebec","neighborhood":"Old Québec"},{"name":"Calgary","province":"Alberta","neighborhood":"Downtown"},{"name":"Banff","province":"Alberta","neighborhood":"Town Centre"},{"name":"Edmonton","province":"Alberta","neighborhood":"Downtown"},{"name":"Winnipeg","province":"Manitoba","neighborhood":"The Forks"},{"name":"Halifax","province":"Nova Scotia","neighborhood":"Downtown"},{"name":"Whitehorse","province":"Yukon","neighborhood":"Riverdale"},{"name":"Yellowknife","province":"Northwest Territories","neighborhood":"Old Town"},{"name":"Iqaluit","province":"Nunavut","neighborhood":"Apex"}]}
+{
+    "meta": {
+        "version": "4.0",
+        "scope": "Educational demo data for GED Travel Agency",
+        "country": "Canada",
+        "totalCities": 68,
+        "totalProvinces": 13,
+        "updated": "2026-01",
+        "note": "Primary cities used by GED Explorer. Each entry links to a province, default neighbourhood, image and coordinates.",
+        "schema": "name · province · provinceCode · region · neighborhood · type · population · score · airport · image · coordinates · highlights · bestTime · featured"
+    },
+    "regions": {
+        "atlantic": [
+            "New Brunswick",
+            "Nova Scotia",
+            "Prince Edward Island",
+            "Newfoundland and Labrador"
+        ],
+        "central": [
+            "Ontario",
+            "Quebec"
+        ],
+        "prairies": [
+            "Manitoba",
+            "Saskatchewan",
+            "Alberta"
+        ],
+        "west": [
+            "British Columbia"
+        ],
+        "north": [
+            "Yukon",
+            "Northwest Territories",
+            "Nunavut"
+        ]
+    },
+    "cities": [
+        {
+            "name": "Toronto",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Downtown",
+            "type": "Metropolis",
+            "population": 2930000,
+            "score": 9.4,
+            "airport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 43.6532,
+                "lng": -79.3832
+            },
+            "highlights": [
+                "CN Tower",
+                "Distillery District",
+                "Royal Ontario Museum",
+                "Toronto Waterfront"
+            ],
+            "bestTime": "May – October",
+            "featured": true
+        },
+        {
+            "name": "Ottawa",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "ByWard Market",
+            "type": "Capital",
+            "population": 1010000,
+            "score": 9.2,
+            "airport": "YOW",
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.4215,
+                "lng": -75.6972
+            },
+            "highlights": [
+                "Parliament Hill",
+                "Rideau Canal",
+                "ByWard Market",
+                "Canadian Museum of History"
+            ],
+            "bestTime": "May – September",
+            "featured": true
+        },
+        {
+            "name": "Hamilton",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "James North",
+            "type": "City",
+            "population": 580000,
+            "score": 8.7,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 43.2557,
+                "lng": -79.8711
+            },
+            "highlights": [
+                "Art Crawl",
+                "Waterfalls",
+                "Bayfront Park"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "London",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Richmond Row",
+            "type": "City",
+            "population": 400000,
+            "score": 8.6,
+            "airport": "YXU",
+            "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 42.9849,
+                "lng": -81.2453
+            },
+            "highlights": [
+                "Budweiser Gardens",
+                "Covent Garden Market",
+                "Thames River"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Kingston",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Downtown",
+            "type": "Heritage city",
+            "population": 132000,
+            "score": 9.0,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 44.2312,
+                "lng": -76.4860
+            },
+            "highlights": [
+                "Fort Henry",
+                "Kingston Penitentiary",
+                "Rideau Canal"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Windsor",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Walkerville",
+            "type": "Border city",
+            "population": 220000,
+            "score": 8.4,
+            "airport": "YQG",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 42.3149,
+                "lng": -83.0364
+            },
+            "highlights": [
+                "Detroit River",
+                "Caesars Windsor",
+                "Walkerville"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Kitchener",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Downtown",
+            "type": "City",
+            "population": 250000,
+            "score": 8.5,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 43.4516,
+                "lng": -80.4925
+            },
+            "highlights": [
+                "St. Jacobs Market",
+                "Tech hub",
+                "Victoria Park"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Stratford",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Festival District",
+            "type": "Festival town",
+            "population": 33000,
+            "score": 9.1,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 43.3700,
+                "lng": -80.9800
+            },
+            "highlights": [
+                "Stratford Festival",
+                "Avon River",
+                "Shakespeare Gardens"
+            ],
+            "bestTime": "April – October",
+            "featured": false
+        },
+        {
+            "name": "Niagara Falls",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Clifton Hill",
+            "type": "Tourist city",
+            "population": 92000,
+            "score": 9.4,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 43.0962,
+                "lng": -79.0377
+            },
+            "highlights": [
+                "Niagara Falls",
+                "Clifton Hill",
+                "Hornblower Cruise"
+            ],
+            "bestTime": "May – September",
+            "featured": false
+        },
+        {
+            "name": "Thunder Bay",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "neighborhood": "Waterfront",
+            "type": "Northern city",
+            "population": 108000,
+            "score": 8.6,
+            "airport": "YQT",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 48.3809,
+                "lng": -89.2477
+            },
+            "highlights": [
+                "Sleeping Giant",
+                "Lake Superior",
+                "Fort William"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Montréal",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Old Montréal",
+            "type": "Metropolis",
+            "population": 1780000,
+            "score": 9.4,
+            "airport": "YUL",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.5017,
+                "lng": -73.5673
+            },
+            "highlights": [
+                "Old Montréal",
+                "Mount Royal",
+                "Notre-Dame Basilica",
+                "Montréal Old Port"
+            ],
+            "bestTime": "June – October",
+            "featured": true
+        },
+        {
+            "name": "Québec City",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Old Québec",
+            "type": "Heritage city",
+            "population": 550000,
+            "score": 9.5,
+            "airport": "YQB",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.8139,
+                "lng": -71.2080
+            },
+            "highlights": [
+                "Vieux-Québec",
+                "Château Frontenac",
+                "Petit-Champlain",
+                "Plains of Abraham"
+            ],
+            "bestTime": "June – October",
+            "featured": true
+        },
+        {
+            "name": "Laval",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Vieux-Laval",
+            "type": "Suburb",
+            "population": 440000,
+            "score": 8.3,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.6066,
+                "lng": -73.7124
+            },
+            "highlights": [
+                "Cosmodôme",
+                "Nature Centre",
+                "Rivière-des-Prairies"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Gatineau",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Hull",
+            "type": "Border city",
+            "population": 290000,
+            "score": 8.8,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.4765,
+                "lng": -75.7013
+            },
+            "highlights": [
+                "Canadian Museum of History",
+                "Gatineau Park",
+                "Mackenzie King Estate"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Sherbrooke",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Vieux-Sherbrooke",
+            "type": "University city",
+            "population": 170000,
+            "score": 8.7,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.4042,
+                "lng": -71.8929
+            },
+            "highlights": [
+                "Murals",
+                "Lac des Nations",
+                "Bishop's University"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Trois-Rivières",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Vieux-Trois-Rivières",
+            "type": "Heritage city",
+            "population": 135000,
+            "score": 8.6,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.3432,
+                "lng": -72.5432
+            },
+            "highlights": [
+                "Old Trois-Rivières",
+                "Forges du Saint-Maurice",
+                "St. Lawrence River"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Mont-Tremblant",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "neighborhood": "Whistler Village",
+            "type": "Ski resort",
+            "population": 10000,
+            "score": 9.4,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.1183,
+                "lng": -74.5953
+            },
+            "highlights": [
+                "Mont-Tremblant Ski Resort",
+                "Pedestrian village",
+                "Nordic spa"
+            ],
+            "bestTime": "December – April · June – October",
+            "featured": false
+        },
+        {
+            "name": "Vancouver",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Downtown",
+            "type": "Metropolis",
+            "population": 675000,
+            "score": 9.3,
+            "airport": "YVR",
+            "image": "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.2827,
+                "lng": -123.1207
+            },
+            "highlights": [
+                "Stanley Park",
+                "Granville Island",
+                "Grouse Mountain",
+                "Vancouver Waterfront"
+            ],
+            "bestTime": "May – September",
+            "featured": true
+        },
+        {
+            "name": "Victoria",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Inner Harbour",
+            "type": "Capital",
+            "population": 92000,
+            "score": 9.4,
+            "airport": "YYJ",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 48.4284,
+                "lng": -123.3656
+            },
+            "highlights": [
+                "Inner Harbour",
+                "Butchart Gardens",
+                "Royal BC Museum",
+                "Beacon Hill Park"
+            ],
+            "bestTime": "May – September",
+            "featured": true
+        },
+        {
+            "name": "Whistler",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Whistler Village",
+            "type": "Ski resort",
+            "population": 13000,
+            "score": 9.7,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 50.1163,
+                "lng": -122.9574
+            },
+            "highlights": [
+                "Whistler Blackcomb",
+                "Peak 2 Peak Gondola",
+                "Lost Lake"
+            ],
+            "bestTime": "December – April · June – September",
+            "featured": true
+        },
+        {
+            "name": "Kelowna",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Cultural District",
+            "type": "Wine city",
+            "population": 145000,
+            "score": 9.1,
+            "airport": "YLW",
+            "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.8880,
+                "lng": -119.4960
+            },
+            "highlights": [
+                "Okanagan Lake",
+                "Vineyards",
+                "Knox Mountain"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Surrey",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Whalley",
+            "type": "Suburb",
+            "population": 620000,
+            "score": 8.3,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.1913,
+                "lng": -122.8490
+            },
+            "highlights": [
+                "Bear Creek Park",
+                "Crescent Beach",
+                "City Centre"
+            ],
+            "bestTime": "May – September",
+            "featured": false
+        },
+        {
+            "name": "Tofino",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Downtown",
+            "type": "Coastal town",
+            "population": 2000,
+            "score": 9.6,
+            "airport": "YAZ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.1530,
+                "lng": -125.9066
+            },
+            "highlights": [
+                "Pacific Rim National Park",
+                "Long Beach",
+                "Whale watching"
+            ],
+            "bestTime": "June – September · storm watching Nov – Feb",
+            "featured": false
+        },
+        {
+            "name": "Kamloops",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Downtown",
+            "type": "Interior city",
+            "population": 100000,
+            "score": 8.5,
+            "airport": "YKA",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 50.6745,
+                "lng": -120.3273
+            },
+            "highlights": [
+                "Sun Peaks",
+                "Thompson River",
+                "BC Wildlife Park"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Nanaimo",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Old City",
+            "type": "Harbour city",
+            "population": 100000,
+            "score": 8.7,
+            "airport": "YCD",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.1659,
+                "lng": -123.9401
+            },
+            "highlights": [
+                "Newcastle Island",
+                "Nanaimo Bar Trail",
+                "Harbourfront"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Revelstoke",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "neighborhood": "Downtown",
+            "type": "Mountain town",
+            "population": 8000,
+            "score": 9.2,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 50.9981,
+                "lng": -118.1957
+            },
+            "highlights": [
+                "Revelstoke Mountain Resort",
+                "Mount Revelstoke NP",
+                "Heli-skiing"
+            ],
+            "bestTime": "December – April · July – September",
+            "featured": false
+        },
+        {
+            "name": "Calgary",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Metropolis",
+            "population": 1400000,
+            "score": 9.2,
+            "airport": "YYC",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 51.0447,
+                "lng": -114.0719
+            },
+            "highlights": [
+                "Calgary Tower",
+                "Canadian Rockies",
+                "Calgary Stampede",
+                "Bow River"
+            ],
+            "bestTime": "June – September",
+            "featured": true
+        },
+        {
+            "name": "Edmonton",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 1000000,
+            "score": 9.0,
+            "airport": "YEG",
+            "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 53.5461,
+                "lng": -113.4938
+            },
+            "highlights": [
+                "West Edmonton Mall",
+                "River Valley",
+                "Muttart Conservatory",
+                "Old Strathcona"
+            ],
+            "bestTime": "June – September",
+            "featured": true
+        },
+        {
+            "name": "Banff",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Town Centre",
+            "type": "National park town",
+            "population": 9000,
+            "score": 9.9,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 51.1784,
+                "lng": -115.5708
+            },
+            "highlights": [
+                "Banff National Park",
+                "Lake Louise",
+                "Banff Avenue",
+                "Sulphur Mountain"
+            ],
+            "bestTime": "June – September · December – March",
+            "featured": true
+        },
+        {
+            "name": "Jasper",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Jasper Townsite",
+            "type": "National park town",
+            "population": 5000,
+            "score": 9.7,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 52.8734,
+                "lng": -118.0814
+            },
+            "highlights": [
+                "Jasper National Park",
+                "Columbia Icefield",
+                "Maligne Lake",
+                "Dark-sky preserve"
+            ],
+            "bestTime": "June – September · December – March",
+            "featured": false
+        },
+        {
+            "name": "Canmore",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Mountain town",
+            "population": 16000,
+            "score": 9.3,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 51.0890,
+                "lng": -115.3594
+            },
+            "highlights": [
+                "Three Sisters",
+                "Grassi Lakes",
+                "Bow Valley"
+            ],
+            "bestTime": "June – September · December – March",
+            "featured": false
+        },
+        {
+            "name": "Drumheller",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Badlands town",
+            "population": 8000,
+            "score": 9.4,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 51.4651,
+                "lng": -112.7100
+            },
+            "highlights": [
+                "Royal Tyrrell Museum",
+                "Hoodoos",
+                "Horseshoe Canyon"
+            ],
+            "bestTime": "May – October",
+            "featured": false
+        },
+        {
+            "name": "Red Deer",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Prairie city",
+            "population": 105000,
+            "score": 8.2,
+            "airport": "YQF",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 52.2681,
+                "lng": -113.8112
+            },
+            "highlights": [
+                "Gasoline Alley",
+                "Heritage Ranch",
+                "Bower Ponds"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Winnipeg",
+            "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
+            "neighborhood": "The Forks",
+            "type": "Capital",
+            "population": 750000,
+            "score": 9.1,
+            "airport": "YWG",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.8951,
+                "lng": -97.1384
+            },
+            "highlights": [
+                "The Forks",
+                "Canadian Museum for Human Rights",
+                "Exchange District",
+                "Assiniboine Park"
+            ],
+            "bestTime": "June – September",
+            "featured": true
+        },
+        {
+            "name": "Churchill",
+            "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
+            "neighborhood": "Town Centre",
+            "type": "Arctic town",
+            "population": 900,
+            "score": 9.9,
+            "airport": "YYQ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 58.7684,
+                "lng": -94.1650
+            },
+            "highlights": [
+                "Polar bears",
+                "Beluga whales",
+                "Aurora borealis",
+                "Tundra buggy tours"
+            ],
+            "bestTime": "October – November · July – August",
+            "featured": true
+        },
+        {
+            "name": "Brandon",
+            "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Prairie city",
+            "population": 50000,
+            "score": 8.0,
+            "airport": "YBR",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.8483,
+                "lng": -99.9501
+            },
+            "highlights": [
+                "Art Gallery of SW Manitoba",
+                "Riverbank Discovery Centre"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Saskatoon",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "neighborhood": "Riversdale",
+            "type": "Prairie city",
+            "population": 280000,
+            "score": 8.9,
+            "airport": "YXE",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 52.1332,
+                "lng": -106.6700
+            },
+            "highlights": [
+                "South Saskatchewan River",
+                "Remai Modern",
+                "Broadway District"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Regina",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 220000,
+            "score": 8.7,
+            "airport": "YQR",
+            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 50.4452,
+                "lng": -104.6189
+            },
+            "highlights": [
+                "Wascana Centre",
+                "Royal Saskatchewan Museum",
+                "Legislative Building"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Prince Albert",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "neighborhood": "Downtown",
+            "type": "Gateway city",
+            "population": 36000,
+            "score": 8.4,
+            "airport": "YPA",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 53.2033,
+                "lng": -105.7531
+            },
+            "highlights": [
+                "Prince Albert National Park",
+                "North Saskatchewan River"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Halifax",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 450000,
+            "score": 9.3,
+            "airport": "YHZ",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 44.6488,
+                "lng": -63.5752
+            },
+            "highlights": [
+                "Halifax Waterfront",
+                "Citadel National Historic Site",
+                "Peggy's Cove",
+                "Maritime Museum"
+            ],
+            "bestTime": "June – October",
+            "featured": true
+        },
+        {
+            "name": "Sydney",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Cape Breton city",
+            "population": 30000,
+            "score": 8.6,
+            "airport": "YQY",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.1368,
+                "lng": -60.1942
+            },
+            "highlights": [
+                "Cabot Trail gateway",
+                "Fortress of Louisbourg",
+                "Cape Breton"
+            ],
+            "bestTime": "June – October",
+            "featured": false
+        },
+        {
+            "name": "Lunenburg",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "neighborhood": "Old Town",
+            "type": "UNESCO town",
+            "population": 2300,
+            "score": 9.2,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 44.3778,
+                "lng": -64.3150
+            },
+            "highlights": [
+                "Old Town UNESCO",
+                "Bluenose II",
+                "Fisheries Museum"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Baddeck",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "neighborhood": "Village Centre",
+            "type": "Village",
+            "population": 800,
+            "score": 9.4,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.0997,
+                "lng": -60.7500
+            },
+            "highlights": [
+                "Cabot Trail",
+                "Alexander Graham Bell Museum",
+                "Bras d'Or Lake"
+            ],
+            "bestTime": "June – October",
+            "featured": false
+        },
+        {
+            "name": "Moncton",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "City",
+            "population": 72000,
+            "score": 8.8,
+            "airport": "YQM",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.0878,
+                "lng": -64.7782
+            },
+            "highlights": [
+                "Bay of Fundy tides",
+                "Magnetic Hill",
+                "Hopewell Rocks"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Saint John",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "neighborhood": "Uptown",
+            "type": "Harbour city",
+            "population": 68000,
+            "score": 8.7,
+            "airport": "YSJ",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.2733,
+                "lng": -66.0633
+            },
+            "highlights": [
+                "Reversing Falls",
+                "City Market",
+                "Bay of Fundy"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Fredericton",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 58000,
+            "score": 8.6,
+            "airport": "YFC",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.9636,
+                "lng": -66.6431
+            },
+            "highlights": [
+                "Historic Garrison",
+                "Beaverbrook Art Gallery",
+                "Saint John River"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Hopewell Cape",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "neighborhood": "Hopewell Rocks",
+            "type": "Natural site",
+            "population": 500,
+            "score": 9.5,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 45.8167,
+                "lng": -64.5833
+            },
+            "highlights": [
+                "Hopewell Rocks",
+                "Bay of Fundy",
+                "Flowerpot formations"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "St. John's",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 110000,
+            "score": 9.2,
+            "airport": "YYT",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 47.5615,
+                "lng": -52.7126
+            },
+            "highlights": [
+                "Signal Hill",
+                "George Street",
+                "Water Street",
+                "Cape Spear"
+            ],
+            "bestTime": "June – September",
+            "featured": true
+        },
+        {
+            "name": "Rocky Harbour",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "neighborhood": "Village Centre",
+            "type": "Gateway town",
+            "population": 900,
+            "score": 9.4,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 49.5833,
+                "lng": -57.9167
+            },
+            "highlights": [
+                "Gros Morne National Park",
+                "Western Brook Pond",
+                "Tablelands"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "St. Anthony",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Northern town",
+            "population": 2200,
+            "score": 9.3,
+            "airport": "YAY",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 51.3722,
+                "lng": -55.5955
+            },
+            "highlights": [
+                "L'Anse aux Meadows",
+                "Viking settlement",
+                "Iceberg viewing"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Corner Brook",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "City",
+            "population": 20000,
+            "score": 8.5,
+            "airport": "YDF",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 48.9500,
+                "lng": -57.9500
+            },
+            "highlights": [
+                "Humber River",
+                "Captain Cook Monument",
+                "Marble Mountain"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Charlottetown",
+            "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 40000,
+            "score": 9.1,
+            "airport": "YYG",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.2382,
+                "lng": -63.1311
+            },
+            "highlights": [
+                "Confederation Centre",
+                "Victoria Row",
+                "Waterfront"
+            ],
+            "bestTime": "June – September",
+            "featured": true
+        },
+        {
+            "name": "Cavendish",
+            "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
+            "neighborhood": "Cavendish",
+            "type": "Coastal town",
+            "population": 200,
+            "score": 9.2,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.5000,
+                "lng": -63.3833
+            },
+            "highlights": [
+                "Green Gables",
+                "PEI National Park",
+                "Red-sand beaches"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Summerside",
+            "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
+            "neighborhood": "Downtown",
+            "type": "City",
+            "population": 15000,
+            "score": 8.3,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 46.3950,
+                "lng": -63.7875
+            },
+            "highlights": [
+                "Spinnakers Landing",
+                "Eptek Art Centre",
+                "Waterfront"
+            ],
+            "bestTime": "June – September",
+            "featured": false
+        },
+        {
+            "name": "Whitehorse",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "neighborhood": "Downtown",
+            "type": "Capital",
+            "population": 28000,
+            "score": 9.5,
+            "airport": "YXY",
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 60.7212,
+                "lng": -135.0568
+            },
+            "highlights": [
+                "Yukon River",
+                "Miles Canyon",
+                "Northern Lights",
+                "Kwanlin Dün Cultural Centre"
+            ],
+            "bestTime": "June – August · November – February",
+            "featured": true
+        },
+        {
+            "name": "Dawson City",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "neighborhood": "Downtown",
+            "type": "Historic town",
+            "population": 1400,
+            "score": 9.4,
+            "airport": "YDA",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 64.0601,
+                "lng": -139.4333
+            },
+            "highlights": [
+                "Klondike Gold Rush",
+                "Historic boardwalks",
+                "Diamond Tooth Gerties"
+            ],
+            "bestTime": "June – August",
+            "featured": false
+        },
+        {
+            "name": "Haines Junction",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "neighborhood": "Town Centre",
+            "type": "Mountain village",
+            "population": 600,
+            "score": 9.3,
+            "airport": null,
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 60.7531,
+                "lng": -137.5111
+            },
+            "highlights": [
+                "Kluane National Park",
+                "Mount Logan views",
+                "Kathleen Lake"
+            ],
+            "bestTime": "June – August",
+            "featured": false
+        },
+        {
+            "name": "Yellowknife",
+            "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
+            "neighborhood": "Old Town",
+            "type": "Capital",
+            "population": 20000,
+            "score": 9.7,
+            "airport": "YZF",
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 62.4540,
+                "lng": -114.3718
+            },
+            "highlights": [
+                "Aurora viewing",
+                "Great Slave Lake",
+                "Old Town",
+                "Northern culture"
+            ],
+            "bestTime": "June – August · November – March",
+            "featured": true
+        },
+        {
+            "name": "Inuvik",
+            "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
+            "neighborhood": "Downtown",
+            "type": "Arctic town",
+            "population": 3200,
+            "score": 9.3,
+            "airport": "YEV",
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 68.3607,
+                "lng": -133.7230
+            },
+            "highlights": [
+                "Mackenzie River Delta",
+                "Igloo Church",
+                "Midnight sun"
+            ],
+            "bestTime": "June – August · November – March",
+            "featured": false
+        },
+        {
+            "name": "Hay River",
+            "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
+            "neighborhood": "Vale Island",
+            "type": "Northern town",
+            "population": 3500,
+            "score": 8.7,
+            "airport": "YHY",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 60.8156,
+                "lng": -115.7999
+            },
+            "highlights": [
+                "Great Slave Lake",
+                "Fisherman's Wharf",
+                "Northern Lights"
+            ],
+            "bestTime": "June – August",
+            "featured": false
+        },
+        {
+            "name": "Fort Simpson",
+            "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
+            "neighborhood": "Village Centre",
+            "type": "Village",
+            "population": 1200,
+            "score": 9.4,
+            "airport": "YFS",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 61.8600,
+                "lng": -121.3550
+            },
+            "highlights": [
+                "Nahanni National Park",
+                "Virginia Falls",
+                "Mackenzie River"
+            ],
+            "bestTime": "June – August",
+            "featured": false
+        },
+        {
+            "name": "Iqaluit",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "neighborhood": "Apex",
+            "type": "Capital",
+            "population": 8000,
+            "score": 9.4,
+            "airport": "YFB",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 63.7467,
+                "lng": -68.5170
+            },
+            "highlights": [
+                "Sylvia Grinnell Territorial Park",
+                "Inuit culture",
+                "Frobisher Bay",
+                "Arctic landscapes"
+            ],
+            "bestTime": "July – August · October – March",
+            "featured": true
+        },
+        {
+            "name": "Rankin Inlet",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "neighborhood": "Downtown",
+            "type": "Northern town",
+            "population": 2900,
+            "score": 8.9,
+            "airport": "YRT",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 62.8084,
+                "lng": -92.0853
+            },
+            "highlights": [
+                "Inuit art",
+                "Hudson Bay",
+                "Northern culture"
+            ],
+            "bestTime": "July – August",
+            "featured": false
+        },
+        {
+            "name": "Pangnirtung",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "neighborhood": "Village Centre",
+            "type": "Fjord village",
+            "population": 1500,
+            "score": 9.5,
+            "airport": "YXP",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 66.1450,
+                "lng": -65.6994
+            },
+            "highlights": [
+                "Auyuittuq National Park",
+                "Mount Thor",
+                "Fjords"
+            ],
+            "bestTime": "July – August",
+            "featured": false
+        },
+        {
+            "name": "Cambridge Bay",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "neighborhood": "Downtown",
+            "type": "Arctic town",
+            "population": 1800,
+            "score": 8.8,
+            "airport": "YCB",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "coordinates": {
+                "lat": 69.1083,
+                "lng": -105.0600
+            },
+            "highlights": [
+                "Northwest Passage",
+                "Arctic char fishing",
+                "Midnight sun"
+            ],
+            "bestTime": "July – August",
+            "featured": false
+        }
+    ]
+}

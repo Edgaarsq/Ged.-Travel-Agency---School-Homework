@@ -1,37 +1,95 @@
 {
+    "meta": {
+        "version": "2.0",
+        "scope": "GED Travel Agency — airline reference dataset",
+        "updated": "2026-01",
+        "totalAirlines": 18,
+        "alliances": [
+            "Star Alliance",
+            "SkyTeam",
+            "Oneworld"
+        ],
+        "countries": [
+            "Canada",
+            "Brasil",
+            "Panamá",
+            "Colômbia",
+            "Estados Unidos",
+            "Portugal",
+            "Alemanha",
+            "França"
+        ],
+        "types": [
+            "full-service",
+            "regional",
+            "leisure",
+            "low-cost"
+        ],
+        "schema": "name · slug · code · icao · alliance · country · type · hub · hubs · founded · website · fleet"
+    },
     "airlines": [
         {
             "name": "Air Canada",
+            "slug": "air-canada",
             "code": "AC",
+            "icao": "ACA",
             "alliance": "Star Alliance",
             "country": "Canada",
             "type": "full-service",
             "hub": "YYZ",
+            "hubs": [
+                "YYZ",
+                "YUL",
+                "YVR",
+                "YYC"
+            ],
+            "founded": 1937,
+            "website": "https://www.aircanada.com",
             "fleet": [
                 "Boeing 787-9 Dreamliner",
                 "Airbus A330-300",
-                "Boeing 777-300ER"
+                "Boeing 777-300ER",
+                "Airbus A220-300",
+                "Boeing 737 MAX 8"
             ]
         },
         {
             "name": "WestJet",
+            "slug": "westjet",
             "code": "WS",
+            "icao": "WJA",
             "alliance": null,
             "country": "Canada",
             "type": "full-service",
             "hub": "YYC",
+            "hubs": [
+                "YYC",
+                "YVR",
+                "YYZ"
+            ],
+            "founded": 1996,
+            "website": "https://www.westjet.com",
             "fleet": [
                 "Boeing 787-9 Dreamliner",
-                "Boeing 737-800"
+                "Boeing 737-800",
+                "Boeing 737 MAX 8"
             ]
         },
         {
             "name": "Porter Airlines",
+            "slug": "porter-airlines",
             "code": "PD",
+            "icao": "POE",
             "alliance": null,
             "country": "Canada",
             "type": "regional",
             "hub": "YTZ",
+            "hubs": [
+                "YTZ",
+                "YYZ"
+            ],
+            "founded": 2006,
+            "website": "https://www.flyporter.com",
             "fleet": [
                 "Embraer E195-E2",
                 "De Havilland Dash 8-400"
@@ -39,58 +97,168 @@
         },
         {
             "name": "Air Transat",
+            "slug": "air-transat",
             "code": "TS",
+            "icao": "TSC",
             "alliance": null,
             "country": "Canada",
             "type": "leisure",
             "hub": "YUL",
+            "hubs": [
+                "YUL",
+                "YYZ",
+                "YQB"
+            ],
+            "founded": 1986,
+            "website": "https://www.airtransat.com",
             "fleet": [
                 "Airbus A330-300",
                 "Airbus A321neo"
             ]
         },
         {
+            "name": "Flair Airlines",
+            "slug": "flair-airlines",
+            "code": "F8",
+            "icao": "FLE",
+            "alliance": null,
+            "country": "Canada",
+            "type": "low-cost",
+            "hub": "YYC",
+            "hubs": [
+                "YYC",
+                "YVR",
+                "YYZ"
+            ],
+            "founded": 2005,
+            "website": "https://flyflair.com",
+            "fleet": [
+                "Boeing 737-800",
+                "Boeing 737 MAX 8"
+            ]
+        },
+        {
+            "name": "Air Canada Rouge",
+            "slug": "air-canada-rouge",
+            "code": "RV",
+            "icao": "ROU",
+            "alliance": "Star Alliance",
+            "country": "Canada",
+            "type": "leisure",
+            "hub": "YYZ",
+            "hubs": [
+                "YYZ",
+                "YUL"
+            ],
+            "founded": 2012,
+            "website": "https://www.aircanada.com",
+            "fleet": [
+                "Airbus A319-100",
+                "Airbus A321-200",
+                "Boeing 767-300ER"
+            ]
+        },
+        {
+            "name": "Canadian North",
+            "slug": "canadian-north",
+            "code": "5T",
+            "icao": "MPE",
+            "alliance": null,
+            "country": "Canada",
+            "type": "regional",
+            "hub": "YZF",
+            "hubs": [
+                "YZF",
+                "YFB",
+                "YOW"
+            ],
+            "founded": 1987,
+            "website": "https://www.canadiannorth.com",
+            "fleet": [
+                "Boeing 737-300",
+                "Boeing 737-400",
+                "ATR 42-300"
+            ]
+        },
+        {
             "name": "LATAM Airlines",
+            "slug": "latam-airlines",
             "code": "LA",
+            "icao": "LAN",
             "alliance": null,
             "country": "Brasil",
             "type": "full-service",
             "hub": "GRU",
+            "hubs": [
+                "GRU",
+                "SCL",
+                "LIM"
+            ],
+            "founded": 2012,
+            "website": "https://www.latamairlines.com",
             "fleet": [
                 "Boeing 787-9 Dreamliner",
-                "Airbus A320neo"
+                "Airbus A320neo",
+                "Airbus A321neo"
             ]
         },
         {
             "name": "Azul Linhas Aéreas",
+            "slug": "azul-linhas-aereas",
             "code": "AD",
+            "icao": "AZU",
             "alliance": null,
             "country": "Brasil",
             "type": "full-service",
             "hub": "VCP",
+            "hubs": [
+                "VCP",
+                "CNF",
+                "REC"
+            ],
+            "founded": 2008,
+            "website": "https://www.voeazul.com.br",
             "fleet": [
                 "Airbus A330-900neo",
-                "Embraer E195-E2"
+                "Embraer E195-E2",
+                "Airbus A320neo"
             ]
         },
         {
             "name": "Copa Airlines",
+            "slug": "copa-airlines",
             "code": "CM",
+            "icao": "CMP",
             "alliance": "Star Alliance",
             "country": "Panamá",
             "type": "full-service",
             "hub": "PTY",
+            "hubs": [
+                "PTY"
+            ],
+            "founded": 1947,
+            "website": "https://www.copaair.com",
             "fleet": [
-                "Boeing 737 MAX 9"
+                "Boeing 737 MAX 9",
+                "Boeing 737-800"
             ]
         },
         {
             "name": "Avianca",
+            "slug": "avianca",
             "code": "AV",
+            "icao": "AVA",
             "alliance": "Star Alliance",
             "country": "Colômbia",
             "type": "full-service",
             "hub": "BOG",
+            "hubs": [
+                "BOG",
+                "LIM",
+                "SAL"
+            ],
+            "founded": 1919,
+            "website": "https://www.avianca.com",
             "fleet": [
                 "Airbus A320neo",
                 "Boeing 787-8 Dreamliner"
@@ -98,48 +266,136 @@
         },
         {
             "name": "United Airlines",
+            "slug": "united-airlines",
             "code": "UA",
+            "icao": "UAL",
             "alliance": "Star Alliance",
             "country": "Estados Unidos",
             "type": "full-service",
             "hub": "ORD",
+            "hubs": [
+                "ORD",
+                "EWR",
+                "IAH",
+                "DEN",
+                "SFO"
+            ],
+            "founded": 1926,
+            "website": "https://www.united.com",
             "fleet": [
                 "Boeing 787-9 Dreamliner",
-                "Boeing 777-200ER"
+                "Boeing 777-200ER",
+                "Boeing 737 MAX 9"
             ]
         },
         {
             "name": "Delta Air Lines",
+            "slug": "delta-air-lines",
             "code": "DL",
+            "icao": "DAL",
             "alliance": "SkyTeam",
             "country": "Estados Unidos",
             "type": "full-service",
             "hub": "ATL",
+            "hubs": [
+                "ATL",
+                "DTW",
+                "JFK",
+                "LAX",
+                "SEA"
+            ],
+            "founded": 1925,
+            "website": "https://www.delta.com",
             "fleet": [
                 "Airbus A350-900",
-                "Boeing 767-400ER"
+                "Boeing 767-400ER",
+                "Airbus A330-900neo"
             ]
         },
         {
             "name": "American Airlines",
+            "slug": "american-airlines",
             "code": "AA",
+            "icao": "AAL",
             "alliance": "Oneworld",
             "country": "Estados Unidos",
             "type": "full-service",
             "hub": "DFW",
+            "hubs": [
+                "DFW",
+                "ORD",
+                "JFK",
+                "MIA",
+                "LAX"
+            ],
+            "founded": 1930,
+            "website": "https://www.aa.com",
             "fleet": [
-                "Boeing 787-8 Dreamliner"
+                "Boeing 787-8 Dreamliner",
+                "Airbus A321neo",
+                "Boeing 777-300ER"
             ]
         },
         {
             "name": "TAP Air Portugal",
+            "slug": "tap-air-portugal",
             "code": "TP",
+            "icao": "TAP",
             "alliance": "Star Alliance",
             "country": "Portugal",
             "type": "full-service",
             "hub": "LIS",
+            "hubs": [
+                "LIS",
+                "OPO"
+            ],
+            "founded": 1945,
+            "website": "https://www.flytap.com",
             "fleet": [
-                "Airbus A330-900neo"
+                "Airbus A330-900neo",
+                "Airbus A321LR"
+            ]
+        },
+        {
+            "name": "Lufthansa",
+            "slug": "lufthansa",
+            "code": "LH",
+            "icao": "DLH",
+            "alliance": "Star Alliance",
+            "country": "Alemanha",
+            "type": "full-service",
+            "hub": "FRA",
+            "hubs": [
+                "FRA",
+                "MUC"
+            ],
+            "founded": 1953,
+            "website": "https://www.lufthansa.com",
+            "fleet": [
+                "Airbus A350-900",
+                "Boeing 747-8",
+                "Airbus A320neo"
+            ]
+        },
+        {
+            "name": "Air France",
+            "slug": "air-france",
+            "code": "AF",
+            "icao": "AFR",
+            "alliance": "SkyTeam",
+            "country": "França",
+            "type": "full-service",
+            "hub": "CDG",
+            "hubs": [
+                "CDG",
+                "ORY"
+            ],
+            "founded": 1933,
+            "website": "https://www.airfrance.com",
+            "fleet": [
+                "Boeing 777-300ER",
+                "Airbus A350-900",
+                "Airbus A220-300"
             ]
         }
     ]

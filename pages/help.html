@@ -73,9 +73,6 @@
             box-sizing: border-box;
         }
 
-        /* ============================================================
-           GLOBAL POLISH
-           ============================================================ */
         :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
             outline: 2px solid rgba(0, 122, 255, 0.65);
             outline-offset: 3px;
@@ -115,9 +112,7 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           HEADER
-           ============================================================ */
+        /* HEADER */
         .help-page .site-header {
             position: fixed;
             top: 0;
@@ -151,9 +146,7 @@
             color: #111;
         }
 
-        /* ============================================================
-           HERO
-           ============================================================ */
+        /* HERO */
         .help-page .help-hero {
             position: relative;
             min-height: 620px;
@@ -310,9 +303,7 @@
             transform: translateY(-3px);
         }
 
-        /* ============================================================
-           CHAT SECTION
-           ============================================================ */
+        /* CHAT SECTION */
         .help-page .help-chat-section {
             padding: 0 0 100px;
             margin-top: -60px;
@@ -327,7 +318,6 @@
             align-items: stretch;
         }
 
-        /* ---------- SIDEBAR ---------- */
         .help-page .help-sidebar {
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.18);
@@ -567,7 +557,7 @@
             background: rgba(255, 59, 48, 0.15);
         }
 
-        /* ---------- CHAT PANEL ---------- */
+        /* CHAT PANEL */
         .help-page .help-chat-panel {
             background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
             border: 0.5px solid rgba(60, 60, 67, 0.18);
@@ -581,6 +571,48 @@
             min-height: 680px;
             overflow: hidden;
             position: relative;
+        }
+
+        /* Top progress bar */
+        .help-page .help-chat-panel .top-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: transparent;
+            overflow: hidden;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .help-page .help-chat-panel .top-progress.active {
+            opacity: 1;
+        }
+
+        .help-page .help-chat-panel .top-progress::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--ios-blue) 30%,
+                    var(--ios-purple) 50%,
+                    var(--ios-blue) 70%,
+                    transparent 100%);
+            background-size: 200% 100%;
+            animation: progressSweep 1.8s linear infinite;
+        }
+
+        @keyframes progressSweep {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         .help-page .help-chat-header {
@@ -679,6 +711,10 @@
             display: inline-block;
         }
 
+        .help-page .help-chat-agent .info small.busy {
+            color: var(--ios-blue);
+        }
+
         .help-page .help-chat-toolbar {
             display: flex;
             align-items: center;
@@ -698,6 +734,7 @@
             color: var(--ios-blue);
             border: 0.5px solid rgba(0, 122, 255, 0.18);
             white-space: nowrap;
+            transition: all .3s var(--ease-ios);
         }
 
         .help-page .help-chat-toolbar .model-badge .dot {
@@ -742,9 +779,7 @@
             box-shadow: 0 4px 14px rgba(52, 199, 89, 0.35);
         }
 
-        /* ============================================================
-           CHAT MESSAGES — CLEAN LAYOUT
-           ============================================================ */
+        /* CHAT MESSAGES */
         #chat {
             flex: 1;
             overflow-y: auto;
@@ -752,9 +787,9 @@
             min-height: 420px;
             max-height: 560px;
             scroll-behavior: smooth;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 20px !important;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             background:
                 radial-gradient(circle at 0% 0%, rgba(0, 122, 255, 0.025), transparent 40%),
                 radial-gradient(circle at 100% 100%, rgba(175, 82, 222, 0.025), transparent 40%),
@@ -775,414 +810,412 @@
             background-clip: padding-box;
         }
 
-        /* Kill any global .assistant styles */
-        #chat .chat-message,
-        #chat .chat-message.assistant,
-        #chat .chat-message.user {
-            display: flex !important;
-            flex-direction: row !important;
-            grid-template-columns: none !important;
-            align-items: flex-end !important;
-            gap: 10px !important;
-            max-width: 84% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: transparent !important;
-            border: 0 !important;
-            box-shadow: none !important;
-            animation: messageIn 0.5s var(--ease-spring) both !important;
-            position: relative !important;
+        #chat .chat-message {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 10px;
+            max-width: 84%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            animation: messageIn 0.5s var(--ease-spring) both;
+            position: relative;
         }
 
         #chat .chat-message.assistant {
-            align-self: flex-start !important;
+            align-self: flex-start;
         }
 
         #chat .chat-message.user {
-            align-self: flex-end !important;
-            flex-direction: row-reverse !important;
+            align-self: flex-end;
+            flex-direction: row-reverse;
         }
 
-        /* --- AVATAR (both sides) --- */
         #chat .message-avatar {
-            width: 32px !important;
-            height: 32px !important;
-            border-radius: 50% !important;
-            flex: 0 0 32px !important;
-            display: grid !important;
-            place-items: center !important;
-            font-family: "Space Grotesk", sans-serif !important;
-            font-size: 11px !important;
-            font-weight: 700 !important;
-            border: 1px solid rgba(0, 0, 0, 0.06) !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            overflow: hidden !important;
-            background: #0a0a0a !important;
-            color: #ffd21a !important;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            flex: 0 0 32px;
+            display: grid;
+            place-items: center;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #0a0a0a;
+            color: #ffd21a;
             user-select: none;
         }
 
         #chat .message-avatar img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            display: block !important;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         #chat .chat-message.user .message-avatar {
-            background: linear-gradient(135deg, #007aff, #4aa3ff) !important;
-            color: #fff !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.28) !important;
+            background: linear-gradient(135deg, #007aff, #4aa3ff);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.28);
         }
 
-        /* --- BODY --- */
         #chat .message-body {
-            min-width: 0 !important;
-            max-width: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 8px !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: transparent !important;
-            border: 0 !important;
-            box-shadow: none !important;
+            min-width: 0;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
         }
 
-        /* --- META "Thought for X.Xs" --- */
         #chat .message-meta {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            font-size: 10.5px !important;
-            font-weight: 600 !important;
-            color: var(--ios-text-3) !important;
-            letter-spacing: 0.02em !important;
-            text-transform: uppercase !important;
-            padding: 0 4px !important;
-            margin: 0 !important;
-            animation: fadeIn 0.5s var(--ease-ios) both !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--ios-text-3);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            padding: 0 4px;
+            margin: 0;
         }
 
         #chat .message-meta .meta-icon {
-            color: var(--ios-purple) !important;
-            font-size: 10px !important;
-            animation: sparkle 2s ease-in-out infinite !important;
+            color: var(--ios-purple);
+            font-size: 10px;
+            animation: sparkle 2s ease-in-out infinite;
         }
 
         #chat .chat-message.user .message-meta {
-            justify-content: flex-end !important;
-            color: rgba(255, 255, 255, 0.75) !important;
+            justify-content: flex-end;
+            color: rgba(255, 255, 255, 0.75);
         }
 
-        /* --- BUBBLE --- */
-        #chat .message-content,
-        .help-page #chat .message-content {
-            padding: 12px 18px !important;
-            font-size: 15px !important;
-            line-height: 1.55 !important;
-            word-break: break-word !important;
-            letter-spacing: -0.011em !important;
-            background: #fff !important;
-            color: #1c1c1e !important;
-            border-radius: 22px 22px 22px 6px !important;
-            border: 0.5px solid rgba(0, 0, 0, 0.05) !important;
+        #chat .message-content {
+            padding: 12px 18px;
+            font-size: 15px;
+            line-height: 1.55;
+            word-break: break-word;
+            letter-spacing: -0.011em;
+            background: #fff;
+            color: #1c1c1e;
+            border-radius: 22px 22px 22px 6px;
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
             box-shadow:
                 0 1px 2px rgba(0, 0, 0, 0.04),
-                0 4px 12px rgba(0, 0, 0, 0.03) !important;
-            position: relative !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+                0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
+            max-width: 100%;
+            margin: 0;
         }
 
         #chat .chat-message.user .message-content {
-            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%) !important;
-            color: #fff !important;
-            border-radius: 22px 22px 6px 22px !important;
-            border: 0 !important;
+            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%);
+            color: #fff;
+            border-radius: 22px 22px 6px 22px;
+            border: 0;
             box-shadow:
                 0 2px 12px rgba(0, 122, 255, 0.28),
                 0 1px 2px rgba(0, 122, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        /* --- MARKDOWN STYLES --- */
         #chat .message-content p {
-            margin: 0 !important;
+            margin: 0;
         }
 
         #chat .message-content p+p {
-            margin-top: 10px !important;
+            margin-top: 10px;
         }
 
         #chat .message-content strong {
-            font-weight: 700 !important;
-            color: #0a0a0a !important;
+            font-weight: 700;
+            color: #0a0a0a;
         }
 
         #chat .chat-message.user .message-content strong {
-            color: #fff !important;
+            color: #fff;
         }
 
         #chat .message-content em {
-            font-style: italic !important;
-            opacity: 0.88 !important;
+            font-style: italic;
+            opacity: 0.88;
         }
 
         #chat .message-content a {
-            color: var(--ios-blue) !important;
-            text-decoration: none !important;
-            border-bottom: 1px solid rgba(0, 122, 255, 0.35) !important;
-            transition: border-color 0.2s !important;
+            color: var(--ios-blue);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 122, 255, 0.35);
+            transition: border-color 0.2s;
         }
 
         #chat .chat-message.user .message-content a {
-            color: #fff !important;
-            border-bottom-color: rgba(255, 255, 255, 0.5) !important;
-        }
-
-        #chat .message-content a:hover {
-            border-bottom-color: var(--ios-blue) !important;
-        }
-
-        #chat .chat-message.user .message-content a:hover {
-            border-bottom-color: #fff !important;
+            color: #fff;
+            border-bottom-color: rgba(255, 255, 255, 0.5);
         }
 
         #chat .message-content ul,
         #chat .message-content ol {
-            margin: 8px 0 8px 0 !important;
-            padding-left: 22px !important;
+            margin: 8px 0;
+            padding-left: 22px;
         }
 
         #chat .message-content li {
-            margin: 4px 0 !important;
-            line-height: 1.55 !important;
+            margin: 4px 0;
+            line-height: 1.55;
         }
 
         #chat .message-content h1,
         #chat .message-content h2,
         #chat .message-content h3 {
-            font-family: "Space Grotesk", sans-serif !important;
-            margin: 12px 0 6px !important;
-            letter-spacing: -0.02em !important;
-            line-height: 1.2 !important;
-            font-weight: 700 !important;
-            color: #0a0a0a !important;
+            font-family: "Space Grotesk", sans-serif;
+            margin: 12px 0 6px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #0a0a0a;
         }
 
         #chat .chat-message.user .message-content h1,
         #chat .chat-message.user .message-content h2,
         #chat .chat-message.user .message-content h3 {
-            color: #fff !important;
+            color: #fff;
         }
 
         #chat .message-content h1 {
-            font-size: 17px !important;
+            font-size: 17px;
         }
 
         #chat .message-content h2 {
-            font-size: 16px !important;
+            font-size: 16px;
         }
 
         #chat .message-content h3 {
-            font-size: 15px !important;
+            font-size: 15px;
         }
 
         #chat .message-content code {
-            font-family: "JetBrains Mono", ui-monospace, monospace !important;
-            font-size: 0.88em !important;
-            background: rgba(0, 0, 0, 0.06) !important;
-            padding: 2px 6px !important;
-            border-radius: 6px !important;
-            color: #c9224a !important;
-            font-weight: 500 !important;
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-size: 0.88em;
+            background: rgba(0, 0, 0, 0.06);
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: #c9224a;
+            font-weight: 500;
         }
 
         #chat .chat-message.user .message-content code {
-            background: rgba(255, 255, 255, 0.22) !important;
-            color: #fff !important;
+            background: rgba(255, 255, 255, 0.22);
+            color: #fff;
         }
 
         #chat .message-content pre {
-            margin: 10px 0 !important;
-            padding: 12px 14px !important;
-            background: #0d1117 !important;
-            border-radius: 12px !important;
-            overflow-x: auto !important;
-            border: 0.5px solid rgba(255, 255, 255, 0.08) !important;
+            margin: 10px 0;
+            padding: 12px 14px;
+            background: #0d1117;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
         }
 
         #chat .message-content pre code {
-            background: transparent !important;
-            color: #e6edf3 !important;
-            font-size: 12.5px !important;
-            padding: 0 !important;
+            background: transparent;
+            color: #e6edf3;
+            font-size: 12.5px;
+            padding: 0;
         }
 
         #chat .message-content blockquote {
-            margin: 10px 0 !important;
-            padding: 8px 14px !important;
-            border-left: 3px solid var(--ios-blue) !important;
-            background: rgba(0, 122, 255, 0.05) !important;
-            border-radius: 0 8px 8px 0 !important;
-            color: var(--ios-text-2) !important;
-            font-style: italic !important;
+            margin: 10px 0;
+            padding: 8px 14px;
+            border-left: 3px solid var(--ios-blue);
+            background: rgba(0, 122, 255, 0.05);
+            border-radius: 0 8px 8px 0;
+            color: var(--ios-text-2);
+            font-style: italic;
         }
 
         #chat .chat-message.user .message-content blockquote {
-            border-left-color: rgba(255, 255, 255, 0.5) !important;
-            background: rgba(255, 255, 255, 0.12) !important;
-            color: #fff !important;
+            border-left-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
         }
 
-        /* --- FOOTER / FONTS --- */
         #chat .message-footer {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            font-size: 11px !important;
-            color: var(--ios-text-3) !important;
-            line-height: 1.5 !important;
-            padding: 0 4px !important;
-            margin: 0 !important;
-            letter-spacing: -0.005em !important;
-            flex-wrap: wrap !important;
-            animation: fadeIn 0.5s 0.15s var(--ease-ios) both !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--ios-text-3);
+            line-height: 1.5;
+            padding: 0 4px;
+            margin: 0;
+            letter-spacing: -0.005em;
+            flex-wrap: wrap;
         }
 
         #chat .message-footer .footer-icon {
-            color: var(--ios-orange) !important;
-            font-size: 11px !important;
-            display: inline-flex !important;
+            color: var(--ios-orange);
+            font-size: 11px;
+            display: inline-flex;
         }
 
         #chat .message-footer .footer-label {
-            font-weight: 700 !important;
-            color: var(--ios-text-2) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.04em !important;
-            font-size: 10px !important;
+            font-weight: 700;
+            color: var(--ios-text-2);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 10px;
         }
 
         #chat .message-footer .source-chip {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 4px !important;
-            padding: 3px 10px !important;
-            border-radius: 999px !important;
-            background: rgba(0, 122, 255, 0.08) !important;
-            color: var(--ios-blue) !important;
-            font-weight: 600 !important;
-            font-size: 10.5px !important;
-            text-decoration: none !important;
-            transition: all 0.22s var(--ease-ios) !important;
-            border: 0.5px solid rgba(0, 122, 255, 0.12) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(0, 122, 255, 0.08);
+            color: var(--ios-blue);
+            font-weight: 600;
+            font-size: 10.5px;
+            text-decoration: none;
+            transition: all 0.22s var(--ease-ios);
+            border: 0.5px solid rgba(0, 122, 255, 0.12);
         }
 
         #chat .message-footer .source-chip:hover {
-            background: rgba(0, 122, 255, 0.16) !important;
-            transform: translateY(-1px) !important;
+            background: rgba(0, 122, 255, 0.16);
+            transform: translateY(-1px);
         }
 
-        /* --- MESSAGE ACTIONS (copy / regenerate) --- */
         #chat .message-actions {
-            display: inline-flex !important;
-            gap: 4px !important;
-            padding: 0 4px !important;
-            opacity: 0 !important;
-            transition: opacity 0.22s var(--ease-ios) !important;
-            animation: fadeIn 0.5s var(--ease-ios) both !important;
+            display: inline-flex;
+            gap: 4px;
+            padding: 0 4px;
+            opacity: 0;
+            transition: opacity 0.22s var(--ease-ios);
         }
 
         #chat .chat-message:hover .message-actions {
-            opacity: 1 !important;
+            opacity: 1;
         }
 
         #chat .message-actions button {
-            width: 28px !important;
-            height: 28px !important;
-            border-radius: 8px !important;
-            border: 0.5px solid rgba(60, 60, 67, 0.14) !important;
-            background: #fff !important;
-            color: var(--ios-text-3) !important;
-            cursor: pointer !important;
-            font-size: 12px !important;
-            display: grid !important;
-            place-items: center !important;
-            font-family: inherit !important;
-            transition: all 0.2s var(--ease-ios) !important;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            background: #fff;
+            color: var(--ios-text-3);
+            cursor: pointer;
+            font-size: 12px;
+            display: grid;
+            place-items: center;
+            font-family: inherit;
+            transition: all 0.2s var(--ease-ios);
         }
 
         #chat .message-actions button:hover {
-            background: var(--ios-blue) !important;
-            color: #fff !important;
-            border-color: transparent !important;
-            transform: translateY(-1px) !important;
+            background: var(--ios-blue);
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-1px);
         }
 
-        /* --- IMAGE --- */
+        /* Retry button in error messages */
+        #chat .message-retry {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(0, 122, 255, 0.08);
+            border: 0.5px solid rgba(0, 122, 255, 0.22);
+            color: var(--ios-blue);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.22s var(--ease-spring);
+        }
+
+        #chat .message-retry:hover {
+            background: rgba(0, 122, 255, 0.16);
+            transform: translateY(-1px);
+        }
+
         #chat .message-image {
-            margin-top: 6px !important;
-            border-radius: 16px !important;
-            overflow: hidden !important;
-            border: 0.5px solid rgba(0, 0, 0, 0.06) !important;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10) !important;
-            max-width: 320px !important;
-            width: 100% !important;
-            background: #fff !important;
+            margin-top: 6px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 0.5px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            max-width: 320px;
+            width: 100%;
+            background: #fff;
         }
 
         #chat .message-image img {
-            width: 100% !important;
-            height: auto !important;
-            display: block !important;
-            aspect-ratio: 16/10 !important;
-            object-fit: cover !important;
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/10;
+            object-fit: cover;
         }
 
         #chat .message-image .image-caption {
-            padding: 9px 13px !important;
-            font-size: 11px !important;
-            color: var(--ios-text-3) !important;
-            background: #fff !important;
-            border-top: 0.5px solid rgba(60, 60, 67, 0.10) !important;
-            font-weight: 500 !important;
+            padding: 9px 13px;
+            font-size: 11px;
+            color: var(--ios-text-3);
+            background: #fff;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.10);
+            font-weight: 500;
         }
 
-        /* --- WELCOME / SUGGESTIONS --- */
         #chat .welcome-suggestions {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 8px !important;
-            margin-top: 14px !important;
-            padding-top: 12px !important;
-            border-top: 0.5px dashed rgba(0, 0, 0, 0.08) !important;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 0.5px dashed rgba(0, 0, 0, 0.08);
         }
 
         #chat .welcome-suggestions button {
-            padding: 9px 16px !important;
-            border-radius: 999px !important;
-            background: rgba(0, 122, 255, 0.08) !important;
-            border: 0.5px solid rgba(0, 122, 255, 0.20) !important;
-            font-size: 12.5px !important;
-            font-weight: 600 !important;
-            color: var(--ios-blue) !important;
-            cursor: pointer !important;
-            transition: all 0.24s var(--ease-spring) !important;
-            font-family: inherit !important;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(0, 122, 255, 0.08);
+            border: 0.5px solid rgba(0, 122, 255, 0.20);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ios-blue);
+            cursor: pointer;
+            transition: all 0.24s var(--ease-spring);
+            font-family: inherit;
         }
 
         #chat .welcome-suggestions button:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.18) !important;
-            background: rgba(0, 122, 255, 0.14) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.18);
+            background: rgba(0, 122, 255, 0.14);
         }
 
-        /* ---------- TYPING INDICATOR ---------- */
+        /* TYPING INDICATOR + STATE MACHINE */
         .help-page .help-chat-panel .typing-indicator {
             display: flex;
             align-items: flex-end;
@@ -1207,7 +1240,7 @@
             display: grid;
             place-items: center;
             font-family: "Space Grotesk", sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             color: #ffd21a;
         }
@@ -1222,13 +1255,113 @@
         .help-page .help-chat-panel .typing-bubble {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 20px;
+            gap: 10px;
+            padding: 12px 16px;
             border-radius: 22px 22px 22px 6px;
             background: #fff;
             border: 0.5px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
             min-height: 46px;
+            transition: background 0.3s var(--ease-ios), border-color 0.3s var(--ease-ios);
+            position: relative;
+        }
+
+        /* State icon */
+        .help-page .help-chat-panel .typing-bubble .state-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 12px;
+            flex: 0 0 24px;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.12), rgba(175, 82, 222, 0.10));
+            color: var(--ios-blue);
+            animation: statePulse 1.8s ease-in-out infinite;
+            transition: background 0.3s var(--ease-ios), color 0.3s var(--ease-ios);
+        }
+
+        /* Per-state colors */
+        .help-page .help-chat-panel .typing-bubble.state-searching .state-icon {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.16), rgba(90, 200, 250, 0.10));
+            color: var(--ios-green);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-reasoning .state-icon {
+            background: linear-gradient(135deg, rgba(255, 210, 26, 0.20), rgba(255, 149, 0, 0.10));
+            color: #b47800;
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-planning .state-icon {
+            background: linear-gradient(135deg, rgba(175, 82, 222, 0.16), rgba(199, 125, 255, 0.10));
+            color: var(--ios-purple);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-reading .state-icon {
+            background: linear-gradient(135deg, rgba(90, 200, 250, 0.16), rgba(0, 122, 255, 0.10));
+            color: #0077b6;
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-composing .state-icon {
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.14), rgba(255, 149, 0, 0.10));
+            color: var(--ios-pink, #ff2d55);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-finalizing .state-icon {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.16), rgba(90, 200, 250, 0.10));
+            color: var(--ios-green);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-slow .state-icon {
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.16), rgba(255, 210, 26, 0.10));
+            color: var(--ios-orange);
+        }
+
+        @keyframes statePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.10);
+                opacity: 1;
+            }
+        }
+
+        /* Progress ring */
+        .help-page .help-chat-panel .typing-bubble .progress-ring {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(0, 122, 255, 0.15);
+            border-top-color: var(--ios-blue);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            flex: 0 0 14px;
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-searching .progress-ring {
+            border-color: rgba(52, 199, 89, 0.15);
+            border-top-color: var(--ios-green);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-reasoning .progress-ring {
+            border-color: rgba(255, 149, 0, 0.15);
+            border-top-color: var(--ios-orange);
+        }
+
+        .help-page .help-chat-panel .typing-bubble.state-planning .progress-ring {
+            border-color: rgba(175, 82, 222, 0.15);
+            border-top-color: var(--ios-purple);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .help-page .help-chat-panel .typing-dots {
@@ -1256,9 +1389,38 @@
             font-size: 12.5px;
             color: var(--ios-text-3);
             font-weight: 500;
+            white-space: nowrap;
         }
 
-        /* ---------- QUICK PROMPTS ---------- */
+        /* Cancel button inside typing bubble */
+        .help-page .help-chat-panel .typing-bubble .cancel-btn {
+            margin-left: 4px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 0.5px solid rgba(255, 59, 48, 0.30);
+            background: rgba(255, 59, 48, 0.08);
+            color: var(--ios-red);
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: all 0.22s var(--ease-spring);
+            font-family: inherit;
+            flex: 0 0 26px;
+        }
+
+        .help-page .help-chat-panel .typing-bubble .cancel-btn:hover {
+            background: rgba(255, 59, 48, 0.18);
+            transform: scale(1.08);
+        }
+
+        .help-page .help-chat-panel .typing-bubble .cancel-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* QUICK PROMPTS */
         .help-page .help-chat-panel .quick-prompts {
             display: flex;
             gap: 8px;
@@ -1273,40 +1435,32 @@
         }
 
         .help-page .help-chat-panel .quick-prompts .chip {
-            flex: 0 0 auto !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 7px !important;
-            padding: 9px 15px !important;
-            border-radius: 999px !important;
-            background: #fff !important;
-            border: 0.5px solid rgba(60, 60, 67, 0.18) !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            color: var(--ios-text-2) !important;
-            cursor: pointer !important;
-            transition: all 0.24s var(--ease-spring) !important;
-            white-space: nowrap !important;
-            font-family: inherit !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
-        }
-
-        .help-page .help-chat-panel .quick-prompts .chip .chip-icon {
-            width: 18px !important;
-            height: 18px !important;
-            border-radius: 50% !important;
-            object-fit: cover !important;
-            flex: 0 0 18px !important;
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 15px;
+            border-radius: 999px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ios-text-2);
+            cursor: pointer;
+            transition: all 0.24s var(--ease-spring);
+            white-space: nowrap;
+            font-family: inherit;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
         .help-page .help-chat-panel .quick-prompts .chip:hover {
-            border-color: rgba(0, 122, 255, 0.4) !important;
-            color: var(--ios-blue) !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.12) !important;
+            border-color: rgba(0, 122, 255, 0.4);
+            color: var(--ios-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.12);
         }
 
-        /* ---------- INPUT ---------- */
+        /* INPUT */
         .help-page .help-chat-panel .chat-input-wrap {
             padding: 0 22px 16px;
             background: linear-gradient(180deg, rgba(251, 251, 253, 0) 0%, rgba(251, 251, 253, 0.9) 100%);
@@ -1314,173 +1468,111 @@
         }
 
         .help-page .help-chat-panel .chat-input {
-            display: flex !important;
-            align-items: flex-end !important;
-            gap: 10px !important;
-            padding: 8px 8px 8px 20px !important;
-            border-radius: 26px !important;
-            background: #fff !important;
-            border: 0.5px solid rgba(60, 60, 67, 0.18) !important;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            padding: 8px 8px 8px 20px;
+            border-radius: 26px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
             box-shadow:
                 0 2px 12px rgba(0, 0, 0, 0.05),
                 0 1px 2px rgba(0, 0, 0, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+                inset 0 1px 0 rgba(255, 255, 255, 1);
             transition: border-color 0.24s var(--ease-ios), box-shadow 0.24s var(--ease-ios);
-            min-height: 52px !important;
+            min-height: 52px;
         }
 
         .help-page .help-chat-panel .chat-input:focus-within {
-            border-color: rgba(0, 122, 255, 0.5) !important;
+            border-color: rgba(0, 122, 255, 0.5);
             box-shadow:
                 0 4px 20px rgba(0, 122, 255, 0.12),
                 0 1px 2px rgba(0, 0, 0, 0.03),
-                0 0 0 4px rgba(0, 122, 255, 0.08) !important;
+                0 0 0 4px rgba(0, 122, 255, 0.08);
         }
 
         .help-page .help-chat-panel .chat-input textarea#question {
-            flex: 1 !important;
-            border: 0 !important;
-            outline: 0 !important;
-            resize: none !important;
-            padding: 10px 0 !important;
-            background: transparent !important;
-            font-size: 15.5px !important;
-            line-height: 1.45 !important;
-            min-height: 34px !important;
-            max-height: 130px !important;
-            color: var(--ios-text) !important;
-            font-family: inherit !important;
-            letter-spacing: -0.011em !important;
+            flex: 1;
+            border: 0;
+            outline: 0;
+            resize: none;
+            padding: 10px 0;
+            background: transparent;
+            font-size: 15.5px;
+            line-height: 1.45;
+            min-height: 34px;
+            max-height: 130px;
+            color: var(--ios-text);
+            font-family: inherit;
+            letter-spacing: -0.011em;
         }
 
         .help-page .help-chat-panel .chat-input textarea#question::placeholder {
-            color: #aeaeb2 !important;
+            color: #aeaeb2;
         }
 
         .help-page .help-chat-panel .chat-input .actions {
-            display: flex !important;
-            align-items: center !important;
-            gap: 4px !important;
-            flex: 0 0 auto !important;
-            position: relative !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex: 0 0 auto;
+            position: relative;
         }
 
         .help-page .help-chat-panel .chat-input .send {
-            width: 38px !important;
-            height: 38px !important;
-            border-radius: 50% !important;
-            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%) !important;
-            color: #fff !important;
-            border: 0 !important;
-            cursor: pointer !important;
-            font-size: 18px !important;
-            display: grid !important;
-            place-items: center !important;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #1a8cff 0%, #007aff 55%, #0060d0 100%);
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+            font-size: 18px;
+            display: grid;
+            place-items: center;
             box-shadow:
                 0 4px 14px rgba(0, 122, 255, 0.32),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-            transition: all 0.3s var(--ease-spring) !important;
-            font-family: inherit !important;
-            margin: 0 !important;
-            padding: 0 !important;
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s var(--ease-spring);
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
         }
 
         .help-page .help-chat-panel .chat-input .send span {
-            display: block !important;
-            transform: translateY(-1px) !important;
-            transition: transform 0.3s var(--ease-spring) !important;
+            display: block;
+            transform: translateY(-1px);
+            transition: transform 0.3s var(--ease-spring);
         }
 
         .help-page .help-chat-panel .chat-input .send:hover {
-            transform: translateY(-2px) scale(1.06) !important;
+            transform: translateY(-2px) scale(1.06);
         }
 
         .help-page .help-chat-panel .chat-input .send:active {
-            transform: translateY(0) scale(0.92) !important;
+            transform: translateY(0) scale(0.92);
         }
 
         .help-page .help-chat-panel .chat-input .send:disabled {
-            background: #d1d1d6 !important;
-            color: #aeaeb2 !important;
-            box-shadow: none !important;
-            cursor: not-allowed !important;
+            background: #d1d1d6;
+            color: #aeaeb2;
+            box-shadow: none;
+            cursor: not-allowed;
         }
 
         .help-page .help-chat-panel .chat-input .send.state-pause {
-            background: linear-gradient(180deg, #ff5f57, #ff3b30 55%, #d70015) !important;
-            box-shadow: 0 4px 14px rgba(255, 59, 48, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .send.state-resume {
-            background: linear-gradient(180deg, #34c759, #30d158 55%, #248a3d) !important;
-            box-shadow: 0 4px 14px rgba(52, 199, 89, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .send.state-delete {
-            background: linear-gradient(180deg, #ff453a, #d70015 55%, #a50011) !important;
-            box-shadow: 0 4px 18px rgba(255, 59, 48, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-            animation: deletePulse 1.6s ease-in-out infinite !important;
-        }
-
-        @keyframes deletePulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
-        .help-page .help-chat-panel .chat-input .actions .tooltip {
-            position: absolute !important;
-            bottom: calc(100% + 12px) !important;
-            right: 0 !important;
-            padding: 8px 12px !important;
-            background: rgba(28, 28, 30, 0.95) !important;
-            color: #fff !important;
-            font-size: 11px !important;
-            font-weight: 600 !important;
-            border-radius: 10px !important;
-            white-space: nowrap !important;
-            opacity: 0 !important;
-            transform: translateY(8px) !important;
-            pointer-events: none !important;
-            transition: opacity 0.28s var(--ease-ios), transform 0.28s var(--ease-ios) !important;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .actions .tooltip::after {
-            content: "" !important;
-            position: absolute !important;
-            top: 100% !important;
-            right: 14px !important;
-            width: 0 !important;
-            height: 0 !important;
-            border-left: 6px solid transparent !important;
-            border-right: 6px solid transparent !important;
-            border-top: 6px solid rgba(28, 28, 30, 0.95) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .actions.delete-mode .tooltip {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        .help-page .help-chat-panel .chat-input .stop {
-            display: none !important;
+            background: linear-gradient(180deg, #ff5f57, #ff3b30 55%, #d70015);
+            box-shadow: 0 4px 14px rgba(255, 59, 48, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
         }
 
         .help-page .help-chat-panel .input-meta {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 9px 8px 0 !important;
-            font-size: 10.5px !important;
-            font-weight: 600 !important;
-            color: var(--ios-text-3) !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 8px 0;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--ios-text-3);
         }
 
         .help-page .help-chat-panel .input-meta #connection-status {
@@ -1490,6 +1582,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: color 0.3s var(--ease-ios);
         }
 
         .help-page .help-chat-panel .input-meta #connection-status::before {
@@ -1500,6 +1593,26 @@
             background: var(--ios-green);
             flex: 0 0 5px;
             box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.16);
+            transition: background 0.3s var(--ease-ios), box-shadow 0.3s var(--ease-ios);
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status.busy {
+            color: var(--ios-blue);
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status.busy::before {
+            background: var(--ios-blue);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.18);
+            animation: statusPulse 1.4s ease-in-out infinite;
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status.error {
+            color: var(--ios-red);
+        }
+
+        .help-page .help-chat-panel .input-meta #connection-status.error::before {
+            background: var(--ios-red);
+            box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.16);
         }
 
         .help-page .help-chat-panel .scroll-bottom {
@@ -1534,9 +1647,7 @@
             transform: translateY(-2px) scale(1.05);
         }
 
-        /* ============================================================
-           FEATURES / HOW / DISCLAIMER
-           ============================================================ */
+        /* FEATURES / HOW / DISCLAIMER */
         .help-page .help-features {
             padding: 100px 0 80px;
         }
@@ -1786,9 +1897,7 @@
             margin: 0;
         }
 
-        /* ============================================================
-           FOOTER — v2
-           ============================================================ */
+        /* FOOTER */
         .help-page .site-footer {
             position: relative;
             isolation: isolate;
@@ -2217,9 +2326,7 @@
             }
         }
 
-        /* ============================================================
-           ANIMATIONS
-           ============================================================ */
+        /* ANIMATIONS */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -2297,19 +2404,6 @@
             }
         }
 
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
-        }
-
         .help-page .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -2321,9 +2415,7 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* RESPONSIVE */
         @media (max-width: 1200px) {
             .help-page .help-chat-layout {
                 grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
@@ -2382,7 +2474,7 @@
             #chat {
                 padding: 20px 14px 12px;
                 max-height: 400px;
-                gap: 16px !important;
+                gap: 16px;
             }
 
             .help-page .help-chat-panel .chat-input-wrap {
@@ -2402,7 +2494,7 @@
             }
 
             #chat .chat-message {
-                max-width: 92% !important;
+                max-width: 92%;
             }
 
             .help-page .help-features-grid,
@@ -2422,8 +2514,8 @@
             }
 
             #chat .message-content {
-                font-size: 14.5px !important;
-                padding: 10px 15px !important;
+                font-size: 14.5px;
+                padding: 10px 15px;
             }
         }
 
@@ -2499,7 +2591,7 @@
                     events, packages, transportation and itinerary ideas.
                 </p>
                 <div class="help-hero-ctas">
-                    <a class="help-cta primary" href="#chat">
+                    <a class="help-cta primary" href="#chat-section">
                         Start a conversation <span aria-hidden="true">↓</span>
                     </a>
                     <a class="help-cta secondary" href="packages.html#trip-builder">
@@ -2538,7 +2630,8 @@
                             <span class="warning-icon" aria-hidden="true">✓</span>
                             <div class="warning-body">
                                 <strong>Secure conversation</strong>
-                                <p>Your messages travel through GED's encrypted backend. No personal data is stored.</p>
+                                <p>Your messages are sent to the GED backend. No personal data is stored server-side.
+                                </p>
                             </div>
                         </div>
                         <div class="warning-card info">
@@ -2578,6 +2671,9 @@
                     </aside>
 
                     <div class="help-chat-panel">
+                        <!-- Top progress bar -->
+                        <div class="top-progress" id="top-progress" aria-hidden="true"></div>
+
                         <div class="help-chat-header">
                             <div class="help-chat-agent">
                                 <div class="agent-avatar" aria-hidden="true">
@@ -2600,6 +2696,8 @@
                                     aria-label="Toggle Profound Search" title="Profound Search (S)">S</button>
                                 <button type="button" id="copy-last" class="btn-icon" aria-label="Copy last response"
                                     title="Copy last response">⧉</button>
+                                <button type="button" id="export-chat" class="btn-icon"
+                                    aria-label="Export conversation as text" title="Export conversation">⤓</button>
                             </div>
                         </div>
 
@@ -2610,50 +2708,39 @@
                             title="Scroll to bottom">↓</button>
 
                         <div id="typing-indicator" class="typing-indicator" hidden aria-live="polite"
-                            aria-label="GED Concierge is thinking">
+                            aria-label="GED Concierge is working">
                             <div class="avatar" aria-hidden="true">
                                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80"
                                     alt="">
                             </div>
-                            <div class="typing-bubble">
+                            <div class="typing-bubble" data-state="thinking">
+                                <span class="state-icon" aria-hidden="true">✦</span>
+                                <span class="progress-ring" aria-hidden="true"></span>
+                                <small id="typing-label">Thinking…</small>
                                 <div class="typing-dots" aria-hidden="true">
                                     <span></span><span></span><span></span>
                                 </div>
-                                <small id="typing-label">Thinking…</small>
+                                <button type="button" class="cancel-btn" id="cancel-generation"
+                                    aria-label="Cancel generation" title="Cancel (Esc)">×</button>
                             </div>
                         </div>
 
                         <div class="quick-prompts" aria-label="Suggested questions">
                             <button class="chip" type="button" data-q="What is the best time to visit Toronto?">
-                                <img class="chip-icon"
-                                    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80"
-                                    alt="">
                                 Best time for Toronto
                             </button>
                             <button class="chip" type="button"
                                 data-q="What are some family-friendly things to do in Vancouver?">
-                                <img class="chip-icon"
-                                    src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=100&q=80"
-                                    alt="">
                                 Family in Vancouver
                             </button>
                             <button class="chip" type="button" data-q="Help me build a 5-day trip to Canada.">
-                                <img class="chip-icon"
-                                    src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=100&q=80"
-                                    alt="">
                                 Build a 5-day trip
                             </button>
                             <button class="chip" type="button" data-q="What are the best value destinations in Canada?">
-                                <img class="chip-icon"
-                                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=100&q=80"
-                                    alt="">
                                 Best value destinations
                             </button>
                             <button class="chip" type="button"
                                 data-q="What Canadian destination would you recommend for someone who loves football, cities and technology?">
-                                <img class="chip-icon"
-                                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=100&q=80"
-                                    alt="">
                                 Sports + cities
                             </button>
                         </div>
@@ -2664,9 +2751,6 @@
                                 <textarea id="question" rows="1" maxlength="2000" autocomplete="off" spellcheck="true"
                                     placeholder="Message GED Concierge…"></textarea>
                                 <div class="actions" id="actions-wrap">
-                                    <span class="tooltip" id="action-tooltip">Click to delete all chats</span>
-                                    <button id="stop-generation" class="stop" type="button" hidden
-                                        aria-label="Stop response" title="Stop response">■</button>
                                     <button id="ask" class="send state-send" type="button" aria-label="Send message"
                                         title="Send message">
                                         <span aria-hidden="true">↑</span>
@@ -2790,7 +2874,7 @@
 
     </main>
 
-    <!-- FOOTER v2 -->
+    <!-- FOOTER -->
     <footer class="site-footer" id="footer">
         <div class="footer-inner">
 
@@ -2945,42 +3029,1128 @@
         </div>
     </div>
 
-    <!-- TOASTS -->
-    <div id="toast" class="toast" role="alert" aria-live="polite"></div>
-    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
-
-    <!-- SCRIPTS -->
-    <script src="../js/canada-data.js"></script>
-    <script src="../js/provinces.js"></script>
-    <script src="../js/data-loader.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/navigation.js"></script>
-    <script src="../js/search.js"></script>
-
-    <script src="../js/help.js"></script>
+    <!-- OPTIONAL EXTERNAL SCRIPTS -->
+    <script src="../js/canada-data.js" onerror="void 0"></script>
+    <script src="../js/provinces.js" onerror="void 0"></script>
+    <script src="../js/app.js" onerror="void 0"></script>
+    <script src="../js/navigation.js" onerror="void 0"></script>
+    <script src="../js/search.js" onerror="void 0"></script>
+    <script src="../js/perf.js" defer onerror="void 0"></script>
 
     <!-- ============================================================
-         ENHANCEMENT — roda DEPOIS do help.js
+         GED CONCIERGE — v2.0
+         - State machine: Thinking → Searching → Reasoning → Planning
+           → Reading → Composing → Almost there → Still working
+         - Cancel button inline
+         - Retry button on error
+         - Export conversation
+         - Top progress bar
+         - Timeout 180s
+         - Deduplication + sources normalization
          ============================================================ -->
     <script>
         (function () {
             "use strict";
 
-            /* ---------- HEADER SCROLL ---------- */
+            /* =====================================================
+               CONFIG
+               ===================================================== */
+            var STORAGE_KEY = "ged-concierge-history-v1";
+            var MAX_CHARS = 2000;
+            var MAX_HISTORY_PAIRS = 10;
+            var REQUEST_TIMEOUT_MS = 180000;    // 3 min — NVIDIA pode demorar
+            var STATE_ADVANCE_MS = 6500;        // avança a cada 6.5s
+
+            var API_CANDIDATES = [
+                "/api/concierge",
+                "http://127.0.0.1:5000/api/concierge",
+                "http://localhost:5000/api/concierge"
+            ];
+
+            var HEALTH_CANDIDATES = [
+                "/api/health",
+                "http://127.0.0.1:5000/api/health",
+                "http://localhost:5000/api/health"
+            ];
+
+            /* =====================================================
+               STATE MACHINE — definições
+               ===================================================== */
+            var STATE_DEFS = {
+                thinking: { label: "Thinking", icon: "✦" },
+                searching: { label: "Searching the web", icon: "🔍" },
+                reasoning: { label: "Reasoning deeply", icon: "🧠" },
+                planning: { label: "Planning your trip", icon: "📋" },
+                reading: { label: "Reading sources", icon: "📖" },
+                composing: { label: "Composing your answer", icon: "✍" },
+                finalizing: { label: "Almost there", icon: "✨" },
+                slow: { label: "Still working", icon: "⏳" }
+            };
+
+            var STATE_CHAIN = {
+                thinking: ["reading", "composing", "finalizing"],
+                searching: ["reading", "reasoning", "composing", "finalizing"],
+                reasoning: ["reading", "composing", "finalizing"],
+                planning: ["reading", "composing", "finalizing"],
+                reading: ["composing", "finalizing"],
+                composing: ["finalizing"],
+                finalizing: ["slow"],
+                slow: ["slow"]
+            };
+
+            /* =====================================================
+               DOM
+               ===================================================== */
+            var chatEl = document.getElementById("chat");
+            var textarea = document.getElementById("question");
+            var askBtn = document.getElementById("ask");
+            var typingEl = document.getElementById("typing-indicator");
+            var typingLabel = document.getElementById("typing-label");
+            var typingBubble = typingEl ? typingEl.querySelector(".typing-bubble") : null;
+            var typingIcon = typingEl ? typingEl.querySelector(".state-icon") : null;
+            var cancelBtn = document.getElementById("cancel-generation");
+            var charCountEl = document.getElementById("character-count");
+            var scrollBtn = document.getElementById("scroll-bottom");
+            var clearBtn = document.getElementById("clear-chat");
+            var resetBtn = document.getElementById("reset-all");
+            var copyLastBtn = document.getElementById("copy-last");
+            var exportBtn = document.getElementById("export-chat");
+            var thinkBtn = document.getElementById("toggle-think");
+            var searchBtn = document.getElementById("toggle-search");
+            var modelLabel = document.getElementById("model-label");
+            var connectionStatus = document.getElementById("connection-status");
+            var agentSubtitle = document.getElementById("agent-subtitle");
+            var topProgress = document.getElementById("top-progress");
+
+            if (!chatEl || !askBtn || !textarea) {
+                console.error("[Concierge] Critical DOM elements missing.");
+                return;
+            }
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            var state = {
+                history: [],
+                generating: false,
+                activeController: null,
+                thinkMode: false,
+                searchMode: false,
+                apiBase: null,
+                lastStateKey: "thinking"
+            };
+
+            /* =====================================================
+               UTILS
+               ===================================================== */
+            function escapeHtml(s) {
+                return String(s == null ? "" : s)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function toast(message, type) {
+                if (window.GED && typeof window.GED.toast === "function") {
+                    try { window.GED.toast(message, type || "info"); return; } catch (_) { }
+                }
+                var stack = document.getElementById("toastStack");
+                if (!stack) {
+                    stack = document.createElement("div");
+                    stack.id = "toastStack";
+                    stack.className = "toast-stack";
+                    stack.setAttribute("aria-live", "polite");
+                    document.body.appendChild(stack);
+                }
+                var el = document.createElement("div");
+                el.className = "ged-toast " + (type || "info");
+                el.style.cssText =
+                    "display:flex;align-items:center;gap:12px;padding:14px 18px;" +
+                    "border-radius:16px;background:rgba(28,28,30,.94);color:#fff;" +
+                    "font-size:13px;font-weight:600;box-shadow:0 20px 50px rgba(0,0,0,.24);" +
+                    "max-width:340px;margin-bottom:8px;";
+                el.textContent = message;
+                stack.appendChild(el);
+                setTimeout(function () {
+                    el.style.transition = "opacity .3s ease, transform .3s ease";
+                    el.style.opacity = "0";
+                    el.style.transform = "translateY(-10px)";
+                    setTimeout(function () { el.remove(); }, 320);
+                }, 2600);
+            }
+
+            function setConnectionStatus(text, mode) {
+                // mode: "ok" | "busy" | "error"
+                if (!connectionStatus) return;
+                connectionStatus.textContent = text;
+                connectionStatus.classList.remove("busy", "error");
+                if (mode === "busy") connectionStatus.classList.add("busy");
+                else if (mode === "error") connectionStatus.classList.add("error");
+            }
+
+            function setAgentSubtitle(text, busy) {
+                if (!agentSubtitle) return;
+                agentSubtitle.textContent = text;
+                agentSubtitle.classList.toggle("busy", !!busy);
+            }
+
+            function scrollToBottom(behavior) {
+                chatEl.scrollTo({
+                    top: chatEl.scrollHeight,
+                    behavior: behavior || "smooth"
+                });
+            }
+
+            function updateScrollButton() {
+                if (!scrollBtn) return;
+                var distance = chatEl.scrollHeight - chatEl.scrollTop - chatEl.clientHeight;
+                scrollBtn.classList.toggle("visible", distance > 120);
+            }
+
+            /* =====================================================
+               SOURCES normalizer
+               ===================================================== */
+            function normalizeSources(raw) {
+                if (!Array.isArray(raw)) return [];
+                var out = [];
+                for (var i = 0; i < raw.length; i++) {
+                    var s = raw[i];
+                    if (!s) continue;
+                    if (typeof s === "string") {
+                        out.push({
+                            label: s.replace(/^https?:\/\//, "").slice(0, 40),
+                            url: s
+                        });
+                    } else if (typeof s === "object" && s.url) {
+                        var label = s.label || s.url.replace(/^https?:\/\//, "");
+                        if (label.length > 40) label = label.slice(0, 38) + "…";
+                        out.push({ label: label, url: s.url });
+                    }
+                }
+                return out;
+            }
+
+            /* =====================================================
+               MARKDOWN-LITE
+               ===================================================== */
+            function renderInline(text) {
+                var html = escapeHtml(text);
+                html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+                html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+                html = html.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, "$1<em>$2</em>");
+                html = html.replace(/(^|[^_])_([^_\n]+)_(?!_)/g, "$1<em>$2</em>");
+                html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+                    '<a href="$2" target="_blank" rel="noopener">$1</a>');
+                html = html.replace(/(^|[^"'>=])(https?:\/\/[^\s<)"']+)/g,
+                    '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+                return html;
+            }
+
+            function renderMarkdown(text) {
+                if (!text) return "";
+                var src = String(text).replace(/\r\n/g, "\n").trim();
+                var lines = src.split("\n");
+                var html = "";
+                var inUl = false, inOl = false, inCode = false;
+                var codeBuf = [];
+
+                function closeLists() {
+                    if (inUl) { html += "</ul>"; inUl = false; }
+                    if (inOl) { html += "</ol>"; inOl = false; }
+                }
+
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i];
+                    var trimmed = line.trim();
+
+                    if (/^```/.test(trimmed)) {
+                        if (!inCode) { closeLists(); inCode = true; codeBuf = []; }
+                        else {
+                            inCode = false;
+                            html += "<pre><code>" + escapeHtml(codeBuf.join("\n")) + "</code></pre>";
+                        }
+                        continue;
+                    }
+                    if (inCode) { codeBuf.push(line); continue; }
+                    if (!trimmed) { closeLists(); continue; }
+
+                    var h = trimmed.match(/^(#{1,3})\s+(.+)$/);
+                    if (h) {
+                        closeLists();
+                        var lvl = h[1].length;
+                        html += "<h" + lvl + ">" + renderInline(h[2]) + "</h" + lvl + ">";
+                        continue;
+                    }
+
+                    if (/^>\s?/.test(trimmed)) {
+                        closeLists();
+                        html += "<blockquote>" + renderInline(trimmed.replace(/^>\s?/, "")) + "</blockquote>";
+                        continue;
+                    }
+
+                    var ul = trimmed.match(/^[-*+]\s+(.+)$/);
+                    if (ul) {
+                        if (inOl) { html += "</ol>"; inOl = false; }
+                        if (!inUl) { html += "<ul>"; inUl = true; }
+                        html += "<li>" + renderInline(ul[1]) + "</li>";
+                        continue;
+                    }
+
+                    var ol = trimmed.match(/^\d+[.)]\s+(.+)$/);
+                    if (ol) {
+                        if (inUl) { html += "</ul>"; inUl = false; }
+                        if (!inOl) { html += "<ol>"; inOl = true; }
+                        html += "<li>" + renderInline(ol[1]) + "</li>";
+                        continue;
+                    }
+
+                    closeLists();
+                    html += "<p>" + renderInline(trimmed) + "</p>";
+                }
+
+                closeLists();
+                if (inCode && codeBuf.length) {
+                    html += "<pre><code>" + escapeHtml(codeBuf.join("\n")) + "</code></pre>";
+                }
+                return html;
+            }
+
+            /* =====================================================
+               STATE MACHINE helpers
+               ===================================================== */
+            function pickInitialState(message) {
+                var text = (message || "").toLowerCase();
+                if (state.searchMode) return "searching";
+                if (state.thinkMode) return "reasoning";
+                if (/\b(plan|planning|itinerary|route|days|week|month|trip|schedule|budget|cost|compare)\b/.test(text)) {
+                    return "planning";
+                }
+                return "thinking";
+            }
+
+            function applyTypingState(stateKey) {
+                var def = STATE_DEFS[stateKey] || STATE_DEFS.thinking;
+                state.lastStateKey = stateKey;
+
+                if (typingBubble) {
+                    Object.keys(STATE_DEFS).forEach(function (k) {
+                        typingBubble.classList.remove("state-" + k);
+                    });
+                    typingBubble.classList.add("state-" + stateKey);
+                    typingBubble.setAttribute("data-state", stateKey);
+                }
+                if (typingIcon) typingIcon.textContent = def.icon;
+                if (typingLabel) typingLabel.textContent = def.label + "…";
+
+                setAgentSubtitle(def.label + "…", true);
+                setConnectionStatus("GED Intelligence · " + def.label, "busy");
+            }
+
+            function resetTypingState() {
+                applyTypingState("thinking");
+            }
+
+            /* =====================================================
+               MESSAGE BUILDERS
+               ===================================================== */
+            function buildAvatar(role) {
+                var avatar = document.createElement("div");
+                avatar.className = "message-avatar";
+                avatar.setAttribute("aria-hidden", "true");
+                if (role === "assistant") {
+                    var img = document.createElement("img");
+                    img.src = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80";
+                    img.alt = "";
+                    avatar.appendChild(img);
+                } else {
+                    avatar.textContent = "YOU";
+                    avatar.style.fontSize = "9px";
+                    avatar.style.letterSpacing = "0.04em";
+                }
+                return avatar;
+            }
+
+            function buildMessage(role, contentHtml, options) {
+                options = options || {};
+
+                var node = document.createElement("div");
+                node.className = "chat-message " + role;
+                node.appendChild(buildAvatar(role));
+
+                var body = document.createElement("div");
+                body.className = "message-body";
+
+                if (role === "assistant" && options.meta) {
+                    var meta = document.createElement("div");
+                    meta.className = "message-meta";
+                    meta.innerHTML = '<span class="meta-icon" aria-hidden="true">✦</span>' + escapeHtml(options.meta);
+                    body.appendChild(meta);
+                }
+
+                var content = document.createElement("div");
+                content.className = "message-content";
+                if (role === "assistant") {
+                    content.innerHTML = contentHtml || "";
+                } else {
+                    content.textContent = options.text || "";
+                    content.style.whiteSpace = "pre-wrap";
+                }
+                body.appendChild(content);
+
+                // Retry button (error only)
+                if (role === "assistant" && options.retry === true && options.retryMessage) {
+                    var retryBtn = document.createElement("button");
+                    retryBtn.type = "button";
+                    retryBtn.className = "message-retry";
+                    retryBtn.innerHTML = '<span aria-hidden="true">↻</span> Try again';
+                    retryBtn.addEventListener("click", function () {
+                        textarea.value = options.retryMessage;
+                        autosize();
+                        updateCharCount();
+                        sendMessage();
+                    });
+                    body.appendChild(retryBtn);
+                }
+
+                if (role === "assistant" && options.image && options.image.url) {
+                    var imgWrap = document.createElement("div");
+                    imgWrap.className = "message-image";
+                    var imgEl = document.createElement("img");
+                    imgEl.src = options.image.url;
+                    imgEl.alt = options.image.caption || "GED Concierge image";
+                    imgEl.loading = "lazy";
+                    imgEl.decoding = "async";
+                    imgEl.referrerPolicy = "no-referrer";
+                    imgEl.onerror = function () { imgWrap.remove(); };
+                    imgWrap.appendChild(imgEl);
+                    if (options.image.caption) {
+                        var cap = document.createElement("div");
+                        cap.className = "image-caption";
+                        cap.textContent = options.image.caption;
+                        imgWrap.appendChild(cap);
+                    }
+                    body.appendChild(imgWrap);
+                }
+
+                if (role === "assistant" && options.footer !== false) {
+                    var footer = document.createElement("div");
+                    footer.className = "message-footer";
+
+                    var sources = normalizeSources(options.sources);
+                    if (!sources.length && contentHtml) {
+                        var urlRe = /(https?:\/\/[^\s<>"')]+)/g;
+                        var matches = contentHtml.match(urlRe) || [];
+                        var seen = {};
+                        var fallbackSources = [];
+                        for (var i = 0; i < matches.length && fallbackSources.length < 3; i++) {
+                            var u = matches[i].replace(/[.,;:]+$/, "");
+                            if (seen[u]) continue;
+                            if (/\.(png|jpe?g|gif|webp|svg)$/i.test(u)) continue;
+                            seen[u] = true;
+                            fallbackSources.push({
+                                label: u.replace(/^https?:\/\//, "").slice(0, 38) + "…",
+                                url: u
+                            });
+                        }
+                        sources = fallbackSources;
+                    }
+
+                    if (sources.length) {
+                        var fhtml = '<span class="footer-label">Fonts</span>';
+                        sources.slice(0, 3).forEach(function (src) {
+                            fhtml += '<a class="source-chip" href="' + escapeHtml(src.url) +
+                                '" target="_blank" rel="noopener">' + escapeHtml(src.label) + "</a>";
+                        });
+                        footer.innerHTML = fhtml;
+                    } else {
+                        footer.innerHTML =
+                            '<span class="footer-icon" aria-hidden="true">✦</span>' +
+                            "AI can make mistakes — verify important info";
+                    }
+                    body.appendChild(footer);
+                }
+
+                var actions = document.createElement("div");
+                actions.className = "message-actions";
+
+                var copyBtn = document.createElement("button");
+                copyBtn.type = "button";
+                copyBtn.setAttribute("aria-label", "Copy message");
+                copyBtn.title = "Copy";
+                copyBtn.textContent = "⧉";
+                copyBtn.addEventListener("click", function () {
+                    var text = role === "assistant" ? content.innerText : (options.text || "");
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(text).then(function () {
+                            copyBtn.textContent = "✓";
+                            setTimeout(function () { copyBtn.textContent = "⧉"; }, 1200);
+                        });
+                    }
+                });
+                actions.appendChild(copyBtn);
+
+                if (role === "assistant") {
+                    var regenBtn = document.createElement("button");
+                    regenBtn.type = "button";
+                    regenBtn.setAttribute("aria-label", "Regenerate response");
+                    regenBtn.title = "Regenerate";
+                    regenBtn.textContent = "↻";
+                    regenBtn.addEventListener("click", function () {
+                        var prev = node.previousElementSibling;
+                        while (prev && !prev.classList.contains("user")) {
+                            prev = prev.previousElementSibling;
+                        }
+                        if (!prev) return;
+                        var prevContent = prev.querySelector(".message-content");
+                        if (!prevContent) return;
+                        var lastUserText = prevContent.textContent || "";
+                        var idx = state.history.findIndex(function (m, i) {
+                            return m.role === "assistant" && i === state.history.length - 1;
+                        });
+                        if (idx !== -1) state.history.splice(idx, 1);
+                        node.remove();
+                        saveHistory();
+                        textarea.value = lastUserText;
+                        sendMessage();
+                    });
+                    actions.appendChild(regenBtn);
+                }
+
+                body.appendChild(actions);
+                node.appendChild(body);
+                return node;
+            }
+
+            /* =====================================================
+               HISTORY (localStorage)
+               ===================================================== */
+            function loadHistory() {
+                try {
+                    var raw = localStorage.getItem(STORAGE_KEY);
+                    if (!raw) return [];
+                    var parsed = JSON.parse(raw);
+                    if (!Array.isArray(parsed)) return [];
+                    return parsed.filter(function (m) {
+                        return m && (m.role === "user" || m.role === "assistant") &&
+                            typeof m.content === "string";
+                    });
+                } catch (_) { return []; }
+            }
+
+            function saveHistory() {
+                try {
+                    var trimmed = state.history.slice(-40);
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+                } catch (_) { }
+            }
+
+            function rebuildChatFromHistory() {
+                chatEl.innerHTML = "";
+                if (!state.history.length) return false;
+                state.history.forEach(function (m) {
+                    if (m.role === "user") {
+                        chatEl.appendChild(buildMessage("user", "", { text: m.content }));
+                    } else {
+                        chatEl.appendChild(buildMessage("assistant", renderMarkdown(m.content), {
+                            meta: "Ready",
+                            footer: true,
+                            sources: m.sources || []
+                        }));
+                    }
+                });
+                scrollToBottom("auto");
+                return true;
+            }
+
+            /* =====================================================
+               WELCOME
+               ===================================================== */
+            function buildWelcome() {
+                var welcome = document.createElement("div");
+                welcome.className = "chat-message assistant";
+                welcome.appendChild(buildAvatar("assistant"));
+
+                var body = document.createElement("div");
+                body.className = "message-body";
+
+                var meta = document.createElement("div");
+                meta.className = "message-meta";
+                meta.innerHTML = '<span class="meta-icon" aria-hidden="true">✦</span>Ready';
+                body.appendChild(meta);
+
+                var content = document.createElement("div");
+                content.className = "message-content";
+                content.innerHTML =
+                    "<p><strong>Hi! I'm GED Concierge.</strong> 🇨🇦</p>" +
+                    "<p>I can help you explore Canada — cities, neighbourhoods, hotels, " +
+                    "events, flights and packages. Where would you like to start?</p>" +
+                    '<div class="welcome-suggestions">' +
+                    '<button type="button" data-welcome="What are the best destinations in Canada for a first trip?">First trip</button>' +
+                    '<button type="button" data-welcome="Build a 7-day itinerary between Toronto and Montreal.">7 days ON + QC</button>' +
+                    '<button type="button" data-welcome="What events happen in Canada in October 2026?">Events in October</button>' +
+                    '<button type="button" data-welcome="What is the best destination to see the northern lights in Canada?">Northern lights</button>' +
+                    "</div>";
+                body.appendChild(content);
+
+                var footer = document.createElement("div");
+                footer.className = "message-footer";
+                footer.innerHTML = '<span class="footer-icon" aria-hidden="true">✦</span>' +
+                    "AI can make mistakes — verify important info";
+                body.appendChild(footer);
+
+                welcome.appendChild(body);
+
+                welcome.querySelectorAll("[data-welcome]").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        textarea.value = btn.dataset.welcome;
+                        autosize();
+                        updateCharCount();
+                        sendMessage();
+                    });
+                });
+
+                return welcome;
+            }
+
+            function ensureWelcome() {
+                if (state.history.length) return;
+                if (chatEl.querySelector(".chat-message")) return;
+                chatEl.appendChild(buildWelcome());
+            }
+
+            /* =====================================================
+               TYPING / PROGRESS
+               ===================================================== */
+            function showTyping(initialStateKey) {
+                if (typingEl) typingEl.hidden = false;
+                if (topProgress) topProgress.classList.add("active");
+                applyTypingState(initialStateKey || "thinking");
+                scrollToBottom();
+            }
+
+            function hideTyping() {
+                if (typingEl) typingEl.hidden = true;
+                if (topProgress) topProgress.classList.remove("active");
+                setAgentSubtitle("Active now", false);
+                setConnectionStatus("GED Intelligence · Secure", "ok");
+            }
+
+            /* =====================================================
+               SEND BUTTON
+               ===================================================== */
+            function updateSendButton() {
+                askBtn.classList.remove("state-pause", "state-send");
+                if (state.generating) {
+                    askBtn.classList.add("state-pause");
+                    askBtn.innerHTML = '<span aria-hidden="true">■</span>';
+                    askBtn.setAttribute("aria-label", "Stop generating");
+                    askBtn.title = "Stop generating (Esc)";
+                    askBtn.disabled = false;
+                } else {
+                    askBtn.classList.add("state-send");
+                    askBtn.innerHTML = '<span aria-hidden="true">↑</span>';
+                    askBtn.setAttribute("aria-label", "Send message");
+                    askBtn.title = "Send message (Enter)";
+                    var hasText = textarea.value.trim().length > 0;
+                    askBtn.disabled = !hasText;
+                }
+            }
+
+            /* =====================================================
+               TEXTAREA
+               ===================================================== */
+            function autosize() {
+                textarea.style.height = "auto";
+                textarea.style.height = Math.min(textarea.scrollHeight, 130) + "px";
+            }
+
+            function updateCharCount() {
+                if (charCountEl) {
+                    charCountEl.textContent = textarea.value.length + " / " + MAX_CHARS;
+                }
+            }
+
+            /* =====================================================
+               API DISCOVERY
+               ===================================================== */
+            function probeUrl(url, timeoutMs) {
+                return new Promise(function (resolve) {
+                    var controller = new AbortController();
+                    var timer = setTimeout(function () {
+                        try { controller.abort(); } catch (_) { }
+                        resolve(false);
+                    }, timeoutMs || 2500);
+
+                    fetch(url, {
+                        method: "GET",
+                        mode: "cors",
+                        signal: controller.signal,
+                        headers: { "Accept": "application/json" }
+                    })
+                        .then(function (res) {
+                            clearTimeout(timer);
+                            resolve(res && (res.ok || res.status < 500));
+                        })
+                        .catch(function () {
+                            clearTimeout(timer);
+                            resolve(false);
+                        });
+                });
+            }
+
+            async function discoverApiBase() {
+                for (var i = 0; i < HEALTH_CANDIDATES.length; i++) {
+                    var healthUrl = HEALTH_CANDIDATES[i];
+                    var ok = await probeUrl(healthUrl, 2500);
+                    if (ok) {
+                        var base = healthUrl.replace(/\/api\/health\/?$/, "");
+                        var concierge = base + "/api/concierge";
+                        state.apiBase = concierge;
+                        setConnectionStatus("GED Intelligence · Secure", "ok");
+                        return concierge;
+                    }
+                }
+                state.apiBase = API_CANDIDATES[0];
+                setConnectionStatus("GED Intelligence · Offline", "error");
+                return state.apiBase;
+            }
+
+            /* =====================================================
+               API CALL
+               ===================================================== */
+            async function callConcierge(message) {
+                var endpoint = state.apiBase || API_CANDIDATES[0];
+
+                var history = state.history.slice();
+                if (history.length &&
+                    history[history.length - 1].role === "user" &&
+                    history[history.length - 1].content === message) {
+                    history.pop();
+                }
+                var conv = history.slice(-(MAX_HISTORY_PAIRS * 2)).map(function (m) {
+                    return { role: m.role, content: m.content };
+                });
+
+                var body = { message: message, conversation: conv };
+
+                var controller = new AbortController();
+                state.activeController = controller;
+
+                var timedOut = false;
+                var timer = setTimeout(function () {
+                    timedOut = true;
+                    try { controller.abort(); } catch (_) { }
+                }, REQUEST_TIMEOUT_MS);
+
+                var response;
+                try {
+                    response = await fetch(endpoint, {
+                        method: "POST",
+                        mode: "cors",
+                        signal: controller.signal,
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify(body)
+                    });
+                } catch (err) {
+                    clearTimeout(timer);
+                    state.activeController = null;
+
+                    if (err && err.name === "AbortError") {
+                        throw new Error(timedOut ? "TIMEOUT" : "ABORTED");
+                    }
+
+                    for (var i = 0; i < API_CANDIDATES.length; i++) {
+                        var alt = API_CANDIDATES[i];
+                        if (alt === endpoint) continue;
+                        try {
+                            response = await fetch(alt, {
+                                method: "POST",
+                                mode: "cors",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                body: JSON.stringify(body)
+                            });
+                            state.apiBase = alt;
+                            break;
+                        } catch (_) { response = null; }
+                    }
+                    if (!response) throw new Error("NETWORK");
+                }
+
+                clearTimeout(timer);
+                state.activeController = null;
+
+                if (!response.ok) {
+                    var text = "";
+                    try { text = await response.text(); } catch (_) { }
+                    throw new Error("HTTP_" + response.status + (text ? " · " + text.slice(0, 200) : ""));
+                }
+
+                var data;
+                try {
+                    data = await response.json();
+                } catch (e) { throw new Error("INVALID_JSON"); }
+
+                if (!data || typeof data !== "object") throw new Error("INVALID_BODY");
+
+                var answer = data.answer || data.message || data.response;
+                if (typeof answer !== "string" || !answer.trim()) throw new Error("EMPTY_ANSWER");
+
+                return {
+                    answer: answer.trim(),
+                    model: data.model || "GED Concierge",
+                    image: data.image || null,
+                    sources: Array.isArray(data.sources) ? data.sources : [],
+                    success: data.success !== false
+                };
+            }
+
+            /* =====================================================
+               SEND MESSAGE
+               ===================================================== */
+            async function sendMessage() {
+                if (state.generating) return;
+
+                var text = textarea.value.trim();
+                if (!text) { textarea.focus(); return; }
+
+                var welcome = chatEl.querySelector(".chat-message.assistant .welcome-suggestions");
+                if (welcome) {
+                    var firstMsg = welcome.closest(".chat-message");
+                    if (firstMsg && !state.history.length) firstMsg.remove();
+                }
+
+                chatEl.appendChild(buildMessage("user", "", { text: text }));
+                state.history.push({ role: "user", content: text });
+                saveHistory();
+
+                textarea.value = "";
+                autosize();
+                updateCharCount();
+                updateSendButton();
+                scrollToBottom();
+
+                // Determine initial state
+                var initialKey = pickInitialState(text);
+
+                state.generating = true;
+                updateSendButton();
+                showTyping(initialKey);
+
+                var startTime = Date.now();
+
+                // State machine timer
+                var chain = STATE_CHAIN[initialKey] || ["composing", "finalizing"];
+                var chainIndex = 0;
+                var advanceTimer = setInterval(function () {
+                    if (chainIndex < chain.length) {
+                        applyTypingState(chain[chainIndex]);
+                        chainIndex++;
+                    }
+                }, STATE_ADVANCE_MS);
+
+                // Elapsed counter
+                var elapsedTimer = setInterval(function () {
+                    var s = Math.floor((Date.now() - startTime) / 1000);
+                    var def = STATE_DEFS[state.lastStateKey] || STATE_DEFS.thinking;
+                    if (typingLabel) typingLabel.textContent = def.label + "… " + s + "s";
+                }, 1000);
+
+                try {
+                    var result = await callConcierge(text);
+
+                    var elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+                    var metaText = "Thought for " + elapsed + "s";
+
+                    hideTyping();
+
+                    var html = renderMarkdown(result.answer);
+
+                    chatEl.appendChild(buildMessage("assistant", html, {
+                        meta: metaText,
+                        image: result.image,
+                        sources: result.sources,
+                        footer: true
+                    }));
+
+                    state.history.push({
+                        role: "assistant",
+                        content: result.answer,
+                        sources: result.sources || []
+                    });
+                    saveHistory();
+                } catch (err) {
+                    hideTyping();
+                    var msg = (err && err.message) || "UNKNOWN";
+
+                    if (msg === "ABORTED") {
+                        chatEl.appendChild(buildMessage("assistant",
+                            "<p><em>Response stopped by user.</em></p>", {
+                            meta: "Stopped",
+                            footer: false
+                        }));
+                    } else if (msg === "TIMEOUT") {
+                        chatEl.appendChild(buildMessage("assistant",
+                            "<p>The request took too long to complete. The AI provider " +
+                            "may be slow right now. You can try again with a shorter question.</p>", {
+                            meta: "Timeout",
+                            footer: false,
+                            retry: true,
+                            retryMessage: text
+                        }));
+                        setConnectionStatus("GED Intelligence · Slow", "error");
+                    } else {
+                        var friendly;
+                        if (msg === "NETWORK") {
+                            friendly = "I can't reach the GED backend right now. " +
+                                "Make sure the Flask server is running at " +
+                                "<code>http://127.0.0.1:5000</code>.";
+                            setConnectionStatus("GED Intelligence · Offline", "error");
+                        } else if (msg.indexOf("HTTP_") === 0) {
+                            friendly = "The backend responded with an error (" +
+                                msg.replace("HTTP_", "").split(" · ")[0] + "). " +
+                                "Please try again in a moment.";
+                            setConnectionStatus("GED Intelligence · Error", "error");
+                        } else if (msg === "EMPTY_ANSWER") {
+                            friendly = "The AI returned an empty response. Please try rephrasing.";
+                        } else if (msg === "INVALID_JSON" || msg === "INVALID_BODY") {
+                            friendly = "The backend returned an invalid response. Check the Flask logs.";
+                        } else {
+                            friendly = "Something went wrong. Please try again.";
+                        }
+                        chatEl.appendChild(buildMessage("assistant",
+                            "<p>" + friendly + "</p>", {
+                            meta: "Error",
+                            footer: false,
+                            retry: true,
+                            retryMessage: text
+                        }));
+                    }
+                } finally {
+                    clearInterval(advanceTimer);
+                    clearInterval(elapsedTimer);
+                    state.generating = false;
+                    state.activeController = null;
+                    updateSendButton();
+                    scrollToBottom();
+                }
+            }
+
+            /* =====================================================
+               CANCEL / CLEAR / RESET
+               ===================================================== */
+            function cancelGeneration() {
+                if (!state.generating) return;
+                if (state.activeController) {
+                    try { state.activeController.abort(); } catch (_) { }
+                }
+                state.generating = false;
+                hideTyping();
+                updateSendButton();
+                toast("Generation cancelled", "info");
+            }
+
+            function newConversation() {
+                if (state.generating) cancelGeneration();
+                state.history = [];
+                state.generating = false;
+                chatEl.innerHTML = "";
+                hideTyping();
+                saveHistory();
+                ensureWelcome();
+                updateSendButton();
+                scrollToBottom("auto");
+                toast("New conversation started", "success");
+            }
+
+            function resetAll() {
+                if (!window.confirm("This will delete every saved GED Concierge conversation. Continue?")) return;
+                try { localStorage.removeItem(STORAGE_KEY); } catch (_) { }
+                newConversation();
+            }
+
+            /* =====================================================
+               EXPORT
+               ===================================================== */
+            function exportConversation() {
+                if (!state.history.length) {
+                    toast("Nothing to export yet", "info");
+                    return;
+                }
+
+                var lines = [
+                    "GED Concierge — Conversation export",
+                    "Date: " + new Date().toLocaleString(),
+                    "Messages: " + state.history.length,
+                    "=".repeat(48),
+                    ""
+                ];
+
+                state.history.forEach(function (m) {
+                    var who = m.role === "user" ? "You" : "GED Concierge";
+                    lines.push("[" + who + "]");
+                    lines.push(m.content);
+                    if (m.sources && m.sources.length) {
+                        lines.push("Sources:");
+                        m.sources.forEach(function (s) {
+                            lines.push("  - " + (s.label || s.url) + " (" + s.url + ")");
+                        });
+                    }
+                    lines.push("");
+                });
+
+                var blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "ged-concierge-" + Date.now() + ".txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                toast("Conversation exported", "success");
+            }
+
+            /* =====================================================
+               EVENTS
+               ===================================================== */
+            askBtn.addEventListener("click", function (e) {
+                if (state.generating) {
+                    e.preventDefault();
+                    cancelGeneration();
+                    return;
+                }
+                sendMessage();
+            });
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    cancelGeneration();
+                });
+            }
+
+            textarea.addEventListener("input", function () {
+                autosize();
+                updateCharCount();
+                updateSendButton();
+            });
+
+            textarea.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+                    e.preventDefault();
+                    if (!state.generating) sendMessage();
+                } else if (e.key === "Escape") {
+                    if (state.generating) {
+                        cancelGeneration();
+                    } else if (textarea.value) {
+                        textarea.value = "";
+                        autosize();
+                        updateCharCount();
+                        updateSendButton();
+                    }
+                }
+            });
+
+            chatEl.addEventListener("scroll", updateScrollButton, { passive: true });
+
+            if (scrollBtn) {
+                scrollBtn.addEventListener("click", function () { scrollToBottom(); });
+            }
+
+            if (clearBtn) clearBtn.addEventListener("click", newConversation);
+            if (resetBtn) resetBtn.addEventListener("click", resetAll);
+            if (exportBtn) exportBtn.addEventListener("click", exportConversation);
+
+            document.querySelectorAll(".quick-prompts .chip").forEach(function (chip) {
+                chip.addEventListener("click", function () {
+                    var q = chip.dataset.q;
+                    if (!q) return;
+                    textarea.value = q;
+                    autosize();
+                    updateCharCount();
+                    textarea.focus();
+                    setTimeout(sendMessage, 60);
+                });
+            });
+
+            if (copyLastBtn) {
+                copyLastBtn.addEventListener("click", function () {
+                    var msgs = chatEl.querySelectorAll(".chat-message.assistant .message-content");
+                    if (!msgs.length) return;
+                    var last = msgs[msgs.length - 1];
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(last.innerText).then(function () {
+                            copyLastBtn.textContent = "✓";
+                            setTimeout(function () { copyLastBtn.textContent = "⧉"; }, 1200);
+                            toast("Last response copied", "success");
+                        });
+                    }
+                });
+            }
+
+            function updateModelLabel() {
+                if (!modelLabel) return;
+                var parts = ["GED Smart"];
+                if (state.thinkMode) parts.push("Think");
+                if (state.searchMode) parts.push("Search");
+                modelLabel.textContent = parts.join(" · ");
+            }
+
+            if (thinkBtn) {
+                thinkBtn.addEventListener("click", function () {
+                    state.thinkMode = !state.thinkMode;
+                    thinkBtn.classList.toggle("active-think", state.thinkMode);
+                    updateModelLabel();
+                    toast(state.thinkMode ? "Profound Think on" : "Profound Think off");
+                });
+            }
+
+            if (searchBtn) {
+                searchBtn.addEventListener("click", function () {
+                    state.searchMode = !state.searchMode;
+                    searchBtn.classList.toggle("active-search", state.searchMode);
+                    updateModelLabel();
+                    toast(state.searchMode ? "Profound Search on" : "Profound Search off");
+                });
+            }
+
+            document.addEventListener("keydown", function (e) {
+                var tag = (document.activeElement && document.activeElement.tagName) || "";
+                if (tag === "INPUT" || tag === "TEXTAREA") return;
+                if (e.metaKey || e.ctrlKey || e.altKey) return;
+                if (e.key.toLowerCase() === "t" && thinkBtn) thinkBtn.click();
+                if (e.key.toLowerCase() === "s" && searchBtn) searchBtn.click();
+            });
+
+            /* =====================================================
+               HEADER SCROLL + FOOTER YEAR + REVEAL
+               ===================================================== */
             var header = document.getElementById("site-header");
             if (header) {
+                var ticking = false;
                 var onScroll = function () {
-                    header.classList.toggle("scrolled", window.scrollY > 40);
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(function () {
+                        header.classList.toggle("scrolled", window.scrollY > 40);
+                        ticking = false;
+                    });
                 };
                 window.addEventListener("scroll", onScroll, { passive: true });
                 onScroll();
             }
 
-            /* ---------- FOOTER YEAR ---------- */
             var yearEl = document.getElementById("footerYear");
             if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-            /* ---------- REVEAL ---------- */
             var revealEls = document.querySelectorAll(".reveal");
             if ("IntersectionObserver" in window && revealEls.length) {
                 var obs = new IntersectionObserver(function (entries) {
@@ -2996,648 +4166,52 @@
                 revealEls.forEach(function (el) { el.classList.add("visible"); });
             }
 
-            /* ---------- CHAT ELEMENTS ---------- */
-            var askBtn = document.getElementById("ask");
-            var actionsWrap = document.getElementById("actions-wrap");
-            var chatContainer = document.getElementById("chat");
-            var typingIndicator = document.getElementById("typing-indicator");
-            var clearChatBtn = document.getElementById("clear-chat");
-            var resetAllBtn = document.getElementById("reset-all");
-            var scrollBottomBtn = document.getElementById("scroll-bottom");
-            var textarea = document.getElementById("question");
-            var charCount = document.getElementById("character-count");
+            /* =====================================================
+               INIT
+               ===================================================== */
+            function init() {
+                state.history = loadHistory();
 
-            if (!askBtn || !chatContainer) return;
-
-            var state = {
-                generating: false,
-                paused: false,
-                deleteMode: false,
-                generationStart: 0
-            };
-
-            /* ---------- TRACK GENERATION ---------- */
-            if (typingIndicator) {
-                var typingObserver = new MutationObserver(function () {
-                    var nowGenerating = !typingIndicator.hidden;
-                    if (nowGenerating && !state.generating) {
-                        state.generating = true;
-                        state.paused = false;
-                        state.generationStart = Date.now();
-                        updateActionButton();
-                    } else if (!nowGenerating && state.generating && !state.paused) {
-                        state.generating = false;
-                        updateActionButton();
-                    }
-                });
-                typingObserver.observe(typingIndicator, { attributes: true, attributeFilter: ["hidden"] });
-            }
-
-            function updateActionButton() {
-                askBtn.classList.remove("state-send", "state-pause", "state-resume", "state-delete");
-
-                if (state.deleteMode) {
-                    askBtn.classList.add("state-delete");
-                    askBtn.innerHTML = '<span aria-hidden="true">🗑</span>';
-                    askBtn.setAttribute("aria-label", "Delete all conversations");
-                    askBtn.title = "Delete all conversations";
-                    if (actionsWrap) actionsWrap.classList.add("delete-mode");
-                    return;
+                if (!rebuildChatFromHistory()) {
+                    ensureWelcome();
                 }
-                if (actionsWrap) actionsWrap.classList.remove("delete-mode");
-
-                if (state.paused) {
-                    askBtn.classList.add("state-resume");
-                    askBtn.innerHTML = '<span aria-hidden="true">▶</span>';
-                    askBtn.setAttribute("aria-label", "Resume generation");
-                    askBtn.title = "Resume generation";
-                    return;
-                }
-                if (state.generating) {
-                    askBtn.classList.add("state-pause");
-                    askBtn.innerHTML = '<span aria-hidden="true">■</span>';
-                    askBtn.setAttribute("aria-label", "Pause generation");
-                    askBtn.title = "Pause generation";
-                    return;
-                }
-                askBtn.classList.add("state-send");
-                askBtn.innerHTML = '<span aria-hidden="true">↑</span>';
-                askBtn.setAttribute("aria-label", "Send message");
-                askBtn.title = "Send message";
-            }
-
-            askBtn.addEventListener("click", function (e) {
-                if (state.deleteMode) {
-                    e.preventDefault(); e.stopImmediatePropagation();
-                    if (window.confirm("Delete the entire conversation history?")) {
-                        try { localStorage.removeItem("ged-concierge-history"); } catch (err) { }
-                        chatContainer.innerHTML = "";
-                        if (clearChatBtn) clearChatBtn.click();
-                    }
-                    state.deleteMode = false;
-                    updateActionButton();
-                    return;
-                }
-                if (state.paused) {
-                    e.preventDefault(); e.stopImmediatePropagation();
-                    state.paused = false;
-                    updateActionButton();
-                    return;
-                }
-                if (state.generating) {
-                    e.preventDefault(); e.stopImmediatePropagation();
-                    state.paused = true;
-                    state.generating = false;
-                    updateActionButton();
-                    return;
-                }
-                state.generationStart = Date.now();
-            }, true);
-
-            /* ---------- LONG PRESS / RIGHT CLICK FOR DELETE MODE ---------- */
-            askBtn.addEventListener("contextmenu", function (e) {
-                e.preventDefault();
-                state.deleteMode = !state.deleteMode;
-                updateActionButton();
-            });
-
-            var pressTimer = null;
-            askBtn.addEventListener("touchstart", function () {
-                pressTimer = setTimeout(function () {
-                    state.deleteMode = !state.deleteMode;
-                    updateActionButton();
-                }, 700);
-            }, { passive: true });
-            askBtn.addEventListener("touchend", function () { if (pressTimer) clearTimeout(pressTimer); });
-            askBtn.addEventListener("touchcancel", function () { if (pressTimer) clearTimeout(pressTimer); });
-
-            if (resetAllBtn) {
-                resetAllBtn.addEventListener("click", function () {
-                    if (window.confirm("This will delete every saved GED Concierge conversation. Continue?")) {
-                        try { localStorage.removeItem("ged-concierge-history"); } catch (err) { }
-                        chatContainer.innerHTML = "";
-                        if (clearChatBtn) clearChatBtn.click();
-                        state.paused = false;
-                        state.generating = false;
-                        state.deleteMode = false;
-                        updateActionButton();
-                    }
-                });
-            }
-
-            /* ============================================================
-               MARKDOWN-LITE RENDERER
-               Converts markdown-ish text into safe HTML
-               ============================================================ */
-            function escapeHtml(str) {
-                return String(str ?? "")
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#39;");
-            }
-
-            function renderInline(text) {
-                var html = escapeHtml(text);
-
-                /* Code `x` */
-                html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-                /* Bold **x** */
-                html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-                /* Italic *x* or _x_ */
-                html = html.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
-                html = html.replace(/(^|[^_])_([^_\n]+)_(?!_)/g, '$1<em>$2</em>');
-
-                /* Links [text](url) */
-                html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-                    '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-                /* Auto-links https://... */
-                html = html.replace(/(^|[^"'])(https?:\/\/[^\s<)]+)/g,
-                    '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
-
-                return html;
-            }
-
-            function renderMarkdown(text) {
-                if (!text) return "";
-
-                /* Normalize */
-                var src = String(text).replace(/\r\n/g, "\n").trim();
-
-                var lines = src.split("\n");
-                var html = "";
-                var inUl = false;
-                var inOl = false;
-                var inCode = false;
-                var codeBuffer = [];
-
-                function closeLists() {
-                    if (inUl) { html += "</ul>"; inUl = false; }
-                    if (inOl) { html += "</ol>"; inOl = false; }
-                }
-
-                for (var i = 0; i < lines.length; i++) {
-                    var line = lines[i];
-
-                    /* Fenced code ``` */
-                    if (/^```/.test(line.trim())) {
-                        if (!inCode) {
-                            closeLists();
-                            inCode = true;
-                            codeBuffer = [];
-                        } else {
-                            inCode = false;
-                            html += "<pre><code>" + escapeHtml(codeBuffer.join("\n")) + "</code></pre>";
-                        }
-                        continue;
-                    }
-
-                    if (inCode) {
-                        codeBuffer.push(line);
-                        continue;
-                    }
-
-                    /* Blank line */
-                    if (!line.trim()) {
-                        closeLists();
-                        continue;
-                    }
-
-                    /* Headings */
-                    var h = line.match(/^(#{1,3})\s+(.+)$/);
-                    if (h) {
-                        closeLists();
-                        var level = h[1].length;
-                        html += "<h" + level + ">" + renderInline(h[2]) + "</h" + level + ">";
-                        continue;
-                    }
-
-                    /* Blockquote */
-                    if (/^>\s?/.test(line)) {
-                        closeLists();
-                        html += "<blockquote>" + renderInline(line.replace(/^>\s?/, "")) + "</blockquote>";
-                        continue;
-                    }
-
-                    /* Unordered list */
-                    var ul = line.match(/^\s*[-*+]\s+(.+)$/);
-                    if (ul) {
-                        if (inOl) { html += "</ol>"; inOl = false; }
-                        if (!inUl) { html += "<ul>"; inUl = true; }
-                        html += "<li>" + renderInline(ul[1]) + "</li>";
-                        continue;
-                    }
-
-                    /* Ordered list */
-                    var ol = line.match(/^\s*\d+[.)]\s+(.+)$/);
-                    if (ol) {
-                        if (inUl) { html += "</ul>"; inUl = false; }
-                        if (!inOl) { html += "<ol>"; inOl = true; }
-                        html += "<li>" + renderInline(ol[1]) + "</li>";
-                        continue;
-                    }
-
-                    /* Paragraph */
-                    closeLists();
-                    html += "<p>" + renderInline(line) + "</p>";
-                }
-
-                closeLists();
-                if (inCode && codeBuffer.length) {
-                    html += "<pre><code>" + escapeHtml(codeBuffer.join("\n")) + "</code></pre>";
-                }
-
-                return html;
-            }
-
-            /* Expose for possible reuse */
-            window.GED_markdown = renderMarkdown;
-
-            /* ============================================================
-               SOURCES EXTRACTOR
-               ============================================================ */
-            function extractSources(text) {
-                var urlRegex = /(https?:\/\/[^\s)]+)/g;
-                var matches = text.match(urlRegex) || [];
-                var labelRegex = /(?:fontes?|sources?)\s*:\s*([^\n]+)/i;
-                var labelMatch = text.match(labelRegex);
-                if (labelMatch && labelMatch[1]) {
-                    var tokens = labelMatch[1].split(/[,;|]/).map(function (s) { return s.trim(); }).filter(Boolean);
-                    tokens.forEach(function (t) {
-                        if (/^https?:\/\//.test(t) && matches.indexOf(t) === -1) matches.push(t);
-                    });
-                }
-                return matches.slice(0, 3);
-            }
-
-            /* ============================================================
-               MESSAGE ENHANCER
-               Adds avatars, meta, footer, actions, markdown rendering
-               ============================================================ */
-            function getAvatarContent(isAssistant) {
-                if (isAssistant) {
-                    /* Show image avatar */
-                    var img = document.createElement("img");
-                    img.src = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80";
-                    img.alt = "";
-                    return img;
-                }
-                /* User: initials */
-                var span = document.createElement("span");
-                span.textContent = "YOU";
-                span.style.fontSize = "9px";
-                span.style.letterSpacing = "0.04em";
-                return span;
-            }
-
-            function enhanceMessage(node) {
-                if (!node.classList || !node.classList.contains("chat-message")) return;
-
-                var isAssistant = node.classList.contains("assistant");
-                var isUser = node.classList.contains("user");
-
-                /* ---- 1. AVATAR (both sides) ---- */
-                if (!node.querySelector(".message-avatar")) {
-                    var avatar = document.createElement("div");
-                    avatar.className = "message-avatar";
-                    avatar.setAttribute("aria-hidden", "true");
-                    avatar.appendChild(getAvatarContent(isAssistant));
-                    node.insertBefore(avatar, node.firstChild);
-                }
-
-                /* Ensure body exists */
-                var body = node.querySelector(".message-body");
-                if (!body) {
-                    /* Wrap content if not already wrapped */
-                    var contentEl = node.querySelector(".message-content");
-                    if (contentEl) {
-                        body = document.createElement("div");
-                        body.className = "message-body";
-                        contentEl.parentNode.insertBefore(body, contentEl);
-                        body.appendChild(contentEl);
-                    } else {
-                        return;
-                    }
-                }
-
-                /* ---- 2. MARKDOWN RENDER (only for assistant, and only once) ---- */
-                var contentEl = node.querySelector(".message-content");
-                if (contentEl && isAssistant && !contentEl.dataset.rendered) {
-                    var rawText = contentEl.textContent || "";
-                    /* Skip if there are already HTML children we shouldn't touch */
-                    if (!contentEl.querySelector("img, a, button, ul, ol, pre")) {
-                        contentEl.innerHTML = renderMarkdown(rawText);
-                        contentEl.dataset.rendered = "1";
-                    } else {
-                        contentEl.dataset.rendered = "1";
-                    }
-                }
-
-                /* ---- 3. META "Thought for X.Xs" (assistant only) ---- */
-                if (isAssistant && !body.querySelector(".message-meta")) {
-                    var meta = document.createElement("div");
-                    meta.className = "message-meta";
-                    var elapsed = 0;
-                    if (state.generationStart) {
-                        elapsed = ((Date.now() - state.generationStart) / 1000).toFixed(1);
-                    }
-                    var metaText = elapsed > 0.3 ? "Thought for " + elapsed + "s" : "Ready";
-                    meta.innerHTML = '<span class="meta-icon" aria-hidden="true">✦</span>' + metaText;
-                    body.insertBefore(meta, body.firstChild);
-                }
-
-                /* ---- 4. FOOTER (Fonts / AI disclaimer) ---- */
-                if (isAssistant && !body.querySelector(".message-footer")) {
-                    var footer = document.createElement("div");
-                    footer.className = "message-footer";
-                    var text = contentEl ? contentEl.textContent : "";
-                    var sources = extractSources(text);
-
-                    if (sources.length) {
-                        var html = '<span class="footer-label">Fonts</span>';
-                        sources.forEach(function (src) {
-                            var label = src.length > 40 ? src.slice(0, 38) + "…" : src;
-                            html += '<a class="source-chip" href="' + src + '" target="_blank" rel="noopener">' + label + '</a>';
-                        });
-                        footer.innerHTML = html;
-                    } else {
-                        footer.innerHTML =
-                            '<span class="footer-icon" aria-hidden="true">✦</span>' +
-                            'AI can make mistakes — verify important info';
-                    }
-                    body.appendChild(footer);
-                }
-
-                /* ---- 5. MESSAGE ACTIONS (copy / regenerate) ---- */
-                if (!body.querySelector(".message-actions")) {
-                    var actions = document.createElement("div");
-                    actions.className = "message-actions";
-
-                    var copyBtn = document.createElement("button");
-                    copyBtn.type = "button";
-                    copyBtn.setAttribute("aria-label", "Copy message");
-                    copyBtn.title = "Copy";
-                    copyBtn.innerHTML = "⧉";
-                    copyBtn.addEventListener("click", function () {
-                        var text = contentEl ? contentEl.innerText : "";
-                        navigator.clipboard.writeText(text).then(function () {
-                            copyBtn.innerHTML = "✓";
-                            setTimeout(function () { copyBtn.innerHTML = "⧉"; }, 1200);
-                        });
-                    });
-                    actions.appendChild(copyBtn);
-
-                    if (isAssistant) {
-                        var regenBtn = document.createElement("button");
-                        regenBtn.type = "button";
-                        regenBtn.setAttribute("aria-label", "Regenerate response");
-                        regenBtn.title = "Regenerate";
-                        regenBtn.innerHTML = "↻";
-                        regenBtn.addEventListener("click", function () {
-                            if (window.GED && typeof GED.toast === "function") {
-                                GED.toast("Regenerating response…");
-                            }
-                            /* Find the previous user message */
-                            var prev = node.previousElementSibling;
-                            while (prev && !prev.classList.contains("user")) {
-                                prev = prev.previousElementSibling;
-                            }
-                            if (prev && textarea) {
-                                var prevText = prev.querySelector(".message-content");
-                                if (prevText) {
-                                    textarea.value = prevText.innerText;
-                                    textarea.dispatchEvent(new Event("input", { bubbles: true }));
-                                    setTimeout(function () { askBtn.click(); }, 100);
-                                }
-                            }
-                        });
-                        actions.appendChild(regenBtn);
-                    }
-
-                    body.appendChild(actions);
-                }
-            }
-
-            function enhanceAll() {
-                chatContainer.querySelectorAll(".chat-message").forEach(enhanceMessage);
-            }
-
-            /* ============================================================
-               WELCOME STATE
-               ============================================================ */
-            function ensureWelcome() {
-                if (chatContainer.querySelector(".chat-message")) return;
-
-                var welcome = document.createElement("div");
-                welcome.className = "chat-message assistant";
-                welcome.innerHTML =
-                    '<div class="message-avatar" aria-hidden="true">' +
-                    '<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=100&q=80" alt="">' +
-                    '</div>' +
-                    '<div class="message-body">' +
-                    '<div class="message-meta"><span class="meta-icon" aria-hidden="true">✦</span>Ready</div>' +
-                    '<div class="message-content">' +
-                    '<p><strong>Olá! Eu sou o GED Concierge.</strong> 🇨🇦</p>' +
-                    '<p>Posso te ajudar a explorar o Canadá — cidades, bairros, hotéis, eventos, voos e pacotes. Por onde quer começar?</p>' +
-                    '<div class="welcome-suggestions">' +
-                    '<button type="button" data-welcome="Quais são os melhores destinos no Canadá para uma primeira viagem?">Primeira viagem</button>' +
-                    '<button type="button" data-welcome="Monte um roteiro de 7 dias entre Toronto e Montreal.">7 dias ON + QC</button>' +
-                    '<button type="button" data-welcome="Quais eventos acontecem no Canadá em outubro de 2026?">Eventos em outubro</button>' +
-                    '<button type="button" data-welcome="Qual é o melhor destino para ver a aurora boreal no Canadá?">Aurora boreal</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-
-                chatContainer.appendChild(welcome);
-
-                welcome.querySelectorAll("[data-welcome]").forEach(function (btn) {
-                    btn.addEventListener("click", function () {
-                        if (textarea) {
-                            textarea.value = btn.dataset.welcome;
-                            textarea.dispatchEvent(new Event("input", { bubbles: true }));
-                            textarea.focus();
-                            setTimeout(function () { askBtn.click(); }, 60);
-                        }
-                    });
-                });
-            }
-
-            /* ============================================================
-               MUTATION OBSERVER
-               ============================================================ */
-            var chatObserver = new MutationObserver(function (mutations) {
-                var shouldUpdateScroll = false;
-                mutations.forEach(function (mutation) {
-                    if (mutation.addedNodes.length) shouldUpdateScroll = true;
-                    mutation.addedNodes.forEach(function (node) {
-                        if (node.nodeType === 1 && node.classList && node.classList.contains("chat-message")) {
-                            if (node.classList.contains("assistant")) {
-                                setTimeout(function () { enhanceMessage(node); }, 60);
-                            } else {
-                                enhanceMessage(node);
-                            }
-                        }
-                    });
-                });
-                if (shouldUpdateScroll) updateScrollButton();
-            });
-
-            chatObserver.observe(chatContainer, { childList: true, subtree: true });
-
-            updateActionButton();
-
-            /* Ensure welcome shows on load if empty */
-            ensureWelcome();
-            enhanceAll();
-
-            setTimeout(enhanceAll, 300);
-            setTimeout(enhanceAll, 900);
-
-            /* ============================================================
-               TEXTAREA — auto-resize + char count + shortcuts
-               ============================================================ */
-            if (textarea) {
-                var maxHeight = 130;
-
-                function autosize() {
-                    textarea.style.height = "auto";
-                    textarea.style.height = Math.min(textarea.scrollHeight, maxHeight) + "px";
-                }
-
-                textarea.addEventListener("input", function () {
-                    autosize();
-                    if (charCount) {
-                        charCount.textContent = textarea.value.length + " / 2000";
-                    }
-                });
 
                 autosize();
-
-                textarea.addEventListener("keydown", function (e) {
-                    /* Cmd/Ctrl + Enter → send */
-                    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-                        e.preventDefault();
-                        askBtn.click();
-                        return;
-                    }
-                    /* Enter (without shift) → send */
-                    if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        state.generationStart = Date.now();
-                        askBtn.click();
-                        return;
-                    }
-                    /* Escape → clear */
-                    if (e.key === "Escape") {
-                        textarea.value = "";
-                        autosize();
-                        if (charCount) charCount.textContent = "0 / 2000";
-                    }
-                });
-            }
-
-            /* ============================================================
-               SCROLL BOTTOM BUTTON
-               ============================================================ */
-            function updateScrollButton() {
-                if (!scrollBottomBtn) return;
-                var distanceFromBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
-                scrollBottomBtn.classList.toggle("visible", distanceFromBottom > 120);
-            }
-
-            if (scrollBottomBtn) {
-                chatContainer.addEventListener("scroll", updateScrollButton, { passive: true });
-                scrollBottomBtn.addEventListener("click", function () {
-                    chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
-                });
+                updateCharCount();
+                updateSendButton();
+                updateModelLabel();
                 updateScrollButton();
-            }
+                resetTypingState();
 
-            /* ============================================================
-               GLOBAL KEYBOARD SHORTCUTS
-               ============================================================ */
-            document.addEventListener("keydown", function (e) {
-                /* Cmd/Ctrl + K → focus input */
-                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-                    e.preventDefault();
-                    if (textarea) textarea.focus();
-                }
-                /* T → toggle think (only if not in input) */
-                if (e.key.toLowerCase() === "t" && document.activeElement !== textarea
-                    && document.activeElement.tagName !== "INPUT"
-                    && document.activeElement.tagName !== "TEXTAREA") {
-                    var btn = document.getElementById("toggle-think");
-                    if (btn) btn.click();
-                }
-                /* S → toggle search */
-                if (e.key.toLowerCase() === "s" && document.activeElement !== textarea
-                    && document.activeElement.tagName !== "INPUT"
-                    && document.activeElement.tagName !== "TEXTAREA") {
-                    var btn = document.getElementById("toggle-search");
-                    if (btn) btn.click();
-                }
-            });
+                discoverApiBase().then(function (url) {
+                    if (url) console.log("[Concierge] API endpoint:", url);
+                });
 
-            /* ============================================================
-               TOGGLE THINK / SEARCH / COPY-LAST
-               ============================================================ */
-            var thinkBtn = document.getElementById("toggle-think");
-            var searchBtn = document.getElementById("toggle-search");
-            var copyLastBtn = document.getElementById("copy-last");
-            var modelLabel = document.getElementById("model-label");
-
-            var thinkActive = false;
-            var searchActive = false;
-
-            function updateModelLabel() {
-                if (!modelLabel) return;
-                var parts = ["GED Smart"];
-                if (thinkActive) parts.push("Think");
-                if (searchActive) parts.push("Search");
-                modelLabel.textContent = parts.join(" · ");
-            }
-
-            if (thinkBtn) {
-                thinkBtn.addEventListener("click", function () {
-                    thinkActive = !thinkActive;
-                    thinkBtn.classList.toggle("active-think", thinkActive);
-                    updateModelLabel();
-                    if (window.GED && typeof GED.toast === "function") {
-                        GED.toast(thinkActive ? "Profound Think on" : "Profound Think off");
+                if ("IntersectionObserver" in window) {
+                    var section = document.getElementById("chat-section");
+                    if (section) {
+                        var seen = false;
+                        var focusObs = new IntersectionObserver(function (entries) {
+                            entries.forEach(function (entry) {
+                                if (entry.isIntersecting && !seen) {
+                                    seen = true;
+                                    setTimeout(function () {
+                                        if (document.activeElement === document.body) {
+                                            textarea.focus({ preventScroll: true });
+                                        }
+                                    }, 500);
+                                }
+                            });
+                        }, { threshold: 0.3 });
+                        focusObs.observe(section);
                     }
-                });
+                }
             }
 
-            if (searchBtn) {
-                searchBtn.addEventListener("click", function () {
-                    searchActive = !searchActive;
-                    searchBtn.classList.toggle("active-search", searchActive);
-                    updateModelLabel();
-                    if (window.GED && typeof GED.toast === "function") {
-                        GED.toast(searchActive ? "Profound Search on" : "Profound Search off");
-                    }
-                });
-            }
-
-            if (copyLastBtn) {
-                copyLastBtn.addEventListener("click", function () {
-                    var messages = chatContainer.querySelectorAll(".chat-message.assistant");
-                    if (!messages.length) return;
-                    var last = messages[messages.length - 1];
-                    var content = last.querySelector(".message-content");
-                    if (!content) return;
-                    navigator.clipboard.writeText(content.innerText).then(function () {
-                        copyLastBtn.innerHTML = "✓";
-                        setTimeout(function () { copyLastBtn.innerHTML = "⧉"; }, 1200);
-                        if (window.GED && typeof GED.toast === "function") {
-                            GED.toast("Last response copied", "success");
-                        }
-                    });
-                });
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init);
+            } else {
+                init();
             }
 
         })();

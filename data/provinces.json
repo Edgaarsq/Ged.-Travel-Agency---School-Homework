@@ -1,69 +1,456 @@
 {
+    "meta": {
+        "version": "3.0",
+        "scope": "Educational demo data for GED Travel Agency",
+        "country": "Canada",
+        "totalRegions": 13,
+        "updated": "2026-01",
+        "note": "10 provinces + 3 territories. Each region includes image, capital, population, area and highlights."
+    },
     "regions": [
         {
             "name": "Ontario",
             "code": "ON",
-            "capital": "Toronto"
+            "capital": "Toronto",
+            "type": "Province",
+            "region": "central",
+            "nickname": "The Heartland",
+            "motto": "Ut incepit fidelis sic permanet (Loyal she began, loyal she remains)",
+            "population": 14800000,
+            "area": "1,076,395 km²",
+            "founded": 1867,
+            "language": "English",
+            "timezone": "Eastern (ET)",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Toronto",
+                "Ottawa",
+                "Hamilton",
+                "London",
+                "Kingston",
+                "Windsor",
+                "Kitchener",
+                "Stratford",
+                "Niagara Falls",
+                "Thunder Bay"
+            ],
+            "airports": [
+                "YYZ",
+                "YOW",
+                "YXU",
+                "YQG",
+                "YQT"
+            ],
+            "highlights": [
+                "CN Tower",
+                "Niagara Falls",
+                "Parliament Hill",
+                "Algonquin Park"
+            ],
+            "bestTime": "May – October"
         },
         {
             "name": "Quebec",
             "code": "QC",
-            "capital": "Québec City"
+            "capital": "Québec City",
+            "type": "Province",
+            "region": "central",
+            "nickname": "La Belle Province",
+            "motto": "Je me souviens (I remember)",
+            "population": 8700000,
+            "area": "1,542,056 km²",
+            "founded": 1867,
+            "language": "French",
+            "timezone": "Eastern (ET)",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Montréal",
+                "Québec City",
+                "Laval",
+                "Gatineau",
+                "Sherbrooke",
+                "Trois-Rivières",
+                "Mont-Tremblant"
+            ],
+            "airports": [
+                "YUL",
+                "YQB"
+            ],
+            "highlights": [
+                "Old Québec",
+                "Château Frontenac",
+                "Mont-Tremblant",
+                "Saguenay Fjord"
+            ],
+            "bestTime": "June – October"
         },
         {
             "name": "British Columbia",
             "code": "BC",
-            "capital": "Victoria"
+            "capital": "Victoria",
+            "type": "Province",
+            "region": "west",
+            "nickname": "Beautiful British Columbia",
+            "motto": "Splendor sine occasu (Splendour without diminishment)",
+            "population": 5400000,
+            "area": "944,735 km²",
+            "founded": 1871,
+            "language": "English",
+            "timezone": "Pacific (PT)",
+            "image": "https://images.unsplash.com/photo-1542259009477-d625272cda09?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Vancouver",
+                "Victoria",
+                "Whistler",
+                "Kelowna",
+                "Surrey",
+                "Tofino",
+                "Kamloops",
+                "Nanaimo",
+                "Revelstoke"
+            ],
+            "airports": [
+                "YVR",
+                "YYJ",
+                "YLW",
+                "YAZ",
+                "YKA",
+                "YCD"
+            ],
+            "highlights": [
+                "Stanley Park",
+                "Whistler Blackcomb",
+                "Pacific Rim",
+                "Butchart Gardens"
+            ],
+            "bestTime": "May – September"
         },
         {
             "name": "Alberta",
             "code": "AB",
-            "capital": "Edmonton"
+            "capital": "Edmonton",
+            "type": "Province",
+            "region": "prairies",
+            "nickname": "Wild Rose Country",
+            "motto": "Fortis et liber (Strong and free)",
+            "population": 4600000,
+            "area": "661,848 km²",
+            "founded": 1905,
+            "language": "English",
+            "timezone": "Mountain (MT)",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Calgary",
+                "Edmonton",
+                "Banff",
+                "Jasper",
+                "Canmore",
+                "Drumheller",
+                "Red Deer"
+            ],
+            "airports": [
+                "YYC",
+                "YEG",
+                "YQF"
+            ],
+            "highlights": [
+                "Banff National Park",
+                "Lake Louise",
+                "Calgary Stampede",
+                "Royal Tyrrell Museum"
+            ],
+            "bestTime": "June – September · December – March"
         },
         {
             "name": "Manitoba",
             "code": "MB",
-            "capital": "Winnipeg"
+            "capital": "Winnipeg",
+            "type": "Province",
+            "region": "prairies",
+            "nickname": "The Keystone Province",
+            "motto": "Gloriosus et liber (Glorious and free)",
+            "population": 1400000,
+            "area": "647,797 km²",
+            "founded": 1870,
+            "language": "English · French",
+            "timezone": "Central (CT)",
+            "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Winnipeg",
+                "Churchill",
+                "Brandon"
+            ],
+            "airports": [
+                "YWG",
+                "YYQ",
+                "YBR"
+            ],
+            "highlights": [
+                "Polar bears in Churchill",
+                "The Forks",
+                "Canadian Museum for Human Rights",
+                "Riding Mountain"
+            ],
+            "bestTime": "June – September · October – November (bears)"
         },
         {
             "name": "Saskatchewan",
             "code": "SK",
-            "capital": "Regina"
+            "capital": "Regina",
+            "type": "Province",
+            "region": "prairies",
+            "nickname": "Land of Living Skies",
+            "motto": "Multis e gentibus vires (From many peoples, strength)",
+            "population": 1200000,
+            "area": "651,900 km²",
+            "founded": 1905,
+            "language": "English",
+            "timezone": "Central (CT)",
+            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Saskatoon",
+                "Regina",
+                "Prince Albert"
+            ],
+            "airports": [
+                "YXE",
+                "YQR",
+                "YPA"
+            ],
+            "highlights": [
+                "Grasslands National Park",
+                "Wanuskewin",
+                "Prince Albert NP",
+                "Cypress Hills"
+            ],
+            "bestTime": "June – September"
         },
         {
             "name": "Nova Scotia",
             "code": "NS",
-            "capital": "Halifax"
+            "capital": "Halifax",
+            "type": "Province",
+            "region": "atlantic",
+            "nickname": "Canada's Ocean Playground",
+            "motto": "Munit haec et altera vincit (One defends and the other conquers)",
+            "population": 1000000,
+            "area": "55,284 km²",
+            "founded": 1867,
+            "language": "English",
+            "timezone": "Atlantic (AT)",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Halifax",
+                "Sydney",
+                "Lunenburg",
+                "Baddeck"
+            ],
+            "airports": [
+                "YHZ",
+                "YQY"
+            ],
+            "highlights": [
+                "Cabot Trail",
+                "Peggy's Cove",
+                "Lunenburg Old Town",
+                "Fortress of Louisbourg"
+            ],
+            "bestTime": "June – October"
         },
         {
             "name": "New Brunswick",
             "code": "NB",
-            "capital": "Fredericton"
+            "capital": "Fredericton",
+            "type": "Province",
+            "region": "atlantic",
+            "nickname": "The Picture Province",
+            "motto": "Spem reduxit (Hope was restored)",
+            "population": 800000,
+            "area": "72,908 km²",
+            "founded": 1867,
+            "language": "English · French",
+            "timezone": "Atlantic (AT)",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Moncton",
+                "Saint John",
+                "Fredericton",
+                "Hopewell Cape"
+            ],
+            "airports": [
+                "YQM",
+                "YSJ",
+                "YFC"
+            ],
+            "highlights": [
+                "Bay of Fundy tides",
+                "Hopewell Rocks",
+                "Fundy National Park",
+                "Reversing Falls"
+            ],
+            "bestTime": "June – September"
         },
         {
-            "name": "Newfoundland & Labrador",
+            "name": "Newfoundland and Labrador",
             "code": "NL",
-            "capital": "St. John’s"
+            "capital": "St. John's",
+            "type": "Province",
+            "region": "atlantic",
+            "nickname": "The Rock",
+            "motto": "Quaerite prime regnum dei (Seek ye first the kingdom of God)",
+            "population": 520000,
+            "area": "405,212 km²",
+            "founded": 1949,
+            "language": "English",
+            "timezone": "Newfoundland (NT)",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "St. John's",
+                "Rocky Harbour",
+                "St. Anthony",
+                "Corner Brook"
+            ],
+            "airports": [
+                "YYT",
+                "YAY",
+                "YDF"
+            ],
+            "highlights": [
+                "L'Anse aux Meadows (Vikings)",
+                "Gros Morne National Park",
+                "Signal Hill",
+                "Cape Spear"
+            ],
+            "bestTime": "June – September"
         },
         {
             "name": "Prince Edward Island",
             "code": "PE",
-            "capital": "Charlottetown"
+            "capital": "Charlottetown",
+            "type": "Province",
+            "region": "atlantic",
+            "nickname": "The Garden of the Gulf",
+            "motto": "Parva sub ingenti (The small under the protection of the great)",
+            "population": 170000,
+            "area": "5,660 km²",
+            "founded": 1873,
+            "language": "English",
+            "timezone": "Atlantic (AT)",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Charlottetown",
+                "Cavendish",
+                "Summerside"
+            ],
+            "airports": [
+                "YYG"
+            ],
+            "highlights": [
+                "Anne of Green Gables",
+                "PEI National Park",
+                "Red-sand beaches",
+                "Confederation Centre"
+            ],
+            "bestTime": "June – September"
         },
         {
             "name": "Yukon",
             "code": "YT",
-            "capital": "Whitehorse"
+            "capital": "Whitehorse",
+            "type": "Territory",
+            "region": "north",
+            "nickname": "The Land of the Midnight Sun",
+            "motto": "Larger than life",
+            "population": 43000,
+            "area": "482,443 km²",
+            "founded": 1898,
+            "language": "English",
+            "timezone": "Yukon (YT)",
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Whitehorse",
+                "Dawson City",
+                "Haines Junction"
+            ],
+            "airports": [
+                "YXY",
+                "YDA"
+            ],
+            "highlights": [
+                "Kluane National Park",
+                "Northern Lights",
+                "Klondike Gold Rush",
+                "Mount Logan"
+            ],
+            "bestTime": "June – August · November – February"
         },
         {
             "name": "Northwest Territories",
             "code": "NT",
-            "capital": "Yellowknife"
+            "capital": "Yellowknife",
+            "type": "Territory",
+            "region": "north",
+            "nickname": "The Diamond Capital",
+            "motto": "No motto",
+            "population": 45000,
+            "area": "1,346,106 km²",
+            "founded": 1870,
+            "language": "English · French · Indigenous",
+            "timezone": "Mountain (MT)",
+            "image": "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Yellowknife",
+                "Inuvik",
+                "Hay River",
+                "Fort Simpson"
+            ],
+            "airports": [
+                "YZF",
+                "YEV",
+                "YHY",
+                "YFS"
+            ],
+            "highlights": [
+                "Aurora borealis in Yellowknife",
+                "Nahanni National Park",
+                "Great Slave Lake",
+                "Wood Buffalo NP"
+            ],
+            "bestTime": "June – August · November – March"
         },
         {
             "name": "Nunavut",
             "code": "NU",
-            "capital": "Iqaluit"
+            "capital": "Iqaluit",
+            "type": "Territory",
+            "region": "north",
+            "nickname": "Our Land",
+            "motto": "Nunavut sanginivut (Our land, our strength)",
+            "population": 40000,
+            "area": "2,093,190 km²",
+            "founded": 1999,
+            "language": "Inuktitut · English · French",
+            "timezone": "Eastern (ET)",
+            "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90",
+            "majorCities": [
+                "Iqaluit",
+                "Rankin Inlet",
+                "Pangnirtung",
+                "Cambridge Bay"
+            ],
+            "airports": [
+                "YFB",
+                "YRT",
+                "YXP",
+                "YCB"
+            ],
+            "highlights": [
+                "Auyuittuq National Park",
+                "Mount Thor",
+                "Inuit culture",
+                "Arctic fjords"
+            ],
+            "bestTime": "July – August · October – March"
         }
     ]
 }

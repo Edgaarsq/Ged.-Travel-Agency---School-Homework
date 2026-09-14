@@ -27,6 +27,19 @@
             "description": "Tickets are Single day passes: 11:00AM - Dominican Republic vs. Guatemala 1:30PM - Puerto Rico vs. Curaçao 4:30PM - United States vs. Cuba 7:00PM - Canada vs. Mexico"
         },
         {
+            "name": "Mannequin Pussy",
+            "city": "Winnipeg",
+            "province": "Manitoba",
+            "category": "Music",
+            "date": "2026-09-13",
+            "endDate": "2026-09-13",
+            "price": "Check venue",
+            "score": 9,
+            "image": "https://s1.ticketm.net/dam/a/883/535a0d54-4284-4325-bcb5-b0ed2d293883_SOURCE",
+            "description": "Music event in Winnipeg.",
+            "source": "ticketmaster"
+        },
+        {
             "source": "ticketmaster",
             "name": "NORCECA Men Continenal Championships - Full Day Pass",
             "city": "Moncton",

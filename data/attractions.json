@@ -1,620 +1,4926 @@
 {
+    "meta": {
+        "version": "3.0",
+        "scope": "Educational demo data for GED Travel Agency",
+        "country": "Canada",
+        "totalAttractions": 92,
+        "provincesCovered": 13,
+        "updated": "2026-01",
+        "note": "All prices are illustrative. Attractions are sorted by province then score.",
+        "schema": "id · name · city · province · provinceCode · region · type · category · score · rating · price · priceValue · free · duration · durationMinutes · bestTime · openHours · coordinates · nearbyAirport · image · description · tags · unesco · bookingRequired · familyFriendly · accessibility · highlights"
+    },
+    "categories": {
+        "landmark": {
+            "label": "Landmarks",
+            "icon": "🏛",
+            "color": "#af52de"
+        },
+        "nature": {
+            "label": "Nature & Parks",
+            "icon": "🌲",
+            "color": "#34c759"
+        },
+        "culture": {
+            "label": "Culture & Heritage",
+            "icon": "🎭",
+            "color": "#007aff"
+        },
+        "food": {
+            "label": "Food & Markets",
+            "icon": "🍽",
+            "color": "#ff9500"
+        },
+        "family": {
+            "label": "Family Friendly",
+            "icon": "🎡",
+            "color": "#ffc400"
+        },
+        "adventure": {
+            "label": "Adventure",
+            "icon": "🧭",
+            "color": "#ff2d55"
+        },
+        "wildlife": {
+            "label": "Wildlife",
+            "icon": "🐻",
+            "color": "#5ac8fa"
+        },
+        "unesco": {
+            "label": "UNESCO Sites",
+            "icon": "🏆",
+            "color": "#ffd21a"
+        }
+    },
+    "regions": {
+        "atlantic": [
+            "New Brunswick",
+            "Nova Scotia",
+            "Prince Edward Island",
+            "Newfoundland and Labrador"
+        ],
+        "central": [
+            "Ontario",
+            "Quebec"
+        ],
+        "prairies": [
+            "Manitoba",
+            "Saskatchewan",
+            "Alberta"
+        ],
+        "west": [
+            "British Columbia"
+        ],
+        "north": [
+            "Yukon",
+            "Northwest Territories",
+            "Nunavut"
+        ]
+    },
     "attractions": [
         {
+            "id": "cn-tower",
             "name": "CN Tower",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Landmark",
+            "category": "landmark",
             "score": 9.6,
+            "rating": 4.7,
+            "reviewCount": 28450,
             "price": "CA$43",
+            "priceValue": 43,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round · sunset",
+            "openHours": "9:00 – 22:30",
+            "coordinates": {
+                "lat": 43.6426,
+                "lng": -79.3871
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "Iconic 553m tower with EdgeWalk, glass floor and panoramic city views."
+            "description": "Iconic 553m tower with EdgeWalk, glass floor and panoramic city views.",
+            "tags": [
+                "iconic",
+                "views",
+                "edgewalk",
+                "glass-floor"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "EdgeWalk",
+                "Glass floor",
+                "360 Restaurant"
+            ]
         },
         {
+            "id": "niagara-falls",
             "name": "Niagara Falls",
             "city": "Niagara Falls",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Nature",
+            "category": "nature",
             "score": 9.8,
+            "rating": 4.8,
+            "reviewCount": 41200,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Full day",
+            "durationMinutes": 480,
+            "bestTime": "May – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 43.0962,
+                "lng": -79.0377
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=80",
-            "description": "Three waterfalls on the Canada–US border, best seen from the Canadian side."
+            "description": "Three waterfalls on the Canada–US border, best seen from the Canadian side.",
+            "tags": [
+                "iconic",
+                "waterfall",
+                "natural-wonder"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Fully accessible",
+            "highlights": [
+                "Hornblower cruise",
+                "Journey Behind the Falls",
+                "Clifton Hill"
+            ]
         },
         {
+            "id": "royal-ontario-museum",
             "name": "Royal Ontario Museum",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.1,
+            "rating": 4.6,
+            "reviewCount": 12450,
             "price": "CA$26",
+            "priceValue": 26,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:30",
+            "coordinates": {
+                "lat": 43.6677,
+                "lng": -79.3948
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "World-class museum of art, culture and natural history."
+            "description": "World-class museum of art, culture and natural history.",
+            "tags": [
+                "museum",
+                "dinosaur",
+                "crystal"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Dinosaur Gallery",
+                "Michael Lee-Chin Crystal",
+                "First Peoples Gallery"
+            ]
         },
         {
+            "id": "art-gallery-ontario",
             "name": "Art Gallery of Ontario",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 8920,
             "price": "CA$25",
+            "priceValue": 25,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:30 – 17:00",
+            "coordinates": {
+                "lat": 43.6536,
+                "lng": -79.3925
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "Frank Gehry-redesigned gallery with Canadian and Indigenous art."
+            "description": "Frank Gehry-redesigned gallery with Canadian and Indigenous art.",
+            "tags": [
+                "art",
+                "gehry",
+                "indigenous"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Canadian Collection",
+                "Indigenous Art",
+                "Frank Gehry architecture"
+            ]
         },
         {
+            "id": "casa-loma",
             "name": "Casa Loma",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Landmark",
+            "category": "landmark",
             "score": 8.9,
+            "rating": 4.5,
+            "reviewCount": 15230,
             "price": "CA$40",
+            "priceValue": 40,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "9:30 – 17:00",
+            "coordinates": {
+                "lat": 43.6781,
+                "lng": -79.4093
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "Gothic Revival mansion with secret tunnels and manicured gardens."
+            "description": "Gothic Revival mansion with secret tunnels and manicured gardens.",
+            "tags": [
+                "castle",
+                "historic",
+                "garden"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Partial — historic building",
+            "highlights": [
+                "Secret tunnels",
+                "Gardens",
+                "Tower views"
+            ]
         },
         {
+            "id": "ripleys-aquarium",
             "name": "Ripley's Aquarium of Canada",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Family",
+            "category": "family",
             "score": 9.0,
+            "rating": 4.5,
+            "reviewCount": 21870,
             "price": "CA$44",
+            "priceValue": 44,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 21:00",
+            "coordinates": {
+                "lat": 43.6424,
+                "lng": -79.3860
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "Underwater tunnel walk beneath sharks, rays and 20,000 sea creatures."
+            "description": "Underwater tunnel walk beneath sharks, rays and 20,000 sea creatures.",
+            "tags": [
+                "aquarium",
+                "kids",
+                "sharks"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Dangerous Lagoon",
+                "Underwater tunnel",
+                "Touch tanks"
+            ]
         },
         {
+            "id": "kensington-market",
             "name": "Kensington Market",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Food",
+            "category": "food",
             "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 8940,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round · weekends",
+            "openHours": "10:00 – 20:00",
+            "coordinates": {
+                "lat": 43.6547,
+                "lng": -79.4020
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "Bohemian neighborhood full of street food, vintage shops and murals."
+            "description": "Bohemian neighborhood full of street food, vintage shops and murals.",
+            "tags": [
+                "food",
+                "vintage",
+                "murals",
+                "walkable"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Pedestrian-friendly",
+            "highlights": [
+                "Street food",
+                "Vintage shops",
+                "Street art"
+            ]
         },
         {
+            "id": "distillery-district",
             "name": "Distillery District",
             "city": "Toronto",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 16200,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 22:00",
+            "coordinates": {
+                "lat": 43.6503,
+                "lng": -79.3596
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "Victorian industrial district turned pedestrian arts and dining hub."
+            "description": "Victorian industrial district turned pedestrian arts and dining hub.",
+            "tags": [
+                "historic",
+                "dining",
+                "pedestrian",
+                "art"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Christmas Market",
+                "Art galleries",
+                "Restaurants"
+            ]
         },
         {
+            "id": "hockey-hall-of-fame",
+            "name": "Hockey Hall of Fame",
+            "city": "Toronto",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 6780,
+            "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 43.6469,
+                "lng": -79.3776
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1515703407324-5f753afd8be8?auto=format&fit=crop&w=1200&q=80",
+            "description": "Home of the Stanley Cup — the ultimate hockey pilgrimage for fans.",
+            "tags": [
+                "hockey",
+                "sports",
+                "stanley-cup"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Stanley Cup",
+                "Esso Great Hall",
+                "Interactive zones"
+            ]
+        },
+        {
+            "id": "st-lawrence-market",
+            "name": "St. Lawrence Market",
+            "city": "Toronto",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Food",
+            "category": "food",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 11240,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round · Sat morning",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 43.6487,
+                "lng": -79.3716
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's best food markets — peameal bacon sandwiches and more.",
+            "tags": [
+                "market",
+                "food",
+                "peameal-bacon"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Peameal bacon",
+                "Local vendors",
+                "Saturday farmers market"
+            ]
+        },
+        {
+            "id": "toronto-islands",
+            "name": "Toronto Islands",
+            "city": "Toronto",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 13600,
+            "price": "CA$9 (ferry)",
+            "priceValue": 9,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – September",
+            "openHours": "6:30 – 23:00",
+            "coordinates": {
+                "lat": 43.6205,
+                "lng": -79.3780
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Car-free islands with beaches, gardens and the best skyline views of Toronto.",
+            "tags": [
+                "island",
+                "beach",
+                "ferry",
+                "skyline"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Ferry accessible",
+            "highlights": [
+                "Centreville",
+                "Hanlan's Point",
+                "Skyline views"
+            ]
+        },
+        {
+            "id": "fort-york",
+            "name": "Fort York National Historic Site",
+            "city": "Toronto",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 8.8,
+            "rating": 4.5,
+            "reviewCount": 3240,
+            "price": "CA$14",
+            "priceValue": 14,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 43.6389,
+                "lng": -79.4036
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "War of 1812 fort with original buildings, period uniforms and musket demos.",
+            "tags": [
+                "historic",
+                "war-of-1812",
+                "military"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "War of 1812",
+                "Musket demos",
+                "Original buildings"
+            ]
+        },
+        {
+            "id": "parliament-hill",
             "name": "Parliament Hill",
             "city": "Ottawa",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Landmark",
+            "category": "landmark",
             "score": 9.2,
+            "rating": 4.8,
+            "reviewCount": 18240,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "24h (grounds)",
+            "coordinates": {
+                "lat": 45.4236,
+                "lng": -75.7000
+            },
+            "nearbyAirport": "YOW",
             "image": "https://images.unsplash.com/photo-1591130901929-3f0a5f0e0d0e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Gothic Revival seat of Canada's federal government above the Ottawa River."
+            "description": "Gothic Revival seat of Canada's federal government above the Ottawa River.",
+            "tags": [
+                "capital",
+                "government",
+                "gothic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Changing of the Guard",
+                "Sound & Light show",
+                "Peace Tower"
+            ]
         },
         {
+            "id": "rideau-canal",
             "name": "Rideau Canal",
             "city": "Ottawa",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 9870,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Winter (skating) · summer (boating)",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.4215,
+                "lng": -75.6897
+            },
+            "nearbyAirport": "YOW",
             "image": "https://images.unsplash.com/photo-1591130901929-3f0a5f0e0d0e?auto=format&fit=crop&w=1200&q=80",
-            "description": "UNESCO canal — the world's largest skating rink every winter."
+            "description": "UNESCO canal — the world's largest skating rink every winter.",
+            "tags": [
+                "unesco",
+                "skating",
+                "canal",
+                "winter"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible in summer",
+            "highlights": [
+                "Winter skating",
+                "Canal cruises",
+                "Locks"
+            ]
         },
         {
-            "name": "Canadian Museum of History",
-            "city": "Gatineau",
-            "province": "Québec",
+            "id": "canadian-museum-nature",
+            "name": "Canadian Museum of Nature",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Culture",
-            "score": 9.2,
-            "price": "CA$21",
+            "category": "culture",
+            "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 5640,
+            "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 45.4124,
+                "lng": -75.6928
+            },
+            "nearbyAirport": "YOW",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "Canada's most-visited museum, with Grand Hall and First Peoples exhibits."
+            "description": "Natural history museum in a castle — dinosaurs, blue whale and the Canadian Arctic.",
+            "tags": [
+                "museum",
+                "dinosaur",
+                "nature"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Blue whale skeleton",
+                "Dinosaur gallery",
+                "Arctic gallery"
+            ]
         },
         {
+            "id": "national-gallery-canada",
+            "name": "National Gallery of Canada",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.1,
+            "rating": 4.6,
+            "reviewCount": 3420,
+            "price": "CA$20",
+            "priceValue": 20,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 45.4294,
+                "lng": -75.6984
+            },
+            "nearbyAirport": "YOW",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Glass-and-granite gallery with Indigenous and Canadian art. Spider sculpture outside.",
+            "tags": [
+                "art",
+                "museum",
+                "spider"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Maman spider",
+                "Indigenous gallery",
+                "Canadian collection"
+            ]
+        },
+        {
+            "id": "byward-market",
+            "name": "ByWard Market",
+            "city": "Ottawa",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Food",
+            "category": "food",
+            "score": 9.0,
+            "rating": 4.5,
+            "reviewCount": 9840,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 22:00",
+            "coordinates": {
+                "lat": 45.4272,
+                "lng": -75.6927
+            },
+            "nearbyAirport": "YOW",
+            "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80",
+            "description": "Ottawa's oldest and liveliest market — BeaverTails, restaurants and bars.",
+            "tags": [
+                "market",
+                "food",
+                "beavertails"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "BeaverTails",
+                "Local produce",
+                "Nightlife"
+            ]
+        },
+        {
+            "id": "algonquin-park",
             "name": "Algonquin Provincial Park",
             "city": "Huntsville",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Nature",
+            "category": "nature",
             "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 6120,
             "price": "CA$12",
+            "priceValue": 12,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September · fall colours",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.5853,
+                "lng": -78.3586
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Canoe routes, moose and maple forests in Ontario's oldest provincial park."
+            "description": "Canoe routes, moose and maple forests in Ontario's oldest provincial park.",
+            "tags": [
+                "canoe",
+                "moose",
+                "camping",
+                "fall-colours"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Designated accessible sites",
+            "highlights": [
+                "Canoe routes",
+                "Moose viewing",
+                "Autumn colours"
+            ]
         },
         {
+            "id": "thousand-islands",
+            "name": "Thousand Islands",
+            "city": "Gananoque",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 4230,
+            "price": "CA$40 (cruise)",
+            "priceValue": 40,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "Cruise dependent",
+            "coordinates": {
+                "lat": 44.3294,
+                "lng": -76.1670
+            },
+            "nearbyAirport": "YOW",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "Archipelago of 1,864 islands on the St. Lawrence — cruises, castles and cottages.",
+            "tags": [
+                "cruise",
+                "islands",
+                "castles"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible cruises",
+            "highlights": [
+                "Boldt Castle",
+                "Boat cruises",
+                "Singer Castle"
+            ]
+        },
+        {
+            "id": "bruce-peninsula",
+            "name": "Bruce Peninsula National Park",
+            "city": "Tobermory",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 3870,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.2167,
+                "lng": -81.5167
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Turquoise waters of Georgian Bay, the Grotto and the Bruce Trail.",
+            "tags": [
+                "hiking",
+                "grotto",
+                "unesco-biosphere"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Some accessible trails",
+            "highlights": [
+                "The Grotto",
+                "Halfway Log Dump",
+                "Bruce Trail"
+            ]
+        },
+        {
+            "id": "point-pelee",
+            "name": "Point Pelee National Park",
+            "city": "Leamington",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 2140,
+            "price": "CA$9",
+            "priceValue": 9,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May (bird migration) · summer",
+            "openHours": "6:00 – 22:00",
+            "coordinates": {
+                "lat": 41.9667,
+                "lng": -82.5167
+            },
+            "nearbyAirport": "YYZ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Southernmost point of mainland Canada — bird migration hotspot.",
+            "tags": [
+                "birds",
+                "migration",
+                "beach",
+                "southernmost"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Tip of Canada",
+                "Bird migration",
+                "Marsh boardwalk"
+            ]
+        },
+        {
+            "id": "stratford-festival",
             "name": "Stratford Festival",
             "city": "Stratford",
             "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 3420,
             "price": "CA$48",
+            "priceValue": 48,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "April – October",
+            "openHours": "Show dependent",
+            "coordinates": {
+                "lat": 43.3700,
+                "lng": -80.9800
+            },
+            "nearbyAirport": "YYZ",
             "image": "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=80",
-            "description": "North America's largest classical repertory theatre festival."
+            "description": "North America's largest classical repertory theatre festival.",
+            "tags": [
+                "theatre",
+                "shakespeare",
+                "festival"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible theatres",
+            "highlights": [
+                "Shakespeare plays",
+                "Avon Theatre",
+                "Festival Theatre"
+            ]
         },
         {
+            "id": "science-north",
+            "name": "Science North",
+            "city": "Sudbury",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Family",
+            "category": "family",
+            "score": 8.9,
+            "rating": 4.6,
+            "reviewCount": 2980,
+            "price": "CA$26",
+            "priceValue": 26,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "9:30 – 17:00",
+            "coordinates": {
+                "lat": 46.4707,
+                "lng": -80.9965
+            },
+            "nearbyAirport": "YSB",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Snowflake-shaped science centre with IMAX, planetarium and live science.",
+            "tags": [
+                "science",
+                "family",
+                "imax"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "IMAX theatre",
+                "Planetarium",
+                "Live science shows"
+            ]
+        },
+        {
+            "id": "upper-canada-village",
+            "name": "Upper Canada Village",
+            "city": "Morrisburg",
+            "province": "Ontario",
+            "provinceCode": "ON",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 2340,
+            "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "9:30 – 17:00",
+            "coordinates": {
+                "lat": 44.9500,
+                "lng": -75.1667
+            },
+            "nearbyAirport": "YOW",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Living history museum recreating life in 1860s Ontario.",
+            "tags": [
+                "history",
+                "living-museum",
+                "1860s"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Costumed interpreters",
+                "Working farms",
+                "Historic buildings"
+            ]
+        },
+        {
+            "id": "old-montreal",
             "name": "Old Montréal",
             "city": "Montréal",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 24100,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.5048,
+                "lng": -73.5538
+            },
+            "nearbyAirport": "YUL",
             "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
-            "description": "Cobblestone streets, Notre-Dame Basilica and 17th-century architecture."
+            "description": "Cobblestone streets, Notre-Dame Basilica and 17th-century architecture.",
+            "tags": [
+                "historic",
+                "cobblestone",
+                "walkable"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Cobblestone — partial",
+            "highlights": [
+                "Place Jacques-Cartier",
+                "Old Port",
+                "Notre-Dame"
+            ]
         },
         {
+            "id": "notre-dame-basilica",
             "name": "Notre-Dame Basilica",
             "city": "Montréal",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 14780,
             "price": "CA$16",
+            "priceValue": 16,
+            "free": false,
             "duration": "1h",
+            "durationMinutes": 60,
+            "bestTime": "Year-round",
+            "openHours": "8:00 – 16:30",
+            "coordinates": {
+                "lat": 45.5045,
+                "lng": -73.5561
+            },
+            "nearbyAirport": "YUL",
             "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
-            "description": "Gothic Revival basilica with a breathtaking blue-and-gold interior."
+            "description": "Gothic Revival basilica with a breathtaking blue-and-gold interior.",
+            "tags": [
+                "basilica",
+                "gothic",
+                "blue-gold"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Blue interior",
+                "Aura light show",
+                "Gothic Revival"
+            ]
         },
         {
+            "id": "mount-royal",
             "name": "Mount Royal Park",
             "city": "Montréal",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Nature",
+            "category": "nature",
             "score": 9.2,
+            "rating": 4.8,
+            "reviewCount": 18940,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.5017,
+                "lng": -73.5872
+            },
+            "nearbyAirport": "YUL",
             "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
-            "description": "Frederick Law Olmsted-designed park overlooking the city skyline."
+            "description": "Frederick Law Olmsted-designed park overlooking the city skyline.",
+            "tags": [
+                "park",
+                "views",
+                "olmsted"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible paths",
+            "highlights": [
+                "Kondiaronk Lookout",
+                "Beaver Lake",
+                "Cross"
+            ]
         },
         {
+            "id": "montreal-museum-fine-arts",
             "name": "Montréal Museum of Fine Arts",
             "city": "Montréal",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Culture",
+            "category": "culture",
             "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 9120,
             "price": "CA$24",
+            "priceValue": 24,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 45.4986,
+                "lng": -73.5794
+            },
+            "nearbyAirport": "YUL",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "One of Canada's most important art museums, with world-class collections."
+            "description": "One of Canada's most important art museums, with world-class collections.",
+            "tags": [
+                "art",
+                "museum",
+                "world-class"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Canadian art",
+                "European masters",
+                "Indigenous art"
+            ]
         },
         {
+            "id": "montreal-biodome",
+            "name": "Biodôme de Montréal",
+            "city": "Montréal",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Family",
+            "category": "family",
+            "score": 9.1,
+            "rating": 4.6,
+            "reviewCount": 6740,
+            "price": "CA$23",
+            "priceValue": 23,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 45.5599,
+                "lng": -73.5505
+            },
+            "nearbyAirport": "YUL",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Five ecosystems under one roof — rainforest, Arctic and more.",
+            "tags": [
+                "nature",
+                "ecosystems",
+                "family"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Rainforest",
+                "Arctic",
+                "Penguins"
+            ]
+        },
+        {
+            "id": "montreal-botanical-garden",
+            "name": "Montréal Botanical Garden",
+            "city": "Montréal",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 8120,
+            "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
+            "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "May – October · lantern festival in fall",
+            "openHours": "9:00 – 18:00",
+            "coordinates": {
+                "lat": 45.5608,
+                "lng": -73.5633
+            },
+            "nearbyAirport": "YUL",
+            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's largest botanical gardens — 22,000 species.",
+            "tags": [
+                "garden",
+                "lanterns",
+                "chinese-garden"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Chinese Garden",
+                "Japanese Garden",
+                "Gardens of Light"
+            ]
+        },
+        {
+            "id": "chateau-frontenac",
             "name": "Château Frontenac",
             "city": "Québec City",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Landmark",
+            "category": "landmark",
             "score": 9.5,
-            "price": "Free",
+            "rating": 4.8,
+            "reviewCount": 19840,
+            "price": "Free (exterior)",
+            "priceValue": 0,
+            "free": true,
             "duration": "1h",
+            "durationMinutes": 60,
+            "bestTime": "Year-round",
+            "openHours": "24h (exterior)",
+            "coordinates": {
+                "lat": 46.8119,
+                "lng": -71.2062
+            },
+            "nearbyAirport": "YQB",
             "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
-            "description": "Iconic castle-like hotel overlooking the St. Lawrence River."
+            "description": "Iconic castle-like hotel overlooking the St. Lawrence River.",
+            "tags": [
+                "castle",
+                "hotel",
+                "iconic"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Dufferin Terrace",
+                "Guided tours",
+                "St. Lawrence views"
+            ]
         },
         {
+            "id": "old-quebec",
             "name": "Old Québec (Vieux-Québec)",
             "city": "Québec City",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Culture",
+            "category": "unesco",
             "score": 9.6,
+            "rating": 4.9,
+            "reviewCount": 26450,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Full day",
+            "durationMinutes": 480,
+            "bestTime": "Year-round · magical in winter",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.8092,
+                "lng": -71.2062
+            },
+            "nearbyAirport": "YQB",
             "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
-            "description": "UNESCO-listed walled city — the only fortified city north of Mexico."
+            "description": "UNESCO-listed walled city — the only fortified city north of Mexico.",
+            "tags": [
+                "unesco",
+                "walled-city",
+                "historic"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Cobblestone — partial",
+            "highlights": [
+                "Petit-Champlain",
+                "Fortifications",
+                "Place Royale"
+            ]
         },
         {
+            "id": "montmorency-falls",
+            "name": "Montmorency Falls",
+            "city": "Québec City",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 7620,
+            "price": "CA$8",
+            "priceValue": 8,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "8:00 – 20:00",
+            "coordinates": {
+                "lat": 46.8906,
+                "lng": -71.1475
+            },
+            "nearbyAirport": "YQB",
+            "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=80",
+            "description": "Waterfall 30m higher than Niagara — zipline, cable car and via ferrata.",
+            "tags": [
+                "waterfall",
+                "zipline",
+                "cable-car"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Cable car accessible",
+            "highlights": [
+                "Zipline",
+                "Cable car",
+                "Via ferrata"
+            ]
+        },
+        {
+            "id": "ile-orleans",
+            "name": "Île d'Orléans",
+            "city": "Québec City",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Culture",
+            "category": "food",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 4210,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.9167,
+                "lng": -71.0000
+            },
+            "nearbyAirport": "YQB",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "description": "Island of 600 farms — cideries, chocolatiers and historic villages.",
+            "tags": [
+                "island",
+                "farms",
+                "cider"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Partial",
+            "highlights": [
+                "Cider tasting",
+                "Chocolate",
+                "Château Beaumont"
+            ]
+        },
+        {
+            "id": "mont-tremblant",
             "name": "Mont-Tremblant",
             "city": "Mont-Tremblant",
-            "province": "Québec",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
             "type": "Adventure",
+            "category": "adventure",
             "score": 9.4,
-            "price": "Free",
+            "rating": 4.8,
+            "reviewCount": 9810,
+            "price": "Free (village)",
+            "priceValue": 0,
+            "free": true,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "Dec–Mar · Jun–Oct",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.1183,
+                "lng": -74.5953
+            },
+            "nearbyAirport": "YUL",
             "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
-            "description": "Four-season resort village with skiing, hiking and lakeside charm."
+            "description": "Four-season resort village with skiing, hiking and lakeside charm.",
+            "tags": [
+                "ski",
+                "village",
+                "resort"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible village",
+            "highlights": [
+                "Ski resort",
+                "Pedestrian village",
+                "Casino"
+            ]
         },
         {
+            "id": "saguenay-fjord",
+            "name": "Saguenay Fjord National Park",
+            "city": "Saguenay",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 3120,
+            "price": "CA$8",
+            "priceValue": 8,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 48.3333,
+                "lng": -70.8333
+            },
+            "nearbyAirport": "YBG",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's longest fjords — belugas, hiking and kayaking.",
+            "tags": [
+                "fjord",
+                "belugas",
+                "kayak"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible lookouts",
+            "highlights": [
+                "Beluga watching",
+                "Kayaking",
+                "Hiking trails"
+            ]
+        },
+        {
+            "id": "la-mauricie",
+            "name": "La Mauricie National Park",
+            "city": "Shawinigan",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 2340,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.7500,
+                "lng": -72.9167
+            },
+            "nearbyAirport": "YUL",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Lakes, forests and canoe-camping in the Laurentians.",
+            "tags": [
+                "canoe",
+                "camping",
+                "laurentians"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Canoe-camping",
+                "Wapizagonke Lake",
+                "Hiking"
+            ]
+        },
+        {
+            "id": "forillon",
+            "name": "Forillon National Park",
+            "city": "Gaspé",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 1870,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 48.8333,
+                "lng": -64.4833
+            },
+            "nearbyAirport": "YGP",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Where the Appalachians meet the sea — cliffs, whales and lighthouses.",
+            "tags": [
+                "cliffs",
+                "whales",
+                "lighthouse"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Cap Bon-Ami",
+                "Whale watching",
+                "Land's End"
+            ]
+        },
+        {
+            "id": "mingan-archipelago",
+            "name": "Mingan Archipelago National Park",
+            "city": "Havre-Saint-Pierre",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 890,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 50.2333,
+                "lng": -63.6000
+            },
+            "nearbyAirport": "YGV",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Limestone monoliths, puffins and whale-rich waters of the North Shore.",
+            "tags": [
+                "monoliths",
+                "puffins",
+                "whales"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Boat access only",
+            "highlights": [
+                "Monoliths",
+                "Puffins",
+                "Whale watching"
+            ]
+        },
+        {
+            "id": "gaspesie-park",
+            "name": "Gaspésie National Park",
+            "city": "Sainte-Anne-des-Monts",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.5,
+            "rating": 4.9,
+            "reviewCount": 2140,
+            "price": "CA$9",
+            "priceValue": 9,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 48.9500,
+                "lng": -66.1000
+            },
+            "nearbyAirport": "YGP",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Caribou, Mount Albert and the Chic-Chocs — Eastern Canada's alpine wilderness.",
+            "tags": [
+                "caribou",
+                "hiking",
+                "chic-chocs"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Mount Albert",
+                "Caribou",
+                "Chic-Chocs"
+            ]
+        },
+        {
+            "id": "basilique-sainte-anne",
+            "name": "Basilique Sainte-Anne-de-Beaupré",
+            "city": "Sainte-Anne-de-Beaupré",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 8.9,
+            "rating": 4.7,
+            "reviewCount": 3210,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "1h",
+            "durationMinutes": 60,
+            "bestTime": "Year-round",
+            "openHours": "7:00 – 20:00",
+            "coordinates": {
+                "lat": 47.0244,
+                "lng": -70.9303
+            },
+            "nearbyAirport": "YQB",
+            "image": "https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=1200&q=80",
+            "description": "Major pilgrimage site with a stunning neo-Roman basilica.",
+            "tags": [
+                "basilica",
+                "pilgrimage",
+                "religion"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Neo-Roman architecture",
+                "Pilgrimage site",
+                "Stations of the Cross"
+            ]
+        },
+        {
+            "id": "village-quebecois",
+            "name": "Village Québécois d'Antan",
+            "city": "Drummondville",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 1870,
+            "price": "CA$24",
+            "priceValue": 24,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 45.8833,
+                "lng": -72.4833
+            },
+            "nearbyAirport": "YUL",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Living history museum recreating a 19th-century Québec village.",
+            "tags": [
+                "history",
+                "living-museum",
+                "19th-century"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Costumed interpreters",
+                "Village life",
+                "Seasonal events"
+            ]
+        },
+        {
+            "id": "musee-civilisation",
+            "name": "Musée de la civilisation",
+            "city": "Québec City",
+            "province": "Quebec",
+            "provinceCode": "QC",
+            "region": "central",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 4320,
+            "price": "CA$19",
+            "priceValue": 19,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 46.8151,
+                "lng": -71.2024
+            },
+            "nearbyAirport": "YQB",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Museum exploring Québec and world cultures through immersive exhibits.",
+            "tags": [
+                "museum",
+                "culture",
+                "interactive"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "First Nations",
+                "Québec history",
+                "Interactive exhibits"
+            ]
+        },
+        {
+            "id": "stanley-park",
             "name": "Stanley Park",
             "city": "Vancouver",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Nature",
+            "category": "nature",
             "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 21840,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.3017,
+                "lng": -123.1417
+            },
+            "nearbyAirport": "YVR",
             "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
-            "description": "1,001-acre urban park with seawall, totem poles and ocean views."
+            "description": "1,001-acre urban park with seawall, totem poles and ocean views.",
+            "tags": [
+                "park",
+                "seawall",
+                "totem-poles"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible seawall",
+            "highlights": [
+                "Seawall",
+                "Totem poles",
+                "Prospect Point"
+            ]
         },
         {
+            "id": "capilano-bridge",
             "name": "Capilano Suspension Bridge",
             "city": "Vancouver",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Adventure",
+            "category": "adventure",
             "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 12450,
             "price": "CA$66",
+            "priceValue": 66,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 49.3429,
+                "lng": -123.1148
+            },
+            "nearbyAirport": "YVR",
             "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
-            "description": "137m suspension bridge over a rainforest canyon with treetop walkways."
+            "description": "137m suspension bridge over a rainforest canyon with treetop walkways.",
+            "tags": [
+                "bridge",
+                "forest",
+                "canyon"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Mostly accessible",
+            "highlights": [
+                "Suspension bridge",
+                "Treetops Adventure",
+                "Cliffwalk"
+            ]
         },
         {
+            "id": "granville-island",
             "name": "Granville Island",
             "city": "Vancouver",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Food",
+            "category": "food",
             "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 16230,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 19:00",
+            "coordinates": {
+                "lat": 49.2710,
+                "lng": -123.1339
+            },
+            "nearbyAirport": "YVR",
             "image": "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&w=1200&q=80",
-            "description": "Public market, artisan studios and theatres under the Granville Bridge."
+            "description": "Public market, artisan studios and theatres under the Granville Bridge.",
+            "tags": [
+                "market",
+                "food",
+                "artisans"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Public Market",
+                "Artisan studios",
+                "Theatres"
+            ]
         },
         {
+            "id": "grouse-mountain",
+            "name": "Grouse Mountain",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Adventure",
+            "category": "adventure",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 9870,
+            "price": "CA$69",
+            "priceValue": 69,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 22:00",
+            "coordinates": {
+                "lat": 49.3803,
+                "lng": -123.0814
+            },
+            "nearbyAirport": "YVR",
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Year-round mountain playground with grizzlies, ziplines and skiing.",
+            "tags": [
+                "mountain",
+                "gondola",
+                "grizzlies"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Gondola accessible",
+            "highlights": [
+                "Skyride gondola",
+                "Grizzly bears",
+                "Peak Chair"
+            ]
+        },
+        {
+            "id": "vancouver-aquarium",
+            "name": "Vancouver Aquarium",
+            "city": "Vancouver",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Family",
+            "category": "family",
+            "score": 9.0,
+            "rating": 4.5,
+            "reviewCount": 8940,
+            "price": "CA$42",
+            "priceValue": 42,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 49.3007,
+                "lng": -123.1308
+            },
+            "nearbyAirport": "YVR",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Marine science centre with sea otters, jellyfish and rescued marine mammals.",
+            "tags": [
+                "aquarium",
+                "sea-otters",
+                "family"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Sea otters",
+                "Jellyfish",
+                "Amazon gallery"
+            ]
+        },
+        {
+            "id": "whistler-village",
             "name": "Whistler Village",
             "city": "Whistler",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Adventure",
+            "category": "adventure",
             "score": 9.5,
-            "price": "Free",
+            "rating": 4.9,
+            "reviewCount": 14320,
+            "price": "Free (village)",
+            "priceValue": 0,
+            "free": true,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "Dec–Apr · Jun–Sep",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 50.1163,
+                "lng": -122.9574
+            },
+            "nearbyAirport": "YVR",
             "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
-            "description": "Year-round mountain resort — skiing, hiking and alpine dining."
+            "description": "Year-round mountain resort — skiing, hiking and alpine dining.",
+            "tags": [
+                "ski",
+                "village",
+                "resort"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible village",
+            "highlights": [
+                "Whistler Blackcomb",
+                "Peak 2 Peak gondola",
+                "Lost Lake"
+            ]
         },
         {
+            "id": "sea-to-sky-gondola",
+            "name": "Sea to Sky Gondola",
+            "city": "Squamish",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Adventure",
+            "category": "adventure",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 3420,
+            "price": "CA$59",
+            "priceValue": 59,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 18:00",
+            "coordinates": {
+                "lat": 49.7016,
+                "lng": -123.1570
+            },
+            "nearbyAirport": "YVR",
+            "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
+            "description": "Gondola rising 885m with suspension bridge and panoramic views.",
+            "tags": [
+                "gondola",
+                "views",
+                "suspension-bridge"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Sky Pilot suspension bridge",
+                "Summit views",
+                "Trails"
+            ]
+        },
+        {
+            "id": "butchart-gardens",
             "name": "Butchart Gardens",
             "city": "Victoria",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Nature",
+            "category": "nature",
             "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 12450,
             "price": "CA$40",
+            "priceValue": 40,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "May – September · winter lights",
+            "openHours": "9:00 – 22:00",
+            "coordinates": {
+                "lat": 48.5644,
+                "lng": -123.4694
+            },
+            "nearbyAirport": "YYJ",
             "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=80",
-            "description": "Sunken, rose, Japanese and Italian gardens on a former quarry."
+            "description": "Sunken, rose, Japanese and Italian gardens on a former quarry.",
+            "tags": [
+                "garden",
+                "sunken",
+                "fireworks"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Sunken Garden",
+                "Japanese Garden",
+                "Fireworks (summer)"
+            ]
         },
         {
+            "id": "royal-bc-museum",
+            "name": "Royal BC Museum",
+            "city": "Victoria",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.1,
+            "rating": 4.6,
+            "reviewCount": 5430,
+            "price": "CA$27",
+            "priceValue": 27,
+            "free": false,
+            "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 48.4198,
+                "lng": -123.3685
+            },
+            "nearbyAirport": "YYJ",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "BC's premier museum — First Peoples gallery, natural history and IMAX.",
+            "tags": [
+                "museum",
+                "first-peoples",
+                "imax"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "First Peoples Gallery",
+                "Natural History",
+                "IMAX"
+            ]
+        },
+        {
+            "id": "craigdarroch-castle",
+            "name": "Craigdarroch Castle",
+            "city": "Victoria",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Landmark",
+            "category": "landmark",
+            "score": 8.9,
+            "rating": 4.5,
+            "reviewCount": 3210,
+            "price": "CA$20",
+            "priceValue": 20,
+            "free": false,
+            "duration": "1h",
+            "durationMinutes": 60,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 16:30",
+            "coordinates": {
+                "lat": 48.4221,
+                "lng": -123.3436
+            },
+            "nearbyAirport": "YYJ",
+            "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Victorian mansion built for coal baron Robert Dunsmuir.",
+            "tags": [
+                "castle",
+                "victorian",
+                "historic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Partial — historic building",
+            "highlights": [
+                "Victorian interiors",
+                "Stained glass",
+                "Tower views"
+            ]
+        },
+        {
+            "id": "pacific-rim",
             "name": "Pacific Rim National Park",
             "city": "Tofino",
             "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
             "type": "Nature",
+            "category": "nature",
             "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 4870,
             "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "Jun–Sep · storm watching Nov–Feb",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.0833,
+                "lng": -125.7167
+            },
+            "nearbyAirport": "YAZ",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Wild Pacific coastline, temperate rainforest and storm-watching beaches."
+            "description": "Wild Pacific coastline, temperate rainforest and storm-watching beaches.",
+            "tags": [
+                "rainforest",
+                "storm-watching",
+                "surfing"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible trails",
+            "highlights": [
+                "Long Beach",
+                "Rainforest Trail",
+                "Storm watching"
+            ]
         },
         {
+            "id": "yoho-national-park",
+            "name": "Yoho National Park",
+            "city": "Field",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.6,
+            "rating": 4.9,
+            "reviewCount": 3240,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 51.4000,
+                "lng": -116.4833
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "Takakkaw Falls, Emerald Lake and the Burgess Shale fossils.",
+            "tags": [
+                "unesco",
+                "waterfall",
+                "fossils"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Takakkaw Falls",
+                "Emerald Lake",
+                "Burgess Shale"
+            ]
+        },
+        {
+            "id": "kootenay-national-park",
+            "name": "Kootenay National Park",
+            "city": "Radium Hot Springs",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 2340,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 50.8833,
+                "lng": -116.0500
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "Radium Hot Springs, Marble Canyon and the Paint Pots.",
+            "tags": [
+                "unesco",
+                "hot-springs",
+                "canyon"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Hot springs accessible",
+            "highlights": [
+                "Radium Hot Springs",
+                "Marble Canyon",
+                "Paint Pots"
+            ]
+        },
+        {
+            "id": "mount-revelstoke",
+            "name": "Mount Revelstoke National Park",
+            "city": "Revelstoke",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 1420,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "July – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 51.0000,
+                "lng": -118.1000
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "Meadows of wildflowers at the summit — reached by a historic road.",
+            "tags": [
+                "wildflowers",
+                "meadows",
+                "summit-road"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Summit accessible by car",
+            "highlights": [
+                "Meadows in the Sky",
+                "Wildflowers",
+                "Summit views"
+            ]
+        },
+        {
+            "id": "gulf-islands",
+            "name": "Gulf Islands National Park Reserve",
+            "city": "Sidney",
+            "province": "British Columbia",
+            "provinceCode": "BC",
+            "region": "west",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 980,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 48.6500,
+                "lng": -123.4000
+            },
+            "nearbyAirport": "YYJ",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
+            "description": "Southern Gulf Islands — kayaking, camping and quiet coves.",
+            "tags": [
+                "islands",
+                "kayak",
+                "camping"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Boat access only",
+            "highlights": [
+                "Kayaking",
+                "Camping",
+                "Wildlife"
+            ]
+        },
+        {
+            "id": "banff-national-park",
             "name": "Banff National Park",
             "city": "Banff",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.9,
+            "rating": 4.9,
+            "reviewCount": 34210,
             "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "Jun–Sep · Dec–Mar",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 51.4968,
+                "lng": -115.9281
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
-            "description": "Canada's first national park — turquoise lakes, glaciers and wildlife."
+            "description": "Canada's first national park — turquoise lakes, glaciers and wildlife.",
+            "tags": [
+                "unesco",
+                "mountains",
+                "lakes"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible townsite",
+            "highlights": [
+                "Lake Louise",
+                "Moraine Lake",
+                "Icefields Parkway"
+            ]
         },
         {
+            "id": "lake-louise",
             "name": "Lake Louise",
             "city": "Banff",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "nature",
             "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 21340,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – September · winter ice",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 51.4254,
+                "lng": -116.1773
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
-            "description": "Emerald glacier-fed lake surrounded by Victoria Glacier and peaks."
+            "description": "Emerald glacier-fed lake surrounded by Victoria Glacier and peaks.",
+            "tags": [
+                "lake",
+                "glacier",
+                "iconic"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Lakeshore accessible",
+            "highlights": [
+                "Canoeing",
+                "Lakeshore Trail",
+                "Fairmont Château"
+            ]
         },
         {
+            "id": "moraine-lake",
             "name": "Moraine Lake",
             "city": "Banff",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "nature",
             "score": 9.9,
+            "rating": 4.9,
+            "reviewCount": 18760,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 51.3217,
+                "lng": -116.1860
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80",
-            "description": "The most photographed lake in Canada — vivid turquoise in the Valley of the Ten Peaks."
+            "description": "The most photographed lake in Canada — vivid turquoise in the Valley of the Ten Peaks.",
+            "tags": [
+                "lake",
+                "iconic",
+                "turquoise"
+            ],
+            "unesco": true,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Shuttle recommended",
+            "highlights": [
+                "Rockpile Trail",
+                "Canoeing",
+                "Ten Peaks"
+            ]
         },
         {
+            "id": "columbia-icefield",
             "name": "Columbia Icefield",
             "city": "Jasper",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Adventure",
+            "category": "adventure",
             "score": 9.6,
+            "rating": 4.8,
+            "reviewCount": 8760,
             "price": "CA$99",
+            "priceValue": 99,
+            "free": false,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – September",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 52.1667,
+                "lng": -117.2500
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
-            "description": "Ice Explorer ride onto the Athabasca Glacier and Skywalk cliff-edge walkway."
+            "description": "Ice Explorer ride onto the Athabasca Glacier and Skywalk cliff-edge walkway.",
+            "tags": [
+                "glacier",
+                "ice-explorer",
+                "skywalk"
+            ],
+            "unesco": true,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Ice Explorer accessible",
+            "highlights": [
+                "Athabasca Glacier",
+                "Skywalk",
+                "Ice Explorer"
+            ]
         },
         {
+            "id": "jasper-national-park",
             "name": "Jasper National Park",
             "city": "Jasper",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 15670,
             "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "Jun–Sep · Dec–Mar",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 52.8734,
+                "lng": -118.0814
+            },
+            "nearbyAirport": "YEG",
             "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
-            "description": "Largest national park in the Rockies — dark-sky preserve and Maligne Lake."
+            "description": "Largest national park in the Rockies — dark-sky preserve and Maligne Lake.",
+            "tags": [
+                "unesco",
+                "dark-sky",
+                "wildlife"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Maligne Lake",
+                "Spirit Island",
+                "Dark-sky preserve"
+            ]
         },
         {
+            "id": "royal-tyrrell-museum",
             "name": "Royal Tyrrell Museum",
             "city": "Drumheller",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Culture",
+            "category": "culture",
             "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 6210,
             "price": "CA$25",
+            "priceValue": 25,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 51.4787,
+                "lng": -112.7895
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "World's premier dinosaur museum, in the heart of the Badlands."
+            "description": "World's premier dinosaur museum, in the heart of the Badlands.",
+            "tags": [
+                "dinosaur",
+                "badlands",
+                "museum"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "T. rex skeleton",
+                "Dinosaur Hall",
+                "Badlands"
+            ]
         },
         {
+            "id": "calgary-tower",
             "name": "Calgary Tower",
             "city": "Calgary",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Landmark",
+            "category": "landmark",
             "score": 8.8,
+            "rating": 4.4,
+            "reviewCount": 5430,
             "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
             "duration": "1h",
+            "durationMinutes": 60,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 22:00",
+            "coordinates": {
+                "lat": 51.0447,
+                "lng": -114.0719
+            },
+            "nearbyAirport": "YYC",
             "image": "https://images.unsplash.com/photo-1533228100845-08145b01de14?auto=format&fit=crop&w=1200&q=80",
-            "description": "191m observation tower with glass floor and panoramic Rocky views."
+            "description": "191m observation tower with glass floor and panoramic Rocky views.",
+            "tags": [
+                "tower",
+                "views",
+                "glass-floor"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Glass floor",
+                "Observation deck",
+                "Rocky views"
+            ]
         },
         {
+            "id": "west-edmonton-mall",
             "name": "West Edmonton Mall",
             "city": "Edmonton",
             "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
             "type": "Family",
+            "category": "family",
             "score": 8.9,
-            "price": "Free",
+            "rating": 4.5,
+            "reviewCount": 11240,
+            "price": "Free (mall)",
+            "priceValue": 0,
+            "free": true,
             "duration": "Full day",
+            "durationMinutes": 480,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 21:00",
+            "coordinates": {
+                "lat": 53.5226,
+                "lng": -113.6242
+            },
+            "nearbyAirport": "YEG",
             "image": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-            "description": "North America's largest mall — indoor waterpark, ice rink and theme park."
+            "description": "North America's largest mall — indoor waterpark, ice rink and theme park.",
+            "tags": [
+                "mall",
+                "waterpark",
+                "amusement"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Galaxyland",
+                "World Waterpark",
+                "Ice Palace"
+            ]
         },
         {
+            "id": "waterton-lakes",
+            "name": "Waterton Lakes National Park",
+            "city": "Waterton Park",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.6,
+            "rating": 4.8,
+            "reviewCount": 3120,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.0500,
+                "lng": -113.9167
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "Where mountains meet the prairies — UNESCO Biosphere Reserve.",
+            "tags": [
+                "unesco-biosphere",
+                "mountains",
+                "prairies"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Upper Waterton Lake",
+                "Red Rock Canyon",
+                "Prince of Wales Hotel"
+            ]
+        },
+        {
+            "id": "elk-island",
+            "name": "Elk Island National Park",
+            "city": "Fort Saskatchewan",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 2140,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 53.6000,
+                "lng": -112.8500
+            },
+            "nearbyAirport": "YEG",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Fenced preserve protecting plains and wood bison, elk, moose and 250 bird species.",
+            "tags": [
+                "bison",
+                "wildlife",
+                "easy-access"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible trails",
+            "highlights": [
+                "Bison viewing",
+                "Bird watching",
+                "Astotin Lake"
+            ]
+        },
+        {
+            "id": "head-smashed-in",
+            "name": "Head-Smashed-In Buffalo Jump",
+            "city": "Fort Macleod",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "type": "Culture",
+            "category": "unesco",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 1420,
+            "price": "CA$15",
+            "priceValue": 15,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 49.7500,
+                "lng": -113.6250
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "UNESCO site where Indigenous peoples drove bison over cliffs for 6,000 years.",
+            "tags": [
+                "unesco",
+                "indigenous",
+                "archaeology"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Interpretive centre",
+                "Cliff site",
+                "Blackfoot history"
+            ]
+        },
+        {
+            "id": "dinosaur-provincial-park",
+            "name": "Dinosaur Provincial Park",
+            "city": "Brooks",
+            "province": "Alberta",
+            "provinceCode": "AB",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 3210,
+            "price": "CA$10",
+            "priceValue": 10,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 50.7667,
+                "lng": -111.4667
+            },
+            "nearbyAirport": "YYC",
+            "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's richest dinosaur fossil sites — 40+ species discovered.",
+            "tags": [
+                "unesco",
+                "dinosaur",
+                "fossils"
+            ],
+            "unesco": true,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Fossil beds",
+                "Guided tours",
+                "Badlands"
+            ]
+        },
+        {
+            "id": "the-forks",
             "name": "The Forks",
             "city": "Winnipeg",
             "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
             "type": "Culture",
+            "category": "culture",
             "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 8940,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 22:00",
+            "coordinates": {
+                "lat": 49.8879,
+                "lng": -97.1293
+            },
+            "nearbyAirport": "YWG",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "Historic meeting place at the junction of the Red and Assiniboine rivers."
+            "description": "Historic meeting place at the junction of the Red and Assiniboine rivers.",
+            "tags": [
+                "market",
+                "rivers",
+                "historic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Forks Market",
+                "Canadian Museum for Human Rights",
+                "Riverwalk"
+            ]
         },
         {
+            "id": "canadian-museum-human-rights",
+            "name": "Canadian Museum for Human Rights",
+            "city": "Winnipeg",
+            "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 6210,
+            "price": "CA$18",
+            "priceValue": 18,
+            "free": false,
+            "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 49.8906,
+                "lng": -97.1311
+            },
+            "nearbyAirport": "YWG",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "The only museum in the world dedicated to human rights — architectural icon.",
+            "tags": [
+                "museum",
+                "human-rights",
+                "architecture"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Tower of Hope",
+                "Indigenous perspectives",
+                "Interactive galleries"
+            ]
+        },
+        {
+            "id": "churchill-polar-bears",
             "name": "Churchill Polar Bear Tours",
             "city": "Churchill",
             "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "wildlife",
             "score": 9.9,
+            "rating": 4.9,
+            "reviewCount": 3120,
             "price": "CA$500",
+            "priceValue": 500,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "October – November",
+            "openHours": "Tour dependent",
+            "coordinates": {
+                "lat": 58.7684,
+                "lng": -94.1650
+            },
+            "nearbyAirport": "YYQ",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Tundra buggy tours to see wild polar bears and beluga whales."
+            "description": "Tundra buggy tours to see wild polar bears and beluga whales.",
+            "tags": [
+                "polar-bears",
+                "tundra-buggy",
+                "wildlife"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Buggy accessible",
+            "highlights": [
+                "Polar bears",
+                "Belugas (summer)",
+                "Aurora (winter)"
+            ]
         },
         {
+            "id": "riding-mountain",
             "name": "Riding Mountain National Park",
             "city": "Wasagaming",
             "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 2140,
             "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 50.6667,
+                "lng": -99.9667
+            },
+            "nearbyAirport": "YWG",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Boreal forest, prairies and lakes — home to bison, elk and black bears."
+            "description": "Boreal forest, prairies and lakes — home to bison, elk and black bears.",
+            "tags": [
+                "unesco-biosphere",
+                "bison",
+                "forest"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Bison enclosure",
+                "Clear Lake",
+                "Wasagaming"
+            ]
         },
         {
-            "name": "Wascana Centre",
-            "city": "Regina",
-            "province": "Saskatchewan",
+            "id": "wapusk",
+            "name": "Wapusk National Park",
+            "city": "Churchill",
+            "province": "Manitoba",
+            "provinceCode": "MB",
+            "region": "prairies",
             "type": "Nature",
-            "score": 8.8,
+            "category": "wildlife",
+            "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 420,
             "price": "Free",
-            "duration": "2h",
-            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=80",
-            "description": "Urban park around Wascana Lake with the Saskatchewan Legislature."
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "February – March (denning)",
+            "openHours": "Guided only",
+            "coordinates": {
+                "lat": 57.5000,
+                "lng": -93.5000
+            },
+            "nearbyAirport": "YYQ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of the world's largest polar bear maternity denning areas.",
+            "tags": [
+                "polar-bears",
+                "remote",
+                "arctic"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": false,
+            "accessibility": "No road access — helicopter only",
+            "highlights": [
+                "Denning polar bears",
+                "Remote tundra",
+                "Helicopter access"
+            ]
         },
         {
+            "id": "grasslands-national-park",
+            "name": "Grasslands National Park",
+            "city": "Val Marie",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 1240,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.2000,
+                "lng": -107.7500
+            },
+            "nearbyAirport": "YXE",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "One of North America's last untouched mixed-grass prairies — dark-sky preserve.",
+            "tags": [
+                "prairies",
+                "dark-sky",
+                "bison"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Dark-sky preserve",
+                "Bison herd",
+                "Badlands"
+            ]
+        },
+        {
+            "id": "prince-albert-national-park",
             "name": "Prince Albert National Park",
             "city": "Waskesiu",
             "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
             "type": "Nature",
+            "category": "nature",
             "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 1870,
             "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 53.9500,
+                "lng": -106.0667
+            },
+            "nearbyAirport": "YPA",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Boreal forest and lakes with free-roaming plains bison."
+            "description": "Boreal forest and lakes with free-roaming plains bison.",
+            "tags": [
+                "bison",
+                "boreal",
+                "lakes"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Bison",
+                "Waskesiu Lake",
+                "Grey Owl's cabin"
+            ]
         },
         {
+            "id": "wascana-centre",
+            "name": "Wascana Centre",
+            "city": "Regina",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "nature",
+            "score": 8.8,
+            "rating": 4.5,
+            "reviewCount": 2340,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 50.4500,
+                "lng": -104.6167
+            },
+            "nearbyAirport": "YQR",
+            "image": "https://images.unsplash.com/photo-1524598171353-ce84a4e2e5f5?auto=format&fit=crop&w=1200&q=80",
+            "description": "Urban park around Wascana Lake with the Saskatchewan Legislature.",
+            "tags": [
+                "park",
+                "lake",
+                "urban"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Legislative Building",
+                "Lake",
+                "Trails"
+            ]
+        },
+        {
+            "id": "cypress-hills",
+            "name": "Cypress Hills Interprovincial Park",
+            "city": "Maple Creek",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 980,
+            "price": "CA$10",
+            "priceValue": 10,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.6500,
+                "lng": -109.5000
+            },
+            "nearbyAirport": "YXE",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Canada's highest point between the Rockies and Labrador — dark-sky preserve.",
+            "tags": [
+                "dark-sky",
+                "hills",
+                "camping"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Dark-sky preserve",
+                "Zipline",
+                "Cypress Hills"
+            ]
+        },
+        {
+            "id": "wanuskewin",
+            "name": "Wanuskewin Heritage Park",
+            "city": "Saskatoon",
+            "province": "Saskatchewan",
+            "provinceCode": "SK",
+            "region": "prairies",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 1420,
+            "price": "CA$15",
+            "priceValue": 15,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 52.2000,
+                "lng": -106.6167
+            },
+            "nearbyAirport": "YXE",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "6,000-year-old gathering place of Indigenous peoples — recently UNESCO-tentative listed.",
+            "tags": [
+                "indigenous",
+                "archaeology",
+                "bison"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Tipi rings",
+                "Bison herd",
+                "Indigenous art"
+            ]
+        },
+        {
+            "id": "peggys-cove",
             "name": "Peggy's Cove",
             "city": "Halifax",
             "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
             "type": "Nature",
+            "category": "nature",
             "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 14320,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 44.4917,
+                "lng": -63.9153
+            },
+            "nearbyAirport": "YHZ",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Picturesque fishing village with the famous red-and-white lighthouse."
+            "description": "Picturesque fishing village with the famous red-and-white lighthouse.",
+            "tags": [
+                "lighthouse",
+                "fishing-village",
+                "iconic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible viewpoints",
+            "highlights": [
+                "Lighthouse",
+                "Fishing village",
+                "Granite rocks"
+            ]
         },
         {
+            "id": "cabot-trail",
             "name": "Cabot Trail",
             "city": "Baddeck",
             "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
             "type": "Adventure",
+            "category": "adventure",
             "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 6210,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Full day",
+            "durationMinutes": 480,
+            "bestTime": "June – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.4833,
+                "lng": -60.7500
+            },
+            "nearbyAirport": "YQY",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "298km scenic drive around Cape Breton Highlands National Park."
+            "description": "298km scenic drive around Cape Breton Highlands National Park.",
+            "tags": [
+                "scenic-drive",
+                "highlands",
+                "coastal"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Drivable",
+            "highlights": [
+                "Skyline Trail",
+                "Coastal views",
+                "Acadian villages"
+            ]
         },
         {
+            "id": "halifax-citadel",
             "name": "Halifax Citadel",
             "city": "Halifax",
             "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
             "type": "Culture",
+            "category": "culture",
             "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 5430,
             "price": "CA$13",
+            "priceValue": 13,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 44.6473,
+                "lng": -63.5802
+            },
+            "nearbyAirport": "YHZ",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "Victorian-era fortress with kilted reenactors and harbour views."
+            "description": "Victorian-era fortress with kilted reenactors and harbour views.",
+            "tags": [
+                "citadel",
+                "historic",
+                "kilted"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Changing of the Guard",
+                "Musket demos",
+                "Harbour views"
+            ]
         },
         {
+            "id": "cape-breton-highlands",
+            "name": "Cape Breton Highlands National Park",
+            "city": "Ingonish",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.6,
+            "rating": 4.9,
+            "reviewCount": 3870,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.7500,
+                "lng": -60.5833
+            },
+            "nearbyAirport": "YQY",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Cabot Trail's dramatic centrepiece — cliffs, moose and Acadian forest.",
+            "tags": [
+                "highlands",
+                "cabot-trail",
+                "moose"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Skyline Trail",
+                "Moose viewing",
+                "Cape Breton"
+            ]
+        },
+        {
+            "id": "fortress-louisbourg",
+            "name": "Fortress of Louisbourg",
+            "city": "Louisbourg",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 2340,
+            "price": "CA$18",
+            "priceValue": 18,
+            "free": false,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 45.9167,
+                "lng": -59.9833
+            },
+            "nearbyAirport": "YQY",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Reconstructed 18th-century French fortress — largest in North America.",
+            "tags": [
+                "fortress",
+                "french",
+                "18th-century"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Costumed interpreters",
+                "18th-century life",
+                "Harbour"
+            ]
+        },
+        {
+            "id": "kejimkujik",
+            "name": "Kejimkujik National Park",
+            "city": "Maitland Bridge",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 1420,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 44.4000,
+                "lng": -65.2167
+            },
+            "nearbyAirport": "YHZ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Dark-sky preserve with canoe routes and Mi'kmaw petroglyphs.",
+            "tags": [
+                "dark-sky",
+                "canoe",
+                "petroglyphs"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Dark-sky preserve",
+                "Canoe routes",
+                "Mi'kmaw petroglyphs"
+            ]
+        },
+        {
+            "id": "lunenburg",
+            "name": "Lunenburg Old Town",
+            "city": "Lunenburg",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Culture",
+            "category": "unesco",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 2140,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "May – October",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 44.3778,
+                "lng": -64.3150
+            },
+            "nearbyAirport": "YHZ",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "UNESCO-listed colonial town — colourful houses and Bluenose II.",
+            "tags": [
+                "unesco",
+                "colonial",
+                "sailing"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Partial — historic streets",
+            "highlights": [
+                "Bluenose II",
+                "Fisheries Museum",
+                "Colourful houses"
+            ]
+        },
+        {
+            "id": "joggins-fossil-cliffs",
+            "name": "Joggins Fossil Cliffs",
+            "city": "Joggins",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 980,
+            "price": "CA$10",
+            "priceValue": 10,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 45.7000,
+                "lng": -64.4333
+            },
+            "nearbyAirport": "YHZ",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "World's most complete fossil record of the Carboniferous period.",
+            "tags": [
+                "unesco",
+                "fossils",
+                "coal-age"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Beach access dependent on tides",
+            "highlights": [
+                "Fossil cliffs",
+                "Carboniferous era",
+                "Guided tours"
+            ]
+        },
+        {
+            "id": "grand-pre",
+            "name": "Grand-Pré National Historic Site",
+            "city": "Grand-Pré",
+            "province": "Nova Scotia",
+            "provinceCode": "NS",
+            "region": "atlantic",
+            "type": "Culture",
+            "category": "unesco",
+            "score": 9.0,
+            "rating": 4.6,
+            "reviewCount": 1240,
+            "price": "CA$8",
+            "priceValue": 8,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 45.1167,
+                "lng": -64.3000
+            },
+            "nearbyAirport": "YHZ",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Commemorates the Acadian deportation — UNESCO cultural landscape.",
+            "tags": [
+                "unesco",
+                "acadian",
+                "history"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Acadian history",
+                "Memorial Church",
+                "Landscape"
+            ]
+        },
+        {
+            "id": "bay-of-fundy",
             "name": "Bay of Fundy",
             "city": "Moncton",
             "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
             "type": "Nature",
+            "category": "nature",
             "score": 9.6,
+            "rating": 4.8,
+            "reviewCount": 6210,
             "price": "CA$15",
+            "priceValue": 15,
+            "free": false,
             "duration": "Full day",
+            "durationMinutes": 480,
+            "bestTime": "May – October",
+            "openHours": "Tide dependent",
+            "coordinates": {
+                "lat": 45.3000,
+                "lng": -64.7833
+            },
+            "nearbyAirport": "YQM",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Home to the highest tides in the world — up to 16 meters."
+            "description": "Home to the highest tides in the world — up to 16 meters.",
+            "tags": [
+                "tides",
+                "natural-wonder",
+                "bay"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Highest tides",
+                "Tidal bore",
+                "Boat tours"
+            ]
         },
         {
+            "id": "hopewell-rocks",
             "name": "Hopewell Rocks",
             "city": "Hopewell Cape",
             "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
             "type": "Nature",
+            "category": "nature",
             "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 4210,
             "price": "CA$14",
+            "priceValue": 14,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "May – October",
+            "openHours": "8:00 – 20:00",
+            "coordinates": {
+                "lat": 45.8167,
+                "lng": -64.5833
+            },
+            "nearbyAirport": "YQM",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Walk the ocean floor around giant flowerpot sea stacks at low tide."
+            "description": "Walk the ocean floor around giant flowerpot sea stacks at low tide.",
+            "tags": [
+                "sea-stacks",
+                "low-tide",
+                "iconic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Stairs to beach",
+            "highlights": [
+                "Flowerpot rocks",
+                "Low tide walk",
+                "Bay of Fundy"
+            ]
         },
         {
+            "id": "fundy-national-park",
+            "name": "Fundy National Park",
+            "city": "Alma",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 2340,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 45.5833,
+                "lng": -64.9500
+            },
+            "nearbyAirport": "YQM",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Coastal cliffs, Acadian forest and the world's highest tides.",
+            "tags": [
+                "cliffs",
+                "tides",
+                "hiking"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible trails",
+            "highlights": [
+                "Tidal pools",
+                "Hiking trails",
+                "Alma village"
+            ]
+        },
+        {
+            "id": "kouchibouguac",
+            "name": "Kouchibouguac National Park",
+            "city": "Kouchibouguac",
+            "province": "New Brunswick",
+            "provinceCode": "NB",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 1240,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.8333,
+                "lng": -64.9667
+            },
+            "nearbyAirport": "YQM",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Barrier islands, sand dunes and warm-water lagoons.",
+            "tags": [
+                "beaches",
+                "dunes",
+                "lagoon"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible trails",
+            "highlights": [
+                "Kellys Beach",
+                "Dunes",
+                "Lagoon"
+            ]
+        },
+        {
+            "id": "gros-morne",
             "name": "Gros Morne National Park",
             "city": "Rocky Harbour",
             "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 3210,
             "price": "CA$12",
+            "priceValue": 12,
+            "free": false,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 49.6000,
+                "lng": -57.7500
+            },
+            "nearbyAirport": "YDF",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "UNESCO site with fjords, cliffs and ancient geological formations."
+            "description": "UNESCO site with fjords, cliffs and ancient geological formations.",
+            "tags": [
+                "unesco",
+                "fjords",
+                "geology"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Western Brook Pond",
+                "Tablelands",
+                "Green Gardens"
+            ]
         },
         {
+            "id": "signal-hill",
             "name": "Signal Hill",
             "city": "St. John's",
             "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
             "type": "Landmark",
+            "category": "landmark",
             "score": 9.2,
+            "rating": 4.8,
+            "reviewCount": 3870,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 47.5700,
+                "lng": -52.6800
+            },
+            "nearbyAirport": "YYT",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Historic hilltop where Marconi received the first transatlantic wireless signal."
+            "description": "Historic hilltop where Marconi received the first transatlantic wireless signal.",
+            "tags": [
+                "historic",
+                "views",
+                "marconi"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible paths",
+            "highlights": [
+                "Cabot Tower",
+                "Harbour views",
+                "Marconi history"
+            ]
         },
         {
+            "id": "l-anse-aux-meadows",
             "name": "L'Anse aux Meadows",
             "city": "St. Anthony",
             "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
             "type": "Culture",
+            "category": "unesco",
             "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 2140,
             "price": "CA$12",
+            "priceValue": 12,
+            "free": false,
             "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "June – September",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 51.5958,
+                "lng": -55.5336
+            },
+            "nearbyAirport": "YAY",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Only confirmed Viking settlement in North America — UNESCO site."
+            "description": "Only confirmed Viking settlement in North America — UNESCO site.",
+            "tags": [
+                "unesco",
+                "vikings",
+                "norse"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Norse ruins",
+                "Viking reenactors",
+                "UNESCO site"
+            ]
         },
         {
+            "id": "cape-spear",
+            "name": "Cape Spear",
+            "city": "St. John's",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 2140,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 47.5200,
+                "lng": -52.6200
+            },
+            "nearbyAirport": "YYT",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Easternmost point in North America — where the sun rises first.",
+            "tags": [
+                "easternmost",
+                "lighthouse",
+                "sunrise"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible paths",
+            "highlights": [
+                "Sunrise first",
+                "Lighthouse",
+                "Whale watching"
+            ]
+        },
+        {
+            "id": "terra-nova",
+            "name": "Terra Nova National Park",
+            "city": "Glovertown",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.1,
+            "rating": 4.6,
+            "reviewCount": 890,
+            "price": "CA$11",
+            "priceValue": 11,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 48.5333,
+                "lng": -53.9167
+            },
+            "nearbyAirport": "YYT",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Boreal forest meets the Atlantic — fjords, whales and puffins.",
+            "tags": [
+                "boreal",
+                "whales",
+                "puffins"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Whale watching",
+                "Puffins",
+                "Boreal forest"
+            ]
+        },
+        {
+            "id": "torngat-mountains",
+            "name": "Torngat Mountains National Park",
+            "city": "Nain",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 340,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "July – August",
+            "openHours": "Guided only",
+            "coordinates": {
+                "lat": 59.0000,
+                "lng": -64.0000
+            },
+            "nearbyAirport": "YDP",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Arctic landscapes, Inuit culture and polar bears in Labrador.",
+            "tags": [
+                "arctic",
+                "inuit",
+                "polar-bears"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": false,
+            "accessibility": "No roads — boat/heli access",
+            "highlights": [
+                "Inuit culture",
+                "Arctic wildlife",
+                "Mount Caubvick"
+            ]
+        },
+        {
+            "id": "mistaken-point",
+            "name": "Mistaken Point",
+            "city": "Portugal Cove South",
+            "province": "Newfoundland and Labrador",
+            "provinceCode": "NL",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 420,
+            "price": "CA$10",
+            "priceValue": 10,
+            "free": false,
+            "duration": "3h",
+            "durationMinutes": 180,
+            "bestTime": "June – September",
+            "openHours": "Guided only",
+            "coordinates": {
+                "lat": 46.6333,
+                "lng": -53.1667
+            },
+            "nearbyAirport": "YYT",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Ediacaran fossils — some of the oldest complex life forms on Earth.",
+            "tags": [
+                "unesco",
+                "fossils",
+                "ediacaran"
+            ],
+            "unesco": true,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Guided tours only",
+            "highlights": [
+                "Ediacaran fossils",
+                "UNESCO site",
+                "Guided walks"
+            ]
+        },
+        {
+            "id": "cavendish-beach",
             "name": "Cavendish Beach",
             "city": "Cavendish",
             "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
             "type": "Nature",
+            "category": "nature",
             "score": 9.3,
+            "rating": 4.7,
+            "reviewCount": 3870,
             "price": "CA$8",
+            "priceValue": 8,
+            "free": false,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.5000,
+                "lng": -63.3833
+            },
+            "nearbyAirport": "YYG",
             "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Red-sand beaches and dunes in PEI National Park."
+            "description": "Red-sand beaches and dunes in PEI National Park.",
+            "tags": [
+                "red-beach",
+                "dunes",
+                "national-park"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Beach wheelchairs available",
+            "highlights": [
+                "Red sand",
+                "Sand dunes",
+                "Swimming"
+            ]
         },
         {
+            "id": "green-gables",
             "name": "Green Gables Heritage Place",
             "city": "Cavendish",
             "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
             "type": "Culture",
+            "category": "culture",
             "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 4210,
             "price": "CA$9",
+            "priceValue": 9,
+            "free": false,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "May – October",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 46.4900,
+                "lng": -63.3800
+            },
+            "nearbyAirport": "YYG",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "The farm that inspired L.M. Montgomery's Anne of Green Gables."
+            "description": "The farm that inspired L.M. Montgomery's Anne of Green Gables.",
+            "tags": [
+                "anne-green-gables",
+                "literary",
+                "historic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Green Gables House",
+                "Haunted Woods",
+                "Lover's Lane"
+            ]
         },
         {
+            "id": "pei-national-park",
+            "name": "PEI National Park",
+            "city": "Dalvay",
+            "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 3120,
+            "price": "CA$8",
+            "priceValue": 8,
+            "free": false,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.4167,
+                "lng": -63.0833
+            },
+            "nearbyAirport": "YYG",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            "description": "60km of red-sand beaches, dunes and coastal scenery.",
+            "tags": [
+                "red-beach",
+                "coastal",
+                "dunes"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible beaches",
+            "highlights": [
+                "Cavendish",
+                "Brackley Beach",
+                "Greenwich Dunes"
+            ]
+        },
+        {
+            "id": "charlottetown-historic",
+            "name": "Charlottetown Historic District",
+            "city": "Charlottetown",
+            "province": "Prince Edward Island",
+            "provinceCode": "PE",
+            "region": "atlantic",
+            "type": "Culture",
+            "category": "culture",
+            "score": 9.2,
+            "rating": 4.7,
+            "reviewCount": 2340,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 46.2382,
+                "lng": -63.1311
+            },
+            "nearbyAirport": "YYG",
+            "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+            "description": "Birthplace of Confederation — Victorian streets and Province House.",
+            "tags": [
+                "confederation",
+                "victorian",
+                "historic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Province House",
+                "Victoria Row",
+                "Waterfront"
+            ]
+        },
+        {
+            "id": "kluane",
             "name": "Kluane National Park",
             "city": "Haines Junction",
             "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 1240,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 60.7500,
+                "lng": -139.5000
+            },
+            "nearbyAirport": "YXY",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Home to Mount Logan — Canada's highest peak — and vast icefields."
+            "description": "Home to Mount Logan — Canada's highest peak — and vast icefields.",
+            "tags": [
+                "unesco",
+                "mountains",
+                "icefields"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible viewpoints",
+            "highlights": [
+                "Mount Logan",
+                "Icefields",
+                "Scenic flights"
+            ]
         },
         {
+            "id": "dawson-city",
             "name": "Dawson City Historic Site",
             "city": "Dawson City",
             "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
             "type": "Culture",
+            "category": "culture",
             "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 2140,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 64.0601,
+                "lng": -139.4333
+            },
+            "nearbyAirport": "YDA",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Gold Rush-era boomtown with wooden boardwalks and saloons."
+            "description": "Gold Rush-era boomtown with wooden boardwalks and saloons.",
+            "tags": [
+                "gold-rush",
+                "historic",
+                "klondike"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Partial — historic boardwalks",
+            "highlights": [
+                "Diamond Tooth Gerties",
+                "Historic buildings",
+                "Klondike River"
+            ]
         },
         {
+            "id": "yukon-wildlife-preserve",
+            "name": "Yukon Wildlife Preserve",
+            "city": "Whitehorse",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "type": "Nature",
+            "category": "wildlife",
+            "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 890,
+            "price": "CA$22",
+            "priceValue": 22,
+            "free": false,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "10:00 – 17:00",
+            "coordinates": {
+                "lat": 60.7833,
+                "lng": -135.1833
+            },
+            "nearbyAirport": "YXY",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "700-acre preserve with moose, bison, caribou and Dall sheep.",
+            "tags": [
+                "wildlife",
+                "moose",
+                "caribou"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Moose",
+                "Bison",
+                "Caribou"
+            ]
+        },
+        {
+            "id": "tombstone-territorial-park",
+            "name": "Tombstone Territorial Park",
+            "city": "Dawson City",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 620,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 64.5000,
+                "lng": -138.5000
+            },
+            "nearbyAirport": "YDA",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "The 'Patagonia of the North' — dramatic peaks, tundra and wildlife.",
+            "tags": [
+                "peaks",
+                "tundra",
+                "remote"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": false,
+            "accessibility": "Backcountry only",
+            "highlights": [
+                "Mount Monolith",
+                "Grizzly Lake",
+                "Tombstone Valley"
+            ]
+        },
+        {
+            "id": "miles-canyon",
+            "name": "Miles Canyon",
+            "city": "Whitehorse",
+            "province": "Yukon",
+            "provinceCode": "YT",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.1,
+            "rating": 4.7,
+            "reviewCount": 1420,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 60.6667,
+                "lng": -135.0167
+            },
+            "nearbyAirport": "YXY",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Turbulent canyon on the Yukon River with suspension bridge.",
+            "tags": [
+                "canyon",
+                "river",
+                "suspension-bridge"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible paths",
+            "highlights": [
+                "Suspension bridge",
+                "Yukon River",
+                "Hiking trails"
+            ]
+        },
+        {
+            "id": "nahanni",
             "name": "Nahanni National Park",
             "city": "Fort Simpson",
             "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
             "type": "Nature",
+            "category": "unesco",
             "score": 9.8,
+            "rating": 4.9,
+            "reviewCount": 540,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 61.5500,
+                "lng": -124.5000
+            },
+            "nearbyAirport": "YFS",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "UNESCO site with Virginia Falls, canyons and whitewater rivers."
+            "description": "UNESCO site with Virginia Falls, canyons and whitewater rivers.",
+            "tags": [
+                "unesco",
+                "waterfalls",
+                "whitewater"
+            ],
+            "unesco": true,
+            "bookingRequired": true,
+            "familyFriendly": false,
+            "accessibility": "Floatplane access only",
+            "highlights": [
+                "Virginia Falls",
+                "Nahanni River",
+                "Canyons"
+            ]
         },
         {
+            "id": "aurora-village",
             "name": "Aurora Village",
             "city": "Yellowknife",
             "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
             "type": "Nature",
+            "category": "nature",
             "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 3870,
             "price": "CA$120",
+            "priceValue": 120,
+            "free": false,
             "duration": "Evening",
+            "durationMinutes": 240,
+            "bestTime": "November – March",
+            "openHours": "Evening tours",
+            "coordinates": {
+                "lat": 62.4540,
+                "lng": -114.3718
+            },
+            "nearbyAirport": "YZF",
             "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
-            "description": "Aurora-viewing village with heated teepees and traditional tents."
+            "description": "Aurora-viewing village with heated teepees and traditional tents.",
+            "tags": [
+                "aurora",
+                "teepees",
+                "northern-lights"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible teepees",
+            "highlights": [
+                "Aurora viewing",
+                "Heated teepees",
+                "Cultural guides"
+            ]
         },
         {
+            "id": "great-slave-lake",
             "name": "Great Slave Lake",
             "city": "Yellowknife",
             "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
             "type": "Nature",
+            "category": "nature",
             "score": 9.3,
+            "rating": 4.8,
+            "reviewCount": 1240,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Half day",
+            "durationMinutes": 240,
+            "bestTime": "June – September",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 61.5000,
+                "lng": -114.0000
+            },
+            "nearbyAirport": "YZF",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "One of the deepest lakes on Earth — fishing, boating and ice roads."
+            "description": "One of the deepest lakes on Earth — fishing, boating and ice roads.",
+            "tags": [
+                "lake",
+                "fishing",
+                "ice-roads"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Some accessible sites",
+            "highlights": [
+                "Ice fishing",
+                "Boat tours",
+                "Northern lights"
+            ]
         },
         {
+            "id": "wood-buffalo",
+            "name": "Wood Buffalo National Park",
+            "city": "Fort Smith",
+            "province": "Northwest Territories",
+            "provinceCode": "NT",
+            "region": "north",
+            "type": "Nature",
+            "category": "unesco",
+            "score": 9.5,
+            "rating": 4.8,
+            "reviewCount": 420,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 59.5000,
+                "lng": -112.5000
+            },
+            "nearbyAirport": "YSM",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Largest national park in Canada. Home to free-roaming bison.",
+            "tags": [
+                "unesco",
+                "bison",
+                "largest-park"
+            ],
+            "unesco": true,
+            "bookingRequired": false,
+            "familyFriendly": false,
+            "accessibility": "Remote access only",
+            "highlights": [
+                "Wild bison",
+                "Whooping cranes",
+                "Salt plains"
+            ]
+        },
+        {
+            "id": "auyuittuq",
             "name": "Auyuittuq National Park",
             "city": "Pangnirtung",
             "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
             "type": "Nature",
+            "category": "nature",
             "score": 9.9,
+            "rating": 5.0,
+            "reviewCount": 320,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "July – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 67.0000,
+                "lng": -66.0000
+            },
+            "nearbyAirport": "YXP",
             "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-            "description": "Arctic fjords, glaciers and Mount Thor — the world's tallest vertical cliff."
+            "description": "Arctic fjords, glaciers and Mount Thor — the world's tallest vertical cliff.",
+            "tags": [
+                "arctic",
+                "fjords",
+                "mount-thor"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": false,
+            "accessibility": "Backcountry only",
+            "highlights": [
+                "Mount Thor",
+                "Penny Ice Cap",
+                "Akshayuk Pass"
+            ]
         },
         {
+            "id": "iqaluit-cultural-centre",
             "name": "Iqaluit Cultural Centre",
             "city": "Iqaluit",
             "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
             "type": "Culture",
+            "category": "culture",
             "score": 9.0,
+            "rating": 4.7,
+            "reviewCount": 420,
             "price": "Free",
+            "priceValue": 0,
+            "free": true,
             "duration": "2h",
+            "durationMinutes": 120,
+            "bestTime": "Year-round",
+            "openHours": "9:00 – 17:00",
+            "coordinates": {
+                "lat": 63.7467,
+                "lng": -68.5170
+            },
+            "nearbyAirport": "YFB",
             "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
-            "description": "Inuit art, history and traditional crafts in Nunavut's capital."
+            "description": "Inuit art, history and traditional crafts in Nunavut's capital.",
+            "tags": [
+                "inuit",
+                "culture",
+                "arctic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": true,
+            "accessibility": "Wheelchair accessible",
+            "highlights": [
+                "Inuit art",
+                "Cultural performances",
+                "Local crafts"
+            ]
+        },
+        {
+            "id": "sirmilik",
+            "name": "Sirmilik National Park",
+            "city": "Pond Inlet",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.7,
+            "rating": 4.9,
+            "reviewCount": 180,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "June – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 73.0000,
+                "lng": -81.0000
+            },
+            "nearbyAirport": "YIO",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Bylot Island bird cliffs, glaciers and floe-edge safaris.",
+            "tags": [
+                "arctic",
+                "glaciers",
+                "birds"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": false,
+            "accessibility": "Boat/expedition access",
+            "highlights": [
+                "Bylot Island",
+                "Bird cliffs",
+                "Floe-edge"
+            ]
+        },
+        {
+            "id": "quttinirpaaq",
+            "name": "Quttinirpaaq National Park",
+            "city": "Resolute",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.9,
+            "rating": 5.0,
+            "reviewCount": 90,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "May – July",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 82.0000,
+                "lng": -65.0000
+            },
+            "nearbyAirport": "YRB",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Canada's northernmost park — polar desert, ice shelves and Arctic wilderness.",
+            "tags": [
+                "arctic",
+                "northernmost",
+                "ice-shelf"
+            ],
+            "unesco": false,
+            "bookingRequired": true,
+            "familyFriendly": false,
+            "accessibility": "Expedition access only",
+            "highlights": [
+                "Northernmost park",
+                "Ice shelves",
+                "Arctic desert"
+            ]
+        },
+        {
+            "id": "katannilik",
+            "name": "Katannilik Territorial Park",
+            "city": "Iqaluit",
+            "province": "Nunavut",
+            "provinceCode": "NU",
+            "region": "north",
+            "type": "Nature",
+            "category": "nature",
+            "score": 9.4,
+            "rating": 4.8,
+            "reviewCount": 140,
+            "price": "Free",
+            "priceValue": 0,
+            "free": true,
+            "duration": "Multi-day",
+            "durationMinutes": 1440,
+            "bestTime": "July – August",
+            "openHours": "24h",
+            "coordinates": {
+                "lat": 63.5000,
+                "lng": -68.5000
+            },
+            "nearbyAirport": "YFB",
+            "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            "description": "Fjord-like canyon between Iqaluit and Kimmirut — Arctic hiking.",
+            "tags": [
+                "canyon",
+                "hiking",
+                "arctic"
+            ],
+            "unesco": false,
+            "bookingRequired": false,
+            "familyFriendly": false,
+            "accessibility": "Backcountry only",
+            "highlights": [
+                "Soper River",
+                "Canyon",
+                "Arctic wildflowers"
+            ]
         }
     ]
 }

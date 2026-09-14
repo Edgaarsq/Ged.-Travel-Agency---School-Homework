@@ -1,27 +1,33 @@
 """
 GED Travel Agency
-Main Flask Application
+Main Flask Application — v2.0
 
-Como rodar:
-    cd backend
-    python app.py
-
-O navegador abre automaticamente em:
-    http://127.0.0.1:5000/
-
-E o /api/concierge fica disponível no mesmo host.
+Rotas principais:
+    GET  /                       → redireciona para /pages/help.html
+    GET  /pages/<file>           → serve páginas HTML
+    GET  /api                    → índice de endpoints
+    GET  /api/health             → status do backend + concierge
+    GET  /api/diagnose           → testa modelos NVIDIA (novo)
+    GET  /api/provinces          → dados demo (legacy)
+    GET  /api/ask                → resposta demo (legacy)
+    POST /api/concierge          → chat com GED Concierge (principal)
 """
 
 import os
 import sys
 import time
+import uuid
 import webbrowser
 import logging
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any, Dict, Optional
 
-from flask import Flask, jsonify, request, send_from_directory, redirect
+from flask import (
+    Flask, jsonify, request, send_from_directory,
+    redirect, make_response, Response,
+)
 from flask_cors import CORS
 
 
@@ -43,6 +49,11 @@ logger = logging.getLogger("ged.app")
 
 BACKEND_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BACKEND_DIR.parent
+PAGES_DIR = ROOT_DIR / "pages"
+DATA_DIR = ROOT_DIR / "data"
+CSS_DIR = ROOT_DIR / "css"
+JS_DIR = ROOT_DIR / "js"
+ASSETS_DIR = ROOT_DIR / "assets"
 
 
 # ============================================================
@@ -57,16 +68,15 @@ app = Flask(
 
 app.config.update(
     JSON_SORT_KEYS=False,
-    MAX_CONTENT_LENGTH=2 * 1024 * 1024,  # 2 MB
-    SEND_FILE_MAX_AGE_DEFAULT=0,          # no cache while developing
+    JSONIFY_PRETTYPRINT_REGULAR=False,
+    MAX_CONTENT_LENGTH=2 * 1024 * 1024,
+    SEND_FILE_MAX_AGE_DEFAULT=0,
+    PROPAGATE_EXCEPTIONS=False,
 )
 
 
 # ============================================================
-# CORS — dev mode: permite qualquer origem
-# ============================================================
-# Isso resolve o caso de Live Server (5500), 8000, file://, etc.
-# Em produção, restrinja para o domínio real.
+# CORS
 # ============================================================
 
 CORS(
@@ -75,34 +85,71 @@ CORS(
         r"/api/*": {
             "origins": "*",
             "methods": ["GET", "POST", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Accept"],
+            "allow_headers": ["Content-Type", "Accept", "Authorization", "X-Request-ID"],
+            "max_age": 3600,
         }
     },
 )
 
 
 # ============================================================
-# PROJETO
+# PROJECT CONSTANTS
 # ============================================================
 
 PROJECT_NAME = "GED Travel Agency"
-PROJECT_VERSION = "1.0.0"
+PROJECT_VERSION = "2.0.0"
 PROJECT_MODE = "educational-demo"
 
 
 # ============================================================
-# CONCIERGE
+# CONCIERGE LOAD
 # ============================================================
+
+CONCIERGE_AVAILABLE = False
+CONCIERGE_INFO: Dict[str, Any] = {}
 
 try:
     from concierge import ask_concierge
 
     CONCIERGE_AVAILABLE = True
+
+    # Coleta info sobre os modelos configurados (sem quebrar se faltar algo)
+    try:
+        from concierge import (
+            KIMI_MODEL as _CONC_KIMI,
+            DEEPSEEK_MODEL as _CONC_DS,
+            FALLBACK_CHAIN as _CONC_FB,
+            REQUEST_TIMEOUT as _CONC_TIMEOUT,
+            REQUEST_RETRIES as _CONC_RETRIES,
+        )
+        CONCIERGE_INFO = {
+            "primary_model": _CONC_KIMI,
+            "reasoning_model": _CONC_DS,
+            "fallback_chain": list(_CONC_FB),
+            "timeout": _CONC_TIMEOUT,
+            "retries": _CONC_RETRIES,
+        }
+    except Exception as e:
+        logger.warning("Concierge loaded, but couldn't introspect config: %s", e)
+
     logger.info("✓ GED Concierge engine loaded.")
+    if CONCIERGE_INFO:
+        logger.info("  · Primary model : %s", CONCIERGE_INFO.get("primary_model"))
+        logger.info("  · Reasoning     : %s", CONCIERGE_INFO.get("reasoning_model"))
+        logger.info("  · Fallback chain: %d models", len(CONCIERGE_INFO.get("fallback_chain", [])))
+
 except ImportError as e:
-    ask_concierge = None
-    CONCIERGE_AVAILABLE = False
+    ask_concierge = None  # type: ignore
     logger.warning("✗ GED Concierge engine NOT available: %s", e)
+
+
+# Diagnóstico só existe no concierge v3+
+DIAGNOSE_AVAILABLE = False
+try:
+    from concierge import diagnose_connection  # type: ignore
+    DIAGNOSE_AVAILABLE = True
+except ImportError:
+    diagnose_connection = None  # type: ignore
 
 
 # ============================================================
@@ -113,51 +160,134 @@ def utc_timestamp() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def api_response(data, status_code: int = 200):
-    return jsonify(data), status_code
+def api_response(data: Dict[str, Any], status_code: int = 200) -> Response:
+    """Resposta JSON padronizada."""
+    response = jsonify(data)
+    response.status_code = status_code
+    return response
 
 
-def error_response(message: str, status_code: int = 400, error_code: str = None):
-    payload = {
+def error_response(
+    message: str,
+    status_code: int = 400,
+    error_code: Optional[str] = None,
+) -> Response:
+    """Erro padronizado — mesmo shape do sucesso (frontend lê .answer)."""
+    payload: Dict[str, Any] = {
         "success": False,
         "answer": message,
         "error": message,
         "model": "GED Concierge (error)",
         "image": None,
+        "sources": [],
         "timestamp": utc_timestamp(),
     }
     if error_code:
         payload["code"] = error_code
-    return jsonify(payload), status_code
+    return api_response(payload, status_code)
 
 
-def clean_text(value, max_length: int = 2000) -> str:
+def clean_text(value: Any, max_length: int = 2000) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()[:max_length]
+
+
+def safe_json(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Remove chaves internas; garante que só campos previstos passem."""
+    if not isinstance(data, dict):
+        return {"success": False, "answer": "Invalid payload."}
+
+    allowed_keys = {
+        # core
+        "success", "answer", "error", "timestamp", "code",
+        # metadata
+        "model", "provider", "mode", "fallback_from",
+        # media + sources
+        "image", "sources",
+        # metrics
+        "usage", "latency_ms",
+        # extras
+        "recommendations", "value_score", "discount",
+    }
+
+    return {k: data[k] for k in allowed_keys if k in data}
+
+
+# ============================================================
+# SECURITY HEADERS + REQUEST ID
+# ============================================================
+
+@app.after_request
+def _add_headers(response: Response) -> Response:
+    """Headers de segurança + X-Request-ID + Cache-Control para API."""
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+
+    # Cache-Control: no-store para toda rota /api/*
+    if request.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store, max-age=0"
+
+    # X-Request-ID — propaga se veio do cliente, senão gera
+    rid = request.headers.get("X-Request-ID") or uuid.uuid4().hex[:8]
+    response.headers["X-Request-ID"] = rid
+    return response
 
 
 # ============================================================
 # ERROR HANDLERS
 # ============================================================
 
+def _is_api_request() -> bool:
+    return request.path.startswith("/api/")
+
+
+@app.errorhandler(400)
+def bad_request(error):
+    if _is_api_request():
+        return error_response("Bad request.", 400, "BAD_REQUEST")
+    return error, 400
+
+
 @app.errorhandler(404)
 def not_found(error):
-    if request.path.startswith("/api/"):
+    if _is_api_request():
         return error_response("Endpoint not found.", 404, "NOT_FOUND")
-    return error, 404
+
+    if request.path.startswith("/pages/"):
+        return error_response(
+            f"Page not found: {request.path}",
+            404,
+            "PAGE_NOT_FOUND",
+        )
+
+    return redirect("/pages/help.html")
 
 
 @app.errorhandler(405)
 def method_not_allowed(error):
     return error_response(
-        "HTTP method not supported for this endpoint.", 405, "METHOD_NOT_ALLOWED"
+        "HTTP method not supported for this endpoint.",
+        405,
+        "METHOD_NOT_ALLOWED",
     )
 
 
 @app.errorhandler(413)
 def request_too_large(error):
-    return error_response("Request body too large.", 413, "REQUEST_TOO_LARGE")
+    return error_response(
+        "Request body too large (max 2 MB).", 413, "REQUEST_TOO_LARGE"
+    )
+
+
+@app.errorhandler(415)
+def unsupported_media_type(error):
+    return error_response(
+        "Unsupported media type. Send application/json.",
+        415,
+        "UNSUPPORTED_MEDIA_TYPE",
+    )
 
 
 @app.errorhandler(500)
@@ -169,8 +299,6 @@ def internal_server_error(error):
 # ============================================================
 # STATIC PAGES
 # ============================================================
-# Objetivo: abrir http://127.0.0.1:5000/ e já cair no help.html
-# ============================================================
 
 @app.route("/")
 def root():
@@ -178,28 +306,71 @@ def root():
     return redirect("/pages/help.html")
 
 
-@app.route("/pages/help.html")
-def serve_help():
-    """Serve a página do Concierge."""
-    help_path = ROOT_DIR / "pages" / "help.html"
-    if not help_path.exists():
-        return (
-            f"help.html not found at {help_path}. "
-            f"Check the project structure.",
-            404,
-        )
-    return send_from_directory(str(ROOT_DIR / "pages"), "help.html")
+@app.route("/pages/")
+@app.route("/pages")
+def pages_index():
+    """Listagem simples das páginas disponíveis."""
+    if not PAGES_DIR.exists():
+        return error_response("pages/ directory not found.", 404, "PAGES_MISSING")
+
+    files = sorted(
+        p.name for p in PAGES_DIR.iterdir()
+        if p.is_file() and p.suffix.lower() == ".html"
+    )
+    return api_response({
+        "success": True,
+        "pages": files,
+        "count": len(files),
+        "timestamp": utc_timestamp(),
+    })
 
 
 @app.route("/pages/<path:filename>")
-def serve_any_page(filename):
-    """Serve qualquer outra página em /pages/."""
-    return send_from_directory(str(ROOT_DIR / "pages"), filename)
+def serve_page(filename: str):
+    """Serve páginas em /pages/ com verificação de segurança."""
+    if ".." in filename or filename.startswith("/"):
+        return error_response("Invalid path.", 400, "INVALID_PATH")
+
+    target = PAGES_DIR / filename
+    if not target.exists() or not target.is_file():
+        return error_response(
+            f"Page not found: {filename}", 404, "PAGE_NOT_FOUND"
+        )
+
+    return send_from_directory(str(PAGES_DIR), filename)
 
 
 # ============================================================
-# API — HEALTH
+# API — INFO + HEALTH
 # ============================================================
+
+@app.get("/api")
+def api_info():
+    return api_response({
+        "success": True,
+        "name": PROJECT_NAME,
+        "version": PROJECT_VERSION,
+        "mode": PROJECT_MODE,
+        "endpoints": {
+            "health": "GET  /api/health",
+            "diagnose": "GET  /api/diagnose",
+            "provinces": "GET  /api/provinces",
+            "legacy_ask": "GET  /api/ask",
+            "concierge": "POST /api/concierge",
+        },
+        "concierge": {
+            "available": CONCIERGE_AVAILABLE,
+            "diagnose_available": DIAGNOSE_AVAILABLE,
+            **CONCIERGE_INFO,
+        },
+        "static": {
+            "root": "GET /  →  redirects to /pages/help.html",
+            "help": "GET /pages/help.html",
+            "pages_index": "GET /pages/",
+        },
+        "timestamp": utc_timestamp(),
+    })
+
 
 @app.get("/api/health")
 def health():
@@ -213,13 +384,75 @@ def health():
         "concierge": {
             "available": CONCIERGE_AVAILABLE,
             "endpoint": "/api/concierge",
+            "diagnose_available": DIAGNOSE_AVAILABLE,
+            **CONCIERGE_INFO,
+        },
+        "paths": {
+            "root": str(ROOT_DIR),
+            "pages": str(PAGES_DIR),
+            "pages_exists": PAGES_DIR.exists(),
         },
         "timestamp": utc_timestamp(),
     })
 
 
 # ============================================================
-# API — LEGACY
+# API — DIAGNOSE (novo)
+# ============================================================
+# Testa a conectividade com cada modelo NVIDIA configurado.
+# Útil quando o chat não responde e você precisa saber qual
+# modelo realmente funciona na sua conta.
+# ============================================================
+
+@app.get("/api/diagnose")
+def diagnose():
+    if not DIAGNOSE_AVAILABLE:
+        return error_response(
+            "Diagnostic endpoint not available. "
+            "Update concierge.py to v3+ to enable it.",
+            501,
+            "DIAGNOSE_NOT_AVAILABLE",
+        )
+
+    logger.info("→ /api/diagnose — starting model connectivity test…")
+    start = time.time()
+
+    try:
+        report = diagnose_connection()
+    except Exception as e:
+        logger.exception("Diagnose failed: %s", e)
+        return error_response(
+            f"Diagnostic failed: {e}",
+            500,
+            "DIAGNOSE_ERROR",
+        )
+
+    elapsed = time.time() - start
+
+    logger.info(
+        "← /api/diagnose — %d/%d models working, took %.1fs",
+        len(report.get("working", [])),
+        len(report.get("results", [])),
+        elapsed,
+    )
+
+    return api_response({
+        "success": True,
+        "working": report.get("working", []),
+        "failed": report.get("failed", []),
+        "results": report.get("results", []),
+        "summary": {
+            "total": len(report.get("results", [])),
+            "working": len(report.get("working", [])),
+            "failed": len(report.get("failed", [])),
+        },
+        "elapsed_seconds": round(elapsed, 2),
+        "timestamp": utc_timestamp(),
+    })
+
+
+# ============================================================
+# API — LEGACY (demo)
 # ============================================================
 
 @app.get("/api/provinces")
@@ -247,25 +480,13 @@ def ask():
 # API — CONCIERGE (main)
 # ============================================================
 
-@app.post("/api/concierge")
-def concierge():
-    if not request.is_json:
-        return error_response("Request must contain JSON.", 415, "JSON_REQUIRED")
+def _parse_conversation(raw: Any) -> list:
+    """Valida e limpa o histórico de conversa enviado pelo frontend."""
+    if not isinstance(raw, list):
+        return []
 
-    data = request.get_json(silent=True)
-    if not isinstance(data, dict):
-        return error_response("Invalid request body.", 400, "INVALID_BODY")
-
-    message = clean_text(data.get("message"), max_length=2000)
-    if not message:
-        return error_response("Please provide a message.", 400, "MESSAGE_REQUIRED")
-
-    conversation = data.get("conversation", [])
-    if not isinstance(conversation, list):
-        conversation = []
-
-    cleaned_conversation = []
-    for item in conversation[-12:]:
+    cleaned = []
+    for item in raw[-12:]:
         if not isinstance(item, dict):
             continue
         role = item.get("role")
@@ -275,111 +496,242 @@ def concierge():
         content = clean_text(content, max_length=4000)
         if not content:
             continue
-        cleaned_conversation.append({"role": role, "content": content})
+        cleaned.append({"role": role, "content": content})
+    return cleaned
 
+
+def _classify_concierge_error(exc: Exception) -> tuple:
+    """
+    Classifica a exceção do concierge em (status_code, error_code, mensagem).
+    Retorna códigos que o frontend pode usar para decidir o que mostrar.
+    """
+    msg = str(exc).lower()
+
+    # Erros específicos da NVIDIA
+    if "401" in msg or "unauthorized" in msg:
+        return (
+            502,
+            "NVIDIA_UNAUTHORIZED",
+            "The AI provider rejected our credentials. "
+            "Check the NVIDIA API key configuration.",
+        )
+    if "403" in msg or "forbidden" in msg:
+        return (
+            502,
+            "NVIDIA_FORBIDDEN",
+            "The AI provider refused access to this model. "
+            "The account may lack the 'Public API Endpoints' permission.",
+        )
+    if "404" in msg or "not exist" in msg or "not found" in msg:
+        return (
+            502,
+            "NVIDIA_MODEL_NOT_FOUND",
+            "The requested AI model doesn't exist on the provider.",
+        )
+    if "429" in msg or "rate limit" in msg:
+        return (
+            429,
+            "NVIDIA_RATE_LIMIT",
+            "The AI provider is rate limiting us. Please wait a moment and try again.",
+        )
+    if "timeout" in msg or "timed out" in msg:
+        return (
+            504,
+            "NVIDIA_TIMEOUT",
+            "The AI provider took too long to respond. "
+            "Please try again with a shorter question.",
+        )
+    if "network" in msg or "connection" in msg or "unreachable" in msg:
+        return (
+            503,
+            "NVIDIA_NETWORK",
+            "Could not reach the AI provider. Check your internet connection.",
+        )
+
+    # Fallback genérico
+    return (
+        503,
+        "CONCIERGE_UNAVAILABLE",
+        "The GED Concierge is temporarily unavailable. "
+        "Please try again in a moment.",
+    )
+
+
+@app.post("/api/concierge")
+def concierge():
+    request_id = (
+        request.headers.get("X-Request-ID") or uuid.uuid4().hex[:8]
+    )
+    start_time = time.time()
+
+    # ---------- 1. Validar request ----------
+    if not request.is_json:
+        return error_response(
+            "Request must contain JSON with Content-Type: application/json.",
+            415,
+            "JSON_REQUIRED",
+        )
+
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return error_response(
+            "Invalid request body — expected a JSON object.",
+            400,
+            "INVALID_BODY",
+        )
+
+    message = clean_text(data.get("message"), max_length=2000)
+    if not message:
+        return error_response(
+            "Please provide a non-empty 'message' field.",
+            400,
+            "MESSAGE_REQUIRED",
+        )
+
+    conversation = _parse_conversation(data.get("conversation", []))
+
+    logger.info(
+        "[%s] → /api/concierge — message_len=%d, history=%d",
+        request_id, len(message), len(conversation),
+    )
+
+    # ---------- 2. Concierge disponível? ----------
     if not CONCIERGE_AVAILABLE:
-        logger.warning("Concierge not available.")
+        logger.warning("[%s] Concierge engine not available.", request_id)
         return api_response({
             "success": True,
             "answer": (
                 "The GED Concierge engine is being configured. "
-                "The interface works, but the AI engine isn't installed yet."
+                "The interface works, but the AI engine isn't installed yet. "
+                "Make sure `concierge.py` is in the `backend/` folder and its "
+                "dependencies are installed."
             ),
             "model": "GED Concierge · Setup pending",
+            "provider": "offline",
+            "mode": "setup",
             "image": None,
+            "sources": [],
             "timestamp": utc_timestamp(),
         })
 
+    # ---------- 3. Chamar o engine ----------
+    try:
+        result = ask_concierge(message=message, conversation=conversation)
+    except ValueError as e:
+        logger.warning("[%s] Concierge validation error: %s", request_id, e)
+        return error_response(
+            "Invalid request to the Concierge engine.",
+            400,
+            "CONCIERGE_VALIDATION",
+        )
+    except Exception as e:
+        logger.exception("[%s] Concierge crashed: %s", request_id, e)
+        status, code, friendly = _classify_concierge_error(e)
+        return error_response(friendly, status, code)
+
+    elapsed_ms = int((time.time() - start_time) * 1000)
+
+    # ---------- 4. Normalizar resposta ----------
+    if isinstance(result, str):
+        result = {"answer": result, "model": "GED Concierge"}
+
+    if not isinstance(result, dict):
+        logger.error("[%s] Concierge returned non-dict: %r",
+                     request_id, type(result))
+        return error_response(
+            "The Concierge engine returned an invalid response.",
+            502,
+            "CONCIERGE_INVALID",
+        )
+
+    answer = result.get("answer")
+    if not isinstance(answer, str) or not answer.strip():
+        logger.error("[%s] Concierge returned empty answer.", request_id)
+        return error_response(
+            "The Concierge engine returned an empty answer. "
+            "Please try rephrasing your question.",
+            502,
+            "CONCIERGE_EMPTY",
+        )
+
+    # ---------- 5. Montar payload final ----------
+    payload: Dict[str, Any] = {
+        "success": True,
+        "answer": answer.strip(),
+        "model": result.get("model", "GED Concierge"),
+        "provider": result.get("provider", "NVIDIA NIM"),
+        "mode": result.get("mode", "conversation"),
+        "image": result.get("image"),
+        "sources": result.get("sources") or [],
+        "usage": result.get("usage"),
+        "latency_ms": elapsed_ms,
+        "timestamp": utc_timestamp(),
+    }
+
+    # Informa se caiu no fallback (concierge v3+)
+    if result.get("fallback_from"):
+        payload["fallback_from"] = result["fallback_from"]
+
+    # Chaves opcionais adicionais
+    for key in ("recommendations", "value_score", "discount", "error"):
+        if key in result and result[key] is not None:
+            payload[key] = result[key]
+
+    payload = safe_json(payload)
+
+    # Log resumido (inclui fallback se houver)
+    fallback_note = ""
+    if payload.get("fallback_from"):
+        fallback_note = f" [fallback from {payload['fallback_from']}]"
+
     logger.info(
-        "→ /api/concierge — message_len=%d, history=%d",
-        len(message), len(cleaned_conversation),
+        "[%s] ← /api/concierge — model=%s%s, provider=%s, mode=%s, "
+        "answer_len=%d, sources=%d, image=%s, latency=%dms",
+        request_id,
+        payload.get("model"),
+        fallback_note,
+        payload.get("provider"),
+        payload.get("mode"),
+        len(payload.get("answer", "")),
+        len(payload.get("sources", []) or []),
+        "yes" if payload.get("image") else "no",
+        elapsed_ms,
     )
 
-    try:
-        result = ask_concierge(
-            message=message,
-            conversation=cleaned_conversation,
-        )
-
-        if isinstance(result, str):
-            result = {"answer": result, "model": "GED Concierge"}
-
-        if not isinstance(result, dict):
-            raise RuntimeError("Concierge returned invalid response type.")
-
-        answer = result.get("answer")
-        if not isinstance(answer, str) or not answer.strip():
-            raise RuntimeError("Concierge returned an empty answer.")
-
-        payload = {
-            "success": True,
-            "answer": answer.strip(),
-            "model": result.get("model", "GED Concierge"),
-            "image": result.get("image"),
-            "timestamp": utc_timestamp(),
-        }
-
-        for key in (
-            "provider",
-            "mode",
-            "recommendations",
-            "value_score",
-            "discount",
-            "usage",
-            "error",
-        ):
-            if key in result:
-                payload[key] = result[key]
-
-        logger.info(
-            "← /api/concierge — model=%s, answer_len=%d",
-            payload["model"], len(payload["answer"]),
-        )
-
-        return api_response(payload)
-
-    except Exception as error:
-        logger.exception("GED Concierge request failed: %s", error)
-        return error_response(
-            "The GED Concierge is temporarily unavailable. "
-            "Please try again in a moment.",
-            503,
-            "CONCIERGE_UNAVAILABLE",
-        )
+    return api_response(payload)
 
 
 # ============================================================
-# API — INFO
+# OPTIONS preflight (redundante com flask-cors, mas explícito)
 # ============================================================
 
-@app.get("/api")
-def api_info():
-    return api_response({
-        "success": True,
-        "name": PROJECT_NAME,
-        "version": PROJECT_VERSION,
-        "mode": PROJECT_MODE,
-        "endpoints": {
-            "health": "GET  /api/health",
-            "provinces": "GET  /api/provinces",
-            "legacy_ask": "GET  /api/ask",
-            "concierge": "POST /api/concierge",
-        },
-        "concierge": {"available": CONCIERGE_AVAILABLE},
-        "static": {
-            "root": "GET /  →  redirects to /pages/help.html",
-            "help": "GET /pages/help.html",
-        },
-        "timestamp": utc_timestamp(),
-    })
+@app.route("/api/concierge", methods=["OPTIONS"])
+def concierge_options():
+    response = make_response("", 204)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept, X-Request-ID"
+    response.headers["Access-Control-Max-Age"] = "3600"
+    return response
 
 
 # ============================================================
-# BOOT — auto-open browser
+# FAVICON
 # ============================================================
 
-def _open_browser(url: str, delay: float = 1.2) -> None:
-    """Abre o navegador depois de um pequeno delay."""
+@app.route("/favicon.ico")
+def favicon():
+    icon = ROOT_DIR / "favicon.ico"
+    if icon.exists():
+        return send_from_directory(str(ROOT_DIR), "favicon.ico")
+    return ("", 204)
+
+
+# ============================================================
+# BOOT
+# ============================================================
+
+def _open_browser(url: str, delay: float = 1.5) -> None:
     def _open():
         time.sleep(delay)
         try:
@@ -388,8 +740,49 @@ def _open_browser(url: str, delay: float = 1.2) -> None:
         except Exception as e:
             logger.warning("Could not auto-open browser: %s", e)
 
-    t = threading.Thread(target=_open, daemon=True)
-    t.start()
+    threading.Thread(target=_open, daemon=True).start()
+
+
+def _print_banner(port: int) -> None:
+    base = f"http://127.0.0.1:{port}"
+
+    print()
+    print("=" * 62)
+    print("  GED TRAVEL AGENCY — Flask Backend v" + PROJECT_VERSION)
+    print("=" * 62)
+    print(f"  Project            : {PROJECT_NAME}")
+    print(f"  Mode               : {PROJECT_MODE}")
+    print(f"  Port               : {port}")
+    print(f"  Concierge ready    : {'OK' if CONCIERGE_AVAILABLE else 'FAIL'}")
+    print(f"  Diagnose endpoint  : {'OK' if DIAGNOSE_AVAILABLE else 'N/A'}")
+    print(f"  Static root        : {ROOT_DIR}")
+    print(f"  Pages dir exists   : {'OK' if PAGES_DIR.exists() else 'MISSING'}")
+
+    if CONCIERGE_INFO:
+        print()
+        print("  AI models:")
+        print(f"    Primary          : {CONCIERGE_INFO.get('primary_model')}")
+        print(f"    Reasoning        : {CONCIERGE_INFO.get('reasoning_model')}")
+        fb = CONCIERGE_INFO.get("fallback_chain", [])
+        print(f"    Fallback chain   : {len(fb)} model(s)")
+        for m in fb[:3]:
+            print(f"                       · {m}")
+        if len(fb) > 3:
+            print(f"                       · … e mais {len(fb) - 3}")
+        print(f"    Timeout / retries: {CONCIERGE_INFO.get('timeout')}s / "
+              f"{CONCIERGE_INFO.get('retries')}")
+
+    print()
+    print("  → Open in browser:")
+    print(f"     {base}/")
+    print()
+    print("  → API endpoints:")
+    print(f"     GET  {base}/api")
+    print(f"     GET  {base}/api/health")
+    print(f"     GET  {base}/api/diagnose   ← testes de conectividade NVIDIA")
+    print(f"     POST {base}/api/concierge")
+    print("=" * 62)
+    print()
 
 
 # ============================================================
@@ -403,45 +796,36 @@ if __name__ == "__main__":
 
     base_url = f"http://127.0.0.1:{port}"
 
-    print()
-    print("=" * 62)
-    print("  GED TRAVEL AGENCY — Flask Backend")
-    print("=" * 62)
-    print(f"  Project            : {PROJECT_NAME}")
-    print(f"  Version            : {PROJECT_VERSION}")
-    print(f"  Mode               : {PROJECT_MODE}")
-    print(f"  Port               : {port}")
-    print(f"  Concierge ready    : {CONCIERGE_AVAILABLE}")
-    print(f"  Static root        : {ROOT_DIR}")
-    print()
-    print("  → Open in browser:")
-    print(f"     {base_url}/")
-    print()
-    print("  → API endpoints:")
-    print(f"     GET  {base_url}/api")
-    print(f"     GET  {base_url}/api/health")
-    print(f"     POST {base_url}/api/concierge")
-    print("=" * 62)
-    print()
+    _print_banner(port)
 
-    if auto_open and not debug_mode:
-        # Em produção, abre automaticamente
-        _open_browser(f"{base_url}/")
-    elif auto_open and debug_mode:
-        # Em debug, também abre (mais conveniente para o dev)
-        _open_browser(f"{base_url}/")
+    if not PAGES_DIR.exists():
+        print(f"  WARNING: pages/ not found at {PAGES_DIR}")
+        print(f"           /pages/help.html will return 404.")
+        print()
+
+    if not CONCIERGE_AVAILABLE:
+        print(f"  WARNING: Concierge engine not loaded.")
+        print(f"           /api/concierge will return a 'setup pending' message.")
+        print()
+
+    if auto_open:
+        _open_browser(base_url + "/", delay=1.5)
 
     try:
         app.run(
             host="127.0.0.1",
             port=port,
             debug=debug_mode,
-            use_reloader=False,   # evita abrir o browser duas vezes
+            use_reloader=False,
+            threaded=True,
         )
+    except KeyboardInterrupt:
+        print("\n  Server stopped by user (Ctrl+C).")
+        sys.exit(0)
     except OSError as e:
         print()
         print("!" * 62)
-        print(f"  ERROR: Could not start Flask.")
+        print("  ERROR: Could not start Flask.")
         print(f"  Reason: {e}")
         print()
         print(f"  Port {port} may be in use. Try:")

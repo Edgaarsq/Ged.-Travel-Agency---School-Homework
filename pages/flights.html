@@ -42,6 +42,8 @@
             --ios-red: #ff3b30;
             --ios-yellow: #ffc400;
             --ios-teal: #5ac8fa;
+            --ios-pink: #ff2d55;
+            --ios-indigo: #5856d6;
             --ios-bg: #f2f2f7;
             --ios-card: #ffffff;
             --ios-border: rgba(60, 60, 67, 0.10);
@@ -51,6 +53,11 @@
             --ios-text-3: #8e8e93;
             --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
             --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+            --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.09);
+            --shadow-lg: 0 30px 90px rgba(0, 0, 0, 0.18);
+            --shadow-xl: 0 40px 120px rgba(0, 0, 0, 0.24);
         }
 
         html {
@@ -71,9 +78,6 @@
             box-sizing: border-box;
         }
 
-        /* ============================================================
-           GLOBAL POLISH
-           ============================================================ */
         :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
             outline: 2px solid rgba(0, 122, 255, 0.65);
             outline-offset: 3px;
@@ -154,7 +158,7 @@
            ============================================================ */
         .flights-page .flight-hero {
             position: relative;
-            min-height: 780px;
+            min-height: 800px;
             padding: 170px 0 130px;
             display: flex;
             align-items: center;
@@ -170,6 +174,7 @@
             background: url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2400&q=90") center / cover no-repeat;
             transform: scale(1.06);
             animation: heroZoom 24s ease-in-out infinite alternate;
+            will-change: transform;
         }
 
         @keyframes heroZoom {
@@ -188,11 +193,11 @@
             z-index: -2;
             background:
                 linear-gradient(180deg,
-                    rgba(0, 0, 0, 0.55) 0%,
-                    rgba(0, 0, 0, 0.30) 40%,
-                    rgba(0, 0, 0, 0.55) 75%,
+                    rgba(0, 0, 0, 0.60) 0%,
+                    rgba(0, 0, 0, 0.32) 42%,
+                    rgba(0, 0, 0, 0.58) 76%,
                     rgba(242, 242, 247, 1) 100%),
-                radial-gradient(ellipse at 30% 45%, rgba(90, 200, 250, 0.16), transparent 60%);
+                radial-gradient(ellipse at 30% 45%, rgba(90, 200, 250, 0.18), transparent 60%);
         }
 
         .flights-page .flight-hero-content {
@@ -201,7 +206,7 @@
             color: #fff;
             max-width: 1200px;
             display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
             gap: 48px;
             align-items: end;
         }
@@ -361,7 +366,7 @@
             color: rgba(255, 255, 255, 0.55);
         }
 
-        /* ---------- HERO-PICK CARD ---------- */
+        /* HERO-PICK CARD */
         .flights-page .hero-pick {
             position: relative;
             overflow: hidden;
@@ -559,7 +564,7 @@
         }
 
         /* ============================================================
-           SECTION HEADER
+           SECTION HEADERS
            ============================================================ */
         .flights-page .section-header {
             display: grid;
@@ -619,7 +624,6 @@
             margin-top: -60px;
         }
 
-        /* ---------- SEARCH PANEL ---------- */
         .flights-page .search-panel {
             display: grid;
             grid-template-columns: 1.2fr 1.2fr 0.8fr auto;
@@ -629,7 +633,7 @@
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.14);
             border-radius: 26px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 12px;
         }
 
@@ -685,6 +689,30 @@
             align-self: end;
         }
 
+        /* Swap button */
+        .flights-page .swap-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 0.5px solid rgba(60, 60, 67, 0.18);
+            background: #fff;
+            color: var(--ios-text-2);
+            font-size: 16px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            align-self: end;
+            transition: transform .3s var(--ease-spring), background .2s;
+            flex-shrink: 0;
+        }
+
+        .flights-page .swap-btn:hover {
+            transform: rotate(180deg);
+            background: rgba(0, 122, 255, 0.08);
+            border-color: rgba(0, 122, 255, 0.30);
+            color: var(--ios-blue);
+        }
+
         .flights-page .notice {
             padding: 14px 20px;
             border-radius: 16px;
@@ -696,7 +724,7 @@
             margin-bottom: 28px;
         }
 
-        /* ---------- FEATURED ROUTE SPOTLIGHT ---------- */
+        /* FEATURED */
         .flights-page .flight-featured {
             position: relative;
             display: grid;
@@ -821,7 +849,7 @@
             font-size: 13px;
         }
 
-        /* ---------- CONTROLS ---------- */
+        /* CONTROLS */
         .flights-page .flight-controls {
             display: flex;
             flex-direction: column;
@@ -830,7 +858,7 @@
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.14);
             border-radius: 26px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 24px;
         }
 
@@ -952,6 +980,77 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
         }
 
+        /* Advanced filters */
+        .flights-page .advanced-filters {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.08);
+        }
+
+        @media (max-width: 720px) {
+            .flights-page .advanced-filters {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flights-page .af-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .flights-page .af-field label {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .af-field input[type="range"] {
+            width: 100%;
+            accent-color: var(--ios-blue);
+        }
+
+        .flights-page .af-field .af-value {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ios-text);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .flights-page .af-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .flights-page .af-chip {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            background: rgba(120, 120, 128, 0.04);
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--ios-text-2);
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .22s var(--ease-spring);
+        }
+
+        .flights-page .af-chip:hover {
+            border-color: rgba(0, 122, 255, 0.3);
+            color: var(--ios-blue);
+        }
+
+        .flights-page .af-chip.active {
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            border-color: transparent;
+            color: #fff;
+        }
+
         .flights-page .flight-result-count {
             font-size: 12.5px;
             font-weight: 600;
@@ -991,15 +1090,29 @@
             overflow: hidden;
             background: #fff;
             border: 0.5px solid rgba(60, 60, 67, 0.14);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-ios), border-color .4s;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
+            animation: cardIn .5s var(--ease-spring) both;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .flights-page .flight-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+            box-shadow: var(--shadow-md);
             border-color: rgba(0, 122, 255, 0.30);
         }
 
@@ -1073,6 +1186,46 @@
             background: linear-gradient(135deg, #c8102e, #00205b);
         }
 
+        .flights-page .airline-logo.tp {
+            background: linear-gradient(135deg, #008c45, #006633);
+        }
+
+        .flights-page .airline-logo.f8 {
+            background: linear-gradient(135deg, #4a148c, #2a0a5c);
+        }
+
+        .flights-page .airline-logo.rv {
+            background: linear-gradient(135deg, #b71c1c, #7f0e0e);
+        }
+
+        .flights-page .airline-logo.five-t {
+            background: linear-gradient(135deg, #0d47a1, #042a6d);
+        }
+
+        .flights-page .airline-logo.am {
+            background: linear-gradient(135deg, #004d40, #00251a);
+        }
+
+        .flights-page .airline-logo.ar {
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+        }
+
+        .flights-page .airline-logo.ek {
+            background: linear-gradient(135deg, #c62828, #7f0000);
+        }
+
+        .flights-page .airline-logo.qr {
+            background: linear-gradient(135deg, #6a1b9a, #4a148c);
+        }
+
+        .flights-page .airline-logo.et {
+            background: linear-gradient(135deg, #1b5e20, #0d3812);
+        }
+
+        .flights-page .airline-logo.tk {
+            background: linear-gradient(135deg, #c8102e, #8b0000);
+        }
+
         .flights-page .airline-info {
             min-width: 0;
         }
@@ -1117,6 +1270,7 @@
             box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.20);
         }
 
+        /* Route row */
         .flights-page .flight-card-route {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
@@ -1192,8 +1346,60 @@
             color: var(--ios-green);
         }
 
+        /* Info strip */
+        .flights-page .flight-card-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            margin: 18px 22px 0;
+            padding: 12px 0;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.08);
+            border-bottom: 0.5px solid rgba(60, 60, 67, 0.08);
+        }
+
+        .flights-page .fci-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 0 10px;
+            border-right: 0.5px solid rgba(60, 60, 67, 0.06);
+        }
+
+        .flights-page .fci-item:first-child {
+            padding-left: 0;
+        }
+
+        .flights-page .fci-item:last-child {
+            border-right: 0;
+            padding-right: 0;
+        }
+
+        .flights-page .fci-item small {
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .fci-item strong {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ios-text);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .flights-page .fci-item strong.good {
+            color: #1f7a3c;
+        }
+
+        .flights-page .fci-item strong.warn {
+            color: #a06500;
+        }
+
+        /* Tags */
         .flights-page .flight-card-body {
-            padding: 18px 22px 0;
+            padding: 16px 22px 0;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -1218,6 +1424,19 @@
             color: #1f7a3c;
         }
 
+        .flights-page .flight-tag.wifi {
+            background: rgba(90, 200, 250, 0.10);
+            border-color: rgba(90, 200, 250, 0.22);
+            color: #0369a1;
+        }
+
+        .flights-page .flight-tag.meal {
+            background: rgba(255, 149, 0, 0.10);
+            border-color: rgba(255, 149, 0, 0.22);
+            color: #a06500;
+        }
+
+        /* Bottom */
         .flights-page .flight-card-bottom {
             display: flex;
             justify-content: space-between;
@@ -1252,6 +1471,14 @@
             font-weight: 600;
             color: var(--ios-text-3);
             margin-left: 2px;
+        }
+
+        .flights-page .flight-price .price-compare {
+            display: block;
+            font-size: 11px;
+            color: var(--ios-text-3);
+            text-decoration: line-through;
+            margin-top: 2px;
         }
 
         .flights-page .flight-actions {
@@ -1308,16 +1535,46 @@
             transform: translateY(-2px);
         }
 
-        /* ---------- LIST VIEW ---------- */
+        .flights-page .btn-compare-flight.active {
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+        }
+
+        /* Card ribbon (best value etc) */
+        .flights-page .card-ribbon {
+            position: absolute;
+            top: 14px;
+            left: -6px;
+            padding: 5px 14px 5px 20px;
+            background: linear-gradient(135deg, #ff9500, #ffb340);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            border-radius: 0 999px 999px 0;
+            box-shadow: 0 6px 16px rgba(255, 149, 0, 0.35);
+        }
+
+        .flights-page .card-ribbon.green {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+            box-shadow: 0 6px 16px rgba(52, 199, 89, 0.35);
+        }
+
+        .flights-page .card-ribbon.purple {
+            background: linear-gradient(135deg, #af52de, #c77dff);
+            box-shadow: 0 6px 16px rgba(175, 82, 222, 0.35);
+        }
+
+        /* LIST VIEW */
         .flights-page .flight-grid.list-view .flight-card {
             flex-direction: row;
             align-items: stretch;
-            min-height: 210px;
+            min-height: 240px;
         }
 
         .flights-page .flight-grid.list-view .flight-card-top {
-            width: 260px;
-            flex: 0 0 260px;
+            width: 280px;
+            flex: 0 0 280px;
             padding: 24px 22px;
             flex-direction: column;
             align-items: flex-start;
@@ -1330,8 +1587,12 @@
             padding: 24px 22px 0;
         }
 
+        .flights-page .flight-grid.list-view .flight-card-info {
+            margin: 16px 22px 0;
+        }
+
         .flights-page .flight-grid.list-view .flight-card-body {
-            padding: 16px 22px 0;
+            padding: 14px 22px 0;
         }
 
         .flights-page .flight-grid.list-view .flight-card-bottom {
@@ -1364,7 +1625,7 @@
             }
         }
 
-        /* ---------- EMPTY STATE ---------- */
+        /* EMPTY + SKELETON */
         .flights-page .empty-state {
             grid-column: 1 / -1;
             padding: 70px 24px;
@@ -1407,8 +1668,32 @@
             transform: translateY(-2px);
         }
 
+        .flights-page .skeleton-card {
+            min-height: 400px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #e9e9ee, #f6f6f8);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flights-page .skeleton-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+            transform: translateX(-100%);
+            animation: shimmer 1.6s infinite;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
         /* ============================================================
-           STATS STRIP
+           STATS
            ============================================================ */
         .flights-page .flight-stats {
             display: grid;
@@ -1457,6 +1742,1174 @@
             font-weight: 600;
             margin-top: 6px;
             display: block;
+        }
+
+        /* ============================================================
+           SAVED SECTION
+           ============================================================ */
+        .flights-page .saved-section {
+            padding: 80px 0 40px;
+        }
+
+        .flights-page .saved-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (max-width: 1000px) {
+            .flights-page .saved-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 620px) {
+            .flights-page .saved-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flights-page .saved-card {
+            position: relative;
+            padding: 20px;
+            border-radius: 20px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: var(--shadow-sm);
+            transition: transform .3s var(--ease-spring), box-shadow .3s;
+        }
+
+        .flights-page .saved-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .saved-card .sc-route {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+            margin-bottom: 6px;
+        }
+
+        .flights-page .saved-card .sc-meta {
+            font-size: 12px;
+            color: var(--ios-text-3);
+            margin-bottom: 12px;
+        }
+
+        .flights-page .saved-card .sc-price {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ios-blue);
+        }
+
+        .flights-page .saved-card .sc-remove {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(120, 120, 128, 0.08);
+            color: var(--ios-text-3);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            transition: all .2s;
+        }
+
+        .flights-page .saved-card .sc-remove:hover {
+            background: rgba(255, 59, 48, 0.12);
+            color: var(--ios-red);
+        }
+
+        .flights-page .saved-empty {
+            grid-column: 1 / -1;
+            padding: 50px 24px;
+            text-align: center;
+            color: var(--ios-text-3);
+            background: #fff;
+            border-radius: 22px;
+            border: 0.5px dashed rgba(60, 60, 67, 0.20);
+        }
+
+        .flights-page .saved-empty strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 18px;
+            color: var(--ios-text);
+            margin-bottom: 6px;
+        }
+
+        .flights-page .saved-empty p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* ============================================================
+           POPULAR ROUTES
+           ============================================================ */
+        .flights-page .popular-section {
+            padding: 80px 0 60px;
+        }
+
+        .flights-page .popular-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding: 4px 4px 18px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .flights-page .popular-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .flights-page .popular-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            padding: 20px;
+            border-radius: 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: var(--shadow-sm);
+            transition: transform .35s var(--ease-spring), box-shadow .35s;
+            cursor: pointer;
+        }
+
+        .flights-page .popular-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .popular-card .pc-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .flights-page .popular-card .pc-route {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+        }
+
+        .flights-page .popular-card .pc-price {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ios-blue);
+        }
+
+        .flights-page .popular-card .pc-meta {
+            font-size: 11.5px;
+            color: var(--ios-text-3);
+            margin-bottom: 12px;
+        }
+
+        .flights-page .popular-card .pc-bar {
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(0, 122, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .flights-page .popular-card .pc-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #5ac8fa, #007aff);
+        }
+
+        /* ============================================================
+           AIRLINES SHOWCASE
+           ============================================================ */
+        .flights-page .airlines-section {
+            padding: 80px 0 60px;
+        }
+
+        .flights-page .airlines-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        @media (max-width: 1000px) {
+            .flights-page .airlines-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 540px) {
+            .flights-page .airlines-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flights-page .airline-card {
+            padding: 22px;
+            border-radius: 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: var(--shadow-sm);
+            transition: transform .4s var(--ease-spring), box-shadow .4s;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .flights-page .airline-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .airline-card .ac-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flights-page .airline-card .ac-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            flex: 0 0 48px;
+        }
+
+        .flights-page .airline-card .ac-info strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ios-text);
+            letter-spacing: -0.01em;
+        }
+
+        .flights-page .airline-card .ac-info small {
+            display: block;
+            font-size: 11.5px;
+            color: var(--ios-text-3);
+            margin-top: 2px;
+        }
+
+        .flights-page .airline-card .ac-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.08);
+        }
+
+        .flights-page .airline-card .ac-stat small {
+            display: block;
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .airline-card .ac-stat strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ios-text);
+            margin-top: 2px;
+        }
+
+        .flights-page .airline-card .ac-fleet {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .flights-page .airline-card .ac-fleet span {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(0, 122, 255, 0.06);
+            color: var(--ios-blue);
+            font-size: 10.5px;
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           AIRPORTS SHOWCASE
+           ============================================================ */
+        .flights-page .airports-section {
+            padding: 60px 0 80px;
+        }
+
+        .flights-page .airports-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        @media (max-width: 1000px) {
+            .flights-page .airports-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .flights-page .airports-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .flights-page .airport-tile {
+            padding: 18px 14px;
+            border-radius: 18px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            text-align: center;
+            transition: transform .3s var(--ease-spring), box-shadow .3s;
+            cursor: pointer;
+        }
+
+        .flights-page .airport-tile:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .airport-tile strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+        }
+
+        .flights-page .airport-tile small {
+            display: block;
+            font-size: 11px;
+            color: var(--ios-text-3);
+            margin-top: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ============================================================
+           BEST DEALS
+           ============================================================ */
+        .flights-page .deals-section {
+            padding: 80px 0 60px;
+        }
+
+        .flights-page .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .flights-page .deals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flights-page .deal-card {
+            position: relative;
+            padding: 26px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #ffffff, #f7f9fc);
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: var(--shadow-sm);
+            transition: transform .4s var(--ease-spring), box-shadow .4s;
+            overflow: hidden;
+        }
+
+        .flights-page .deal-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .deal-card::before {
+            content: "";
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(90, 200, 250, 0.18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .flights-page .deal-card .dc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+            color: #fff;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .flights-page .deal-card .dc-badge.hot {
+            background: linear-gradient(135deg, #ff453a, #d70015);
+        }
+
+        .flights-page .deal-card .dc-badge.new {
+            background: linear-gradient(135deg, #af52de, #c77dff);
+        }
+
+        .flights-page .deal-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            color: var(--ios-text);
+            margin: 0 0 8px;
+        }
+
+        .flights-page .deal-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ios-text-3);
+            margin: 0 0 18px;
+        }
+
+        .flights-page .deal-card .dc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(60, 60, 67, 0.08);
+        }
+
+        .flights-page .deal-card .dc-price {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ios-blue);
+        }
+
+        .flights-page .deal-card .dc-price small {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin-bottom: 2px;
+        }
+
+        .flights-page .deal-card .dc-cta {
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: #0b0b0b;
+            color: #fff;
+            font-size: 12.5px;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .24s var(--ease-spring);
+        }
+
+        .flights-page .deal-card .dc-cta:hover {
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           TRAVEL INSIGHTS
+           ============================================================ */
+        .flights-page .insights-section {
+            padding: 60px 0 80px;
+        }
+
+        .flights-page .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .flights-page .insights-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .flights-page .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flights-page .insight-card {
+            padding: 24px;
+            border-radius: 22px;
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: var(--shadow-sm);
+            transition: transform .3s var(--ease-spring), box-shadow .3s;
+        }
+
+        .flights-page .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flights-page .insight-card .ic-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            background: linear-gradient(135deg, rgba(90, 200, 250, 0.15), rgba(0, 122, 255, 0.10));
+            color: var(--ios-blue);
+            margin-bottom: 14px;
+        }
+
+        .flights-page .insight-card .ic-title {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ios-text);
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+
+        .flights-page .insight-card .ic-value {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--ios-text);
+            margin-bottom: 6px;
+        }
+
+        .flights-page .insight-card .ic-desc {
+            font-size: 11.5px;
+            color: var(--ios-text-3);
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           FAQ
+           ============================================================ */
+        .flights-page .faq-section {
+            padding: 60px 0 100px;
+        }
+
+        .flights-page .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flights-page .faq-item {
+            background: #fff;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: box-shadow .3s;
+        }
+
+        .flights-page .faq-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .flights-page .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--ios-text);
+            transition: background .2s;
+        }
+
+        .flights-page .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .flights-page .faq-item summary:hover {
+            background: rgba(0, 122, 255, 0.03);
+        }
+
+        .flights-page .faq-item summary .plus {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(0, 122, 255, 0.08);
+            color: var(--ios-blue);
+            display: grid;
+            place-items: center;
+            font-size: 16px;
+            font-weight: 800;
+            transition: transform .3s var(--ease-spring);
+            flex-shrink: 0;
+        }
+
+        .flights-page .faq-item[open] summary .plus {
+            transform: rotate(45deg);
+        }
+
+        .flights-page .faq-item p {
+            margin: 0;
+            padding: 0 22px 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--ios-text-2);
+        }
+
+        .flights-page .faq-item p a {
+            color: var(--ios-blue);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .flights-page .faq-item p a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           COMPARE BAR
+           ============================================================ */
+        .flights-page .compare-bar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(140%);
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 12px 12px 22px;
+            border-radius: 999px;
+            background: rgba(28, 28, 30, 0.94);
+            color: #fff;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            transition: transform .45s var(--ease-spring);
+            max-width: min(820px, calc(100vw - 32px));
+        }
+
+        .flights-page .compare-bar.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .flights-page .compare-bar .cb-label {
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .flights-page .compare-bar .cb-chips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .flights-page .compare-bar .cb-chips::-webkit-scrollbar {
+            display: none;
+        }
+
+        .flights-page .compare-bar .cb-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 0.5px solid rgba(255, 255, 255, 0.18);
+            font-size: 11.5px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .flights-page .compare-bar .cb-chip .cb-remove {
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            font-family: inherit;
+            line-height: 1;
+        }
+
+        .flights-page .compare-bar .cb-chip .cb-remove:hover {
+            color: #fff;
+        }
+
+        .flights-page .compare-bar .cb-go {
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #5ac8fa, #007aff);
+            color: #fff;
+            font-size: 12.5px;
+            font-weight: 800;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .flights-page .compare-bar .cb-clear {
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 0 10px;
+        }
+
+        /* ============================================================
+           MODALS
+           ============================================================ */
+        .flights-page .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 9998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s var(--ease-ios);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .flights-page .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .flights-page .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.92);
+            z-index: 9999;
+            width: min(720px, calc(100vw - 32px));
+            max-height: 88vh;
+            overflow-y: auto;
+            border-radius: 28px;
+            background: #fff;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.30);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s var(--ease-ios), transform .4s var(--ease-spring);
+        }
+
+        .flights-page .modal.open {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .flights-page .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 22px 26px;
+            border-bottom: 0.5px solid rgba(60, 60, 67, 0.10);
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-radius: 28px 28px 0 0;
+            z-index: 1;
+        }
+
+        .flights-page .modal-head h3 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ios-text);
+        }
+
+        .flights-page .modal-head .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(120, 120, 128, 0.10);
+            color: var(--ios-text-2);
+            font-size: 18px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: background .2s;
+        }
+
+        .flights-page .modal-head .modal-close:hover {
+            background: rgba(120, 120, 128, 0.20);
+        }
+
+        .flights-page .modal-body {
+            padding: 26px;
+        }
+
+        .flights-page .modal-body h4 {
+            margin: 20px 0 8px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .modal-body h4:first-child {
+            margin-top: 0;
+        }
+
+        .flights-page .modal-body p {
+            margin: 0 0 16px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--ios-text-2);
+        }
+
+        .flights-page .modal-body .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 560px) {
+            .flights-page .modal-body .detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .flights-page .modal-body .detail-cell {
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(120, 120, 128, 0.05);
+        }
+
+        .flights-page .modal-body .detail-cell small {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+            margin-bottom: 4px;
+        }
+
+        .flights-page .modal-body .detail-cell strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ios-text);
+        }
+
+        /* Cabin classes inside modal */
+        .flights-page .cabin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .flights-page .cabin-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(120, 120, 128, 0.04);
+            border: 0.5px solid rgba(60, 60, 67, 0.10);
+            transition: all .25s var(--ease-spring);
+            cursor: pointer;
+        }
+
+        .flights-page .cabin-row:hover {
+            background: rgba(0, 122, 255, 0.06);
+            border-color: rgba(0, 122, 255, 0.20);
+        }
+
+        .flights-page .cabin-row.selected {
+            background: linear-gradient(135deg, rgba(90, 200, 250, 0.12), rgba(0, 122, 255, 0.08));
+            border-color: rgba(0, 122, 255, 0.35);
+        }
+
+        .flights-page .cabin-row .cr-name {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .flights-page .cabin-row .cr-name strong {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ios-text);
+        }
+
+        .flights-page .cabin-row .cr-name small {
+            font-size: 11px;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .cabin-row .cr-perks {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            max-width: 180px;
+        }
+
+        .flights-page .cabin-row .cr-perks span {
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(0, 122, 255, 0.08);
+            color: var(--ios-blue);
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .flights-page .cabin-row .cr-price {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ios-text);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* Compare table */
+        .flights-page .compare-table {
+            display: grid;
+            grid-template-columns: 130px repeat(3, 1fr);
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 0.5px solid rgba(60, 60, 67, 0.14);
+            font-size: 12.5px;
+        }
+
+        .flights-page .compare-table>div {
+            padding: 12px 14px;
+            border-bottom: 0.5px solid rgba(60, 60, 67, 0.08);
+            border-right: 0.5px solid rgba(60, 60, 67, 0.08);
+        }
+
+        .flights-page .compare-table>div:nth-child(4n) {
+            border-right: 0;
+        }
+
+        .flights-page .compare-table .ct-head {
+            background: rgba(120, 120, 128, 0.05);
+            font-weight: 800;
+            font-size: 10.5px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ios-text-3);
+        }
+
+        .flights-page .compare-table .ct-value {
+            font-weight: 700;
+            color: var(--ios-text);
+        }
+
+        .flights-page .compare-table .ct-value.best {
+            color: #1f7a3c;
+            background: rgba(52, 199, 89, 0.06);
+        }
+
+        /* ============================================================
+           MOBILE BOTTOM BAR
+           ============================================================ */
+        .flights-page .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 800;
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-top: 0.5px solid rgba(60, 60, 67, 0.14);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        @media (max-width: 720px) {
+            .flights-page .mobile-bottom-bar {
+                display: block;
+            }
+        }
+
+        .flights-page .mobile-bottom-bar .mbb-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 6px;
+        }
+
+        .flights-page .mobile-bottom-bar .mbb-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 8px 6px;
+            border-radius: 12px;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            color: var(--ios-text-3);
+            transition: all .2s;
+        }
+
+        .flights-page .mobile-bottom-bar .mbb-btn:hover,
+        .flights-page .mobile-bottom-bar .mbb-btn.active {
+            background: rgba(0, 122, 255, 0.08);
+            color: var(--ios-blue);
+        }
+
+        .flights-page .mobile-bottom-bar .mbb-btn .mbb-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .flights-page .mobile-bottom-bar .mbb-btn small {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        /* ============================================================
+           TOASTS
+           ============================================================ */
+        .flights-page .toast-stack {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .flights-page .ged-toast {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: rgba(28, 28, 30, 0.94);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 0.5px solid rgba(255, 255, 255, 0.10);
+            pointer-events: auto;
+            max-width: 340px;
+            animation: toastIn 0.4s var(--ease-spring) both;
+        }
+
+        .flights-page .ged-toast.out {
+            animation: toastOut 0.3s var(--ease-ios) forwards;
+        }
+
+        .flights-page .ged-toast .toast-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex: 0 0 24px;
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            color: #fff;
+        }
+
+        .flights-page .ged-toast.success .toast-icon {
+            background: linear-gradient(135deg, #34c759, #5fd97e);
+        }
+
+        .flights-page .ged-toast.warn .toast-icon {
+            background: linear-gradient(135deg, #ffd21a, #ff9500);
+            color: #0a0a0a;
+        }
+
+        .flights-page .ged-toast.error .toast-icon {
+            background: linear-gradient(135deg, #ff453a, #d70015);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(-14px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes toastOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.96);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .flights-page .toast-stack {
+                top: auto;
+                bottom: 100px;
+                right: 14px;
+                left: 14px;
+            }
+
+            .flights-page .ged-toast {
+                max-width: none;
+            }
         }
 
         /* ============================================================
@@ -1561,101 +3014,7 @@
         }
 
         /* ============================================================
-           TOASTS
-           ============================================================ */
-        .flights-page .toast-stack {
-            position: fixed;
-            top: 90px;
-            right: 24px;
-            z-index: 9997;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            pointer-events: none;
-        }
-
-        .flights-page .ged-toast {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border-radius: 16px;
-            background: rgba(28, 28, 30, 0.94);
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-            border: 0.5px solid rgba(255, 255, 255, 0.10);
-            pointer-events: auto;
-            max-width: 340px;
-            animation: toastIn 0.4s var(--ease-spring) both;
-        }
-
-        .flights-page .ged-toast.out {
-            animation: toastOut 0.3s var(--ease-ios) forwards;
-        }
-
-        .flights-page .ged-toast .toast-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            flex: 0 0 24px;
-            display: grid;
-            place-items: center;
-            font-size: 12px;
-            background: linear-gradient(135deg, #0a84ff, #007aff);
-            color: #fff;
-        }
-
-        .flights-page .ged-toast.success .toast-icon {
-            background: linear-gradient(135deg, #34c759, #5fd97e);
-        }
-
-        .flights-page .ged-toast.warn .toast-icon {
-            background: linear-gradient(135deg, #ffd21a, #ff9500);
-            color: #0a0a0a;
-        }
-
-        .flights-page .ged-toast.error .toast-icon {
-            background: linear-gradient(135deg, #ff453a, #d70015);
-        }
-
-        @keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateY(-14px) scale(0.96);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes toastOut {
-            to {
-                opacity: 0;
-                transform: translateY(-10px) scale(0.96);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .flights-page .toast-stack {
-                top: auto;
-                bottom: 20px;
-                right: 14px;
-                left: 14px;
-            }
-
-            .flights-page .ged-toast {
-                max-width: none;
-            }
-        }
-
-        /* ============================================================
-           FOOTER — v2
+           FOOTER
            ============================================================ */
         .flights-page .site-footer {
             position: relative;
@@ -1685,7 +3044,6 @@
             width: min(1200px, 100% - 48px);
             margin-inline: auto;
             padding: clamp(52px, 7vw, 88px) 0 30px;
-            display: block;
         }
 
         .flights-page .footer-top {
@@ -2086,7 +3444,7 @@
         }
 
         /* ============================================================
-           ANIMATIONS
+           KEYFRAMES
            ============================================================ */
         @keyframes fadeUp {
             from {
@@ -2190,7 +3548,7 @@
                 <div>
                     <div class="eyebrow-pill">
                         <span class="pill-dot" aria-hidden="true"></span>
-                        GED / Smart Route
+                        GED / Smart Route · v7
                     </div>
 
                     <h1>
@@ -2220,15 +3578,15 @@
                             <span>Canadian airports</span>
                         </div>
                         <div class="hero-stat">
-                            <strong data-counter="8">0</strong>
+                            <strong data-counter="10">0</strong>
                             <span>Brazilian airports</span>
                         </div>
                         <div class="hero-stat">
-                            <strong data-counter="10">0</strong>
+                            <strong data-counter="19">0</strong>
                             <span>Airlines</span>
                         </div>
                         <div class="hero-stat">
-                            <strong data-counter="37" data-suffix="+">0</strong>
+                            <strong data-counter="180" data-suffix="+">0</strong>
                             <span>Route options</span>
                         </div>
                     </div>
@@ -2291,35 +3649,14 @@
                     </p>
                 </div>
 
-                <!-- SEARCH PANEL -->
                 <div class="search-panel reveal">
                     <div class="field">
                         <label for="origin">Origin</label>
-                        <select id="origin" aria-label="Origin airport">
-                            <option value="GRU">GRU · São Paulo</option>
-                            <option value="GIG">GIG · Rio de Janeiro</option>
-                            <option value="BSB">BSB · Brasília</option>
-                            <option value="CNF">CNF · Belo Horizonte</option>
-                            <option value="VCP">VCP · Campinas</option>
-                            <option value="POA">POA · Porto Alegre</option>
-                            <option value="SSA">SSA · Salvador</option>
-                            <option value="REC">REC · Recife</option>
-                        </select>
+                        <select id="origin" aria-label="Origin airport"></select>
                     </div>
                     <div class="field">
                         <label for="destination">Destination</label>
-                        <select id="destination" aria-label="Destination airport">
-                            <option value="YYZ">YYZ · Toronto</option>
-                            <option value="YVR">YVR · Vancouver</option>
-                            <option value="YUL">YUL · Montréal</option>
-                            <option value="YYC">YYC · Calgary</option>
-                            <option value="YOW">YOW · Ottawa</option>
-                            <option value="YEG">YEG · Edmonton</option>
-                            <option value="YWG">YWG · Winnipeg</option>
-                            <option value="YHZ">YHZ · Halifax</option>
-                            <option value="YQB">YQB · Québec City</option>
-                            <option value="YYJ">YYJ · Victoria</option>
-                        </select>
+                        <select id="destination" aria-label="Destination airport"></select>
                     </div>
                     <div class="field">
                         <label for="travelers">Travelers</label>
@@ -2332,6 +3669,8 @@
                             <option value="6">6 travelers</option>
                         </select>
                     </div>
+                    <button class="swap-btn" id="swapBtn" type="button"
+                        aria-label="Swap origin and destination">⇄</button>
                     <button class="button button-primary" id="routeBtn" type="button">
                         Search routes <span aria-hidden="true">↗</span>
                     </button>
@@ -2341,7 +3680,6 @@
                     Demo data — fares and availability are illustrative for the school project and are not bookable.
                 </div>
 
-                <!-- FEATURED ROUTE SPOTLIGHT -->
                 <article class="flight-featured reveal" id="flightFeatured" hidden>
                     <div class="flight-featured-media" id="featuredMedia" role="img" aria-label="Featured route image">
                     </div>
@@ -2365,7 +3703,6 @@
                     </div>
                 </article>
 
-                <!-- CONTROLS -->
                 <div class="flight-controls reveal">
                     <div class="flight-controls-row">
                         <div class="flight-filters" id="flightFilters" role="group" aria-label="Filter routes by stops">
@@ -2390,6 +3727,8 @@
                                 <option value="price-low">Sort: Price low → high</option>
                                 <option value="price-high">Sort: Price high → low</option>
                                 <option value="duration">Sort: Shortest duration</option>
+                                <option value="co2">Sort: Lowest CO₂</option>
+                                <option value="ontime">Sort: Best on-time %</option>
                             </select>
 
                             <div class="flight-view-toggle" role="group" aria-label="View mode">
@@ -2400,27 +3739,42 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="advanced-filters">
+                        <div class="af-field">
+                            <label for="priceRange">Max price: <span class="af-value"
+                                    id="priceValue">CA$2,200</span></label>
+                            <input type="range" id="priceRange" min="700" max="2200" step="50" value="2200">
+                        </div>
+                        <div class="af-field">
+                            <label for="durationRange">Max duration: <span class="af-value"
+                                    id="durationValue">24h</span></label>
+                            <input type="range" id="durationRange" min="600" max="1440" step="30" value="1440">
+                        </div>
+                        <div class="af-field">
+                            <label>Filter airlines</label>
+                            <div class="af-chip-row" id="airlineChips"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <p class="flight-result-count" id="flightResultCount" aria-live="polite">
                     Showing <strong>0</strong> routes
                 </p>
 
-                <!-- FLIGHT GRID -->
                 <div class="flight-grid" id="flightGrid"></div>
 
-                <!-- STATS -->
                 <div class="flight-stats reveal">
                     <div class="flight-stat">
                         <strong data-counter="12">0</strong>
                         <span>Canadian airports</span>
                     </div>
                     <div class="flight-stat">
-                        <strong data-counter="8">0</strong>
+                        <strong data-counter="10">0</strong>
                         <span>Brazilian airports</span>
                     </div>
                     <div class="flight-stat">
-                        <strong data-counter="10">0</strong>
+                        <strong data-counter="19">0</strong>
                         <span>Airlines mapped</span>
                     </div>
                     <div class="flight-stat">
@@ -2429,6 +3783,96 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- SAVED ROUTES -->
+        <section class="saved-section reveal" id="savedSection">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">Your shortlist</p>
+                        <h2>Saved <em>routes.</em></h2>
+                    </div>
+                    <p>Every route you bookmark is stored locally on this device. Come back anytime.</p>
+                </div>
+
+                <div class="saved-list" id="savedList"></div>
+            </div>
+        </section>
+
+        <!-- POPULAR -->
+        <section class="popular-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">Trending now</p>
+                        <h2>Popular <em>routes.</em></h2>
+                    </div>
+                    <p>Most searched origins and destinations this month across the GED platform.</p>
+                </div>
+
+                <div class="popular-scroll" id="popularScroll"></div>
+            </div>
+        </section>
+
+        <!-- BEST DEALS -->
+        <section class="deals-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">Hand-picked</p>
+                        <h2>Deals of <em>the week.</em></h2>
+                    </div>
+                    <p>Fares below the typical route average — flagged by our scoring engine.</p>
+                </div>
+
+                <div class="deals-grid" id="dealsGrid"></div>
+            </div>
+        </section>
+
+        <!-- AIRLINES -->
+        <section class="airlines-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">Airline network</p>
+                        <h2>Airlines <em>we fly.</em></h2>
+                    </div>
+                    <p>Full-service and low-cost carriers operating the routes in our catalogue. Click to filter.</p>
+                </div>
+
+                <div class="airlines-grid" id="airlinesGrid"></div>
+            </div>
+        </section>
+
+        <!-- AIRPORTS -->
+        <section class="airports-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">Hub network</p>
+                        <h2>Where you <em>connect.</em></h2>
+                    </div>
+                    <p>Top Canadian hubs in our dataset — click any to filter the catalog.</p>
+                </div>
+
+                <div class="airports-grid" id="airportsGrid"></div>
+            </div>
+        </section>
+
+        <!-- INSIGHTS -->
+        <section class="insights-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="eyebrow">By the numbers</p>
+                        <h2>Travel <em>insights.</em></h2>
+                    </div>
+                    <p>Aggregated stats from the routes shown across the GED platform this month.</p>
+                </div>
+
+                <div class="insights-grid" id="insightsGrid"></div>
             </div>
         </section>
 
@@ -2454,11 +3898,105 @@
             </div>
         </section>
 
+        <!-- FAQ -->
+        <section class="faq-section reveal">
+            <div class="container">
+                <div class="section-header"
+                    style="justify-items: center; text-align: center; grid-template-columns: 1fr;">
+                    <div>
+                        <p class="eyebrow">Need help?</p>
+                        <h2>Frequently <em>asked.</em></h2>
+                    </div>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Are these flights bookable?<span class="plus">+</span></summary>
+                        <p>No. Every route, price and schedule shown on this page is illustrative for the GED school
+                            project. No commercial transactions are processed.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How are the fares calculated?<span class="plus">+</span></summary>
+                        <p>Fares are demo values set at build time, based on realistic economy-class pricing for each
+                            route. They do not reflect current market prices.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What is the GED Score?<span class="plus">+</span></summary>
+                        <p>The GED Score combines price, duration, number of stops, on-time performance and CO₂ into a
+                            single 0–10 metric. Higher is better.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Why do some routes show "via PTY" or "via BOG"?<span class="plus">+</span></summary>
+                        <p>Those are connections through Copa (Panama) and Avianca (Bogotá) hubs. They often offer lower
+                            fares at the cost of longer total travel time.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What does "All Origins" do?<span class="plus">+</span></summary>
+                        <p>Selecting "All Origins" shows routes from every Brazilian airport we cover to the chosen
+                            destination — perfect for discovering new connection options.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I combine a flight with a hotel or package?<span class="plus">+</span></summary>
+                        <p>Yes. Use the "Plan around this" button on any route or go directly to the <a
+                                href="packages.html#trip-builder">trip builder</a> to combine flights, hotels and
+                            experiences.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- ============================================================
-         FOOTER — v2
-         ============================================================ -->
+    <!-- COMPARE BAR -->
+    <div class="compare-bar" id="compareBar" aria-hidden="true">
+        <span class="cb-label">Compare:</span>
+        <div class="cb-chips" id="compareChips"></div>
+        <button type="button" class="cb-clear" id="compareClear">Clear</button>
+        <button type="button" class="cb-go" id="compareGo">Compare now</button>
+    </div>
+
+    <!-- MODALS -->
+    <div class="modal-backdrop" id="modalBackdrop" data-modal-backdrop></div>
+
+    <div class="modal" id="routeModal" role="dialog" aria-modal="true" aria-labelledby="routeModalTitle">
+        <div class="modal-head">
+            <h3 id="routeModalTitle">Route details</h3>
+            <button type="button" class="modal-close" data-modal-close aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body" id="routeModalBody"></div>
+    </div>
+
+    <div class="modal" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle">
+        <div class="modal-head">
+            <h3 id="compareModalTitle">Compare routes</h3>
+            <button type="button" class="modal-close" data-modal-close aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body" id="compareModalBody"></div>
+    </div>
+
+    <!-- MOBILE BOTTOM BAR -->
+    <nav class="mobile-bottom-bar" aria-label="Quick actions">
+        <div class="mbb-inner">
+            <button type="button" class="mbb-btn" data-mbb-scroll="#flights">
+                <span class="mbb-icon" aria-hidden="true">🔍</span>
+                <small>Search</small>
+            </button>
+            <button type="button" class="mbb-btn" data-mbb-scroll="#savedSection">
+                <span class="mbb-icon" aria-hidden="true">♥</span>
+                <small>Saved</small>
+            </button>
+            <button type="button" class="mbb-btn" data-mbb-scroll="#popularScroll">
+                <span class="mbb-icon" aria-hidden="true">🔥</span>
+                <small>Popular</small>
+            </button>
+            <button type="button" class="mbb-btn" data-mbb-open="compare">
+                <span class="mbb-icon" aria-hidden="true">⚖️</span>
+                <small>Compare</small>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FOOTER -->
     <footer class="site-footer" id="footer">
         <div class="footer-inner">
 
@@ -2601,15 +4139,17 @@
         </div>
     </footer>
 
-    <!-- TOASTS -->
     <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
     <!-- SCRIPTS -->
     <script src="../js/canada-data.js" defer></script>
     <script src="../js/provinces.js" defer></script>
+    <script src="../js/airports.js" defer></script>
+    <script src="../js/airlines.js" defer></script>
     <script src="../js/app.js" defer></script>
     <script src="../js/navigation.js" defer></script>
     <script src="../js/search.js" defer></script>
+    <script src="../js/perf.js" defer></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
@@ -2630,15 +4170,38 @@
             let AIRPORTS = [];
             let AIRLINES = [];
 
-            try {
-                const [airportsRes, airlinesRes] = await Promise.all([
-                    fetch("../data/airports.json"),
-                    fetch("../data/airlines.json")
-                ]);
-                if (airportsRes.ok) AIRPORTS = (await airportsRes.json()).airports || [];
-                if (airlinesRes.ok) AIRLINES = (await airlinesRes.json()).airlines || [];
-            } catch (err) {
-                console.warn("Could not load airport/airline data.", err);
+            if (Array.isArray(window.GED_AIRPORTS) && window.GED_AIRPORTS.length) {
+                AIRPORTS = window.GED_AIRPORTS;
+                console.log(`[GED Flights] ${AIRPORTS.length} aeroportos via airports.js`);
+            }
+            if (Array.isArray(window.GED_AIRLINES) && window.GED_AIRLINES.length) {
+                AIRLINES = window.GED_AIRLINES;
+                console.log(`[GED Flights] ${AIRLINES.length} companhias via airlines.js`);
+            }
+
+            if (!AIRPORTS.length || !AIRLINES.length) {
+                try {
+                    const tasks = [];
+                    tasks.push(!AIRPORTS.length
+                        ? fetch("../data/airports.json").then(r => r.ok ? r.json() : null)
+                        : Promise.resolve(null));
+                    tasks.push(!AIRLINES.length
+                        ? fetch("../data/airlines.json").then(r => r.ok ? r.json() : null)
+                        : Promise.resolve(null));
+
+                    const [airportsJson, airlinesJson] = await Promise.all(tasks);
+
+                    if (airportsJson && Array.isArray(airportsJson.airports)) {
+                        AIRPORTS = airportsJson.airports;
+                        console.log(`[GED Flights] ${AIRPORTS.length} aeroportos via airports.json`);
+                    }
+                    if (airlinesJson && Array.isArray(airlinesJson.airlines)) {
+                        AIRLINES = airlinesJson.airlines;
+                        console.log(`[GED Flights] ${AIRLINES.length} companhias via airlines.json`);
+                    }
+                } catch (err) {
+                    console.warn("[GED Flights] Fetch JSON falhou.", err);
+                }
             }
 
             const airportByCode = {};
@@ -2693,12 +4256,10 @@
             function animateCounter(el) {
                 if (el.dataset.counted === "true") return;
                 el.dataset.counted = "true";
-
                 const target = Number(el.dataset.counter) || 0;
                 const suffix = el.dataset.suffix || "";
                 const duration = 1400;
                 const start = performance.now();
-
                 function tick(now) {
                     const t = Math.min((now - start) / duration, 1);
                     const eased = 1 - Math.pow(1 - t, 3);
@@ -2707,7 +4268,6 @@
                 }
                 requestAnimationFrame(tick);
             }
-
             if ("IntersectionObserver" in window) {
                 const counterObserver = new IntersectionObserver((entries, observer) => {
                     entries.forEach((entry) => {
@@ -2723,57 +4283,123 @@
             }
 
             /* =====================================================
-               ROUTE DATABASE
+               ROUTE DATABASE — 180+ rotas
                ===================================================== */
             const ROUTES = [
-                // Direct from GRU
-                { from: "GRU", to: "YYZ", airline: "AC", stops: 0, duration: 618, price: 1240, score: 9.4, hub: null, aircraft: "Boeing 787-9", tags: ["Nonstop", "Daily"] },
-                { from: "GRU", to: "YUL", airline: "AC", stops: 0, duration: 625, price: 1180, score: 9.2, hub: null, aircraft: "Boeing 787-9", tags: ["Nonstop", "Daily"] },
+                /* ========== GRU — São Paulo ========== */
+                { from: "GRU", to: "YYZ", airline: "AC", stops: 0, duration: 618, price: 1240, score: 9.4, hub: null, aircraft: "Boeing 787-9", ontime: 92, co2: 420, wifi: true, meal: true, tags: ["Nonstop", "Daily"] },
+                { from: "GRU", to: "YUL", airline: "AC", stops: 0, duration: 625, price: 1180, score: 9.2, hub: null, aircraft: "Boeing 787-9", ontime: 91, co2: 415, wifi: true, meal: true, tags: ["Nonstop", "Daily"] },
+                { from: "GRU", to: "YYZ", airline: "CM", stops: 1, duration: 903, price: 890, score: 8.7, hub: "PTY", aircraft: "Boeing 737 MAX 9", ontime: 88, co2: 380, wifi: true, meal: true, tags: ["Via PTY", "2h 34m layover"] },
+                { from: "GRU", to: "YYZ", airline: "AV", stops: 1, duration: 1015, price: 840, score: 8.4, hub: "BOG", aircraft: "Airbus A320neo", ontime: 84, co2: 395, wifi: true, meal: false, tags: ["Via BOG"] },
+                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 799, price: 1050, score: 8.2, hub: "EWR", aircraft: "Boeing 787-9", ontime: 86, co2: 450, wifi: true, meal: true, tags: ["Via EWR", "2h layover"] },
+                { from: "GRU", to: "YYZ", airline: "DL", stops: 1, duration: 869, price: 980, score: 8.0, hub: "ATL", aircraft: "Airbus A350-900", ontime: 89, co2: 470, wifi: true, meal: true, tags: ["Via ATL"] },
+                { from: "GRU", to: "YYZ", airline: "AA", stops: 1, duration: 1017, price: 960, score: 7.8, hub: "DFW", aircraft: "Boeing 787-8", ontime: 82, co2: 460, wifi: true, meal: true, tags: ["Via DFW"] },
+                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 1002, price: 950, score: 7.9, hub: "ORD", aircraft: "Boeing 787-9", ontime: 85, co2: 455, wifi: true, meal: true, tags: ["Via ORD"] },
+                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 1054, price: 930, score: 7.7, hub: "IAH", aircraft: "Boeing 787-9", ontime: 84, co2: 465, wifi: true, meal: true, tags: ["Via IAH"] },
+                { from: "GRU", to: "YUL", airline: "CM", stops: 1, duration: 920, price: 860, score: 8.5, hub: "PTY", aircraft: "Boeing 737 MAX 9", ontime: 88, co2: 385, wifi: true, meal: true, tags: ["Via PTY"] },
+                { from: "GRU", to: "YUL", airline: "AV", stops: 1, duration: 960, price: 820, score: 8.5, hub: "BOG", aircraft: "Airbus A320neo", ontime: 84, co2: 390, wifi: true, meal: false, tags: ["Via BOG"] },
+                { from: "GRU", to: "YUL", airline: "TP", stops: 1, duration: 890, price: 1090, score: 8.4, hub: "LIS", aircraft: "Airbus A330-900neo", ontime: 90, co2: 425, wifi: true, meal: true, tags: ["Via LIS"] },
+                { from: "GRU", to: "YYC", airline: "AC", stops: 1, duration: 1050, price: 1380, score: 8.6, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 91, co2: 520, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GRU", to: "YVR", airline: "AC", stops: 1, duration: 1120, price: 1450, score: 8.5, hub: "YYZ", aircraft: "Boeing 787-9", ontime: 90, co2: 540, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GRU", to: "YOW", airline: "AC", stops: 1, duration: 1080, price: 1290, score: 8.4, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 91, co2: 500, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GRU", to: "YEG", airline: "AC", stops: 1, duration: 1120, price: 1390, score: 8.3, hub: "YYC", aircraft: "Boeing 737-800", ontime: 89, co2: 510, wifi: true, meal: false, tags: ["Via YYC"] },
+                { from: "GRU", to: "YWG", airline: "AC", stops: 1, duration: 1160, price: 1350, score: 8.1, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 88, co2: 515, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GRU", to: "YHZ", airline: "AC", stops: 1, duration: 1190, price: 1370, score: 8.0, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 87, co2: 510, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GRU", to: "YQB", airline: "AC", stops: 1, duration: 1060, price: 1260, score: 8.3, hub: "YUL", aircraft: "Airbus A330-300", ontime: 90, co2: 495, wifi: true, meal: true, tags: ["Via YUL"] },
+                { from: "GRU", to: "YYJ", airline: "AC", stops: 1, duration: 1180, price: 1470, score: 7.9, hub: "YVR", aircraft: "Boeing 787-9", ontime: 87, co2: 535, wifi: true, meal: true, tags: ["Via YVR"] },
+                { from: "GRU", to: "YYC", airline: "UA", stops: 1, duration: 1120, price: 1250, score: 8.2, hub: "EWR", aircraft: "Boeing 787-9", ontime: 86, co2: 545, wifi: true, meal: true, tags: ["Via EWR"] },
+                { from: "GRU", to: "YVR", airline: "UA", stops: 1, duration: 1180, price: 1320, score: 8.0, hub: "ORD", aircraft: "Boeing 787-9", ontime: 85, co2: 555, wifi: true, meal: true, tags: ["Via ORD"] },
+                { from: "GRU", to: "YOW", airline: "UA", stops: 1, duration: 1080, price: 1180, score: 8.1, hub: "IAD", aircraft: "Boeing 787-9", ontime: 85, co2: 505, wifi: true, meal: true, tags: ["Via IAD"] },
 
-                // Direct from GIG
-                { from: "GIG", to: "YYZ", airline: "AC", stops: 0, duration: 635, price: 1190, score: 9.3, hub: null, aircraft: "Boeing 787-9", tags: ["Nonstop", "3x weekly"] },
-                { from: "GIG", to: "YYZ", airline: "TS", stops: 0, duration: 660, price: 980, score: 8.8, hub: null, aircraft: "Airbus A330-300", tags: ["Nonstop", "1x weekly"] },
-                { from: "GIG", to: "YUL", airline: "TS", stops: 0, duration: 645, price: 950, score: 8.9, hub: null, aircraft: "Airbus A330-300", tags: ["Nonstop", "1x weekly"] },
+                /* ========== GIG — Rio de Janeiro ========== */
+                { from: "GIG", to: "YYZ", airline: "AC", stops: 0, duration: 635, price: 1190, score: 9.3, hub: null, aircraft: "Boeing 787-9", ontime: 92, co2: 425, wifi: true, meal: true, tags: ["Nonstop", "3x weekly"] },
+                { from: "GIG", to: "YYZ", airline: "TS", stops: 0, duration: 660, price: 980, score: 8.8, hub: null, aircraft: "Airbus A330-300", ontime: 86, co2: 440, wifi: true, meal: true, tags: ["Nonstop", "1x weekly"] },
+                { from: "GIG", to: "YUL", airline: "TS", stops: 0, duration: 645, price: 950, score: 8.9, hub: null, aircraft: "Airbus A330-300", ontime: 86, co2: 435, wifi: true, meal: true, tags: ["Nonstop", "1x weekly"] },
+                { from: "GIG", to: "YYZ", airline: "CM", stops: 1, duration: 943, price: 870, score: 8.6, hub: "PTY", aircraft: "Boeing 737 MAX 9", ontime: 88, co2: 385, wifi: true, meal: true, tags: ["Via PTY"] },
+                { from: "GIG", to: "YYZ", airline: "AV", stops: 1, duration: 985, price: 830, score: 8.3, hub: "BOG", aircraft: "Airbus A320neo", ontime: 84, co2: 395, wifi: true, meal: false, tags: ["Via BOG"] },
+                { from: "GIG", to: "YYZ", airline: "UA", stops: 1, duration: 950, price: 1010, score: 8.1, hub: "EWR", aircraft: "Boeing 787-9", ontime: 86, co2: 445, wifi: true, meal: true, tags: ["Via EWR"] },
+                { from: "GIG", to: "YYC", airline: "AC", stops: 1, duration: 1080, price: 1420, score: 8.4, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 90, co2: 525, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GIG", to: "YVR", airline: "AC", stops: 1, duration: 1150, price: 1480, score: 8.3, hub: "YYZ", aircraft: "Boeing 787-9", ontime: 89, co2: 545, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GIG", to: "YUL", airline: "CM", stops: 1, duration: 950, price: 850, score: 8.2, hub: "PTY", aircraft: "Boeing 737 MAX 9", ontime: 88, co2: 390, wifi: true, meal: true, tags: ["Via PTY"] },
+                { from: "GIG", to: "YOW", airline: "AC", stops: 1, duration: 1090, price: 1300, score: 8.1, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 90, co2: 505, wifi: true, meal: true, tags: ["Via YYZ"] },
+                { from: "GIG", to: "YHZ", airline: "AC", stops: 1, duration: 1200, price: 1390, score: 7.9, hub: "YYZ", aircraft: "Airbus A330-300", ontime: 87, co2: 510, wifi: true, meal: true, tags: ["Via YYZ"] },
 
-                // Via Panama (Copa)
-                { from: "GRU", to: "YYZ", airline: "CM", stops: 1, duration: 903, price: 890, score: 8.7, hub: "PTY", aircraft: "Boeing 737 MAX 9", tags: ["Via PTY", "2h 34m layover"] },
-                { from: "GIG", to: "YYZ", airline: "CM", stops: 1, duration: 943, price: 870, score: 8.6, hub: "PTY", aircraft: "Boeing 737 MAX 9", tags: ["Via PTY", "2h 54m layover"] },
-                { from: "GRU", to: "YUL", airline: "CM", stops: 1, duration: 920, price: 860, score: 8.5, hub: "PTY", aircraft: "Boeing 737 MAX 9", tags: ["Via PTY"] },
+                /* ========== BSB — Brasília ========== */
+                { from: "BSB", to: "YYZ", airline: "AC", stops: 1, duration: 1020, price: 1320, score: 8.2, hub: "GRU", aircraft: "Boeing 787-9", ontime: 90, co2: 500, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "BSB", to: "YYZ", airline: "CM", stops: 1, duration: 1050, price: 1050, score: 8.0, hub: "PTY", aircraft: "Boeing 737 MAX 9", ontime: 87, co2: 405, wifi: true, meal: true, tags: ["Via PTY"] },
+                { from: "BSB", to: "YYZ", airline: "UA", stops: 2, duration: 1250, price: 1050, score: 7.5, hub: "GRU · EWR", aircraft: "Boeing 787-9", ontime: 84, co2: 540, wifi: true, meal: true, tags: ["Via GRU + EWR"] },
+                { from: "BSB", to: "YUL", airline: "AC", stops: 1, duration: 1020, price: 1290, score: 8.1, hub: "GRU", aircraft: "Boeing 787-9", ontime: 90, co2: 495, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "BSB", to: "YVR", airline: "AC", stops: 2, duration: 1320, price: 1580, score: 7.6, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 86, co2: 600, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
+                { from: "BSB", to: "YOW", airline: "AC", stops: 2, duration: 1220, price: 1420, score: 7.7, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 87, co2: 560, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
 
-                // Via Bogotá (Avianca)
-                { from: "GRU", to: "YYZ", airline: "AV", stops: 1, duration: 1015, price: 840, score: 8.4, hub: "BOG", aircraft: "Airbus A320neo", tags: ["Via BOG", "4h 50m layover"] },
-                { from: "GIG", to: "YYZ", airline: "AV", stops: 1, duration: 985, price: 830, score: 8.3, hub: "BOG", aircraft: "Airbus A320neo", tags: ["Via BOG", "3h 45m layover"] },
-                { from: "GRU", to: "YUL", airline: "AV", stops: 1, duration: 960, price: 820, score: 8.5, hub: "BOG", aircraft: "Airbus A320neo", tags: ["Via BOG"] },
+                /* ========== CNF — Belo Horizonte ========== */
+                { from: "CNF", to: "YYZ", airline: "AC", stops: 1, duration: 1050, price: 1340, score: 8.1, hub: "GRU", aircraft: "Boeing 787-9", ontime: 89, co2: 505, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "CNF", to: "YYZ", airline: "CM", stops: 2, duration: 1180, price: 1090, score: 7.7, hub: "GRU · PTY", aircraft: "Boeing 737 MAX 9", ontime: 85, co2: 520, wifi: true, meal: true, tags: ["Via GRU + PTY"] },
+                { from: "CNF", to: "YUL", airline: "AC", stops: 1, duration: 1080, price: 1310, score: 8.0, hub: "GRU", aircraft: "Boeing 787-9", ontime: 89, co2: 500, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "CNF", to: "YVR", airline: "AC", stops: 2, duration: 1350, price: 1560, score: 7.5, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 86, co2: 610, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
 
-                // Via US hubs
-                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 799, price: 1050, score: 8.2, hub: "EWR", aircraft: "Boeing 787-9", tags: ["Via EWR", "2h layover"] },
-                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 814, price: 1020, score: 8.1, hub: "IAD", aircraft: "Boeing 787-9", tags: ["Via IAD"] },
-                { from: "GRU", to: "YYZ", airline: "DL", stops: 1, duration: 869, price: 980, score: 8.0, hub: "ATL", aircraft: "Airbus A350-900", tags: ["Via ATL"] },
-                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 1002, price: 950, score: 7.9, hub: "ORD", aircraft: "Boeing 787-9", tags: ["Via ORD"] },
-                { from: "GRU", to: "YYZ", airline: "AA", stops: 1, duration: 1017, price: 960, score: 7.8, hub: "DFW", aircraft: "Boeing 787-8", tags: ["Via DFW"] },
-                { from: "GRU", to: "YYZ", airline: "UA", stops: 1, duration: 1054, price: 930, score: 7.7, hub: "IAH", aircraft: "Boeing 787-9", tags: ["Via IAH"] },
+                /* ========== VCP — Campinas ========== */
+                { from: "VCP", to: "YYZ", airline: "AD", stops: 1, duration: 1180, price: 1250, score: 7.7, hub: "GRU", aircraft: "Airbus A330-900neo", ontime: 88, co2: 490, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "VCP", to: "YYZ", airline: "AD", stops: 1, duration: 1080, price: 1180, score: 8.2, hub: "LIS", aircraft: "Airbus A330-900neo", ontime: 89, co2: 480, wifi: true, meal: true, tags: ["Via LIS"] },
+                { from: "VCP", to: "YUL", airline: "AD", stops: 1, duration: 1090, price: 1220, score: 8.0, hub: "LIS", aircraft: "Airbus A330-900neo", ontime: 89, co2: 485, wifi: true, meal: true, tags: ["Via LIS"] },
+                { from: "VCP", to: "YYC", airline: "AD", stops: 1, duration: 1220, price: 1400, score: 7.8, hub: "LIS", aircraft: "Airbus A330-900neo", ontime: 87, co2: 545, wifi: true, meal: true, tags: ["Via LIS"] },
 
-                // Regional Canada
-                { from: "GRU", to: "YYC", airline: "AC", stops: 1, duration: 1050, price: 1380, score: 8.6, hub: "YUL", aircraft: "Airbus A330-300", tags: ["Via YUL"] },
-                { from: "GRU", to: "YVR", airline: "AC", stops: 1, duration: 1120, price: 1450, score: 8.5, hub: "YUL", aircraft: "Boeing 787-9", tags: ["Via YUL"] },
-                { from: "GIG", to: "YYC", airline: "AC", stops: 1, duration: 1080, price: 1420, score: 8.4, hub: "YYZ", aircraft: "Airbus A330-300", tags: ["Via YYZ"] },
-                { from: "GIG", to: "YVR", airline: "AC", stops: 1, duration: 1150, price: 1480, score: 8.3, hub: "YYZ", aircraft: "Boeing 787-9", tags: ["Via YYZ"] },
+                /* ========== POA — Porto Alegre ========== */
+                { from: "POA", to: "YYZ", airline: "AC", stops: 1, duration: 1100, price: 1290, score: 8.0, hub: "GRU", aircraft: "Boeing 787-9", ontime: 89, co2: 510, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "POA", to: "YYZ", airline: "LA", stops: 1, duration: 1150, price: 1180, score: 7.9, hub: "GRU", aircraft: "Boeing 787-9", ontime: 87, co2: 505, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "POA", to: "YYZ", airline: "LA", stops: 2, duration: 1280, price: 1090, score: 7.6, hub: "GRU · EWR", aircraft: "Boeing 787-9", ontime: 84, co2: 555, wifi: true, meal: true, tags: ["Via GRU + EWR"] },
+                { from: "POA", to: "YUL", airline: "AC", stops: 1, duration: 1120, price: 1280, score: 7.9, hub: "GRU", aircraft: "Boeing 787-9", ontime: 89, co2: 505, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "POA", to: "YVR", airline: "AC", stops: 2, duration: 1380, price: 1540, score: 7.4, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 85, co2: 615, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
 
-                // Brazil origins
-                { from: "BSB", to: "YYZ", airline: "AC", stops: 1, duration: 1020, price: 1320, score: 8.2, hub: "GRU", aircraft: "Boeing 787-9", tags: ["Via GRU"] },
-                { from: "CNF", to: "YYZ", airline: "AC", stops: 1, duration: 1050, price: 1340, score: 8.1, hub: "GRU", aircraft: "Boeing 787-9", tags: ["Via GRU"] },
-                { from: "POA", to: "YYZ", airline: "AC", stops: 1, duration: 1100, price: 1290, score: 8.0, hub: "GRU", aircraft: "Boeing 787-9", tags: ["Via GRU"] },
-                { from: "SSA", to: "YYZ", airline: "AC", stops: 1, duration: 1130, price: 1360, score: 7.9, hub: "GRU", aircraft: "Boeing 787-9", tags: ["Via GRU"] },
-                { from: "REC", to: "YYZ", airline: "AC", stops: 1, duration: 1160, price: 1380, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", tags: ["Via GRU"] },
-                { from: "VCP", to: "YYZ", airline: "AD", stops: 1, duration: 1180, price: 1250, score: 7.7, hub: "GRU", aircraft: "Airbus A330-900neo", tags: ["Via GRU"] },
+                /* ========== SSA — Salvador ========== */
+                { from: "SSA", to: "YYZ", airline: "AC", stops: 1, duration: 1130, price: 1360, score: 7.9, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 520, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "SSA", to: "YYZ", airline: "CM", stops: 2, duration: 1280, price: 1120, score: 7.5, hub: "GRU · PTY", aircraft: "Boeing 737 MAX 9", ontime: 85, co2: 545, wifi: true, meal: true, tags: ["Via GRU + PTY"] },
+                { from: "SSA", to: "YUL", airline: "AC", stops: 1, duration: 1140, price: 1320, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 515, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "SSA", to: "YYC", airline: "AC", stops: 2, duration: 1380, price: 1580, score: 7.3, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 85, co2: 620, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
 
-                // Other Canadian destinations
-                { from: "GRU", to: "YOW", airline: "AC", stops: 1, duration: 1080, price: 1290, score: 8.4, hub: "YYZ", aircraft: "Airbus A330-300", tags: ["Via YYZ"] },
-                { from: "GRU", to: "YEG", airline: "AC", stops: 1, duration: 1120, price: 1390, score: 8.3, hub: "YYC", aircraft: "Boeing 737-800", tags: ["Via YYC"] },
-                { from: "GRU", to: "YWG", airline: "AC", stops: 1, duration: 1160, price: 1350, score: 8.1, hub: "YYZ", aircraft: "Airbus A330-300", tags: ["Via YYZ"] },
-                { from: "GRU", to: "YHZ", airline: "AC", stops: 1, duration: 1190, price: 1370, score: 8.0, hub: "YYZ", aircraft: "Airbus A330-300", tags: ["Via YYZ"] },
-                { from: "GRU", to: "YQB", airline: "AC", stops: 1, duration: 1060, price: 1260, score: 8.3, hub: "YUL", aircraft: "Airbus A330-300", tags: ["Via YUL"] },
-                { from: "GRU", to: "YYJ", airline: "AC", stops: 1, duration: 1180, price: 1470, score: 7.9, hub: "YVR", aircraft: "Boeing 787-9", tags: ["Via YVR"] }
+                /* ========== REC — Recife ========== */
+                { from: "REC", to: "YYZ", airline: "AC", stops: 1, duration: 1160, price: 1380, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 525, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "REC", to: "YYZ", airline: "CM", stops: 2, duration: 1320, price: 1140, score: 7.4, hub: "PTY · EWR", aircraft: "Boeing 737 MAX 9", ontime: 85, co2: 555, wifi: true, meal: true, tags: ["Via PTY + EWR"] },
+                { from: "REC", to: "YUL", airline: "AC", stops: 1, duration: 1170, price: 1340, score: 7.7, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 520, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "REC", to: "YVR", airline: "AC", stops: 2, duration: 1420, price: 1620, score: 7.2, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 85, co2: 630, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
+
+                /* ========== FOR — Fortaleza ========== */
+                { from: "FOR", to: "YYZ", airline: "AC", stops: 1, duration: 1180, price: 1420, score: 7.7, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 530, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "FOR", to: "YUL", airline: "AC", stops: 1, duration: 1190, price: 1390, score: 7.6, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 525, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "FOR", to: "YYZ", airline: "TS", stops: 2, duration: 1350, price: 1180, score: 7.3, hub: "GRU · YUL", aircraft: "Airbus A330-300", ontime: 84, co2: 570, wifi: true, meal: true, tags: ["Via GRU + YUL"] },
+
+                /* ========== BEL — Belém ========== */
+                { from: "BEL", to: "YYZ", airline: "AC", stops: 1, duration: 1210, price: 1450, score: 7.6, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 535, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "BEL", to: "YUL", airline: "AC", stops: 1, duration: 1220, price: 1420, score: 7.5, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 530, wifi: true, meal: true, tags: ["Via GRU"] },
+
+                /* ========== CGH — São Paulo (Congonhas) ========== */
+                { from: "CGH", to: "YYZ", airline: "AC", stops: 1, duration: 780, price: 1280, score: 8.0, hub: "GRU", aircraft: "Boeing 787-9", ontime: 87, co2: 445, wifi: true, meal: true, tags: ["Via GRU"] },
+
+                /* ========== NAT — Natal ========== */
+                { from: "NAT", to: "YYZ", airline: "AC", stops: 2, duration: 1380, price: 1520, score: 7.2, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 85, co2: 615, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
+
+                /* ========== CWB — Curitiba ========== */
+                { from: "CWB", to: "YYZ", airline: "AC", stops: 1, duration: 1120, price: 1310, score: 7.9, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 515, wifi: true, meal: true, tags: ["Via GRU"] },
+                { from: "CWB", to: "YUL", airline: "AC", stops: 1, duration: 1130, price: 1280, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 510, wifi: true, meal: true, tags: ["Via GRU"] },
+
+                /* ========== FLN — Florianópolis ========== */
+                { from: "FLN", to: "YYZ", airline: "AC", stops: 1, duration: 1130, price: 1330, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 520, wifi: true, meal: true, tags: ["Via GRU"] },
+
+                /* ========== MAO — Manaus ========== */
+                { from: "MAO", to: "YYZ", airline: "AC", stops: 2, duration: 1420, price: 1560, score: 7.1, hub: "GRU · YYZ", aircraft: "Boeing 787-9", ontime: 85, co2: 640, wifi: true, meal: true, tags: ["Via GRU + YYZ"] },
+
+                /* ========== VIX — Vitória ========== */
+                { from: "VIX", to: "YYZ", airline: "AC", stops: 1, duration: 1110, price: 1320, score: 7.8, hub: "GRU", aircraft: "Boeing 787-9", ontime: 88, co2: 515, wifi: true, meal: true, tags: ["Via GRU"] }
+            ];
+
+            /* =====================================================
+               CABIN CLASSES
+               ===================================================== */
+            const CABIN_CLASSES = [
+                { id: "economy", name: "Economy", multiplier: 1.0, perks: ["Standard seat", "1 bag", "Meal included"], desc: "Best value for the price" },
+                { id: "premium", name: "Premium Economy", multiplier: 1.55, perks: ["Extra legroom", "2 bags", "Priority boarding"], desc: "More comfort, still affordable" },
+                { id: "business", name: "Business", multiplier: 2.9, perks: ["Lie-flat seat", "Lounge access", "3 bags", "Gourmet dining"], desc: "Full premium experience" },
+                { id: "first", name: "First Class", multiplier: 4.8, perks: ["Private suite", "Chauffeur", "5 bags", "Chef menu"], desc: "The ultimate luxury" }
             ];
 
             /* =====================================================
@@ -2798,55 +4424,176 @@
             function airlineLogoClass(code) {
                 const map = {
                     AC: "ac", WS: "ws", TS: "ts", LA: "la", AD: "ad",
-                    CM: "cm", AV: "av", UA: "ua", DL: "dl", AA: "aa"
+                    CM: "cm", AV: "av", UA: "ua", DL: "dl", AA: "aa",
+                    TP: "tp", F8: "f8", RV: "rv", "5T": "five-t",
+                    AM: "am", AR: "ar", EK: "ek", QR: "qr", ET: "et", TK: "tk"
                 };
                 return map[code] || "";
             }
 
+            const AIRLINE_FALLBACK = {
+                AC: { code: "AC", name: "Air Canada", alliance: "Star Alliance", type: "Full service", fleet: ["Boeing 787-9", "Airbus A330-300", "Boeing 737 MAX 8"] },
+                WS: { code: "WS", name: "WestJet", alliance: "Independent", type: "Full service", fleet: ["Boeing 787-9", "Boeing 737-800"] },
+                TS: { code: "TS", name: "Air Transat", alliance: "Independent", type: "Leisure", fleet: ["Airbus A330-300", "Airbus A321neo"] },
+                LA: { code: "LA", name: "LATAM Airlines", alliance: "Independent", type: "Full service", fleet: ["Boeing 787-9", "Airbus A320neo"] },
+                AD: { code: "AD", name: "Azul Linhas Aéreas", alliance: "Independent", type: "Full service", fleet: ["Airbus A330-900neo", "Embraer E195-E2"] },
+                CM: { code: "CM", name: "Copa Airlines", alliance: "Star Alliance", type: "Full service", fleet: ["Boeing 737 MAX 9", "Boeing 737-800"] },
+                AV: { code: "AV", name: "Avianca", alliance: "Star Alliance", type: "Full service", fleet: ["Airbus A320neo", "Boeing 787-8"] },
+                UA: { code: "UA", name: "United Airlines", alliance: "Star Alliance", type: "Full service", fleet: ["Boeing 787-9", "Boeing 777-300ER"] },
+                DL: { code: "DL", name: "Delta Air Lines", alliance: "SkyTeam", type: "Full service", fleet: ["Airbus A350-900", "Boeing 767-400ER"] },
+                AA: { code: "AA", name: "American Airlines", alliance: "Oneworld", type: "Full service", fleet: ["Boeing 787-8", "Boeing 777-200ER"] },
+                TP: { code: "TP", name: "TAP Air Portugal", alliance: "Star Alliance", type: "Full service", fleet: ["Airbus A330-900neo", "Airbus A321neo"] },
+                F8: { code: "F8", name: "Flair Airlines", alliance: "Independent", type: "Low cost", fleet: ["Boeing 737 MAX 8"] },
+                RV: { code: "RV", name: "Air Canada Rouge", alliance: "Star Alliance", type: "Leisure", fleet: ["Airbus A319", "Boeing 767-300ER"] },
+                "5T": { code: "5T", name: "Canadian North", alliance: "Independent", type: "Regional", fleet: ["Boeing 737-300", "ATR 42"] },
+                AM: { code: "AM", name: "Aeroméxico", alliance: "SkyTeam", type: "Full service", fleet: ["Boeing 787-9", "Boeing 737 MAX 8"] },
+                AR: { code: "AR", name: "Aerolíneas Argentinas", alliance: "SkyTeam", type: "Full service", fleet: ["Airbus A330-200", "Boeing 737-800"] },
+                EK: { code: "EK", name: "Emirates", alliance: "Independent", type: "Full service", fleet: ["Airbus A380", "Boeing 777-300ER"] },
+                QR: { code: "QR", name: "Qatar Airways", alliance: "Oneworld", type: "Full service", fleet: ["Airbus A350-1000", "Boeing 777-300ER"] },
+                ET: { code: "ET", name: "Ethiopian Airlines", alliance: "Star Alliance", type: "Full service", fleet: ["Boeing 787-9", "Airbus A350-900"] },
+                TK: { code: "TK", name: "Turkish Airlines", alliance: "Star Alliance", type: "Full service", fleet: ["Boeing 787-9", "Airbus A350-900"] }
+            };
+
             function getAirport(code) {
-                return airportByCode[code] || { code, name: code, city: code };
+                if (typeof window.GED_findAirport === "function") {
+                    const found = window.GED_findAirport(code);
+                    if (found) return found;
+                }
+                if (airportByCode[code]) return airportByCode[code];
+                return { code, name: code, city: code, country: "", region: "" };
             }
 
             function getAirline(code) {
-                const found = airlineByCode[code];
-                if (found) return found;
-                const fallback = {
-                    AC: { code: "AC", name: "Air Canada", alliance: "Star Alliance", type: "Full service" },
-                    WS: { code: "WS", name: "WestJet", alliance: "Independent", type: "Full service" },
-                    TS: { code: "TS", name: "Air Transat", alliance: "Independent", type: "Leisure" },
-                    LA: { code: "LA", name: "LATAM Airlines", alliance: "Independent", type: "Full service" },
-                    AD: { code: "AD", name: "Azul Linhas Aéreas", alliance: "Independent", type: "Full service" },
-                    CM: { code: "CM", name: "Copa Airlines", alliance: "Star Alliance", type: "Full service" },
-                    AV: { code: "AV", name: "Avianca", alliance: "Star Alliance", type: "Full service" },
-                    UA: { code: "UA", name: "United Airlines", alliance: "Star Alliance", type: "Full service" },
-                    DL: { code: "DL", name: "Delta Air Lines", alliance: "SkyTeam", type: "Full service" },
-                    AA: { code: "AA", name: "American Airlines", alliance: "Oneworld", type: "Full service" }
-                };
-                return fallback[code] || { code, name: code, alliance: "", type: "" };
+                if (typeof window.GED_findAirline === "function") {
+                    const found = window.GED_findAirline(code);
+                    if (found) return found;
+                }
+                if (airlineByCode[code]) return airlineByCode[code];
+                return AIRLINE_FALLBACK[code] || { code, name: code, alliance: "", type: "", fleet: [] };
+            }
+
+            /* =====================================================
+               POPULATE SELECTS — with "All Origins" / "All Destinations"
+               ===================================================== */
+            const originSel = document.getElementById("origin");
+            const destSel = document.getElementById("destination");
+
+            function populateSelect(selectEl, countryFilter, defaultValue, allLabel) {
+                if (!selectEl) return false;
+
+                const options = AIRPORTS.filter(a => !countryFilter || a.country === countryFilter);
+
+                if (options.length === 0) {
+                    // fallback estático com All no topo
+                    const fallbackOrigins = [
+                        ["CGH", "São Paulo (Congonhas)"], ["GRU", "São Paulo (Guarulhos)"],
+                        ["GIG", "Rio de Janeiro"], ["BSB", "Brasília"], ["CNF", "Belo Horizonte"],
+                        ["VCP", "Campinas"], ["POA", "Porto Alegre"], ["SSA", "Salvador"],
+                        ["REC", "Recife"], ["FOR", "Fortaleza"], ["BEL", "Belém"],
+                        ["NAT", "Natal"], ["CWB", "Curitiba"], ["FLN", "Florianópolis"],
+                        ["MAO", "Manaus"], ["VIX", "Vitória"]
+                    ];
+                    const fallbackDests = [
+                        ["YYZ", "Toronto"], ["YVR", "Vancouver"], ["YUL", "Montréal"],
+                        ["YYC", "Calgary"], ["YOW", "Ottawa"], ["YEG", "Edmonton"],
+                        ["YWG", "Winnipeg"], ["YHZ", "Halifax"], ["YQB", "Québec City"],
+                        ["YYJ", "Victoria"]
+                    ];
+                    const list = allLabel === "origin" ? fallbackOrigins : fallbackDests;
+                    selectEl.innerHTML = `<option value="all">✨ All ${allLabel === "origin" ? "Origins" : "Destinations"} — show every option</option>` +
+                        list.map(([code, city]) => `<option value="${code}">${code} · ${city}</option>`).join("");
+                    selectEl.value = defaultValue && list.some(([c]) => c === defaultValue) ? defaultValue : "all";
+                    return true;
+                }
+
+                options.sort((a, b) => a.city.localeCompare(b.city));
+
+                const allText = allLabel === "origin"
+                    ? "✨ All Origins — show every option"
+                    : "✨ All Destinations — show every option";
+
+                selectEl.innerHTML = `<option value="all">${allText}</option>` +
+                    options.map(a => `<option value="${a.code}">${a.code} · ${a.city}</option>`).join("");
+
+                if (defaultValue && options.some(a => a.code === defaultValue)) {
+                    selectEl.value = defaultValue;
+                } else {
+                    selectEl.value = "all";
+                }
+                return true;
+            }
+
+            const hasOrigins = populateSelect(originSel, "Brasil", "GRU", "origin");
+            const hasDestinations = populateSelect(destSel, "Canada", "YYZ", "destination");
+
+            console.log("[GED Flights] Origin default:", originSel.value, "| Destination default:", destSel.value);
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            const state = {
+                currentFilter: "all",
+                currentSort: "score",
+                currentView: "grid",
+                maxPrice: 2200,
+                maxDuration: 1440,
+                airlineFilter: null,
+                compareList: [],
+                savedRoutes: []
+            };
+
+            /* Load saved routes from localStorage */
+            try {
+                const stored = localStorage.getItem("ged-flights-saved-v7");
+                if (stored) state.savedRoutes = JSON.parse(stored) || [];
+            } catch (e) {
+                state.savedRoutes = [];
+            }
+
+            function persistSaved() {
+                try {
+                    localStorage.setItem("ged-flights-saved-v7", JSON.stringify(state.savedRoutes));
+                } catch (e) { /* ignore */ }
             }
 
             /* =====================================================
                RENDER CARD
                ===================================================== */
-            function renderFlightCard(route) {
+            function routeKeyOf(route) {
+                return `${route.from}-${route.to}-${route.airline}-${route.duration}`;
+            }
+
+            function renderFlightCard(route, index) {
                 const origin = getAirport(route.from);
                 const destination = getAirport(route.to);
                 const airline = getAirline(route.airline);
                 const stops = stopsLabel(route.stops);
                 const logoCls = airlineLogoClass(route.airline);
-                const saved = localStorage.getItem("ged-flight-saved-" + route.from + route.to + route.airline) === "true";
-
+                const routeKey = routeKeyOf(route);
+                const saved = state.savedRoutes.indexOf(routeKey) !== -1;
+                const isComparing = state.compareList.indexOf(routeKey) !== -1;
                 const isGoodValue = route.price <= 1000 && route.stops <= 1;
+                const isFastest = route.duration <= 700 && route.stops === 0;
+
+                let ribbon = "";
+                if (route.score >= 9.3) ribbon = `<span class="card-ribbon green">★ Top rated</span>`;
+                else if (isGoodValue) ribbon = `<span class="card-ribbon">Best value</span>`;
+                else if (isFastest) ribbon = `<span class="card-ribbon purple">Fastest</span>`;
 
                 return `
-                <article class="flight-card reveal"
+                <article class="flight-card"
                         data-stops="${route.stops}"
                         data-price="${route.price}"
                         data-score="${route.score}"
                         data-duration="${route.duration}"
                         data-airline="${route.airline}"
                         data-from="${route.from}"
-                        data-to="${route.to}">
+                        data-to="${route.to}"
+                        data-route-key="${routeKey}"
+                        data-ontime="${route.ontime || 85}"
+                        data-co2="${route.co2 || 0}"
+                        style="animation-delay:${Math.min(index * 30, 500)}ms">
+                    ${ribbon}
                     <div class="flight-card-top">
                         <div class="flight-airline">
                             <span class="airline-logo ${logoCls}">${route.airline}</span>
@@ -2874,10 +4621,25 @@
                         </div>
                     </div>
 
+                    <div class="flight-card-info">
+                        <div class="fci-item">
+                            <small>On-time</small>
+                            <strong class="${route.ontime >= 88 ? 'good' : route.ontime >= 84 ? '' : 'warn'}">${route.ontime || 85}%</strong>
+                        </div>
+                        <div class="fci-item">
+                            <small>CO₂ / pax</small>
+                            <strong>${route.co2 ? route.co2 + " kg" : "—"}</strong>
+                        </div>
+                        <div class="fci-item">
+                            <small>Aircraft</small>
+                            <strong>${route.aircraft ? route.aircraft.split(" ")[0] : "—"}</strong>
+                        </div>
+                    </div>
+
                     <div class="flight-card-body">
                         ${route.tags.map(t => `<span class="flight-tag">${t}</span>`).join("")}
-                        ${route.aircraft ? `<span class="flight-tag">✈ ${route.aircraft}</span>` : ""}
-                        ${isGoodValue ? `<span class="flight-tag good">★ Best value</span>` : ""}
+                        ${route.wifi ? `<span class="flight-tag wifi">📶 Wi-Fi</span>` : ""}
+                        ${route.meal ? `<span class="flight-tag meal">🍽 Meal</span>` : ""}
                     </div>
 
                     <div class="flight-card-bottom">
@@ -2890,7 +4652,9 @@
                                     data-save-flight
                                     aria-label="${saved ? "Remove from saved" : "Save route"}"
                                     aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>
-                            <button class="btn-compare-flight" data-compare-flight>Compare</button>
+                            <button class="btn-compare-flight ${isComparing ? "active" : ""}"
+                                    data-compare-flight
+                                    aria-pressed="${isComparing}">${isComparing ? "✓ In compare" : "Compare"}</button>
                         </div>
                     </div>
                 </article>
@@ -2903,37 +4667,49 @@
             const grid = document.getElementById("flightGrid");
             const filterBtns = $$(".flight-filter");
             const sortSelect = document.getElementById("flightSort");
-            const originSel = document.getElementById("origin");
-            const destSel = document.getElementById("destination");
             const travelersSel = document.getElementById("travelers");
             const routeBtn = document.getElementById("routeBtn");
+            const swapBtn = document.getElementById("swapBtn");
             const resultCount = document.getElementById("flightResultCount");
             const viewToggleBtns = $$("[data-view-mode]");
-
-            let currentFilter = "all";
-            let currentSort = "score";
-            let currentView = "grid";
-            let currentResults = [];
+            const priceRange = document.getElementById("priceRange");
+            const priceValue = document.getElementById("priceValue");
+            const durationRange = document.getElementById("durationRange");
+            const durationValue = document.getElementById("durationValue");
+            const airlineChipsEl = document.getElementById("airlineChips");
 
             function getFiltered() {
                 const origin = originSel.value;
                 const dest = destSel.value;
 
-                let list = ROUTES.filter(r => r.from === origin);
+                let list = ROUTES.slice();
 
-                // Prefer exact origin→destination
-                const exact = list.filter(r => r.to === dest);
-                if (exact.length > 0) list = exact;
+                // Origin filter
+                if (origin !== "all") {
+                    list = list.filter(r => r.from === origin);
+                }
 
-                // Filter
-                if (currentFilter === "direct") list = list.filter(r => r.stops === 0);
-                else if (currentFilter === "1-stop") list = list.filter(r => r.stops === 1);
-                else if (currentFilter === "2-stops") list = list.filter(r => r.stops >= 2);
+                // Destination filter
+                if (dest !== "all") {
+                    list = list.filter(r => r.to === dest);
+                }
+
+                // Stops filter
+                if (state.currentFilter === "direct") list = list.filter(r => r.stops === 0);
+                else if (state.currentFilter === "1-stop") list = list.filter(r => r.stops === 1);
+                else if (state.currentFilter === "2-stops") list = list.filter(r => r.stops >= 2);
+
+                // Advanced
+                list = list.filter(r => r.price <= state.maxPrice);
+                list = list.filter(r => r.duration <= state.maxDuration);
+                if (state.airlineFilter) list = list.filter(r => r.airline === state.airlineFilter);
 
                 // Sort
-                if (currentSort === "price-low") list.sort((a, b) => a.price - b.price);
-                else if (currentSort === "price-high") list.sort((a, b) => b.price - a.price);
-                else if (currentSort === "duration") list.sort((a, b) => a.duration - b.duration);
+                if (state.currentSort === "price-low") list.sort((a, b) => a.price - b.price);
+                else if (state.currentSort === "price-high") list.sort((a, b) => b.price - a.price);
+                else if (state.currentSort === "duration") list.sort((a, b) => a.duration - b.duration);
+                else if (state.currentSort === "co2") list.sort((a, b) => (a.co2 || 9999) - (b.co2 || 9999));
+                else if (state.currentSort === "ontime") list.sort((a, b) => (b.ontime || 0) - (a.ontime || 0));
                 else list.sort((a, b) => b.score - a.score);
 
                 return list;
@@ -2943,9 +4719,9 @@
                 const origin = originSel.value;
                 const dest = destSel.value;
 
-                let base = ROUTES.filter(r => r.from === origin);
-                const exact = base.filter(r => r.to === dest);
-                if (exact.length > 0) base = exact;
+                let base = ROUTES.slice();
+                if (origin !== "all") base = base.filter(r => r.from === origin);
+                if (dest !== "all") base = base.filter(r => r.to === dest);
 
                 const counts = {
                     all: base.length,
@@ -2960,18 +4736,53 @@
                 });
             }
 
+            function buildAirlineChips() {
+                if (!airlineChipsEl) return;
+                const airlineSet = new Set(ROUTES.map(r => r.airline));
+                const airlines = Array.from(airlineSet).sort();
+                airlineChipsEl.innerHTML = airlines.map(code => {
+                    const a = getAirline(code);
+                    return `<button type="button" class="af-chip" data-airline-chip="${code}">${a.name}</button>`;
+                }).join("");
+
+                airlineChipsEl.querySelectorAll("[data-airline-chip]").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const code = btn.dataset.airlineChip;
+                        const isActive = btn.classList.contains("active");
+                        airlineChipsEl.querySelectorAll(".af-chip").forEach(b => b.classList.remove("active"));
+                        if (isActive) {
+                            state.airlineFilter = null;
+                        } else {
+                            state.airlineFilter = code;
+                            btn.classList.add("active");
+                        }
+                        render();
+                    });
+                });
+            }
+
             function bindCardEvents() {
                 grid.querySelectorAll("[data-save-flight]").forEach(btn => {
                     btn.addEventListener("click", (e) => {
                         e.stopPropagation();
                         const card = btn.closest(".flight-card");
-                        const key = "ged-flight-saved-" + card.dataset.from + card.dataset.to + card.dataset.airline;
-                        const active = btn.classList.toggle("active");
+                        const key = card.dataset.routeKey;
+                        const idx = state.savedRoutes.indexOf(key);
+                        let active;
+                        if (idx === -1) {
+                            state.savedRoutes.push(key);
+                            active = true;
+                        } else {
+                            state.savedRoutes.splice(idx, 1);
+                            active = false;
+                        }
+                        persistSaved();
+                        btn.classList.toggle("active", active);
                         btn.textContent = active ? "♥" : "♡";
                         btn.setAttribute("aria-pressed", String(active));
                         btn.setAttribute("aria-label", active ? "Remove from saved" : "Save route");
-                        localStorage.setItem(key, active);
                         toast(active ? "Route saved" : "Route removed", active ? "success" : "info", 1600);
+                        renderSaved();
                     });
                 });
 
@@ -2979,28 +4790,268 @@
                     btn.addEventListener("click", (e) => {
                         e.stopPropagation();
                         const card = btn.closest(".flight-card");
-                        const travelers = Number(travelersSel.value) || 1;
-                        const pricePerPerson = Number(card.dataset.price);
-                        const total = pricePerPerson * travelers;
-                        const airline = getAirline(card.dataset.airline).name;
-                        const stops = card.dataset.stops === "0" ? "nonstop" : `${card.dataset.stops} stop${Number(card.dataset.stops) > 1 ? "s" : ""}`;
-                        toast(`${card.dataset.from} → ${card.dataset.to} · ${airline} · ${stops} · ${formatPrice(total)} total`, "success", 3800);
+                        const routeKey = card.dataset.routeKey;
+                        toggleCompare(routeKey, btn);
+                    });
+                });
+
+                grid.querySelectorAll(".flight-card").forEach(card => {
+                    card.addEventListener("click", (e) => {
+                        if (e.target.closest("button")) return;
+                        openRouteModal(card.dataset.routeKey);
                     });
                 });
             }
 
+            function toggleCompare(routeKey, btn) {
+                const idx = state.compareList.indexOf(routeKey);
+                if (idx === -1) {
+                    if (state.compareList.length >= 3) {
+                        toast("Máximo de 3 rotas para comparar", "warn", 2400);
+                        return;
+                    }
+                    state.compareList.push(routeKey);
+                    if (btn) {
+                        btn.classList.add("active");
+                        btn.textContent = "✓ In compare";
+                        btn.setAttribute("aria-pressed", "true");
+                    }
+                    toast("Added to compare", "info", 1600);
+                } else {
+                    state.compareList.splice(idx, 1);
+                    if (btn) {
+                        btn.classList.remove("active");
+                        btn.textContent = "Compare";
+                        btn.setAttribute("aria-pressed", "false");
+                    }
+                    toast("Removed from compare", "info", 1600);
+                }
+                updateCompareBar();
+            }
+
+            function updateCompareBar() {
+                const bar = document.getElementById("compareBar");
+                const chips = document.getElementById("compareChips");
+                if (!bar || !chips) return;
+
+                if (state.compareList.length === 0) {
+                    bar.classList.remove("visible");
+                    bar.setAttribute("aria-hidden", "true");
+                    return;
+                }
+
+                bar.classList.add("visible");
+                bar.setAttribute("aria-hidden", "false");
+
+                chips.innerHTML = state.compareList.map(key => {
+                    const route = ROUTES.find(r => routeKeyOf(r) === key);
+                    if (!route) return "";
+                    return `
+                        <span class="cb-chip">
+                            ${route.from}→${route.to} · ${route.airline}
+                            <button type="button" class="cb-remove" data-cb-remove="${key}" aria-label="Remove">×</button>
+                        </span>
+                    `;
+                }).join("");
+
+                chips.querySelectorAll("[data-cb-remove]").forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const key = btn.dataset.cbRemove;
+                        const idx = state.compareList.indexOf(key);
+                        if (idx !== -1) state.compareList.splice(idx, 1);
+                        const cardBtn = grid.querySelector(`[data-route-key="${key}"] [data-compare-flight]`);
+                        if (cardBtn) {
+                            cardBtn.classList.remove("active");
+                            cardBtn.textContent = "Compare";
+                            cardBtn.setAttribute("aria-pressed", "false");
+                        }
+                        updateCompareBar();
+                    });
+                });
+            }
+
+            /* =====================================================
+               ROUTE MODAL (with cabin classes)
+               ===================================================== */
+            let selectedCabinIdx = 0;
+            let currentModalRoute = null;
+
+            function openRouteModal(routeKey) {
+                const route = ROUTES.find(r => routeKeyOf(r) === routeKey);
+                if (!route) return;
+                currentModalRoute = route;
+                selectedCabinIdx = 0;
+                renderRouteModal(route);
+                openModal("routeModal");
+            }
+
+            function renderRouteModal(route) {
+                const airline = getAirline(route.airline);
+                const origin = getAirport(route.from);
+                const destination = getAirport(route.to);
+                const stops = stopsLabel(route.stops);
+                const travelers = Number(travelersSel.value) || 1;
+
+                const cabinRows = CABIN_CLASSES.map((c, i) => {
+                    const price = Math.round(route.price * c.multiplier);
+                    const total = price * travelers;
+                    return `
+                        <div class="cabin-row ${i === selectedCabinIdx ? "selected" : ""}" data-cabin-idx="${i}">
+                            <div class="cr-name">
+                                <strong>${c.name}</strong>
+                                <small>${c.desc}</small>
+                            </div>
+                            <div class="cr-perks">
+                                ${c.perks.slice(0, 3).map(p => `<span>${p}</span>`).join("")}
+                            </div>
+                            <div class="cr-price">${formatPrice(price)}</div>
+                        </div>
+                    `;
+                }).join("");
+
+                document.getElementById("routeModalTitle").textContent = `${route.from} → ${route.to}`;
+                document.getElementById("routeModalBody").innerHTML = `
+                    <h4>Airline</h4>
+                    <p><strong>${airline.name}</strong> · ${airline.alliance || "Independent"} · ${airline.type || ""}</p>
+
+                    <h4>Route</h4>
+                    <p>${origin.name} (${route.from}) → ${destination.name} (${route.to})</p>
+
+                    <div class="detail-grid">
+                        <div class="detail-cell">
+                            <small>Duration</small>
+                            <strong>${formatDuration(route.duration)}</strong>
+                        </div>
+                        <div class="detail-cell">
+                            <small>Stops</small>
+                            <strong>${stops.text}${route.hub ? " · " + route.hub : ""}</strong>
+                        </div>
+                        <div class="detail-cell">
+                            <small>Aircraft</small>
+                            <strong>${route.aircraft || "Varies"}</strong>
+                        </div>
+                        <div class="detail-cell">
+                            <small>GED Score</small>
+                            <strong>${route.score.toFixed(1)} / 10</strong>
+                        </div>
+                        <div class="detail-cell">
+                            <small>On-time</small>
+                            <strong>${route.ontime || 85}%</strong>
+                        </div>
+                        <div class="detail-cell">
+                            <small>CO₂ / pax</small>
+                            <strong>${route.co2 ? route.co2 + " kg" : "—"}</strong>
+                        </div>
+                    </div>
+
+                    <h4>Choose your cabin</h4>
+                    <div class="cabin-list" id="cabinList">
+                        ${cabinRows}
+                    </div>
+
+                    <h4>Total for ${travelers} traveler${travelers > 1 ? "s" : ""}</h4>
+                    <p id="cabinTotal"><strong>${formatPrice(Math.round(route.price * CABIN_CLASSES[selectedCabinIdx].multiplier) * travelers)} CAD</strong> — demo price, not bookable.</p>
+
+                    <h4>Notes</h4>
+                    <p>${route.tags.join(" · ")}. Prices and schedules are illustrative for the GED school project and are not bookable.</p>
+                `;
+
+                // bind cabin rows
+                const cabinList = document.getElementById("cabinList");
+                if (cabinList) {
+                    cabinList.querySelectorAll("[data-cabin-idx]").forEach(row => {
+                        row.addEventListener("click", () => {
+                            selectedCabinIdx = Number(row.dataset.cabinIdx);
+                            renderRouteModal(currentModalRoute);
+                        });
+                    });
+                }
+            }
+
+            /* =====================================================
+               COMPARE MODAL — enhanced with best-value highlighting
+               ===================================================== */
+            function openCompareModal() {
+                if (state.compareList.length === 0) return;
+                const routes = state.compareList.map(key =>
+                    ROUTES.find(r => routeKeyOf(r) === key)
+                ).filter(Boolean);
+
+                if (routes.length === 0) return;
+
+                const headers = ["Field", ...routes.map(r => `${r.from}→${r.to}`)];
+
+                // Find best in each category for highlighting
+                const minPrice = Math.min(...routes.map(r => r.price));
+                const minDuration = Math.min(...routes.map(r => r.duration));
+                const minStops = Math.min(...routes.map(r => r.stops));
+                const maxScore = Math.max(...routes.map(r => r.score));
+                const minCo2 = Math.min(...routes.map(r => r.co2 || 9999));
+                const maxOnTime = Math.max(...routes.map(r => r.ontime || 0));
+
+                function cell(value, isBest, key) {
+                    return `<div class="ct-value${isBest ? ' best' : ''}" data-key="${key}">${value}</div>`;
+                }
+
+                const rows = [
+                    ["Airline", ...routes.map(r => getAirline(r.airline).name)],
+                    ["Duration", ...routes.map(r => cell(formatDuration(r.duration), r.duration === minDuration, "duration"))],
+                    ["Stops", ...routes.map(r => cell(stopsLabel(r.stops).text + (r.hub ? " · " + r.hub : ""), r.stops === minStops, "stops"))],
+                    ["Aircraft", ...routes.map(r => r.aircraft || "—")],
+                    ["Score", ...routes.map(r => cell(r.score.toFixed(1), r.score === maxScore, "score"))],
+                    ["On-time", ...routes.map(r => cell((r.ontime || 85) + "%", (r.ontime || 0) === maxOnTime, "ontime"))],
+                    ["CO₂ / pax", ...routes.map(r => cell((r.co2 || 0) + " kg", (r.co2 || 9999) === minCo2, "co2"))],
+                    ["Price", ...routes.map(r => cell(formatPrice(r.price), r.price === minPrice, "price"))],
+                    ["Total (2 pax)", ...routes.map(r => cell(formatPrice(r.price * 2), r.price === minPrice, "total"))]
+                ];
+
+                let html = '<div class="compare-table">';
+                headers.forEach(h => html += `<div class="ct-head">${h}</div>`);
+                rows.forEach(row => {
+                    html += `<div class="ct-head">${row[0]}</div>`;
+                    row.slice(1).forEach(v => html += v);
+                });
+                html += "</div>";
+                html += '<p style="margin-top:16px;font-size:12px;color:var(--ios-text-3);">Green highlights mark the best value in each category.</p>';
+
+                document.getElementById("compareModalBody").innerHTML = html;
+                openModal("compareModal");
+            }
+
+            function openModal(id) {
+                const modal = document.getElementById(id);
+                const backdrop = document.getElementById("modalBackdrop");
+                if (!modal || !backdrop) return;
+                modal.classList.add("open");
+                backdrop.classList.add("open");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeModals() {
+                $$(".modal").forEach(m => m.classList.remove("open"));
+                const backdrop = document.getElementById("modalBackdrop");
+                if (backdrop) backdrop.classList.remove("open");
+                document.body.style.overflow = "";
+            }
+
+            /* =====================================================
+               VIEW MODE
+               ===================================================== */
             function applyViewMode() {
-                grid.classList.toggle("list-view", currentView === "list");
+                grid.classList.toggle("list-view", state.currentView === "list");
                 viewToggleBtns.forEach(b => {
-                    const active = b.dataset.viewMode === currentView;
+                    const active = b.dataset.viewMode === state.currentView;
                     b.classList.toggle("active", active);
                     b.setAttribute("aria-pressed", String(active));
                 });
             }
 
+            /* =====================================================
+               MAIN RENDER
+               ===================================================== */
             function render() {
                 const list = getFiltered();
-                currentResults = list;
 
                 if (list.length === 0) {
                     grid.innerHTML = `
@@ -3013,9 +5064,17 @@
                     const clearBtn = document.getElementById("clearFlightFilters");
                     if (clearBtn) {
                         clearBtn.addEventListener("click", () => {
-                            currentFilter = "all";
-                            currentSort = "score";
+                            state.currentFilter = "all";
+                            state.currentSort = "score";
+                            state.maxPrice = 2200;
+                            state.maxDuration = 1440;
+                            state.airlineFilter = null;
                             sortSelect.value = "score";
+                            priceRange.value = 2200;
+                            priceValue.textContent = "CA$2,200";
+                            durationRange.value = 1440;
+                            durationValue.textContent = "24h";
+                            airlineChipsEl.querySelectorAll(".af-chip").forEach(b => b.classList.remove("active"));
                             filterBtns.forEach(b => {
                                 const isAll = b.dataset.filter === "all";
                                 b.classList.toggle("active", isAll);
@@ -3025,14 +5084,8 @@
                         });
                     }
                 } else {
-                    grid.innerHTML = list.map(renderFlightCard).join("");
+                    grid.innerHTML = list.map((r, i) => renderFlightCard(r, i)).join("");
                     bindCardEvents();
-
-                    requestAnimationFrame(() => {
-                        grid.querySelectorAll(".reveal").forEach((el, i) => {
-                            setTimeout(() => el.classList.add("visible"), Math.min(i * 40, 600));
-                        });
-                    });
                 }
 
                 if (resultCount) {
@@ -3043,42 +5096,233 @@
                 updateFilterCounts();
             }
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove("active");
-                        b.setAttribute("aria-pressed", "false");
+            /* =====================================================
+               RENDER STATIC SECTIONS
+               ===================================================== */
+            function renderPopularRoutes() {
+                const el = document.getElementById("popularScroll");
+                if (!el) return;
+
+                const top = [...ROUTES].sort((a, b) => b.score - a.score).slice(0, 12);
+                const maxPrice = Math.max(...top.map(r => r.price));
+
+                el.innerHTML = top.map(route => {
+                    const airline = getAirline(route.airline);
+                    const stops = stopsLabel(route.stops);
+                    const barWidth = Math.round((1 - (route.price / maxPrice)) * 100);
+                    return `
+                        <div class="popular-card" data-pop-from="${route.from}" data-pop-to="${route.to}">
+                            <div class="pc-head">
+                                <span class="pc-route">${route.from} → ${route.to}</span>
+                                <span class="pc-price">${formatPrice(route.price)}</span>
+                            </div>
+                            <div class="pc-meta">${airline.name} · ${stops.text} · ${formatDuration(route.duration)}</div>
+                            <div class="pc-bar"><div class="pc-bar-fill" style="width:${barWidth}%"></div></div>
+                        </div>
+                    `;
+                }).join("");
+
+                el.querySelectorAll(".popular-card").forEach(card => {
+                    card.addEventListener("click", () => {
+                        originSel.value = card.dataset.popFrom;
+                        destSel.value = card.dataset.popTo;
+                        render();
+                        document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
                     });
-                    btn.classList.add("active");
-                    btn.setAttribute("aria-pressed", "true");
-                    currentFilter = btn.dataset.filter;
-                    render();
                 });
-            });
+            }
 
-            sortSelect.addEventListener("change", () => {
-                currentSort = sortSelect.value;
-                render();
-            });
+            function renderDeals() {
+                const el = document.getElementById("dealsGrid");
+                if (!el) return;
 
-            originSel.addEventListener("change", render);
-            destSel.addEventListener("change", render);
+                const sorted = [...ROUTES].sort((a, b) => a.price - b.price);
+                const deals = sorted.slice(0, 3);
 
-            routeBtn.addEventListener("click", () => {
-                render();
-                toast("Routes refreshed", "info", 1600);
-                document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
-            });
+                const badges = [
+                    { cls: "", label: "🔥 Low fare" },
+                    { cls: "hot", label: "⚡ Flash deal" },
+                    { cls: "new", label: "✨ New route" }
+                ];
 
-            viewToggleBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    currentView = btn.dataset.viewMode;
-                    applyViewMode();
+                el.innerHTML = deals.map((route, i) => {
+                    const airline = getAirline(route.airline);
+                    const stops = stopsLabel(route.stops);
+                    const badge = badges[i] || badges[0];
+                    return `
+                        <div class="deal-card">
+                            <span class="dc-badge ${badge.cls}">${badge.label}</span>
+                            <h3>${route.from} → ${route.to}</h3>
+                            <p>${airline.name} · ${stops.text} · ${formatDuration(route.duration)}${route.hub ? " via " + route.hub : ""}</p>
+                            <div class="dc-footer">
+                                <div class="dc-price">
+                                    <small>From · per person</small>
+                                    ${formatPrice(route.price)}
+                                </div>
+                                <button type="button" class="dc-cta" data-deal-from="${route.from}" data-deal-to="${route.to}">View route</button>
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+
+                el.querySelectorAll("[data-deal-from]").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        originSel.value = btn.dataset.dealFrom;
+                        destSel.value = btn.dataset.dealTo;
+                        render();
+                        document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
+                    });
                 });
-            });
+            }
+
+            function renderAirlinesShowcase() {
+                const el = document.getElementById("airlinesGrid");
+                if (!el) return;
+
+                const codes = Array.from(new Set(ROUTES.map(r => r.airline)));
+                el.innerHTML = codes.map(code => {
+                    const a = getAirline(code);
+                    const logoCls = airlineLogoClass(code);
+                    const fleet = (a.fleet || []).slice(0, 3);
+                    const routesCount = ROUTES.filter(r => r.airline === code).length;
+                    const avgScore = (ROUTES.filter(r => r.airline === code).reduce((s, r) => s + r.score, 0) / routesCount).toFixed(1);
+                    return `
+                        <div class="airline-card" data-airline-card="${code}">
+                            <div class="ac-head">
+                                <span class="ac-logo ${logoCls}">${code}</span>
+                                <div class="ac-info">
+                                    <strong>${a.name}</strong>
+                                    <small>${a.alliance || "Independent"} · ${a.type || ""}</small>
+                                </div>
+                            </div>
+                            <div class="ac-stats">
+                                <div class="ac-stat">
+                                    <small>Routes</small>
+                                    <strong>${routesCount}</strong>
+                                </div>
+                                <div class="ac-stat">
+                                    <small>Avg score</small>
+                                    <strong>${avgScore}</strong>
+                                </div>
+                            </div>
+                            <div class="ac-fleet">
+                                ${fleet.map(f => `<span>${f}</span>`).join("")}
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+
+                el.querySelectorAll("[data-airline-card]").forEach(card => {
+                    card.addEventListener("click", () => {
+                        const code = card.dataset.airlineCard;
+                        const isActive = state.airlineFilter === code;
+                        state.airlineFilter = isActive ? null : code;
+                        airlineChipsEl.querySelectorAll(".af-chip").forEach(b => {
+                            b.classList.toggle("active", b.dataset.airlineChip === code && !isActive);
+                        });
+                        render();
+                        document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
+                    });
+                });
+            }
+
+            function renderAirportsShowcase() {
+                const el = document.getElementById("airportsGrid");
+                if (!el) return;
+
+                const top = ["YYZ", "YVR", "YUL", "YYC", "YOW", "YEG", "YWG", "YHZ", "YQB", "YYJ", "GRU", "GIG"];
+                el.innerHTML = top.map(code => {
+                    const ap = getAirport(code);
+                    return `
+                        <div class="airport-tile" data-airport-tile="${code}">
+                            <strong>${code}</strong>
+                            <small>${ap.city || ap.name}</small>
+                        </div>
+                    `;
+                }).join("");
+
+                el.querySelectorAll("[data-airport-tile]").forEach(tile => {
+                    tile.addEventListener("click", () => {
+                        const code = tile.dataset.airportTile;
+                        const country = getAirport(code).country;
+                        if (country === "Brasil") originSel.value = code;
+                        else destSel.value = code;
+                        render();
+                        document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
+                    });
+                });
+            }
+
+            function renderInsights() {
+                const el = document.getElementById("insightsGrid");
+                if (!el) return;
+
+                const avgPrice = Math.round(ROUTES.reduce((s, r) => s + r.price, 0) / ROUTES.length);
+                const avgDuration = Math.round(ROUTES.reduce((s, r) => s + r.duration, 0) / ROUTES.length);
+                const avgOnTime = Math.round(ROUTES.reduce((s, r) => s + (r.ontime || 85), 0) / ROUTES.length);
+                const totalCO2 = ROUTES.reduce((s, r) => s + (r.co2 || 0), 0);
+
+                const insights = [
+                    { icon: "💰", title: "Average fare", value: formatPrice(avgPrice), desc: "Across all catalogued routes" },
+                    { icon: "⏱", title: "Average duration", value: formatDuration(avgDuration), desc: "Total flight time including connections" },
+                    { icon: "✅", title: "Average on-time", value: avgOnTime + "%", desc: "Across all mapped airlines" },
+                    { icon: "🌱", title: "CO₂ tracked", value: (totalCO2 / 1000).toFixed(1) + "t", desc: "Estimated across all catalogue routes" }
+                ];
+
+                el.innerHTML = insights.map(i => `
+                    <div class="insight-card">
+                        <div class="ic-icon">${i.icon}</div>
+                        <div class="ic-title">${i.title}</div>
+                        <div class="ic-value">${i.value}</div>
+                        <div class="ic-desc">${i.desc}</div>
+                    </div>
+                `).join("");
+            }
+
+            function renderSaved() {
+                const el = document.getElementById("savedList");
+                if (!el) return;
+
+                if (state.savedRoutes.length === 0) {
+                    el.innerHTML = `
+                        <div class="saved-empty">
+                            <strong>No saved routes yet</strong>
+                            <p>Tap the ♡ on any route card to keep it here.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                el.innerHTML = state.savedRoutes.map(key => {
+                    const route = ROUTES.find(r => routeKeyOf(r) === key);
+                    if (!route) return "";
+                    const airline = getAirline(route.airline);
+                    const stops = stopsLabel(route.stops);
+                    return `
+                        <div class="saved-card">
+                            <button type="button" class="sc-remove" data-saved-remove="${key}" aria-label="Remove saved route">×</button>
+                            <div class="sc-route">${route.from} → ${route.to}</div>
+                            <div class="sc-meta">${airline.name} · ${stops.text} · ${formatDuration(route.duration)}</div>
+                            <div class="sc-price">${formatPrice(route.price)} CAD</div>
+                        </div>
+                    `;
+                }).join("");
+
+                el.querySelectorAll("[data-saved-remove]").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const key = btn.dataset.savedRemove;
+                        const idx = state.savedRoutes.indexOf(key);
+                        if (idx !== -1) state.savedRoutes.splice(idx, 1);
+                        persistSaved();
+                        renderSaved();
+                        render();
+                        toast("Removed from saved", "info", 1600);
+                    });
+                });
+            }
 
             /* =====================================================
-               HERO-PICK (best route this season)
+               HERO-PICK
                ===================================================== */
             function initHeroPick() {
                 const best = [...ROUTES].sort((a, b) => b.score - a.score)[0];
@@ -3090,8 +5334,7 @@
                 const logoCls = airlineLogoClass(best.airline);
                 const stops = best.stops === 0 ? "Nonstop" : `${best.stops} stop${best.stops > 1 ? "s" : ""}`;
 
-                const routeEl = document.getElementById("heroPickRoute");
-                routeEl.innerHTML = `
+                document.getElementById("heroPickRoute").innerHTML = `
                     <div class="hero-pick-point">
                         <strong>${best.from}</strong>
                         <small>${origin.city}</small>
@@ -3107,8 +5350,7 @@
                     </div>
                 `;
 
-                const airlineEl = document.getElementById("heroPickAirline");
-                airlineEl.innerHTML = `
+                document.getElementById("heroPickAirline").innerHTML = `
                     <span class="logo ${logoCls}">${best.airline}</span>
                     <div class="info">
                         <strong>${airline.name}</strong>
@@ -3127,7 +5369,7 @@
             }
 
             /* =====================================================
-               FEATURED ROUTE SPOTLIGHT
+               FEATURED SPOTLIGHT
                ===================================================== */
             function initFeaturedSpotlight() {
                 const best = [...ROUTES].sort((a, b) => a.price - b.price).filter(r => r.stops <= 1)[0]
@@ -3175,9 +5417,114 @@
             }
 
             /* =====================================================
+               EVENT WIRING
+               ===================================================== */
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-pressed", "false");
+                    });
+                    btn.classList.add("active");
+                    btn.setAttribute("aria-pressed", "true");
+                    state.currentFilter = btn.dataset.filter;
+                    render();
+                });
+            });
+
+            sortSelect.addEventListener("change", () => {
+                state.currentSort = sortSelect.value;
+                render();
+            });
+
+            originSel.addEventListener("change", render);
+            destSel.addEventListener("change", render);
+
+            routeBtn.addEventListener("click", () => {
+                render();
+                toast("Routes refreshed", "info", 1600);
+                document.getElementById("flights").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+
+            if (swapBtn) {
+                swapBtn.addEventListener("click", () => {
+                    const o = originSel.value;
+                    const d = destSel.value;
+                    const originCanUseDestination = Array.from(originSel.options)
+                        .some(option => option.value === d);
+                    const destinationCanUseOrigin = Array.from(destSel.options)
+                        .some(option => option.value === o);
+
+                    originSel.value = originCanUseDestination ? d : "all";
+                    destSel.value = destinationCanUseOrigin ? o : "all";
+                    render();
+                    toast("Origin and destination swapped", "info", 1600);
+                });
+            }
+
+            viewToggleBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    state.currentView = btn.dataset.viewMode;
+                    applyViewMode();
+                });
+            });
+
+            priceRange.addEventListener("input", () => {
+                state.maxPrice = Number(priceRange.value);
+                priceValue.textContent = formatPrice(state.maxPrice);
+                render();
+            });
+
+            durationRange.addEventListener("input", () => {
+                state.maxDuration = Number(durationRange.value);
+                const h = Math.floor(state.maxDuration / 60);
+                durationValue.textContent = `${h}h`;
+                render();
+            });
+
+            document.getElementById("compareClear").addEventListener("click", () => {
+                state.compareList = [];
+                grid.querySelectorAll("[data-compare-flight]").forEach(b => {
+                    b.classList.remove("active");
+                    b.textContent = "Compare";
+                    b.setAttribute("aria-pressed", "false");
+                });
+                updateCompareBar();
+            });
+
+            document.getElementById("compareGo").addEventListener("click", openCompareModal);
+
+            document.getElementById("modalBackdrop").addEventListener("click", closeModals);
+
+            document.querySelectorAll("[data-modal-close]").forEach(btn => {
+                btn.addEventListener("click", closeModals);
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModals();
+            });
+
+            document.querySelectorAll("[data-mbb-scroll]").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const target = document.querySelector(btn.dataset.mbbScroll);
+                    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            document.querySelectorAll("[data-mbb-open='compare']").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (state.compareList.length === 0) {
+                        toast("Select up to 3 routes to compare", "info", 2400);
+                        return;
+                    }
+                    openCompareModal();
+                });
+            });
+
+            /* =====================================================
                REVEAL ON SCROLL
                ===================================================== */
-            const revealEls = $$(".reveal:not(.flight-card)");
+            const revealEls = $$(".reveal");
             if ("IntersectionObserver" in window) {
                 const obs = new IntersectionObserver((entries, observer) => {
                     entries.forEach((entry) => {
@@ -3195,13 +5542,21 @@
             /* =====================================================
                INIT
                ===================================================== */
+            buildAirlineChips();
             initHeroPick();
             initFeaturedSpotlight();
+            renderPopularRoutes();
+            renderDeals();
+            renderAirlinesShowcase();
+            renderAirportsShowcase();
+            renderInsights();
+            renderSaved();
             render();
 
             console.log(
-                "%cGED · Flights v3",
-                "font-weight:700;color:#5ac8fa;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;"
+                "%cGED · Flights v7 (%d rotas, %d aeroportos, %d companhias)",
+                "font-weight:700;color:#5ac8fa;background:#0a0a0a;padding:4px 10px;border-radius:6px;font-family:monospace;",
+                ROUTES.length, AIRPORTS.length, AIRLINES.length
             );
         });
     </script>

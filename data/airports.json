@@ -1,283 +1,864 @@
 {
+    "meta": {
+        "version": "2.0",
+        "scope": "GED Travel Agency — airport reference dataset",
+        "updated": "2026-01",
+        "totalAirports": 55,
+        "regions": [
+            "north-america",
+            "central-america",
+            "south-america",
+            "europe"
+        ],
+        "countries": [
+            "Canada",
+            "Brasil",
+            "Panamá",
+            "Colômbia",
+            "Peru",
+            "Argentina",
+            "Chile",
+            "México",
+            "Estados Unidos",
+            "Portugal",
+            "Espanha",
+            "França",
+            "Itália"
+        ],
+        "schema": "code · icao · slug · name · city · province · country · region · timezone · coordinates · size"
+    },
     "airports": [
         {
             "code": "YYZ",
+            "icao": "CYYZ",
+            "slug": "toronto-pearson",
             "name": "Toronto Pearson International",
             "city": "Toronto",
             "province": "Ontario",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 43.6777,
+                "lng": -79.6248
+            },
+            "size": "large"
         },
         {
             "code": "YVR",
+            "icao": "CYVR",
+            "slug": "vancouver-international",
             "name": "Vancouver International",
             "city": "Vancouver",
             "province": "British Columbia",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Vancouver",
+            "coordinates": {
+                "lat": 49.1967,
+                "lng": -123.1815
+            },
+            "size": "large"
         },
         {
             "code": "YUL",
+            "icao": "CYUL",
+            "slug": "montreal-trudeau",
             "name": "Montréal–Pierre Elliott Trudeau International",
             "city": "Montréal",
             "province": "Québec",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 45.4706,
+                "lng": -73.7408
+            },
+            "size": "large"
         },
         {
             "code": "YYC",
+            "icao": "CYYC",
+            "slug": "calgary-international",
             "name": "Calgary International",
             "city": "Calgary",
             "province": "Alberta",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Edmonton",
+            "coordinates": {
+                "lat": 51.1224,
+                "lng": -114.0131
+            },
+            "size": "large"
         },
         {
             "code": "YOW",
+            "icao": "CYOW",
+            "slug": "ottawa-macdonald-cartier",
             "name": "Ottawa Macdonald–Cartier International",
             "city": "Ottawa",
             "province": "Ontario",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 45.3225,
+                "lng": -75.6692
+            },
+            "size": "medium"
         },
         {
             "code": "YEG",
+            "icao": "CYEG",
+            "slug": "edmonton-international",
             "name": "Edmonton International",
             "city": "Edmonton",
             "province": "Alberta",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Edmonton",
+            "coordinates": {
+                "lat": 53.3097,
+                "lng": -113.5800
+            },
+            "size": "medium"
         },
         {
             "code": "YWG",
+            "icao": "CYWG",
+            "slug": "winnipeg-richardson",
             "name": "Winnipeg Richardson International",
             "city": "Winnipeg",
             "province": "Manitoba",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Winnipeg",
+            "coordinates": {
+                "lat": 49.9100,
+                "lng": -97.2399
+            },
+            "size": "medium"
         },
         {
             "code": "YHZ",
+            "icao": "CYHZ",
+            "slug": "halifax-stanfield",
             "name": "Halifax Stanfield International",
             "city": "Halifax",
             "province": "Nova Scotia",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Halifax",
+            "coordinates": {
+                "lat": 44.8808,
+                "lng": -63.5086
+            },
+            "size": "medium"
         },
         {
             "code": "YQB",
+            "icao": "CYQB",
+            "slug": "quebec-city-jean-lesage",
             "name": "Québec City Jean Lesage International",
             "city": "Québec City",
             "province": "Québec",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 46.7911,
+                "lng": -71.3933
+            },
+            "size": "medium"
         },
         {
             "code": "YYJ",
+            "icao": "CYYJ",
+            "slug": "victoria-international",
             "name": "Victoria International",
             "city": "Victoria",
             "province": "British Columbia",
             "country": "Canada",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Vancouver",
+            "coordinates": {
+                "lat": 48.6469,
+                "lng": -123.4258
+            },
+            "size": "medium"
+        },
+        {
+            "code": "YLW",
+            "icao": "CYLW",
+            "slug": "kelowna-international",
+            "name": "Kelowna International",
+            "city": "Kelowna",
+            "province": "British Columbia",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Vancouver",
+            "coordinates": {
+                "lat": 49.9561,
+                "lng": -119.3778
+            },
+            "size": "medium"
+        },
+        {
+            "code": "YXE",
+            "icao": "CYXE",
+            "slug": "saskatoon-john-diefenbaker",
+            "name": "Saskatoon John G. Diefenbaker International",
+            "city": "Saskatoon",
+            "province": "Saskatchewan",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Regina",
+            "coordinates": {
+                "lat": 52.1708,
+                "lng": -106.6997
+            },
+            "size": "medium"
+        },
+        {
+            "code": "YQR",
+            "icao": "CYQR",
+            "slug": "regina-international",
+            "name": "Regina International",
+            "city": "Regina",
+            "province": "Saskatchewan",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Regina",
+            "coordinates": {
+                "lat": 50.4319,
+                "lng": -104.6658
+            },
+            "size": "medium"
+        },
+        {
+            "code": "YYT",
+            "icao": "CYYT",
+            "slug": "st-johns-international",
+            "name": "St. John's International",
+            "city": "St. John's",
+            "province": "Newfoundland and Labrador",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/St_Johns",
+            "coordinates": {
+                "lat": 47.6186,
+                "lng": -52.7519
+            },
+            "size": "medium"
+        },
+        {
+            "code": "YYG",
+            "icao": "CYYG",
+            "slug": "charlottetown",
+            "name": "Charlottetown Airport",
+            "city": "Charlottetown",
+            "province": "Prince Edward Island",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Halifax",
+            "coordinates": {
+                "lat": 46.2900,
+                "lng": -63.1211
+            },
+            "size": "small"
+        },
+        {
+            "code": "YXY",
+            "icao": "CYXY",
+            "slug": "whitehorse-erik-nielsen",
+            "name": "Erik Nielsen Whitehorse International",
+            "city": "Whitehorse",
+            "province": "Yukon",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Whitehorse",
+            "coordinates": {
+                "lat": 60.7096,
+                "lng": -135.0675
+            },
+            "size": "small"
+        },
+        {
+            "code": "YZF",
+            "icao": "CYZF",
+            "slug": "yellowknife",
+            "name": "Yellowknife Airport",
+            "city": "Yellowknife",
+            "province": "Northwest Territories",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Yellowknife",
+            "coordinates": {
+                "lat": 62.4628,
+                "lng": -114.4403
+            },
+            "size": "small"
+        },
+        {
+            "code": "YFB",
+            "icao": "CYFB",
+            "slug": "iqaluit",
+            "name": "Iqaluit Airport",
+            "city": "Iqaluit",
+            "province": "Nunavut",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Iqaluit",
+            "coordinates": {
+                "lat": 63.7564,
+                "lng": -68.5558
+            },
+            "size": "small"
+        },
+        {
+            "code": "YQT",
+            "icao": "CYQT",
+            "slug": "thunder-bay",
+            "name": "Thunder Bay International",
+            "city": "Thunder Bay",
+            "province": "Ontario",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 48.3719,
+                "lng": -89.3239
+            },
+            "size": "small"
+        },
+        {
+            "code": "YXU",
+            "icao": "CYXU",
+            "slug": "london-ontario",
+            "name": "London International",
+            "city": "London",
+            "province": "Ontario",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 43.0356,
+                "lng": -81.1539
+            },
+            "size": "small"
+        },
+        {
+            "code": "YQG",
+            "icao": "CYQG",
+            "slug": "windsor",
+            "name": "Windsor International",
+            "city": "Windsor",
+            "province": "Ontario",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 42.2756,
+                "lng": -82.9556
+            },
+            "size": "small"
+        },
+        {
+            "code": "YQM",
+            "icao": "CYQM",
+            "slug": "moncton-roméo-leblanc",
+            "name": "Moncton Roméo LeBlanc International",
+            "city": "Moncton",
+            "province": "New Brunswick",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Moncton",
+            "coordinates": {
+                "lat": 46.1122,
+                "lng": -64.6786
+            },
+            "size": "small"
+        },
+        {
+            "code": "YFC",
+            "icao": "CYFC",
+            "slug": "fredericton",
+            "name": "Fredericton International",
+            "city": "Fredericton",
+            "province": "New Brunswick",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Moncton",
+            "coordinates": {
+                "lat": 45.8689,
+                "lng": -66.5372
+            },
+            "size": "small"
+        },
+        {
+            "code": "YXX",
+            "icao": "CYXX",
+            "slug": "abbotsford",
+            "name": "Abbotsford International",
+            "city": "Abbotsford",
+            "province": "British Columbia",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Vancouver",
+            "coordinates": {
+                "lat": 49.0253,
+                "lng": -122.3610
+            },
+            "size": "small"
+        },
+        {
+            "code": "YHM",
+            "icao": "CYHM",
+            "slug": "hamilton",
+            "name": "John C. Munro Hamilton International",
+            "city": "Hamilton",
+            "province": "Ontario",
+            "country": "Canada",
+            "region": "north-america",
+            "timezone": "America/Toronto",
+            "coordinates": {
+                "lat": 43.1736,
+                "lng": -79.9350
+            },
+            "size": "small"
         },
         {
             "code": "GRU",
+            "icao": "SBGR",
+            "slug": "sao-paulo-guarulhos",
             "name": "São Paulo/Guarulhos–Governador André Franco Montoro International",
             "city": "São Paulo",
             "province": "São Paulo",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -23.4356,
+                "lng": -46.4731
+            },
+            "size": "large"
         },
         {
             "code": "GIG",
+            "icao": "SBGL",
+            "slug": "rio-galeao",
             "name": "Rio de Janeiro/Galeão–Antonio Carlos Jobim International",
             "city": "Rio de Janeiro",
             "province": "Rio de Janeiro",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -22.8100,
+                "lng": -43.2506
+            },
+            "size": "large"
         },
         {
             "code": "CGH",
+            "icao": "SBSP",
+            "slug": "sao-paulo-congonhas",
             "name": "São Paulo/Congonhas–Deputado Freitas Nobre",
             "city": "São Paulo",
             "province": "São Paulo",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -23.6261,
+                "lng": -46.6564
+            },
+            "size": "medium"
         },
         {
             "code": "SDU",
+            "icao": "SBRJ",
+            "slug": "rio-santos-dumont",
             "name": "Rio de Janeiro/Santos Dumont",
             "city": "Rio de Janeiro",
             "province": "Rio de Janeiro",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -22.9106,
+                "lng": -43.1631
+            },
+            "size": "medium"
         },
         {
             "code": "BSB",
+            "icao": "SBBR",
+            "slug": "brasilia-jk",
             "name": "Brasília–Presidente Juscelino Kubitschek International",
             "city": "Brasília",
             "province": "Distrito Federal",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -15.8697,
+                "lng": -47.9208
+            },
+            "size": "medium"
         },
         {
             "code": "CNF",
+            "icao": "SBCF",
+            "slug": "belo-horizonte-confins",
             "name": "Belo Horizonte–Tancredo Neves/Confins International",
             "city": "Belo Horizonte",
             "province": "Minas Gerais",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -19.6244,
+                "lng": -43.9719
+            },
+            "size": "medium"
         },
         {
             "code": "VCP",
+            "icao": "SBKP",
+            "slug": "campinas-viracopos",
             "name": "Campinas–Viracopos International",
             "city": "Campinas",
             "province": "São Paulo",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -23.0074,
+                "lng": -47.1345
+            },
+            "size": "medium"
         },
         {
             "code": "POA",
+            "icao": "SBPA",
+            "slug": "porto-alegre-salgado-filho",
             "name": "Porto Alegre–Salgado Filho International",
             "city": "Porto Alegre",
             "province": "Rio Grande do Sul",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Sao_Paulo",
+            "coordinates": {
+                "lat": -29.9939,
+                "lng": -51.1711
+            },
+            "size": "medium"
         },
         {
             "code": "SSA",
+            "icao": "SBSV",
+            "slug": "salvador-deputado-luis-eduardo",
             "name": "Salvador–Deputado Luís Eduardo Magalhães International",
             "city": "Salvador",
             "province": "Bahia",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Bahia",
+            "coordinates": {
+                "lat": -12.9086,
+                "lng": -38.3225
+            },
+            "size": "medium"
         },
         {
             "code": "REC",
+            "icao": "SBRF",
+            "slug": "recife-guararapes",
             "name": "Recife–Guararapes–Gilberto Freyre International",
             "city": "Recife",
             "province": "Pernambuco",
             "country": "Brasil",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Recife",
+            "coordinates": {
+                "lat": -8.1264,
+                "lng": -34.9236
+            },
+            "size": "medium"
         },
         {
             "code": "PTY",
+            "icao": "MPTO",
+            "slug": "panama-city-tocumen",
             "name": "Panama City–Tocumen International",
             "city": "Panama City",
+            "province": null,
             "country": "Panamá",
-            "region": "central-america"
+            "region": "central-america",
+            "timezone": "America/Panama",
+            "coordinates": {
+                "lat": 9.0714,
+                "lng": -79.3835
+            },
+            "size": "large"
         },
         {
             "code": "BOG",
+            "icao": "SKBO",
+            "slug": "bogota-el-dorado",
             "name": "Bogotá–El Dorado International",
             "city": "Bogotá",
+            "province": null,
             "country": "Colômbia",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Bogota",
+            "coordinates": {
+                "lat": 4.7016,
+                "lng": -74.1469
+            },
+            "size": "large"
         },
         {
             "code": "LIM",
+            "icao": "SPJC",
+            "slug": "lima-jorge-chavez",
             "name": "Lima–Jorge Chávez International",
             "city": "Lima",
+            "province": null,
             "country": "Peru",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Lima",
+            "coordinates": {
+                "lat": -12.0219,
+                "lng": -77.1143
+            },
+            "size": "large"
         },
         {
             "code": "EZE",
+            "icao": "SAEZ",
+            "slug": "buenos-aires-ezeiza",
             "name": "Buenos Aires–Ministro Pistarini International",
             "city": "Buenos Aires",
+            "province": null,
             "country": "Argentina",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Argentina/Buenos_Aires",
+            "coordinates": {
+                "lat": -34.8222,
+                "lng": -58.5358
+            },
+            "size": "large"
         },
         {
             "code": "SCL",
+            "icao": "SCEL",
+            "slug": "santiago-arturo-merino",
             "name": "Santiago–Arturo Merino Benítez International",
             "city": "Santiago",
+            "province": null,
             "country": "Chile",
-            "region": "south-america"
+            "region": "south-america",
+            "timezone": "America/Santiago",
+            "coordinates": {
+                "lat": -33.3930,
+                "lng": -70.7858
+            },
+            "size": "large"
         },
         {
             "code": "MEX",
+            "icao": "MMMX",
+            "slug": "mexico-city-benito-juarez",
             "name": "Mexico City–Benito Juárez International",
             "city": "Mexico City",
+            "province": null,
             "country": "México",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Mexico_City",
+            "coordinates": {
+                "lat": 19.4363,
+                "lng": -99.0721
+            },
+            "size": "large"
         },
         {
             "code": "LIS",
+            "icao": "LPPT",
+            "slug": "lisboa-humberto-delgado",
             "name": "Lisboa–Humberto Delgado International",
             "city": "Lisboa",
+            "province": null,
             "country": "Portugal",
-            "region": "europe"
+            "region": "europe",
+            "timezone": "Europe/Lisbon",
+            "coordinates": {
+                "lat": 38.7742,
+                "lng": -9.1342
+            },
+            "size": "large"
         },
         {
             "code": "MAD",
+            "icao": "LEMD",
+            "slug": "madrid-barajas",
             "name": "Madrid–Adolfo Suárez Madrid–Barajas",
             "city": "Madrid",
+            "province": null,
             "country": "Espanha",
-            "region": "europe"
+            "region": "europe",
+            "timezone": "Europe/Madrid",
+            "coordinates": {
+                "lat": 40.4719,
+                "lng": -3.5626
+            },
+            "size": "large"
         },
         {
             "code": "CDG",
+            "icao": "LFPG",
+            "slug": "paris-charles-de-gaulle",
             "name": "Paris–Charles de Gaulle",
             "city": "Paris",
+            "province": null,
             "country": "França",
-            "region": "europe"
+            "region": "europe",
+            "timezone": "Europe/Paris",
+            "coordinates": {
+                "lat": 49.0097,
+                "lng": 2.5479
+            },
+            "size": "large"
         },
         {
             "code": "FCO",
+            "icao": "LIRF",
+            "slug": "roma-fiumicino",
             "name": "Roma–Leonardo da Vinci–Fiumicino",
             "city": "Roma",
+            "province": null,
             "country": "Itália",
-            "region": "europe"
+            "region": "europe",
+            "timezone": "Europe/Rome",
+            "coordinates": {
+                "lat": 41.8003,
+                "lng": 12.2389
+            },
+            "size": "large"
         },
         {
             "code": "EWR",
+            "icao": "KEWR",
+            "slug": "newark-liberty",
             "name": "Newark Liberty International",
             "city": "Newark",
+            "province": "New Jersey",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/New_York",
+            "coordinates": {
+                "lat": 40.6895,
+                "lng": -74.1745
+            },
+            "size": "large"
         },
         {
             "code": "JFK",
+            "icao": "KJFK",
+            "slug": "new-york-jfk",
             "name": "New York–John F. Kennedy International",
             "city": "New York",
+            "province": "New York",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/New_York",
+            "coordinates": {
+                "lat": 40.6413,
+                "lng": -73.7781
+            },
+            "size": "large"
         },
         {
             "code": "ATL",
+            "icao": "KATL",
+            "slug": "atlanta-hartsfield-jackson",
             "name": "Atlanta–Hartsfield–Jackson International",
             "city": "Atlanta",
+            "province": "Georgia",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/New_York",
+            "coordinates": {
+                "lat": 33.6407,
+                "lng": -84.4277
+            },
+            "size": "large"
         },
         {
             "code": "ORD",
+            "icao": "KORD",
+            "slug": "chicago-ohare",
             "name": "Chicago–O'Hare International",
             "city": "Chicago",
+            "province": "Illinois",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Chicago",
+            "coordinates": {
+                "lat": 41.9742,
+                "lng": -87.9073
+            },
+            "size": "large"
         },
         {
             "code": "IAD",
+            "icao": "KIAD",
+            "slug": "washington-dulles",
             "name": "Washington Dulles International",
             "city": "Washington",
+            "province": "Virginia",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/New_York",
+            "coordinates": {
+                "lat": 38.9531,
+                "lng": -77.4565
+            },
+            "size": "large"
         },
         {
             "code": "DFW",
+            "icao": "KDFW",
+            "slug": "dallas-fort-worth",
             "name": "Dallas/Fort Worth International",
             "city": "Dallas",
+            "province": "Texas",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Chicago",
+            "coordinates": {
+                "lat": 32.8998,
+                "lng": -97.0403
+            },
+            "size": "large"
         },
         {
             "code": "IAH",
+            "icao": "KIAH",
+            "slug": "houston-george-bush",
             "name": "Houston–George Bush Intercontinental",
             "city": "Houston",
+            "province": "Texas",
             "country": "Estados Unidos",
-            "region": "north-america"
+            "region": "north-america",
+            "timezone": "America/Chicago",
+            "coordinates": {
+                "lat": 29.9902,
+                "lng": -95.3368
+            },
+            "size": "large"
         }
     ]
 }
